@@ -1,3 +1,5 @@
+use super::super::include::time;
+
 fn kernel_boot_msg(arg: &[u8]) {
     let vga_buffer = 0xb8000 as *mut u8;
 
@@ -14,4 +16,6 @@ pub unsafe fn x86_init() {
  v1.0.0 \
  New Kernel \
 ".as_bytes());
+    time::sleep(2);
+    kernel_boot_msg("Setting up cmdline...            ".as_bytes());
 }
