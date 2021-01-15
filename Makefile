@@ -5,7 +5,7 @@ CC =?
 all: kernel image
 
 kernel:
-	cargo build --target $(TARGET)
+	cargo build --target=$(TARGET)
 
 image:
 	cargo bootimage --target $(TARGET)
