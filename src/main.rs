@@ -2,12 +2,14 @@
 #![no_std]
 #![no_main]
 
+mod kprint;
 mod panic;
 
 extern crate arch;
 
 #[no_mangle]
 pub extern "C" fn kernel_init() -> ! {
+    kprint!("Kernel init\n");
     unsafe { kernel_main() }
 }
 

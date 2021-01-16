@@ -24,6 +24,6 @@ pub unsafe fn x86_init() -> ! {
     boot_msg("\n\nSetting up cmdline...", 0, White);
     sleep(1);
     cmdline::setup_cmdline();
-    x86_print(format_args!("Starting kernel on ARCH={}...", ARCH));
+    x86_print(format_args!("Starting kernel on ARCH={}...\n", ARCH));
     startKernel()
 }
