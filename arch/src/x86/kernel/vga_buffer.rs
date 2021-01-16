@@ -27,10 +27,10 @@ pub enum Color {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(transparent)]
-struct ColorCode(u8);
+pub(crate) struct ColorCode(u8);
 
 impl ColorCode {
-    fn new(foreground: Color, background: Color) -> ColorCode {
+    pub(crate) fn new(foreground: Color, background: Color) -> ColorCode {
         ColorCode((background as u8) << 4 | (foreground as u8))
     }
 }
@@ -44,14 +44,14 @@ struct ScreenChar {
 
 
 #[repr(transparent)]
-struct Buffer {
+pub(crate) struct Buffer {
     chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
 pub struct Writer {
-    column_position: usize,
-    color_code: ColorCode,
-    buffer: &'static mut Buffer,
+    pub(crate) column_position: usize,
+    pub(crate) color_code: ColorCode,
+    pub(crate) buffer: &'static mut Buffer,
 }
 
 impl Writer {
@@ -78,8 +78,8 @@ impl Writer {
 }
 
 impl Writer {
-    fn write_string(&mut self, s: &str) {
-        for byte in s.bytes() {
+    pub fn write_string(&mut self, string: &str) {
+        for byte in string.bytes() {
             match byte {
                 0x20..=0x7e | b'\n' => self.write_byte(byte),
                 _ => self.write_byte(0xfe),
@@ -87,8 +87,9 @@ impl Writer {
         }
     }
 }
+
 impl Writer {
-    fn new_line(&mut self) {
+    pub fn new_line(&mut self) {
         for row in 1..BUFFER_HEIGHT {
             for col in 0..BUFFER_WIDTH {
                 let character = self.buffer.chars[row][col].read();
@@ -99,8 +100,9 @@ impl Writer {
         self.column_position = 0;
     }
 }
+
 impl Writer {
-    fn clear_row(&mut self, row: usize) {
+    pub fn clear_row(&mut self, row: usize) {
         let blank = ScreenChar {
             ascii_character: b' ',
             color_code: self.color_code,
@@ -112,8 +114,8 @@ impl Writer {
 }
 
 impl fmt::Write for Writer {
-    fn write_str(&mut self, s: &str) -> fmt::Result {
-        self.write_string(s);
+    fn write_str(&mut self, str: &str) -> fmt::Result {
+        self.write_string(str);
         Ok(())
     }
 }

@@ -1,21 +1,29 @@
+use crate::x86::kernel::vga_buffer::{Buffer, Color, ColorCode, Writer};
+use crate::x86::kernel::vga_buffer::Color::*;
 use crate::x86::include::time;
+use super::cmdline;
+use crate::x86::include::time::sleep;
+use crate::x86::lib::print::x86_print;
+use crate::ARCH;
+use crate::x86::boot::startKernel;
 
-fn kernel_boot_msg(arg: &[u8]) {
-    let vga_buffer = 0xb8000 as *mut u8;
-
-    for (i, &byte) in arg.iter().enumerate() {
-        unsafe {
-            *vga_buffer.offset(i as isize * 2) = byte;
-            *vga_buffer.offset(i as isize * 2 + 1) = 15;
-        }
-    }
+fn boot_msg(msg: &str, pos: i32, color: Color) {
+    let mut writer = Writer {
+        column_position: pos as usize,
+        color_code: ColorCode::new(color, Color::Black),
+        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
+    };
+    writer.write_string(msg);
 }
 
-pub unsafe fn x86_init() {
-    kernel_boot_msg("Novusk \
- v1.0.0 \
- New Kernel \
-".as_bytes());
-    time::sleep(2);
-    kernel_boot_msg("Setting up cmdline...            ".as_bytes());
+pub unsafe fn x86_init() -> ! {
+    boot_msg("Starting", 0, White);
+    boot_msg(" Novusk...\n", 8, Cyan);
+    boot_msg("v1.0.0 New Kernel", 0, Cyan);
+    time::sleep(1);
+    boot_msg("\n\nSetting up cmdline...", 0, White);
+    sleep(1);
+    cmdline::setup_cmdline();
+    x86_print(format_args!("Starting kernel on ARCH={}...", ARCH));
+    startKernel()
 }
