@@ -1,4 +1,4 @@
-use super::super::include::time;
+use crate::x86::include::time;
 
 fn kernel_boot_msg(arg: &[u8]) {
     let vga_buffer = 0xb8000 as *mut u8;
