@@ -1,10 +1,8 @@
-use crate::x86::kernel::vga_buffer::{Buffer, Color, ColorCode, Writer};
-use crate::x86::kernel::vga_buffer::Color::*;
-use crate::x86::include::time;
-use super::cmdline;
-use crate::x86::include::time::sleep;
-use crate::x86::lib::print::x86_print;
 use crate::ARCH;
+use crate::x86::kernel::vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer};
+use crate::x86::include::time;
+use crate::x86::kernel::cmdline;
+use crate::x86::lib::print::x86_print;
 use crate::x86::boot::startKernel;
 
 fn boot_msg(msg: &str, pos: i32, color: Color) {
@@ -22,7 +20,7 @@ pub unsafe fn x86_init() -> ! {
     boot_msg("v1.0.0 New Kernel", 0, Cyan);
     time::sleep(1);
     boot_msg("\n\nSetting up cmdline...", 0, White);
-    sleep(1);
+    time::sleep(1);
     cmdline::setup_cmdline();
     x86_print(format_args!("Starting kernel on ARCH={}...\n", ARCH));
     startKernel()
