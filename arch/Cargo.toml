@@ -5,8 +5,9 @@ authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-volatile = "0.2.6"
+include = { path = "../include/" }
 spin = "0.5.2"
+volatile = "0.2.6"
 
 [dependencies.lazy_static]
 version = "1.0"

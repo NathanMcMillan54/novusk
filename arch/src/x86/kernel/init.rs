@@ -1,11 +1,10 @@
 use crate::ARCH;
-use crate::x86::kernel::vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer};
-use crate::x86::include::time;
-use crate::x86::kernel::cmdline;
-use crate::x86::lib::print::x86_print;
 use crate::x86::boot::startKernel;
+use crate::x86::kernel::{cmdline, vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer}};
+use crate::x86::lib::print::x86_print;
+use include::time;
 
-fn boot_msg(msg: &str, pos: i32, color: Color) {
+pub fn boot_msg(msg: &str, pos: i32, color: Color) {
     let mut writer = Writer {
         column_position: pos as usize,
         color_code: ColorCode::new(color, Color::Black),

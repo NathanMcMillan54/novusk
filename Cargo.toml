@@ -7,10 +7,20 @@ edition = "2018"
 [workspace]
 members = [
     "arch/",
+    "include/",
+    "lib/",
     "os/",
 ]
 
 [dependencies]
 arch = { path = "arch/" }
+include = { path = "include/" }
+novusk_lib = { path = "lib/" }
 os = { path = "os/" }
 bootloader = "0.9.11"
+
+[profile.dev]
+opt-level = 3
+
+[profile.release]
+opt-level = 3

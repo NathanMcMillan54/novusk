@@ -2,12 +2,13 @@
 #![no_std]
 #![no_main]
 
-mod kinfo;
-mod kprint;
 mod panic;
 
 extern crate arch;
 extern crate os;
+
+#[macro_use]
+extern crate novusk_lib;
 
 #[no_mangle]
 pub extern "C" fn kernel_init() -> ! {
@@ -19,8 +20,6 @@ unsafe fn kernel_main() -> ! {
     kprint!("Kernel main\n");
     kinfo!("Starting userspace processes\n");
     os::main();
-    loop {
-        #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-        asm!("hlt");
-    }
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    arch::x86::include::asm::hlt()
 }

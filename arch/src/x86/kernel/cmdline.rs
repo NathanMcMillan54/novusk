@@ -1,5 +1,4 @@
 use crate::x86::drivers::vga_text::{BUFFER_HEIGHT};
-use crate::x86::include::time::{sleep};
 use crate::x86::kernel::vga_buffer::{*};
 
 pub fn setup_cmdline() {
