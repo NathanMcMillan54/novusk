@@ -6,6 +6,7 @@ mod kprint;
 mod panic;
 
 extern crate arch;
+extern crate os;
 
 #[no_mangle]
 pub extern "C" fn kernel_init() -> ! {
@@ -14,6 +15,7 @@ pub extern "C" fn kernel_init() -> ! {
 }
 
 unsafe fn kernel_main() -> ! {
+    kprint!("Kernel main\n");
     loop {
         #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
         asm!("hlt");

@@ -7,8 +7,10 @@ edition = "2018"
 [workspace]
 members = [
     "arch/",
+    "os/",
 ]
 
 [dependencies]
 arch = { path = "arch/" }
+os = { path = "os/" }
 bootloader = "0.9.11"
