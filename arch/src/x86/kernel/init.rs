@@ -1,8 +1,8 @@
 use crate::ARCH;
 use crate::x86::boot::startKernel;
-use crate::x86::kernel::{cmdline, vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer}};
+use crate::x86::kernel::{cmdline, time, vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer}};
 use crate::x86::lib::print::x86_print;
-use include::time;
+use crate::sleep;
 
 pub fn boot_msg(msg: &str, pos: i32, color: Color) {
     let mut writer = Writer {
@@ -17,10 +17,12 @@ pub unsafe fn x86_init() -> ! {
     boot_msg("Starting", 0, White);
     boot_msg(" Novusk...\n", 8, Cyan);
     boot_msg("v1.0.0 New Kernel", 0, Cyan);
-    time::sleep(1);
+    sleep(1);
     boot_msg("\n\nSetting up cmdline...", 0, White);
-    time::sleep(1);
+    sleep(1);
     cmdline::setup_cmdline();
     x86_print(format_args!("Starting kernel on ARCH={}...\n", ARCH));
+    time::start_kernel_clock();
+    e_kinfo!("Kernel clock started\n");
     startKernel()
 }
