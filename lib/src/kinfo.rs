@@ -4,8 +4,8 @@ use crate::kprint::_kprint;
 
 fn x86_kinfo(args: Arguments) {
     use arch::x86::lib::print::*;
-    use arch::x86::kernel::time::TIME;
-    write!(WRITER.lock(), "[ {} ] {}", TIME, args).unwrap();
+    use arch::x86::kernel::time::time::kernel_time;
+    write!(WRITER.lock(), "[ {} ] {}", kernel_time(), args).unwrap();
 }
 
 pub fn _kinfo(arg: Arguments) {

@@ -2,10 +2,10 @@
 
 use crate::x86::lib::print::WRITER;
 use core::fmt::{Arguments, Write};
-use crate::x86::kernel::time::TIME;
+use crate::x86::kernel::time::time::kernel_time;
 
 pub fn _e_kinfo(args: Arguments) {
-    write!(WRITER.lock(), "[ {} ] {}", TIME, args);
+    write!(WRITER.lock(), "[ {} ] {}", kernel_time(), args);
 }
 
 #[macro_export]

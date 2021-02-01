@@ -11,6 +11,9 @@ image:
 	cargo bootimage --target $(TARGET)
 	mv target/$(ARCH)-novusk/debug/bootimage-novusk.bin novusk
 
+qemu_x86:
+	qemu-system-x86_64 -drive format=raw,file=novusk
+
 clean:
 	rm -rf novusk
 	rm -rf target/
