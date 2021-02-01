@@ -2,17 +2,24 @@
 #![no_std]
 #![no_main]
 
+mod keyboard;
 mod panic;
 
+// Novusk crates
 extern crate arch;
 extern crate os;
 
 #[macro_use]
 extern crate novusk_lib;
 
+// External crates
+extern crate pc_keyboard;
+
 #[no_mangle]
 pub extern "C" fn kernel_init() -> ! {
     kprint!("Kernel init\n");
+    unsafe { keyboard::keyboard_init(); }
+    kinfo!("Keyboard initialized\n");
     unsafe { kernel_main() }
 }
 

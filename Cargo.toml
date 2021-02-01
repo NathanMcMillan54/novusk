@@ -18,6 +18,7 @@ include = { path = "include/" }
 novusk_lib = { path = "lib/" }
 os = { path = "os/" }
 bootloader = "0.9.11"
+pc-keyboard = "0.5.1"
 
 [build-dependencies]
 serde_json = "1.0.61"
