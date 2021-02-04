@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 arch = { path = "../arch/" }
+pc-keyboard = "0.5.1"

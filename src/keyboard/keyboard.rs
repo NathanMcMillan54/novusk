@@ -14,7 +14,8 @@ fn x86_keyboard() {
 
 pub unsafe fn keyboard_init() {
     // Imagine having keyboard support before CPU/arch support
-    #[cfg(any(target_arch = "arm"))]
+    // pc_keyboard was intended for arm devices
+    #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
     arm_keyboard();
 
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
