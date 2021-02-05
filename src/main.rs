@@ -1,7 +1,8 @@
-#![feature(asm, global_asm)]
+#![feature(alloc_error_handler, asm, global_asm)]
 #![no_std]
 #![no_main]
 
+mod allocator;
 mod keyboard;
 mod panic;
 
