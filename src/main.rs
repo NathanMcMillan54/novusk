@@ -7,6 +7,7 @@ mod panic;
 
 // Novusk crates
 extern crate arch;
+extern crate drivers;
 extern crate os;
 
 #[macro_use]
@@ -26,6 +27,7 @@ pub extern "C" fn kernel_init() -> ! {
 unsafe fn kernel_main() -> ! {
     kprint!("Kernel main\n");
     kinfo!("Starting userspace processes\n");
+    kprint!("   Starting os...\n");
     os::main();
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
     arch::x86::include::asm::hlt()

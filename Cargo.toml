@@ -7,6 +7,7 @@ edition = "2018"
 [workspace]
 members = [
     "arch/",
+    "drivers/",
     "include/",
     "lib/",
     "os/",
@@ -14,6 +15,7 @@ members = [
 
 [dependencies]
 arch = { path = "arch/" }
+drivers = { path = "drivers/" }
 include = { path = "include/" }
 novusk_lib = { path = "lib/" }
 os = { path = "os/" }
