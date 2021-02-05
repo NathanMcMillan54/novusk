@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 pc-keyboard = "0.5.1"
+novusk_lib = { path = "../lib/" }

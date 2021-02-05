@@ -6,6 +6,6 @@ extern crate include;
 #[macro_use]
 extern crate novusk_lib;
 
-pub fn main() {
-
+pub fn main() -> ! {
+    loop {  }
 }

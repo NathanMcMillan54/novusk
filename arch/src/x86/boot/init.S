@@ -3,4 +3,3 @@
 
 _start:
     call initStart
-    hlt

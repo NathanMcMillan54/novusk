@@ -6,6 +6,7 @@ mod allocator;
 mod keyboard;
 mod panic;
 mod time;
+mod userspace;
 
 // Novusk crates
 extern crate arch;
@@ -21,21 +22,25 @@ extern crate novusk_lib;
 extern crate pc_keyboard;
 
 #[no_mangle]
-pub extern "C" fn kernel_init() -> ! {
+pub extern "C" fn kernel_init() {
     kprint!("Kernel init\n");
     keyboard::keyboard_init();
     kinfo!("Keyboard initialized\n");
     kprint!("   Setup keyboard for {}\n", ARCH);
     time::time_reinit();
     kinfo!("Kernel time reinitialized\n");
-    unsafe { kernel_main() }
+    unsafe { kernel_main(); }
 }
 
 unsafe fn kernel_main() -> ! {
     kprint!("Kernel main\n");
     kinfo!("Starting userspace processes\n");
-    kprint!("   Starting os...\n");
-    os::main();
+    userspace::userspace_init()
+}
+
+pub unsafe fn end_kernel() -> ! {
+    kinfo!("End of kernel\n");
+    use arch::x86::include::asm;
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-    arch::x86::include::asm::hlt()
+    asm::hlt()
 }
