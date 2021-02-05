@@ -2,10 +2,13 @@ use arch::ARCH;
 use core::fmt::{Arguments, Write};
 use crate::kprint::_kprint;
 
+extern "C" {
+    fn kernel_time() -> f32;
+}
+
 fn x86_kinfo(args: Arguments) {
     use arch::x86::lib::print::*;
-    use arch::x86::kernel::time::time::kernel_time;
-    write!(WRITER.lock(), "[ {} ] {}", kernel_time(), args).unwrap();
+    write!(WRITER.lock(), "[ {} ] {}", unsafe { kernel_time() }, args).unwrap();
 }
 
 pub fn _kinfo(arg: Arguments) {

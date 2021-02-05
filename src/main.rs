@@ -5,11 +5,14 @@
 mod allocator;
 mod keyboard;
 mod panic;
+mod time;
 
 // Novusk crates
 extern crate arch;
 extern crate drivers;
 extern crate os;
+
+use arch::ARCH;
 
 #[macro_use]
 extern crate novusk_lib;
@@ -20,8 +23,11 @@ extern crate pc_keyboard;
 #[no_mangle]
 pub extern "C" fn kernel_init() -> ! {
     kprint!("Kernel init\n");
-    unsafe { keyboard::keyboard_init(); }
+    keyboard::keyboard_init();
     kinfo!("Keyboard initialized\n");
+    kprint!("   Setup keyboard for {}\n", ARCH);
+    time::time_reinit();
+    kinfo!("Kernel time reinitialized\n");
     unsafe { kernel_main() }
 }
 

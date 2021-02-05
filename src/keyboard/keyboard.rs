@@ -8,8 +8,7 @@ use drivers::keyboard::x86::{handlecontrol, scancode};
 #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
 use drivers::keyboard::arm::{handlecontrol, scancode};
 
-pub unsafe fn keyboard_init() {
-    kprint!("   Setting up keyboard for {}\n", ARCH);
+pub fn keyboard_init() {
     let mut keyboard= Keyboard::new(default_layout(),scancode(), handlecontrol());
     keyboard.add_byte(0x20);
 }
