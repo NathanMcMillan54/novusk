@@ -1,5 +1,5 @@
-use core::fmt::{Arguments, Write};
 use arch::ARCH;
+use core::fmt::{Arguments, Write};
 
 pub fn _print(args: Arguments) {
     if ARCH == "x86" {

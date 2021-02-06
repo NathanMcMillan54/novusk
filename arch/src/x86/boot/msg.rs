@@ -1,4 +1,4 @@
-use super::super::kernel::vga_buffer::*;
+use crate::x86::kernel::vga_buffer::*;
 
 pub fn boot_msg(msg: &str, pos: i32, color: Color) {
     let mut writer = Writer {

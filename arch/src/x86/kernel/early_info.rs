@@ -1,7 +1,6 @@
 #![macro_use]
-
-use crate::x86::lib::print::WRITER;
 use core::fmt::{Arguments, Write};
+use crate::x86::lib::print::WRITER;
 use super::time_init;
 
 pub fn _e_kinfo(args: Arguments) {

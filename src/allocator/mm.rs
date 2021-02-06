@@ -1,5 +1,4 @@
-use core::alloc::{GlobalAlloc, Layout};
-use core::ptr::{null_mut};
+use core::{alloc::{GlobalAlloc, Layout}, ptr::null_mut};
 
 struct MManagement;
 

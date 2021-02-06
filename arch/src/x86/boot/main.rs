@@ -1,5 +1,5 @@
 use super::{msg::boot_msg, startKernel};
-use super::super::kernel::{init::x86_init, vga_buffer::Color::*};
+use crate::x86::kernel::{init::x86_init, vga_buffer::Color::*};
 
 #[no_mangle]
 pub extern "C" fn initStart() -> ! {

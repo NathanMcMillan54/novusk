@@ -1,6 +1,6 @@
-use pc_keyboard::*;
 use arch::ARCH;
 use drivers::keyboard::layout::default_layout;
+use pc_keyboard::*;
 
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 use drivers::keyboard::x86::{handlecontrol, scancode};
