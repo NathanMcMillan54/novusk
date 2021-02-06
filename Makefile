@@ -19,8 +19,12 @@ novusk:
 
 image:
 	cargo bootimage --target $(TARGET)
-	mv target/$(ARCH)-novusk/debug/bootimage-novusk.bin novusk
+	cp -r target/$(ARCH)-novusk/debug/bootimage-novusk.bin novusk
 
+grub:
+	mv target/x86-novusk/debug/bootimage-novusk.bin arch/src/x86/boot/iso/boot/
+	cd arch/src/x86/boot/
+	grub-mkrescue -o isonovusk.iso iso
 
 qemu_x86:
 	qemu-system-x86_64 -drive format=raw,file=novusk
