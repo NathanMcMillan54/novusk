@@ -18,6 +18,11 @@ pub extern "C" fn kernel_time() -> f32 {
     }
 }
 
+#[no_mangle]
+pub extern "C" fn add_0_1() {
+    unsafe { KTIME += 0.1; }
+}
+
 pub fn time_reinit() -> f32 {
     unsafe {
         KTIME = 1.0;

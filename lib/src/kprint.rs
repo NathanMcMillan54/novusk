@@ -1,6 +1,8 @@
 use arch::ARCH;
 use core::fmt::{Arguments, Write};
 
+extern "C" { fn add_0_1(); }
+
 fn x86kprint(args: Arguments) {
     use arch::x86::kernel::vga_buffer::*;
     let mut writer = Writer {
@@ -12,6 +14,7 @@ fn x86kprint(args: Arguments) {
 }
 
 pub fn _kprint(arg: Arguments) {
+    unsafe { add_0_1(); }
     if ARCH == "x86" {
         x86kprint(arg);
     }
