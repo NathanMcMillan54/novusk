@@ -1,5 +1,5 @@
-use crate::x86::drivers::vga_text::{BUFFER_HEIGHT};
-use crate::x86::kernel::vga_buffer::{*};
+use crate::drivers::vga_text::{BUFFER_HEIGHT};
+use crate::kernel::vga_buffer::{*};
 
 pub fn setup_cmdline() {
     let mut line = 0;

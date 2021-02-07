@@ -1,7 +1,7 @@
 use core::fmt;
 use volatile::Volatile;
 
-use crate::x86::drivers::vga_text::{BUFFER_HEIGHT, BUFFER_WIDTH};
+use crate::drivers::vga_text::{BUFFER_HEIGHT, BUFFER_WIDTH};
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

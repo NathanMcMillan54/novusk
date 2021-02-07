@@ -1,5 +1,5 @@
-use crate::x86::drivers::vga_text::SCREEN_SIZE;
-use crate::x86::kernel::vga_buffer::{Buffer, Color, ColorCode, Writer};
+use crate::drivers::vga_text::SCREEN_SIZE;
+use crate::kernel::vga_buffer::{Buffer, Color, ColorCode, Writer};
 
 pub fn fill_screen(color: Color) {
     let mut drawer = Writer {

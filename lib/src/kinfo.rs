@@ -1,19 +1,16 @@
-use arch::ARCH;
 use core::fmt::{Arguments, Write};
 use crate::kprint::_kprint;
+
+#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+use arch::x86::x86lib::print::*;
 
 extern "C" {
     fn kernel_time() -> f32;
 }
 
-fn x86_kinfo(args: Arguments) {
-    use arch::x86::lib::print::*;
-    write!(WRITER.lock(), "[ {} ] {}", unsafe { kernel_time() }, args).unwrap();
-}
-
 pub fn _kinfo(arg: Arguments) {
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-    x86_kinfo(arg)
+    arch::x86::x86lib::print::x86_print(format_args!("[ {} ] {}", unsafe { kernel_time() }, arg));
 }
 
 #[macro_export]

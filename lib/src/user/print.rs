@@ -1,28 +1,13 @@
-use arch::ARCH;
 use core::fmt::{Arguments, Write};
 
 pub fn _print(args: Arguments) {
-    if ARCH == "x86" {
-        use arch::x86::kernel::vga_buffer::*;
-        let mut writer = Writer {
-            column_position: 0,
-            color_code: ColorCode::new(Color::White, Color::Black),
-            buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
-        };
-        writer.write_fmt(format_args!("{}", args)).unwrap();
-    }
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    arch::x86::x86lib::print::x86_print(format_args!("{}", args));
 }
 
 pub fn _printnl(args: Arguments) {
-    if ARCH == "x86" {
-        use arch::x86::kernel::vga_buffer::*;
-        let mut writer = Writer {
-            column_position: 0,
-            color_code: ColorCode::new(Color::White, Color::Black),
-            buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
-        };
-        writer.write_fmt(format_args!("{}\n", args)).unwrap();
-    }
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    arch::x86::x86lib::print::x86_print(format_args!("{}\n", args));
 }
 
 #[macro_export]

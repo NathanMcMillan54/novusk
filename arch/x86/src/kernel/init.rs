@@ -1,7 +1,7 @@
 use crate::ARCH;
-use crate::x86::boot::{msg::boot_msg, startKernel};
-use crate::x86::kernel::{cmdline, vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer}};
-use crate::x86::lib::print::x86_print;
+use crate::boot::{msg::boot_msg, startKernel};
+use crate::kernel::{cmdline, vga_buffer::{Buffer, Color, Color::*, ColorCode, Writer}};
+use crate::x86lib::print::x86_print;
 use crate::sleep;
 
 pub unsafe fn x86_init() -> ! {

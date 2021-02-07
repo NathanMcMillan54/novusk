@@ -1,23 +1,11 @@
-use arch::ARCH;
 use core::fmt::{Arguments, Write};
 
 extern "C" { fn add_0_1(); }
 
-fn x86kprint(args: Arguments) {
-    use arch::x86::kernel::vga_buffer::*;
-    let mut writer = Writer {
-        column_position: 0,
-        color_code: ColorCode::new(Color::White, Color::Black),
-        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
-    };
-    writer.write_fmt(args).unwrap();
-}
-
 pub fn _kprint(arg: Arguments) {
     unsafe { add_0_1(); }
-    if ARCH == "x86" {
-        x86kprint(arg);
-    }
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    arch::x86::x86lib::print::x86_print(arg);
 }
 
 #[macro_export]

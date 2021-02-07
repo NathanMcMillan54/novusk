@@ -44,7 +44,7 @@ fn x86_input(mut repeat: i32) {
 }
 
 pub fn single_character_input() -> &'static str {
-    #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
+    #[cfg(any(target_arch = "aarch64", target_arch = "aarch64"))]
     arm_input(0);
 
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
@@ -53,7 +53,7 @@ pub fn single_character_input() -> &'static str {
 }
 
 pub fn loop_input() -> &'static str {
-    #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
+    #[cfg(any(target_arch = "aarch64", target_arch = "aarch64"))]
     arm_input(999);
 
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]

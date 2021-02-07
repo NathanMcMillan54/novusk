@@ -13,7 +13,9 @@ extern crate arch;
 extern crate drivers;
 extern crate os;
 
-use arch::ARCH;
+#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+use arch::x86::ARCH;
+
 
 #[macro_use]
 extern crate novusk_lib;
@@ -40,7 +42,6 @@ unsafe fn kernel_main() -> ! {
 
 pub unsafe fn end_kernel() -> ! {
     kinfo!("End of kernel\n");
-    use arch::x86::include::asm;
-    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-    asm::hlt()
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64", target_arch = "aarch64"))]
+    arch::x86::include::asm::hlt();
 }

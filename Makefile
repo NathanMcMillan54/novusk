@@ -1,5 +1,5 @@
 ARCH =?
-TARGET = arch/src/$(ARCH)/configs/$(ARCH)-novusk.json
+TARGET = arch/$(ARCH)/src/configs/$(ARCH)-novusk.json
 CC =?
 OS =?
 
@@ -7,7 +7,7 @@ all: uos kernel
 
 
 uos:
-	python3 arch/src/$(ARCH)/configs/build.py $(OS)
+	python3 arch/$(ARCH)/src/configs/build.py $(OS)
 
 
 kernel: novusk image
@@ -16,6 +16,8 @@ kernel: novusk image
 novusk:
 	cargo build --target=$(TARGET)
 
+aarch64_novusk:
+	cargo build --target=$(TARGET)
 
 image:
 	cargo bootimage --target $(TARGET)

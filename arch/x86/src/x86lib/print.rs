@@ -3,7 +3,7 @@ use core::fmt::Write;
 use lazy_static::lazy_static;
 use spin::Mutex;
 
-use crate::x86::kernel::vga_buffer::*;
+use crate::kernel::vga_buffer::*;
 
 lazy_static! {
     pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {

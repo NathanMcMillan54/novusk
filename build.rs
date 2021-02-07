@@ -20,7 +20,7 @@ fn setup_screen_6400() {
 
 fn build_x86() {
     /* ----- Read JSON file ----- */
-    let defconfig_file = File::open("arch/src/x86/configs/defconfig.json").unwrap();
+    let defconfig_file = File::open("arch/x86/src/configs/defconfig.json").unwrap();
     let defconfig: Value = from_reader(defconfig_file)
         .expect("Couldn't read json from defconfig file");
     /* ----- ----- */
