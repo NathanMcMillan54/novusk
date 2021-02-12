@@ -11,3 +11,4 @@ Read ``Documentation/`` for setting up or developing
 
 ### arm TODO list
 - [ ] Make arm a supported architecture
+- [ ] Make aarch64(arm64) a supported architecture

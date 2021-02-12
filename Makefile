@@ -1,36 +1,24 @@
-ARCH =?
-TARGET = arch/$(ARCH)/src/configs/$(ARCH)-novusk.json
+ARCH =? x86
 CC =?
-OS =?
+OS =? none
+TARGET = arch/$(ARCH)/src/configs/$(ARCH)-novusk.json
 
 all: uos kernel
-
 
 uos:
 	python3 arch/$(ARCH)/src/configs/build.py $(OS)
 
-
-kernel: novusk image
-
-
-novusk:
-	cargo build --target=$(TARGET)
-
-aarch64_novusk:
+kernel:
 	cargo build --target=$(TARGET)
 
 image:
-	cargo bootimage --target $(TARGET)
-	cp -r target/$(ARCH)-novusk/debug/bootimage-novusk.bin novusk
+	python3 arch/$(ARCH)/src/boot/image.py
 
-grub:
-	mv target/x86-novusk/debug/bootimage-novusk.bin arch/src/x86/boot/iso/boot/
-	cd arch/src/x86/boot/
-	grub-mkrescue -o isonovusk.iso iso
+qemu_aarch64:
+	qemu-system-aarch64 -machine $(BOARD) -m 1024M -cpu $(CPU) -nographic -kernel novusk
 
 qemu_x86:
 	qemu-system-x86_64 -drive format=raw,file=novusk
-
 
 clean:
 	rm -rf novusk

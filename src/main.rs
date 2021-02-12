@@ -3,6 +3,7 @@
 #![no_main]
 
 mod allocator;
+mod end;
 mod keyboard;
 mod panic;
 mod time;
@@ -10,12 +11,9 @@ mod userspace;
 
 // Novusk crates
 extern crate arch;
+use arch::ARCH;
 extern crate drivers;
 extern crate os;
-
-#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-use arch::x86::ARCH;
-
 
 #[macro_use]
 extern crate novusk_lib;
@@ -42,6 +40,9 @@ unsafe fn kernel_main() -> ! {
 
 pub unsafe fn end_kernel() -> ! {
     kinfo!("End of kernel\n");
-    #[cfg(any(target_arch = "x86", target_arch = "x86_64", target_arch = "aarch64"))]
-    arch::x86::include::asm::hlt();
+    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    end::x86_end_kernel();
+
+    #[cfg(any(target_arch = "aarch64"))]
+    end::aarch64_end_kernel()
 }

@@ -1,10 +1,7 @@
 [package]
-name = "arch"
+name = "arm"
 version = "0.1.0"
 authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-aarch64 = { path = "aarch64/" }
-arm = { path = "arm/" }
-x86 = { path = "x86/" }
