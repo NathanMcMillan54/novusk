@@ -6,4 +6,5 @@ extern crate arm;
 pub const ARCH: &'static str = "aarch64";
 
 pub mod boot;
+pub mod drivers;
 pub mod kernel;

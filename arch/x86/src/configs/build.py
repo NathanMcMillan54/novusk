@@ -4,7 +4,7 @@ import sys
 
 def main(os):
     print("arch/x86/src/configs/build.py")
-    print("Compiling for defconfigs with python")
+    print("Compiling for defconfigs...")
     os_mod = open("drivers/src/os/mod.rs", "r+")
     os_mod.writelines(f"pub mod setup;\npub mod {os};")
     os_setup = open("drivers/src/os/setup.rs", "r+")

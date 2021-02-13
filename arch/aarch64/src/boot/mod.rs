@@ -2,3 +2,5 @@
 global_asm!(include_str!("init.S"));
 
 pub mod main;
+pub(crate) mod msg;
+pub mod name;
