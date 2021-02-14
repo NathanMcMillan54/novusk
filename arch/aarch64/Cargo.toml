@@ -6,3 +6,8 @@ edition = "2018"
 
 [dependencies]
 arm = { path = "../arm/" }
+spin = "0.5.2"
+
+[dependencies.lazy_static]
+version = "1.0.0"
+features = ["spin_no_std"]

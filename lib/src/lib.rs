@@ -11,5 +11,8 @@ pub mod user;
 
 pub use user::*;
 
+#[cfg(any(target_arch = "aarch64"))]
+pub use arch::aarch64::aarch64lib::*;
+
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 pub use arch::x86::x86lib::*;

@@ -10,5 +10,9 @@ Read ``Documentation/`` for setting up or developing
 - [ ] Add real kernel clock
 
 ### arm TODO list
-- [ ] Make arm a supported architecture
-- [ ] Make aarch64(arm64) a supported architecture
+- [x] Make arm a supported architecture
+- [x] Make aarch64(arm64) a supported architecture
+- [ ] Create a text mode
+
+arm/aarch64 doesn't have a text mode like how x86/x86_64 has VGA Buffer, right now Novusk arm/aarch64 only prints in 
+qemu.
