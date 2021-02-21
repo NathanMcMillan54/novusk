@@ -9,6 +9,8 @@ pub mod x86lib;
 
 pub const ARCH: &'static str = "x86";
 
+pub static SLEEP_TIME: i32 = 10000000;
+
 // include/src/time.rs
 fn sleep(seconds: i32) {
     let mut x = 0;

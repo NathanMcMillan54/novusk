@@ -25,7 +25,7 @@ pc-keyboard = "0.5.1"
 bootloader = "0.9.12"
 
 [build-dependencies]
-serde_json = "1.0.61"
+serde_json = "1.0.62"
 
 [profile.dev]
 opt-level = 3

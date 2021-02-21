@@ -6,3 +6,6 @@
 
 _start:
     call initStart
+
+.org 510
+.word 0xaa55
