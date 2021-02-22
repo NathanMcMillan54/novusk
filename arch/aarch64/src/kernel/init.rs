@@ -7,8 +7,6 @@ pub unsafe fn aarch64_init() -> ! {
     sleep(1);
     time::time_init();
     boot_msg("Time initialized\n", 0);
-    cmdline::cmdline_init();
-    boot_msg("Cmdline initialized\n", 0);
     aarch64_end_kernel()
 }
 

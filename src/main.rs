@@ -27,8 +27,6 @@ pub extern "C" fn kernel_init() {
     keyboard::keyboard_init();
     kinfo!("Keyboard initialized\n");
     kprint!("   Setup keyboard for {}\n", ARCH);
-    time::time_reinit();
-    kinfo!("Kernel time reinitialized\n");
     unsafe { kernel_main(); }
 }
 

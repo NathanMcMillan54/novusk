@@ -3,11 +3,14 @@ New Kernel - A small kernel written in Rust
 
 Read ``Documentation/`` for setting up or developing
 
+### TODO list
+- [ ] Add real kernel clock
+- [ ] Add storage drivers
+
 ### x86 TODO list
 - [x] Make proper support for a screen size of 200 (default)
 - [ ] Make proper support for a screen size of 6400
 - [ ] Make shutdown work
-- [ ] Add real kernel clock
 
 ### arm TODO list
 - [x] Make arm a supported architecture

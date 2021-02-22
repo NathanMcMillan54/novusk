@@ -1,10 +1,10 @@
 #![macro_use]
 use core::fmt::{Arguments, Write};
 use crate::x86lib::print::WRITER;
-use super::time_init;
+use super::time::time::kernel_time;
 
 pub fn _e_kinfo(args: Arguments) {
-    write!(WRITER.lock(), "[ {} ] {}", unsafe { time_init() }, args);
+    write!(WRITER.lock(), "[ {} ] {}", unsafe { kernel_time() }, args);
 }
 
 #[macro_export]
