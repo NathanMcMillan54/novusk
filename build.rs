@@ -27,7 +27,7 @@ fn build_aarch64() {
     } else { setup_virt(); }
 }
 
-const VGA_DRIVER: &str = "arch/src/x86/drivers/vga_text.rs";
+const VGA_DRIVER: &str = "arch/x86/drivers/vga_text.rs";
 
 fn setup_screen_200() {
     write(VGA_DRIVER, "pub const BUFFER_HEIGHT: usize = 25; pub const BUFFER_WIDTH: usize = 80; pub const SCREEN_SIZE: usize = BUFFER_HEIGHT * BUFFER_WIDTH; pub const VGA_BUFFER: i32 = 0xb8000;");

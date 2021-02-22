@@ -3,6 +3,7 @@
 #![no_main]
 
 mod allocator;
+mod configs;
 mod end;
 mod keyboard;
 mod panic;

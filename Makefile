@@ -15,6 +15,9 @@ kernel:
 image:
 	@ python3 arch/$(ARCH)/src/boot/image.py
 
+reset:
+	@ python3 tools/reset.py
+
 qemu_aarch64:
 	qemu-system-aarch64 -machine $(BOARD) -m 1024M -cpu $(CPU) -nographic -kernel novusk
 
