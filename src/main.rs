@@ -5,7 +5,6 @@
 mod allocator;
 mod configs;
 mod end;
-mod keyboard;
 mod panic;
 mod time;
 mod userspace;
@@ -14,6 +13,7 @@ mod userspace;
 extern crate arch;
 use arch::ARCH;
 extern crate drivers;
+use drivers::{keyboard, storage};
 extern crate os;
 
 #[macro_use]
@@ -26,8 +26,7 @@ extern crate pc_keyboard;
 pub extern "C" fn kernel_init() {
     kprint!("Kernel init\n");
     keyboard::keyboard_init();
-    kinfo!("Keyboard initialized\n");
-    kprint!("   Setup keyboard for {}\n", ARCH);
+    storage::storage_init();
     unsafe { kernel_main(); }
 }
 
