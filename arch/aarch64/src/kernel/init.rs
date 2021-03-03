@@ -1,12 +1,11 @@
 use arm::include::asm;
 use crate::boot::msg::boot_msg;
-use super::{cmdline, time::time};
+use super::{cmdline, early_info::*, time::time};
 use crate::sleep;
 
 pub unsafe fn aarch64_init() -> ! {
-    sleep(1);
     time::time_init();
-    boot_msg("Time initialized\n", 0);
+    _e_kinfo(format_args!("{}", "Time initialized\n"));
     aarch64_end_kernel()
 }
 

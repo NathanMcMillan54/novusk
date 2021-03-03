@@ -1,5 +1,7 @@
 #![no_std]
 #![feature(global_asm)]
+#![feature(fmt_as_str)]
+
 
 extern crate arm;
 
