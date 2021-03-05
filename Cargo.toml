@@ -1,6 +1,6 @@
 [package]
 name = "novusk"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
