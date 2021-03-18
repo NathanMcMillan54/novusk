@@ -1,7 +1,9 @@
 Cargo.lock
-novusk
-
-*.iso
+iso/boot/novusk
+novusk.iso
+*.a
+*.o
 
 .idea/
+build/
 target/

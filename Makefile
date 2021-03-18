@@ -1,29 +1,24 @@
-ARCH = x86
-BOARD = virt
-CC =?
-OS = none
-TARGET = arch/$(ARCH)/src/configs/$(ARCH)-novusk.json
+ARCH =?
+CC = gcc
+LD = ld
+LINKER_SCRIPT = arch/$(ARCH)/src/boot/linker.ld
+TARGET = targets/$(ARCH)-novusk.json
 
-all: clean build kernel
-
-build:
-	@ python3 arch/$(ARCH)/src/configs/build.py $(OS) $(BOARD)
-
-kernel:
+all:
+	@ mkdir build/
 	@ cargo build --target=$(TARGET)
+	@ mv target/$(ARCH)-novusk/debug/libnovusk.a build/
+
+bootloader:
+	@ cd arch/$(ARCH)/ && make boot
+	@ cd arch/$(ARCH)/src/boot/ && mv init.o ../../../../build/
+
+link:
+	@ $(CC) -o novusk -ffreestanding -nostdlib build/init.o build/libnovusk.a
 
 image:
-	@ python3 arch/$(ARCH)/src/boot/image.py
-
-reset:
-	@ python3 tools/reset.py
-
-qemu_aarch64:
-	qemu-system-aarch64 -machine $(BOARD) -m 1024M -cpu $(CPU) -nographic -kernel novusk
-
-qemu_x86:
-	qemu-system-x86_64 novusk
+	@ mv novusk iso/boot/ && grub-mkrescue -o novusk.iso iso
 
 clean:
-	@ cargo clean
-	@ rm -rf novusk
+	@ rm -rf build/
+	@ rm -rf target/

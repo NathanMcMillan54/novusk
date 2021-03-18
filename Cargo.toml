@@ -4,31 +4,10 @@ version = "1.1.0"
 authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
-[workspace]
-members = [
-    "arch/",
-    "drivers/",
-    "include/",
-    "lib/",
-    "os/",
-]
+[lib]
+name = "novusk"
+edition = "2018"
+path = "src/lib.rs"
+crate-type = ["staticlib"]
 
 [dependencies]
-arch = { path = "arch/" }
-drivers = { path = "drivers/" }
-include = { path = "include/" }
-novusk_lib = { path = "lib/" }
-os = { path = "os/" }
-pc-keyboard = "0.5.1"
-
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = "0.9.12"
-
-[build-dependencies]
-serde_json = "1.0.62"
-
-[profile.dev]
-opt-level = 3
-
-[profile.release]
-opt-level = 3

@@ -1,1 +1,0 @@
-pub static OSNAME: &'static str = "none";

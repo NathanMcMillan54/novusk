@@ -1,1 +1,0 @@
-pub const MACHINE: &'static str = "qemu";

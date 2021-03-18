@@ -1,1 +1,0 @@
-pub const SHOW_KERNEL_MESSAGES: bool = true;

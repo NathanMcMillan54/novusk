@@ -1,8 +1,0 @@
-[package]
-name = "include"
-version = "0.1.0"
-authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
-edition = "2018"
-
-[dependencies]
-novusk_lib = { path = "../lib/" }
