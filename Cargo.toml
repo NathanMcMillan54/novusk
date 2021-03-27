@@ -9,5 +9,3 @@ name = "novusk"
 edition = "2018"
 path = "src/lib.rs"
 crate-type = ["staticlib"]
-
-[dependencies]

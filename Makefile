@@ -4,21 +4,18 @@ LD = ld
 LINKER_SCRIPT = arch/$(ARCH)/src/boot/linker.ld
 TARGET = targets/$(ARCH)-novusk.json
 
-all:
-	@ mkdir build/
-	@ cargo build --target=$(TARGET)
-	@ mv target/$(ARCH)-novusk/debug/libnovusk.a build/
+all: cargo link
 
-bootloader:
-	@ cd arch/$(ARCH)/ && make boot
-	@ cd arch/$(ARCH)/src/boot/ && mv init.o ../../../../build/
+cargo:
+	@ cargo clean
+	@ cargo build --target=$(TARGET)
 
 link:
-	@ $(CC) -o novusk -ffreestanding -nostdlib build/init.o build/libnovusk.a
-
-image:
-	@ mv novusk iso/boot/ && grub-mkrescue -o novusk.iso iso
+	@ cp -r target/$(ARCH)-novusk/debug/libnovusk.a build/libnovusk.a
+	$(MAKE) -C arch/$(ARCH)/ link
 
 clean:
 	@ rm -rf build/
-	@ rm -rf target/
+	@ rm -rf arch/x86_64/src/boot/*.o
+	@ rm -rf arch/x86_64/src/boot/bzImage
+

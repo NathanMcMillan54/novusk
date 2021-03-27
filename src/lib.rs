@@ -1,11 +1,12 @@
 #![no_std]
-#![feature(asm)]
+
+mod kernel;
 
 use core::panic::{PanicInfo};
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() -> ! {
-    loop { asm!("hlt") }
+    loop { }
 }
 
 #[panic_handler]
