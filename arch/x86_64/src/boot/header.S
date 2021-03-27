@@ -1,10 +1,10 @@
 .code16
 
-.extern kernel_init
+.extern main
 .globl _start
 
 _start:
-	call kernel_init
+	call main
 	hlt
 
 .fill 510-(.-_start), 1, 0

@@ -9,3 +9,12 @@ name = "novusk"
 edition = "2018"
 path = "src/lib.rs"
 crate-type = ["staticlib"]
+
+[workspace]
+members = [
+    "arch/x86_64/",
+]
+
+[dependencies]
+x86_64 = { path = "arch/x86_64/" }
+
