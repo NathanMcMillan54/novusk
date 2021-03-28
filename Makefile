@@ -16,7 +16,10 @@ cargo:
 link:
 	@ echo "Linking kernel with external files..."
 	@ cp -r target/$(ARCH)-novusk/debug/libnovusk.a build/libnovusk.a
-	@ $(MAKE) -C arch/$(ARCH)/ link
+	@ $(MAKE) -C arch/$(ARCH)/ move
+	@ echo "Creating image..."
+	@ $(MAKE) -C arch/$(ARCH)/ image
+	@ echo "Done"
 
 clean:
 	@ echo "Cleaning"

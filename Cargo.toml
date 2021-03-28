@@ -10,6 +10,9 @@ edition = "2018"
 path = "src/lib.rs"
 crate-type = ["staticlib"]
 
+[features]
+
+
 [workspace]
 members = [
     "arch/x86_64/",

@@ -3,3 +3,6 @@ name = "x86_64"
 edition = "2018"
 version = "0.2.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com"]
+
+[dependencies]
+fk_std = { git = "https://github.com/NathanMcMillan54/fk_std" }
