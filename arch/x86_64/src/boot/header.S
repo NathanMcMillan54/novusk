@@ -1,14 +1,17 @@
 .code16
+
+.extern main
 .globl _start
-_start
+
+_start:
     mov $boot_msg, %si
     mov $0xe, %ah
-print_char:
+kernel_boot_message:
     lodsb
     cmp $0, %al
     je main
     int $0x10
-    jmp print_char
+    jmp kernel_boot_message
 
 boot_msg:
     .asciz "Starting kernel...\n"
