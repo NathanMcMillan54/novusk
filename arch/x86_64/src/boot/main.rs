@@ -1,8 +1,16 @@
 use super::{kernel_init};
-// use fk_std::libc::c_char;
+use crate::kernel::{time::time_init};
+
+unsafe fn protected_mode() {
+    asm!(
+        "mov ax, 0x13",
+        "int 0x10"
+    );
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
-    // biosPrint(*("Starting kernel...\n".as_ptr() as *const i8));
+    protected_mode();
+    time_init();
     kernel_init()
 }

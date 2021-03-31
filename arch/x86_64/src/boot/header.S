@@ -14,7 +14,7 @@ kernel_boot_message:
     jmp kernel_boot_message
 
 boot_msg:
-    .asciz "Starting kernel...\n"
+    .asciz "\nStarting kernel...\r\nGoing to protected mode...\r\n"
 
 .fill 510-(.-_start), 1, 0
 .word 0xaa55
