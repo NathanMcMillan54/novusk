@@ -1,6 +1,7 @@
-use super::{BiosRegs, cpu::validate_cpu, kernel_init, kernel_main};
+use super::{bios::{keyboard::keyboard_init, set_bios_mode}, cpu::validate_cpu, intcall, kernel_init, kernel_main};
+use crate::drivers::{text::init::text_init};
 use crate::include::{asm::cli, kernel::die};
-use crate::kernel::{time::time_init};
+use crate::kernel::{init::init, time::time_init};
 
 
 unsafe fn protected_mode() {
@@ -10,25 +11,18 @@ unsafe fn protected_mode() {
     );
 }
 
-unsafe fn set_bios_mode() {
-    asm!(
-        "mov ax, 0xec00",
-        "mov bx, 2"
-    );
-}
-
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
     cli();
-
 
     if !validate_cpu() {
         die();
     }
 
     set_bios_mode();
+    keyboard_init();
 
-    kernel_init();
+    text_init();
     protected_mode();
-    kernel_main()
+    init();
 }

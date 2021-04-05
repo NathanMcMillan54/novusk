@@ -6,5 +6,6 @@ extern crate fk_std;
 pub const ARCH: &str = "x86_64";
 
 pub mod boot;
+pub mod drivers;
 pub mod include;
 pub mod kernel;
