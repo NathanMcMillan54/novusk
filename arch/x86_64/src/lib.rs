@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(asm, global_asm)]
+#![feature(asm, global_asm, llvm_asm)]
 
 extern crate fk_std;
 
