@@ -14,8 +14,8 @@ goToProtectedMode:
     cli
     CLEAR
     PROTECTED_MODE
-    jmp .
+    call kentry
 
-.code32
 kentry:
+    hlt
     call init

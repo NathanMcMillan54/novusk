@@ -1,7 +1,5 @@
 .code16
 
-#include "boot.h"
-
 .extern entry32
 
 .globl _start
