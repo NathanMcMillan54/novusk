@@ -3,7 +3,7 @@ TARGET = targets/$(ARCH)-novusk.json
 
 all: kernel image
 
-kernel:
+kernel: install
 	@ cargo clean
 	@ cargo build --target=$(TARGET)
 	@ mv target/$(ARCH)-novusk/debug/libnovusk.a arch/$(ARCH)/src/boot/kernel
@@ -11,5 +11,6 @@ kernel:
 image:
 	@ $(MAKE) -C arch/$(ARCH)/ image
 
-
+install:
+	@ sh tools/install.sh
 
