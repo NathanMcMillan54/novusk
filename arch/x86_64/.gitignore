@@ -1,3 +1,2 @@
 src/boot/bzImage
-src/boot/*.o
-src/boot/bios/*.o
+src/boot/kernel

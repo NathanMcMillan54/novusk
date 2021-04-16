@@ -1,8 +1,10 @@
 [package]
 name = "x86_64"
+version = "0.1.0"
+authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
-version = "0.2.0"
-authors = ["Nathan McMillan <nathanmcmillan54@gmail.com"]
 
 [dependencies]
-fk_std = { git = "https://github.com/NathanMcMillan54/fk_std" }
+
+[build-dependencies]
+build = { path = "../../tools/build/" }

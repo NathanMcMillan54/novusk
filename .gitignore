@@ -5,5 +5,4 @@ novusk.iso
 *.o
 
 .idea/
-build/
 target/

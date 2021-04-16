@@ -2,11 +2,25 @@
 
 .extern main
 .globl _start
+.type _start @function
 
 _start:
+    sti
+    mov $kernel_msg, %si
+    mov $0x0e, %ah
+    call printKernelMsg
+
+printKernelMsg:
+    lodsb
+    or %al, %al
+    jz kernelEntry
+    int $0x10
+    jmp printKernelMsg
+
+kernelEntry:
     cld
     cli
     call main
 
-.fill 510-(.-_start), 1, 0
-.word 0xaa55
+kernel_msg:
+    .asciz "Starting kernel...\n\r"

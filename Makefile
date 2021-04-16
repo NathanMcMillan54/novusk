@@ -1,27 +1,15 @@
 ARCH =?
-LINKER_SCRIPT = arch/$(ARCH)/src/boot/linker.ld
 TARGET = targets/$(ARCH)-novusk.json
 
-all: clean setup cargo link
+all: kernel image
 
-setup:
-	@ echo "Setting up Novusk..."
-	@ mkdir build/
-
-cargo:
-	@ echo "Compiling kernel"
+kernel:
 	@ cargo clean
 	@ cargo build --target=$(TARGET)
+	@ mv target/$(ARCH)-novusk/debug/libnovusk.a arch/$(ARCH)/src/boot/kernel
 
-link:
-	@ echo "Linking kernel with external files..."
-	@ cp -r target/$(ARCH)-novusk/debug/libnovusk.a build/libnovusk.a
-	@ $(MAKE) -C arch/$(ARCH)/ move
-	@ echo "Creating image..."
+image:
 	@ $(MAKE) -C arch/$(ARCH)/ image
-	@ echo "Done"
 
-clean:
-	@ echo "Cleaning"
-	@ rm -rf build/
-	@ $(MAKE) -C arch/$(ARCH)/ clean
+
+
