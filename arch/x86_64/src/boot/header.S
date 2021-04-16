@@ -17,10 +17,11 @@ printKernelMsg:
     int $0x10
     jmp printKernelMsg
 
+kernel_msg:
+    .asciz "Starting kernel...\n\r"
+
 kernelEntry:
     cld
     cli
     call main
 
-kernel_msg:
-    .asciz "Starting kernel...\n\r"
