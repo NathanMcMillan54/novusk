@@ -1,16 +1,17 @@
 use super::{cpu, kernel_init};
-use crate::drivers::{early_hardware_init};
+use crate::drivers;
 use crate::include::{kernel::die};
+use crate::kernel::init::init;
 
 #[no_mangle]
-pub unsafe extern "C" fn main() {
-    /* if !cpu::validate_cpu() {
-        die()
-    } else {
-        cpu::ARCHITECTURE = "x86_64";
-    } */
+pub unsafe extern "C" fn main() -> ! {
+    if !cpu::validate_cpu() {
+        die();
+    }
 
-    /* early_hardware_init();
+    drivers::early_drivers_init();
 
-    kernel_init(); */
+    init();
+    kernel_init();
+    loop { asm!("hlt"); }
 }

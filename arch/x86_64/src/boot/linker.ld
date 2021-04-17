@@ -1,12 +1,11 @@
 ENTRY(_start)
 SECTIONS
 {
-    . = 0x7c00;
-    .text :
+    . = 1M;
+
+    .text BLOCK(4K) : ALIGN(4K)
     {
-        __start = .;
-        *(.text)
-        . = 0x1FE;
-        SHORT(0xAA55)
+    	*(.multiboot)
+    	*(.text)
     }
 }

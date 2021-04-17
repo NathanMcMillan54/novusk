@@ -1,23 +1,13 @@
-.code16
-
-.extern entry32
+.code32
 
 .globl _start
 .type _start @function
 
-// Setup
+.extern stack_top
+.extern main
+
 _start:
-    sti
-    mov $kernel_msg, %si
-    mov $0x0e, %ah
+    movl $stack_top, %esp
 
-printKernelMsg:
-    lodsb
-    or %al, %al
-    jz entry32
-    int $0x10
-    jmp printKernelMsg
-
-kernel_msg:
-    .asciz "Starting kernel\n\r"
-
+    call main
+    hlt

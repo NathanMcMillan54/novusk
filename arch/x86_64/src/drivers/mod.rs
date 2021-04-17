@@ -1,7 +1,5 @@
-pub mod cpu;
-pub mod keyboard;
+pub mod text;
 
-pub unsafe fn early_hardware_init() {
-    keyboard::keyboard_init();
-    cpu::init();
+pub unsafe fn early_drivers_init() {
+    text::init();
 }

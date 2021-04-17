@@ -2,6 +2,6 @@ extern crate build;
 use build::{*};
 
 fn main() {
-    gcc_object("src/boot/header.S", "src/boot/header.o");
-    gcc_object("src/boot/kentry32.S", "src/boot/kentry32.o");
+    as_object("src/boot/multiboot.S", "src/boot/multiboot.o");
+    as_object("src/boot/header.S", "src/boot/header.o");
 }

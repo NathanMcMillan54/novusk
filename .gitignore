@@ -1,5 +1,4 @@
 Cargo.lock
-iso/boot/novusk
 novusk.iso
 *.a
 *.o
