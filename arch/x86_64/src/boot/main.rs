@@ -1,4 +1,4 @@
-use super::{cpu};
+use super::{cmdline::cmdline_init, cpu};
 use crate::drivers;
 use crate::include::kernel::{die};
 use crate::kernel::{init::init, kernel_init};
@@ -9,6 +9,7 @@ pub unsafe extern "C" fn main() -> ! {
         die();
     }
 
+    cmdline_init();
     drivers::early_drivers_init();
 
     init();

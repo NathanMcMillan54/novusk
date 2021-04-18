@@ -12,7 +12,7 @@ kernel:
 image:
 	@ $(MAKE) -C arch/$(ARCH)/ image
 
-iso:
+iso: all
 	@ sh tools/iso.sh
 
 clean:

@@ -45,8 +45,8 @@ impl Writer {
         }
     }
 
-    pub fn write_str(&mut self, s: &str) {
-        for byte in s.bytes() {
+    pub fn write_string(&mut self, string: &str) {
+        for byte in string.bytes() {
             self.write_byte(byte)
         }
     }

@@ -1,5 +1,6 @@
-use super::vga::WRITER;
+use super::{tests, time};
 
 pub unsafe fn init() {
-    WRITER.lock().write_str("Starting kernel...\n");
+    time::time_init();
+    tests::tests_init();
 }
