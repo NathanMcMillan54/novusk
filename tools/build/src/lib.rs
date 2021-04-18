@@ -1,7 +1,6 @@
 use std::process::Command;
 
 pub fn as_object(file: &str, object: &str) {
-    println!("Creating object file from {}", file);
     Command::new("as")
         .arg("-o")
         .arg(object)
@@ -10,7 +9,6 @@ pub fn as_object(file: &str, object: &str) {
 }
 
 pub fn gcc_object(file: &str, object: &str) {
-    println!("Creating object file from {}", file);
     Command::new("gcc")
         .arg("-c")
         .arg(file)
@@ -19,9 +17,17 @@ pub fn gcc_object(file: &str, object: &str) {
         .spawn();
 }
 
+// This doesn't work for some reason
 pub fn curl(command: &str) {
-    println!("Running command with curl");
     Command::new("curl")
         .arg(command)
+        .spawn();
+}
+
+pub fn nasm_object(file: &str) {
+    Command::new("nasm")
+        .arg("-f")
+        .arg("elf64")
+        .arg(file)
         .spawn();
 }

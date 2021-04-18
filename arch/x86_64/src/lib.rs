@@ -1,5 +1,9 @@
 #![no_std]
-#![feature(asm, global_asm, llvm_asm)]
+#![feature(asm, global_asm)]
+#![feature(ptr_internals)]
+
+extern crate spin;
+extern crate volatile;
 
 pub mod boot;
 pub mod drivers;

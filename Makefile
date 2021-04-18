@@ -1,9 +1,10 @@
 ARCH =?
 TARGET = targets/$(ARCH)-novusk.json
 
-all: kernel image
+all: clean kernel image
 
 kernel:
+	@ $(MAKE) -C arch/$(ARCH)/ boot_files
 	@ cargo clean
 	@ cargo build --target=$(TARGET)
 	@ mv target/$(ARCH)-novusk/debug/libnovusk.a arch/$(ARCH)/src/boot/kernel
@@ -13,3 +14,7 @@ image:
 
 iso:
 	@ sh tools/iso.sh
+
+clean:
+	@ cargo clean
+	@ sh tools/clean/main.sh

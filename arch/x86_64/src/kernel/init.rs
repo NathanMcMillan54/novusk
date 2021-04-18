@@ -1,3 +1,5 @@
+use super::vga::WRITER;
+
 pub unsafe fn init() {
-    1 + 1;
+    WRITER.lock().write_str("Starting kernel...\n");
 }

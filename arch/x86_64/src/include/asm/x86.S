@@ -10,4 +10,3 @@ clear_if:
 
 halt:
     hlt
-

@@ -1,11 +1,6 @@
-use crate::include::asm::{cld, cli, hlt};
-
-pub unsafe fn clear_all() {
-    cld();
-    cli();
-}
+use crate::include::asm::{hlt};
 
 pub unsafe fn die() -> ! {
-    clear_all();
-    loop { hlt(); }
+    hlt();
+    die()
 }

@@ -1,7 +1,7 @@
-use super::{cpu, kernel_init};
+use super::{cpu};
 use crate::drivers;
-use crate::include::{kernel::die};
-use crate::kernel::init::init;
+use crate::include::kernel::{die};
+use crate::kernel::{init::init, kernel_init};
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
@@ -13,5 +13,5 @@ pub unsafe extern "C" fn main() -> ! {
 
     init();
     kernel_init();
-    loop { asm!("hlt"); }
+    die()
 }
