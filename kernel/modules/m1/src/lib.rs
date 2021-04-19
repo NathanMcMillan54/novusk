@@ -1,9 +1,14 @@
+#![no_std]
+
+#[macro_use]
+extern crate kernel;
+
 pub unsafe fn m1_init() {
-    printk!("   Module 1 init\n");
+    printk!("   M1 init\n");
 }
 
 pub unsafe fn m1_exit() {
-    printk!("   Module 1 end\n");
+    printk!("   M1 end\n");
 }
 
 pub const MODULE: &str = "m1";

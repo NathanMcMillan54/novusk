@@ -4,5 +4,10 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
+# Main dependencies
 include = { path = "../../include/" }
 kernel = { path = "../../kernel/" }
+# Architecture specific modules
+ex1 = { path = "../../arch/x86_64/modules/ex1/" }
+# Modules
+m1 = { path = "../../kernel/modules/m1/" }

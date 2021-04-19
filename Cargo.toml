@@ -13,11 +13,16 @@ crate-type = ["staticlib"]
 [workspace]
 members = [
     "tools/build/",
+    # Main kernel
     "arch/x86_64/",
     "include/",
     "init/",
     "kernel/",
-    "kernel/modules/"
+    "kernel/modules/",
+    # Arch modules
+    "arch/x86_64/modules/ex1/",
+    # Kernel modules
+    "kernel/modules/m1/",
 ]
 
 [dependencies]
