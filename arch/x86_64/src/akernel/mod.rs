@@ -9,4 +9,5 @@ pub static mut KERNEL: bool = true;
 
 extern "C" {
     pub fn kernel_init();
+    pub fn kernel_main() -> !;
 }
