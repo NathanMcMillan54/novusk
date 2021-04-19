@@ -15,6 +15,7 @@ members = [
     "tools/build/",
     # Main kernel
     "arch/x86_64/",
+    "drivers/",
     "include/",
     "init/",
     "kernel/",
@@ -26,6 +27,7 @@ members = [
 ]
 
 [dependencies]
+drivers = { path = "drivers/" }
 include = { path = "include/" }
 init = { path = "init/" }
 kernel = { path = "kernel/" }
