@@ -4,6 +4,7 @@
 
 #[macro_use]
 extern crate kernel;
+
 extern crate spin;
 extern crate volatile;
 

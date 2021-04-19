@@ -1,1 +1,0 @@
-// TODO: Add x86_64 functions so the kernel can call them easier if they are needed

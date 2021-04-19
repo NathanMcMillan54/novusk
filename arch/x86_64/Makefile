@@ -11,7 +11,7 @@ boot_files:
 	@ $(NASM) $(BOOT)kernelEntry.asm
 
 image:
-	@ ld -relocatable -n -o $(BZIMAGE) -T $(LINKER_SCRIPT) $(BOOT)multiboot.o $(BOOT)header.o $(BOOT)kernelEntry.o $(KERNEL)
+	@ ld -n -o $(BZIMAGE) -T $(LINKER_SCRIPT) $(BOOT)multiboot.o $(BOOT)header.o $(BOOT)kernelEntry.o $(KERNEL)
 	@ echo "Created bzImage at arch/x86_64/src/boot/bzImage"
 
 clean:

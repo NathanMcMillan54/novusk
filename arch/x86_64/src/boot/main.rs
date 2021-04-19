@@ -1,5 +1,6 @@
 use super::{cmdline::cmdline_init, cpu};
 use crate::drivers;
+use crate::include::asm::{cli};
 use crate::include::kernel::{die};
 use crate::akernel::{init::init, kernel_init, kernel_main};
 
@@ -14,5 +15,5 @@ pub unsafe extern "C" fn main() -> ! {
 
     init();
     kernel_init();
-    kernel_main()
+    die()
 }

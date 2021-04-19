@@ -1,5 +1,6 @@
 // FOMOSv3 drivers
 
-pub unsafe fn init() {
+#[no_mangle]
+pub unsafe extern "C" fn blue_init() {
 
 }

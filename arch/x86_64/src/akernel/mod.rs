@@ -1,6 +1,7 @@
 pub mod error;
 pub mod init;
 pub mod print_fmt;
+pub mod syscalls;
 pub mod tests;
 pub mod time;
 pub mod vga;

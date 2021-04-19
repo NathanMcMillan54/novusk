@@ -1,5 +1,6 @@
 #![no_std]
 
-pub mod arch;
+extern crate x86_64;
+
 pub mod novusk;
 
