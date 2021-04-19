@@ -2,10 +2,13 @@
 #![feature(asm, global_asm)]
 #![feature(ptr_internals)]
 
+#[macro_use]
+extern crate kernel;
 extern crate spin;
 extern crate volatile;
 
 pub mod boot;
 pub mod drivers;
 pub mod include;
-pub mod kernel;
+// kernel
+pub mod akernel;

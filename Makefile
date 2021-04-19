@@ -1,9 +1,9 @@
-ARCH =?
+ARCH = x86_64
 TARGET = targets/$(ARCH)-novusk.json
 
-all: clean kernel image
+all: clean novusk image
 
-kernel:
+novusk:
 	@ $(MAKE) -C arch/$(ARCH)/ boot_files
 	@ cargo clean
 	@ cargo build --target=$(TARGET)

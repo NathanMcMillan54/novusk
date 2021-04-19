@@ -1,6 +1,6 @@
 use core::ptr::Unique;
 use crate::drivers::text::{VGA_BUFFER_WIDTH, VGA_BUFFER_HEIGHT};
-use crate::kernel::vga::{buffer::*, color::*};
+use crate::akernel::vga::{buffer::*, color::*};
 
 pub unsafe fn cmdline_init() {
     let mut cmdline_writer = Writer {

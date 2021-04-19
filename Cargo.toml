@@ -14,7 +14,9 @@ crate-type = ["staticlib"]
 members = [
     "tools/build/",
     "arch/x86_64/",
+    "kernel/",
 ]
 
 [dependencies]
+kernel = { path = "kernel/" }
 x86_64 = { path = "arch/x86_64/" }
