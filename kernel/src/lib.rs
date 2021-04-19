@@ -1,6 +1,5 @@
 #![no_std]
 
 pub mod info;
-pub mod init;
 pub mod panic;
 pub mod printk;

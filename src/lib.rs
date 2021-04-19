@@ -1,5 +1,7 @@
 #![no_std]
 
+extern crate init;
+
 #[macro_use]
 extern crate kernel;
 

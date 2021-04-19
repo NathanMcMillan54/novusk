@@ -1,9 +1,7 @@
 use core::fmt::{Arguments, Write};
 use super::printk::_print;
 
-extern "C" {
-    fn x86_time() -> f64;
-}
+extern "C" { pub fn x86_time() -> f64; }
 
 pub unsafe fn _info(info: Arguments) -> Arguments {
     // Until other architectures are supported the time will be x86_time
