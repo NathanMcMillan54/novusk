@@ -6,4 +6,6 @@ edition = "2018"
 
 
 [dependencies]
+include = { path = "../include/" }
 kernel = { path = "../kernel/" }
+modules = { path = "../kernel/modules/" }

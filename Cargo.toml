@@ -14,11 +14,15 @@ crate-type = ["staticlib"]
 members = [
     "tools/build/",
     "arch/x86_64/",
+    "include/",
     "init/",
     "kernel/",
+    "kernel/modules/"
 ]
 
 [dependencies]
+include = { path = "include/" }
 init = { path = "init/" }
 kernel = { path = "kernel/" }
+modules = { path = "kernel/modules/" }
 x86_64 = { path = "arch/x86_64/" }
