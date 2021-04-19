@@ -12,3 +12,4 @@ pub mod drivers;
 pub mod include;
 // kernel
 pub mod akernel;
+pub mod x86lib;

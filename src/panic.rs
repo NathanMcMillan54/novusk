@@ -1,6 +1,7 @@
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+unsafe fn panic(_info: &PanicInfo) -> ! {
+    panick!("{}", _info);
     loop {  }
 }
