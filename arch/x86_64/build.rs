@@ -1,5 +1,5 @@
 extern crate build;
-use build::{gas};
+use build::gas;
 
 fn main() {
     println!("cargo:rerun-if-changed=src/boot/header.S");

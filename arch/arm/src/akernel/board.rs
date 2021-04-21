@@ -1,3 +1,1 @@
-pub fn board_name() -> &'static str {
-    return "esp32";
-}
+pub const BOARD: &str = "esp32";

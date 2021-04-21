@@ -1,7 +1,7 @@
 use super::{cmdline, cpu};
-use drivers::{text::vga, x86_64};
-use crate::include::kernel::{die};
 use crate::akernel::init;
+use crate::include::kernel::die;
+use drivers::{text::vga, x86_64};
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {

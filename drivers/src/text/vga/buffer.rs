@@ -1,6 +1,6 @@
-use core::fmt;
 use super::color::{Color, ColorCode};
 use super::vga_error;
+use core::fmt;
 use volatile::Volatile;
 
 pub const BUFFER_HEIGHT: usize = 25;
@@ -12,7 +12,6 @@ pub struct ScreenChar {
     ascii_character: u8,
     color_code: ColorCode,
 }
-
 
 #[repr(transparent)]
 pub struct Buffer {

@@ -1,18 +1,18 @@
 pub mod buffer;
 pub mod color;
 
-use buffer::{*};
-use color::{*};
+use buffer::*;
+use color::*;
 use kernel::die;
 use spin::Mutex;
 
-lazy_static! (
-    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer{
+lazy_static! {
+    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {
         column_position: 0,
         color_code: ColorCode::new(Color::White, Color::Black),
-        buffer: unsafe { &mut *(0xb8000 as *mut Buffer)},
+        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     });
-);
+}
 
 pub(crate) fn vga_error() {
     static TEXT: &[u8] = b"Error: VGA screen buffer isn't 25x80";

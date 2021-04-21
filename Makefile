@@ -1,13 +1,16 @@
-ARCH = x86_64
+ARCH =? x86_64
+DEVICE =?
 TARGET = targets/$(ARCH)-novusk.json
 
 all: clean novusk boot
 
 novusk:
-	@ cargo build --target=$(TARGET)
+	@ echo "Compiling Novusk for $(ARCH)"
+	@ $(MAKE) -C arch/$(ARCH) kernel BOARD=$(DEVICE)
 
 boot:
-	@ cargo bootimage --target=$(TARGET)
+	@ echo "Making bootable file of Novusk for $(ARCH)"
+	@ $(MAKE) -C arch/$(ARCH)/ boot BOARD=$(DEVICE)
 
 clean:
 	@ cargo clean

@@ -2,7 +2,6 @@ use super::{SCREEN_HEIGHT, SCREEN_WIDTH};
 use drivers::text::vga::{buffer::*, color::*};
 use drivers::x86_64::vga::WRITER;
 
-
 pub unsafe fn cmdline_init() {
     let mut i = 0;
     let mut writer = Writer {
