@@ -2,4 +2,4 @@
 #![feature(asm, global_asm)]
 
 pub mod boot;
-pub mod device;
+pub mod akernel;

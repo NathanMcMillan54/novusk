@@ -1,4 +1,4 @@
-.section .text
+.section .text._start
 
 .extern setup
 .globl _start

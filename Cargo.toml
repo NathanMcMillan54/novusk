@@ -25,9 +25,11 @@ members = [
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.12"
+x86_64 = { path = "arch/x86_64/" }
+
+[target.'cfg(target_arch = "arm")'.dependencies]
+arm = { path = "arch/arm/" }
 
 [dependencies]
-arm = { path = "arch/arm/" }
 drivers = { path = "drivers/" }
 kernel = { path = "kernel/" }
-x86_64 = { path = "arch/x86_64/" }
