@@ -1,5 +1,7 @@
 .section .text
-.globl _start
 
+.extern setup
+.globl _start
 _start:
-    wfe
+    bl setup
+
