@@ -5,8 +5,13 @@ authors = ["NathanMcMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+# Novusk
 drivers = { path = "../../drivers/" }
+include = { path = "../../include/" }
 kernel = { path = "../../kernel/" }
+# Modules
+ex1 = { path = "../../kernel/modules/ex1/" }
+# Dependencies
 raw-cpuid = "9.0.0"
 
 [build-dependencies]

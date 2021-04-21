@@ -1,6 +1,6 @@
 use super::{cmdline, cpu};
 use crate::akernel::{init, kernel_init};
-use crate::include::kernel::die;
+use crate::ainclude::kernel::die;
 use drivers::{x86_64};
 
 #[no_mangle]

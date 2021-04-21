@@ -21,6 +21,9 @@ members = [
     "include/",
     "init/",
     "kernel/",
+    # Modules
+    "kernel/modules/ex1/",
+    # Tools
     "tools/build/",
 ]
 

@@ -1,9 +1,10 @@
 use core::fmt::Arguments;
 
-use include::novusk::syscalls::write_fmt;
+use include::novusk::syscalls::{kernel_time, write_fmt};
 
 pub unsafe fn _printk(args: Arguments) -> Arguments {
     write_fmt(format_args!("{}{}", args, "\n"));
+    kernel_time();
     return args;
 }
 
