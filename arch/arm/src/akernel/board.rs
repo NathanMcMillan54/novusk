@@ -1,1 +1,0 @@
-pub const BOARD: &str = "esp32";

@@ -1,3 +1,6 @@
 pub use crate::text::vga;
 
-pub unsafe fn init() {}
+pub unsafe fn init() {
+    vga::init();
+}
+

@@ -1,9 +1,0 @@
-[package]
-name = "arm"
-version = "0.1.0"
-authors = ["NathanMcMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
-
-
-[dependencies]
-drivers = { path = "../../drivers/" }

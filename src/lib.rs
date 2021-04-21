@@ -2,10 +2,9 @@
 #![crate_type = "staticlib"]
 #![feature(asm)]
 
-#[cfg(target_arch = "arm")]
-extern crate arm;
-
 extern crate drivers;
+extern crate include;
+extern crate init;
 extern crate kernel;
 pub use kernel::die;
 

@@ -8,7 +8,7 @@ pub unsafe fn write(bytes: &[u8], size: u8) -> u8 {
 }
 
 #[no_mangle]
-pub unsafe fn write_fmt(args: Arguments) -> Arguments {
+pub unsafe extern "C" fn write_fmt(args: Arguments) -> Arguments {
     WRITER.lock().write_fmt(args).unwrap();
     return args;
 }
