@@ -1,8 +1,7 @@
 extern crate build;
-use build::{*};
+use build::{gas};
 
 fn main() {
-    nasm_object("src/boot/header.asm");
-    nasm_object("src/boot/multiboot.asm");
-    nasm_object("src/boot/kernelEntry.asm");
+    println!("cargo:rerun-if-changed=src/boot/header.S");
+    gas("src/boot/header.S", "header");
 }

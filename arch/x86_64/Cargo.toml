@@ -1,13 +1,13 @@
 [package]
 name = "x86_64"
 version = "0.1.0"
-authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
+authors = ["NathanMcMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+drivers = { path = "../../drivers/" }
 kernel = { path = "../../kernel/" }
-volatile = "0.1.0"
-spin = "0.4.5"
+raw-cpuid = "9.0.0"
 
 [build-dependencies]
 build = { path = "../../tools/build/" }

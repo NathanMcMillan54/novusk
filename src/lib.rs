@@ -1,15 +1,10 @@
 #![no_std]
+#![crate_type = "staticlib"]
+#![feature(asm)]
 
 extern crate drivers;
-extern crate include;
-extern crate init;
-
-#[macro_use]
 extern crate kernel;
-
-extern crate modules;
-
-#[macro_use]
+pub use kernel::die;
 extern crate x86_64;
 
 mod panic;

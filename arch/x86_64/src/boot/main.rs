@@ -1,8 +1,7 @@
-use super::{cmdline::cmdline_init, cpu};
-use crate::drivers;
-use crate::include::asm::{cli};
+use super::{cmdline, cpu};
+use drivers::{text::vga, x86_64};
 use crate::include::kernel::{die};
-use crate::akernel::{init::init, kernel_init, kernel_main};
+use crate::akernel::init;
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
@@ -10,10 +9,10 @@ pub unsafe extern "C" fn main() -> ! {
         die();
     }
 
-    cmdline_init();
-    drivers::early_drivers_init();
+    vga::init();
+    cmdline::cmdline_init();
+    x86_64::init();
+    init::init();
 
-    init();
-    kernel_init();
     die()
 }

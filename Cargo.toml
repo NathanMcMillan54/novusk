@@ -4,32 +4,28 @@ version = "1.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
+[[bin]]
+name = "novusk_kernel"
+edition = "2018"
+path = "src/main.rs"
+
 [lib]
 name = "novusk"
 edition = "2018"
 path = "src/lib.rs"
-crate-type = ["staticlib"]
 
 [workspace]
 members = [
-    "tools/build/",
-    # Main kernel
     "arch/x86_64/",
     "drivers/",
-    "include/",
-    "init/",
     "kernel/",
-    "kernel/modules/",
-    # Arch modules
-    "arch/x86_64/modules/ex1/",
-    # Kernel modules
-    "kernel/modules/m1/",
+    "tools/build/",
 ]
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+bootloader = "0.9.12"
 
 [dependencies]
 drivers = { path = "drivers/" }
-include = { path = "include/" }
-init = { path = "init/" }
 kernel = { path = "kernel/" }
-modules = { path = "kernel/modules/" }
 x86_64 = { path = "arch/x86_64/" }

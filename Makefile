@@ -1,19 +1,13 @@
 ARCH = x86_64
 TARGET = targets/$(ARCH)-novusk.json
 
-all: clean novusk image
+all: clean novusk boot
 
 novusk:
-	@ $(MAKE) -C arch/$(ARCH)/ boot_files
-	@ cargo clean
 	@ cargo build --target=$(TARGET)
-	@ mv target/$(ARCH)-novusk/debug/libnovusk.a arch/$(ARCH)/src/boot/kernel
 
-image:
-	@ $(MAKE) -C arch/$(ARCH)/ image
-
-iso: all
-	@ sh tools/iso.sh
+boot:
+	@ cargo bootimage --target=$(TARGET)
 
 clean:
 	@ cargo clean

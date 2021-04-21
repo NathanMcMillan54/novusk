@@ -1,12 +1,6 @@
-use super::{tests, time};
+use super::syscalls::write_fmt;
+// use drivers::x86_64::vga::WRITER;
 
 pub unsafe fn init() {
-    time::time_init();
-    tests::tests_init();
-    info!("Kernel time initialized\n");
-    info!("Early kernel tests finished\n");
-    x86_kernel_modules_init();
-    info!("x86_64 kernel modules initialized\n");
+    write_fmt(format_args!("{}{}", "x86_64 kernel ", "init\n"));
 }
-
-extern "C" { fn x86_kernel_modules_init(); }

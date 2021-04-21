@@ -1,5 +1,8 @@
-pub fn validate_cpu() -> bool {
-    #[cfg(any(target_arch = "x86_64"))]
+use raw_cpuid;
+
+pub unsafe fn validate_cpu() -> bool {
+    // Check architecture for now
+    #[cfg(target_arch = "x86_64")]
     return true;
 
     #[cfg(not(target_arch = "x86_64"))]

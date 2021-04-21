@@ -1,11 +1,8 @@
 #![no_std]
 
-#[macro_use]
 extern crate kernel;
+#[macro_use]
+extern crate lazy_static;
 
-pub mod blue;
-pub mod ethernet;
-
-pub unsafe fn hardware_drivers_init() {
-    ethernet::init();
-}
+pub mod text;
+pub mod x86_64;

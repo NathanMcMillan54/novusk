@@ -1,7 +1,7 @@
 use core::panic::PanicInfo;
+use crate::die;
 
 #[panic_handler]
-unsafe fn panic(_info: &PanicInfo) -> ! {
-    panick!("{}", _info);
-    loop {  }
+pub unsafe fn panic(_info: &PanicInfo) -> ! {
+    die();
 }
