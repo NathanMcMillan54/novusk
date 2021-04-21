@@ -2,6 +2,7 @@
 #![crate_type = "staticlib"]
 #![feature(asm)]
 
+extern crate arm;
 extern crate drivers;
 extern crate kernel;
 pub use kernel::die;

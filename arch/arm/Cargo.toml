@@ -1,0 +1,9 @@
+[package]
+name = "arm"
+version = "0.1.0"
+authors = ["NathanMcMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+
+
+[build-dependencies]
+build = { path = "../../tools/build/" }

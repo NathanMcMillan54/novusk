@@ -16,6 +16,7 @@ path = "src/lib.rs"
 
 [workspace]
 members = [
+    "arch/arm/",
     "arch/x86_64/",
     "drivers/",
     "kernel/",
@@ -26,6 +27,7 @@ members = [
 bootloader = "0.9.12"
 
 [dependencies]
+arm = { path = "arch/arm/" }
 drivers = { path = "drivers/" }
 kernel = { path = "kernel/" }
 x86_64 = { path = "arch/x86_64/" }
