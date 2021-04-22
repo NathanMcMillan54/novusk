@@ -23,6 +23,7 @@ members = [
     "kernel/",
     # Modules
     "kernel/modules/ex1/",
+    "kernel/modules/m1/",
     # Tools
     "tools/build/",
 ]

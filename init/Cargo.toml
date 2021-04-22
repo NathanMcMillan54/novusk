@@ -5,4 +5,6 @@ authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+include = { path = "../include/" }
 kernel = { path = "../kernel/" }
+m1 = { path = "../kernel/modules/m1/" }
