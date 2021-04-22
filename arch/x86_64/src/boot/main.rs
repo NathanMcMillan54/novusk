@@ -1,6 +1,6 @@
 use super::{cmdline, cpu};
-use crate::akernel::{init, kernel_init};
-use crate::ainclude::kernel::die;
+use crate::x86kernel::{init};
+use crate::x86include::kernel::die;
 use drivers::{x86_64};
 
 #[no_mangle]
@@ -12,6 +12,5 @@ pub unsafe extern "C" fn main() -> ! {
     x86_64::init();
     cmdline::cmdline_init();
     init::init();
-    kernel_init();
     die()
 }

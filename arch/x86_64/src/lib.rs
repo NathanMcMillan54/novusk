@@ -11,6 +11,6 @@ extern crate ex1;
 
 pub mod boot;
 // include
-pub mod ainclude;
+pub mod x86include;
 // kernel
-pub mod akernel;
+pub mod x86kernel;
