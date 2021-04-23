@@ -2,6 +2,7 @@
 
 extern crate include;
 
+pub mod info;
 pub mod kinfo;
 pub mod printk;
 

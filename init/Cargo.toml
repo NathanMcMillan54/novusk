@@ -9,4 +9,5 @@ drivers = { path = "../drivers/" }
 fs = { path = "../fs/" }
 include = { path = "../include/" }
 kernel = { path = "../kernel/" }
+# Modules
 m1 = { path = "../kernel/modules/m1/" }
