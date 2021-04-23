@@ -21,6 +21,7 @@ members = [
     "include/",
     "init/",
     "kernel/",
+    "mm/",
     # Modules
     "kernel/modules/ex1/",
     "kernel/modules/m1/",
@@ -39,3 +40,4 @@ include = { path = "include/" }
 init = { path = "init/" }
 kernel = { path = "kernel/" }
 libn = { git = "https://github.com/new-kernel/libn/" }
+mm = { path = "mm/" }
