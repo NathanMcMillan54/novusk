@@ -3,20 +3,20 @@ use alloc::string::String;
 use super::{dir::Dir, file::File};
 
 impl Dir {
-    pub fn new() -> Dir {
+    pub fn new(name: String, path: String) -> Dir {
         Dir {
-            dir_name: String::new(),
-            dir_path: String::new()
+            dir_name: name,
+            dir_path: path
         }
     }
 }
 
 impl File {
-    pub fn new() -> File {
+    pub fn new(name: String, path: String, ftype: String) -> File {
         File {
-            file_name: String::new(),
-            file_path: String::new(),
-            file_type: String::new()
+            file_name: name,
+            file_path: path,
+            file_type: ftype
         }
     }
 }

@@ -11,6 +11,12 @@ pub unsafe extern "C" fn kernel_init() {
 
     kernel_modules_init();
     kinfo!("Kernel modules initialized");
+
+    drivers::drivers_init();
+    kinfo!("Main drivers initialized");
+
+    fs::fs_init();
+    kinfo!("Fs initialized");
 }
 
 unsafe fn kernel_modules_init() {

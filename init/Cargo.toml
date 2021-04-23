@@ -5,6 +5,8 @@ authors = ["NathanMcMillan54 <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+drivers = { path = "../drivers/" }
+fs = { path = "../fs/" }
 include = { path = "../include/" }
 kernel = { path = "../kernel/" }
 m1 = { path = "../kernel/modules/m1/" }

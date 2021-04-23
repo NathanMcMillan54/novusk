@@ -1,5 +1,7 @@
 #![no_std]
 
+extern crate drivers;
+extern crate fs;
 extern crate include;
 
 #[macro_use]
