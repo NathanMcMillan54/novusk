@@ -5,3 +5,4 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+libn = { git = "https://github.com/new-kernel/libn/" }

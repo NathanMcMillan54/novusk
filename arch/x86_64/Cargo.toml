@@ -9,6 +9,7 @@ edition = "2018"
 drivers = { path = "../../drivers/" }
 include = { path = "../../include/" }
 kernel = { path = "../../kernel/" }
+libn = { git = "https://github.com/new-kernel/libn/" }
 # Modules
 ex1 = { path = "../../kernel/modules/ex1/" }
 # Dependencies

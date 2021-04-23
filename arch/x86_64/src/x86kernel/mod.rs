@@ -6,4 +6,5 @@ pub mod time;
 
 extern "C" {
     pub(crate) fn kernel_init();
+    pub(crate) fn kernel_main() -> !;
 }

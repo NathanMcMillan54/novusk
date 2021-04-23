@@ -1,5 +1,5 @@
 use super::{cmdline, cpu};
-use crate::x86kernel::{init};
+use crate::x86kernel::{init, kernel_main};
 use crate::x86include::kernel::die;
 use drivers::{x86_64};
 

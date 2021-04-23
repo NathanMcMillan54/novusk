@@ -1,8 +1,7 @@
 pub mod buffer;
-pub mod color;
+pub use libn::color::vga::{Color, ColorCode};
 
 use buffer::*;
-use color::*;
 use kernel::die;
 use spin::Mutex;
 

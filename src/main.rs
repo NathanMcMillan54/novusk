@@ -3,7 +3,10 @@
 
 #[macro_use]
 extern crate novusk;
-use novusk::die;
+use include::novusk::syscalls::draw;
+use kernel::die;
+use kernel::printk;
+use libn::color::vga::Color;
 
 #[no_mangle]
 pub unsafe extern "C" fn main_test() -> i32 {
@@ -12,5 +15,6 @@ pub unsafe extern "C" fn main_test() -> i32 {
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {
+    draw(Color::Cyan);
     die()
 }

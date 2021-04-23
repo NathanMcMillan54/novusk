@@ -7,6 +7,7 @@ edition = "2018"
 
 [dependencies]
 kernel = { path = "../kernel/" }
+libn = { git = "https://github.com/new-kernel/libn/" }
 spin = "0.5.2"
 volatile = "0.2.6"
 

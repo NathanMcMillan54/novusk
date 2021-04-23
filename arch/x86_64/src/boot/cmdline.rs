@@ -1,6 +1,7 @@
 use super::{SCREEN_HEIGHT, SCREEN_WIDTH};
-use drivers::text::vga::{buffer::*, color::*};
+use drivers::text::vga::{buffer::*};
 use drivers::x86_64::vga::WRITER;
+use libn::color::vga::{Color, ColorCode};
 
 pub unsafe fn cmdline_init() {
     let mut i = 0;

@@ -38,3 +38,4 @@ drivers = { path = "drivers/" }
 include = { path = "include/" }
 init = { path = "init/" }
 kernel = { path = "kernel/" }
+libn = { git = "https://github.com/new-kernel/libn/" }

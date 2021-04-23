@@ -3,7 +3,7 @@
 
 #[macro_use]
 extern crate lazy_static;
-
+extern crate libn;
 
 pub mod text;
 

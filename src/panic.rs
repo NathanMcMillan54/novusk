@@ -1,4 +1,4 @@
-use crate::die;
+use crate::kernel::die;
 use core::panic::PanicInfo;
 
 #[panic_handler]

@@ -1,6 +1,6 @@
-use super::color::{Color, ColorCode};
 use super::vga_error;
 use core::fmt;
+use libn::color::vga::{Color, ColorCode};
 use volatile::Volatile;
 
 pub const BUFFER_HEIGHT: usize = 25;
