@@ -4,6 +4,7 @@
 
 pub extern crate drivers;
 pub extern crate include;
+pub extern crate fs;
 extern crate init;
 #[macro_use]
 pub extern crate kernel;

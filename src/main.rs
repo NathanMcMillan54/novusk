@@ -5,7 +5,6 @@
 extern crate novusk;
 use include::novusk::syscalls::draw;
 use kernel::die;
-use kernel::printk;
 use libn::color::vga::Color;
 
 #[no_mangle]

@@ -18,6 +18,7 @@ path = "src/lib.rs"
 members = [
     "arch/x86_64/",
     "drivers/",
+    "fs/",
     "include/",
     "init/",
     "kernel/",
@@ -36,6 +37,7 @@ x86_64 = { path = "arch/x86_64/" }
 
 [dependencies]
 drivers = { path = "drivers/" }
+fs = { path = "fs/" }
 include = { path = "include/" }
 init = { path = "init/" }
 kernel = { path = "kernel/" }
