@@ -22,6 +22,10 @@ pub extern "C" fn is_initramfs() -> bool { false }
 pub extern "C" fn device_name() -> &'static str { "default" }
 #[no_mangle]
 pub unsafe extern "C" fn initramfs_main() { return; }
+#[no_mangle]
+pub extern "C" fn kernfs_name() -> &'static str { "kernel filesystem" }
+#[no_mangle]
+pub unsafe extern "C" fn kernfs_init() { return; }
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {

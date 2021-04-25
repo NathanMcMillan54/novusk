@@ -19,11 +19,12 @@ pub unsafe extern "C" fn kernel_init() {
     drivers::drivers_init();
     kinfo!("Main drivers initialized");
 
-    initramfs_init();
-    kinfo!("Initramfs initialized");
 
     fs::fs_init();
     kinfo!("Fs initialized");
+
+    initramfs_init();
+    kinfo!("Initramfs initialized");
 }
 
 unsafe fn initramfs_init() {

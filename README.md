@@ -3,6 +3,9 @@ New Kernel - A small x86_64 kernel written in Rust inspired by Linux
 
 A kernel for operating systems
 
+---
+Don't try running on a real machine it hasn't been tested yet
+
 ### TODO:
 - [ ] Kernel clock
 - [ ] File I/O for operating systems

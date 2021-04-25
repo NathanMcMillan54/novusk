@@ -7,6 +7,6 @@ extern crate kernel;
 pub mod kernfs;
 
 pub unsafe fn fs_init() {
-    kernfs::kernelfs_init();
+    kernfs::kernel_fs_init();
     printk!("   Kernel fs initialized");
 }

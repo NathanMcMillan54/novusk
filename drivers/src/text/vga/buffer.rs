@@ -75,6 +75,12 @@ impl Writer {
             self.buffer.chars[row][col].write(blank);
         }
     }
+
+    pub fn tab(&mut self) {
+        for _ in 4..0 {
+            self.write_byte(b' ');
+        }
+    }
 }
 
 impl fmt::Write for Writer {
