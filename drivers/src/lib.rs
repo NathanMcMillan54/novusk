@@ -5,6 +5,7 @@
 extern crate lazy_static;
 extern crate libn;
 
+pub mod blue;
 pub mod storage;
 pub mod text;
 

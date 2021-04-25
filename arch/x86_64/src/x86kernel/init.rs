@@ -1,4 +1,4 @@
-use super::{modules, syscalls, tests, time, kernel_init};
+use super::{modules, syscalls, tests, thread, time, kernel_init};
 
 pub unsafe fn init() {
     time::time_init();

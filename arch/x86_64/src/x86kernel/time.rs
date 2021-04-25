@@ -1,9 +1,8 @@
 pub static mut KTIME: f64 = 0.0;
 
-pub unsafe fn time_init() -> f64 {
+pub async unsafe fn time_init() {
     KTIME = KTIME + 1.0;
-    current_time();
-    return KTIME;
+    loop { current_time(); }
 }
 
 pub unsafe fn current_time() -> f64 {

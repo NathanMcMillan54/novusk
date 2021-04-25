@@ -23,7 +23,7 @@ impl ThreadExecutor {
             let waker = dummy_waker();
             let mut context = Context::from_waker(&waker);
             match thread.poll(&mut context) {
-                Poll::Ready(()) => {} // task done
+                Poll::Ready(()) => {}
                 Poll::Pending => self.thread_queue.push_back(thread),
             }
         }
