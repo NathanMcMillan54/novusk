@@ -1,6 +1,7 @@
 #![no_std]
 #![feature(asm, global_asm)]
 
+extern crate alloc;
 extern crate drivers;
 extern crate include;
 #[macro_use]

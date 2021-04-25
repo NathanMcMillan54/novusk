@@ -2,6 +2,7 @@ pub mod init;
 pub mod modules;
 pub mod tests;
 pub mod syscalls;
+pub mod thread;
 pub mod time;
 
 extern "C" {

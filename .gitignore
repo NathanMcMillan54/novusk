@@ -1,7 +1,4 @@
 Cargo.lock
-novusk.iso
-*.a
-*.o
 
 .idea/
 target/
