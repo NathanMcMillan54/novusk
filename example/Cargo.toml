@@ -5,5 +5,5 @@ edition = "2018"
 
 
 [dependencies]
-bootimage = "0.9.12"
-novusk = { git = "https://github.com/NathanMcMillan54/novusk/", tag = "1.2" }
+bootloader = "0.9.12"
+novusk = { git = "https://github.com/NathanMcMillan54/novusk", tag = "v1.2" }

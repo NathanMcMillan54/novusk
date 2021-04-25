@@ -1,9 +1,9 @@
 #[no_mangle]
 pub unsafe extern "C" fn main_test() -> i32 { return 0; }
 #[no_mangle]
-pub extern "C" fn is_os() -> bool { false }
+pub extern "C" fn is_os() -> bool { true }
 #[no_mangle]
-pub extern "C" fn os_name() -> &'static str { "none" }
+pub extern "C" fn os_name() -> &'static str { "example" }
 #[no_mangle]
 pub extern "C" fn is_initramfs() -> bool { false }
 #[no_mangle]

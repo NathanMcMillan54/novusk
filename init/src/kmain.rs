@@ -5,6 +5,8 @@ use kernel::info::{*};
 // Modules
 use m1::{m1_exit, m1_init};
 
+extern "C" { fn kernel_main() -> !; }
+
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     printk!("|------------------|\n| Kernel init      |\n|------------------|");
@@ -25,6 +27,10 @@ pub unsafe extern "C" fn kernel_init() {
 
     initramfs_init();
     kinfo!("Initramfs initialized");
+
+    if IS_OS == true {
+        kernel_main()
+    }
 }
 
 unsafe fn initramfs_init() {
