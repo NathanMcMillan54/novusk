@@ -3,6 +3,7 @@ name = "ex1"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
+description = "Simple module that calls an external function then ends, just an example"
 
 [dependencies]
 
