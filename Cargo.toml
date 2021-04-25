@@ -28,6 +28,8 @@ members = [
     "kernel/modules/m1/",
     # Tools
     "tools/build/",
+    # Example
+    "example/",
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
