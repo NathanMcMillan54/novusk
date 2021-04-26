@@ -13,7 +13,6 @@ libn = { git = "https://github.com/new-kernel/libn/" }
 # Modules
 ex1 = { path = "../../kernel/modules/ex1/" }
 # Dependencies
-raw-cpuid = "9.0.0"
 
 [build-dependencies]
 build = { path = "../../tools/build/" }

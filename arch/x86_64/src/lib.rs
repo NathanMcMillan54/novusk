@@ -7,7 +7,6 @@ extern crate include;
 #[macro_use]
 extern crate kernel;
 extern crate libn;
-extern crate raw_cpuid;
 
 extern crate ex1;
 

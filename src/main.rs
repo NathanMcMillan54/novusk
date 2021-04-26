@@ -3,9 +3,6 @@
 
 #[macro_use]
 extern crate novusk;
-use include::novusk::syscalls::draw;
-use kernel::die;
-use libn::color::vga::Color;
 
 mod panic;
 
@@ -31,6 +28,5 @@ pub unsafe extern "C" fn kernfs_init() { return; }
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {
-    draw(Color::Cyan);
-    die()
+    loop {  }
 }

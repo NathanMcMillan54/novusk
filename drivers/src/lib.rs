@@ -8,6 +8,7 @@ extern crate libn;
 #[cfg(target_arch = "x86_64")]
 pub mod blue;
 
+pub mod firmware;
 pub mod storage;
 pub mod text;
 
