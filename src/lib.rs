@@ -14,4 +14,5 @@ pub extern crate mm;
 #[cfg(target_arch = "x86_64")]
 extern crate x86_64;
 
-mod panic;
+#[cfg(target_arch = "aarch64")]
+extern crate aarch64;

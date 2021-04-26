@@ -7,6 +7,8 @@ use include::novusk::syscalls::draw;
 use kernel::die;
 use libn::color::vga::Color;
 
+mod panic;
+
 #[no_mangle]
 pub unsafe extern "C" fn main_test() -> i32 {
     return 0;

@@ -16,6 +16,7 @@ path = "src/lib.rs"
 
 [workspace]
 members = [
+    "arch/aarch64/",
     "arch/x86_64/",
     "drivers/",
     "fs/",
@@ -34,10 +35,12 @@ members = [
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.12"
-x86_64 = { path = "arch/x86_64/" }
-
 
 [dependencies]
+# Architectures
+aarch64 = { path = "arch/aarch64/" }
+x86_64 = { path = "arch/x86_64/" }
+# Kernel
 drivers = { path = "drivers/" }
 fs = { path = "fs/" }
 include = { path = "include/" }

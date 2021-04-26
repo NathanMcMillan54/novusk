@@ -5,7 +5,9 @@
 extern crate lazy_static;
 extern crate libn;
 
+#[cfg(target_arch = "x86_64")]
 pub mod blue;
+
 pub mod storage;
 pub mod text;
 
