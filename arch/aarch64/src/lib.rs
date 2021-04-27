@@ -1,4 +1,5 @@
 #![no_std]
-#![feature(asm, global_asm)]
+#![feature(global_asm)]
 
+#[cfg(target_arch = "aarch64")]
 pub mod boot;

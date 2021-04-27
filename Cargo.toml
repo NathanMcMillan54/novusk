@@ -17,37 +17,9 @@ path = "src/lib.rs"
 [workspace]
 members = [
     "arch/aarch64/",
-    "arch/x86_64/",
-    "drivers/",
-    "fs/",
-    "include/",
-    "init/",
-    "kernel/",
-    "mm/",
-    # Modules
-    "kernel/modules/ex1/",
-    "kernel/modules/m1/",
-    # Tools
-    "tools/build/",
-    # Example
-    "example/",
+    "arch/x86/",
 ]
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = "0.9.12"
-x86_64 = { path = "arch/x86_64/" }
-
-[target.'cfg(target_arch = "aarch64")'.dependencies]
-aarch64 = { path = "arch/aarch64/" }
-
 [dependencies]
-# Architectures
-# aarch64 = { path = "arch/aarch64/" }
-# Kernel
-drivers = { path = "drivers/" }
-fs = { path = "fs/" }
-include = { path = "include/" }
-init = { path = "init/" }
-kernel = { path = "kernel/" }
-libn = { git = "https://github.com/new-kernel/libn/" }
-mm = { path = "mm/" }
+aarch64 = { path = "arch/aarch64/" }
+x86 = { path = "arch/x86/" }

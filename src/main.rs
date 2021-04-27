@@ -1,32 +1,17 @@
 #![no_std]
 #![no_main]
+#![feature(global_asm)]
 
-#[macro_use]
 extern crate novusk;
 
-mod panic;
+use core::panic::PanicInfo;
 
 #[no_mangle]
-pub unsafe extern "C" fn main_test() -> i32 {
-    return 0;
+pub extern "C" fn kernel_main() -> ! {
+    loop {  }
 }
 
-#[no_mangle]
-pub extern "C" fn is_os() -> bool { false }
-#[no_mangle]
-pub extern "C" fn os_name() -> &'static str { "none" }
-#[no_mangle]
-pub extern "C" fn is_initramfs() -> bool { false }
-#[no_mangle]
-pub extern "C" fn device_name() -> &'static str { "default" }
-#[no_mangle]
-pub unsafe extern "C" fn initramfs_main() { return; }
-#[no_mangle]
-pub extern "C" fn kernfs_name() -> &'static str { "kernel filesystem" }
-#[no_mangle]
-pub unsafe extern "C" fn kernfs_init() { return; }
-
-#[no_mangle]
-pub unsafe extern "C" fn kernel_main() -> ! {
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
     loop {  }
 }
