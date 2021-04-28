@@ -5,3 +5,4 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+raw-cpuid = "9.0.0"

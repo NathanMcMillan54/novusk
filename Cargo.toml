@@ -16,8 +16,10 @@ path = "src/lib.rs"
 
 [workspace]
 members = [
+    # Architectures
     "arch/aarch64/",
     "arch/x86/",
+    # Drivers
 ]
 
 [dependencies]
