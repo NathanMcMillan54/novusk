@@ -1,4 +1,5 @@
-Cargo.lock
+*.a
+*.o
 
 .idea/
-target/
+build/
