@@ -1,3 +1,5 @@
+*.efi
+*.fat
+*.img
+
 .idea/
-build/*.a
-build/*.o

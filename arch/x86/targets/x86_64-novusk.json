@@ -23,11 +23,13 @@
   "pre-link-args": {
     "lld-link": [
       "/NOLOGO",
+      "/NXCOMPAT",
       "/entry:efi_main",
       "/subsystem:efi_application"
     ],
     "msvc": [
       "/NOLOGO",
+      "/NXCOMPAT",
       "/entry:efi_main",
       "/subsystem:efi_application"
     ]

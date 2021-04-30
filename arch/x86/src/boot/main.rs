@@ -1,5 +1,3 @@
-/* #[no_mangle]
-pub unsafe extern "C" fn main() -> ! {
+pub unsafe fn bmain() -> ! {
     loop {  }
 }
-*/

@@ -1,10 +1,16 @@
 #![no_std]
 #![no_main]
 
-extern crate rlibc;
-
-#[macro_use]
-extern crate uefi;
+#[macro_use] extern crate uefi;
+#[macro_use] extern crate uefi_macros;
 
 pub mod boot;
-pub mod kernel;
+
+use core::fmt::Write;
+use core::panic::PanicInfo;
+
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {  }
+}

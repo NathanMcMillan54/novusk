@@ -1,15 +1,11 @@
 [package]
 name = "x86"
 version = "0.1.0"
-authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
+[workspace]
+members = ["disk_img"]
+
 [dependencies]
-rlibc = "1.0.0"
-
-[dependencies.uefi]
-version = "0.8.0"
-features = ['default']
-
-[build-dependencies]
-build = { path = "../../tools/build/" }
+uefi = "0.8.0"
+uefi-macros = "0.3.3"

@@ -1,8 +1,13 @@
-use uefi::{Handle, Status};
+use super::main::bmain;
+use uefi::{Handle};
 use uefi::table::{Boot, SystemTable};
 
-#[no_mangle]
-pub unsafe extern "C" fn efi_main(image: Handle, st: SystemTable<Boot>) {
-    loop {  }
+unsafe fn setup(uefi_arg1: Handle, uefi_arg2: SystemTable<Boot>) {
+
 }
 
+#[no_mangle]
+pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
+    setup(image, system_table);
+    bmain()
+}
