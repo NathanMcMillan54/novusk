@@ -4,14 +4,12 @@ version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
-[lib]
-name = "x86"
-edition = "2018"
-path = "src/lib.rs"
-crate-type = ["staticlib"]
-
-
 [dependencies]
+rlibc = "1.0.0"
+
+[dependencies.uefi]
+version = "0.8.0"
+features = ['default']
 
 [build-dependencies]
 build = { path = "../../tools/build/" }

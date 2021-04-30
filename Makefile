@@ -1,11 +1,7 @@
 ARCH =?
 TARGET_ARCH =?
 
-all: clean setup novusk link
-
-setup:
-	@ echo "Setting up Novusk for compiling..."
-	@ mkdir build
+all: clean novusk link
 
 novusk:
 	@ echo "Compiling kernel..."
@@ -13,8 +9,6 @@ novusk:
 
 link:
 	@ echo "Linking kernel..."
-	@ cd build/ && ld -relocatable *.o *.a -o kernel
-	@ $(MAKE) -C arch/$(ARCH)/ link
 	@ $(MAKE) -C arch/$(ARCH)/ image
 
 clean:
