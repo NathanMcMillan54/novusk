@@ -14,4 +14,5 @@ members = [
 uefi = "0.8.0"
 uefi-macros = "0.3.3"
 # Drivers
+i686 = { path = "../../drivers/i686/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
