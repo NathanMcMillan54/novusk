@@ -3,12 +3,6 @@ name = "x86"
 version = "0.1.0"
 edition = "2018"
 
-[workspace]
-members = [
-    # Tools
-    "disk_img",
-]
-
 [dependencies]
 # Dependencies
 uefi = "0.8.0"

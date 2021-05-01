@@ -1,4 +1,5 @@
 Cargo.lock
 disk_img
-src/boot/bzImage
+src/boot/Image
+
 target/
