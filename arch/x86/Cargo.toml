@@ -4,8 +4,14 @@ version = "0.1.0"
 edition = "2018"
 
 [workspace]
-members = ["disk_img"]
+members = [
+    # Tools
+    "disk_img",
+]
 
 [dependencies]
+# Dependencies
 uefi = "0.8.0"
 uefi-macros = "0.3.3"
+# Drivers
+uefi_kd = { path = "../../drivers/uefi_kd" }

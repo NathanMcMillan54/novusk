@@ -1,13 +1,14 @@
-use super::main::bmain;
+use super::{cpu, main::bmain};
+use super::boot::{die, UefiBootArgs};
 use uefi::{Handle};
 use uefi::table::{Boot, SystemTable};
-
-unsafe fn setup(uefi_arg1: Handle, uefi_arg2: SystemTable<Boot>) {
-
-}
+use crate::drivers::uefi_init;
 
 #[no_mangle]
 pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
-    setup(image, system_table);
+    if !cpu::check_arch() {
+        die();
+    }
+    uefi_init(image, system_table);
     bmain()
 }
