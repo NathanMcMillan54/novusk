@@ -6,8 +6,7 @@ all:
 
 image:
 	@ echo "Creating kernel images..."
-	@ ./disk_img target/$(TARGET_ARCH)-novusk/debug/aarch64.efi
-	@ cp -r target/$(TARGET_ARCH)-novusk/debug/aarch64.fat src/boot/Image
+	@ sh tools/image.sh $(TARGET_ARCH)
 	@ echo "Created Image at:"
 	@ echo "arch/aarch64/src/boot/Image"
 
