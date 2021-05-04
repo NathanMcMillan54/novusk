@@ -1,8 +1,9 @@
 ARCH =?
 TARGET_ARCH =?
+BOARD =? virt
 
 all:
-	@ cargo build --target targets/$(TARGET_ARCH)-novusk.json -Z build-std=core -Z build-std-features=compiler-builtins-mem
+	@ sh tools/build.sh $(TARGET_ARCH) $(BOARD)
 
 image:
 	@ echo "Creating kernel images..."

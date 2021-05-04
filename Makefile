@@ -1,5 +1,6 @@
 ARCH =?
 TARGET_ARCH =?
+DEVICE =?
 
 all: clean build_tools novusk link
 
@@ -9,7 +10,7 @@ build_tools:
 
 novusk:
 	@ echo "Compiling kernel..."
-	@ $(MAKE) -C arch/$(ARCH)/ all ARCH=$(ARCH) TARGET_ARCH=$(TARGET_ARCH)
+	@ $(MAKE) -C arch/$(ARCH)/ all ARCH=$(ARCH) TARGET_ARCH=$(TARGET_ARCH) BOARD=$(DEVICE)
 
 link:
 	@ mv tools/disk_img/target/debug/disk_img arch/$(ARCH)

@@ -1,8 +1,17 @@
 [package]
 name = "aarch64"
 version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+uefi = "0.8.0"
+uefi-macros = "0.3.3"
+uefi_kd = { path = "../../drivers/uefi_kd/" }
+
+register = { version = "1.x.x", optional = true }
+
+# Board
+[features]
+default = []
+board_virt = ["register"]
