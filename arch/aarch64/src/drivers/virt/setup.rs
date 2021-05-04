@@ -1,6 +1,8 @@
 use crate::drivers::virt::power::shutdown;
 global_asm!(include_str!("power/shutdown.S"));
+global_asm!(include_str!("start.S"));
 
-pub unsafe fn virt_setup() -> ! {
-    shutdown();
+#[no_mangle]
+pub unsafe extern "C" fn virt_init() {
+    // TODO: Initialize virt "board"
 }
