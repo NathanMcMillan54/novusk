@@ -4,5 +4,3 @@ pub mod power;
 mod setup;
 pub mod uart;
 
-
-pub use setup::virt_setup;

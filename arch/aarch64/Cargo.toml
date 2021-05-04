@@ -5,6 +5,7 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+arm = { path = "../arm/" }
 uefi = "0.8.0"
 uefi-macros = "0.3.3"
 uefi_kd = { path = "../../drivers/uefi_kd/" }

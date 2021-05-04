@@ -1,9 +1,8 @@
-#[cfg(feature = "board_virt")]
-use crate::drivers::{virt};
+use arm_lib::include::asm::{wfe};
+use super::{device};
 
 #[no_mangle]
 pub unsafe extern "C" fn setup() -> ! {
-
-    loop {  }
-    // loop { asm!("wfe"); }
+    device::device_init();
+    wfe()
 }

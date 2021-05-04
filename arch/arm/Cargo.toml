@@ -1,0 +1,16 @@
+[package]
+name = "arm"
+version = "0.1.0"
+edition = "2018"
+
+[[bin]]
+name = "arm"
+edition = "2018"
+path = "src/main.rs"
+
+[lib]
+name = "arm_lib"
+edition = "2018"
+path = "src/lib.rs"
+
+[dependencies]

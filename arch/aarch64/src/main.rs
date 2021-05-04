@@ -4,6 +4,8 @@
 
 use core::panic::PanicInfo;
 
+extern crate arm_lib;
+
 pub mod boot;
 pub mod drivers;
 
