@@ -11,3 +11,10 @@ Main command:
 ```commandline
 qemu-system-x86_64 -drive format=raw,file=src/boot/bzImage -bios OVMF-pure-efi.fd
 ```
+
+Or shorten it:
+```commandline
+qemu-system-x86_64 src/boot/bzImage -bios OVMF-pure-efi.fd
+```
+
+The file ``OVMF-pure-efi.fd`` is used as a BIOS replacement so Qemu can run a UEFI kernel/OS.

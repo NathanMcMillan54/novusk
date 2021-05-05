@@ -9,6 +9,7 @@ edition = "2018"
 rlibc = "1.0.0"
 uefi = "0.8.0"
 uefi-macros = "0.3.3"
+uefi-services = "0.5.0"
 # Drivers
 i686 = { path = "../../drivers/i686/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
