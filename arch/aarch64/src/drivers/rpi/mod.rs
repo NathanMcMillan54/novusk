@@ -1,3 +1,3 @@
-global_asm!(include_str!("boot.S"));
+pub mod init;
 pub mod setup;
 pub mod uart;

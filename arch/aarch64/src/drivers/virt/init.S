@@ -1,3 +1,5 @@
+// Main Virt boot file
+
 .extern LD_STACK_PTR
 .extern setup
 .extern virt_init

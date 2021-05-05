@@ -16,4 +16,4 @@ register = { version = "1.x.x", optional = true }
 [features]
 default = []
 board_virt = ["register"]
-board_rpi = ["register"]
+board_rpi3 = ["register"]
