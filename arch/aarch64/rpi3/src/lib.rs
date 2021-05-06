@@ -2,6 +2,9 @@
 
 #![no_std]
 
+extern crate rpi;
+
+pub mod board;
 pub mod boot;
 pub mod linker;
 pub mod setup;
