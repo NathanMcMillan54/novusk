@@ -12,6 +12,7 @@ extern crate i686;
 pub mod boot;
 pub mod drivers;
 pub mod include;
+pub mod kernel;
 
 use core::panic::PanicInfo;
 
