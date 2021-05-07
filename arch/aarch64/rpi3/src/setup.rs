@@ -4,6 +4,7 @@ use rpi::led::Led;
 
 extern "C" {
     fn aarch64_kernel_init();
+    fn sleepm(mil: i32);
 }
 
 pub unsafe fn rpi_setup() -> ! {
@@ -13,28 +14,29 @@ pub unsafe fn rpi_setup() -> ! {
     wfe()
 }
 
-fn blink_ok() {
+unsafe fn blink_ok() {
     let led = Led::new();
     led.init();
     // "O"
     led.on(); // -
-    // Sleep 0.2
+    sleepm(200);
     led.off();
     led.on(); // -
-    // Sleep 0.2
+    sleepm(200);
     led.off();
     led.on(); // -
-    // Sleep 0.2
+    sleepm(200);
 
     led.off();
-    // Sleep 0.4
+    sleepm(400);
 
     // "K"
     led.on(); // -
-    // Sleep 0.2
+    sleepm(200);
     led.off();
     led.on(); // .
-    // Sleep 0.1
+    sleepm(100);
     led.off();
     led.on(); // -
+    led.off();
 }
