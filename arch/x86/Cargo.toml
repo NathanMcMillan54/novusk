@@ -4,6 +4,11 @@ version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
+[lib]
+name = "x86_kernel"
+path = "src/lib.rs"
+edition = "2018"
+
 [dependencies]
 # Dependencies
 rlibc = "1.0.0"
