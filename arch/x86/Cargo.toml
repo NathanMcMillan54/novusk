@@ -11,6 +11,7 @@ edition = "2018"
 
 [dependencies]
 # Dependencies
+log = { version = "0.4.14", default-features = false }
 rlibc = "1.0.0"
 uefi = "0.8.0"
 uefi-macros = "0.3.3"
@@ -18,6 +19,8 @@ uefi-services = "0.5.0"
 # Drivers
 i686 = { path = "../../drivers/i686/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
+# Kernel
+kernel = { path = "../../kernel/" }
 # Features
 register = { version = "1.x.x", optional = true }
 

@@ -11,7 +11,6 @@ pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>
     if !cpu::check_arch() {
         die();
     }
-    uefi_services::init(&st).expect("Couldn't initialize UEFI services");
     uefi_init(image, st);
-    bmain()
+    bmain();
 }
