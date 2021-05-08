@@ -23,5 +23,8 @@
 
 ---
 
+### ``OS Development``
+``os-dev/setup.md`` - Start developing Novusk operating systems or kernel extensions
+
 ### ``x86``
 ``x86/running.md`` - Run Novusk on real hardware or in Qemu

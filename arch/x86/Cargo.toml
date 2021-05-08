@@ -5,7 +5,7 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [lib]
-name = "x86_kernel"
+name = "x86_novusk"
 path = "src/lib.rs"
 edition = "2018"
 
