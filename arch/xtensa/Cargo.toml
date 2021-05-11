@@ -1,0 +1,24 @@
+[package]
+name = "xtensa"
+version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "xtensa_novusk"
+edition = "2018"
+path = "src/lib.rs"
+
+[workspace]
+members = [
+    "esp32/",
+]
+
+[dependencies]
+esp32 = { path = "esp32/" }
+register = { version = "1.x.x", optional = true }
+
+
+[features]
+default = []
+esp32_board = ["register"]
