@@ -4,6 +4,5 @@ version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
-
 [dependencies]
 esp32-hal = "0.2.0"
