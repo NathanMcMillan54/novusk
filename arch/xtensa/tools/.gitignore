@@ -1,1 +1,2 @@
-rust-xtensa/
+llvm-project/*
+rust-xtensa/*

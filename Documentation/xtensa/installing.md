@@ -6,4 +6,4 @@ cd arch/xtensa/tools/
 make install
 ```
 
-This will take a long time to run even on powerful CPUs, it can take 20 minutes to an hour to install.
+This will take a long time to run even on powerful CPUs, it can take 40 minutes to an hour to install.
