@@ -1,9 +1,8 @@
 [package]
-name = "kernel"
+name = "kinfo"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
-
 [dependencies]
-log = { version = "0.4.14", default-features = false }
+log = { version = "0.4.11", default-features = false }

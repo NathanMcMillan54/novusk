@@ -6,6 +6,9 @@
 #[macro_use] extern crate uefi_macros;
 #[macro_use] extern crate uefi_services;
 
+// Kernel
+#[macro_use] extern crate kinfo;
+
 #[cfg(target_arch = "x86")]
 extern crate i686;
 
