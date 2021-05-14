@@ -4,13 +4,8 @@ use uefi::proto::console::text::{Input, Output};
 use uefi::table::{Boot, SystemTable, Revision};
 use crate::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION};
 
-extern "C" {
-    fn cmdline_init(st: SystemTable<Boot>);
-}
-
 pub unsafe fn uefi_init(handler: Handle, system_table: SystemTable<Boot>) {
     version_init(system_table.uefi_revision());
-    cmdline_init(system_table);
 }
 
 unsafe fn version_init(version: uefi::table::Revision) {

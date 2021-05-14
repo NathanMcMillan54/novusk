@@ -1,4 +1,4 @@
-use super::{cmdline, dev::device_init};
+use super::dev::device_init;
 use crate::include::asm::hlt;
 use crate::kernel::{init, printk, userspace::early};
 use uefi::proto::console::text::Input;
