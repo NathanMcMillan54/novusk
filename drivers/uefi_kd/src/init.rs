@@ -2,7 +2,7 @@ use core::fmt::Write;
 use uefi::Handle;
 use uefi::proto::console::text::{Input, Output};
 use uefi::table::{Boot, SystemTable, Revision};
-use crate::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION};
+use crate::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION, fs};
 
 pub unsafe fn uefi_init(handler: Handle, system_table: SystemTable<Boot>) {
     version_init(system_table.uefi_revision());

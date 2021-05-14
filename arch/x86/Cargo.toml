@@ -13,7 +13,7 @@ edition = "2018"
 # Dependencies
 log = { version = "0.4.11", default-features = false }
 rlibc = "1.0.0"
-uefi = "0.8.0"
+uefi = "0.8.1"
 uefi-macros = "0.3.3"
 uefi-services = "0.5.0"
 # Drivers

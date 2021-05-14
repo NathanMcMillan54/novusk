@@ -7,4 +7,4 @@ description = "UEFI kernel driver"
 
 
 [dependencies]
-uefi = "0.8.0"
+uefi = "0.8.1"

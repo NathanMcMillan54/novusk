@@ -4,6 +4,7 @@
 extern crate uefi;
 
 pub mod init;
+pub mod fs;
 pub mod screen;
 
 pub static mut UEFI_MAJOR_VERSION: u16 = 0;

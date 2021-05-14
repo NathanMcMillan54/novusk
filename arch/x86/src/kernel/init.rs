@@ -8,5 +8,6 @@ pub unsafe extern "C" fn init() {
         // TODO: Clear screen
         // screen::clear_screen(stdout);
     }
+
     modules::modules_init();
 }
