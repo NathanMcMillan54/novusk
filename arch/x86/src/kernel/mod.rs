@@ -3,6 +3,7 @@
  */
 
 pub mod init;
+pub mod modules;
 pub mod printk;
 pub mod userspace;
 
