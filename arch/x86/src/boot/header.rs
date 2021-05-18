@@ -7,6 +7,7 @@ use uefi_services;
 use crate::drivers::uefi_init;
 use uefi_kd::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION};
 use uefi::proto::console::text::Output;
+use uefi::proto::console::gop::GraphicsOutput;
 
 unsafe fn print_early_info() {
     info!("UEFI Version: {}.{}", UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION);
