@@ -1,3 +1,4 @@
+use kerror::kerror;
 use uefi_kd::screen;
 use uefi::proto::console::text::{Input, Output};
 use super::{KERNEL_INFO, modules};
@@ -8,6 +9,8 @@ pub unsafe extern "C" fn init() {
         // TODO: Clear screen
         // screen::clear_screen(stdout);
     }
+
+
 
     modules::modules_init();
 }

@@ -1,5 +1,6 @@
 #![no_std]
 
+extern crate kerror;
 #[macro_use] extern crate kinfo;
 
 extern crate uefi;
@@ -12,6 +13,7 @@ pub unsafe fn gop_init(bt: &BootServices) {
         let gop = &mut *gop.get();
         kinfo!("GOP init");
     } else {
-        // TODO: Kerror
+        kerror::kerror();
+        kinfo!("Failed to initialize GOP");
     }
 }

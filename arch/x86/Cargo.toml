@@ -24,6 +24,7 @@ uefi_kd = { path = "../../drivers/uefi_kd" }
 time = { path = "../../include/time/" }
 novusk = { path = "../../include/novusk/" }
 # Kernel
+kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
 # Libraries
 libn = { path = "../../lib/libn/" }

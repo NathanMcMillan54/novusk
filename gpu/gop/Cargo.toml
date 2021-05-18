@@ -8,4 +8,5 @@ description = "A GPU driver for UEFI Novusk"
 [dependencies]
 uefi = "0.8.1"
 # Kernel
+kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }

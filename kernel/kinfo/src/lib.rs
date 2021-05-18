@@ -4,6 +4,8 @@
 
 use core::fmt::Arguments;
 
+pub mod error;
+
 pub(crate) static mut KERN_INFO: &'static str = "ok";
 
 pub unsafe fn _kinfo(args: Arguments) {
