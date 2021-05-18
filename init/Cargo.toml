@@ -1,0 +1,14 @@
+[package]
+name = "init"
+version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+
+
+[dependencies]
+# Include
+novusk = { path = "../include/novusk/" }
+# Kernel
+kinfo = { path = "../kernel/kinfo" }
+# Modules
+m1 = { path = "../kernel/modules/m1/" }

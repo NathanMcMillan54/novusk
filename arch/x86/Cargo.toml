@@ -24,14 +24,15 @@ uefi_kd = { path = "../../drivers/uefi_kd" }
 time = { path = "../../include/time/" }
 novusk = { path = "../../include/novusk/" }
 # Kernel
+init = { path = "../../init/" }
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
 # Libraries
 libn = { path = "../../lib/libn/" }
-# Features
-register = { version = "1.x.x", optional = true }
 # Modules
 ex1 = { path = "../../kernel/modules/ex1/" }
+# Features
+register = { version = "1.x.x", optional = true }
 
 [features]
 default = []
