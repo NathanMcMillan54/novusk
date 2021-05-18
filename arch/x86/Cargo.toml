@@ -18,6 +18,7 @@ uefi-macros = "0.3.3"
 uefi-services = "0.5.0"
 # Drivers
 i686 = { path = "../../drivers/i686/" }
+gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
 # Include
 time = { path = "../../include/time/" }
