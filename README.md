@@ -1,5 +1,5 @@
 # Novusk
-New Kernel - A kinda small kernel written in Rust inspired by Linux
+Novusk - A kinda small kernel written in Rust inspired by Linux
 
 ### Important Issues
 [Kernel rewrite](https://github.com/NathanMcMillan54/novusk/issues/7)
