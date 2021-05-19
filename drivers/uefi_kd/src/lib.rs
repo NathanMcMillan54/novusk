@@ -2,11 +2,10 @@
 
 #[macro_use] extern crate kerror;
 #[macro_use] extern crate kinfo;
-
 extern crate gop;
+extern crate gpu;
 
-#[macro_use]
-extern crate uefi;
+#[macro_use] extern crate uefi;
 
 pub mod init;
 pub mod fs;

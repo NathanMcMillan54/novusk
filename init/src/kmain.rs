@@ -1,3 +1,4 @@
+use gpu::{gpu_init, gpu_name};
 use novusk::module::{module_end, module_init};
 
 // Modules
@@ -14,6 +15,7 @@ pub unsafe extern "C" fn modules_init() {
 pub unsafe extern "C" fn kernel_init() {
     modules_init();
     kinfo!("Kernel modules initialized");
-
+    gpu_init();
+    kinfo!("GPU initialized | Using {} driver", gpu_name());
 }
 

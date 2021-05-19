@@ -1,0 +1,12 @@
+[package]
+name = "gpu"
+version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+description = "Initializes GPU drivers for "
+
+[dependencies]
+# Kernel
+kerror = { path = "../../kernel/kerror/" }
+# GPU
+gop = { path = "../../gpu/gop/" }

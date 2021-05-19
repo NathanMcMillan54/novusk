@@ -9,7 +9,9 @@ description = "UEFI kernel driver"
 [dependencies]
 uefi = "0.8.1"
 # Drivers
-gop = { path = "../../gpu/gop/" }
+gpu = { path = "../gpu/" }
 # Kernel
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
+# GPU
+gop = { path = "../../gpu/gop/" }

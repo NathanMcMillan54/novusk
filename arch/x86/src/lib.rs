@@ -7,6 +7,7 @@
 #[macro_use] extern crate uefi_services;
 
 // Kernel
+#[macro_use] extern crate kerror;
 #[macro_use] extern crate kinfo;
 
 #[cfg(target_arch = "x86")]
