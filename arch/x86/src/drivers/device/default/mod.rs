@@ -1,6 +1,6 @@
-use crate::boot::dev::setup::set_device;
 use crate::drivers::device::arch::Arch;
 use crate::drivers::device::device::Device;
+use crate::kernel::dev::setup::set_device;
 
 fn get_arch() -> Arch {
     #[cfg(target_arch = "x86_64")]

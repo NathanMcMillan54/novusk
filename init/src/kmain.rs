@@ -14,5 +14,6 @@ pub unsafe extern "C" fn modules_init() {
 pub unsafe extern "C" fn kernel_init() {
     modules_init();
     kinfo!("Kernel modules initialized");
+
 }
 
