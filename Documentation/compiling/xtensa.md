@@ -5,15 +5,5 @@ you have a Rust Xtensa compiler you can compile this project normally with the b
 
 If you don't have an Xtensa compiler read ``xtensa/install.md``.
 
-To compile Xtensa Novusk, run main command:
-```commandline
-cd arch/xtensa/
-make all BOARD=<board_name> MY_ARCH=<your_architecture>
-```
-
-Example:
-```commandline
-make all BOARD=esp32 MY_ARCH=x86_64
-```
-
-``MY_ARCH`` needs to be set to your CPU architecture, read ``xtensa/support.md`` for a list of supported boards.
+To compile Xtensa Novusk, compile it the same way you would with any Xtensa project with a feature ``esp32_board`` so 
+you can use the esp32 drivers.
