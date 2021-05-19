@@ -17,6 +17,11 @@ pub unsafe fn _kinfo(args: Arguments) {
     KERN_INFO = "ok";
 }
 
+#[no_mangle]
+pub unsafe extern "C" fn current_info() -> &'static str {
+    return KERN_INFO;
+}
+
 #[macro_export]
 macro_rules! kinfo {
     ($($arg:tt)*) => {$crate::_kinfo(format_args!($($arg)*))};

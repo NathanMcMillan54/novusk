@@ -8,3 +8,8 @@ description = "UEFI kernel driver"
 
 [dependencies]
 uefi = "0.8.1"
+# Drivers
+gop = { path = "../../gpu/gop/" }
+# Kernel
+kerror = { path = "../../kernel/kerror/" }
+kinfo = { path = "../../kernel/kinfo/" }

@@ -1,5 +1,10 @@
 #![no_std]
 
+#[macro_use] extern crate kerror;
+#[macro_use] extern crate kinfo;
+
+extern crate gop;
+
 #[macro_use]
 extern crate uefi;
 
