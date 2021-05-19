@@ -28,7 +28,3 @@
     "sysv64"
   ]
 }
-dian": "little",
-  "target-pointer-width": "64",
-  "vendor": ""
-}

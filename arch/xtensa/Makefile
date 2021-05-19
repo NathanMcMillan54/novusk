@@ -1,9 +1,4 @@
 BOARD =? esp32
-MY_ARCH =? x86_64
-
-all: setargs
-	@ cargo build --features $(BOARD)_board
-	@ mv target/debug/xtensa src/boot/uImage
 
 setargs:
 	@ CUSTOM_RUSTC=tools/rust-xtensa

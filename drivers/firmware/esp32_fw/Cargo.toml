@@ -1,11 +1,9 @@
 [package]
-name = "esp32"
+name = "esp32_fw"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
+description = "Firmware drivers for esp32 board"
 
 [dependencies]
-# Dependencies
 esp32-hal = "0.2.0"
-# Drivers
-esp32_fw = { path = "../../../drivers/firmware/esp32_fw/" }
