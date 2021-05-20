@@ -9,3 +9,4 @@ edition = "2018"
 esp32-hal = "0.2.0"
 # Drivers
 esp32_fw = { path = "../../../drivers/firmware/esp32_fw/" }
+net = { path = "../../../drivers/net/" }

@@ -15,7 +15,14 @@ members = [
 ]
 
 [dependencies]
+# Dependencies
+esp32-hal = "0.2.0"
+# Boards
 esp32 = { path = "esp32/" }
+# Drivers
+esp32_fw = { path = "../../drivers/firmware/esp32_fw/" }
+net = { path = "../../drivers/net/" }
+
 register = { version = "1.x.x", optional = true }
 
 
