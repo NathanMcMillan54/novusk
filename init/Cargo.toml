@@ -8,6 +8,7 @@ edition = "2018"
 [dependencies]
 # Drivers
 gpu = { path = "../drivers/gpu/" }
+net = { path = "../drivers/net/" }
 # Include
 novusk = { path = "../include/novusk/" }
 # Kernel
