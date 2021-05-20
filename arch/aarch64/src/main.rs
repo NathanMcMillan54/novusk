@@ -5,6 +5,8 @@
 #[macro_use] extern crate kerror;
 #[macro_use] extern crate kinfo;
 
+extern crate novusk;
+
 extern crate arm_lib;
 
 pub mod boot;

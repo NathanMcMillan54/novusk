@@ -20,9 +20,14 @@ rpi3 = { path = "rpi3/" }
 # Drivers
 led = { path = "../../drivers/firmware/led/" }
 uefi_kd = { path = "../../drivers/uefi_kd/" }
+# Include
+novusk = { path = "../../include/novusk/" }
 # Kernel
+init = { path = "../../init/" }
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
+# Modules
+armm = { path = "../../kernel/modules/armm/" }
 # Feature
 register = { version = "1.x.x", optional = true }
 
