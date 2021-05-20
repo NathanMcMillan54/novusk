@@ -5,3 +5,10 @@ pub mod power;
 mod setup;
 pub mod uart;
 
+use core::panic::PanicInfo;
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {  }
+}
+

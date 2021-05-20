@@ -8,3 +8,11 @@ pub mod board;
 pub mod boot;
 pub mod linker;
 pub mod setup;
+
+use core::panic::PanicInfo;
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {  }
+}
+
