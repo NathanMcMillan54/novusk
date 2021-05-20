@@ -11,3 +11,6 @@ pub type c_char = i8;
 
 #[cfg(target_arch = "x86")]
 pub type c_char = i8;
+
+#[cfg(target_arch = "xtensa")]
+pub type c_char = i8;

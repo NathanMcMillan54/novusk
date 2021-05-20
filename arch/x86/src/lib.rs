@@ -17,7 +17,11 @@ extern crate novusk;
 #[cfg(target_arch = "x86")]
 extern crate i686;
 
+use ctypes::c_char;
+
 pub(crate) mod boot;
 pub mod drivers;
 pub mod include;
 pub mod kernel;
+
+pub const TEST: *const c_char = "test".as_ptr() as *const i8;
