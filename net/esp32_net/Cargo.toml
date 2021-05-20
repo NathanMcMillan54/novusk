@@ -1,9 +1,0 @@
-[package]
-name = "esp32_net"
-version = "0.1.0"
-authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
-description = "A network/wifi driver for esp32"
-
-[dependencies]
-ctypes = { path = "../../include/ctypes/" }
