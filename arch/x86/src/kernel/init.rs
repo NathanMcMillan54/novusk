@@ -23,5 +23,5 @@ pub unsafe extern "C" fn init() {
     kinfo!("Novusk Initialized");
 
     userspace::init::userspace_init();
-    kinfo!("Userspace initialized, starting OS...");
+    kinfo!("Userspace initialized, starting main...");
 }

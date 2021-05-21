@@ -3,7 +3,7 @@ name = "m1"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
-
+description = "Gets userspace info to determine if the kernel should keep running after the main kernel"
 
 [dependencies]
 novusk = { path = "../../../include/novusk/" }
