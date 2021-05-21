@@ -1,12 +1,15 @@
 #![no_std]
 
+extern crate libn;
+use libn::libnu::ktypes::ApplicationType;
+
 extern "C" {
-    fn application_type() -> &'static str;
+    fn application_type() -> ApplicationType;
     fn main_color() -> &'static str;
-    fn set_userspace_info(atype: &'static str, color: &'static str);
+    fn set_userspace_info(atype: ApplicationType, color: &'static str);
 }
 
-static mut APPLICATION_TYPE: &'static str = "";
+static mut APPLICATION_TYPE: ApplicationType = ApplicationType::None;
 static mut MAIN_COLOR: &'static str = "";
 
 pub unsafe fn m1_init() {

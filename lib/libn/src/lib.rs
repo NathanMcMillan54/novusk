@@ -1,3 +1,3 @@
 #![no_std]
 
-// pub extern crate libnu;
+pub extern crate libnu;

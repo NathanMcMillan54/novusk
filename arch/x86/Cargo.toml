@@ -11,6 +11,7 @@ edition = "2018"
 
 [dependencies]
 # Dependencies
+libnu = { git = "https://github.com/new-kernel/libnu/" }
 log = { version = "0.4.11", default-features = false }
 rlibc = "1.0.0"
 uefi = "0.8.1"
