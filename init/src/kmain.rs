@@ -1,3 +1,4 @@
+use fs::{fs_init, fs_name};
 use gpu::{gpu_init, gpu_name};
 use net::{net_init, net_name};
 use novusk::module::{module_end, module_init};
@@ -21,6 +22,9 @@ pub unsafe extern "C" fn kernel_init() {
     kinfo!("GPU initialized | Using {} driver", gpu_name());
 
     net_init();
-    kinfo!("Network drivers initialized | Using {} driver", net_name())
+    kinfo!("Network drivers initialized | Using {} driver", net_name());
+
+    fs_init();
+    kinfo!("File system initialized | Using {} file system", fs_name());
 }
 

@@ -5,7 +5,6 @@ use uefi::{Handle, ResultExt};
 use uefi::table::{Boot, SystemTable};
 use uefi_services;
 use uefi::proto::console::text::Output;
-use uefi_kd::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION};
 use crate::drivers::uefi_init;
 use crate::kernel::{printk, userspace::early};
 
@@ -26,6 +25,5 @@ pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>
 
     uefi_init(image, system_table);
     kinfo!("Finished UEFI drivers initialization");
-    kinfo!("UEFI version: {}.{}", UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION);
     bmain();
 }

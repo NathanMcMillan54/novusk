@@ -1,0 +1,11 @@
+[package]
+name = "fs"
+version = "0.1.0"
+edition = "2018"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+
+[dependencies]
+# Fs
+fat = { path = "../../fs/fat/" }
+# Kernel
+kerror = { path = "../../kernel/kerror/" }

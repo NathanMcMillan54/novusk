@@ -24,7 +24,7 @@ pub unsafe extern "C" fn set_gpu(gpu: &'static str) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn set_init() {
+pub unsafe extern "C" fn set_gpu_init() {
     INIT = true;
 }
 

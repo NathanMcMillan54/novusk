@@ -9,6 +9,7 @@ description = "UEFI kernel driver"
 [dependencies]
 uefi = "0.8.1"
 # Drivers
+fs = { path = "../fs/" }
 gpu = { path = "../gpu/" }
 # Kernel
 kerror = { path = "../../kernel/kerror/" }

@@ -1,11 +1,12 @@
 use core::fmt::Write;
+use fs::set_fs;
 use gop::{gop_init, gop_reinit};
-use gpu::{set_init, set_gpu};
+use gpu::{set_gpu_init, set_gpu};
 use uefi::Handle;
 use uefi::prelude::BootServices;
 use uefi::proto::console::text::{Input, Output};
 use uefi::table::{Boot, SystemTable, Revision};
-use crate::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION, fs};
+use crate::{UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION};
 
 unsafe fn version_init(version: uefi::table::Revision) {
     let major_version = version.major();
@@ -15,7 +16,7 @@ unsafe fn version_init(version: uefi::table::Revision) {
     UEFI_MINOR_VERSION = minor_version;
 
     if major_version < 2 {
-        kerror!("UEFI major ersion is not supported");
+        kerror!("UEFI major version is not supported");
     } else if minor_version < 30 {
         kinfo!("UEFI minor version is old but might work");
     }
@@ -24,10 +25,18 @@ unsafe fn version_init(version: uefi::table::Revision) {
 unsafe fn gpu_init(bt: &BootServices) {
     gop_init(bt);
     set_gpu("gop");
-    set_init();
+    set_gpu_init();
+}
+
+pub unsafe fn fs_init() {
+    set_fs("FAT");
 }
 
 pub unsafe fn uefi_init(handler: Handle, system_table: SystemTable<Boot>) {
     version_init(system_table.uefi_revision());
+    kinfo!("UEFI version: {}.{}", UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION);
     gpu_init(system_table.boot_services());
+    kinfo!("UEFI graphics initialized");
+    fs_init();
+    kinfo!("UEFI FAT fs set");
 }
