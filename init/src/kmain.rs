@@ -14,6 +14,12 @@ pub unsafe extern "C" fn modules_init() {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn mm_init() {
+    allocmm::allocmm_init();
+    initramfs::init_ramfs();
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     modules_init();
     kinfo!("Kernel modules initialized");
@@ -26,5 +32,8 @@ pub unsafe extern "C" fn kernel_init() {
 
     fs_init();
     kinfo!("File system initialized | Using {} file system", fs_name());
+
+    mm_init();
+    kinfo!("Memory initialized | Initialized Ram File System (initramfs)");
 }
 

@@ -1,8 +1,11 @@
 [package]
 name = "fat"
 version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcm"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+uefi = "0.8.1"
+# Kernel
+kerror = { path = "../../kernel/kerror/" }
+kinfo = { path = "../../kernel/kinfo/" }
