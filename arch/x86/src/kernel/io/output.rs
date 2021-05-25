@@ -1,3 +1,4 @@
+use core::fmt::Write;
 use uefi::proto::console::text::Output;
 
 pub static mut STDOUT: Option<&mut Output> = None;

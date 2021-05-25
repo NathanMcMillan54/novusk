@@ -29,6 +29,7 @@ novusk = { path = "../../include/novusk/" }
 init = { path = "../../init/" }
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
+printk = { path = "../../kernel/printk/" }
 # Libraries
 libn = { path = "../../lib/libn/" }
 # Modules

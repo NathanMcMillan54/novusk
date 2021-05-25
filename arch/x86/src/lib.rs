@@ -13,6 +13,7 @@ extern crate novusk;
 // Kernel
 #[macro_use] extern crate kerror;
 #[macro_use] extern crate kinfo;
+#[macro_use] extern crate printk;
 
 #[cfg(target_arch = "x86")]
 extern crate i686;
