@@ -18,7 +18,7 @@ unsafe fn version_init(version: uefi::table::Revision) {
     if major_version < 2 {
         kerror!("UEFI major version is not supported");
     } else if minor_version < 30 {
-        kinfo!("UEFI minor version is old but might work");
+        kerror!("UEFI minor version is old but might work");
     }
 }
 
@@ -34,9 +34,6 @@ pub unsafe fn fs_init() {
 
 pub unsafe fn uefi_init(handler: Handle, system_table: SystemTable<Boot>) {
     version_init(system_table.uefi_revision());
-    kinfo!("UEFI version: {}.{}", UEFI_MAJOR_VERSION, UEFI_MINOR_VERSION);
     gpu_init(system_table.boot_services());
-    kinfo!("UEFI graphics initialized");
     fs_init();
-    kinfo!("UEFI FAT fs set");
 }

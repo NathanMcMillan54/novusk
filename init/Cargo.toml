@@ -14,6 +14,7 @@ net = { path = "../drivers/net/" }
 novusk = { path = "../include/novusk/" }
 # Kernel
 kinfo = { path = "../kernel/kinfo" }
+printk = { path = "../kernel/printk/" }
 # Memory Management
 allocmm = { path = "../mm/allocmm/" }
 initramfs = { path = "../mm/initramfs/" }

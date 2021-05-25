@@ -14,5 +14,6 @@ gpu = { path = "../gpu/" }
 # Kernel
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
+printk = { path = "../../kernel/printk/" }
 # GPU
 gop = { path = "../../gpu/gop/" }

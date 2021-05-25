@@ -5,7 +5,7 @@ use uefi::{Handle, ResultExt};
 use uefi::table::{Boot, SystemTable};
 use uefi_services;
 use uefi::proto::console::text::Output;
-use crate::drivers::uefi_init;
+use crate::drivers::{print_uefi_init, uefi_init};
 use crate::kernel::{printk, userspace::early};
 
 #[no_mangle]
@@ -23,8 +23,8 @@ pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>
     kinfo!("Early ueserspace initialized");
     kinfo!("UEFI services initialized");
 
-
     uefi_init(image, system_table);
     kinfo!("Finished UEFI drivers initialization");
+    print_uefi_init();
     bmain();
 }
