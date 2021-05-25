@@ -14,6 +14,9 @@ extern crate novusk;
 #[macro_use] extern crate kerror;
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate printk;
+pub use printk::printk;
+
+extern crate userspace;
 
 #[cfg(target_arch = "x86")]
 extern crate i686;

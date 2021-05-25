@@ -1,5 +1,5 @@
 use crate::include::asm::hlt;
-use crate::kernel::{init, printk, userspace::early};
+use crate::kernel::{init, printk};
 use uefi::proto::console::text::Input;
 use uefi::table::{Boot, SystemTable};
 

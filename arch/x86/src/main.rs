@@ -3,10 +3,13 @@
 
 extern crate libnu;
 use libnu::ktypes::ApplicationType;
-extern crate x86_novusk;
+#[macro_use] extern crate x86_novusk;
 
 #[no_mangle]
-pub extern "C" fn kernel_main() -> ! { loop {  } }
+pub unsafe extern "C" fn kernel_main() -> ! {
+    printk!("Kernel Main!");
+    loop {  }
+}
 
 #[no_mangle]
 pub extern "C" fn kernel_info() -> bool { return true; }

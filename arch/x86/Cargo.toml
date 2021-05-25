@@ -30,6 +30,7 @@ init = { path = "../../init/" }
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
+userspace = { path = "../../kernel/userspace/" }
 # Libraries
 libn = { path = "../../lib/libn/" }
 # Modules

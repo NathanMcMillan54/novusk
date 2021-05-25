@@ -6,7 +6,7 @@ use uefi::table::{Boot, SystemTable};
 use uefi_services;
 use uefi::proto::console::text::Output;
 use crate::drivers::{print_uefi_init, uefi_init};
-use crate::kernel::{printk, userspace::early};
+use crate::kernel::{printk, early};
 
 #[no_mangle]
 pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {

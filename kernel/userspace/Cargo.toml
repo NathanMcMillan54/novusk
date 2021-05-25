@@ -1,0 +1,10 @@
+[package]
+name = "userspace"
+version = "0.1.0"
+authors = ["Nathan McMillan"]
+edition = "2018"
+
+[dependencies]
+libefi = { path = "../../lib/libefi" }
+libnu = { git = "https://github.com/new-kernel/libnu" }
+printk = { path = "../../kernel/printk/" }
