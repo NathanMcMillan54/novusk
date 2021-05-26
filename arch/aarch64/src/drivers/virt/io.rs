@@ -1,17 +1,7 @@
 use core::ptr::write_volatile;
-use super::uart::{UART};
 
-pub struct VirtWriter;
-
-impl VirtWriter {
-    pub unsafe fn write_byte(&mut self, byte: u8) -> u8 {
-        write_volatile(UART, byte);
-        return byte;
-    }
-
-    pub unsafe fn write_string(&mut self, string: &str) {
-        for chars in string.bytes() {
-            self.write_byte(chars);
-        }
-    }
+// For uart0 driver
+#[no_mangle]
+pub unsafe extern "C" fn early_write_byte(b: u8) {
+    core::ptr::write_volatile(0x0900_0000 as *mut u8, b);
 }

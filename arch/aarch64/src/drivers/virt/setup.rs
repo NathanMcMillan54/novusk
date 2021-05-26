@@ -1,13 +1,15 @@
 global_asm!(include_str!("power/shutdown.S"));
 global_asm!(include_str!("init.S"));
+use super::info::*;
 use super::power::shutdown;
-use super::io::VirtWriter;
+use crate::drivers::device::{device_init, Device, DEVICE_INFO};
+use crate::drivers::uart::uart0::Uart0;
 use crate::kernel::time::sleep::sleepm;
+use crate::drivers::virt::io::early_write_byte;
 
 #[no_mangle]
 pub unsafe extern "C" fn virt_init() {
-    let mut writer = VirtWriter;
-    writer.write_string("Starting Novusk on Aarch64 Qemu Virt\n");
-    sleepm(1000);
-    writer.write_string("1 second has passed\n");
+    let mut writer = Uart0;
+    writer.write_string("Starting Aarch64 Qemu Virt kernel...\n");
 }
+

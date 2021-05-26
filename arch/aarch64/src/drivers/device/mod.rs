@@ -17,3 +17,7 @@ pub static mut DEVICE_INFO: Device = Device {
     main_kernel: false,
     arch_kernel: false
 };
+
+pub unsafe fn device_init(dev_info: Device) {
+    DEVICE_INFO = dev_info;
+}

@@ -5,7 +5,6 @@ pub mod led;
 pub mod modules;
 pub mod st;
 pub mod time;
-pub mod uart;
 
 #[cfg(feature = "uefi_rpi3")]
 pub mod panic;
