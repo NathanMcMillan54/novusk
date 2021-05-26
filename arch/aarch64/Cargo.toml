@@ -32,6 +32,9 @@ userspace = { path = "../../kernel/userspace/" }
 libn = { path = "../../lib/libn/" }
 # Modules
 armm = { path = "../../kernel/modules/armm/" }
+
+android = { path = "android/" }
+
 # Feature
 register = { version = "1.x.x", optional = true }
 
@@ -51,3 +54,5 @@ board_virt = ["register"]
 board_rpi3 = ["register"]
 # UEFI Computers
 uefi_rpi3 = ["register"]
+
+android_os = ["register"]

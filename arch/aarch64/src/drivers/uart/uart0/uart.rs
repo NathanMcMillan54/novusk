@@ -1,6 +1,5 @@
 use crate::drivers::device::DEVICE_INFO;
 use core::ptr::write_volatile;
-use crate::drivers::virt::uart::UART;
 
 extern "C" {
     fn early_write_byte(b: u8);

@@ -1,5 +1,6 @@
 global_asm!(include_str!("power/shutdown.S"));
 global_asm!(include_str!("init.S"));
+
 use super::info::*;
 use super::power::shutdown;
 use crate::drivers::device::{device_init, Device, DEVICE_INFO};
@@ -13,6 +14,4 @@ use core::fmt::Write;
 pub unsafe extern "C" fn virt_init() {
     let mut writer = Uart0;
     writer.write_string("Starting Aarch64 Qemu Virt kernel...\n");
-    //_dprint(format_args!("{}", "formatted text!"));
 }
-
