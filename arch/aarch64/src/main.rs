@@ -7,6 +7,8 @@
 #[macro_use] extern crate printk;
 extern crate userspace;
 
+#[macro_use] extern crate lazy_static;
+
 extern crate novusk;
 extern crate arm_lib;
 
