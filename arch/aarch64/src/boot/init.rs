@@ -8,9 +8,6 @@ use uefi::table::{Boot, SystemTable};
 pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
     uefi_services::init(&system_table);
     printk_init();
-    kinfo!("Kernel printing initialized");
-    kinfo!("UEFI services initialized");
     uefi_init(image, system_table);
-    kinfo!("UEFI drivers initialized");
     setup()
 }

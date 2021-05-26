@@ -22,10 +22,8 @@ led = { path = "../../drivers/firmware/led/" }
 uefi_kd = { path = "../../drivers/uefi_kd/" }
 # Include
 novusk = { path = "../../include/novusk/" }
-# Kernel
-init = { path = "../../init/" }
-kerror = { path = "../../kernel/kerror/" }
-kinfo = { path = "../../kernel/kinfo/" }
+# Libraries
+libn = { path = "../../lib/libn/" }
 # Modules
 armm = { path = "../../kernel/modules/armm/" }
 # Feature
@@ -37,5 +35,5 @@ default = []
 # Boards/Microcomputers
 board_virt = ["register"]
 board_rpi3 = ["register"]
-# Computers
+# UEFI Computers
 uefi_rpi3 = ["register"]

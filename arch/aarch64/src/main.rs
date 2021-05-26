@@ -2,12 +2,11 @@
 #![no_main]
 #![feature(asm, global_asm)]
 
-#[macro_use] extern crate kerror;
-#[macro_use] extern crate kinfo;
-
 extern crate novusk;
 
 extern crate arm_lib;
+
+use libn::libnu::ktypes::ApplicationType;
 
 pub mod boot;
 pub mod drivers;
