@@ -1,3 +1,4 @@
+pub mod cpu;
 pub mod dev;
 pub mod early;
 pub mod init;

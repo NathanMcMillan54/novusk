@@ -1,5 +1,6 @@
 use init::kmain::kernel_init;
 use super::{KERNEL_INFO, modules};
+use super::cpu::{cpu_init, ARCH, BRAND};
 use super::dev::{device_init, DEVICE_INFO};
 use super::io::{io_init};
 use kerror::kerror;
@@ -12,6 +13,11 @@ pub unsafe extern "C" fn init() {
         // TODO: Clear screen
         // screen::clear_screen(stdout);
     }
+
+    cpu_init();
+    kinfo!("CPU initialized");
+    printk!("    CPU architecture: {:?}", ARCH);
+    printk!("    CPU brand: {:?}", BRAND);
 
     io_init();
     kinfo!("I/O initialized");
