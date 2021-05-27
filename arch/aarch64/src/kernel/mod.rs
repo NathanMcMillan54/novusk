@@ -6,5 +6,5 @@ pub mod modules;
 pub mod st;
 pub mod time;
 
-#[cfg(feature = "uefi_rpi3")]
+#[cfg(any(feature = "default", feature = "uefi_rpi3"))]
 pub mod panic;
