@@ -34,9 +34,12 @@ userspace = { path = "../../kernel/userspace/" }
 # Libraries
 libn = { path = "../../lib/libn/" }
 # Modules
-ex1 = { path = "../../kernel/modules/ex1/" }
+
 # Features
 register = { version = "1.x.x", optional = true }
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+ex1 = { path = "../../kernel/modules/ex1/" }
 
 [features]
 default = []
