@@ -1,9 +1,10 @@
-// Drivers for the virt QEMU board
+// Drivers for the Virt QEMU board
 pub mod info;
 pub mod io;
+mod kernel;
 pub mod power;
 mod setup;
-pub mod uart;
+mod uart;
 
 use core::panic::PanicInfo;
 

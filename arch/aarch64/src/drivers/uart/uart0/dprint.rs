@@ -1,13 +1,12 @@
 use core::fmt::{Arguments, Write, Result};
 use super::{Uart0, UART0};
 
-pub unsafe fn _dprint(args: Arguments) {
-    UART0.lock().write_fmt(args).unwrap();
+pub fn _dprint(args: Arguments) {
+    let mut writer = Uart0;
+    writer.write_fmt(format_args!("{}", args));
 }
 
-impl Write for Uart0 {
-    fn write_str(&mut self, str: &str) -> Result {
-        unsafe { self.write_string(str); }
-        Ok(())
-    }
+#[macro_export]
+macro_rules! dprint {
+    ($($arg:tt)*) => {$crate::drivers::uart::uart0::dprint::_dprint(format_args!($($arg)*))};
 }

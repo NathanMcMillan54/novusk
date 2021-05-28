@@ -20,4 +20,4 @@ pub mod kernel;
 extern crate android;
 
 #[cfg(feature = "board_rpi3")]
-pub extern crate rpi3;
+extern crate rpi3;

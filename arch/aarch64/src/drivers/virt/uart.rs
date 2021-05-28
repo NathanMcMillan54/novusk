@@ -1,1 +1,1 @@
-pub const UART: *mut u8 = 0x0900_0000 as *mut u8;
+pub const UART0: u32 = 0x0900_0000;
