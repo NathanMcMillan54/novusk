@@ -41,6 +41,7 @@ register = { version = "1.x.x", optional = true }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }
+raw-cpuid = "9.0.0"
 
 [features]
 default = []
