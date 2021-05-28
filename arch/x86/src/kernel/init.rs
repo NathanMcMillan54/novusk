@@ -6,6 +6,7 @@ use super::io::{io_init};
 use kerror::kerror;
 use userspace::required::START_USERSPACE;
 use crate::boot::boot::die;
+use cpu::x64::{look_for_amd, look_for_intel};
 
 #[no_mangle]
 pub unsafe extern "C" fn init() {
@@ -29,7 +30,7 @@ pub unsafe extern "C" fn init() {
     modules::modules_init();
     kinfo!("x86 modules initialized");
 
-    kernel_init();
+    // kernel_init();
     kinfo!("Novusk Initialized");
 
     if START_USERSPACE == false {
