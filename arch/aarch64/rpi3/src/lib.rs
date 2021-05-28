@@ -7,6 +7,8 @@ extern crate rpi;
 pub mod board;
 pub mod boot;
 pub mod linker;
+pub mod power;
+pub mod print;
 pub mod setup;
 
 use core::panic::PanicInfo;

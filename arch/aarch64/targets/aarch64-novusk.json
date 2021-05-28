@@ -1,5 +1,5 @@
 {
-  "board_name": "android",
+  "board_name": "rpi3",
   "arch": "aarch64",
   "data-layout": "e-m:e-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128",
   "disable-redzone": true,
@@ -10,7 +10,7 @@
   "linker-flavor": "ld.lld",
   "linker-is-gnu": true,
   "pre-link-args": {
-    "ld.lld": ["-Tandroid/linker.ld"]
+    "ld.lld": ["-Trpi3/linker.ld"]
   },
   "llvm-target": "aarch64-unknown-none",
   "max-atomic-width": 128,

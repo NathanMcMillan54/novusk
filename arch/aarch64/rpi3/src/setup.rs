@@ -1,17 +1,20 @@
 use arm_lib::include::asm::wfe;
 use crate::board::act_init;
 use rpi::led::Led;
+use crate::print::early_write_byte;
 
 extern "C" {
     fn aarch64_kernel_init();
+    fn kernel_main() -> !;
     fn sleepm(mil: i32);
 }
 
 pub unsafe fn rpi_setup() -> ! {
     act_init();
     blink_ok();
+    early_write_byte(69);
     aarch64_kernel_init();
-    wfe()
+    kernel_main();
 }
 
 unsafe fn blink_ok() {

@@ -4,6 +4,9 @@
 #[macro_use] extern crate aarch64_novusk;
 
 #[no_mangle]
+pub extern "C" fn kernel_main() -> ! { loop {  } }
+
+#[no_mangle]
 pub extern "C" fn application_type() -> libn::libnu::ktypes::ApplicationType { return libn::libnu::ktypes::ApplicationType::None; }
 
 #[no_mangle]

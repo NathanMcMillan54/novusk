@@ -5,7 +5,7 @@ use r0::zero_bss;
 use crate::linker::{__bss_end, __bss_start};
 use crate::setup;
 
-unsafe fn reset() -> ! {
+pub(crate) unsafe fn reset() -> ! {
     zero_bss(&mut __bss_start, &mut __bss_end);
     setup::rpi_setup()
 }

@@ -5,12 +5,17 @@ of supported aarch64 boards.
 
 To compile aarch64 Novusk, this is the main command:
 ```commandline
-make all ARCH=aarch64 TARGET_ARCH=aarch64 DEVICE=<device name>
+make all ARCH=aarch64 TARGET_ARCH=<Arch> DEVICE=<device name>
 ```
 
-An board example:
+A board example:
 ```commandline
 make all ARCH=aarch64 TARGET_ARCH=aarch64 DEVICE=virt
+```
+
+UEFI example:
+```commandline
+make all ARCH=aarch64 TARGET_ARCH=aarch64-uefi DEVICE=uefi<device>
 ```
 
 This command will compiling aarch64 Novusk for the Qemu Virt board.

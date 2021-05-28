@@ -7,6 +7,9 @@ pub unsafe extern "C" fn aarch64_kernel_init() {
     time::time_init();
     kinfo!("Kernel time initialized");
 
+    #[cfg(feature = "board_rpi3")]
+    return;
+
     modules::modules_init();
     kinfo!("Aarch64 kernel modules initialized");
 
