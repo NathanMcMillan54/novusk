@@ -31,6 +31,7 @@ init = { path = "../../init/" }
 kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
+sys = { path = "../../kernel/sys/" }
 userspace = { path = "../../kernel/userspace/" }
 # Libraries
 libefi = { path = "../../lib/libefi/" }
@@ -39,6 +40,10 @@ libn = { path = "../../lib/libn/" }
 
 # Features
 register = { version = "1.x.x", optional = true }
+
+[dependencies.novusk_syscalls]
+git = "https://github.com/new-kernel/syscalls/"
+features = ["novusk_uefi"]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }

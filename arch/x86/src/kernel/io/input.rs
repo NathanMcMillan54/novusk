@@ -1,3 +1,4 @@
+pub use sys::input;
 use uefi::proto::console::text::Input;
 
 pub static mut STDIN: Option<&mut Input> = None;
