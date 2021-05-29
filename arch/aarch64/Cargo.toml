@@ -28,6 +28,7 @@ kerror = { path = "../../kernel/kerror/" }
 kinfo = { path = "../../kernel/kinfo/" }
 init = { path = "../../init/" }
 printk = { path = "../../kernel/printk/" }
+sys = { path = "../../kernel/sys/" }
 userspace = { path = "../../kernel/userspace/" }
 # Libraries
 libn = { path = "../../lib/libn/" }
@@ -57,3 +58,4 @@ board_rpi3 = ["register"]
 uefi_rpi3 = ["register"]
 
 android_os = ["register"]
+uefi_kernel = ["register"]

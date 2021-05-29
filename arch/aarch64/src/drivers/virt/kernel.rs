@@ -1,5 +1,6 @@
 use crate::dprint;
 use super::info::*;
+use crate::kernel::syscalls::write;
 
 extern "C" {
     fn kernel_main() -> !;
@@ -19,6 +20,8 @@ pub unsafe extern "C" fn virt_kernel() -> ! {
     dprint!("UART0 initialized\n");
     // Rust can't display u8 or it's just Qemu so it's printed in plain text
     dprint!("   UART0 address: {}\n", "0x0900_000");
+
+    write(b"System Write test\n");
 
     dprint!("Virt Device:\n");
     print_device_info();

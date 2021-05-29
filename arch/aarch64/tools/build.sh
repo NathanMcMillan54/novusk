@@ -4,7 +4,7 @@ ARCH=$1
 DEVICE=$2
 
 if [ "$ARCH" = 'aarch64-uefi' ]; then
-    cargo build --target targets/aarch64-uefi-novusk.json --features $DEVICE
+    cargo build --target targets/aarch64-uefi-novusk.json --features $DEVICE,uefi_kernel
 elif [ "$ARCH" = 'aarch64' ]; then
     python3 tools/target.py $DEVICE
     cargo build --target=targets/aarch64-novusk.json --features $DEVICE
