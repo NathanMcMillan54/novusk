@@ -1,6 +1,10 @@
 all:
-	@ echo "Compiling disk_img..."
-	@ cd disk_img/ && cargo build
+	@ echo "Tools"
+
+install:
+	@ git clone https://github.com/new-kernel/novus_boot.git
+	@ echo "Enter sudo password for Novus Boot"
+	@ cd novus_boot/ && sh build.sh
 
 clean:
-	@ cd disk_img/ && cargo clean
+	@ rm -rf novus_boot

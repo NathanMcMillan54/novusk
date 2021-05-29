@@ -1,5 +1,4 @@
 Cargo.lock
-disk_img
 src/boot/Image
 
 target/

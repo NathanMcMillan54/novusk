@@ -8,7 +8,7 @@ all:
 
 image:
 	@ echo "Creating kernel images..."
-	@ ./disk_img target/$(TARGET_ARCH)-novusk/debug/x86.efi
+	@ novus_boot target/$(TARGET_ARCH)-novusk/debug/x86.efi
 	@ cp -r target/$(TARGET_ARCH)-novusk/debug/x86.fat src/boot/bzImage
 	@ echo "Created bzImage at:"
 	@ echo "arch/x86/src/boot/bzImage"

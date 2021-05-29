@@ -28,3 +28,9 @@
 
 ### ``x86``
 ``x86/running.md`` - Run Novusk on real hardware or in Qemu
+
+``x86/support.md`` - List of supported devices for x86 Novusk
+
+---
+
+``setup.md`` - Setup for compiling Novusk
