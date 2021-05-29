@@ -24,12 +24,21 @@
 ---
 
 ### ``OS Development``
+``os-dev/android.md`` - Write an Android distribution with Novusk
+
+``os-dev/exmaple.md`` - OS example made with Novusk
+
 ``os-dev/setup.md`` - Start developing Novusk operating systems or kernel extensions
 
 ### ``x86``
 ``x86/running.md`` - Run Novusk on real hardware or in Qemu
 
 ``x86/support.md`` - List of supported devices for x86 Novusk
+
+### ``xtensa``
+``installing.md`` - Install Xtensa Rust
+
+``support.md`` - A list of supported Xtensa boards
 
 ---
 
