@@ -8,7 +8,6 @@ use userspace::required::START_USERSPACE;
 use crate::boot::boot::die;
 use cpu::x64::{look_for_amd, look_for_intel};
 
-use raw_cpuid::CpuId;
 
 #[no_mangle]
 pub unsafe extern "C" fn init() {

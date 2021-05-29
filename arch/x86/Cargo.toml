@@ -33,6 +33,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
 userspace = { path = "../../kernel/userspace/" }
 # Libraries
+libefi = { path = "../../lib/libefi/" }
 libn = { path = "../../lib/libn/" }
 # Modules
 
