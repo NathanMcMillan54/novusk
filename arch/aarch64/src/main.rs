@@ -10,7 +10,7 @@ pub extern "C" fn kernel_main() -> ! { loop {  } }
 pub extern "C" fn application_type() -> libn::libnu::ktypes::ApplicationType { return libn::libnu::ktypes::ApplicationType::None; }
 
 #[no_mangle]
-pub extern "C" fn main_color() -> &'static str { return "cyan"; }
+pub extern "C" fn main_color() -> &'static str { return "green"; }
 
 #[no_mangle]
 pub extern "C" fn initramfs() -> bool { return false; }

@@ -26,4 +26,4 @@ pub extern "C" fn initramfs_main() { return; }
 
 // TODO: Make a color type
 #[no_mangle]
-pub extern "C" fn main_color() -> &'static str { return "cyan" }
+pub extern "C" fn main_color() -> &'static str { return "green" }

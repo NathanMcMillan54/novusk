@@ -1,16 +1,9 @@
 # Novusk
 Novusk - A kinda small kernel written in Rust inspired by Linux
 
-### Important Issues
-[Kernel rewrite](https://github.com/NathanMcMillan54/novusk/issues/7)
-
-[Driver support](https://github.com/NathanMcMillan54/novusk/issues/6)
-
-[Multi-architecture Support](https://github.com/NathanMcMillan54/novusk/issues/5)
-
----
-
 Read ``Documentation/`` for Novusk help and setup
+
+``samples/`` has examples for OS and kernel development
 
 ---
 

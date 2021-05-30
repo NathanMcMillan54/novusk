@@ -31,6 +31,16 @@
 
 ---
 
+### ``Libraries``
+
+Recommended libraries for userspace development
+
+``libs/libnu.md`` - Novusk User library
+
+``libs/syscalls.md`` - System calls for Novusk
+
+---
+
 ### ``OS Development``
 ``os-dev/android.md`` - Write an Android distribution with Novusk
 

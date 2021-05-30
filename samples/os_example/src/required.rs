@@ -7,7 +7,7 @@ pub extern "C" fn kernel_info() -> bool { return true; }
 pub extern "C" fn application_type() -> ApplicationType { return ApplicationType::OperatingSystem; }
 
 #[no_mangle]
-pub extern "C" fn main_color() -> &'static str { return "cyan"; }
+pub extern "C" fn main_color() -> &'static str { return "green"; }
 
 #[no_mangle]
 pub extern "C" fn initramfs() -> bool { return false; }
