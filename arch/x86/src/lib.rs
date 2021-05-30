@@ -8,13 +8,12 @@
 
 // Include
 extern crate ctypes;
-extern crate novusk;
+pub extern crate novusk;
 
 // Kernel
-#[macro_use] extern crate kerror;
-#[macro_use] extern crate kinfo;
-#[macro_use] extern crate printk;
-pub use printk::printk;
+#[macro_use] pub extern crate kerror;
+#[macro_use] pub extern crate kinfo;
+#[macro_use] pub extern crate printk;
 
 extern crate userspace;
 

@@ -4,6 +4,7 @@
 extern crate libnu;
 use libnu::ktypes::ApplicationType;
 #[macro_use] extern crate x86_novusk;
+use x86_novusk::printk::printk;
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {

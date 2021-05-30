@@ -6,7 +6,8 @@ extern "C" {
     fn kernel_main();
 }
 
-pub unsafe fn userspace_init() {
+#[no_mangle]
+pub unsafe extern "C" fn userspace_init() {
     if APPLICATION_TYPE == ApplicationType::OperatingSystem {
         st().as_ref().stdout().clear();
         // In the future fill screen with MAIN_COLOR

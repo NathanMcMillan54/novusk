@@ -23,6 +23,14 @@
 
 ---
 
+### ``Initramfs``
+
+``initramfs/main.md`` - Required functions for Novusk initramfs
+
+``initramfs/usage.md`` - What an initramfs is and why it should be used
+
+---
+
 ### ``OS Development``
 ``os-dev/android.md`` - Write an Android distribution with Novusk
 
@@ -41,5 +49,7 @@
 ``support.md`` - A list of supported Xtensa boards
 
 ---
+
+``about.md`` - About Novusk
 
 ``setup.md`` - Setup for compiling Novusk
