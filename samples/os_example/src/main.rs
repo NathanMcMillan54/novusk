@@ -5,11 +5,12 @@ mod required;
 
 #[cfg(target_arch = "x86_64")]
 #[macro_use] extern crate x86_novusk;
-use x86_novusk::printk::printk;
+
+#[macro_use]
+extern crate libnu;
 
 #[no_mangle]
-pub unsafe extern "C" fn kernel_main() -> ! {
-    printk!("x86_64 OS example");
-
+pub extern "C" fn kernel_main() -> ! {
+    println!("x86_64 OS example!");
     loop {  }
 }

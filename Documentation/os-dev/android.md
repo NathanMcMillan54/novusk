@@ -4,32 +4,35 @@ This was a joke because Aarch64 Novusk can't do much. If you want to write an An
 
 ### Create a new project:
 
-Clone the Aarch64 OS template:
 ```commandline
-git clone https://github.com/new-kernel/aarch64_template_example.git
+cargo new android_distro && cd android_distro
+cargo new --lib kernel
 ```
 
-Rewrite your ``Cargo.toml`` for Android:
+Add ``kernel/`` to the workspace of ``android_distro/Cargo.toml``
+
+Add Novusk to the kernel dependencies:
 ```toml
-[dependencies.aarch64_novusk]
-path = "kernel/novusk/arch/aarch64/"
+[dependencies.novusk]
+git = "https://github/new-kernel"
+path = "arch/aarch64/"
 features = ["android_os"]
 ```
 
-This will let you use Android Novusk. Because Aarch64 Novusk can't do much and this is a joke, you need to write
-everything yourself.
+This will let you use Android Novsuk, now you can start writing!
 
-Add the required functions to ``kernel/src/lib.rs``:
+Added these functions to kernel/src/lib.rs:
 ```rust
 #[no_mangle]
-pub unsafe extern "C" fn aarch64_android_kernel_init() -> ! {
-    // Setup
-    loop { asm!("wfe"); }
+pub extern "C" fn aarch64_android_kernel_init() -> ! {
+    /* Your code here */
+    asm::wfe()
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn custom_android_panic(_info: &PanicInfo) {
-    loop { asm!("wfe"); }
+pub extern "C" fn custom_android_kernel_panic() -> ! {
+    /* Panic stuff */
+    asm::wfe()
 }
 ```
 

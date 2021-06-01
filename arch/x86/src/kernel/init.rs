@@ -6,7 +6,6 @@ use super::io::{io_init};
 use kerror::kerror;
 use userspace::required::START_USERSPACE;
 use crate::boot::boot::die;
-use cpu::x64::{look_for_amd, look_for_intel};
 use crate::kernel::st::st;
 
 

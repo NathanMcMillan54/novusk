@@ -19,7 +19,8 @@ pub unsafe fn gop_init(bt: &BootServices) {
 }
 
 // For ueserspace
-pub unsafe fn gop_reinit(bt: &BootServices) -> &mut GraphicsOutput {
+#[no_mangle]
+pub unsafe extern "C" fn gop_reinit(bt: &BootServices) -> &'static mut GraphicsOutput {
     if let Ok(gop) = bt.locate_protocol::<GraphicsOutput>() {
         let gop = gop.expect("Couldn't initialize GOP");
         let gop = &mut *gop.get();

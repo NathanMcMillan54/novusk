@@ -1,112 +1,80 @@
-# Exmaple
+# Example
 
-```commandline
-cargo new --bin novusk_project --edition 2018 && cd novusk_project
-cargo new --lib kernel --edition 2018
-touch Makefile
-```
-
-Now you should have a binary with a library named ``kernel`` in it's workspace.
-
-After your project directory should look like this:
-```
-novusk_project
-|----.gitignore
-|----Cargo.toml
-|----Makefile
-|----kernel/
-|    |----.gitignore
-|    |----Cargo.toml
-|    |----src/
-|         |---lib.rs
-|
-|----src/
-     |----main.rs
-```
-
-Now edit your ``Makefile`` so it looks like this:
-```makefile
-ARCH =? x86
-TARGET = $(ARCH)_64-unknown-uefi
-VERSION = 2
-
-all: 
-    @ cargo build --target $(TARGET)
-    @ cd kernel/novusk/ && make build_tools && mv tools/disk_img/target/debug/disk_img ../../disk_img
-
-
-install:
-    @ cd kernel/ && git clone https://github.com/new-kernel/novusk.git && cd kernel/novusk
-    @ git checkout --tag $(VERSION)
-    @ cp -r arch/$(ARCH)/targets/* ../../
-
-clean:
-    @ cargo clean
-    @ rm -rf kernel/novusk/
-```
-
-The value of ``ARCH`` is the architecture that you will be using but you can change it. The value of ``TARGET`` is the
-name of the cross compiler you'll be using, in this example it's value is ``ARCH``_64-unknown-uefi which is
-x86_64-unknown-uefi; that can also be changed. ``VERSION`` is the version of Novusk that you'll be using.
-
-Now edit the main ``Cargo.toml`` so it looks like this:
+kernel/Cargo.toml:
 ```toml
-[package]
-name = "novusk_project"
-version = "0.1.0"
-edition = "2018"
-authors = ["Your Name <your@email.com>"]
-
-[workspace]
-members = [
-    "kernel/",
-    # This can be changed
-    "kernel/novusk/arch/x86/",
-]
-
 [dependencies]
-kernel = { path = "kernel/" }
+libnu = "0.1.0"
+
+[dependencies.novusk_syscalls]
+version = "0.1.0"
+# If you're using UEFI
+features = ["novusk_uefi"]
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+[dependencies.novusk]
+git = "https://github.com/new-kernel/novusk/"
+path = "arch/x86/"
+features = ["default_machine"]
 ```
 
-This includes the ``kernel/`` directory and an architecture specific Novusk, don't add Novusk to the dependencies.
+This is for x86_64 architecture, you can set arch to whatever you want.
 
-Now edit the ``src/main.rs`` and ``kernel/src/lib.rs`` to look like this:
+src/main.rs:
 ```rust
-// src/main.rs
 #![no_std]
 #![no_main]
 
 extern crate kernel;
 ```
 
+kernel/src/lib.rs
 ```rust
-// kernel/src/lib.rs
 #![no_std]
 
-#[macro_use]
-extern crate x86_novusk;
+pub mod required;
+
+#[macro_use] extern crate libnu;
 
 #[no_mangle]
 pub extern "C" fn kernel_main() -> ! {
+    println!("Hello world!");
+    // Start your OS
     loop {  }
 }
 ```
 
-Novusk will call a function named ``kernel_main``, this will be the start to you OS or whatever you're making.
+kernel/src/required.rs:
+```rust
+use libnu::types::ApplicationType;
 
-Now back to the ``Makefile``, the function ``all`` will compile your project with the target you give it. The
-``install`` function installs Novusk and sets the version to ``VERSION``. The clean function just removes the
-``target/`` directory,``kernel/novusk/``, and ``disk_img``.
+#[no_mangle]
+pub extern "C" fn kernel_info() -> bool { return true; }
 
-### Compiling
+#[no_mangle]
+pub extern "C" fn application_type() -> ApplicationType { return ApplicationType::OperatingSystem; }
 
-To compile your Novusk project, run this command:
-```commandline
-make all ARCH=x86 TARGET=x86_64-unknown-uefi VERSION=2
-./disk_img target/x86_64-unknown-uefi/debug/novusk_project.fat os_image
+#[no_mangle]
+pub extern "C" fn main_color() -> &'static str { return "green"; }
+
+#[no_mangle]
+pub extern "C" fn initramfs() -> bool { return false; }
+
+#[no_mangle]
+pub extern "C" fn initramfs_main() { return; }
 ```
 
-### Running
+To compile get the build target and Efi OVMF file for running
 ```commandline
-qemu-system-x86_64 os_image -bios kernel/novusk/x86/OVMF-pure-efi.fd
+curl https://github.com/new-kernel/novusk/blob/master/arch/x86/targets/x86_64-novusk.json > x86_64-novusk-os.json
+curl https://github.com/new-kernel/novusk/blob/master/arch/x86/OVMF-pure-efi.fd > OVMF-pure-efi.fd
+```
+
+If core, compiler builtins, and compiler memory is in your ``.cargo/config.toml`` you can compile by running:
+```commandline
+cargo build --target x86_64-novusk-os.json
+```
+
+Then run with:
+```commandline
+qemu-system-x86_64 target/x86_64-novusk-os.json -bios OVMF-pure-efi.fd
 ```

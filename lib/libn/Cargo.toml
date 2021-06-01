@@ -5,4 +5,4 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-libnu = { git = "https://github.com/new-kernel/libnu" }
+libnu = "0.1.1"
