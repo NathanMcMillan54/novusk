@@ -1,7 +1,6 @@
 #![no_std]
 
-extern crate libn;
-use libn::libnu::ktypes::ApplicationType;
+use libnu::ktypes::ApplicationType;
 
 extern "C" {
     fn application_type() -> ApplicationType;

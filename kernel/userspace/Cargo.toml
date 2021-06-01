@@ -6,5 +6,5 @@ edition = "2018"
 
 [dependencies]
 libefi = { path = "../../lib/libefi" }
-libnu = { git = "https://github.com/new-kernel/libnu" }
+libnu = "0.1.1"
 printk = { path = "../../kernel/printk/" }

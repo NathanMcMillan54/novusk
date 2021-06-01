@@ -9,6 +9,8 @@ pub extern "C" fn keyboard_init(stdin: *mut Input) {
 }
 
 pub unsafe fn bmain() -> ! {
+    printk!("LICENCE:\nMIT License Copyright (c) 2021 Nathan McMillan");
+    printk!("Read LICENCE for copyright");
     init::init();
     hlt()
 }

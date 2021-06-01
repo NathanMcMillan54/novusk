@@ -5,6 +5,9 @@ use super::{device};
 
 #[no_mangle]
 pub unsafe extern "C" fn setup() -> ! {
+    printk!("LICENCE:\nMIT License Copyright (c) 2021 Nathan McMillan");
+    printk!("Read LICENCE for copyright");
+
     device::device_init();
     kinfo!("Device initialized");
     if DEVICE_INFO.arch_kernel == true {
