@@ -36,4 +36,5 @@ pub unsafe fn uefi_init(handler: Handle, system_table: SystemTable<Boot>) {
     version_init(system_table.uefi_revision());
     gpu_init(system_table.boot_services());
     fs_init();
+    system_table.stdin().reset(true).expect("Failed to reset stdin");
 }
