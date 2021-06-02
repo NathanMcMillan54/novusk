@@ -21,6 +21,8 @@
 ### ``Contributing``
 ``contribute/index.md`` - Contributing to Novusk
 
+``contribute/project-strcuture.md`` - Novusk project structure
+
 ---
 
 ### ``Initramfs``
