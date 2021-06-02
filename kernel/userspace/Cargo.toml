@@ -5,6 +5,7 @@ authors = ["Nathan McMillan"]
 edition = "2018"
 
 [dependencies]
-libefi = { path = "../../lib/libefi" }
+doom_loader = { path = "../../drivers/userspace/doom_loader/" }
+libefi = { path = "../../lib/libefi/" }
 libnu = "0.1.1"
 printk = { path = "../../kernel/printk/" }
