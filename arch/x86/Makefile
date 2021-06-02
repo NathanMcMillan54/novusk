@@ -4,7 +4,7 @@ BOARD =?
 
 all:
 	@ echo "Compiling x86 Novusk"
-	@ cargo build --target targets/$(TARGET_ARCH)-novusk.json --features $(BOARD)_machine # -Z build-std=core -Z build-std-features=compiler-builtins-mem
+	@ cargo build --target targets/$(TARGET_ARCH)-novusk.json --features $(BOARD)
 
 image:
 	@ echo "Creating kernel images..."

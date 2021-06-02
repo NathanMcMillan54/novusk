@@ -1,0 +1,14 @@
+[package]
+name = "android_os"
+version = "0.1.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+description = "An Android example"
+
+[dependencies]
+libnu = "0.1.1"
+
+[dependencies.x86]
+path = "../../arch/x86/"
+features = ["android_box"]
+

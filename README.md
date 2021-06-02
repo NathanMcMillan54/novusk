@@ -5,6 +5,12 @@ Read ``Documentation/`` for Novusk help and setup
 
 ``samples/`` has examples for OS and kernel development
 
+### Important Issues:
+
+- [Android x86 support](https://github.com/NathanMcMillan54/novusk/issues/11)
+- [Doom support](https://github.com/NathanMcMillan54/novusk/issues/9) <-- "Important"
+- [Input support](https://github.com/NathanMcMillan54/novusk/issues/10)
+
 ---
 
 #### Novusk v1.2:

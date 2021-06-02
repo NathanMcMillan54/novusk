@@ -13,6 +13,7 @@ edition = "2018"
 # Dependencies
 libnu = "0.1.1"
 log = { version = "0.4.14", default-features = false }
+register = { version = "1.0.2", optional = true }
 rlibc = "1.0.0"
 uefi = "0.8.1"
 uefi-macros = "0.3.3"
@@ -22,6 +23,7 @@ cpu = { path = "../../drivers/cpu/" }
 i686 = { path = "../../drivers/i686/" }
 gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
+
 # Include
 ctypes = { path = "../../include/ctypes/" }
 time = { path = "../../include/time/" }
@@ -38,17 +40,20 @@ libefi = { path = "../../lib/libefi/" }
 libn = { path = "../../lib/libn/" }
 # Modules
 
-# Features
-register = { version = "1.x.x", optional = true }
 
 [dependencies.novusk_syscalls]
-git = "https://github.com/new-kernel/syscalls/"
+version = "0.1.0"
 features = ["novusk_uefi"]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }
 raw-cpuid = "9.0.0"
 
+[dependencies.android]
+path = "../../drivers/android/"
+features = ["box"]
+
 [features]
 default = []
 default_machine = ["register"]
+android_box = ["register"]
