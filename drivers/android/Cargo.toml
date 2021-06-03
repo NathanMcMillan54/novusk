@@ -5,9 +5,15 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+allocmm = { path = "../../mm/allocmm/" }
+fs = { path = "../fs/" }
+initramfs = { path = "../../mm/initramfs/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libefi = { path = "../../lib/libefi/" }
+libnu = "0.1.1"
+printk = { path = "../../kernel/printk/" }
 uefi = "0.8.1"
+userspace = { path = "../../kernel/userspace/" }
 
 [dependencies.register]
 version = "1.x.x"
