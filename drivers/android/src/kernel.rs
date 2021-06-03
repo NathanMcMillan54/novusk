@@ -17,11 +17,12 @@ pub unsafe fn android_init() -> ! {
     printk!("   Alloc MM initialized");
     printk!("   Ram Fs initialized");
 
-    kinfo!("Android kernel initialized");
+    kinfo!("Novusk Android kernel initialized");
 
-    userspace::required::set_userspace_info(ApplicationType::OperatingSystem, "green");
+    // Application type is KernelExtension because it will start another kernel (the Android OS kernel)
+    userspace::required::set_userspace_info(ApplicationType::KernelExtension, "green");
     kinfo!("Userspace initialized");
-    printk!("Starting OS...");
+    printk!("Starting Android...");
     switch_color(Color::LightGray, Color::Black);
     userspace::init::userspace_init();
     loop {  }

@@ -1,4 +1,4 @@
-# Android development
+# Android development on Aarch64
 
 This was a joke because Aarch64 Novusk can't do much. If you want to write an Android distribution, follow these steps.
 
@@ -36,5 +36,5 @@ pub extern "C" fn custom_android_kernel_panic() -> ! {
 }
 ```
 
-The main kernel starts in ``aarch64_android_kernel_init`` which is where mostly everything will be. The 
+The main kernel starts in ``aarch64_android_kernel_init`` which is where mostly everything will be. The
 ``custom_android_kernel_panic`` function is your panic handler, you can do whatever you want with it.
