@@ -4,6 +4,11 @@ version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
+[dependencies]
+kinfo = { path = "../../kernel/kinfo/" }
+libefi = { path = "../../lib/libefi/" }
+uefi = "0.8.1"
+
 [dependencies.register]
 version = "1.x.x"
 optional = true
