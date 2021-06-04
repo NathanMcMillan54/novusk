@@ -1,5 +1,6 @@
 use fs::{fs_init, fs_name};
 use gpu::{gpu_init, gpu_name};
+use input::{input_init, KEYBOARD_NAME, MOUSE_NAME};
 use net::{net_init, net_name};
 use novusk::module::{module_end, module_init};
 
@@ -34,6 +35,12 @@ pub unsafe extern "C" fn kernel_init() {
     fs_init();
     kinfo!("File system initialized");
     printk!("    Using {} file system", fs_name());
+
+    printk!("Setting up hardware input...");
+    input_init();
+    kinfo!("Input initialized");
+    printk!("   Using {} keyboard", KEYBOARD_NAME);
+    printk!("   Using {} mouse", MOUSE_NAME);
 
     mm_init();
     kinfo!("Memory initialized ");

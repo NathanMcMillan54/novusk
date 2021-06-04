@@ -48,7 +48,6 @@ features = ["novusk_uefi"]
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }
 raw-cpuid = "9.0.0"
-x64_ps2_mouse = { path = "../../drivers/firmware/input/x64_ps2_mouse/" }
 
 [dependencies.android]
 path = "../../drivers/android/"
