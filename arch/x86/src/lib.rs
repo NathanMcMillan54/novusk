@@ -6,6 +6,8 @@
 #[macro_use] extern crate uefi_macros;
 #[macro_use] extern crate uefi_services;
 
+pub extern crate ps2_keyboard;
+
 // Include
 extern crate ctypes;
 pub extern crate novusk;

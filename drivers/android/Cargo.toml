@@ -10,7 +10,7 @@ fs = { path = "../fs/" }
 initramfs = { path = "../../mm/initramfs/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libefi = { path = "../../lib/libefi/" }
-libnu = "0.1.1"
+libnu = "0.1.2"
 printk = { path = "../../kernel/printk/" }
 uefi = "0.8.1"
 userspace = { path = "../../kernel/userspace/" }

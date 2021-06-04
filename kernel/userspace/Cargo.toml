@@ -7,5 +7,5 @@ edition = "2018"
 [dependencies]
 doom_loader = { path = "../../drivers/userspace/doom_loader/" }
 libefi = { path = "../../lib/libefi/" }
-libnu = "0.1.1"
+libnu = "0.1.2"
 printk = { path = "../../kernel/printk/" }

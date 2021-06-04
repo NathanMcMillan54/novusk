@@ -5,7 +5,7 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-libnu = "0.1.1"
+libnu = "0.1.2"
 uefi = "0.8.1"
 
 [target.'cfg(target_arch = "x86_64")']

@@ -11,7 +11,7 @@ edition = "2018"
 
 [dependencies]
 # Dependencies
-libnu = "0.1.1"
+libnu = "0.1.2"
 log = { version = "0.4.14", default-features = false }
 register = { version = "1.0.2", optional = true }
 rlibc = "1.0.0"
@@ -23,6 +23,7 @@ cpu = { path = "../../drivers/cpu/" }
 i686 = { path = "../../drivers/i686/" }
 gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
+ps2_keyboard = { path = "../../drivers/firmware/input/ps2_keyboard/" }
 
 # Include
 ctypes = { path = "../../include/ctypes/" }

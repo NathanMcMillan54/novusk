@@ -6,5 +6,5 @@ edition = "2018"
 description = "Gets userspace info to determine if the kernel should keep running after the main kernel"
 
 [dependencies]
-libnu = "0.1.1"
+libnu = "0.1.2"
 novusk = { path = "../../../include/novusk/" }
