@@ -1,6 +1,7 @@
 #![no_std]
 #![feature(global_asm, llvm_asm)]
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate log;
 #[macro_use] extern crate uefi;
 #[macro_use] extern crate uefi_macros;

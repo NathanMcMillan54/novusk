@@ -12,6 +12,5 @@ extern crate libnu;
 #[no_mangle]
 pub extern "C" fn kernel_main() -> ! {
     println!("x86_64 OS example!");
-    x86_novusk::p
     loop {  }
 }

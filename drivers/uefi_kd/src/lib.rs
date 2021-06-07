@@ -6,6 +6,7 @@
 extern crate gop;
 extern crate gpu;
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate uefi;
 
 pub mod init;
