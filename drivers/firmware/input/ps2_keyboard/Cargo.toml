@@ -7,3 +7,12 @@ edition = "2018"
 [dependencies]
 pc-keyboard = "0.5.1"
 printk = { path = "../../../../kernel/printk/" }
+
+[dependencies.crossbeam-queue]
+version = "0.2.1"
+default-features = false
+features = ["alloc"]
+
+[dependencies.conquer-once]
+version = "0.2.0"
+default-features = false
