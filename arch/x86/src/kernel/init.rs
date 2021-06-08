@@ -7,7 +7,14 @@ use kerror::kerror;
 use userspace::required::START_USERSPACE;
 use crate::boot::boot::die;
 use crate::kernel::st::st;
+use x86_64_thread::x86_64_thread_init;
 
+
+pub unsafe fn x86_64_init() {
+    x86_64_thread_init();
+    kinfo!("x86_64 threading initialzed");
+    kinfo!("x86_64 drivers initialized");
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn init() {
@@ -15,6 +22,9 @@ pub unsafe extern "C" fn init() {
         // TODO: Clear screen
         // screen::clear_screen(stdout);
     }
+
+    #[cfg(target_arch = "x86_64")]
+    x86_64_init();
 
     cpu_init();
     kinfo!("CPU initialized");
@@ -31,7 +41,7 @@ pub unsafe extern "C" fn init() {
     modules::modules_init();
     kinfo!("x86 modules initialized");
 
-    kernel_init();
+    /*kernel_init();
     kinfo!("Novusk Initialized");
 
     if START_USERSPACE == false {
@@ -42,5 +52,5 @@ pub unsafe extern "C" fn init() {
     } else {
         printk!("Starting userspace...");
         userspace::init::userspace_init();
-    }
+    }*/
 }

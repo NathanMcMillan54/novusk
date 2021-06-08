@@ -24,6 +24,7 @@ i686 = { path = "../../drivers/i686/" }
 gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
 ps2_keyboard = { path = "../../drivers/firmware/input/ps2_keyboard/" }
+x86_64_thread = { path = "../../drivers/x86_64_thread/" }
 # Include
 ctypes = { path = "../../include/ctypes/" }
 time = { path = "../../include/time/" }
