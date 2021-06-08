@@ -24,7 +24,6 @@ i686 = { path = "../../drivers/i686/" }
 gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
 ps2_keyboard = { path = "../../drivers/firmware/input/ps2_keyboard/" }
-x86_64_thread = { path = "../../drivers/x86_64_thread/" }
 # Include
 ctypes = { path = "../../include/ctypes/" }
 time = { path = "../../include/time/" }
@@ -49,6 +48,7 @@ features = ["novusk_uefi"]
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }
 raw-cpuid = "9.0.0"
+x86_64_thread = { path = "../../drivers/x86_64_thread/" }
 
 [dependencies.android]
 path = "../../drivers/android/"
