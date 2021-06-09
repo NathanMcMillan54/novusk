@@ -1,7 +1,8 @@
 # Aarch64 Support
 
 Supported computers:
-- Qemu Virt ``virt``
+- Default ``default_machine``
+- Qemu Virt ``qemu_virt``
 - UEFI RaspberryPi 3 ``uefi_rpi3``
 
 Supported Files Systems:

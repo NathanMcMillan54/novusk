@@ -44,7 +44,6 @@ Recommended libraries for userspace development
 ---
 
 ### ``OS Development``
-``os-dev/android/aarch64.md`` - Write an Aarch64 Android distribution with Novusk
 
 ``os-dev/android/x86.md`` - Write an x86 Android distribution with Novusk
 

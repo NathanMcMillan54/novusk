@@ -4,6 +4,9 @@ use super::modules;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_kernel_init() {
+
+
+
     modules::modules_init();
     kinfo!("Aarch64 kernel modules initialized");
 

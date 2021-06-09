@@ -1,10 +1,20 @@
+use cpu::arch::Arch;
+use cpu::cpu::Cpu;
+
+#[cfg(feature = "default_machine")]
+pub mod default;
+
+#[cfg(feature = "uefi_rpi3")]
 pub mod uefi_rpi3;
+
+#[cfg(feature = "qemu_virt")]
+pub mod qemu_virt;
 
 pub struct Device {
     pub board: &'static str,
     pub manufacture: &'static str,
-    pub cpu: &'static str,
-    pub uart0: *mut u8,
+    pub cpu_arch: Arch,
+    pub cpu_brand: Cpu,
     pub main_kernel: bool,
     pub arch_kernel: bool,
 }
@@ -12,8 +22,8 @@ pub struct Device {
 pub static mut DEVICE_INFO: Device = Device {
     board: "",
     manufacture: "",
-    cpu: "",
-    uart0: 0 as *mut u8,
+    cpu_arch: Arch::Unknown,
+    cpu_brand: Cpu::Unknown,
     main_kernel: false,
     arch_kernel: false
 };

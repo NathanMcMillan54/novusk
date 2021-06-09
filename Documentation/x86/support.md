@@ -1,7 +1,7 @@
 # x86 Support
 
 Supported computers:
-- "Default"
+- "Default" ``default_machine``
 
 Supported Files Systems:
 - FAT 32/64

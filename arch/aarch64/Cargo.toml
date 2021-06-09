@@ -17,6 +17,7 @@ spin = "0.9.0"
 uefi = "0.8.1"
 uefi-macros = "0.3.3"
 # Drivers
+cpu = { path = "../../drivers/cpu/" }
 led = { path = "../../drivers/firmware/led/" }
 uefi_kd = { path = "../../drivers/uefi_kd/" }
 # Include
@@ -46,7 +47,6 @@ version = "0.5.1"
 # Board
 [features]
 default = []
+default_machine = ["register"]
 uefi_rpi3 = ["register"]
-
-android_os = ["register"]
-uefi_kernel = ["register"]
+qemu_virt = ["register"]

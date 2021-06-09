@@ -1,12 +1,15 @@
-use crate::drivers::device::{DEVICE_INFO, Device};
+use crate::drivers::device::{device_init, Device};
+use cpu::arch::Arch;
+use cpu::cpu::Cpu;
 
 pub unsafe fn uefi_pi3_init() {
-    DEVICE_INFO = Device {
+    let dev = Device {
         board: "UEFI RPi3",
         manufacture: "Raspberry Pi Foundation",
-        cpu: "Cortex A53",
-        uart0: 0 as *mut u8,
+        cpu_arch: Arch::Aarch64,
+        cpu_brand: Cpu::ARM_Holdings,
         main_kernel: true,
         arch_kernel: true
-    }
+    };
+    device_init(dev);
 }
