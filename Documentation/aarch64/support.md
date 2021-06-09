@@ -1,6 +1,13 @@
 # Aarch64 Support
 
-### Aarch64 boards
-- Qemu Virt ``board_virt``
-- RaspberryPi 3 ``board_rpi3``
+Supported computers:
+- Qemu Virt ``virt``
 - UEFI RaspberryPi 3 ``uefi_rpi3``
+
+Supported Files Systems:
+- FAT 32/64
+
+Supported GPU's:
+- UEFI GOP
+
+If your device isn't supported yet, you can use the Default "device" for very basic hardware support.

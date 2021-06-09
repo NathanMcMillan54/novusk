@@ -1,15 +1,9 @@
 use crate::drivers::device::DEVICE_INFO;
 use init::kmain::kernel_init;
-use super::{modules, time};
+use super::modules;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_kernel_init() {
-    time::time_init();
-    kinfo!("Kernel time initialized");
-
-    #[cfg(feature = "board_rpi3")]
-    return;
-
     modules::modules_init();
     kinfo!("Aarch64 kernel modules initialized");
 

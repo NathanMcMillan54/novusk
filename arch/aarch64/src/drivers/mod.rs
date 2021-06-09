@@ -1,7 +1,6 @@
-#[cfg(feature = "board_virt")]
-pub mod virt;
-
 pub mod device;
-pub mod uart;
+
+#[cfg(feature = "uefi_rpi3")]
+pub mod rpi3;
 
 pub use uefi_kd::init::uefi_init;

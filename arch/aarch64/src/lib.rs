@@ -16,8 +16,3 @@ pub mod boot;
 pub mod drivers;
 pub mod kernel;
 
-#[cfg(feature = "android_os")]
-extern crate android;
-
-#[cfg(feature = "board_rpi3")]
-extern crate rpi3;

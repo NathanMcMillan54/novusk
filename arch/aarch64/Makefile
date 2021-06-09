@@ -3,11 +3,12 @@ TARGET_ARCH =?
 BOARD =? virt
 
 all:
-	@ sh tools/build.sh $(TARGET_ARCH) $(BOARD)
+	@ cargo build --target=targets/$(TARGET_ARCH)-novusk.json --features $(BOARD)
 
 image:
 	@ echo "Creating kernel images..."
-	@ sh tools/image.sh $(TARGET_ARCH)
+	@ novus_boot target/aarch64-novusk/debug/aarch64.efi aarch64
+	@ cp -r target/aarch64-novusk/debug/aarch64.fat src/boot/Image
 	@ echo "Created Image at:"
 	@ echo "arch/aarch64/src/boot/Image"
 

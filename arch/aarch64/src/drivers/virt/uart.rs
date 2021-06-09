@@ -1,1 +1,0 @@
-pub const UART0: u32 = 0x0900_0000;
