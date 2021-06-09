@@ -1,5 +1,4 @@
 pub mod cmdline;
-pub mod cpu;
 pub mod device;
 pub mod init;
 pub mod keyboard;

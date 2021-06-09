@@ -7,7 +7,7 @@ pub unsafe fn default_init() {
         board: "Default",
         manufacture: "None",
         cpu_arch: Arch::Aarch64,
-        cpu_brand: Cpu::AMD,
+        cpu_brand: Cpu::Unknown,
         main_kernel: false,
         arch_kernel: false
     };
