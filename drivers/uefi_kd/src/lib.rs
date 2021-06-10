@@ -11,6 +11,7 @@ extern crate gpu;
 
 pub mod init;
 pub mod print;
+pub mod text;
 
 pub static mut UEFI_MAJOR_VERSION: u16 = 0;
 pub static mut UEFI_MINOR_VERSION: u16 = 0;

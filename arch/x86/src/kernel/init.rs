@@ -9,9 +9,8 @@ use crate::boot::boot::die;
 use crate::kernel::st::st;
 use x86_64_thread::runner::Executor;
 
-
 #[cfg(target_arch = "x86_64")]
-pub unsafe fn x86_64_init() {
+unsafe fn x86_64_init() {
     use x86_64_thread::x86_64_thread_init;
 
     x86_64_thread_init();

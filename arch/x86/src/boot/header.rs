@@ -6,7 +6,7 @@ use uefi::table::{Boot, SystemTable};
 use uefi_services;
 use uefi::proto::console::text::Output;
 use crate::drivers::{print_uefi_init, uefi_init};
-use crate::kernel::{printk, early};
+use crate::kernel::{early, init, printk};
 
 #[no_mangle]
 pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
@@ -23,8 +23,16 @@ pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>
     kinfo!("Early ueserspace initialized");
     kinfo!("UEFI services initialized");
 
+    bmain();
+
     uefi_init(image, system_table);
     kinfo!("Finished UEFI drivers initialization");
     print_uefi_init();
-    bmain();
+
+    printk!("LICENCE:\n    MIT License Copyright (c) 2021 Nathan McMillan");
+    printk!("    Read LICENCE for copyright");
+
+    init::init();
+
+    die()
 }
