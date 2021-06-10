@@ -42,12 +42,13 @@ pub unsafe fn fat_init() {
     }
 }
 
-pub unsafe fn fat_reinit() -> Directory {
+#[no_mangle]
+pub unsafe extern "C" fn fat_reinit() -> Directory {
     let bs = st().as_ref().boot_services();
 
     if let Ok(sfs) = bs.locate_protocol::<SimpleFileSystem>() {
         let sfs = sfs.expect("Cannot open `SimpleFileSystem` protocol");
-        let sfs = unsafe { &mut *sfs.get() };
+        let sfs = &mut *sfs.get();
         let mut directory = sfs.open_volume().unwrap().unwrap();
         let mut buffer = vec![0; 128];
         loop {

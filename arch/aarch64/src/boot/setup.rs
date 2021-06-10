@@ -7,8 +7,8 @@ use crate::kernel::st::st;
 
 #[no_mangle]
 pub unsafe extern "C" fn setup() -> ! {
-    printk!("LICENCE:\nMIT License Copyright (c) 2021 Nathan McMillan");
-    printk!("Read LICENCE for copyright");
+    printk!("LICENCE:\n    MIT License Copyright (c) 2021 Nathan McMillan");
+    printk!("    Read LICENCE for copyright");
 
     set_text_mode(st().as_ref().stdout());
 

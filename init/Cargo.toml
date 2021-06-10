@@ -11,13 +11,19 @@ fs = { path = "../drivers/fs/" }
 gpu = { path = "../drivers/gpu/" }
 input = { path = "../drivers/input/" }
 net = { path = "../drivers/net/" }
+# File systems
+kernfs = { path = "../fs/kernfs/" }
 # Include
 novusk = { path = "../include/novusk/" }
 # Kernel
 kinfo = { path = "../kernel/kinfo" }
 printk = { path = "../kernel/printk/" }
+# Libraries
+libn = { path = "../lib/libn/" }
 # Memory Management
 allocmm = { path = "../mm/allocmm/" }
 initramfs = { path = "../mm/initramfs/" }
 # Modules
 m1 = { path = "../kernel/modules/m1/" }
+
+uefi = "0.8.1"
