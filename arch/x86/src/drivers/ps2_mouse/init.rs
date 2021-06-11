@@ -4,7 +4,8 @@ use x86_64::instructions::port::PortReadOnly;
 
 pub static mut MOUSE: Mouse = Mouse::new();
 
-pub unsafe fn init_mouse() {
+#[no_mangle]
+pub unsafe extern "C" fn ps2_mouse_init() {
     MOUSE.init();
     // This was mostly copied from the example so it makes sense that it doesn't work
     MOUSE.set_on_complete(on_complete);

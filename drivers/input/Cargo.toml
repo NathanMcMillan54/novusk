@@ -8,4 +8,4 @@ edition = "2018"
 # ps2_keyboard = { path = "../firmware/input/ps2_keyboard/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-x64_ps2_mouse = { path = "../firmware/input/x64_ps2_mouse/" }
+# x64_ps2_mouse = { path = "../firmware/input/x64_ps2_mouse/" }

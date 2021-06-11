@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(global_asm, llvm_asm)]
+#![feature(once_cell)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate log;
