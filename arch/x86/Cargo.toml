@@ -14,8 +14,10 @@ edition = "2018"
 libnu = "0.1.2"
 log = { version = "0.4.14", default-features = false }
 pc-keyboard = "0.5.1"
+ps2-mouse = { git = "https://github.com/NathanMcMillan54/ps2-mouse" }
 register = { version = "1.0.2", optional = true }
 rlibc = "1.0.0"
+spinning_top = "0.2.4"
 uefi = "0.8.1"
 uefi-macros = "0.3.3"
 uefi-services = "0.5.1"

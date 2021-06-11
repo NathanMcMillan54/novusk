@@ -6,6 +6,9 @@ pub mod intel;
 pub mod ps2_keyboard;
 
 #[cfg(target_arch = "x86_64")]
+pub mod ps2_mouse;
+
+#[cfg(target_arch = "x86_64")]
 pub mod task;
 
 #[cfg(target_arch = "x86_64")]

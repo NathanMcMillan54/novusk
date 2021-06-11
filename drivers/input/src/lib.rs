@@ -13,8 +13,8 @@ unsafe fn x64_input_init() {
     ps2_keyboard_init();
     KEYBOARD_NAME = "ps2";
 
-
     MOUSE_NAME = "ps2";
+    ps2_mouse_init();
 }
 
 pub unsafe fn input_init() {
