@@ -9,7 +9,6 @@ use x86_novusk::printk::printk;
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {
     printk!("Kernel Main!");
-    loop {  }
 }
 
 #[no_mangle]

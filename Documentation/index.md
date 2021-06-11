@@ -25,11 +25,25 @@
 
 ---
 
+### ``File System``
+``fs/fat.md`` - FAT fs
+
+``fs/kernfs.md`` - Kernel fs
+
+---
+
 ### ``Initramfs``
 
 ``initramfs/main.md`` - Required functions for Novusk initramfs
 
+``initramfs/temp.md`` - The ``temp`` directory and how it's used
+
 ``initramfs/usage.md`` - What an initramfs is and why it should be used
+
+---
+
+### ``Input``
+``input/ps2.md`` - PS2 input devices on x86 UEFI Novusk
 
 ---
 
