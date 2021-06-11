@@ -13,6 +13,7 @@ edition = "2018"
 # Dependencies
 libnu = "0.1.2"
 log = { version = "0.4.14", default-features = false }
+pc-keyboard = "0.5.1"
 register = { version = "1.0.2", optional = true }
 rlibc = "1.0.0"
 uefi = "0.8.1"
@@ -23,7 +24,6 @@ cpu = { path = "../../drivers/cpu/" }
 i686 = { path = "../../drivers/i686/" }
 gop = { path = "../../gpu/gop/" }
 uefi_kd = { path = "../../drivers/uefi_kd" }
-ps2_keyboard = { path = "../../drivers/firmware/input/ps2_keyboard/" }
 # Include
 ctypes = { path = "../../include/ctypes/" }
 time = { path = "../../include/time/" }
@@ -48,11 +48,20 @@ features = ["novusk_uefi"]
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 ex1 = { path = "../../kernel/modules/ex1/" }
 raw-cpuid = "9.0.0"
-x86_64_thread = { path = "../../drivers/x86_64_thread/" }
+x86_64 = "0.13.6"
 
 [dependencies.android]
 path = "../../drivers/android/"
 features = ["box"]
+
+[dependencies.crossbeam-queue]
+version = "0.2.1"
+default-features = false
+features = ["alloc"]
+
+[dependencies.conquer-once]
+version = "0.2.0"
+default-features = false
 
 [features]
 default = []

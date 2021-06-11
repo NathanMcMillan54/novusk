@@ -5,7 +5,7 @@ pub static mut MOUSE_NAME: &'static str = "Unknown";
 
 #[cfg(target_arch = "x86_64")]
 unsafe fn x64_input_init() {
-    ps2_keyboard::init::ps2_keyboard_init();
+    //ps2_keyboard::init::ps2_keyboard_init();
     KEYBOARD_NAME = "ps2";
 
     x64_ps2_mouse::init::init_mouse();
@@ -13,6 +13,6 @@ unsafe fn x64_input_init() {
 }
 
 pub unsafe fn input_init() {
-    #[cfg(target_arch = "x86_64")]
-    x64_input_init();
+    //#[cfg(target_arch = "x86_64")]
+    //x64_input_init();
 }
