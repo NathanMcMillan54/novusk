@@ -14,7 +14,6 @@ edition = "2018"
 libnu = "0.1.2"
 log = { version = "0.4.14", default-features = false }
 pc-keyboard = "0.5.1"
-ps2-mouse = { git = "https://github.com/NathanMcMillan54/ps2-mouse" }
 register = { version = "1.0.2", optional = true }
 rlibc = "1.0.0"
 spinning_top = "0.2.4"
@@ -51,6 +50,7 @@ features = ["novusk_uefi"]
 ex1 = { path = "../../kernel/modules/ex1/" }
 raw-cpuid = "9.0.0"
 x86_64 = "0.13.6"
+ps2-mouse = { git = "https://github.com/NathanMcMillan54/ps2-mouse" }
 
 [dependencies.android]
 path = "../../drivers/android/"
