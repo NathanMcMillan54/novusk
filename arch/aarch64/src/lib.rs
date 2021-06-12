@@ -18,4 +18,4 @@ pub use kerror::kerror;
 pub mod boot;
 pub mod drivers;
 pub mod kernel;
-
+pub use kernel::syscalls::*;

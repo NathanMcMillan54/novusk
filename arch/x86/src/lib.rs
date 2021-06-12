@@ -26,7 +26,7 @@ extern crate i686;
 
 use ctypes::c_char;
 
-pub(crate) mod boot;
+pub mod boot;
 pub mod drivers;
 pub mod include;
 pub mod kernel;

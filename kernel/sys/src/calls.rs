@@ -19,3 +19,8 @@ pub unsafe extern "C" fn shutdown() -> ! {
     let mut power = UefiPower;
     power.shutdown()
 }
+
+#[no_mangle]
+pub unsafe extern "C" fn write(bytes: &[u8]) {
+    printk!("{}", from_utf8_unchecked(bytes));
+}
