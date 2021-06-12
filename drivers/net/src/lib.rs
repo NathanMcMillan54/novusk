@@ -20,6 +20,8 @@ pub unsafe extern "C" fn net_init() {
 
     if NET == "ESP-WROOM-32" {
         esp32net::esp_wroom_32_init();
+    } else {
+        kerror!("{} is an unknown driver", NET);
     }
 }
 

@@ -1,6 +1,7 @@
 use crate::color::switch_color;
 use libnu::types::ApplicationType;
 use uefi::proto::console::text::Color;
+use net::{net_init, net_name};
 
 pub unsafe fn android_init() -> ! {
     printk!("Starting Android kernel...");
@@ -11,7 +12,13 @@ pub unsafe fn android_init() -> ! {
     switch_color(Color::LightGreen, Color::Black);
     kinfo!("File system initialized");
 
+    net_init();
+    kinfo!("Network drivers initialized");
+    printk!("   Using {} driver", net_name());
+
+    #[cfg(target_arch = "x86_64")]
     allocmm::allocmm_init();
+
     initramfs::init_ramfs();
     kinfo!("Memory initialized");
     printk!("   Alloc MM initialized");

@@ -8,3 +8,6 @@ pub mod kernel;
 
 #[cfg(feature = "box")]
 pub mod android_box;
+
+#[cfg(feature = "mobile")]
+pub mod android_mobile;
