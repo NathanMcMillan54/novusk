@@ -10,6 +10,7 @@ extern crate userspace;
 #[macro_use] extern crate lazy_static;
 
 pub extern crate novusk;
+pub extern crate ctypes;
 pub extern crate arm_lib;
 pub use printk::printk;
 pub use kerror::kerror;

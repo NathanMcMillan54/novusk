@@ -16,6 +16,8 @@ pub extern crate novusk;
 #[macro_use] pub extern crate kerror;
 #[macro_use] pub extern crate kinfo;
 #[macro_use] pub extern crate printk;
+pub use printk::printk;
+pub use kerror::kerror;
 
 extern crate userspace;
 

@@ -21,6 +21,7 @@ cpu = { path = "../../drivers/cpu/" }
 led = { path = "../../drivers/firmware/led/" }
 uefi_kd = { path = "../../drivers/uefi_kd/" }
 # Include
+ctypes = { path = "../../include/ctypes/" }
 novusk = { path = "../../include/novusk/" }
 # Kernel
 kerror = { path = "../../kernel/kerror/" }
