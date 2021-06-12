@@ -9,7 +9,7 @@
 #[macro_use] extern crate uefi_services;
 
 // Include
-extern crate ctypes;
+pub extern crate ctypes;
 pub extern crate novusk;
 
 // Kernel

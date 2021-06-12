@@ -10,7 +10,9 @@ extern crate userspace;
 #[macro_use] extern crate lazy_static;
 
 pub extern crate novusk;
-extern crate arm_lib;
+pub extern crate arm_lib;
+pub use printk::printk;
+pub use kerror::kerror;
 
 pub mod boot;
 pub mod drivers;
