@@ -8,7 +8,7 @@ edition = "2018"
 libnu = "0.1.2"
 uefi = "0.8.1"
 
-[dependencies.aarch64]
+[dependencies.x86]
 git = "https://github.com/NathanMcMillan54/novusk/"
-path = "../../arch/aarch64/"
+path = "arch/x86/"
 features = ["default_machine"]
