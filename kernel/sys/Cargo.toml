@@ -6,4 +6,5 @@ edition = "2018"
 
 [dependencies]
 libefi = { path = "../../lib/libefi/" }
+printk = { path = "../printk/" }
 uefi = "0.8.1"

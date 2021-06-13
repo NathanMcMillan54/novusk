@@ -3,8 +3,7 @@
 
 mod required;
 
-#[cfg(target_arch = "x86_64")]
-#[macro_use] extern crate x86_novusk;
+#[macro_use] extern crate aarch64_novusk;
 
 #[macro_use]
 extern crate libnu;

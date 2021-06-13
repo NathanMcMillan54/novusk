@@ -8,7 +8,7 @@ edition = "2018"
 libnu = "0.1.2"
 uefi = "0.8.1"
 
-[target.'cfg(target_arch = "x86_64")']
-[dependencies.x86]
-path = "../../arch/x86/"
+[dependencies.aarch64]
+git = "https://github.com/NathanMcMillan54/novusk/"
+path = "../../arch/aarch64/"
 features = ["default_machine"]

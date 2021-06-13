@@ -1,4 +1,6 @@
+use core::str::from_utf8_unchecked;
 use libefi::{st, power::UefiPower};
+use printk::printk;
 use uefi::proto::console::text::Input;
 
 #[no_mangle]
