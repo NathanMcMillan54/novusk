@@ -1,8 +1,0 @@
-[package]
-name = "led"
-version = "0.1.0"
-authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
-description = "Driver for turning on/off on-board leds and lights"
-
-[dependencies]

@@ -1,5 +1,4 @@
-*.efi
-*.fat
-*.img
-
 .idea/
+target/
+
+Cargo.lock

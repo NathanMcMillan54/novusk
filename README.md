@@ -15,3 +15,4 @@ development
 
 Read [``Documentation/``](https://github.com/NathanMcMillan54/novusk/tree/v1.2/Documentation) for Novusk 
 [v1.2](https://github.com/NathanMcMillan54/novusk/releases/tag/v1.2) setup
+ 

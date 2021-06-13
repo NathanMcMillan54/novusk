@@ -1,6 +1,0 @@
-[package]
-name = "time"
-version = "0.1.0"
-authors = ["Nathan McMillan <nathanmcmilan54@gmail.com>"]
-edition = "2018"
-

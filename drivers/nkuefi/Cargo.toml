@@ -1,0 +1,9 @@
+[package]
+name = "nkuefi"
+version = "0.1.0"
+edition = "2018"
+description = "UEFI boot and setup for Aarch64 and x86"
+
+[dependencies]
+uefi = "0.8.1"
+uefi-services = "0.5.1"

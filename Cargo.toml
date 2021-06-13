@@ -1,0 +1,30 @@
+[package]
+name = "novusk"
+version = "2.1.3"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+
+[workspace]
+members = [
+    # Architectures
+    "arch/x86/",
+    # Drivers
+    "drivers/nkuefi/",
+]
+
+[dependencies]
+register = { version = "1.0.2", optional = true }
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+bootloader = "0.9.12"
+x86 = { path = "arch/x86/" }
+nkuefi = { path = "drivers/nkuefi/" }
+
+[features]
+default = ["default_machine", "uefi_boot"]
+# Devices
+default_machine = ["register"]
+# Boot methods
+bios_boot = ["register"]
+no_boot = ["register"]
+uefi_boot = ["register"]

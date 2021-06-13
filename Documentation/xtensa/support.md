@@ -1,3 +1,0 @@
-# Support
-
-- esp32

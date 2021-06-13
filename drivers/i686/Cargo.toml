@@ -1,8 +1,0 @@
-[package]
-name = "i686"
-version = "0.1.0"
-authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
-description = "i686 driver"
-
-[dependencies]
