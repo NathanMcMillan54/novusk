@@ -1,9 +1,10 @@
 use core::fmt::Write;
+use crate::kernel;
 use uefi::{Handle, ResultExt};
 use uefi::table::{Boot, SystemTable};
 
 #[no_mangle]
-pub extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
+pub unsafe extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
     uefi_services::init(&system_table);
 
     system_table.stdout().reset(false)
@@ -11,5 +12,5 @@ pub extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! 
 
     writeln!(system_table.stdout(), "{}", "Starting kernel...");
 
-    loop {  }
+    kernel::start_novusk();
 }

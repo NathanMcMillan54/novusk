@@ -7,12 +7,31 @@ edition = "2018"
 [workspace]
 members = [
     # Architectures
+    "arch/aarch64/",
     "arch/x86/",
     # Drivers
     "drivers/nkuefi/",
+    # Kernel
+    "kernel/",
 ]
+
+[dependencies]
+register = { version = "1.0.2", optional = true }
+kernel = { path = "kernel/" }
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+aarch64 = { path = "arch/aarch64/" }
+nkuefi = { path = "drivers/nkuefi/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.12"
 nkuefi = { path = "drivers/nkuefi/" }
 x86 = { path = "arch/x86/" }
+
+[features]
+default = ["default_machine", "uefi_boot"]
+# Devices
+default_machine = ["register"]
+# Boot methods
+bios_boot = ["register"]
+uefi_boot = ["register"]
