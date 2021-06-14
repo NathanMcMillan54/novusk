@@ -1,4 +1,5 @@
 use core::fmt::Arguments;
+use crate::vga_write;
 
 extern "C" {
     fn boot_method() -> &'static str;
@@ -8,7 +9,7 @@ extern "C" {
 #[no_mangle]
 pub unsafe extern "C" fn x86_printk(args: Arguments) {
     if boot_method() == "BIOS" {
-        // Print from VGA
+        vga_write!("{}", args);
     } else if boot_method() == "UEFI" {
         efi_write!("{}", args);
     }

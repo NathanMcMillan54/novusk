@@ -4,4 +4,5 @@
 #[macro_use] extern crate libefi;
 
 pub mod boot;
+pub mod drivers;
 pub mod kernel;
