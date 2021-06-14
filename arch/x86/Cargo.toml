@@ -5,3 +5,4 @@ edition = "2018"
 description = "x86 family support for Novusk"
 
 [dependencies]
+libefi = { path = "../../lib/libefi/" }

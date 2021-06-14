@@ -5,5 +5,5 @@ extern "C" {
 }
 
 pub unsafe fn _printk(fmt: Arguments) {
-    arch_printk(format_args!("{}{}", fmt, "\n"));
+    arch_printk(format_args!("{}", fmt));
 }

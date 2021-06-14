@@ -5,3 +5,4 @@ edition = "2018"
 description = "Aarch64 support for Novusk"
 
 [dependencies]
+libefi = { path = "../../lib/libefi/" }

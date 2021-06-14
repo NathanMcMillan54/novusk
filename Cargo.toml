@@ -13,6 +13,8 @@ members = [
     "drivers/nkuefi/",
     # Kernel
     "kernel/",
+    # Libraries
+    "lib/libefi/",
 ]
 
 [dependencies]
@@ -34,4 +36,5 @@ default = ["default_machine", "uefi_boot"]
 default_machine = ["register"]
 # Boot methods
 bios_boot = ["register"]
+no_boot = ["register"]
 uefi_boot = ["register"]
