@@ -1,15 +1,15 @@
 use core::fmt::Write;
-use crate::kernel;
 use uefi::{Handle, ResultExt};
 use uefi::table::{Boot, SystemTable};
 
 #[no_mangle]
-pub unsafe extern "C" fn efi_main(image: Handle, st: SystemTable<Boot>) -> ! {
-    uefi_services::init(&st);
+pub extern "C" fn efi_main(image: Handle, system_table: SystemTable<Boot>) -> ! {
+    uefi_services::init(&system_table);
 
-    st.stdout().reset(false).expect_success("Couldn't reset display");
+    system_table.stdout().reset(false)
+        .expect_success("Couldn't reset display");
 
-    writeln!(st.stdout(), "Starting kernel...");
+    writeln!(system_table.stdout(), "{}", "Starting kernel...");
 
-    kernel::start_novusk()
+    loop {  }
 }

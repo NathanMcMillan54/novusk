@@ -2,6 +2,6 @@
 name = "x86"
 version = "0.1.0"
 edition = "2018"
-description = "x86 support for Novusk"
+description = "x86 family support for Novusk"
 
 [dependencies]

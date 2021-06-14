@@ -1,7 +1,0 @@
-[package]
-name = "aarch64"
-version = "0.1.0"
-edition = "2018"
-description = "Aarch64 support for Novusk"
-
-[dependencies]

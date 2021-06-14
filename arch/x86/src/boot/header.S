@@ -1,8 +1,9 @@
 .code32
 
-.globl _start
 .extern main
+.globl _start
 
 _start:
+    cli
     call main
     hlt

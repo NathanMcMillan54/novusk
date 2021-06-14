@@ -4,4 +4,3 @@
 extern crate uefi_services;
 
 pub mod boot;
-pub mod kernel;
