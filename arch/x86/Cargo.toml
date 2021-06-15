@@ -5,8 +5,10 @@ edition = "2018"
 description = "x86 family support for Novusk"
 
 [dependencies]
+libcolor = { path = "../../lib/libcolor/", features = ["uefi_colors", "vga_colors"] }
 libefi = { path = "../../lib/libefi/" }
 spin = "0.5.2"
+vga = { path = "../../gpu/vga/" }
 volatile = "0.2.6"
 
 [dependencies.lazy_static]
