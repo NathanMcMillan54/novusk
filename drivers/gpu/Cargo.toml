@@ -1,0 +1,10 @@
+[package]
+name = "gpu"
+version = "0.1.0"
+edition = "2018"
+description = "GPU initialization"
+
+[dependencies]
+gop = { path = "../../gpu/gop/" }
+kernel = { path = "../../kernel/" }
+vga = { path = "../../gpu/vga/" }

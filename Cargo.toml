@@ -10,10 +10,13 @@ members = [
     "arch/aarch64/",
     "arch/x86/",
     # Drivers
+    "drivers/gpu/",
     "drivers/nkuefi/",
     # GPUs
+    "gpu/gop/",
     "gpu/vga/",
     # Kernel
+    "init/",
     "kernel/",
     # Libraries
     "lib/libcolor/",
