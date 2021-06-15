@@ -1,20 +1,19 @@
-ARCH =?
-TARGET_ARCH =?
-DEVICE =?
+ARCH = x86_64
+ARCH_FAM = x86
+BOOT_METHOD = uefi
+BOOT_TARGET = $(BOOT_METHOD)_boot
+BUILD_TARGET = targets/$(ARCH)-novusk-$(BOOT_METHOD).json
+DEVICE = default_machine
 
-all: clean novusk link
-
-novusk:
-	@ echo "Compiling kernel..."
-	@ $(MAKE) -C arch/$(ARCH)/ all ARCH=$(ARCH) TARGET_ARCH=$(TARGET_ARCH) BOARD=$(DEVICE)
-
-link:
-	@ $(MAKE) -C arch/$(ARCH)/ image
-
-install:
-	@ $(MAKE) -C tools/ install
+all:
+	@ cargo build --features $(DEVICE),$(BOOT_TARGET) --target $(BUILD_TARGET)
+	@ sh tools/image.sh $(ARCH) $(ARCH_FAM) $(BOOT_METHOD)
+	@ echo "Created Novusk image:"
+	@ echo "/Novusk"
 
 clean:
-	@ $(MAKE) -C arch/x86/ clean
-	@ $(MAKE) -C arch/aarch64/ clean
-	@ $(MAKE) -C tools/ clean
+	@ rm -rf Novusk
+	@ cargo clean
+
+docs:
+	@ cargo doc

@@ -1,8 +1,7 @@
 .idea/
 target/
 
+*.bin
+*.efi
 Cargo.lock
-
-# Added by cargo
-
-/target
+Novusk
