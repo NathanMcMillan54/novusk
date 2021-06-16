@@ -18,6 +18,8 @@ members = [
     # Kernel
     "init/",
     "kernel/",
+    "kernel/macros/",
+    "kernel/printk/",
     # Libraries
     "lib/libcolor/",
     "lib/libefi/",

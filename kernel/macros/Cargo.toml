@@ -1,0 +1,8 @@
+[package]
+name = "macros"
+version = "0.1.0"
+edition = "2018"
+description = "Macros for Novusk"
+
+[dependencies]
+printk = { path = "../printk/" }

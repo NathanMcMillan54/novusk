@@ -8,6 +8,7 @@ description = "x86 family support for Novusk"
 init = { path = "../../init/" }
 libcolor = { path = "../../lib/libcolor/", features = ["uefi_colors", "vga_colors"] }
 libefi = { path = "../../lib/libefi/" }
+macros = { path = "../../kernel/macros/" }
 spin = "0.5.2"
 vga = { path = "../../gpu/vga/" }
 volatile = "0.2.6"

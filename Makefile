@@ -7,7 +7,7 @@ DEVICE = default_machine
 
 all:
 	@ cargo build --features $(DEVICE),$(BOOT_TARGET) --target $(BUILD_TARGET)
-	@ sh tools/image.sh $(ARCH) $(ARCH_FAM) $(BOOT_METHOD)
+	@ sh tools/image.sh $(ARCH) $(ARCH_FAM) $(BOOT_METHOD) $(DEVICE)
 	@ echo "Created Novusk image:"
 	@ echo "/Novusk"
 
