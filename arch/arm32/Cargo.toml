@@ -1,0 +1,7 @@
+[package]
+name = "arm32"
+version = "0.1.0"
+edition = "2018"
+description = "ARM32 and some ARM64 (Aarch64) support for Novsuk"
+
+[dependencies]

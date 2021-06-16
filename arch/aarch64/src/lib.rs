@@ -3,4 +3,5 @@
 
 #[macro_use] extern crate libefi;
 
+pub mod include;
 pub mod kernel;

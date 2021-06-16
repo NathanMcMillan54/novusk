@@ -1,9 +1,6 @@
 use core::fmt::Arguments;
 use crate::vga_write;
-
-extern "C" {
-    pub(crate) fn boot_method() -> &'static str;
-}
+use crate::boot::boot::boot_method;
 
 #[export_name = "arch_printk"]
 #[no_mangle]
