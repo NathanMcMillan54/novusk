@@ -1,0 +1,1 @@
+pub extern crate arm32;
