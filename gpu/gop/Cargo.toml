@@ -5,6 +5,6 @@ edition = "2018"
 description = "Graphics Output Protocall, GPU driver for UEFI kernel"
 
 [dependencies]
-kernel = { path = "../../kernel/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
+macros = { path = "../../kernel/macros/" }
 uefi = "0.8.1"

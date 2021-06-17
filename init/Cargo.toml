@@ -6,4 +6,4 @@ description = "Novusk initialization"
 
 [dependencies]
 gpu = { path = "../drivers/gpu/" }
-kernel = { path = "../kernel/" }
+macros = { path = "../kernel/macros/" }

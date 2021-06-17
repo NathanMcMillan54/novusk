@@ -5,6 +5,6 @@ edition = "2018"
 description = "UEFI boot and setup for Novusk Aarch64 and x86"
 
 [dependencies]
-kernel = { path = "../../kernel/" }
+macros = { path = "../../kernel/macros/" }
 uefi = "0.8.1"
 uefi-services = { version = "0.5.1", features = ["no_panic_handler"] }

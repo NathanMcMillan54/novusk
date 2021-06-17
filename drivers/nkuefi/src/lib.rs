@@ -1,5 +1,6 @@
 #![no_std]
 
+#[macro_use] extern crate macros;
 #[macro_use] extern crate uefi;
 extern crate uefi_services;
 
