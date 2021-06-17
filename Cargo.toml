@@ -20,6 +20,7 @@ members = [
     "init/",
     "kernel/",
     "kernel/macros/",
+    "kernel/panic/",
     "kernel/printk/",
     # Libraries
     "lib/libcolor/",
@@ -28,7 +29,9 @@ members = [
 
 [dependencies]
 register = { version = "1.0.2", optional = true }
+
 kernel = { path = "kernel/" }
+panic = { path = "kernel/panic/" }
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 aarch64 = { path = "arch/aarch64/" }

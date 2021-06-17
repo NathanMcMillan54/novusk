@@ -1,4 +1,4 @@
-global_asm!(include_str!("setup.S"));
+global_asm!(include_str!("x86.S"));
 
 extern "C" {
     pub(crate) fn clear();

@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
+pub extern crate panic;
+
 pub mod info;
 
 #[cfg(target_arch = "aarch64")]

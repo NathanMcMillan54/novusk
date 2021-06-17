@@ -2,11 +2,7 @@
 name = "arm32"
 version = "0.1.0"
 edition = "2018"
+description = "arm32 and some Aarch64 support"
 
 [dependencies]
 cortex-m-rt = "0.6.10"
-register = { version = "1.0.2", optional = true }
-
-[features]
-default = []
-aarch64k = ["register"]
