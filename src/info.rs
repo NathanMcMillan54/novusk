@@ -14,4 +14,7 @@ pub extern "C" fn boot_method() -> &'static str {
 pub extern "C" fn device_name() -> &'static str {
     #[cfg(feature = "default_machine")]
     return "Default";
+
+    #[cfg(feature = "stm32f4")]
+    return "STM32F4"
 }

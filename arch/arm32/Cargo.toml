@@ -6,3 +6,4 @@ description = "arm32 and some Aarch64 support"
 
 [dependencies]
 cortex-m-rt = "0.6.10"
+stm32f4xx-hal = {version = "0.8.3", optional = true}
