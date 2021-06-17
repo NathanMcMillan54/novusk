@@ -1,3 +1,5 @@
+use net::info::set_net;
+
 pub unsafe fn stm32f4xx_init() {
-    // Setup stuff
+    set_net("stm32-eth");
 }

@@ -1,0 +1,8 @@
+[package]
+name = "stm32-net"
+version = "0.1.0"
+edition = "2018"
+description = "Network drivers for STM32f4 and STM32f7"
+
+[dependencies]
+# stm32-eth = { version = "0.2.0", features = ["stm32f429"] }

@@ -7,3 +7,4 @@ rustflags = [
     "-C", "link-arg=--nmagic",
     "-C", "link-arg=-Tarch/arm32/memory.x",
 ]
+runner = "probe-run --chip stm32f401 --connect-under-reset"

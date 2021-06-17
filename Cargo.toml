@@ -24,6 +24,8 @@ members = [
     # Libraries
     "lib/libcolor/",
     "lib/libefi/",
+    # Network drivers
+    "net/stm32-net/",
 ]
 
 [dependencies]

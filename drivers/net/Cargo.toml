@@ -1,0 +1,8 @@
+[package]
+name = "net"
+version = "0.1.0"
+edition = "2018"
+description = "Netwrok driver initialization"
+
+[dependencies]
+stm32-net = { path = "../../net/stm32-net/" }
