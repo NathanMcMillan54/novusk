@@ -1,8 +1,0 @@
-[package]
-name = "libefi"
-version = "0.1.0"
-edition = "2018"
-description = "Library for functions and macros that use nkuefi"
-
-[dependencies]
-nkuefi = { path = "../../drivers/nkuefi/" }

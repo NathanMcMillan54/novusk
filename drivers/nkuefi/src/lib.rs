@@ -1,10 +1,6 @@
 #![no_std]
 
-#[macro_use] extern crate macros;
-#[macro_use] extern crate uefi;
-extern crate uefi_services;
-
 pub mod boot;
 pub mod kernel;
-pub mod st;
 
+pub use uefi_services::system_table;

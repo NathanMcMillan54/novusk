@@ -7,38 +7,14 @@ edition = "2018"
 [workspace]
 members = [
     # Architectures
-    "arch/aarch64/",
-    "arch/arm32/",
     "arch/x86/",
     # Drivers
-    "drivers/gpu/",
     "drivers/nkuefi/",
-    # GPUs
-    "gpu/gop/",
-    "gpu/vga/",
-    # Kernel
-    "init/",
-    "kernel/macros/",
-    "kernel/panic/",
-    "kernel/printk/",
     # Libraries
-    "lib/libcolor/",
-    "lib/libefi/",
-    # Network drivers
-    "net/stm32-net/",
 ]
 
 [dependencies]
 register = { version = "1.0.2", optional = true }
-
-panic = { path = "kernel/panic/" }
-
-[target.'cfg(target_arch = "aarch64")'.dependencies]
-aarch64 = { path = "arch/aarch64/" }
-nkuefi = { path = "drivers/nkuefi/" }
-
-[target.'cfg(target_arch = "arm")'.dependencies]
-arm32 = { path = "arch/arm32/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.12"
@@ -49,7 +25,6 @@ x86 = { path = "arch/x86/" }
 default = ["default_machine", "uefi_boot"]
 # Devices
 default_machine = ["register"]
-stm32f4 = ["register"]
 # Boot methods
 bios_boot = ["register"]
 no_boot = ["register"]

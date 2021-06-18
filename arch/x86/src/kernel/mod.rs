@@ -1,2 +1,1 @@
-pub mod init;
-pub mod printk;
+pub mod main;
