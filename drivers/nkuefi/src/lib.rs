@@ -1,6 +1,6 @@
 #![no_std]
 
-pub mod boot;
-pub mod kernel;
+#[macro_use] extern crate uefi;
+extern crate uefi_services;
 
-pub use uefi_services::system_table;
+pub mod boot;

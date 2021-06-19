@@ -1,7 +1,5 @@
 .idea/
 target/
 
-*.bin
-*.efi
 Cargo.lock
 Novusk

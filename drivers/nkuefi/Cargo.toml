@@ -6,4 +6,4 @@ description = "UEFI boot and setup"
 
 [dependencies]
 uefi = "0.8.1"
-uefi-services = "0.5.1"
+uefi-services = { version = "0.5.1", features = ["no_panic_handler"] }

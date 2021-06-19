@@ -1,5 +1,4 @@
 use core::fmt::Write;
-use super::kernel;
 use uefi::{Handle, ResultExt};
 use uefi::table::{Boot, SystemTable};
 
@@ -11,5 +10,5 @@ pub unsafe extern "C" fn efi_main(img: Handle, st: SystemTable<Boot>) -> ! {
 
     writeln!(st.stdout(), "{}", "Starting kernel...");
 
-    kernel::start_novusk()
+    loop { }
 }
