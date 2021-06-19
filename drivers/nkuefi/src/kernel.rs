@@ -5,12 +5,13 @@ extern "C" {
     fn x86_main() -> !;
 }
 
-pub unsafe fn start_novusk() -> ! {
+pub(crate) unsafe fn start_novusk() -> ! {
+    _efi_println(format_args!("{}", "test"));
+
     #[cfg(target_arch = "x86_64")]
     x86_main();
 }
 
-#[link_name = "efi_print"]
 #[no_mangle]
 pub unsafe extern "C" fn _efi_println(fmt: Arguments) {
     let stdout = system_table().as_ref().stdout();
