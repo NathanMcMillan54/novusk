@@ -7,6 +7,7 @@ use core::panic::PanicInfo;
 
 pub mod boot;
 pub mod drivers;
+pub mod kernel;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {

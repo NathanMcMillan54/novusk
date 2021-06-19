@@ -18,3 +18,8 @@ members = [
 bootloader = "0.9.12"
 register = { version = "1.0.2", optional = true }
 x86 = { path = "arch/x86/" }
+
+[features]
+default = []
+bios_boot = ["register"]
+uefi_boot = ["register"]
