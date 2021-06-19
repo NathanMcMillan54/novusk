@@ -1,6 +1,7 @@
 #![no_std]
 #![feature(asm, global_asm)]
 
+#[macro_use] extern crate kinfo;
 extern crate nkuefi;
 
 use core::panic::PanicInfo;

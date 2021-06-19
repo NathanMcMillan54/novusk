@@ -10,6 +10,9 @@ members = [
     "arch/x86/",
     # Drivers
     "drivers/nkuefi/",
+    # Kernel
+    "kernel/kinfo/",
+    "kernel/printk/",
     # Libraries
     "lib/libcolor/",
 ]

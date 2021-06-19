@@ -100,7 +100,7 @@ impl fmt::Write for Vga80x25 {
 pub unsafe fn _print(args: fmt::Arguments) {
     let mut writer = Vga80x25 {
         column_position: 0,
-        color_code: ColorCode::new(Color::White, Color::Black),
+        color_code: ColorCode::new(Color::LightGray, Color::Black),
         buffer: &mut *(VGA_ADDRESS as *mut Buffer)
     };
 

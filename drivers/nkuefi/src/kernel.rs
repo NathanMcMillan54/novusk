@@ -1,13 +1,11 @@
 use core::fmt::{Arguments, Write};
-use uefi_services::system_table;
+pub use uefi_services::system_table;
 
 extern "C" {
     fn x86_main() -> !;
 }
 
 pub(crate) unsafe fn start_novusk() -> ! {
-    _efi_println(format_args!("{}", "test"));
-
     #[cfg(target_arch = "x86_64")]
     x86_main();
 }

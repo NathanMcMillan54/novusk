@@ -5,6 +5,7 @@ edition = "2018"
 description = "x86 family support for Novusk"
 
 [dependencies]
+kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 volatile = "0.2.6"

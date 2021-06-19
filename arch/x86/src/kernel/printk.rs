@@ -3,6 +3,7 @@ use nkuefi::kernel::_efi_println;
 use crate::boot::boot::BOOT;
 use crate::drivers::vga::_vga_print;
 
+#[export_name = "arch_printk"]
 #[no_mangle]
 pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
     if BOOT == "BIOS" {
