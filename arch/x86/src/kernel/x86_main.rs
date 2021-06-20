@@ -4,7 +4,6 @@ use crate::boot::boot::{boot_init, BOOT};
 
 #[no_mangle]
 pub unsafe extern "C" fn x86_main() -> ! {
-    boot_init();
     x86_printk!("");
 
     kinfo!("Boot initialized");

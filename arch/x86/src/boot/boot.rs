@@ -4,9 +4,7 @@ use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
 use crate::include::asm::hlt;
 use crate::kernel::kernel::*;
 
-extern "C" {
-    pub fn boot_method() -> &'static str;
-}
+extern "C" { pub fn boot_method() -> &'static str; }
 
 pub static mut BOOT: &'static str = "";
 
@@ -14,7 +12,8 @@ pub unsafe fn die() -> ! {
     loop { hlt(); }
 }
 
-pub unsafe fn boot_init() {
+#[no_mangle]
+pub unsafe extern "C" fn boot_init() {
     BOOT = boot_method();
     if BOOT == "BIOS" {
         bios_setup();
