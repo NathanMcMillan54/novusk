@@ -7,4 +7,3 @@ description = "GPU setup and initialization"
 [dependencies]
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
-vga = { path = "../../gpu/vga/" }
