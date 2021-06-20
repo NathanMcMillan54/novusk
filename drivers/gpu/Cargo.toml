@@ -1,0 +1,10 @@
+[package]
+name = "gpu"
+version = "0.1.0"
+edition = "2018"
+description = "GPU setup and initialization"
+
+[dependencies]
+kinfo = { path = "../../kernel/kinfo/" }
+printk = { path = "../../kernel/printk/" }
+vga = { path = "../../gpu/vga/" }

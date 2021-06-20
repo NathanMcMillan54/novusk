@@ -8,6 +8,7 @@ pub mod info;
 
 pub unsafe fn _kinfo(msg: Arguments) {
     printk!("INFO [ {} ] {}", info::KINFO, msg);
+    info::set_info("ok");
 }
 
 #[macro_export]
