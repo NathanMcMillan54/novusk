@@ -1,3 +1,4 @@
+use super::cpu::id::{get_cpuid, BRAND};
 use super::kernel::*;
 use super::x86_init::x86_init;
 use nkuefi::kernel::system_table;
@@ -28,6 +29,10 @@ pub unsafe extern "C" fn x86_main() -> ! {
         x86_printk!("there's no way!");
         die();
     }
+
+    get_cpuid();
+    kinfo!("Got CPU id");
+    x86_printk!("   CPU brand: {}", BRAND);
 
     x86_init();
     hlt();
