@@ -1,5 +1,5 @@
 use core::fmt::Arguments;
-use nkuefi::kernel::_efi_println;
+use nkuefi::x86::write::_efi_write;
 use crate::boot::boot::BOOT;
 use crate::drivers::vga::_vga_print;
 
@@ -9,7 +9,7 @@ pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
     if BOOT == "BIOS" {
         _vga_print(format_args!("{}{}", fmt, "\n"));
     } else if BOOT == "UEFI" {
-        _efi_println(fmt);
+        _efi_write(fmt);
     } else {
         // \_('_')_/ idk
     }

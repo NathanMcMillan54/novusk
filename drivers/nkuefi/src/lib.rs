@@ -1,8 +1,6 @@
 #![no_std]
 
-#[macro_use] extern crate uefi;
-extern crate uefi_services;
+pub mod init;
 
-pub mod boot;
-pub mod kernel;
-pub mod proto;
+#[cfg(target_arch = "x86_64")]
+pub mod x86;
