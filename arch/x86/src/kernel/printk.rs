@@ -11,7 +11,7 @@ pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
     } else if BOOT == "UEFI" {
         _efi_write(fmt);
     } else {
-        // \_('_')_/ idk
+        // \_('_')_/ <( idk? )
     }
 }
 

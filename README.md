@@ -7,6 +7,15 @@ focused on x86/x86_64 drivers, libraries, kernel etc..., nothing else will worke
 
 Join the [Discord](https://discord.gg/ZKG99T2U) server for updates on the kernel and projects for the kernel.
 
+Also, this is Jarad:
+```commandline
+
+('_') <( Hi! )
+
+```
+
+Say 'hi' to Jarad
+
 ---
 
 #### Novusk v2 - v2.1.3:
