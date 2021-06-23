@@ -2,5 +2,5 @@
 
 ARCH=$1
 
-mv ../../target/$ARCH-novusk/debug/novusk boot/
+mv ../../Novusk boot/novusk
 grub-mkrescue -o boot/novusk.iso ../grub/

@@ -8,8 +8,12 @@ description = "x86 family support for Novusk"
 raw-cpuid = "9.0.0"
 
 [dependencies]
+register = { version = "1.x.x", optional = true }
 gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 volatile = "0.2.6"
+
+[features]
+grub = ["register"]
