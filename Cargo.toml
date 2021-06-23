@@ -19,10 +19,15 @@ members = [
     "lib/libcolor/",
 ]
 
-[dependencies]
+[target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.12"
-register = { version = "1.0.2", optional = true }
 x86 = { path = "arch/x86/" }
+
+[target.'cfg(target_arch = "x86")'.dependencies]
+x86 = { path = "arch/x86/" }
+
+[dependencies]
+register = { version = "1.0.2", optional = true }
 
 [features]
 default = []

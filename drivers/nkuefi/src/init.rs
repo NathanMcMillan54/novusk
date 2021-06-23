@@ -1,3 +1,4 @@
+#[cfg(target_arch = "x86_64")]
 unsafe fn x86_64_init() {
     use crate::x86::init;
     init();
