@@ -1,3 +1,4 @@
+use super::bootloaders::bootloader_init;
 use core::fmt::Arguments;
 use nkuefi::init::uefi_init;
 use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
@@ -24,6 +25,7 @@ pub unsafe extern "C" fn boot_init() {
 
 unsafe fn bios_setup() {
     vga_init(25, 80, 0xb8000);
+    bootloader_init();
 }
 
 unsafe fn uefi_setup() {
