@@ -6,6 +6,7 @@ description = "x86 family support for Novusk"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 raw-cpuid = "9.0.0"
+x86_64 = "0.13.6"
 
 [dependencies]
 register = { version = "1.x.x", optional = true }
@@ -14,6 +15,16 @@ kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 volatile = "0.2.6"
+
+
+[dependencies.crossbeam-queue]
+version = "0.2.1"
+default-features = false
+features = ["alloc"]
+
+[dependencies.conquer-once]
+version = "0.2.0"
+default-features = false
 
 [features]
 grub = ["register"]

@@ -8,18 +8,27 @@ unsafe fn unknown_cpu() {
     BRAND = BRAND;
 }
 
+unsafe fn its_amd() {
+    BRAND = "AMD";
+}
+
+unsafe fn its_intel() {
+    BRAND = "Intel";
+}
+
 pub unsafe fn get_cpuid() {
     let mut cpuid = CpuId::new();
 
+    BRAND = "test";
     match cpuid.get_vendor_info() {
         Some(vi) =>
             if vi.as_string() == "AuthenticAMD" {
-                BRAND == "AMD";
-                x86_printk!("Cpu: {}", vi.as_string());
+                its_amd();
             } else if vi.as_string() == "GenuineIntel" {
-                x86_printk!("cpu: {}", vi.as_string());
-                BRAND == "Intel";
+                its_intel();
             },
-        None => set_info("not ok")
+        None =>
+        // ('_') <(Oh no!)
+            unknown_cpu()
     }
 }

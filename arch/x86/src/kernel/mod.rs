@@ -1,3 +1,4 @@
+pub mod alloc;
 pub mod cpu;
 pub mod kernel;
 pub mod printk;

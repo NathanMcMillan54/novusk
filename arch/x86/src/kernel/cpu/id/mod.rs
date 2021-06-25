@@ -1,5 +1,5 @@
 #[cfg(target_arch = "x86_64")]
-pub mod x64;
+mod x64;
 
 pub static mut BRAND: &'static str = "Unknown";
 
