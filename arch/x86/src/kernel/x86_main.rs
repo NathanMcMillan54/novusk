@@ -1,6 +1,6 @@
 use super::cpu::id::{get_cpuid, BRAND};
 use super::kernel::*;
-use super::x86_init::x86_init;
+use super::x86_init::x86_kernel_init;
 use crate::boot::boot::{boot_init, die, BOOT};
 use crate::drivers::vga::{HEIGHT, WIDTH, VGA_ADDRESS_STR};
 use crate::include::asm::hlt;
@@ -32,6 +32,6 @@ pub unsafe extern "C" fn x86_main() -> ! {
     kinfo!("Got CPU id");
     x86_printk!("   CPU brand: {}", BRAND);
 
-    x86_init();
+    x86_kernel_init();
     hlt();
 }

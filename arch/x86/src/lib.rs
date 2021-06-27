@@ -1,5 +1,7 @@
 #![no_std]
-#![feature(alloc_error_handler, asm, global_asm)]
+#![feature(asm, global_asm)]
+// Lang
+#![feature(alloc_error_handler, panic_info_message)]
 
 extern crate alloc;
 #[macro_use] extern crate kinfo;
@@ -14,6 +16,10 @@ pub mod kernel;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
-    unsafe { x86_printk!("Kernel panic! Panic info:\n{:?}", _info); }
+    unsafe {
+        x86_printk!("\nKernel panicked:");
+        x86_printk!("   Message: {:?}", _info.message().unwrap());
+        x86_printk!("   Location: {:?}", _info.location().unwrap());
+    }
     loop {  }
 }

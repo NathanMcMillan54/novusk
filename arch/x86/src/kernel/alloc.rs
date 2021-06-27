@@ -20,7 +20,7 @@ unsafe impl GlobalAlloc for AllocHandler {
 
 #[alloc_error_handler]
 pub unsafe fn alloc_error(_layout: Layout) -> ! {
-    x86_printk!("Alloc error");
-    x86_printk!("Layout:\n{:?}", _layout);
+    x86_printk!("Alloc memory error:");
+    x86_printk!("   Memory layout:\n        {:?}", _layout);
     hlt();
 }
