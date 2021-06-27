@@ -14,5 +14,6 @@ pub mod kernel;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
+    unsafe { x86_printk!("Kernel panic! Panic info:\n{:?}", _info); }
     loop {  }
 }
