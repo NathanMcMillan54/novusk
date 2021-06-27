@@ -2,11 +2,8 @@
 mod x64;
 
 #[cfg(target_arch = "x86")]
-global_asm!(include_str!("x86_id.S"));
+mod x86;
 
-extern "C" {
-    fn get_x86_cpuid();
-}
 
 pub static mut BRAND: &'static str = "Unknown";
 
@@ -15,5 +12,5 @@ pub unsafe fn get_cpuid() {
     x64::get_cpuid();
 
     #[cfg(target_arch = "x86")]
-    get_x86_cpuid();
+    x86::get_cpuid();
 }

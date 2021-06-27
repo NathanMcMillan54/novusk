@@ -11,6 +11,7 @@ extern "C" { pub fn boot_method() -> &'static str; }
 pub static mut BOOT: &'static str = "";
 
 pub unsafe fn die() -> ! {
+    panic!("Kernel died");
     loop { hlt(); }
 }
 

@@ -9,4 +9,6 @@ pub unsafe extern "C" fn main() -> ! {
     x86_printk!("Starting kernel...");
 
     x86_main();
+
+    die()
 }
