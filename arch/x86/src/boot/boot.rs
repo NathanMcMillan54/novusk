@@ -1,6 +1,5 @@
 use super::bootloaders::bootloader_init;
 use core::fmt::Arguments;
-use nkuefi::init::uefi_init;
 use crate::drivers::ix86::init::ix86_init;
 use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
 use crate::include::asm::hlt;
@@ -35,5 +34,4 @@ unsafe fn bios_setup() {
 }
 
 unsafe fn uefi_setup() {
-    uefi_init();
 }

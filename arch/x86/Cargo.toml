@@ -28,3 +28,4 @@ default-features = false
 
 [features]
 grub = ["register"]
+uefi_boot = ["register"]

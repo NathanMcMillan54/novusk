@@ -1,6 +1,6 @@
 #![no_std]
 
-pub mod init;
+pub mod boot;
+pub mod kernel;
 
-#[cfg(target_arch = "x86_64")]
-pub mod x86;
+pub use uefi_services::system_table;
