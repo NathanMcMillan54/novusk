@@ -1,4 +1,4 @@
-use super::drivers::Drivers;
+use super::Drivers;
 use crate::kernel::cpu::BRAND;
 use crate::drivers::amd::amd_init;
 use crate::drivers::intel::intel_init;
@@ -17,5 +17,5 @@ impl Drivers for X64Drivers {
 
 pub unsafe fn x64_drivers_init() {
     let driver_trait = X64Drivers;
-    driver_trait.drivers_main();
+    driver_trait.drivers_init();
 }
