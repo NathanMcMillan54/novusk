@@ -25,7 +25,11 @@ pub unsafe extern "C" fn boot_init() {
 }
 
 unsafe fn bios_setup() {
-    vga_init(25, 80, 0xb8000);
+    #[cfg(not(feature = "vga_0xa"))]
+    vga_init(80, 25, 0xb8000);
+
+    #[cfg(feature = "vga_0xa")]
+    vga_init(320, 200, 0xa0000);
 
     #[cfg(target_arch = "x86")]
     ix86_init();

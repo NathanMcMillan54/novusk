@@ -30,7 +30,7 @@ members = [
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = "0.9.12"
+bootloader = { version = "0.9.12" }
 x86 = { path = "arch/x86/" }
 
 [target.'cfg(target_arch = "x86")'.dependencies]
@@ -45,3 +45,4 @@ bios_boot = ["register"]
 bootloader_boot = ["register"]
 grub_boot = ["register", "x86/grub"]
 uefi_boot = ["register", "x86/uefi_boot"]
+vga_buffer_320x200 = ["register", "bootloader/vga_320x200", "x86/vga_0xa"]

@@ -9,6 +9,8 @@ extern crate alloc;
 #[cfg(feature = "uefi_boot")]
 extern crate nkuefi;
 
+extern crate font8x8;
+
 use core::panic::PanicInfo;
 
 pub mod boot;
