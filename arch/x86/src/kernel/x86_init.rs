@@ -1,3 +1,4 @@
+use super::kernel::*;
 use super::modules::x86_modules_init;
 use crate::drivers::drivers::drivers_init;
 

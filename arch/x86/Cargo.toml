@@ -15,6 +15,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 volatile = "0.2.6"
+x86 = { git = "https://github.com/NathanMcMillan54/rust-x86" }
 
 
 [dependencies.crossbeam-queue]
