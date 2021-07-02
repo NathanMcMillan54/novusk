@@ -6,6 +6,7 @@ description = "x86 family support for Novusk"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 raw-cpuid = "9.0.0"
+x86_64-sound = { path = "../../sound/x86_64-sound/" }
 x86_64 = "0.13.6"
 
 [dependencies]

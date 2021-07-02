@@ -27,6 +27,8 @@ members = [
     "kernel/printk/",
     # Libraries
     "lib/libcolor/",
+    # Sound
+    "sound/x86_64-sound/",
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
