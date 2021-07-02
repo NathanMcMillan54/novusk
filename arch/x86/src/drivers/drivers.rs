@@ -5,10 +5,16 @@ pub(crate) trait Drivers {
 
     }
 
+    unsafe fn hardware_input_init(&self) {
+
+    }
+
     unsafe fn drivers_init(&self) {
         self.cpu_driver_init();
+        self.hardware_input_init();
         kinfo!("Drivers initialized");
         x86_printk!("    CPU drivers initialized");
+        x86_printk!("    Hardware input initialized (keyboard/mouse)");
     }
 }
 

@@ -15,6 +15,7 @@ gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
+pc-keyboard = "0.5.1"
 volatile = "0.2.6"
 x86 = { git = "https://github.com/NathanMcMillan54/rust-x86" }
 
