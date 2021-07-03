@@ -16,7 +16,8 @@ Also, this is Jarad:
 
 Say 'hi' to Jarad
 
-``examples/`` has examples of things you can do with Novusk
+[``examples/``](https://github.com/NathanMcMillan54/novusk/tree/examples/examples) has examples of things you can do 
+with Novusk
 
 ---
 

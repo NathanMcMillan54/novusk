@@ -6,7 +6,7 @@ use crate::drivers::vga::{HEIGHT, WIDTH, VGA_ADDRESS_STR};
 use crate::include::asm::hlt;
 
 #[no_mangle]
-pub unsafe extern "C" fn x86_main() {
+pub unsafe extern "C" fn start_x86() {
     x86_printk!("");
 
     kinfo!("Boot initialized");

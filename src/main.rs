@@ -8,3 +8,8 @@ pub use novusk::x86;
 
 #[cfg(target_arch = "x86")]
 pub use novusk::x86;
+
+#[no_mangle]
+pub extern "C" fn kernel_main() -> ! {
+    loop {  }
+}

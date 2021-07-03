@@ -6,11 +6,12 @@ use crossbeam_queue::ArrayQueue;
 use futures_util::StreamExt;
 use futures_util::stream::Stream;
 use futures_util::task::AtomicWaker;
-use super::tests::KEYBOARD_PASSED;
+use crate::drivers::ps2::tests::KEYBOARD_PASSED;
 use libcolor::vga_colors::Color;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts};
 use crate::drivers::vga::pixel::_pixel;
 use crate::x86_printk;
+use crate::drivers::ps2::keyboard::setup::keyboard_layout;
 
 pub static SCAN_CODE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 pub static WAKER: AtomicWaker = AtomicWaker::new();
@@ -30,7 +31,6 @@ impl Stream for KeyboardScancode {
     fn poll_next(self: Pin<&mut Self>, cx: &mut Context) -> Poll<Option<u8>> {
         let queue = SCAN_CODE.try_get().unwrap();
 
-        // fast path
         if let Ok(scancode) = queue.pop() {
             return Poll::Ready(Some(scancode));
         }
@@ -52,7 +52,7 @@ pub async unsafe fn ps2_keyboard_input() {
     }
 
     let mut scancodes = KeyboardScancode::new();
-    let mut keyboard = Keyboard::new(layouts::Uk105Key, ScancodeSet1, HandleControl::MapLettersToUnicode);
+    let mut keyboard = Keyboard::new(keyboard_layout(), ScancodeSet1, HandleControl::MapLettersToUnicode);
 
     while let Some(scancode) = scancodes.next().await {
         if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
