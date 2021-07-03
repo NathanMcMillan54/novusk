@@ -29,6 +29,9 @@ members = [
     "lib/libcolor/",
     # Sound
     "sound/x86_64-sound/",
+    # Examples
+    "examples/pixel_example/",
+    "examples/printk_example/",
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
@@ -39,6 +42,7 @@ x86 = { path = "arch/x86/" }
 x86 = { path = "arch/x86/" }
 
 [dependencies]
+libcolor = { path = "lib/libcolor/" }
 register = { version = "1.0.2", optional = true }
 
 [features]

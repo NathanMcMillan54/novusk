@@ -33,4 +33,9 @@ pub unsafe extern "C" fn x86_main() {
     x86_printk!("   CPU brand: {}", BRAND);
 
     x86_kernel_init();
+    kernel_main();
+}
+
+extern "C" {
+    fn kernel_main();
 }
