@@ -14,6 +14,7 @@ register = { version = "1.x.x", optional = true }
 gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
+modules = { path = "modules/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 pc-keyboard = "0.5.1"
 volatile = "0.2.6"

@@ -1,9 +1,9 @@
-use crate::modules::init;
+use modules::*;
 
 pub unsafe fn x86_modules_init() {
     #[cfg(target_arch = "x86_64")]
-    init::x64_start();
+    x64_start();
 
     #[cfg(target_arch = "x86")]
-    init::x86_start();
+    x86_start();
 }

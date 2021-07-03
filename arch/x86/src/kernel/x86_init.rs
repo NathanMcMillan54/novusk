@@ -7,4 +7,5 @@ pub unsafe fn x86_kernel_init() {
 
     x86_modules_init();
     kinfo!("x86 modules initialized");
+    x86_printk!("    ex1 module intialized");
 }
