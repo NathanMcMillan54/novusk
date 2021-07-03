@@ -4,6 +4,7 @@ pub(crate) use drivers::Drivers;
 pub mod grub;
 pub mod intel;
 pub mod ix86;
+pub mod ps2;
 pub mod vga;
 
 // x86_64 drivers
@@ -14,8 +15,6 @@ pub mod x64_task;
 #[cfg(target_arch = "x86_64")]
 pub mod x64;
 
-#[cfg(target_arch = "x86_64")]
-pub mod ps2;
 
 // --------------
 

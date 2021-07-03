@@ -2,6 +2,7 @@ use libcolor::vga_colors::Color;
 use super::VGA_ADDRESS;
 use super::vga_80x25::*;
 
+#[link_name = "pixel"]
 pub extern "C" fn _pixel(color: Color, x: usize) {
     let mut drawer = Vga80x25 {
         column_position: x,
