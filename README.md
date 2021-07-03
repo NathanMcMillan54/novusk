@@ -17,7 +17,7 @@ Also, this is Jarad:
 Say 'hi' to Jarad
 
 ``examples/`` has examples of things you can do with Novusk
-
+ 
 ---
 
 #### Novusk v2 - v2.1.3:
