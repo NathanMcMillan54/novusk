@@ -10,6 +10,6 @@ pub use novusk::x86;
 pub use novusk::x86;
 
 #[no_mangle]
-pub extern "C" fn kernel_main() -> ! {
+pub unsafe extern "C" fn kernel_main() -> ! {
     loop {  }
 }
