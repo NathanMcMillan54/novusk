@@ -3,7 +3,6 @@ name = "printk_example"
 version = "0.1.0"
 edition = "2018"
 
-
 [dependencies]
 bootloader = "0.9.18"
 novusk = { path = "../../", features = ["bios_boot", "bootloader_boot"] }
