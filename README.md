@@ -14,7 +14,7 @@ Also, this is Jarad:
 
 ```
 
-Say 'hi' to Jarad
+Say hi to Jarad
 
 [``examples/``](https://github.com/NathanMcMillan54/novusk/tree/examples/examples) has examples of things you can do 
 with Novusk
