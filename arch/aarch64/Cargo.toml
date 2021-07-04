@@ -5,4 +5,10 @@ edition = "2018"
 
 
 [dependencies]
+register = {version = "1.x.x", optional = true }
 r0 = "1.0.0"
+
+[features]
+default = ["rpi3"]
+rpi3 = ["register"]
+qemu_virt = ["register"]
