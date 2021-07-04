@@ -5,9 +5,12 @@ use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
 use crate::include::asm::hlt;
 use crate::kernel::kernel::*;
 
-extern "C" { pub fn boot_method() -> &'static str; }
+#[cfg(feature = "bios_boot")]
+pub const BOOT: &'static str = "BIOS";
 
-pub static mut BOOT: &'static str = "";
+#[cfg(feature = "uefi_boot")]
+pub const BOOT: &'static str = "UEFI";
+
 
 pub unsafe fn die() -> ! {
     panic!("Kernel died");
@@ -16,7 +19,6 @@ pub unsafe fn die() -> ! {
 
 #[no_mangle]
 pub unsafe extern "C" fn boot_init() {
-    BOOT = boot_method();
     if BOOT == "BIOS" {
         bios_setup();
     } else if BOOT == "UEFI" {
@@ -38,4 +40,5 @@ unsafe fn bios_setup() {
 }
 
 unsafe fn uefi_setup() {
+
 }

@@ -36,8 +36,9 @@ default-features = false
 features = ["alloc"]
 
 [features]
+bios_boot = ["register"]
 custom_keyboard = ["register"]
-grub = ["register"]
+grub = ["register", "bios_boot"]
 uefi_boot = ["register"]
 uk_keyboard = ["register"]
 us_keyboard = ["register"]

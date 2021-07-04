@@ -1,7 +1,6 @@
 #![no_std]
 #![no_main]
 
-pub use novusk::info;
 
 #[cfg(target_arch = "x86_64")]
 pub use novusk::x86;
