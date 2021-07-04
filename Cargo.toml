@@ -51,11 +51,3 @@ register = { version = "1.0.2", optional = true }
 
 [features]
 default = []
-bios_boot = ["register", "x86/bios_boot"]
-bootloader_boot = ["register", "x86/bios_boot"]
-custom_keyboard = ["register", "x86/custom_keyboard"]
-grub_boot = ["register", "x86/grub"]
-uk_keyboard = ["register", "x86/uk_keyboard"]
-us_keyboard = ["register", "x86/us_keyboard"]
-uefi_boot = ["register", "x86/uefi_boot"]
-vga_buffer_320x200 = ["register", "bootloader/vga_320x200", "x86/vga_0xa"]
