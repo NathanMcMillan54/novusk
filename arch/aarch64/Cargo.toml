@@ -2,7 +2,7 @@
 name = "aarch64"
 version = "0.1.0"
 edition = "2018"
-
+description = "Aarch64/arm64 support for Novusk"
 
 [dependencies]
 register = {version = "1.x.x", optional = true }
