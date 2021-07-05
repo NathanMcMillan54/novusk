@@ -1,5 +1,6 @@
 use crate::kernel::device::*;
 use core::intrinsics::volatile_set_memory;
+use core::ptr::read_volatile;
 
 pub struct Mmio;
 
@@ -27,5 +28,9 @@ impl Mmio {
         // This is the closest rust can get to c's volatile
         // This function is based off of https://wiki.osdev.org/ARM_RaspberryPi_Tutorial_C in the mmio_write function
         volatile_set_memory(MMIO_BASE, reg, data);
+    }
+
+    pub unsafe fn mmio_read(&self, reg: u8) {
+        // TODO: Figure out how to return a C volatile
     }
 }
