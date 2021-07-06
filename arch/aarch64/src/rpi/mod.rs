@@ -14,5 +14,7 @@ extern "C" {
 pub unsafe extern "C" fn rpi_setup() -> ! {
     rpi_memory_init();
 
+    RPiIo::init(&RPiIo);
+
     binit();
 }
