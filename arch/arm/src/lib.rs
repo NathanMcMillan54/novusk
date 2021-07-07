@@ -1,5 +1,7 @@
 #![no_std]
-#![feature(global_asm)]
+#![feature(asm, global_asm)]
+
+pub mod include;
 
 #[cfg(feature = "rpi")]
 pub mod rpi;
