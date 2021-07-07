@@ -1,0 +1,13 @@
+[package]
+name = "arm"
+version = "0.1.0"
+edition = "2018"
+description = "arm family support for Novusk"
+
+[dependencies]
+cortex-m = "0.7.3"
+cortex-m-rt = "0.6.14"
+
+[features]
+default = []
+nrf = []
