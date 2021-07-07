@@ -1,2 +1,2 @@
-#[cfg(not(feature = "nrf"))]
+#[cfg(feature = "nrf")]
 pub mod init;
