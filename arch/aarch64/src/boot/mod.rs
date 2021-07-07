@@ -1,3 +1,3 @@
-global_asm!(include_str!("init.S"));
+global_asm!(include_str!("start.S"));
 
 pub mod setup;

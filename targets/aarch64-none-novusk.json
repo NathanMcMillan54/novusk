@@ -5,11 +5,6 @@
   "linker-flavor": "ld.lld",
   "linker": "rust-lld",
   "linker-is-gnu": true,
-  "pre-link-args": {
-    "ld.lld": [
-      "--script=arch/aarch64/src/rpi/linker.ld"
-    ]
-  },
   "llvm-target": "aarch64-unknown-none-softfloat",
   "no-compiler-rt": true,
   "features": "+a53,+strict-align",

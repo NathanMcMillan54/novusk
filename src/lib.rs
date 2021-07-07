@@ -9,6 +9,9 @@ pub extern crate x86;
 #[cfg(target_arch = "aarch64")]
 pub extern crate aarch64;
 
+#[cfg(target_arch = "arm")]
+pub extern crate arm32;
+
 pub mod libs {
     pub use libcolor;
 }

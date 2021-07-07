@@ -18,6 +18,7 @@ edition = "2018"
 members = [
     # Architectures
     "arch/aarch64/",
+    "arch/arm/",
     "arch/x86/",
     "arch/x86/modules/",
     # Drivers

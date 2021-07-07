@@ -1,4 +1,0 @@
-.globl binit
-
-binit:
-    wfe
