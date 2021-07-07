@@ -5,7 +5,8 @@ edition = "2018"
 description = "arm family support for Novusk"
 
 [dependencies]
+panic-halt = "0.2.0"
 
 [features]
-default = []
+nrf = []
 rpi = []

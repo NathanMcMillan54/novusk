@@ -1,7 +1,9 @@
 #![no_std]
-#![feature(asm, global_asm)]
+#![feature(asm)]
 
-pub mod include;
+use core::panic::PanicInfo;
 
-#[cfg(feature = "rpi")]
-pub mod rpi;
+#[panic_handler]
+pub unsafe fn panic(_info: &PanicInfo) -> ! {
+    loop { asm!("wfe"); }
+}
