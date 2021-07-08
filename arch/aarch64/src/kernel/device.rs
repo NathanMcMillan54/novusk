@@ -7,3 +7,8 @@ pub enum Board {
     RPi3,
     RPi4,
 }
+
+pub unsafe fn device_init() {
+    #[cfg(feature = "rpi3")]
+    arm::rpi::aarch64_rpi_setup();
+}
