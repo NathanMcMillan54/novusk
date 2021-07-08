@@ -5,10 +5,10 @@ edition = "2018"
 description = "Aarch64/arm64 support for Novusk"
 
 [dependencies]
-# arm = { path = "../arm/" }
+arm = { path = "../arm/" }
 r0 = "1.0.0"
 
 [features]
 default = ["rpi3"]
-rpi3 = []
+rpi3 = ["arm/rpi"]
 qemu_virt = []

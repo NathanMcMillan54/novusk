@@ -27,7 +27,6 @@ members = [
     # GPUs
     # Kernel
     "kernel/kinfo/",
-    "kernel/panic/",
     "kernel/printk/",
     # Libraries
     "lib/libcolor/",

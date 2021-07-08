@@ -5,6 +5,10 @@
 
 pub mod boot;
 pub mod include;
+pub mod mm;
+
+#[cfg(feature = "rpi")]
+pub mod rpi;
 
 #[cfg(feature = "nrf")]
 pub mod nrf;

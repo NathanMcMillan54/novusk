@@ -7,7 +7,9 @@ description = "arm family support for Novusk"
 [dependencies]
 cortex-m = "0.7.3"
 cortex-m-rt = { version = "0.6.14" }
+r0 = "1.0.0"
 
 [features]
 default = []
 nrf = []
+rpi = []
