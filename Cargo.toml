@@ -20,18 +20,20 @@ members = [
     "arch/aarch64/",
     "arch/arm/",
     "arch/x86/",
-    "arch/x86/modules/",
     # Drivers
     "drivers/gpu/",
     "drivers/nkuefi/",
     # GPUs
     # Kernel
     "kernel/kinfo/",
+    "kernel/modules/",
     "kernel/printk/",
     # Libraries
     "lib/libcolor/",
     # Sound
     "sound/x86_64-sound/",
+    # Kernel Modules
+    "kernel/modules/ex1/",
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
