@@ -15,3 +15,5 @@ _start:
 
     bl aarch64_boot_setup
     b 1b
+
+// ('_') <( wsg? )

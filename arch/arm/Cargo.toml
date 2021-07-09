@@ -7,6 +7,9 @@ description = "arm family support for Novusk"
 [dependencies]
 cortex-m = "0.7.3"
 cortex-m-rt = { version = "0.6.14" }
+defmt = "0.2.3"
+nrf52840-pac = "0.9.0"
+printk = { path = "../../kernel/printk/" }
 register = "1.0.2"
 r0 = "1.0.0"
 
