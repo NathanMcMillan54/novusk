@@ -20,4 +20,6 @@ r0 = "1.0.0"
 [features]
 default = []
 nrf = []
+nrf52840 = ["nrf"]
+nrf52832 = ["nrf"]
 rpi = []
