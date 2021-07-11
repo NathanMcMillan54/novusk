@@ -2,7 +2,7 @@ use crate::kernel::device::Board;
 use cortex_m::asm::delay;
 
 pub struct NrfLed {
-    board: Board,
+    pub(crate) board: Board,
 }
 
 impl NrfLed {

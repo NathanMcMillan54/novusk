@@ -1,11 +1,11 @@
 // For printing in probe-run on micro controllers and simple boards
 use core::fmt::Arguments;
 
-pub fn dprint(fmt: Arguments) {
-    defmt::info!("{}", fmt);
+pub fn _dprint(fmt: Arguments) {
+    defmt::info!("{}{}", "DEBUG", fmt);
 }
 
 #[macro_export]
 macro_rules! dprint {
-    ($($arg:tt)*) => {$crate::kernel::debug::_arm32_dprint(format_args!($($arg)*))};
+    ($($arg:tt)*) => {$crate::kernel::debug::_dprint(format_args!($($arg)*))};
 }
