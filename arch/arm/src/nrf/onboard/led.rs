@@ -7,7 +7,7 @@ pub struct NrfLed {
 
 impl NrfLed {
     pub fn new(&mut self) -> Self {
-        return Self
+        return Self { board: Board::Nrf52840 }
     }
 
     pub fn nrf52840_blink(&self) {
@@ -23,7 +23,7 @@ impl NrfLed {
         led.set_low();
     }
 
-    pub fn nrf52832_blink(&self) {
+    /* pub fn nrf52832_blink(&self) {
         use nrf52832_hal::gpio::{Level, p0::Parts};
         use nrf52832_hal::prelude::OutputPin;
         use nrf52832_pac::Peripherals;
@@ -35,5 +35,5 @@ impl NrfLed {
         led.set_high().unwrap();
         delay(750);
         led.set_low();
-    }
+    } */
 }

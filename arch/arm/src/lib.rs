@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(asm, global_asm)]
+#![feature(stmt_expr_attributes)]
 
 //#[macro_use] extern crate alloc;
 #[macro_use] extern crate cortex_m_rt;

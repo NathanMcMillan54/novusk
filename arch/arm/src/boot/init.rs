@@ -1,8 +1,8 @@
-use cortex_m_rt::entry;
 use crate::boot::die;
 use crate::kernel::device::device_init;
-use crate::kernel::kernel::start_kernel;
+use crate::kernel::kernel::{start_kernel, arm32_printk};
 use crate::mm::init::arm32_memory_init;
+use cortex_m_rt::entry;
 
 unsafe fn init() {
     arm32_memory_init();
@@ -12,6 +12,8 @@ unsafe fn init() {
 
 #[entry]
 fn main() -> ! {
+    arm32_printk!("Starting kernel...");
+
     unsafe {
         init();
 

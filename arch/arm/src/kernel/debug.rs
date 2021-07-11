@@ -1,8 +1,9 @@
-// For printing in qemu or probe-run on micro controllers and simple boards
-
-#[cfg(target_arch = "arm")]
-pub use crate::kernel::printk::arm_printk as _arm32_dprint;
+// For printing in probe-run on micro controllers and simple boards
 use core::fmt::Arguments;
+
+pub fn dprint(fmt: Arguments) {
+    defmt::info!("{}", fmt);
+}
 
 #[macro_export]
 macro_rules! dprint {
