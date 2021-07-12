@@ -6,9 +6,7 @@ use cortex_m_rt::entry;
 
 unsafe fn init() {
     arm32_memory_init();
-    kinfo!("Memory initialized");
     device_init();
-    kinfo!("Device initialized");
     start_kernel();
     arm32_printk!("");
     kinfo!("arm(32) kernel initialized");

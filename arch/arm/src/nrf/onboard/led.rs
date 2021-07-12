@@ -1,4 +1,5 @@
 use crate::kernel::device::Board;
+use crate::kernel::kernel::dprint;
 use cortex_m::asm::delay;
 
 pub struct NrfLed {
@@ -18,8 +19,11 @@ impl NrfLed {
         let port0 = Parts::new(peripherals.P0);
         let mut led = port0.p0_17.into_push_pull_output(Level::Low);
 
+        dprint!("Led: On");
         led.set_high();
-        delay(750);
+        delay(175000000);
+
+        dprint!("Led: Off");
         led.set_low();
     }
 
