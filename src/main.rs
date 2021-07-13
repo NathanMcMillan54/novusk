@@ -20,9 +20,3 @@ use core::panic::PanicInfo;
 pub unsafe extern "C" fn kernel_main() {
 
 }
-
-#[cfg(target_arch = "arm")]
-#[panic_handler]
-pub fn panic(_info: &PanicInfo) -> ! {
-    loop { }
-}

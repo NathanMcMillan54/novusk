@@ -1,5 +1,5 @@
 use crate::kernel::device::Board;
-use crate::kernel::kernel::dprint;
+use crate::kernel::kernel::{arm32_printk, dprint};
 use cortex_m::asm::delay;
 
 pub struct NrfLed {
@@ -27,17 +27,12 @@ impl NrfLed {
         led.set_low();
     }
 
-    /* pub fn nrf52832_blink(&self) {
-        use nrf52832_hal::gpio::{Level, p0::Parts};
-        use nrf52832_hal::prelude::OutputPin;
-        use nrf52832_pac::Peripherals;
-
-        let peripherals = Peripherals::take().unwrap();
-        let port0 = Parts::new(peripherals.P0);
-        let mut led = port0.p0_17.into_push_pull_output(Level::Low);
-
-        led.set_high().unwrap();
-        delay(750);
-        led.set_low();
-    } */
+    pub fn blink(&self) {
+        match self.board {
+            Board::Nrf52840 =>
+                self.nrf52840_blink(),
+            _ =>
+                arm32_printk!("{:?} doesn't support NrfLed::blink", self.board)
+        }
+    }
 }
