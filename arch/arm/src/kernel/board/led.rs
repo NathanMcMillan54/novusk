@@ -12,6 +12,5 @@ fn nrf_blink() {
 
 #[no_mangle]
 pub extern "C" fn blink() {
-    #[cfg(feature = "nrf")]
     nrf_blink();
 }

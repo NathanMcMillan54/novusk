@@ -22,6 +22,7 @@ members = [
     "arch/x86/",
     # Drivers
     "drivers/gpu/",
+    "drivers/usb/",
     "drivers/nkuefi/",
     # GPUs
     # Kernel

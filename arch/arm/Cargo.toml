@@ -13,6 +13,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 nrf52840-hal = "0.12.2"
 nrf52840-pac = "0.9.0"
 printk = { path = "../../kernel/printk/" }
+usb = { path = "../../drivers/usb/" }
 register = "1.0.2"
 r0 = "1.0.0"
 

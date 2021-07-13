@@ -10,7 +10,5 @@ pub unsafe extern "C" fn die() -> ! {
     blink();
     blink();
 
-    panic!("Kernel died nothing to run");
-
-    wfe();
+    panic!("Kernel died nothing else to run");
 }
