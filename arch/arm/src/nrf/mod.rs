@@ -1,13 +1,11 @@
 pub mod onboard;
-use onboard::led::NrfLed;
-use crate::kernel::device::DEVICE;
-use nrf52840_pac::Peripherals;
+pub use onboard as nrf_board;
+use onboard::NrfLed;
 use usb::{set_usb_driver, DriverNames};
 
 pub fn nrf_init() {
     unsafe { set_usb_driver(DriverNames::Nrf); }
 
-    let mut led = unsafe { NrfLed::new(&mut NrfLed { board: DEVICE }) };
-
+    let mut led = NrfLed::new();
     led.nrf52840_blink();
 }

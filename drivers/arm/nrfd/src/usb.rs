@@ -5,9 +5,9 @@ use usb_device::prelude::{UsbDeviceBuilder, UsbVidPid};
 use usbd_serial::{SerialPort, USB_CLASS_CDC};
 use kinfo::info::set_info;
 
-pub struct Usb;
+pub struct NrfUsb;
 
-impl Usb {
+impl NrfUsb {
     pub fn new() -> Self {
         return Self;
     }

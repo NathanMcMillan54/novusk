@@ -2,10 +2,8 @@ use crate::kernel::device::DEVICE;
 
 #[cfg(feature = "nrf")]
 fn nrf_blink() {
-    use crate::nrf::onboard::led::NrfLed;
-    let mut led = unsafe { NrfLed::new(&mut NrfLed{
-        board: DEVICE
-    }) };
+    use crate::nrf::nrf_board::NrfLed;
+    let mut led = NrfLed::new();
 
     led.blink();
 }

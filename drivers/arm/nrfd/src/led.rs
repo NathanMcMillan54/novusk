@@ -1,14 +1,11 @@
-use crate::kernel::device::Board;
-use crate::kernel::kernel::{arm32_printk, dprint};
 use cortex_m::asm::delay;
+use defmt::debug;
 
-pub struct NrfLed {
-    pub(crate) board: Board,
-}
+pub struct NrfLed;
 
 impl NrfLed {
-    pub fn new(&mut self) -> Self {
-        return Self { board: Board::Nrf52840 }
+    pub fn new() -> Self {
+        return Self;
     }
 
     pub fn nrf52840_blink(&self) {
@@ -19,20 +16,15 @@ impl NrfLed {
         let port0 = Parts::new(peripherals.P0);
         let mut led = port0.p0_17.into_push_pull_output(Level::Low);
 
-        dprint!("Led: On");
+        debug!("Led: On");
         led.set_high();
         delay(175000000);
 
-        dprint!("Led: Off");
+        debug!("Led: Off");
         led.set_low();
     }
 
     pub fn blink(&self) {
-        match self.board {
-            Board::Nrf52840 =>
-                self.nrf52840_blink(),
-            _ =>
-                arm32_printk!("{:?} doesn't support NrfLed::blink", self.board)
-        }
+        self.nrf52840_blink();
     }
 }
