@@ -22,5 +22,4 @@ r0 = "1.0.0"
 default = []
 nrf = []
 nrf52840 = ["nrf"]
-# nrf52832 = ["nrfd"]
 rpi = []

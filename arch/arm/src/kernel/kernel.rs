@@ -2,9 +2,13 @@ pub use crate::{arm32_printk, dprint};
 use alloc::vec;
 use core::panic::PanicInfo;
 use super::board::led::blink;
+use super::mb::{clear_mb, MAILBOX};
 
 #[no_mangle]
 pub unsafe extern "C" fn start_kernel() {
+    clear_mb();
+    kinfo!("MailBox cleared");
+    arm32_printk!("    MB: {:?}", MAILBOX);
     kinfo!("Kernel initialized");
     blink();
 }
