@@ -13,6 +13,7 @@ pub unsafe extern "C" fn start_kernel() {
     blink();
 }
 
+#[cfg(target_arch = "arm")]
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     arm32_printk!("\nKernel panicked:");

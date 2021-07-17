@@ -1,5 +1,4 @@
 use alloc::string::String;
-use crate::nrf::nrf_init;
 use super::kernel::{arm32_printk};
 
 pub static mut DEVICE: Board = Board::None;
@@ -26,5 +25,5 @@ pub(crate) unsafe fn device_init() {
 
     // Initialize device
     #[cfg(feature = "nrf")]
-    nrf_init();
+    crate::nrf::nrf_init();
 }
