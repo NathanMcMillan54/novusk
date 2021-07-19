@@ -4,15 +4,17 @@ version = "0.1.0"
 edition = "2018"
 description = "arm family support for Novusk"
 
+[target.'cfg(target_arch = "arm")'.dependencies]
+nrfd = { path = "../../drivers/arm/nrfd/" }
+nrf52840-hal = "0.12.2"
+nrf52840-pac = "0.9.0"
+
 [dependencies]
 cortex-m = "0.7.3"
 cortex-m-rt = { version = "0.6.14" }
 cortex-m-semihosting = "0.3.7"
 defmt = "0.2.3"
 kinfo = { path = "../../kernel/kinfo/" }
-nrfd = { path = "../../drivers/arm/nrfd/" }
-nrf52840-hal = "0.12.2"
-nrf52840-pac = "0.9.0"
 printk = { path = "../../kernel/printk/" }
 usb = { path = "../../drivers/usb/" }
 register = "1.0.2"
