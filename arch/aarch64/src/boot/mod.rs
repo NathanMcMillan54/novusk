@@ -1,7 +1,6 @@
 global_asm!(include_str!("boot64.S"));
 
 use arm::mm::linker_mem::{clear_bss_se};
-use crate::kernel::test;
 
 extern "C" {
     pub static mut __bss_end: u64;
