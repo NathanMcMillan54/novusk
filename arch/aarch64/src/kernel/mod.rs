@@ -1,5 +1,4 @@
-pub mod device;
+pub mod debug;
 pub mod mmio;
 pub mod panic;
-pub mod uart;
-pub mod uart0;
+pub mod printk;
