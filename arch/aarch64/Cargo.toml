@@ -7,10 +7,8 @@ description = "Aarch64/arm64 support for Novusk"
 [dependencies]
 arm = { path = "../arm/" }
 bcm2837 = { git = "https://github.com/rcore-os/bcm2837/" }
+io = { path = "../../mm/io/" }
 r0 = "1.0.0"
-
-[build-dependencies]
-cc = "1.0.69"
 
 [features]
 default = ["rpi3"]

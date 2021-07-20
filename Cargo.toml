@@ -32,6 +32,8 @@ members = [
     "kernel/printk/",
     # Libraries
     "lib/libcolor/",
+    # MM
+    "mm/io/",
     # Sound
     "sound/x86_64-sound/",
     # Kernel Modules
