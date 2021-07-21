@@ -27,6 +27,7 @@ pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
     let mut dprint = DebugPrint;
 
     dprint.write_string("Starting kernel...\n");
+    dprint.write_string("\n");
 
     aarch64_init();
 
