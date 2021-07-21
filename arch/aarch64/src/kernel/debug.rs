@@ -5,18 +5,12 @@ use core::ptr::write_volatile;
 pub struct DebugPrint;
 
 impl DebugPrint {
-    pub unsafe fn write_byte(&mut self, byte: u8) {
-        write_volatile(0x3F20_1000 as *mut u8, byte);
-    }
-
-    pub unsafe fn write_bytes(&mut self, bytes: &[u8]) {
-        for byte in bytes {
-            self.write_byte(*byte);
+    pub fn write_string(&mut self, string: &str) {
+        for c in string.chars() {
+            unsafe {
+                core::ptr::write_volatile(0x3F20_1000 as *mut u8, c as u8);
+            }
         }
-    }
-
-    pub unsafe fn write_string(&mut self, string: &str) {
-        self.write_bytes(string.as_bytes());
     }
 }
 
@@ -25,4 +19,8 @@ impl Write for DebugPrint {
         unsafe { self.write_string(str); }
         Ok(())
     }
+}
+
+pub fn console() -> impl Write {
+    return DebugPrint;
 }
