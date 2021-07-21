@@ -1,4 +1,5 @@
 use crate::kernel::debug::DebugPrint;
+use crate::liba64::bmu::bmu_init;
 use arm::rpi::aarch64_rpi_setup;
 
 pub unsafe fn aarch64_init() {
@@ -10,4 +11,7 @@ pub unsafe fn aarch64_init() {
     aarch64_rpi_setup();
     dprint.write_string("[INFO] Device initialized\n");
     dprint.write_string("   GPU driver set\n");
+
+    dprint.write_string("\nStarting Mare Metal Userspace...\n");
+    bmu_init();
 }

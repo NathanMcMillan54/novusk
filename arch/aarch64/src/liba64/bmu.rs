@@ -23,3 +23,11 @@ pub trait Application {
         MAIN();
     }
 }
+
+pub unsafe fn bmu_init() {
+    extern "C" {
+        fn kernel_main();
+    }
+
+    kernel_main();
+}
