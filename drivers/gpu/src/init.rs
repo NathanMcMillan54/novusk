@@ -12,4 +12,10 @@ pub unsafe fn gpu_init() {
     } else if GPU_INIT == true && GPU_NAME != DriverNames::None {
         return;
     }
+
+    // Raspberry Pi FrameBuffer
+    if GPU_NAME == DriverNames::RpiFb {
+        #[cfg(target_arch = "aarch64")]
+        rpi::fb::fb_init();
+    }
 }

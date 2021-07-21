@@ -1,5 +1,6 @@
 use register::mmio::WriteOnly;
 
+#[no_mangle]
 pub static mut MAILBOX: [usize; 36] = [0, 0, 0 ,0 ,0 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 pub unsafe fn clear_mb() {

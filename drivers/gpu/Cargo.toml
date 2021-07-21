@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2018"
 description = "GPU setup and initialization"
 
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+rpi = { path = "../firmware/rpi/" }
+
 [dependencies]
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }

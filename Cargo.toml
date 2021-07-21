@@ -21,7 +21,8 @@ members = [
     "arch/arm/",
     "arch/x86/",
     # Drivers
-    "drivers/arm/nrfd/",
+    "drivers/firmware/arm/nrfd/",
+    "drivers/firmware/rpi/",
     "drivers/gpu/",
     "drivers/usb/",
     "drivers/nkuefi/",
