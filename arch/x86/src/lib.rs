@@ -18,7 +18,7 @@ pub mod include;
 pub mod kernel;
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+pub fn panic(_info: &PanicInfo) -> ! {
     unsafe {
         x86_printk!("\nKernel panicked:");
         x86_printk!("   Message: {:?}", _info.message().unwrap());
