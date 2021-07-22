@@ -1,0 +1,12 @@
+[package]
+name = "riscv"
+version = "0.1.0"
+edition = "2018"
+description = ""
+
+[dependencies]
+riscv-rt = "0.8.0"
+riscv = "0.6.0"
+
+[features]
+bl602 = []

@@ -7,3 +7,10 @@ rustflags = [
     "-C", "link-arg=--nmagic",
     "-C", "link-arg=-Tlink.x",
 ]
+
+[target.riscv32imac-unknown-none-elf]
+runner = 'riscv32-unknown-elf-gdb'
+rustflags = [
+    "-C", "link-arg=-Tlink.x",
+    "-C", "link-arg=-melf32lriscv",
+]

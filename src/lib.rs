@@ -30,6 +30,11 @@ pub mod aarch64 {
     pub use aarch64::arm::include::asm;
 }
 
+#[cfg(target_arch = "riscv32")]
+pub mod riscv {
+    pub use riscv::kernel::panic::panic;
+}
+
 pub mod libs {
     pub use libcolor;
 }

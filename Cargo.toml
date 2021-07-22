@@ -1,6 +1,6 @@
 [package]
 name = "novusk"
-version = "3.0.0-beta-arch-v1.1"
+version = "3.0.0-beta-arch-v2.1"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
@@ -19,6 +19,7 @@ members = [
     # Architectures
     "arch/aarch64/",
     "arch/arm/",
+    "arch/riscv/",
     "arch/x86/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
@@ -55,11 +56,13 @@ aarch64 = { path = "arch/aarch64/" }
 [target.'cfg(target_arch = "arm")'.dependencies]
 arm = { path = "arch/arm/" }
 
+
 [dependencies]
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
 register = { version = "1.0.2", optional = true }
+riscv = { path = "arch/riscv" }
 
 [features]
 default = []
@@ -72,3 +75,4 @@ vga_0xa = ["x86/vga_0xa"]
 nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi", "aarch64/rpi3"]
+bl602 = []
