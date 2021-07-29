@@ -9,3 +9,4 @@ description = "RISCV32/64 kernel support"
 
 [features]
 bl602 = []
+virt = []

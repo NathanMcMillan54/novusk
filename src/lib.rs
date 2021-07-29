@@ -30,7 +30,7 @@ pub mod aarch64 {
     pub use aarch64::arm::include::asm;
 }
 
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
 pub mod riscv {
     pub use riscv::kernel::panic::panic;
 }

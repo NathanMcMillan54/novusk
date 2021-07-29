@@ -56,13 +56,14 @@ aarch64 = { path = "arch/aarch64/" }
 [target.'cfg(target_arch = "arm")'.dependencies]
 arm = { path = "arch/arm/" }
 
+[target.'cfg(target_arch = "riscv64")'.dependencies]
+riscv = { path = "arch/riscv" }
 
 [dependencies]
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
 register = { version = "1.0.2", optional = true }
-riscv = { path = "arch/riscv" }
 
 [features]
 default = []
@@ -76,3 +77,4 @@ nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi", "aarch64/rpi3"]
 bl602 = ["riscv/bl602"]
+virt = ["aarch64/qemu_virt", "arm/virt", "riscv/virt", "x86/virt"]

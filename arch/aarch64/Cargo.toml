@@ -13,5 +13,4 @@ r0 = "1.0.0"
 [features]
 default = ["rpi3"]
 rpi3 = ["arm/rpi"]
-qemu_virt = []
-
+qemu_virt = ["arm/virt"]
