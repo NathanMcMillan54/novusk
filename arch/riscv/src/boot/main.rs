@@ -1,4 +1,6 @@
+use super::die;
+
 #[no_mangle]
 pub unsafe extern "C" fn _start() -> ! {
-    loop { asm!("wfi") }
+    die();
 }

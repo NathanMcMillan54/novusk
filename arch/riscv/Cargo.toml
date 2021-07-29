@@ -2,9 +2,10 @@
 name = "riscv"
 version = "0.1.0"
 edition = "2018"
-description = ""
+description = "RISCV32/64 kernel support"
 
 [dependencies]
+# bl602-hal = { git = "https://github.com/sipeed/bl602-hal" }
 
 [features]
 bl602 = []
