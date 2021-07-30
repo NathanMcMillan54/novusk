@@ -4,8 +4,11 @@ version = "0.1.0"
 edition = "2018"
 description = "RISCV32/64 kernel support"
 
-[dependencies]
-# bl602-hal = { git = "https://github.com/sipeed/bl602-hal" }
+[target.'cfg(target_arch = "riscv32")'.dependencies]
+bl602-hal = { git = "https://github.com/sipeed/bl602-hal" }
+
+[target.'cfg(target_arch = "riscv64")'.dependencies]
+
 
 [features]
 bl602 = []

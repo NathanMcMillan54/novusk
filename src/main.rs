@@ -15,8 +15,6 @@ pub use novusk::x86_64;
 #[cfg(target_arch = "x86")]
 pub use novusk::x86;
 
-use core::panic::PanicInfo;
-
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() -> ! {
     loop {  }

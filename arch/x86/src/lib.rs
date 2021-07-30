@@ -16,6 +16,7 @@ pub mod boot;
 pub mod drivers;
 pub mod include;
 pub mod kernel;
+pub mod libx;
 
 #[panic_handler]
 pub fn panic(_info: &PanicInfo) -> ! {

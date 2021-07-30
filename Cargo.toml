@@ -59,6 +59,9 @@ arm = { path = "arch/arm/" }
 [target.'cfg(target_arch = "riscv64")'.dependencies]
 riscv = { path = "arch/riscv" }
 
+[target.'cfg(target_arch = "riscv32")'.dependencies]
+riscv = { path = "arch/riscv" }
+
 [dependencies]
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }

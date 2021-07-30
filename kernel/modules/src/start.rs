@@ -1,13 +1,15 @@
 use crate::modules::KernelModules;
 
 pub unsafe fn run(module: KernelModules) {
-    #[cfg(target_arch = "x86_64")]
     match module {
-        KernelModules::Ex1 =>
-            ex1::ex1_init(),
         KernelModules::None =>
             return,
+
+        #[cfg(target_arch = "x86_64")]
+        KernelModules::Ex1 =>
+            ex1::ex1_init(),
     }
+
     printk!("    {:?} initialized", module);
 }
 

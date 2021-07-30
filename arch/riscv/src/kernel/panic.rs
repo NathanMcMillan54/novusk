@@ -1,6 +1,7 @@
 use core::panic::PanicInfo;
+use crate::include::asm::wfi;
 
 #[panic_handler]
-pub fn panic(_info: &PanicInfo) -> ! {
-    loop {  }
+pub unsafe fn panic(_info: &PanicInfo) -> ! {
+    wfi();
 }
