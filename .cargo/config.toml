@@ -7,3 +7,6 @@ rustflags = [
     "-C", "link-arg=--nmagic",
     "-C", "link-arg=-Tlink.x",
 ]
+
+[target.riscv64gc-unknown-none-elf]
+rustflags = ['-Clink-arg=-Tarch/riscv/src/boot/virt.ld']

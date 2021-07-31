@@ -2,3 +2,4 @@
 
 wait_for_interrupt:
     wfi
+    j wait_for_interrupt
