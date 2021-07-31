@@ -1,0 +1,8 @@
+[package]
+name = "bootloader_image"
+version = "0.1.0"
+edition = "2018"
+description = "Links x86_64 Novusk with bootloader v0.10+"
+
+[dependencies]
+bootloader-locator = "0.0.4"

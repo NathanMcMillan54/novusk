@@ -42,10 +42,16 @@ members = [
     # Kernel Modules
     "kernel/modules/ex1/",
     # Tools
+    "tools/bootloader_image/",
 ]
 
+[dependencies]
+kinfo = { path = "kernel/kinfo/" }
+libcolor = { path = "lib/libcolor/" }
+printk = { path = "kernel/printk/" }
+
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = { version = "^0.10.6" }
+bootloader = "0.9.18" # The newest working version
 x86 = { path = "arch/x86/" }
 
 [target.'cfg(target_arch = "x86")'.dependencies]
@@ -62,11 +68,6 @@ riscv = { path = "arch/riscv" }
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]
 riscv = { path = "arch/riscv" }
-
-[dependencies]
-kinfo = { path = "kernel/kinfo/" }
-libcolor = { path = "lib/libcolor/" }
-printk = { path = "kernel/printk/" }
 
 [features]
 default = []
