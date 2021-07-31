@@ -5,5 +5,5 @@ edition = "2018"
 description = "Novusk Kernel UEFI boot and setup"
 
 [dependencies]
-uefi = "0.8.1"
-uefi-services = { version = "0.5.1", features = ["no_panic_handler"] }
+uefi = "0.11.0"
+uefi-services = { version = "0.8.0", features = ["no_panic_handler"] }

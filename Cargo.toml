@@ -45,7 +45,7 @@ members = [
 ]
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = { version = "0.9.12" }
+bootloader = { version = "^0.10.6" }
 x86 = { path = "arch/x86/" }
 
 [target.'cfg(target_arch = "x86")'.dependencies]
@@ -67,7 +67,6 @@ riscv = { path = "arch/riscv" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
-register = { version = "1.0.2", optional = true }
 
 [features]
 default = []
@@ -76,7 +75,7 @@ custom_keyboard = ["x86/custom_keyboard"]
 grub = ["x86/grub"]
 uk_keyboard = ["x86/uk_keyboard"]
 us_keyboard = ["x86/us_keyboard"]
-vga_0xa = ["x86/vga_0xa", "bootloader/vga_320x200"]
+vga_0xa = ["x86/vga_0xa"]
 nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi", "aarch64/rpi3"]

@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-pc-beeper = { git = "https://github.com/NathanMcMillan54/pc-beeper" }
+#pc-beeper = { git = "https://github.com/NathanMcMillan54/pc-beeper" }

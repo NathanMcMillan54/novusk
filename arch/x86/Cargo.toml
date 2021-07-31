@@ -7,10 +7,9 @@ description = "x86 family support for Novusk"
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 raw-cpuid = "9.0.0"
 x86_64-sound = { path = "../../sound/x86_64-sound/" }
-x86_64 = "0.13.6"
+x86_64 = "0.14.4"
 
 [dependencies]
-register = { version = "1.x.x", optional = true }
 gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
@@ -36,11 +35,11 @@ default-features = false
 features = ["alloc"]
 
 [features]
-bios_boot = ["register"]
-custom_keyboard = ["register"]
-grub = ["register", "bios_boot"]
-uefi_boot = ["register"]
-uk_keyboard = ["register"]
-us_keyboard = ["register"]
-vga_0xa = ["register"]
+bios_boot = []
+custom_keyboard = []
+grub = ["bios_boot"]
+uefi_boot = []
+uk_keyboard = []
+us_keyboard = []
+vga_0xa = []
 virt = []
