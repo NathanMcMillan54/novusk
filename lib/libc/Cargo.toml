@@ -1,0 +1,7 @@
+[package]
+name = "libc"
+version = "0.1.0"
+edition = "2018"
+description = "Most of the C stdlib and some C types written in Rust"
+
+[dependencies]

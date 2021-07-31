@@ -8,7 +8,7 @@ description = "RISCV32/64 kernel support"
 bl602-hal = { git = "https://github.com/sipeed/bl602-hal" }
 
 [target.'cfg(target_arch = "riscv64")'.dependencies]
-
+io = { path = "../../mm/io/" }
 
 [features]
 bl602 = []

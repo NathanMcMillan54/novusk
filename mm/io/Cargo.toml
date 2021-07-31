@@ -5,6 +5,3 @@ edition = "2018"
 description = "Mermory Mapped Input Output"
 
 [dependencies]
-
-[build-dependencies]
-cc = "1.0.69"

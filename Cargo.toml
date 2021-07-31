@@ -33,6 +33,7 @@ members = [
     "kernel/modules/",
     "kernel/printk/",
     # Libraries
+    "lib/libc/",
     "lib/libcolor/",
     # MM
     "mm/io/",
