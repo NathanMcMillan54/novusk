@@ -10,6 +10,10 @@ bl602-hal = { git = "https://github.com/sipeed/bl602-hal" }
 [target.'cfg(target_arch = "riscv64")'.dependencies]
 io = { path = "../../mm/io/" }
 
+[dependencies]
+riscv-rt = "0.8.0"
+risc-v = "0.0.0"
+
 [features]
 bl602 = []
 virt = []
