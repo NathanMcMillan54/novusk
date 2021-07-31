@@ -18,7 +18,7 @@ gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
 usb = { path = "../../drivers/usb/" }
-register = "1.0.2"
+#register = "1.0.2"
 r0 = "1.0.0"
 
 [features]
