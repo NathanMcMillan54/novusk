@@ -1,6 +1,13 @@
 use super::die;
+use crate::kernel::board::Board;
 
-#[no_mangle]
-pub unsafe extern "C" fn _start() -> ! {
-    die();
+use hifive1::sprintln;
+
+#[entry]
+fn main() -> ! {
+    let mut board = Board;
+    board.board_init();
+
+    sprintln!("Starting kernel...");
+    loop {  }
 }
