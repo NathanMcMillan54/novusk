@@ -21,18 +21,20 @@ pub mod arm {
     pub use arm::{arm32_printk, dprint};
     pub use arm::include::asm;
     pub use arm::mm;
+    pub use libbmu;
 }
 
 #[cfg(target_arch = "aarch64")]
 pub mod aarch64 {
     pub use aarch64::kernel::debug::DebugPrint;
-    pub use aarch64::liba64::bmu::Application;
     pub use aarch64::arm::include::asm;
+    pub use libbmu;
 }
 
 #[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
 pub mod riscv {
     pub use riscv::kernel::panic::panic;
+    pub use libbmu;
 }
 
 pub mod libs {
