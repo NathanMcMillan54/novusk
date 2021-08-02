@@ -9,7 +9,9 @@ rustflags = [
 ]
 
 [target.riscv64gc-unknown-none-elf]
-rustflags = ['-Clink-arg=-Tarch/riscv/src/boot/virt.ld']
+rustflags = [
+    "-Clink-arg=-Tarch/riscv/src/boot/virt.ld",
+]
 
 [target.riscv32imac-unknown-none-elf]
 rustflags = [

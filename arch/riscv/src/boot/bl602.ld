@@ -1,1 +1,0 @@
-/* RISCV32 bl602 board linker script */

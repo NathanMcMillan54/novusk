@@ -1,13 +1,8 @@
-use super::die;
+use super::{die, main};
 use crate::riscv_printk;
 use crate::kernel::board::Board;
 
 #[entry]
 fn main() -> ! {
-    let mut board = Board;
-    board.board_init();
-
-    riscv_printk!("Starting kernel...");
-
-    unsafe { die(); }
+    unsafe { main::start_riscv_kernel(); }
 }
