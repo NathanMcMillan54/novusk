@@ -4,6 +4,10 @@ use crate::riscv_printk;
 
 #[panic_handler]
 pub unsafe fn panic(_info: &PanicInfo) -> ! {
-    riscv_printk!("Kernel panicked");
+    riscv_printk!("\nKernel panicked:");
+
+    riscv_printk!("    Info: {}", _info.message().unwrap());
+    riscv_printk!("    Location: {}", _info.location().unwrap());
+
     wfi();
 }

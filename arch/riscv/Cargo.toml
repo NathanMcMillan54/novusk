@@ -11,11 +11,11 @@ hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
 io = { path = "../../mm/io/" }
 
 [dependencies]
-printk = { path = "../../kernel/printk/" }
+kinfo = { path = "../../kernel/kinfo/" }
+r0 = "1.0.0"
 risc-v = "0.0.0"
 riscv-rt = "0.8.0"
 
 [features]
-bl602 = []
 virt = []
 hifive = []

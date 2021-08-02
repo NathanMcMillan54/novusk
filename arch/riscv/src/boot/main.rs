@@ -1,14 +1,17 @@
 use super::die;
-use crate::kernel::uart::Uart;
-
-unsafe fn rv64_board_init() {
-    Uart::new(0x1000_0000).uart_init();
-}
+use crate::kernel::{board::Board, device::Device, riscv::riscv_init};
+use crate::riscv_printk;
 
 #[no_mangle]
 pub unsafe extern "C" fn start_riscv_kernel() -> ! {
-    #[cfg(target_arch = "riscv64")]
-    rv64_board_init();
+    let mut board = Board;
+    board.device_init();
 
+    riscv_printk!("Starting kernel...\n");
+
+    kinfo!("Device initialized");
+    riscv_printk!("    Running on: {}", board.name());
+
+    riscv_init();
     die();
 }
