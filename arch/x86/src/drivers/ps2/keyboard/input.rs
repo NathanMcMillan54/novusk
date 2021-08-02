@@ -9,9 +9,10 @@ use futures_util::task::AtomicWaker;
 use crate::drivers::ps2::tests::KEYBOARD_PASSED;
 use libcolor::vga_colors::Color;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts};
-use crate::drivers::vga::pixel::_pixel;
+// use crate::drivers::vga::pixel::_pixel;
 use crate::x86_printk;
 use crate::drivers::ps2::keyboard::setup::keyboard_layout;
+use crate::include::other::pixel::_vga_pixel;
 
 pub static SCAN_CODE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 pub static WAKER: AtomicWaker = AtomicWaker::new();
@@ -48,7 +49,7 @@ impl Stream for KeyboardScancode {
 
 pub async unsafe fn ps2_keyboard_input() {
     if !KEYBOARD_PASSED {
-        _pixel(Color::Yellow, 0);
+        _vga_pixel(Color::Yellow, 0, 0);
     }
 
     let mut scancodes = KeyboardScancode::new();

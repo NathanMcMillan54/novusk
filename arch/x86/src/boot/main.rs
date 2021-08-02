@@ -1,7 +1,6 @@
 use super::boot::{die, boot_init};
 use crate::kernel::kernel::*;
 use crate::kernel::x86_start::start_x86;
-use crate::boot::boot::BOOT;
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {

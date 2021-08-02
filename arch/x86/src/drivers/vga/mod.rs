@@ -1,5 +1,5 @@
+pub mod color;
 pub mod init;
-pub mod pixel;
 pub mod vga_80x25;
 pub mod vga_320x200;
 

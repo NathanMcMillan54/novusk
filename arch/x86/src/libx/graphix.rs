@@ -1,5 +1,4 @@
 use libcolor::vga_colors::Color;
-use crate::drivers::vga::pixel::_pixel;
 use crate::x86_printk;
 
 pub struct Graphix;
@@ -9,14 +8,14 @@ impl Graphix {
         return Self;
     }
 
-    pub fn pixel(&mut self, color: Color, x: usize) {
-        unsafe { _pixel(color, x); }
+    pub fn pixel(&mut self, color: Color, x: usize, y: usize) {
+        // unsafe { _pixel(color, x, y); }
     }
 
     pub fn line(&mut self, color: Color, sx: usize, ex: usize) {
         // Draw pixels between the starting X and ending X
         for i in sx..ex {
-            self.pixel(color, i);
+            // self.pixel(color, i);
         }
     }
 

@@ -1,21 +1,12 @@
 use core::fmt;
 use core::fmt::Write;
 use libcolor::vga_colors::Color;
+use super::color::ColorCode;
 use volatile::Volatile;
 use crate::drivers::vga::VGA_ADDRESS;
 
 const BUFFER_HEIGHT: usize = 200;
 const BUFFER_WIDTH: usize = 320;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-#[repr(transparent)]
-pub struct ColorCode(u8);
-
-impl ColorCode {
-    pub fn new(foreground: Color, background: Color) -> ColorCode {
-        ColorCode((background as u8) << 4 | (foreground as u8))
-    }
-}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
