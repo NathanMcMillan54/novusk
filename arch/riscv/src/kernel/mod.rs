@@ -1,4 +1,5 @@
 pub mod panic;
+pub mod printk;
 pub mod uart;
 
 #[cfg(feature = "hifive")]

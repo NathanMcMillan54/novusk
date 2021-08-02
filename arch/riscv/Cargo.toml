@@ -11,6 +11,7 @@ hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
 io = { path = "../../mm/io/" }
 
 [dependencies]
+printk = { path = "../../kernel/printk/" }
 risc-v = "0.0.0"
 riscv-rt = "0.8.0"
 

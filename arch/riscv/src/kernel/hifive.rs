@@ -1,5 +1,5 @@
-use hifive1::{pin, pins};
-use hifive1::{clock, stdout};
+use core::fmt::Arguments;
+use hifive1::{pin, pins, sprintln, clock, stdout};
 use hifive1::hal::DeviceResources;
 use hifive1::hal::clock::Clocks;
 use hifive1::hal::prelude::*;
@@ -38,4 +38,8 @@ impl Uart for Board {
             clock,
         );
     }
+}
+
+pub fn write_fmt(fmt: Arguments) {
+    sprintln!("{}", fmt);
 }
