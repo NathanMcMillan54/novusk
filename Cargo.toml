@@ -21,6 +21,7 @@ members = [
     "arch/arm/",
     "arch/riscv/",
     "arch/x86/",
+    "arch/xtensa/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/rpi/",
@@ -73,6 +74,9 @@ riscv = { path = "arch/riscv" }
 [target.'cfg(target_arch = "riscv32")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
+
+[target.'cfg(target_arch = "xtensa")'.dependencies]
+xtensa = { path = "arch/xtensa/" }
 
 [features]
 bios_boot = ["x86/bios_boot"]
