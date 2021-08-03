@@ -75,7 +75,6 @@ libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
 
 [features]
-default = []
 bios_boot = ["x86/bios_boot"]
 custom_keyboard = ["x86/custom_keyboard"]
 grub = ["x86/grub"]

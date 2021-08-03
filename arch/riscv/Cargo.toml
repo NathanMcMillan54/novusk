@@ -12,10 +12,13 @@ io = { path = "../../mm/io/" }
 
 [dependencies]
 kinfo = { path = "../../kernel/kinfo/" }
+libbmu = { path = "../../lib/libbmu/" }
+modules = { path = "../../kernel/modules/" }
 r0 = "1.0.0"
 risc-v = "0.0.0"
 riscv-rt = "0.8.0"
 
 [features]
 virt = []
-hifive = []
+hifive = ["no-mem"]
+no-mem = []

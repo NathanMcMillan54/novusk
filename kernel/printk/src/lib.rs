@@ -6,8 +6,9 @@ extern "C" {
     fn arch_printk(fmt: Arguments);
 }
 
-pub unsafe fn _printk(fmt: Arguments) {
+pub unsafe fn _printk(fmt: Arguments) -> Arguments {
     arch_printk(fmt);
+    return fmt;
 }
 
 #[macro_export]

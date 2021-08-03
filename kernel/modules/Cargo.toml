@@ -4,8 +4,6 @@ version = "0.1.0"
 edition = "2018"
 description = "Starts and handles kernel modules"
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-ex1 = { path = "ex1/" }
-
 [dependencies]
 printk = { path = "../printk/" }
+ex1 = { path = "ex1/" }

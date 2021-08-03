@@ -8,4 +8,6 @@
 pub mod boot;
 pub mod include;
 pub mod kernel;
+
+#[cfg(not(feature = "no-mem"))]
 pub mod mm;

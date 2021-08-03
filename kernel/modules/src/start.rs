@@ -5,7 +5,6 @@ pub unsafe fn run(module: KernelModules) {
         KernelModules::None =>
             return,
 
-        #[cfg(target_arch = "x86_64")]
         KernelModules::Ex1 =>
             ex1::ex1_init(),
     }

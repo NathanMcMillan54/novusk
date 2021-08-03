@@ -1,9 +1,11 @@
 #![no_std]
 
-extern "C" {
-    fn add(num1: i32, num2: i32) -> i32;
-}
+static mut SUM: i32 = 0;
 
 pub unsafe fn ex1_init() {
-    let sum = add(1, 1);
+    SUM += 1;
+}
+
+pub unsafe fn ex1_exit() {
+    assert_eq!(SUM, 1);
 }
