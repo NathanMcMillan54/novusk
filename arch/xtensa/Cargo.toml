@@ -1,7 +1,0 @@
-[package]
-name = "xtensa"
-version = "0.1.0"
-edition = "2018"
-description = "Xtensa kernel support."
-
-[dependencies]

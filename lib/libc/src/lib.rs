@@ -1,5 +1,4 @@
 #![no_std]
-#![crate_type = "staticlib"]
 
 pub mod memory;
 pub mod types;

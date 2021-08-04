@@ -1,6 +1,6 @@
 [package]
 name = "novusk"
-version = "3.0.0-beta-arch-v3"
+version = "3.0.0-beta-arch-v2.1"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
@@ -21,7 +21,6 @@ members = [
     "arch/arm/",
     "arch/riscv/",
     "arch/x86/",
-    "arch/xtensa/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/rpi/",
@@ -74,9 +73,6 @@ riscv = { path = "arch/riscv" }
 [target.'cfg(target_arch = "riscv32")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
-
-[target.'cfg(target_arch = "xtensa")'.dependencies]
-xtensa = { path = "arch/xtensa/" }
 
 [features]
 bios_boot = ["x86/bios_boot"]

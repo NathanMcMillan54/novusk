@@ -1,7 +1,5 @@
 use crate::modules::KernelModules;
 
-const MODULE_PATH: &str = "/libs/kmod/";
-
 pub unsafe fn run(module: KernelModules) {
     match module {
         KernelModules::None =>
