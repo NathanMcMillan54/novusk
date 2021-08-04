@@ -33,6 +33,9 @@ pub mod aarch64 {
 
 #[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
 pub mod riscv {
+    pub use riscv::riscv_printk;
+    pub use riscv::include::asm;
+    pub use riscv::kernel::device::DEVICE;
     pub use riscv::kernel::panic::panic;
     pub use libbmu;
 }
