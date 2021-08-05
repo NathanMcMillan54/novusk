@@ -7,4 +7,3 @@ pub(crate) mod kernel;
 pub(crate) mod modules;
 pub mod printk;
 pub(crate) mod x86_init;
-pub mod x86_start;

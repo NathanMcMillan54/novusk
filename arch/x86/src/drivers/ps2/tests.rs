@@ -9,7 +9,7 @@ unsafe fn keyboard_test() {
     let mut kb = pc_keyboard::Keyboard::new(keyboard_layout(), ScancodeSet1, HandleControl::MapLettersToUnicode);
     match kb.add_byte(0x20) {
         Ok(Some(event)) => {
-            // ('_') <( I'm still alive. (in case you were wondering )
+            // ('_') <( I'm still alive. (in case you were wondering) )
             KEYBOARD_PASSED = true;
         }
         Ok(None) => {

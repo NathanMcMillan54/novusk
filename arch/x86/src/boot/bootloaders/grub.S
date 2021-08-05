@@ -23,7 +23,7 @@ stack_top:
 .extern main
 
 _start:
-    movl $stack_top, %esp
+    movl stack_top, esp
 	call main
 
 .size _start, . - _start

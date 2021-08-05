@@ -19,7 +19,6 @@ unsafe fn its_intel() {
 pub unsafe fn get_cpuid() {
     let mut cpuid = CpuId::new();
 
-    BRAND = "test";
     match cpuid.get_vendor_info() {
         Some(vi) =>
             if vi.as_string() == "AuthenticAMD" {
