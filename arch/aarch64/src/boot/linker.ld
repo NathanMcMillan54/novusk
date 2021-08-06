@@ -2,29 +2,40 @@ ENTRY(_start);
 SECTIONS
 {
     . = 0x80000;
-
+    __start = .;
+    __text_start = .;
     .text :
     {
-        KEEP(*(.text.boot)) *(.text .text.*)
+        KEEP(*(.text.boot))
+        *(.text)
     }
+    . = ALIGN(4096);
+    __text_end = .;
 
+    __rodata_start = .;
     .rodata :
     {
-        *(.rodata .rodata.*)
+        *(.rodata)
     }
+    . = ALIGN(4096);
+    __rodata_end = .;
 
+    __data_start = .;
     .data :
     {
-        *(.data .data.*)
+        *(.data)
     }
+    . = ALIGN(4096);
+    __data_end = .;
 
-    .bss ALIGN(8):
+    __bss_start = .;
+    .bss :
     {
-        __bss_start = .;
-        *(.bss .bss.*)
-        *(COMMON)
-        __bss_end = .;
+        bss = .;
+        *(.bss)
     }
-
-    /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) }
+    . = ALIGN(4096); /* align to page size */
+    __bss_end = .;
+    __bss_size = __bss_end - __bss_start;
+    __end = .;
 }
