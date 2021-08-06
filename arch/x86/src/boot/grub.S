@@ -1,7 +1,30 @@
-.code32
+.set ALIGN,    1<<0
+.set MEMINFO,  1<<1
+.set FLAGS,    ALIGN | MEMINFO
+.set MAGIC,    0x1BADB002
+.set CHECKSUM, -(MAGIC + FLAGS)
 
+.section .multiboot
+.align 4
+.long MAGIC
+.long FLAGS
+.long CHECKSUM
+
+.section .bootstrap_stack, "aw", @nobits
+stack_bottom:
+.skip 16384
+stack:
+
+.section .text
+.globl grub_hang
 .globl _grub_start
-.extern main
-
+.type _grub_start, @function
 _grub_start:
-    call main
+	movl $stack, %esp
+	call main
+
+grub_hang:
+    hlt
+    jmp grub_hang
+
+.size _start, . - _start

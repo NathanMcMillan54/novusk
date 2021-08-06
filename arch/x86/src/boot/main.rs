@@ -17,9 +17,6 @@ unsafe fn print_info() {
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
-    #[cfg(target_arch = "x86")]
-    asm!("hlt");
-
     boot_init();
     x86_printk!("Starting kernel...");
 
