@@ -1,7 +1,7 @@
 use core::fmt::{Arguments, Write};
 use super::debug::DebugPrint;
 
-#[link_name = "arch_printk"]
+#[export_name = "arch_printk"]
 #[no_mangle]
 pub extern "C" fn _a64_printk(fmt: Arguments) {
     let mut debug = DebugPrint;

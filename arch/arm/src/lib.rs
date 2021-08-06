@@ -4,13 +4,19 @@
 #![feature(stmt_expr_attributes)]
 
 #[macro_use] extern crate alloc;
+#[cfg(target_arch = "arm")]
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate kinfo;
 
-pub mod boot;
+cfg_if::cfg_if! {
+    if #[cfg(target_arch = "arm")] {
+        pub mod boot;
+        pub mod kernel;
+        pub mod mm;
+    }
+}
+
 pub mod include;
-pub mod kernel;
-pub mod mm;
 
 #[cfg(feature = "rpi")]
 pub mod rpi;

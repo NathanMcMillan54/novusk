@@ -2,7 +2,6 @@ global_asm!(include_str!("boot64.S"));
 
 use crate::aarch64_printk;
 use crate::kernel::init::aarch64_init;
-use arm::mm::linker_mem::{clear_bss_se};
 use core::fmt::{Result, Write};
 use crate::kernel::debug::{DebugPrint, console};
 
@@ -17,7 +16,7 @@ extern "C" {
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
-    clear_bss_se(__bss_start, __bss_end);
+    r0::zero_bss(&mut __bss_start, &mut __bss_end);
 
     //write_string("Starting kernel...\n");
 
