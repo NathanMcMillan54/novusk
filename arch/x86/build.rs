@@ -8,9 +8,9 @@ use std::time::Duration;
 use std::env::set_current_dir;
 
 fn compile_grub_boot() {
-    println!("cargo:rerun-if-changed=src/boot/grub.asm");
+    println!("cargo:rerun-if-changed=src/boot/grub.S");
     Command::new("as")
-        .args(&["-32", "src/boot/grub.asm", "-o", PathBuf::from(env::var_os("OUT_DIR").unwrap()).join("grub.o").to_str().unwrap()])
+        .args(&["-32", "src/boot/grub.S", "-o", PathBuf::from(env::var_os("OUT_DIR").unwrap()).join("grub.o").to_str().unwrap()])
         .spawn()
         .unwrap();
 }
