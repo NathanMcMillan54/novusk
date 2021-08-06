@@ -1,4 +1,3 @@
-use bootloader::bootinfo::FrameRange;
 use super::boot::{die, boot_init, BOOT};
 use crate::drivers::vga::{HEIGHT, WIDTH, VGA_ADDRESS_STR};
 use crate::kernel::kernel::*;
@@ -11,10 +10,16 @@ unsafe fn print_info() {
         x86_printk!("   Size: {}x{}", WIDTH, HEIGHT);
         x86_printk!("   Address: {}", VGA_ADDRESS_STR);
     }
+
+    #[cfg(target_arch = "x86_64")]
+    x86_printk!("Boot took: {} seconds", amd64_timer::ticks() as f64 / 1000000000.0);
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
+    #[cfg(target_arch = "x86")]
+    asm!("hlt");
+
     boot_init();
     x86_printk!("Starting kernel...");
 

@@ -1,0 +1,21 @@
+This is a list of people who have contributed to the Novusk kernel. If you've contributed to the Novusk kernel add your
+name, email, and the part that you edited/change in this format:
+
+    Name <mycontactemail@emailsite.com> | Contribution
+
+Use these letters to help shorten it:
+
+    A for architecture specific kernel, d for documentation, D for drivers, F for file system, G for GPU drivers, C for
+    kernel functions and type (include/), I for main kernel (init/), K for kernel, L for libraries, M for memory
+    management, N for network drivers, and T for tools.
+
+If you contributed to the main kernel you should write something like this:
+
+    My Name <myemail@email.com> | I
+
+Your should place your name in alphabetical order (first name). Please be honest about what you've changed, have fun
+coding!
+
+------------------------------------------------------------
+
+Nathan McMillan <nathanmcmillan54@gmail.com> | A, d, D, F, G, C, I, K, L, M, N, T

@@ -1,4 +1,3 @@
-use super::bootloaders::bootloader_init;
 use core::fmt::Arguments;
 use crate::drivers::ix86::init::ix86_init;
 use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
@@ -35,8 +34,6 @@ unsafe fn bios_setup() {
 
     #[cfg(target_arch = "x86")]
     ix86_init();
-
-    bootloader_init();
 }
 
 unsafe fn uefi_setup() {

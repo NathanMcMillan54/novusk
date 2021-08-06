@@ -3,8 +3,10 @@ name = "x86"
 version = "0.1.0"
 edition = "2018"
 description = "x86 family support for Novusk"
+build = "build.rs"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
+amd64_timer = "1.3.0"
 bootloader = "0.9.18"
 raw-cpuid = "9.0.0"
 x86_64-sound = { path = "../../sound/x86_64-sound/" }
@@ -20,7 +22,6 @@ pc-keyboard = "0.5.1"
 volatile = "0.2.6"
 x86 = { git = "https://github.com/NathanMcMillan54/rust-x86" }
 
-
 [dependencies.crossbeam-queue]
 version = "0.2.1"
 default-features = false
@@ -34,6 +35,9 @@ default-features = false
 version = "0.3.4"
 default-features = false
 features = ["alloc"]
+
+[build-dependencies]
+cc = "1.0.69"
 
 [features]
 bios_boot = []
