@@ -1,7 +1,5 @@
 use super::rpi_mb::*;
 
-extern "C" { static mut MAILBOX: [usize; 36]; }
-
 pub unsafe fn fb_init() {
     MAILBOX[0] = 35 * 4;
     MAILBOX[1] = RpiMb::MboxRequest as usize;

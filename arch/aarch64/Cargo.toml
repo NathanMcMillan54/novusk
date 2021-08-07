@@ -7,8 +7,10 @@ description = "Aarch64/arm64 support for Novusk, mostly a kernel for the Raspber
 [dependencies]
 arm = { path = "../arm/" }
 io = { path = "../../mm/io/" }
+kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
 r0 = "1.0.0"
+rpi = { path = "../../drivers/firmware/rpi/" }
 tock-registers = "0.7.0"
 
 [features]

@@ -1,5 +1,7 @@
 // Translated from https://github.com/isometimes/rpi4-osdev/blob/master/part5-framebuffer/mb.h
 
+pub static mut MAILBOX: [usize; 36] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
 #[derive(Copy, Clone, PartialEq)]
 pub enum RpiMb {
     MboxRequest = 0
@@ -30,4 +32,10 @@ pub enum RpiMboxTag {
     MboxTagGetFb = 0x40001,
     MboxTagGetPitch = 0x40008,
     MboxTagLast = 0
+}
+
+pub unsafe fn clear_mailbox() {
+    for i in 0..36 {
+        MAILBOX[i] = 0;
+    }
 }
