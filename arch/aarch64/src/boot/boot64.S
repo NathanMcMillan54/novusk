@@ -1,19 +1,18 @@
-.section ".text.boot"
+.section ".text._start"
 
-.globl _start
-.extern aarch64_boot_setup
+.global _start
 
-    .org 0x80000
 _start:
-    ldr     x5, =_start
-    mov     sp, x5
+    mrs x1, mpidr_el1
+    and x1, x1, #3
+    cbz x1, 2f
+1:  wfe
+    b 1b
+2:
+    ldr x1, =_start
+    mov sp, x1
 
-    ldr     x5, =__bss_start
-    ldr     w6, =__bss_size
-3:  cbz     w6, 4f
-    str     xzr, [x5], #8
-    sub     w6, w6, #1
-    cbnz    w6, 3b
+    bl aarch64_boot_setup
+    b 1b
 
-4:  bl aarch64_boot_setup
-    wfe
+// ('_') <( wsg? )

@@ -12,11 +12,11 @@ cfg_if::cfg_if! {
     if #[cfg(target_arch = "arm")] {
         pub mod boot;
         pub mod kernel;
-        pub mod mm;
     }
 }
 
 pub mod include;
+pub mod mm;
 
 #[cfg(feature = "rpi")]
 pub mod rpi;

@@ -54,6 +54,7 @@ printk = { path = "kernel/printk/" }
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
 x86 = { path = "arch/x86/" }
+x86_64-sound = { path = "sound/x86_64-sound" }
 
 [target.'cfg(target_arch = "x86")'.dependencies]
 x86 = { path = "arch/x86/" }

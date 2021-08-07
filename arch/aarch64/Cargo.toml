@@ -2,7 +2,7 @@
 name = "aarch64"
 version = "0.1.0"
 edition = "2018"
-description = "Aarch64/arm64 support for Novusk mostly a kernel for the RaspberryPi"
+description = "Aarch64/arm64 support for Novusk, mostly a kernel for the RaspberryPi"
 
 [dependencies]
 arm = { path = "../arm/" }
