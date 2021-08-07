@@ -11,4 +11,8 @@ pub unsafe fn x86_kernel_init() {
     drivers_init();
 
     x86_modules_init();
+
+    extern "C" { fn kernel_main(); }
+
+    kernel_main();
 }
