@@ -1,12 +1,11 @@
 use core::fmt::{Arguments, Write};
-use super::debug::DebugPrint;
+use crate::kernel::uart::Uart;
 
 #[export_name = "arch_printk"]
 #[no_mangle]
-pub extern "C" fn _a64_printk(fmt: Arguments) {
-    let mut debug = DebugPrint;
-
-    debug.write_fmt(fmt);
+pub unsafe extern "C" fn _a64_printk(fmt: Arguments) {
+    let mut uart = Uart::new();
+    uart.write_fmt(format_args!("{}{}", fmt, "\n"));
 }
 
 #[macro_export]

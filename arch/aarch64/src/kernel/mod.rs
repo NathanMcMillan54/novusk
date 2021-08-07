@@ -1,4 +1,4 @@
-pub mod debug;
+pub mod gpio;
 pub mod init;
 pub mod panic;
 pub mod printk;

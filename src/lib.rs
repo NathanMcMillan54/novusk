@@ -27,7 +27,6 @@ pub mod arm {
 
 #[cfg(target_arch = "aarch64")]
 pub mod aarch64 {
-    pub use aarch64::kernel::debug::DebugPrint;
     pub use aarch64::arm::include::asm;
     pub use libbmu;
 }

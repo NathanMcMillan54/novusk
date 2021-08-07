@@ -10,7 +10,7 @@
       "-Tarch/aarch64/src/boot/linker.ld"
     ]
   },
-  "llvm-target": "aarch64-unknown-none-softfloat",
+  "llvm-target": "aarch64-unknown-none",
   "no-compiler-rt": true,
   "features": "+a53,+strict-align",
   "max-atomic-width": 128,

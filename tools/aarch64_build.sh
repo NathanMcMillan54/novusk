@@ -1,9 +1,5 @@
 #!/bin/bash
 
-LINKER="arch/aarch64/src/boot/linker.ld"
-
-export LINKER
-
 export RUSTFLAGS="-C target-cpu=cortex-a53"
 
 cargo rustc --target targets/aarch64-none-novusk.json --features aarch64/rpi3 --release

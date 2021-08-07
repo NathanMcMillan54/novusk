@@ -1,6 +1,6 @@
-.section ".text._start"
+.section ".text.boot"
 
-.global _start
+.globl _start
 
 _start:
     mrs x1, mpidr_el1
@@ -14,5 +14,3 @@ _start:
 
     bl aarch64_boot_setup
     b 1b
-
-// ('_') <( wsg? )
