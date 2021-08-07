@@ -1,3 +1,4 @@
+use crate::aarch64_printk;
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
 
@@ -5,7 +6,6 @@ use core::ptr::null_mut;
 static ALLOCATOR: AllocHandler = AllocHandler;
 
 pub struct AllocHandler;
-
 
 unsafe impl GlobalAlloc for AllocHandler {
     unsafe fn alloc(&self, _layout: Layout) -> *mut u8 {
@@ -19,5 +19,7 @@ unsafe impl GlobalAlloc for AllocHandler {
 
 #[alloc_error_handler]
 pub unsafe fn alloc_error(_layout: Layout) -> ! {
-    panic!("Alloc memory error, _layout: {:?}", _layout);
+    aarch64_printk!("\nAlloc memory error:");
+    aarch64_printk!("    Alloc Layout: {:?}", _layout);
+    panic!("Memory error");
 }

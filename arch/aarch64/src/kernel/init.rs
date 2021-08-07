@@ -4,6 +4,7 @@ use libbmu::bmu_init;
 use core::fmt::Write;
 
 pub unsafe fn aarch64_init() {
+    vec![10; 10];
 
     bmu_init();
 }

@@ -1,6 +1,6 @@
 #![no_std]
 #![feature(asm, global_asm, llvm_asm)]
-#![feature(alloc_error_handler)]
+#![feature(alloc_error_handler, panic_info_message)]
 #![feature(core_intrinsics)]
 
 #[macro_use] extern crate alloc;
