@@ -1,7 +1,6 @@
 use core::fmt::Arguments;
-// use nkuefi::x86::write::_efi_write;
+use super::vga::_vga_print;
 use crate::boot::boot::BOOT;
-use crate::drivers::vga::_vga_print;
 
 #[export_name = "arch_printk"]
 #[no_mangle]

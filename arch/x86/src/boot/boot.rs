@@ -1,6 +1,5 @@
 use core::fmt::Arguments;
-use crate::drivers::ix86::init::ix86_init;
-use crate::drivers::vga::{VGA_ADDRESS, init::vga_init};
+use crate::kernel::vga::{VGA_ADDRESS, init::vga_init};
 use crate::include::asm::hlt;
 use crate::kernel::kernel::*;
 
@@ -31,9 +30,6 @@ unsafe fn bios_setup() {
 
     #[cfg(feature = "vga_0xa")]
     vga_init(320, 200, 0xa0000);
-
-    #[cfg(target_arch = "x86")]
-    ix86_init();
 }
 
 unsafe fn uefi_setup() {

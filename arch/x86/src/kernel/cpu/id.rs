@@ -1,7 +1,7 @@
-use super::BRAND;
 use kinfo::info::set_info;
 use raw_cpuid::CpuId;
-use crate::kernel::kernel::x86_printk;
+
+pub static mut BRAND: &'static str = "Unknown";
 
 unsafe fn unknown_cpu() {
     set_info("not ok");
@@ -15,6 +15,7 @@ unsafe fn its_amd() {
 unsafe fn its_intel() {
     BRAND = "Intel";
 }
+
 
 pub unsafe fn get_cpuid() {
     let mut cpuid = CpuId::new();

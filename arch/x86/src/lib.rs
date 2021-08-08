@@ -13,7 +13,6 @@ extern crate nkuefi;
 use core::panic::PanicInfo;
 
 pub mod boot;
-pub mod drivers;
 pub mod include;
 pub mod kernel;
 pub mod libx;

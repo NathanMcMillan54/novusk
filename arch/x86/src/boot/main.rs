@@ -1,6 +1,6 @@
 use super::boot::{die, boot_init, BOOT};
-use crate::drivers::vga::{HEIGHT, WIDTH, VGA_ADDRESS_STR};
 use crate::kernel::kernel::*;
+use crate::kernel::vga::{HEIGHT, WIDTH, VGA_ADDRESS_STR};
 
 unsafe fn print_info() {
     x86_printk!("");

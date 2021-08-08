@@ -1,14 +1,23 @@
-use super::cpu::id::{get_cpuid, BRAND};
+use super::cpu::{cpu_init, id};
 use super::kernel::*;
 use super::modules::x86_modules_init;
-use crate::drivers::drivers::drivers_init;
+use ps2::test::ps2_keyboard_test;
 
 pub unsafe fn x86_kernel_init() {
-    get_cpuid();
+    id::get_cpuid();
     kinfo!("Got cpuid");
-    x86_printk!("    CPU brand: {}", BRAND);
+    x86_printk!("    CPU brand: {}", id::BRAND);
 
-    drivers_init();
+    cpu_init();
+    kinfo!("Brand specific CPU initialized");
+
+    x86_printk!("Running PS2 input tests...");
+    if !ps2_keyboard_test() {
+        x86_printk!("    PS2 keyboard test failed");
+    } else {
+        x86_printk!("    PS2 keyboard test passed");
+    }
+    kinfo!("PS2 input tests finished");
 
     x86_modules_init();
 

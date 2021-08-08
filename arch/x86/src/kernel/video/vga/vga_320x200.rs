@@ -1,32 +1,32 @@
 use core::fmt;
 use core::fmt::Write;
 use libcolor::vga_colors::Color;
+use super::VGA_ADDRESS;
 use super::color::ColorCode;
 use volatile::Volatile;
-use crate::drivers::vga::VGA_ADDRESS;
 
-const BUFFER_HEIGHT: usize = 25;
-const BUFFER_WIDTH: usize = 80;
+const BUFFER_HEIGHT: usize = 200;
+const BUFFER_WIDTH: usize = 320;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
-pub struct ScreenChar {
-    pub ascii_character: u8,
-    pub color_code: ColorCode,
+struct ScreenChar {
+    ascii_character: u8,
+    color_code: ColorCode,
 }
 
 #[repr(transparent)]
 pub struct Buffer {
-    pub chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
+    chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
-pub struct Vga80x25 {
+pub struct Vga320x200 {
     pub column_position: usize,
     pub color_code: ColorCode,
     pub buffer: &'static mut Buffer,
 }
 
-impl Vga80x25 {
+impl Vga320x200 {
     pub fn write_byte(&mut self, byte: u8) {
         match byte {
             b'\n' => self.new_line(),
@@ -81,7 +81,7 @@ impl Vga80x25 {
     }
 }
 
-impl fmt::Write for Vga80x25 {
+impl fmt::Write for Vga320x200 {
     fn write_str(&mut self, s: &str) -> fmt::Result {
         self.write_string(s);
         Ok(())
@@ -89,7 +89,7 @@ impl fmt::Write for Vga80x25 {
 }
 
 pub unsafe fn _print(args: fmt::Arguments) {
-    let mut writer = Vga80x25 {
+    let mut writer = Vga320x200 {
         column_position: 0,
         color_code: ColorCode::new(Color::LightGray, Color::Black),
         buffer: &mut *(VGA_ADDRESS as *mut Buffer)
