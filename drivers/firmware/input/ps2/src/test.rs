@@ -1,15 +1,14 @@
 use kinfo::info::set_info;
-use pc_keyboard::{HandleControl, Keyboard, ScancodeSet1, layouts};
-use super::keyboard::setup::keyboard_layout;
-use crate::x86_printk;
+use pc_keyboard::{ScancodeSet1, HandleControl};
+use crate::keyboard_layout;
 
 pub static mut KEYBOARD_PASSED: bool = false;
 
-unsafe fn keyboard_test() {
+pub unsafe fn keyboard_test() {
     let mut kb = pc_keyboard::Keyboard::new(keyboard_layout(), ScancodeSet1, HandleControl::MapLettersToUnicode);
     match kb.add_byte(0x20) {
         Ok(Some(event)) => {
-            // ('_') <( I'm still alive. (in case you were wondering) )
+            // ('_') <(Why are people the way they are?)
             KEYBOARD_PASSED = true;
         }
         Ok(None) => {
@@ -20,12 +19,8 @@ unsafe fn keyboard_test() {
         Err(err) => {
             set_info("not ok");
             kinfo!("Error decoding: {:?}", err);
-            x86_printk!("Try using a proper keyboard, or change keyboard layout at kernel compile time");
+            printk!("Try using a proper keyboard, or change keyboard layout at kernel compile time");
             KEYBOARD_PASSED = false;
         }
     }
-}
-
-pub unsafe fn ps2_test() {
-    keyboard_test();
 }

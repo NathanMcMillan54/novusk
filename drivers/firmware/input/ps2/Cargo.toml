@@ -1,0 +1,32 @@
+[package]
+name = "ps2"
+version = "0.1.0"
+edition = "2018"
+description = "Driver for PS2 input devices, mostly for x86 devices"
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+ps2-mouse = "0.1.4"
+
+[dependencies]
+kinfo = { path = "../../../../kernel/kinfo/" }
+pc-keyboard = "0.5.1"
+printk = { path = "../../../../kernel/printk/" }
+
+[dependencies.crossbeam-queue]
+version = "0.2.1"
+default-features = false
+features = ["alloc"]
+
+[dependencies.conquer-once]
+version = "0.2.0"
+default-features = false
+
+[dependencies.futures-util]
+version = "0.3.4"
+default-features = false
+features = ["alloc"]
+
+[features]
+us_layout = []
+uk_layout = []
+custom_layout = []

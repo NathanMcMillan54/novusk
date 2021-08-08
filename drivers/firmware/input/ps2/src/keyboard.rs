@@ -6,13 +6,8 @@ use crossbeam_queue::ArrayQueue;
 use futures_util::StreamExt;
 use futures_util::stream::Stream;
 use futures_util::task::AtomicWaker;
-use crate::drivers::ps2::tests::KEYBOARD_PASSED;
-use libcolor::vga_colors::Color;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts};
-// use crate::drivers::vga::pixel::_pixel;
-use crate::x86_printk;
-use crate::drivers::ps2::keyboard::setup::keyboard_layout;
-use crate::include::other::pixel::_vga_pixel;
+use crate::keyboard_layout;
 
 pub static SCAN_CODE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 pub static WAKER: AtomicWaker = AtomicWaker::new();
@@ -21,7 +16,7 @@ struct KeyboardScancode;
 
 impl KeyboardScancode {
     pub fn new() -> Self {
-        SCAN_CODE.try_init_once(|| ArrayQueue::new(100)).unwrap();
+        SCAN_CODE.try_init_once(|| ArrayQueue::new(9)).unwrap();
         return Self;
     }
 }
@@ -47,11 +42,7 @@ impl Stream for KeyboardScancode {
     }
 }
 
-pub async unsafe fn ps2_keyboard_input() {
-    if !KEYBOARD_PASSED {
-        _vga_pixel(Color::Yellow, 0, 0);
-    }
-
+pub async fn ps2_keyboard_input() {
     let mut scancodes = KeyboardScancode::new();
     let mut keyboard = Keyboard::new(keyboard_layout(), ScancodeSet1, HandleControl::MapLettersToUnicode);
 
@@ -59,8 +50,8 @@ pub async unsafe fn ps2_keyboard_input() {
         if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
             if let Some(key) = keyboard.process_keyevent(key_event) {
                 match key {
-                    DecodedKey::Unicode(character) => x86_printk!("{}", character),
-                    DecodedKey::RawKey(key) => x86_printk!("{:?}", key),
+                    DecodedKey::Unicode(character) => unsafe { printk!("{}", character); },
+                    DecodedKey::RawKey(key) => unsafe { printk!("{:?}", key); },
                 }
             }
         }

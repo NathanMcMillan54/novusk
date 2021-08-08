@@ -1,5 +1,3 @@
-// Translated from https://github.com/isometimes/rpi4-osdev/blob/master/part5-framebuffer/mb.h
-
 pub static mut MAILBOX: [usize; 36] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 #[derive(Copy, Clone, PartialEq)]

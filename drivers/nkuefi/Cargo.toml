@@ -2,8 +2,6 @@
 name = "nkuefi"
 version = "0.1.0"
 edition = "2018"
-description = "Novusk Kernel UEFI boot and setup"
+description = "Novusk Kernel UEFI driver"
 
 [dependencies]
-uefi = "0.11.0"
-uefi-services = { version = "0.8.0", features = ["no_panic_handler"] }

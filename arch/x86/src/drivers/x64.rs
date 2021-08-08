@@ -2,7 +2,6 @@ use super::Drivers;
 use crate::kernel::cpu::BRAND;
 use crate::drivers::amd::amd_init;
 use crate::drivers::intel::intel_init;
-use crate::drivers::ps2::ps2_init;
 
 struct X64Drivers;
 
@@ -16,7 +15,7 @@ impl Drivers for X64Drivers {
     }
 
     unsafe fn hardware_input_init(&self) {
-        ps2_init();
+        ps2::mouse::ps2_mouse_init();
     }
 }
 

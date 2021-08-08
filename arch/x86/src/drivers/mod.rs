@@ -4,7 +4,6 @@ pub(crate) use drivers::Drivers;
 pub(crate) mod grub;
 pub(crate) mod intel;
 pub(crate) mod ix86;
-pub mod ps2;
 pub mod vga;
 
 // x86_64 drivers

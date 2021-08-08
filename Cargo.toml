@@ -23,6 +23,7 @@ members = [
     "arch/x86/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
+    "drivers/firmware/input/ps2/",
     "drivers/firmware/rpi/",
     "drivers/gpu/",
     "drivers/usb/",

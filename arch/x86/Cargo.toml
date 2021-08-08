@@ -3,7 +3,6 @@ name = "x86"
 version = "0.1.0"
 edition = "2018"
 description = "x86 family support for Novusk"
-build = "build.rs"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 amd64_timer = "1.3.0"
@@ -18,7 +17,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 modules = { path = "../../kernel/modules/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
-pc-keyboard = "0.5.1"
+ps2 = { path = "../../drivers/firmware/input/ps2/" }
 volatile = "0.2.6"
 x86 = { git = "https://github.com/NathanMcMillan54/rust-x86" }
 
@@ -41,10 +40,10 @@ cc = "1.0.69"
 
 [features]
 bios_boot = []
-custom_keyboard = []
+custom_keyboard = ["ps2/custom_layout"]
 grub = ["bios_boot"]
 uefi_boot = []
-uk_keyboard = []
-us_keyboard = []
+uk_keyboard = ["ps2/uk_layout"]
+us_keyboard = ["ps2/us_layout"]
 vga_0xa = []
 virt = []
