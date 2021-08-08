@@ -17,5 +17,5 @@ pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
     aarch64_printk!("Starting kernel...\n");
 
     aarch64_init();
-    wfe();
+    panic!("Nothing to run");
 }
