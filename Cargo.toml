@@ -25,6 +25,7 @@ members = [
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
     "drivers/firmware/rpi/",
+    "drivers/firmware/usbd/",
     "drivers/gpu/",
     "drivers/usb/",
     "drivers/nkuefi/",
