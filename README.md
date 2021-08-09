@@ -35,7 +35,7 @@ development
 
 ## For Rustc v1.51+
 
-This version of Novusk might compile for anyone using ``rustc`` v1.53+, any issue made about not being able to compile
+This version of Novusk might compile for anyone using ``rustc`` v1.51+, any issue made about not being able to compile
 it will be closed
 
 Read [``Documentation/``](https://github.com/NathanMcMillan54/novusk/tree/v1.2/Documentation) for Novusk
