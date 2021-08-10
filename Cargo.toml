@@ -79,6 +79,7 @@ riscv = { path = "arch/riscv" }
 
 [features]
 bios_boot = ["x86/bios_boot"]
+uefi_boot = ["x86/uefi_boot"]
 custom_keyboard = ["x86/custom_keyboard"]
 grub = ["x86/grub"]
 uk_keyboard = ["x86/uk_keyboard"]

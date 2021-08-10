@@ -1,6 +1,4 @@
-#[cfg(not(feature = "uefi_boot"))]
 pub mod alloc;
-
 pub(crate) mod cpu;
 pub mod io;
 pub(crate) mod kernel;

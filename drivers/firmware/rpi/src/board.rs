@@ -5,6 +5,6 @@ pub unsafe fn check_board() -> u32 {
 
     llvm_asm!("mrs $0, midr_el1" : "=r"(board));
 
-    // TODO: When this does work, set MMIO and GPIO addresses
+    // TODO: When this does work, set MMIO and GPIO addresses for specific boards
     return (board >> 4) & 0xFFF;
 }

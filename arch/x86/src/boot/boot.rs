@@ -33,5 +33,5 @@ unsafe fn bios_setup() {
 }
 
 unsafe fn uefi_setup() {
-
+    nkuefi::x64_uefi::x86_64_uefi_init();
 }

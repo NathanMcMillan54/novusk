@@ -1,5 +1,6 @@
 use core::fmt::Arguments;
 use super::vga::_vga_print;
+use nkuefi::x64_uefi::_serial_print;
 use crate::boot::boot::BOOT;
 
 #[export_name = "arch_printk"]
@@ -8,7 +9,7 @@ pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
     if BOOT == "BIOS" {
         _vga_print(format_args!("{}{}", fmt, "\n"));
     } else if BOOT == "UEFI" {
-        // _efi_write(fmt);
+        _serial_print(fmt);
     } else {
         // \_('_')_/ <( idk? )
     }
