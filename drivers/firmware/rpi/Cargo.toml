@@ -6,3 +6,4 @@ description = ""
 
 [dependencies]
 io = { path = "../../../mm/io/" }
+printk = { path = "../../../kernel/printk/" }

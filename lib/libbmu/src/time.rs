@@ -5,7 +5,7 @@ impl Time {
         return Time;
     }
 
-    pub fn sleepc(cycles: i32) {
+    pub fn sleepc(&mut self, cycles: i64) {
         for i in 0..cycles {
             unsafe { asm!("nop"); }
         }
