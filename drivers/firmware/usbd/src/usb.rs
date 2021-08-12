@@ -2,7 +2,7 @@ use core::ptr::{write_volatile};
 
 pub struct Usb {
     pub port: u8,
-    disabled: bool,
+    pub disabled: bool,
 }
 
 impl Usb {
