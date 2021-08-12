@@ -1,6 +1,7 @@
 use super::cpu::{cpu_init, id};
 use super::kernel::*;
 use super::modules::x86_modules_init;
+use ps2::mouse::ps2_mouse_init;
 use ps2::test::ps2_keyboard_test;
 
 pub unsafe fn x86_kernel_init() {
@@ -18,6 +19,10 @@ pub unsafe fn x86_kernel_init() {
         x86_printk!("    PS2 keyboard test passed");
     }
     kinfo!("PS2 input tests finished");
+
+    ps2_mouse_init();
+    kinfo!("PS2 mouse initialized");
+
 
     x86_modules_init();
 

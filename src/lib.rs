@@ -33,10 +33,19 @@ pub mod riscv {
 }
 
 pub mod libs {
+    pub use libc;
     pub use libcolor;
 }
 
 pub mod kernel {
     pub use kinfo;
     pub use printk;
+}
+
+pub mod drivers {
+    pub mod firmware {
+        pub mod input {
+            pub use ps2;
+        }
+    }
 }

@@ -50,8 +50,10 @@ members = [
 
 [dependencies]
 kinfo = { path = "kernel/kinfo/" }
+libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
+ps2 = { path = "drivers/firmware/input/ps2/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
