@@ -2,9 +2,9 @@
 
 #[cfg(target_arch = "x86_64")]
 pub mod x86_64 {
-    pub use x86::{x86_printk, panic};
-    pub use x86::kernel as x86_kernel;
-    pub use x86::include::{asm, other::*, sys};
+    pub use x86_64::{x86_printk, panic};
+    pub use x86_64::kernel as x86_kernel;
+    pub use x86_64::include::{asm, other::*, sys};
     pub use x86_64_sound as sound;
 }
 
@@ -45,7 +45,13 @@ pub mod kernel {
 pub mod drivers {
     pub mod firmware {
         pub mod input {
+            #[cfg(target_arch = "x86_64")]
             pub use ps2;
         }
+
+        #[cfg(target_arch = "aarch64")]
+        pub use rpi;
+
+        pub use usbd;
     }
 }

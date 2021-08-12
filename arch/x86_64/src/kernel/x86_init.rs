@@ -1,7 +1,7 @@
 use super::cpu::{cpu_init, id};
 use super::kernel::*;
 use super::modules::x86_modules_init;
-use ps2::mouse::ps2_mouse_init;
+use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
 
 pub unsafe fn x86_kernel_init() {
@@ -22,7 +22,8 @@ pub unsafe fn x86_kernel_init() {
 
     ps2_mouse_init();
     kinfo!("PS2 mouse initialized");
-
+    x86_printk!("    Mouse x: {}", MOUSE.lock().get_state().get_x());
+    x86_printk!("    Mouse y: {}", MOUSE.lock().get_state().get_y());
 
     x86_modules_init();
 

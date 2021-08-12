@@ -16,10 +16,4 @@ impl Usb {
     pub fn disable_usb(&mut self) {
         self.disabled = true;
     }
-
-    pub unsafe fn write_usb(&mut self, byte: u8) {
-        while !self.disabled {
-            write_volatile(self.port as *mut u8, byte);
-        }
-    }
 }

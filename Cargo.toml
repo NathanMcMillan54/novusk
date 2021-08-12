@@ -1,6 +1,6 @@
 [package]
 name = "novusk"
-version = "3.0.0-beta-arch-v3.2.1"
+version = "3.0.0-beta-drivers-v1"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
@@ -20,7 +20,7 @@ members = [
     "arch/aarch64/",
     "arch/arm/",
     "arch/riscv/",
-    "arch/x86/",
+    "arch/x86_64/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
@@ -53,19 +53,18 @@ kinfo = { path = "kernel/kinfo/" }
 libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
-ps2 = { path = "drivers/firmware/input/ps2/" }
+usbd = { path = "drivers/firmware/usbd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
-x86 = { path = "arch/x86/" }
+ps2 = { path = "drivers/firmware/input/ps2/" }
+x86_64 = { path = "arch/x86_64/" }
 x86_64-sound = { path = "sound/x86_64-sound" }
 
-[target.'cfg(target_arch = "x86")'.dependencies]
-x86 = { path = "arch/x86/" }
-
 [target.'cfg(target_arch = "aarch64")'.dependencies]
-libbmu = { path = "lib/libbmu/" }
 aarch64 = { path = "arch/aarch64/" }
+libbmu = { path = "lib/libbmu/" }
+rpi = { path = "drivers/firmware/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
@@ -80,15 +79,15 @@ libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
 
 [features]
-bios_boot = ["x86/bios_boot"]
-uefi_boot = ["x86/uefi_boot"]
-custom_keyboard = ["x86/custom_keyboard"]
-grub = ["x86/grub"]
-uk_keyboard = ["x86/uk_keyboard"]
-us_keyboard = ["x86/us_keyboard"]
-vga_0xa = ["x86/vga_0xa"]
+bios_boot = ["x86_64/bios_boot"]
+uefi_boot = ["x86_64/uefi_boot"]
+custom_keyboard = ["x86_64/custom_keyboard"]
+grub = ["x86_64/grub"]
+uk_keyboard = ["x86_64/uk_keyboard"]
+us_keyboard = ["x86_64/us_keyboard"]
+vga_0xa = ["x86_64/vga_0xa"]
 nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi", "aarch64/rpi3"]
-virt = ["aarch64/qemu_virt", "arm/virt", "riscv/virt", "x86/virt"]
+virt = ["aarch64/qemu_virt", "arm/virt", "riscv/virt", "x86_64/virt"]
 hifive = ["riscv/hifive"]

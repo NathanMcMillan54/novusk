@@ -1,5 +1,5 @@
 [package]
-name = "x86"
+name = "x86_64"
 version = "0.1.0"
 edition = "2018"
 description = "x86 family support for Novusk"
