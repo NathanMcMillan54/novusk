@@ -18,8 +18,7 @@ defmt = "0.2.3"
 gpu = { path = "../../drivers/gpu/" }
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }
-usb = { path = "../../drivers/usb/" }
-#register = "1.0.2"
+usbd = { path = "../../drivers/usbd/" }
 r0 = "1.0.0"
 
 [features]

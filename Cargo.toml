@@ -25,9 +25,8 @@ members = [
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
     "drivers/firmware/rpi/",
-    "drivers/firmware/usbd/",
     "drivers/gpu/",
-    "drivers/usb/",
+    "drivers/usbd/",
     "drivers/nkuefi/",
     # GPUs
     # Kernel
@@ -53,7 +52,7 @@ kinfo = { path = "kernel/kinfo/" }
 libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 printk = { path = "kernel/printk/" }
-usbd = { path = "drivers/firmware/usbd/" }
+usbd = { path = "drivers/usbd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"

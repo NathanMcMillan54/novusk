@@ -8,12 +8,10 @@
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate kinfo;
 
-cfg_if::cfg_if! {
-    if #[cfg(target_arch = "arm")] {
-        pub mod boot;
-        pub mod kernel;
-    }
-}
+#[cfg(target_arch = "arm")]
+pub mod boot;
+#[cfg(target_arch = "arm")]
+pub mod kernel;
 
 pub mod include;
 pub mod mm;

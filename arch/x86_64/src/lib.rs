@@ -21,8 +21,9 @@ pub mod libx;
 pub fn panic(_info: &PanicInfo) -> ! {
     unsafe {
         x86_printk!("\nKernel panicked:");
-        x86_printk!("   Message: {:?}", _info.message().unwrap());
-        x86_printk!("   Location: {:?}", _info.location().unwrap());
+        x86_printk!("    Message: {:?}", _info.message().unwrap());
+        x86_printk!("    Location: {:?}", _info.location().unwrap());
     }
+
     loop {  }
 }
