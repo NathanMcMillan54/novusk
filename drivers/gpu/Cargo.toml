@@ -7,6 +7,9 @@ description = "GPU setup and initialization"
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 rpi = { path = "../firmware/rpi/" }
 
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+vga = "0.2.7"
+
 [dependencies]
 kinfo = { path = "../../kernel/kinfo/" }
 printk = { path = "../../kernel/printk/" }

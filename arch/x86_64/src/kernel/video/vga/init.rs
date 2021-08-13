@@ -1,12 +1,7 @@
-use super::{VGA_ADDRESS, VGA_ADDRESS_STR};
+use super::{BUFFER_HEIGHT, BUFFER_WIDTH, VGA_ADDRESS};
 
 pub unsafe fn vga_init(width: usize, height: usize, address: usize) {
-    VGA_ADDRESS = address;
-    if VGA_ADDRESS == 0xb8000 {
-        VGA_ADDRESS_STR = "0xb8000";
-    } else if VGA_ADDRESS == 0xa0000 {
-        VGA_ADDRESS_STR = "0xa0000";
-    } else {
-        VGA_ADDRESS_STR = "Unknown";
-    }
+    assert_eq!(width, BUFFER_WIDTH);
+    assert_eq!(height, BUFFER_HEIGHT);
+    assert_eq!(address, VGA_ADDRESS);
 }

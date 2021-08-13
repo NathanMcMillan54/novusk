@@ -43,6 +43,8 @@ pub mod kernel {
 }
 
 pub mod drivers {
+    pub use gpu;
+
     pub mod firmware {
         pub mod input {
             #[cfg(target_arch = "x86_64")]

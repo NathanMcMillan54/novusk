@@ -48,6 +48,7 @@ members = [
 ]
 
 [dependencies]
+gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }

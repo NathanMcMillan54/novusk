@@ -1,7 +1,7 @@
 use libcolor::vga_colors::Color;
-use crate::kernel::vga::{VGA_ADDRESS, WIDTH, HEIGHT};
+use crate::kernel::vga::{BUFFER_HEIGHT, BUFFER_WIDTH, VGA_ADDRESS};
 use crate::kernel::vga::color::ColorCode;
-use crate::kernel::vga::vga_80x25::{Buffer, ScreenChar};
+use crate::kernel::vga::writer::{Buffer, ScreenChar};
 
 struct PixelDrawer {
     pub x_pos: usize,
