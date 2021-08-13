@@ -17,3 +17,9 @@ rustflags = [
 rustflags = [
     "-C", "link-arg=-Thifive1-link.x",
 ]
+
+[target.xtensa-esp32-none-elf]
+rustflags = [
+    "-C", "link-arg=-Wl,-Tlink.x",
+    "-C", "link-arg=-nostartfiles",
+]

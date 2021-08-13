@@ -77,6 +77,9 @@ riscv = { path = "arch/riscv" }
 libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
 
+[target.'cfg(target_arch = "xtensa")'.dependencies]
+xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
+
 [features]
 bios_boot = ["x86_64/bios_boot"]
 uefi_boot = ["x86_64/uefi_boot"]
