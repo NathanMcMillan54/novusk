@@ -1,21 +1,29 @@
-use core::str::from_utf8_unchecked;
-use nrf52840_pac::{Peripherals, USBD};
-use nrf_usbd::{Usbd, UsbPeripheral};
-use usb_device::prelude::{UsbDeviceBuilder, UsbVidPid};
-use usbd_serial::{SerialPort, USB_CLASS_CDC};
-use kinfo::info::set_info;
+use nrf_usbd::*;
+use nrf52840_pac::USBD;
+use usbd::*;
+use usb_device::bus::UsbBusAllocator;
+use usb_device::device::{UsbDeviceBuilder, UsbVidPid, UsbDevice};
+use usbd_serial::{SerialPort, DefaultBufferStore, USB_CLASS_CDC};
 
-pub struct NrfUsb;
+pub struct NrfUsb {
+    pub port: u8,
+}
 
 impl NrfUsb {
-    pub fn new() -> Self {
-        return Self;
+    pub fn new(usb_port: u8) -> Self {
+        return NrfUsb { port: usb_port };
     }
+    
+    pub fn usb(&mut self) -> Usb {
+        return Usb { port: self.port, disabled: false }
+    }
+}
 
-    pub fn read_write(&mut self) {
-        let usbd = Usbd::new(Peripheral);
-        let usb_bus = Usbd::new(Peripheral);
-        let mut serial = SerialPort::new(&usbd);
+impl UsbRW for NrfUsb {
+    fn read(&mut self) -> u8 {
+        let mut usb_data = 0;
+        let usb_bus = Usbd::new(NrfUsb::new(self.port));
+        let mut serial = SerialPort::new(&usb_bus);
 
         let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
             .product("nRF52840 Serial Port Demo")
@@ -23,53 +31,49 @@ impl NrfUsb {
             .max_packet_size_0(64)
             .build();
 
-        unsafe {
-            loop {
-                if !usb_dev.poll(&mut [&mut serial]) {
-                    continue;
-                } else {
-                    unsafe {
-                        set_info("not ok");
-                        kinfo!("USB device failed");
-                    }
-                }
-
-                let mut buf = [0u8; 64];
-
-                match serial.read(&mut buf) {
-                    Ok(count) if count > 0 => {
-                        let mut buf = &mut buf[..count];
-
-                        printk!("Read: {:?}", from_utf8_unchecked(buf));
-
-                        for c in buf.iter_mut() {
-                            if 0x61 <= *c && *c <= 0x7a {
-                                *c &= !0x20;
-                            }
-                        }
-
-                        printk!("Writing: {:?}", from_utf8_unchecked(buf));
-                        while !buf.is_empty() {
-                            match serial.write(buf) {
-                                Ok(len) => buf = &mut buf[len..],
-                                _ => {}
-                            }
-                        }
-
-                        printk!("Writing done");
-                    }
-                    _ => {}
-                }
-
-                break;
+        while !self.usb().disabled {
+            // If there isn't anything going in or out of the usb "disable" it
+            if !usb_dev.poll(&mut [&mut serial]) {
+                self.usb().disable_usb();
             }
+
+            let mut buffer = [0u8, 64];
+
+            match serial.read(&mut buffer) {
+                Ok(rdata) if rdata > 0 => {
+                    let mut data = &mut buffer[..rdata];
+
+                    unsafe { usb_data = *data.as_ptr(); }
+                }
+
+                _ => { }
+            };
+        }
+
+        return usb_data;
+    }
+
+    fn write(&mut self, bytes: &[u8]) {
+        let usb_bus = Usbd::new(NrfUsb::new(self.port));
+        let mut serial = SerialPort::new(&usb_bus);
+
+        let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
+            .product("nRF52840 Serial Port Demo")
+            .device_class(USB_CLASS_CDC)
+            .max_packet_size_0(64)
+            .build();
+
+        while !self.usb().disabled {
+            // If there isn't anything going in or out of the usb "disable" it
+            if !usb_dev.poll(&mut [&mut serial]) {
+                self.usb().disable_usb();
+            }
+
+            serial.write(bytes);
         }
     }
 }
 
-
-struct Peripheral;
-
-unsafe impl UsbPeripheral for Peripheral {
+unsafe impl UsbPeripheral for NrfUsb {
     const REGISTERS: *const () = USBD::ptr() as *const ();
 }

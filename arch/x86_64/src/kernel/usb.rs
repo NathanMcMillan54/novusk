@@ -26,10 +26,10 @@ impl UsbRW for X64Usb {
         return usb_input;
     }
 
-    fn write(&mut self, byte: u8) {
+    fn write(&mut self, byte: &[u8]) {
         unsafe {
             while !self.usb().disabled {
-                outb(self.port as u16, byte);
+                outb(self.port as u16, *byte.as_ptr());
             }
         }
     }

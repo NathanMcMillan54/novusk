@@ -12,5 +12,6 @@ printk = { path = "../../../../kernel/printk/" }
 nrf52840-hal = "0.12.2"
 nrf52840-pac = "0.9.0"
 nrf-usbd = "0.1.0"
+usbd = { path = "../../../usbd/" }
 usb-device = "0.2.8"
 usbd-serial = "0.1.1"
