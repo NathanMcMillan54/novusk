@@ -1,5 +1,4 @@
 use crate::mm::linker_mem;
-use gpu::{DriverNames, info::set_gpu};
 
 pub const MMIO_BASE: u32 = 0x3F00_0000;
 
@@ -14,5 +13,4 @@ pub unsafe extern "C" fn aarch64_rpi_setup() {
 
     // Set addresses and drivers for RPi 3/4
     assert_eq!(MMIO_BASE, 0x3F00_0000);
-    set_gpu(DriverNames::RpiFb);
 }
