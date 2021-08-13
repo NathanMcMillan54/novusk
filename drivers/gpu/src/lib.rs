@@ -7,6 +7,12 @@
 pub mod vgag;
 
 
+pub static mut DRIVER: DriverNames = DriverNames::None;
+
+pub unsafe fn set_driver(name: DriverNames) {
+    DRIVER = name;
+}
+
 #[derive(Copy, Clone, PartialEq, Debug)]
 pub enum DriverNames {
     Vga,
