@@ -5,7 +5,7 @@ use crate::boot::boot::BOOT;
 
 #[export_name = "arch_printk"]
 #[no_mangle]
-pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
+pub extern "C" fn _x86_printk(fmt: Arguments) {
     if BOOT == "BIOS" {
         _vga_print(format_args!("{}{}", fmt, "\n"));
     } else if BOOT == "UEFI" {

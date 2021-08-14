@@ -1,5 +1,6 @@
 pub mod alloc;
 pub(crate) mod cpu;
+pub mod interrupts;
 pub mod io;
 pub(crate) mod kernel;
 pub(crate) mod modules;

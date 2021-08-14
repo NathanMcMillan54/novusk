@@ -1,4 +1,5 @@
 use super::cpu::{cpu_init, id};
+use super::interrupts::idt_init;
 use super::kernel::*;
 use super::modules::x86_modules_init;
 use ps2::mouse::{ps2_mouse_init, MOUSE};
@@ -13,6 +14,10 @@ pub unsafe fn x86_kernel_init() {
     kinfo!("CPU initialized");
     x86_printk!("    GDT initialized");
     x86_printk!("    Brand specific CPU initialized");
+
+    idt_init();
+    kinfo!("Interrupts initialized");
+    x86_printk!("    IDT initialized");
 
     x86_printk!("Running PS2 input tests...");
     if !ps2_keyboard_test() {
