@@ -4,6 +4,8 @@ pub use id::BRAND;
 use kinfo::info::set_info;
 
 pub unsafe fn cpu_init() {
+    gdt::gdt_init();
+
     if BRAND == "AMD" {
         amd::amd_init();
     } else if BRAND == "Intel" {
@@ -15,4 +17,5 @@ pub unsafe fn cpu_init() {
 }
 
 pub mod amd;
+pub mod gdt;
 pub mod intel;

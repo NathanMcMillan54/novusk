@@ -10,7 +10,9 @@ pub unsafe fn x86_kernel_init() {
     x86_printk!("    CPU brand: {}", id::BRAND);
 
     cpu_init();
-    kinfo!("Brand specific CPU initialized");
+    kinfo!("CPU initialized");
+    x86_printk!("    GDT initialized");
+    x86_printk!("    Brand specific CPU initialized");
 
     x86_printk!("Running PS2 input tests...");
     if !ps2_keyboard_test() {

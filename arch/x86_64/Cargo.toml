@@ -11,6 +11,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 modules = { path = "../../kernel/modules/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 ps2 = { path = "../../drivers/firmware/input/ps2/" }
 volatile = "0.2.6"
 raw-cpuid = "9.0.0"

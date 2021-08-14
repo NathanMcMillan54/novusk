@@ -5,10 +5,10 @@
 
 extern crate alloc;
 #[macro_use] extern crate kinfo;
+#[macro_use] extern crate lazy_static;
 
 #[cfg(feature = "uefi_boot")]
 extern crate nkuefi;
-
 
 use core::panic::PanicInfo;
 
