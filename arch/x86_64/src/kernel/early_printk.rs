@@ -17,5 +17,5 @@ pub unsafe extern "C" fn _x86_printk(fmt: Arguments) {
 
 #[macro_export]
 macro_rules! x86_printk {
-    ($($arg:tt)*) => {$crate::kernel::printk::_x86_printk(format_args!($($arg)*))};
+    ($($arg:tt)*) => {$crate::kernel::early_printk::_x86_printk(format_args!($($arg)*))};
 }

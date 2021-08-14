@@ -2,6 +2,9 @@
 
 use core::fmt::Arguments;
 
+// For the main kernel
+pub mod kernel;
+
 extern "C" {
     fn arch_printk(fmt: Arguments);
 }

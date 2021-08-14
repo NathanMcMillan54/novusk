@@ -3,7 +3,7 @@ pub(crate) mod cpu;
 pub mod io;
 pub(crate) mod kernel;
 pub(crate) mod modules;
-pub mod printk;
+pub mod early_printk;
 pub mod task;
 pub mod usb;
 pub(crate) mod x86_init;
