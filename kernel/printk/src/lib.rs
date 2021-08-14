@@ -9,8 +9,8 @@ extern "C" {
     fn arch_printk(fmt: Arguments);
 }
 
-pub unsafe fn _printk(fmt: Arguments) -> Arguments {
-    arch_printk(fmt);
+pub fn _printk(fmt: Arguments) -> Arguments {
+    unsafe { arch_printk(fmt); }
     return fmt;
 }
 

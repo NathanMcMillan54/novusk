@@ -12,6 +12,18 @@ use crate::keyboard_layout;
 pub static SCAN_CODE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 pub static WAKER: AtomicWaker = AtomicWaker::new();
 
+pub fn add_scancode(scancode: u8) {
+    if let Ok(queue) = SCAN_CODE.try_get() {
+        if let Err(_) = queue.push(scancode) {
+            printk!("WARNING: scancode queue full; dropping keyboard input");
+        } else {
+            WAKER.wake();
+        }
+    } else {
+        printk!("WARNING: scancode queue uninitialized");
+    }
+}
+
 struct KeyboardScancode;
 
 impl KeyboardScancode {
@@ -50,9 +62,9 @@ pub async fn ps2_keyboard_input() {
         if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
             if let Some(key) = keyboard.process_keyevent(key_event) {
                 match key {
-                    DecodedKey::Unicode(character) => unsafe { printk!("{}", character); },
-                    DecodedKey::RawKey(key) => unsafe { printk!("{:?}", key); },
-                }
+                    DecodedKey::Unicode(character) => printk!("{}", character),
+                    DecodedKey::RawKey(key) => printk!("{:?}", key),
+                };
             }
         }
     }
