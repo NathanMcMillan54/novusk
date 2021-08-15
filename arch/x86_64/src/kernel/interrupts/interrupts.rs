@@ -5,7 +5,7 @@ use crate::kernel::io::{MOUSE};
 use x86_64::instructions::port::{Port, PortWriteOnly, PortReadOnly};
 use x86_64::structures::idt::InterruptStackFrame;
 
-pub extern "x86-interrupt" fn time_interrupt(stack_frame: InterruptIndex) {
+pub extern "x86-interrupt" fn time_interrupt(stack_frame: InterruptStackFrame) {
     unsafe { PIC.lock().notify_end_of_interrupt(InterruptIndex::Timer as u8); }
 }
 
