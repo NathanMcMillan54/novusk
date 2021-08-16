@@ -3,9 +3,6 @@ use core::ptr::null_mut;
 use super::kernel::*;
 use crate::include::asm::hlt;
 
-#[global_allocator]
-static ALLOCATOR: AllocHandler = AllocHandler;
-
 pub struct AllocHandler;
 
 unsafe impl GlobalAlloc for AllocHandler {
@@ -20,7 +17,9 @@ unsafe impl GlobalAlloc for AllocHandler {
 
 #[alloc_error_handler]
 pub unsafe fn alloc_error(_layout: Layout) -> ! {
-    x86_printk!("Alloc memory error:");
-    x86_printk!("   Memory layout:\n        {:?}", _layout);
-    hlt();
+    x86_printk!("\nAlloc memory error");
+    x86_printk!("Memory layout:");
+    x86_printk!("    {:?}", _layout);
+
+    panic!("Alloc memory error");
 }

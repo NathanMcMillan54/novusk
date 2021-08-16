@@ -1,6 +1,8 @@
+use bootloader::BootInfo;
 use super::boot::{die, boot_init, BOOT};
 use crate::kernel::kernel::*;
 use crate::kernel::vga::{BUFFER_HEIGHT, BUFFER_WIDTH, VGA_ADDRESS_STR};
+use crate::mm::early_memory_init;
 
 unsafe fn print_info() {
     x86_printk!("");
@@ -15,11 +17,15 @@ unsafe fn print_info() {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn main() -> ! {
+pub unsafe extern "C" fn main(bootinfo: &'static BootInfo) -> ! {
     boot_init();
     x86_printk!("Starting kernel...");
 
     print_info();
+
+    early_memory_init(bootinfo);
+    kinfo!("Early memory initialized");
+
     x86_kernel_init();
 
     die()
