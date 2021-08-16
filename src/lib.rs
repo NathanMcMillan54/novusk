@@ -43,6 +43,9 @@ pub mod kernel {
 }
 
 pub mod drivers {
+    #[cfg(target_arch = "x86_64")]
+    pub use x86_64::kernel::task as multitask;
+
     pub use gpu;
 
     pub mod firmware {

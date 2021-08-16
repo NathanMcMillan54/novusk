@@ -2,8 +2,11 @@ use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
 use super::modules::x86_modules_init;
+use ps2::keyboard::ps2_keyboard_input;
 use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
+use crate::kernel::task::executor::Executor;
+use crate::kernel::task::Task;
 
 pub unsafe fn x86_kernel_init() {
     id::get_cpuid();

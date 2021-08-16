@@ -20,10 +20,10 @@ pub extern "x86-interrupt" fn keyboard_interrupt(stack_frame: InterruptStackFram
 }
 
 pub extern "x86-interrupt" fn mouse_interrupt(stack_frame: InterruptStackFrame) {
-    let mut mouse_port = PortReadOnly::new(0x60);
+    /* let mut mouse_port = PortReadOnly::new(0x60);
     let packet = unsafe { mouse_port.read() };
 
-    MOUSE.lock().process_packet(packet);
+    MOUSE.lock().process_packet(packet); */
 
     unsafe { PIC.lock().notify_end_of_interrupt(InterruptIndex::Mouse as u8); }
 }

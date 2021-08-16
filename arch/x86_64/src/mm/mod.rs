@@ -21,7 +21,7 @@ pub unsafe fn early_memory_init(bootinfo: &'static BootInfo) {
 
         Err(..) => {
             set_info("not ok");
-            x86_printk!("Alloc heap memory initialized unsuccessfully")
+            x86_printk!("Alloc heap memory initialized unsuccessfully, this will likely cause errors in the future");
         }
     };
 }
