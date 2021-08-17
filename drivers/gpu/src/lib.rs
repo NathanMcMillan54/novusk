@@ -4,8 +4,11 @@
 #[macro_use] extern crate printk;
 
 #[cfg(target_arch = "x86_64")]
-pub mod vgag;
+extern crate vgag;
 
+pub mod color;
+pub mod pixel;
+pub mod print;
 
 pub static mut DRIVER: DriverNames = DriverNames::None;
 

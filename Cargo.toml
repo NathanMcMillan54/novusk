@@ -30,6 +30,7 @@ members = [
     "drivers/usbd/",
     "drivers/nkuefi/",
     # GPUs
+    "drivers/gpu/vgag/",
     # Kernel
     "kernel/kinfo/",
     "kernel/modules/",

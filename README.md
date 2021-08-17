@@ -7,12 +7,12 @@ version of Novusk, right now it's being used for mostly drivers. Read
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kernel and projects for the kernel.
 
-Also, this is Jarad:
+Also, this is Jared:
 ```commandline
 ('_') <( Hi! )
 ```
 
-Say hi to Jarad
+Say hi to Jared
 
 ---
 

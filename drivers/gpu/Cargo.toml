@@ -8,8 +8,9 @@ description = "GPU setup and initialization"
 rpi = { path = "../firmware/rpi/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-vga = "0.2.7"
+vgag = { path = "vgag/" }
 
 [dependencies]
 kinfo = { path = "../../kernel/kinfo/" }
+libcolor = { path = "../../lib/libcolor/" }
 printk = { path = "../../kernel/printk/" }
