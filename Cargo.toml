@@ -21,6 +21,7 @@ members = [
     "arch/arm/",
     "arch/riscv/",
     "arch/x86_64/",
+    "arch/xtensa/",
     # Drivers
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
@@ -79,6 +80,7 @@ libbmu = { path = "lib/libbmu/" }
 riscv = { path = "arch/riscv" }
 
 [target.'cfg(target_arch = "xtensa")'.dependencies]
+xtensa = { path = "arch/xtensa/" }
 xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
 
 [features]

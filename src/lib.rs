@@ -32,6 +32,11 @@ pub mod riscv {
     pub use libbmu;
 }
 
+#[cfg(target_arch = "xtensa")]
+pub mod xtensa {
+    pub use xtensa;
+}
+
 pub mod libs {
     pub use libc;
     pub use libcolor;
