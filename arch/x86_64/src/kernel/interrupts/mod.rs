@@ -1,5 +1,6 @@
 use pic8259::ChainedPics;
 use spin::Mutex;
+use x86_64::instructions::interrupts::enable as enable_interrupts;
 use x86_64::structures::idt::InterruptDescriptorTable;
 
 pub mod handler;
@@ -28,4 +29,5 @@ lazy_static! {
 pub unsafe fn idt_init() {
     IDT.load();
     PIC.lock().initialize();
+    enable_interrupts();
 }

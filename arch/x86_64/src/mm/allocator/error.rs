@@ -1,19 +1,7 @@
-use alloc::alloc::{GlobalAlloc, Layout};
+use alloc::alloc::Layout;
 use core::ptr::null_mut;
 use super::kernel::*;
 use crate::include::asm::hlt;
-
-pub struct AllocHandler;
-
-unsafe impl GlobalAlloc for AllocHandler {
-    unsafe fn alloc(&self, _layout: Layout) -> *mut u8 {
-        null_mut()
-    }
-
-    unsafe fn dealloc(&self, _ptr: *mut u8, _layout: Layout) {
-        loop {  }
-    }
-}
 
 #[alloc_error_handler]
 pub unsafe fn alloc_error(_layout: Layout) -> ! {

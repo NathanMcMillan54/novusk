@@ -1,4 +1,3 @@
-pub mod alloc;
 pub(crate) mod cpu;
 pub mod interrupts;
 pub mod io;
