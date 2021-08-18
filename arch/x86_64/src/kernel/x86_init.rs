@@ -31,10 +31,11 @@ pub unsafe fn x86_kernel_init() {
     }
     kinfo!("PS2 input tests finished");
 
-    ps2_mouse_init();
+    // This causes an panic
+    /* ps2_mouse_init();
     kinfo!("PS2 mouse initialized (not actually)");
     x86_printk!("    Mouse x: {}", MOUSE.lock().get_state().get_x());
-    x86_printk!("    Mouse y: {}", MOUSE.lock().get_state().get_y());
+    x86_printk!("    Mouse y: {}", MOUSE.lock().get_state().get_y()); */
 
     x86_modules_init();
 

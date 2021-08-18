@@ -6,8 +6,8 @@ use x86_64::structures::paging::{Mapper, Size4KiB, FrameAllocator, Page, PageTab
 use x86_64::structures::paging::mapper::MapToError;
 
 pub mod bump;
-pub mod fixed_size_block;
 pub mod error;
+pub mod fixed_size_block;
 pub mod linked_list;
 
 pub const HEAP_START: usize = 0x_4444_4444_0000;

@@ -5,6 +5,7 @@ use core::sync::atomic::{AtomicU64, Ordering};
 use core::task::{Context, Poll};
 
 pub mod executor;
+pub use executor::Executor;
 
 pub struct Task {
     id: TaskId,

@@ -1,6 +1,6 @@
 use alloc::alloc::Layout;
 use core::ptr::null_mut;
-use super::kernel::*;
+use crate::kernel::kernel::*;
 use crate::include::asm::hlt;
 
 #[alloc_error_handler]
