@@ -1,4 +1,5 @@
 use crate::mm::linker_mem;
+use gpu::{set_driver, DriverNames};
 pub use rpi::bases::*;
 
 #[no_mangle]
@@ -12,4 +13,6 @@ pub unsafe extern "C" fn aarch64_rpi_setup() {
 
     // Set addresses and drivers for RPi 3/4
     assert_eq!(MMIO_BASE, 0x3F00_0000);
+
+    set_driver(DriverNames::ArmFb);
 }

@@ -30,6 +30,7 @@ members = [
     "drivers/rpi/",
     "drivers/usbd/",
     # GPUs
+    "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
     # Kernel
     "kernel/kinfo/",

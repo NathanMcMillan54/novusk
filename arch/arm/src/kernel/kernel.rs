@@ -13,6 +13,9 @@ pub unsafe extern "C" fn start_kernel() {
     kinfo!("Kernel initialized\n");
     //blink();
 
+    gpu::set_driver(gpu::DriverNames::None);
+    kinfo!("GPU driver set");
+
     arm32_printk!("Starting userspace on {:?}... ", DEVICE);
 
     extern "C" { fn kernel_main(); }
