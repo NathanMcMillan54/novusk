@@ -13,7 +13,7 @@ fn vga_print(x: usize, y: usize, color: usize, args: Arguments) {
 
 pub fn graphics_print(x: usize, y: usize, color: usize, args: Arguments) {
     unsafe {
-        if DRIVER == DriverNames::Vga {
+        if DRIVER == DriverNames::Vgag {
             #[cfg(target_arch = "x86_64")]
             vga_print(x, y, color, args);
         } else {
