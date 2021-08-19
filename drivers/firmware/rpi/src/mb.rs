@@ -1,7 +1,8 @@
 use core::ops::Deref;
 use super::bases::*;
+use libbmu::Time;
+use tock_registers::interfaces::{Readable, Writeable};
 use tock_registers::registers::*;
-use tock_registers::interfaces::Readable;
 
 register_bitfields! {
     u32,
@@ -13,8 +14,11 @@ register_bitfields! {
 }
 
 #[derive(Copy, Clone, PartialEq)]
+#[repr(usize)]
 pub enum RpiMb {
-    MboxRequest = 0
+    MboxRequest = 0,
+    MboxSuccess = 0x8000_0000,
+    MboxError = 0x8000_0001,
 }
 
 #[derive(Copy, Clone, PartialEq)]
@@ -41,6 +45,7 @@ pub enum RpiMboxTag {
     MboxTagSetPxlordr = 0x48006,
     MboxTagGetFb = 0x40001,
     MboxTagGetPitch = 0x40008,
+    MboxTagGetSerial = 0x10004,
     MboxTagLast = 0
 }
 
@@ -54,8 +59,11 @@ pub struct RegisterBlock {
     WRITE: WriteOnly<u32>,                   // 0x20
 }
 
+const SUCCESS: usize = RpiMb::MboxSuccess as usize;
+const ERROR: usize = RpiMb::MboxError as usize;
+
 pub struct MailBox {
-    pub mailbox: [usize; 36],
+    pub mb_buffer: [usize; 36],
 }
 
 impl Deref for MailBox {
@@ -68,12 +76,12 @@ impl Deref for MailBox {
 
 impl MailBox {
     pub fn new() -> Self {
-        return MailBox { mailbox: [0; 36] }
+        return MailBox { mb_buffer: [0; 36] }
     }
 
     pub fn clear(&mut self) {
         for i in 0..36 {
-            self.mailbox[i] = 0;
+            self.mb_buffer[i] = 0;
         }
     }
 
@@ -81,10 +89,39 @@ impl MailBox {
         return VIDEOCORE_MBOX as *const RegisterBlock;
     }
 
-    pub fn call(&mut self, channel: u16) {
+    pub fn call(&mut self, channel: u32) -> i32 {
+        let mut time = Time::new();
+
         loop {
             if !self.STATUS.is_set(STATUS::FULL) {
                 break;
+            }
+        }
+
+        let buffer = self.mb_buffer.as_ptr() as u32;
+
+        self.WRITE.set((buffer & !0xF) | (channel & 0xF));
+
+        loop {
+            loop {
+                if !self.STATUS.is_set(STATUS::EMPTY) {
+                    break;
+                }
+
+                time.sleepc(1);
+            }
+
+            let resp = self.READ.get();
+
+            if ((resp & 0xF) == channel) && ((resp & !0xF) == buffer) {
+                match self.mb_buffer[1] {
+                    SUCCESS =>
+                        return 5,
+                    ERROR =>
+                        return 0,
+                    _ =>
+                        return 1,
+                }
             }
         }
     }

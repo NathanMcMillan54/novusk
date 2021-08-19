@@ -6,5 +6,6 @@ description = ""
 
 [dependencies]
 io = { path = "../../../mm/io/" }
-tock-registers = "0.7.0"
+libbmu = { path = "../../../lib/libbmu/" }
 printk = { path = "../../../kernel/printk/" }
+tock-registers = "0.7.0"
