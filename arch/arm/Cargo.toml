@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2018"
 description = "arm family support for Novusk"
 
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+rpi = { path = "../../drivers/firmware/rpi/" }
+
 [target.'cfg(target_arch = "arm")'.dependencies]
 nrfd = { path = "../../drivers/firmware/arm/nrfd/" }
 nrf52840-hal = "0.12.2"
@@ -24,5 +27,7 @@ r0 = "1.0.0"
 default = []
 nrf = []
 nrf52840 = ["nrf"]
-rpi = []
+rpi2 = []
+rpi3 = []
+rpi4 = []
 virt = []

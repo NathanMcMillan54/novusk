@@ -1,6 +1,6 @@
 use crate::mb::*;
 
-pub unsafe fn fb_init() {
+pub fn fb_init() {
     let mut mailbox = MailBox::new();
 
     mailbox.mailbox[0] = 35 * 4;
@@ -47,5 +47,5 @@ pub unsafe fn fb_init() {
 
     mailbox.mailbox[34] = RpiMboxTag::MboxTagLast as usize;
 
-    mailbox.call()
+    mailbox.call(RpiMbCh::MboxChProp as u16);
 }

@@ -1,6 +1,5 @@
 use crate::mm::linker_mem;
-
-pub const MMIO_BASE: u32 = 0x3F00_0000;
+pub use rpi::bases::*;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_rpi_setup() {

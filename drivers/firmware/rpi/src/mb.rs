@@ -1,3 +1,17 @@
+use core::ops::Deref;
+use super::bases::*;
+use tock_registers::registers::*;
+use tock_registers::interfaces::Readable;
+
+register_bitfields! {
+    u32,
+
+    pub STATUS [
+        FULL OFFSET(31) NUMBITS(1) [],
+        EMPTY OFFSET(30) NUMBITS(1) []
+    ]
+}
+
 #[derive(Copy, Clone, PartialEq)]
 pub enum RpiMb {
     MboxRequest = 0
@@ -30,8 +44,26 @@ pub enum RpiMboxTag {
     MboxTagLast = 0
 }
 
+#[allow(non_snake_case)]
+#[repr(C)]
+pub struct RegisterBlock {
+    READ: ReadOnly<u32>,                     // 0x00
+    __reserved_0: [u32; 5],                  // 0x04
+    STATUS: ReadOnly<u32, STATUS::Register>, // 0x18
+    __reserved_1: u32,                       // 0x1C
+    WRITE: WriteOnly<u32>,                   // 0x20
+}
+
 pub struct MailBox {
     pub mailbox: [usize; 36],
+}
+
+impl Deref for MailBox {
+    type Target = RegisterBlock;
+
+    fn deref(&self) -> &Self::Target {
+        return unsafe { &*MailBox::ptr() };
+    }
 }
 
 impl MailBox {
@@ -45,7 +77,15 @@ impl MailBox {
         }
     }
 
-    pub fn call(&mut self, ) {
+    fn ptr() -> *const RegisterBlock {
+        return VIDEOCORE_MBOX as *const RegisterBlock;
+    }
 
+    pub fn call(&mut self, channel: u16) {
+        loop {
+            if !self.STATUS.is_set(STATUS::FULL) {
+                break;
+            }
+        }
     }
 }

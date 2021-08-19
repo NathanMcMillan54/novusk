@@ -6,4 +6,5 @@ description = ""
 
 [dependencies]
 io = { path = "../../../mm/io/" }
+tock-registers = "0.7.0"
 printk = { path = "../../../kernel/printk/" }

@@ -16,7 +16,7 @@ pub mod kernel;
 pub mod include;
 pub mod mm;
 
-#[cfg(feature = "rpi")]
+#[cfg(any(feature = "rpi2", feature = "rpi3", feature = "rpi4"))]
 pub mod rpi;
 
 #[cfg(feature = "nrf")]
