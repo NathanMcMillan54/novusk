@@ -1,5 +1,3 @@
-pub static mut MAILBOX: [usize; 36] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
 #[derive(Copy, Clone, PartialEq)]
 pub enum RpiMb {
     MboxRequest = 0
@@ -32,8 +30,22 @@ pub enum RpiMboxTag {
     MboxTagLast = 0
 }
 
-pub unsafe fn clear_mailbox() {
-    for i in 0..36 {
-        MAILBOX[i] = 0;
+pub struct MailBox {
+    pub mailbox: [usize; 36],
+}
+
+impl MailBox {
+    pub fn new() -> Self {
+        return MailBox { mailbox: [0; 36] }
+    }
+
+    pub fn clear(&mut self) {
+        for i in 0..36 {
+            self.mailbox[i] = 0;
+        }
+    }
+
+    pub fn call(&mut self, ) {
+
     }
 }

@@ -2,6 +2,7 @@ use super::{PIC, index::InterruptIndex};
 use ps2::keyboard::add_scancode;
 use crate::x86_printk;
 use crate::kernel::io::{MOUSE};
+use core::str::from_utf8;
 use x86_64::instructions::port::{Port, PortWriteOnly, PortReadOnly};
 use x86_64::structures::idt::InterruptStackFrame;
 

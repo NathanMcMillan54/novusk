@@ -2,13 +2,13 @@ use crate::aarch64_printk;
 use arm::rpi::aarch64_rpi_setup;
 use libbmu::bmu_init;
 use modules::modules::KernelModules;
-use rpi::rpi_mb::{clear_mailbox, MAILBOX};
+use rpi::mb::MailBox;
 use rpi::board::check_board;
 
 pub unsafe fn aarch64_init() {
-    clear_mailbox();
-    kinfo!("Mail Box cleared");
-    aarch64_printk!("MB = {:?}", MAILBOX);
+    let mut mailbox = MailBox::new();
+    mailbox.clear();
+    kinfo!("Mail box cleared");
 
     aarch64_printk!("RPi board: {}", check_board());
 
