@@ -5,7 +5,7 @@ edition = "2018"
 description = "GPU setup and initialization"
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
-rpi = { path = "../firmware/rpi/" }
+rpi = { path = "../rpi/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 vgag = { path = "vgag/" }

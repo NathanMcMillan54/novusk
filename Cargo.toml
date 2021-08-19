@@ -25,10 +25,10 @@ members = [
     # Drivers
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
-    "drivers/firmware/rpi/",
     "drivers/gpu/",
-    "drivers/usbd/",
     "drivers/nkuefi/",
+    "drivers/rpi/",
+    "drivers/usbd/",
     # GPUs
     "drivers/gpu/vgag/",
     # Kernel
@@ -66,7 +66,7 @@ x86_64-sound = { path = "sound/x86_64-sound" }
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 aarch64 = { path = "arch/aarch64/" }
 libbmu = { path = "lib/libbmu/" }
-rpi = { path = "drivers/firmware/rpi/" }
+rpi = { path = "drivers/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
