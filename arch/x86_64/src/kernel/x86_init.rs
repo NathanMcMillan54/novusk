@@ -1,3 +1,4 @@
+use init::kmain;
 use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
@@ -7,6 +8,15 @@ use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
 use crate::kernel::task::executor::Executor;
 use crate::kernel::task::Task;
+
+unsafe fn set_drivers() {
+    // When gop is supported this will change
+    gpu::set_driver(gpu::DriverNames::Vgag);
+}
+
+unsafe fn kernel_init_setup() {
+
+}
 
 pub unsafe fn x86_kernel_init() {
     id::get_cpuid();
@@ -37,7 +47,14 @@ pub unsafe fn x86_kernel_init() {
     x86_printk!("    Mouse x: {}", MOUSE.lock().get_state().get_x());
     x86_printk!("    Mouse y: {}", MOUSE.lock().get_state().get_y()); */
 
+    set_drivers();
+    kinfo!("Drivers set");
+    x86_printk!("    Set GPU Graphics to VGA");
+
     x86_modules_init();
+
+    kmain::kernel_init();
+    kinfo!("Novusk initialized");
 
     extern "C" { fn kernel_main(); }
 

@@ -8,7 +8,7 @@ pub mod allocator;
 pub mod memory;
 use allocator::alloc_heap_init;
 use memory::{memory_init, BootInfoFrameAllocator};
-use kinfo::info::set_info;
+use kinfo::status::set_status;
 
 pub unsafe fn early_memory_init(bootinfo: &'static BootInfo) {
     let mut mem_map = memory_init(VirtAddr::new(bootinfo.physical_memory_offset), bootinfo.physical_memory_offset);
@@ -20,7 +20,7 @@ pub unsafe fn early_memory_init(bootinfo: &'static BootInfo) {
         }
 
         Err(..) => {
-            set_info("not ok");
+            set_status("not ok");
             x86_printk!("Alloc heap memory initialized unsuccessfully, this will likely cause errors in the future");
         }
     };

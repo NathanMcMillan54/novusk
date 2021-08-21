@@ -1,4 +1,4 @@
-use kinfo::info::set_info;
+use kinfo::status::set_status;
 use pc_keyboard::{ScancodeSet1, HandleControl};
 use crate::keyboard_layout;
 
@@ -13,16 +13,16 @@ pub unsafe fn ps2_keyboard_test() -> bool {
             return true;
         }
         Ok(None) => {
-            set_info("not ok");
+            set_status("not ok");
             kinfo!("Couldn't get input from test, expected byte 0x20 input from the \"D\" key");
-            set_info("not ok");
+            set_status("not ok");
             return false;
         }
         Err(err) => {
-            set_info("not ok");
+            set_status("not ok");
             kinfo!("Error decoding: {:?}", err);
             printk!("Try using a proper keyboard, or change keyboard layout at kernel compile time");
-            set_info("not ok");
+            set_status("not ok");
             return false;
         }
     }

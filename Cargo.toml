@@ -33,6 +33,7 @@ members = [
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
     # Kernel
+    "init/",
     "kernel/kinfo/",
     "kernel/modules/",
     "kernel/printk/",
