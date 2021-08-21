@@ -2,8 +2,8 @@
 Novusk - A kernel written in Rust inspired by Linux
 
 The [``master``](https://github.com/NathanMcMillan54/novusk/tree/master) branch is always being used to make the next 
-version of Novusk, right now it's being used for mostly drivers. Read 
-[this](https://github.com/NathanMcMillan54/novusk/issues/13) issue for a list of important drivers that are needed.
+version of Novusk, right now it's being used for mostly for the main kernel. This will call drivers made from the past
+versions.
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kernel and projects for the kernel.
 
