@@ -2,18 +2,25 @@
 
 use core::fmt::Arguments;
 
+pub static mut EARLY_PRINTK: bool = true;
+
 extern "C" {
     pub(crate) fn arch_printk(fmt: Arguments);
-    pub(crate) fn graphics_print(x: usize, y: usize, color: usize, args: Arguments);
-    static mut IN_KERNEL: bool;
+    pub(crate) fn kmain_print(args: Arguments);
+}
+
+pub unsafe fn change_printk() {
+    EARLY_PRINTK = false;
 }
 
 pub fn _printk(fmt: Arguments) -> Arguments {
     unsafe {
-        if !IN_KERNEL {
+        if EARLY_PRINTK {
             arch_printk(fmt);
+        } else if !EARLY_PRINTK {
+            kmain_print(fmt);
         } else {
-            graphics_print(0, 0, 15, fmt);
+            return fmt;
         }
     }
 

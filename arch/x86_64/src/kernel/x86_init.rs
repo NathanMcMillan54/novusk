@@ -3,7 +3,7 @@ use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
 use super::modules::x86_modules_init;
-use kinfo::info::IN_KERNEL;
+use printk::change_printk;
 use ps2::keyboard::ps2_keyboard_input;
 use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
@@ -16,7 +16,7 @@ unsafe fn set_drivers() {
 }
 
 unsafe fn kernel_init_setup() {
-    IN_KERNEL = true;
+    change_printk();
 }
 
 pub unsafe fn x86_kernel_init() {

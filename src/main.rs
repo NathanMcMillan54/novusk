@@ -15,4 +15,6 @@ pub use novusk::x86_64;
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() {
     printk::printk!("\nKernel Main");
+
+    loop {  }
 }
