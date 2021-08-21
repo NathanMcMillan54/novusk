@@ -2,15 +2,21 @@
 
 use core::fmt::Arguments;
 
-// For the main kernel
-pub mod kernel;
-
 extern "C" {
-    fn arch_printk(fmt: Arguments);
+    pub(crate) fn arch_printk(fmt: Arguments);
+    pub(crate) fn graphics_print(x: usize, y: usize, color: usize, args: Arguments);
+    static mut IN_KERNEL: bool;
 }
 
 pub fn _printk(fmt: Arguments) -> Arguments {
-    unsafe { arch_printk(fmt); }
+    unsafe {
+        if !IN_KERNEL {
+            arch_printk(fmt);
+        } else {
+            graphics_print(0, 0, 15, fmt);
+        }
+    }
+
     return fmt;
 }
 

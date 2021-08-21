@@ -11,7 +11,8 @@ fn vga_print(x: usize, y: usize, color: usize, args: Arguments) {
     vga.write_fmt(args);
 }
 
-pub fn graphics_print(x: usize, y: usize, color: usize, args: Arguments) {
+#[no_mangle]
+pub extern "C" fn graphics_print(x: usize, y: usize, color: usize, args: Arguments) {
     unsafe {
         if DRIVER == DriverNames::Vgag {
             #[cfg(target_arch = "x86_64")]
