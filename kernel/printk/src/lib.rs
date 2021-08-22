@@ -2,6 +2,8 @@
 
 use core::fmt::Arguments;
 
+pub mod kmain;
+
 pub static mut EARLY_PRINTK: bool = true;
 
 extern "C" {
