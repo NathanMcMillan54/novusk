@@ -1,4 +1,5 @@
 use gpu::GpuGraphics;
+use printk::console::KernelConsole;
 use spin::Mutex;
 
 lazy_static! {
@@ -14,5 +15,9 @@ impl Kernel {
 
     pub fn gpu_graphics(&mut self) -> GpuGraphics {
         return GpuGraphics::new();
+    }
+
+    pub fn kernel_console(&mut self) -> KernelConsole {
+        return KernelConsole::new();
     }
 }

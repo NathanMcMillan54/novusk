@@ -3,7 +3,6 @@ use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
 use super::modules::x86_modules_init;
-use printk::change_printk;
 use ps2::keyboard::ps2_keyboard_input;
 use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
@@ -13,10 +12,6 @@ use crate::kernel::task::Task;
 unsafe fn set_drivers() {
     // When gop is supported this will change
     gpu::set_driver(gpu::DriverNames::Vgag);
-}
-
-unsafe fn kernel_init_setup() {
-    change_printk();
 }
 
 pub unsafe fn x86_kernel_init() {

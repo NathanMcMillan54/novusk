@@ -5,3 +5,5 @@ edition = "2018"
 description = "Kernel printing function and macro"
 
 [dependencies]
+lazy_static = "1.4.0"
+spin = { version = "0.9.2", features = ["spin_mutex"] }

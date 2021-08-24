@@ -1,27 +1,24 @@
 #![no_std]
 
+#[macro_use] extern crate lazy_static;
+
 use core::fmt::Arguments;
 
-pub mod kmain;
+pub mod console;
 
-pub static mut EARLY_PRINTK: bool = true;
+static mut KMAIN_PRINT: bool = false;
 
 extern "C" {
     pub(crate) fn arch_printk(fmt: Arguments);
 }
 
-pub unsafe fn change_printk() {
-    EARLY_PRINTK = false;
-}
-
 pub fn _printk(fmt: Arguments) -> Arguments {
     unsafe {
-        if EARLY_PRINTK {
-            arch_printk(fmt);
-        } else if !EARLY_PRINTK {
-            // kmain_print(fmt);
-        } else {
-            return fmt;
+        if !KMAIN_PRINT {
+            unsafe { arch_printk(fmt); }
+        } else if KMAIN_PRINT {
+            let mut kconsole = console::KernelConsole::new();
+            kconsole.write_fmt(fmt);
         }
     }
 
