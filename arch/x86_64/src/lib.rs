@@ -5,6 +5,7 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate kinfo;
+#[macro_use] extern crate printk;
 #[macro_use] extern crate lazy_static;
 
 #[cfg(feature = "uefi_boot")]
@@ -20,11 +21,9 @@ pub mod mm;
 
 #[panic_handler]
 pub fn panic(_info: &PanicInfo) -> ! {
-    unsafe {
-        x86_printk!("\nKernel panicked:");
-        x86_printk!("    Message: {:?}", _info.message().unwrap());
-        x86_printk!("    Location: {:?}", _info.location().unwrap());
-    }
+    printk!("\nKernel panicked:");
+    printk!("    Message: {:?}", _info.message().unwrap());
+    printk!("    Location: {:?}", _info.location().unwrap());
 
     loop {  }
 }
