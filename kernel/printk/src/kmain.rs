@@ -1,8 +1,5 @@
 use core::fmt::Arguments;
 
-extern "C" {
-    fn graphics_print(x: usize, y: usize, color: usize, args: Arguments);
-}
 
 pub struct KmainPrinter {
     pub x: usize,
@@ -16,7 +13,7 @@ impl KmainPrinter {
     }
 
     pub fn write_fmt(&mut self, fmt: Arguments) {
-        unsafe { graphics_print(self.x, self.y, 15, fmt); }
+        // unsafe { graphics_print(self.x, self.y, 15, fmt); }
         self.y = self.y + 1;
     }
 }

@@ -1,4 +1,4 @@
-use gpu::gpu_graphics_init;
+use super::init::KERNEL;
 use super::version::*;
 
 pub fn print_version_number() {
@@ -8,7 +8,7 @@ pub fn print_version_number() {
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
-    gpu_graphics_init();
+    KERNEL.lock().gpu_graphics().init();
     kinfo!("GPU graphics initialized");
 
     print_version_number();
