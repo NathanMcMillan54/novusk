@@ -5,8 +5,12 @@ pub use vga::writers::{Graphics320x200x256, Graphics320x240x256, Graphics640x480
 
 pub mod display;
 pub mod resolution;
-use resolution::set_resolution;
+use resolution::{set_resolution, set_text_mode};
 
 pub fn vgag_init() {
     set_resolution(Graphics640x480x16::new());
+}
+
+pub fn vgag_uninit() {
+    set_text_mode(Text80x25::new());
 }

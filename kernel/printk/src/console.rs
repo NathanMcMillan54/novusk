@@ -18,8 +18,16 @@ impl KernelConsole {
         return KernelConsole { x: 0, y: 0 }
     }
 
-    pub unsafe  fn init(&mut self) {
+    pub unsafe fn init(&mut self) {
         super::KMAIN_PRINT = true;
+    }
+
+    pub unsafe fn uninit(&mut self) {
+        super::KMAIN_PRINT = false;
+        WRITER_Y = 0;
+
+        self.y = WRITER_Y;
+        self.x = 0;
     }
 
     pub fn set_xy(&mut self, x: usize, y: usize) {

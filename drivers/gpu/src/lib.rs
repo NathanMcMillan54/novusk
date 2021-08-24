@@ -22,15 +22,22 @@ impl GpuGraphics {
     pub unsafe fn init(&mut self) {
         if DRIVER == DriverNames::Vgag {
             #[cfg(target_arch = "x86_64")]
-                vgag::vgag_init();
+            vgag::vgag_init();
         } else if DRIVER == DriverNames::ArmFb {
             #[cfg(target_arch = "aarch64")]
-                armfb::armfb_init();
+            armfb::armfb_init();
 
             #[cfg(target_arch = "arm")]
-                armfb::armfb_init();
+            armfb::armfb_init();
         } else {
             return;
+        }
+    }
+
+    pub unsafe fn uninit(&mut self) {
+        if DRIVER == DriverNames::Vgag {
+            #[cfg(target_arch = "x86_64")]
+            vgag::vgag_uninit();
         }
     }
 }

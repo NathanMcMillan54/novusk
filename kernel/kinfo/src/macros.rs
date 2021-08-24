@@ -3,7 +3,7 @@ use crate::status::{set_status, KSTATUS};
 
 pub unsafe fn _kinfo(msg: Arguments) {
     printk!("INFO [ {} ] {}", KSTATUS, msg);
-    set_status("ol");
+    set_status("ok");
 }
 
 #[macro_export]
