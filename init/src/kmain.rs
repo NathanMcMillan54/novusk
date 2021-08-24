@@ -9,8 +9,8 @@ pub fn print_version_number() {
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     KERNEL.lock().gpu_graphics().init();
-    kinfo!("GPU graphics initialized");
     KERNEL.lock().kernel_console().init();
+    kinfo!("GPU graphics initialized");
     printk!("    Kernel printing re-initialized for higher screen resolution");
 
     print_version_number();

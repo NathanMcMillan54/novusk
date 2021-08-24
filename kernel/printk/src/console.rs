@@ -1,9 +1,12 @@
 use core::fmt::Arguments;
 use spin::Mutex;
 
+
 lazy_static! {
     pub static ref KERNEL_CONSOLE: Mutex<KernelConsole> = Mutex::new(KernelConsole::new());
 }
+
+static mut WRITER_Y: usize = 0;
 
 pub struct KernelConsole {
     pub x: usize,
@@ -29,8 +32,9 @@ impl KernelConsole {
             fn _kernel_main_print(x: usize, y: usize, args: Arguments);
         }
 
-        unsafe { _kernel_main_print(self.x, self.y, fmt); }
-
-        self.y = self.y + 1;
+        unsafe {
+            WRITER_Y = WRITER_Y + 12;
+            _kernel_main_print(self.x, WRITER_Y, fmt);
+        }
     }
 }
