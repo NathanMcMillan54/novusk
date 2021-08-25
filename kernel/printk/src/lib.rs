@@ -1,7 +1,5 @@
 #![no_std]
 
-#[macro_use] extern crate lazy_static;
-
 use core::fmt::Arguments;
 
 pub mod console;

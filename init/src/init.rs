@@ -1,4 +1,5 @@
 use gpu::GpuGraphics;
+use konfig::Konfig;
 use printk::console::KernelConsole;
 use spin::Mutex;
 
@@ -19,5 +20,9 @@ impl Kernel {
 
     pub fn kernel_console(&mut self) -> KernelConsole {
         return KernelConsole::new();
+    }
+
+    pub fn kernel_configs(&mut self) -> Konfig {
+        return Konfig::new();
     }
 }

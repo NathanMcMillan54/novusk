@@ -1,10 +1,4 @@
 use core::fmt::Arguments;
-use spin::Mutex;
-
-
-lazy_static! {
-    pub static ref KERNEL_CONSOLE: Mutex<KernelConsole> = Mutex::new(KernelConsole::new());
-}
 
 static mut WRITER_Y: usize = 0;
 

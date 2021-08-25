@@ -35,6 +35,7 @@ members = [
     # Kernel
     "init/",
     "kernel/kinfo/",
+    "kernel/konfig/",
     "kernel/modules/",
     "kernel/printk/",
     # Libraries

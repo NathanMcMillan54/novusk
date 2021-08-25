@@ -25,5 +25,8 @@ pub unsafe extern "C" fn kernel_init() {
         }
     }
 
+    let mut configs = KERNEL.lock().kernel_configs();
+    kinfo!("Got kernel configs");
+
     print_version_number();
 }
