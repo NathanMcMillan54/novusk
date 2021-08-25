@@ -8,4 +8,5 @@
 
 pub mod init;
 pub mod kmain;
+pub mod modules;
 pub mod version;

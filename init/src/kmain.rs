@@ -1,5 +1,5 @@
-use alloc::vec::Vec;
 use super::init::KERNEL;
+use super::modules::modules_init;
 use super::version::*;
 
 pub fn print_version_number() {
@@ -30,4 +30,7 @@ pub unsafe extern "C" fn kernel_init() {
     kinfo!("Got kernel configs");
 
     print_version_number();
+
+    modules_init(configs);
+    kinfo!("Initialized main kernel modules");
 }

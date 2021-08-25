@@ -13,7 +13,7 @@ lazy_static! {
     pub static ref KONFIG: Mutex<Konfig> = Mutex::new(Konfig::new());
 }
 
-const NUM_OF_CONFIGS: usize = 3;
+const NUM_OF_CONFIGS: usize = 4;
 
 pub struct Konfig {
     pub config: &'static str,

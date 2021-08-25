@@ -7,3 +7,4 @@ description = "Starts and handles kernel modules"
 [dependencies]
 printk = { path = "../printk/" }
 ex1 = { path = "ex1/" }
+fscheck = { path = "fscheck/" }

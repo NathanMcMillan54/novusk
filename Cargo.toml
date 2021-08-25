@@ -48,6 +48,7 @@ members = [
     "sound/x86_64-sound/",
     # Kernel Modules
     "kernel/modules/ex1/",
+    "kernel/modules/fscheck/",
     # Tools
     "tools/bootloader_image/",
 ]
@@ -89,14 +90,14 @@ xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
 
 [features]
 bios_boot = ["x86_64/bios_boot"]
-uefi_boot = ["x86_64/uefi_boot"]
 custom_keyboard = ["x86_64/custom_keyboard"]
 grub = ["x86_64/grub"]
-uk_keyboard = ["x86_64/uk_keyboard"]
-us_keyboard = ["x86_64/us_keyboard"]
-vga_0xa = ["x86_64/vga_0xa"]
+hifive = ["riscv/hifive"]
 nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi3", "aarch64/rpi3"]
+uefi_boot = ["x86_64/uefi_boot"]
+uk_keyboard = ["x86_64/uk_keyboard"]
+us_keyboard = ["x86_64/us_keyboard"]
+vga_0xa = ["x86_64/vga_0xa"]
 virt = ["aarch64/qemu_virt", "arm/virt", "riscv/virt", "x86_64/virt"]
-hifive = ["riscv/hifive"]
