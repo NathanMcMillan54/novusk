@@ -4,7 +4,7 @@ use super::version::*;
 
 pub fn print_version_number() {
     printk!("Running on:");
-    printk!("   Novusk v{}.{}.{} {}", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
+    printk!("    Novusk v{}.{}.{} {}", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
 }
 
 unsafe fn reset_gpu_init() {
@@ -27,10 +27,15 @@ pub unsafe extern "C" fn kernel_init() {
     }
 
     let mut configs = KERNEL.lock().kernel_configs();
-    kinfo!("Got kernel configs");
+    kinfo!("Got kernel configurations");
+
+    if configs.get("KERNEL", "MAJORVERSION").parse::<i32>().unwrap() != MAJOR_VERSION {
+        panic!("Kernel config and const versions are different, the config file might be bad and unsafe");
+    }
 
     print_version_number();
 
+    printk!("\nSetting up main kernel modules...");
     modules_init(configs);
     kinfo!("Initialized main kernel modules");
 }

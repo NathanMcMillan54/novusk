@@ -8,5 +8,5 @@ pub unsafe fn ex1_init() {
 }
 
 pub unsafe fn ex1_exit() {
-    assert_eq!(SUM, 1);
+
 }
