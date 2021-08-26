@@ -7,6 +7,10 @@ use hifive1::hal::time::U32Ext;
 pub struct Board;
 
 impl Board {
+    pub fn new() -> Self {
+        return Board;
+    }
+
     pub fn peripherals(&mut self) -> DevicePeripherals {
         let dr = DeviceResources::take().unwrap();
         let p = dr.peripherals;
@@ -36,4 +40,6 @@ impl device::Device for Board {
     fn name(&mut self) -> &'static str {
         return "HiFive";
     }
+
+    const UART0: usize = 0x1001_3000;
 }

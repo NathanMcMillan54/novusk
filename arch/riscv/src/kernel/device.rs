@@ -18,4 +18,6 @@ pub trait Device {
     fn name(&mut self) -> &'static str {
         return "None";
     }
+
+    const UART0: usize = 0;
 }

@@ -1,4 +1,4 @@
-use kinfo::info::set_info;
+use kinfo::status::set_status;
 use modules::modules::KernelModules;
 use modules::start::arch_modules_init;
 use crate::riscv_printk;
@@ -9,7 +9,7 @@ unsafe fn mm_init() {
     let (mut sbss, mut ebss) = bss_memory.bss_values();
 
     if sbss < ebss {
-        set_info("not ok");
+        set_status("not ok");
         riscv_printk!("    bss start is less than bss end");
         riscv_printk!("    sbss {} < ebss {}", sbss, ebss);
         r0::zero_bss(&mut sbss, &mut ebss);

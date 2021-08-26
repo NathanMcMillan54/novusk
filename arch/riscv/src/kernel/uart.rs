@@ -42,19 +42,24 @@ impl Uart {
     }
 
     // I/O
-    pub unsafe fn write_byte(&mut self, byte: u8) {
+    pub fn write_byte(&mut self, byte: u8) {
         let mut uart = self.address as *mut u8;
-        uart.add(0).write_volatile(byte);
+        unsafe { uart.add(0).write_volatile(byte); }
     }
 
-    pub unsafe fn write_bytes(&mut self, bytes: &[u8]) {
+    pub fn write_bytes(&mut self, bytes: &[u8]) {
         for byte in bytes {
             self.write_byte(*byte);
         }
     }
 
-    pub unsafe fn write_string(&mut self, string: &str) {
+    pub fn write_string(&mut self, string: &str) {
         self.write_bytes(string.as_bytes());
+    }
+
+    pub fn read(&mut self) -> u8 {
+        let mut uart = self.address as *mut u8;
+        return unsafe { uart.add(0).read_volatile() };
     }
 }
 
