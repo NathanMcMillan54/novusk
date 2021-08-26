@@ -1,8 +1,11 @@
 #![no_std]
 
+#[macro_use] extern crate alloc;
+
 use core::fmt::Arguments;
 
 pub mod console;
+pub mod put;
 
 static mut KMAIN_PRINT: bool = false;
 
