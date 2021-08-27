@@ -38,6 +38,7 @@ members = [
     "kernel/konfig/",
     "kernel/modules/",
     "kernel/printk/",
+    "kernel/setup/",
     # Libraries
     "lib/libbmu/",
     "lib/libc/",

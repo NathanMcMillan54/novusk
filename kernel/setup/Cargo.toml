@@ -1,0 +1,11 @@
+[package]
+name = "setup"
+version = "0.1.0"
+edition = "2018"
+description = "Setup before kernel initialization"
+
+[dependencies]
+kinfo = { path = "../kinfo/" }
+konfig = { path = "../konfig/" }
+libc = { path = "../../lib/libc/" }
+printk = { path = "../printk/" }

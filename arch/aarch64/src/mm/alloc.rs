@@ -2,10 +2,10 @@ use crate::aarch64_printk;
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
 
+pub struct AllocHandler;
+
 #[global_allocator]
 static ALLOCATOR: AllocHandler = AllocHandler;
-
-pub struct AllocHandler;
 
 unsafe impl GlobalAlloc for AllocHandler {
     unsafe fn alloc(&self, _layout: Layout) -> *mut u8 {

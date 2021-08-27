@@ -6,6 +6,7 @@ use super::modules::x86_modules_init;
 use ps2::keyboard::ps2_keyboard_input;
 use ps2::mouse::{ps2_mouse_init, MOUSE};
 use ps2::test::ps2_keyboard_test;
+use setup::{setup_kernel, after_kernel_setup};
 use crate::kernel::task::executor::Executor;
 use crate::kernel::task::Task;
 
@@ -49,8 +50,12 @@ pub unsafe fn x86_kernel_init() {
 
     x86_modules_init();
 
+    setup_kernel();
+
     kmain::kernel_init();
     kinfo!("Novusk initialized");
+
+    after_kernel_setup();
 
     extern "C" { fn kernel_main(); }
 
