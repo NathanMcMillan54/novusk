@@ -1,0 +1,9 @@
+[package]
+name = "sos"
+version = "0.1.0"
+edition = "2018"
+description = "Starts Novusk based OSes"
+
+[dependencies]
+libost = { path = "../../lib/libost" }
+printk = { path = "../../kernel/printk/" }

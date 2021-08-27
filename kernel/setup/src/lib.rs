@@ -20,6 +20,7 @@ pub fn after_kernel_setup() {
 
     if after == "OS" || after == "SERVER" {
         user::user_setup();
+        sos::sos_init(&*configs.get("OS", "NAME"));
     } else if after == "Nothing" {
 
     } else {
