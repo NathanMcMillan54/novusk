@@ -23,6 +23,7 @@ members = [
     "arch/x86_64/",
     "arch/xtensa/",
     # Drivers
+    "drivers/blue/",
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/input/ps2/",
     "drivers/gpu/",

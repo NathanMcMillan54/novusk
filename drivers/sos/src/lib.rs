@@ -4,8 +4,8 @@
 
 
 pub fn sos_init(os_name: &str) {
-    if os_name == "" {
-
+    if os_name == "Blue" {
+        blue::blue_init();
     } else {
         printk!("Couldn't find {} OS", os_name);
     }
