@@ -31,6 +31,8 @@ members = [
     "drivers/rpi/",
     "drivers/sos/",
     "drivers/usbd/",
+    # Fs
+    "fs/fat/",
     # GPUs
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
