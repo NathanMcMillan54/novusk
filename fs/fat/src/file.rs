@@ -10,7 +10,7 @@ impl File {
         return File { name: file_name, mode: file_mode.as_i32() }
     }
 
-    pub fn write(&mut self, buf: &[u8], write: &str) {
+    pub fn write(&mut self, buf: u8, write: &str) {
 
     }
 }

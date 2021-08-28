@@ -6,3 +6,4 @@
 _start:
     cli
     call main
+    hlt

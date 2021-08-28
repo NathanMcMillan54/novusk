@@ -36,6 +36,8 @@ members = [
     # GPUs
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
+    # Include
+    "include/novusk/",
     # Kernel
     "init/",
     "kernel/kinfo/",
@@ -64,6 +66,7 @@ gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
+novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 usbd = { path = "drivers/usbd/" }
 

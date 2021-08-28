@@ -1,12 +1,14 @@
 #![no_std]
 
+#[macro_use] extern crate novuskinc;
+
 static mut SUM: i32 = 0;
 
-pub unsafe fn ex1_init() {
-    SUM += 1;
-    ex1_exit();
+pub fn ex1_init() {
+    unsafe { SUM += 1; }
 }
 
-pub unsafe fn ex1_exit() {
 
+pub fn ex1_end() {
+    unsafe { printk!("SUM = {}", SUM); }
 }
