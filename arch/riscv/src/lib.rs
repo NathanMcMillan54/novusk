@@ -3,6 +3,7 @@
 #![feature(alloc_error_handler, asm, global_asm)]
 
 #[macro_use] extern crate kinfo;
+#[macro_use] extern crate novuskinc;
 #[macro_use] extern crate riscv_rt;
 
 pub mod boot;

@@ -5,6 +5,7 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate kinfo;
+#[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
 pub extern crate arm;

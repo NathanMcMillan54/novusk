@@ -9,4 +9,4 @@ edition = "2018"
 fat = { path = "../../../fs/fat/" }
 kinfo = { path = "../../kinfo/" }
 konfig = { path = "../../konfig/", features = ["default_config"] }
-printk = { path = "../../printk/" }
+novuskinc = { path = "../../../include/novusk/" }

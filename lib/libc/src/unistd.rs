@@ -1,7 +1,5 @@
 extern "C" {
-    pub fn syscall(sys_num: i32, sys_arg: u8);
-    pub fn sys_write(write: u8);
-    pub fn sys_read() -> u8;
+    pub fn syscall(sys_num: i32, sys_arg: u8) -> u8;
 }
 
 #[cfg(target_arch = "x86_64")]

@@ -1,19 +1,18 @@
 #![no_std]
 
-extern crate alloc;
+#[macro_use] extern crate alloc;
+#[macro_use] extern crate novuskinc;
 
 pub mod config;
 
 use kinfo::info::FS;
 
-pub unsafe fn fscheck_init() {
-    if FS == "None" || FS == "" {
-        return;
-    }
-
+pub fn fscheck_init() {
     let mut fs = config::get_fs();
 
-    fscheck_end();
+    if fs == "None" || fs == "" {
+        return;
+    }
 }
 
 pub fn fscheck_end() {

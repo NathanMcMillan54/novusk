@@ -10,6 +10,7 @@ io = { path = "../../mm/io/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
 modules = { path = "../../kernel/modules/" }
+novuskinc = { path = "../../include/novusk/" }
 r0 = "1.0.0"
 rpi = { path = "../../drivers/rpi/" }
 tock-registers = "0.7.0"

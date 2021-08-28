@@ -2,16 +2,21 @@ use super::board::Board;
 use super::uart::Uart;
 use crate::kernel::device::Device;
 
-#[no_mangle]
-pub unsafe extern "C" fn sys_write(write: u8) {
+pub fn write(write: u8) {
     let mut uart = Uart::new(Board::UART0);
 
     uart.write_byte(write);
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn sys_read() -> u8 {
+pub fn read(buf: u8) -> u8 {
     let mut uart = Uart::new(Board::UART0);
+    let mut ret = 0;
 
-    return uart.read();
+    for i in 0..buf {
+        ret = ret + uart.read();
+    }
+
+    return ret;
 }
+
+define_syscall!(sys_write, write);

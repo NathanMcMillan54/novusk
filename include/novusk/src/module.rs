@@ -1,3 +1,5 @@
+use crate::printk;
+
 #[macro_export]
 macro_rules! module_init {
     ($init:path) => {
@@ -18,6 +20,8 @@ macro_rules! module_end {
             let e: fn() = $mod_end;
 
             e();
+            printk!("test");
+            loop { }
         }
     };
 }

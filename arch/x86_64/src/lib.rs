@@ -7,6 +7,7 @@
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate printk;
 #[macro_use] extern crate lazy_static;
+#[macro_use] extern crate novuskinc;
 
 #[cfg(feature = "uefi_boot")]
 extern crate nkuefi;
