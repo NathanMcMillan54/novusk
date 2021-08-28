@@ -1,0 +1,8 @@
+[package]
+name = "novuskinc"
+version = "0.1.0"
+edition = "2018"
+description = "A lib used for anything related to Novusk"
+
+[dependencies]
+printk = { path = "../../kernel/printk/" }
