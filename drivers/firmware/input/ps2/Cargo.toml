@@ -9,6 +9,7 @@ ps2-mouse = "0.1.4"
 x86_64 = "0.14.4"
 
 [dependencies]
+input = { path = "../../input/" }
 kinfo = { path = "../../../../kernel/kinfo/" }
 pc-keyboard = "0.5.1"
 printk = { path = "../../../../kernel/printk/" }

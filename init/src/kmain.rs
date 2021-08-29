@@ -1,6 +1,8 @@
 use super::init::KERNEL;
 use super::modules::modules_init;
 use super::version::*;
+use ps2::mouse::Ps2Mouse;
+use kinfo::status::set_status;
 
 pub fn print_version_number() {
     printk!("Running on:");
@@ -10,6 +12,19 @@ pub fn print_version_number() {
 unsafe fn reset_gpu_init() {
     KERNEL.lock().kernel_console().uninit();
     KERNEL.lock().gpu_graphics().uninit();
+}
+
+fn input_init() {
+    let mut mouse = Ps2Mouse::new();
+    let info = mouse.init();
+
+    let (succeeded, msg) = info;
+    if succeeded {
+        printk!("{}", msg);
+    } else {
+        unsafe { set_status("not ok"); }
+        printk!("{}", msg);
+    }
 }
 
 #[no_mangle]
@@ -34,6 +49,9 @@ pub unsafe extern "C" fn kernel_init() {
     }
 
     print_version_number();
+
+    input_init();
+    kinfo!("Input devices initialized");
 
     printk!("\nSetting up main kernel modules...");
     modules_init(configs);

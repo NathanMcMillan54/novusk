@@ -25,6 +25,7 @@ members = [
     # Drivers
     "drivers/blue/",
     "drivers/firmware/arm/nrfd/",
+    "drivers/firmware/input/",
     "drivers/firmware/input/ps2/",
     "drivers/gpu/",
     "drivers/nkuefi/",
