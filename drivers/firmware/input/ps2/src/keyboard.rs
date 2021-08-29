@@ -65,7 +65,7 @@ pub async fn ps2_keyboard_input() {
             if let Some(key) = keyboard.process_keyevent(key_event) {
                 match key {
                     DecodedKey::Unicode(character) => printk!("{}", character),
-                    DecodedKey::RawKey(key) => printk!("{:?}", key),
+                      DecodedKey::RawKey(key) => printk!("{:?}", key),
                 };
             }
         }
