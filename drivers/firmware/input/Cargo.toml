@@ -1,7 +1,0 @@
-[package]
-name = "input"
-version = "0.1.0"
-edition = "2018"
-description = "Input driver traits"
-
-[dependencies]

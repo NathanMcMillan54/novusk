@@ -55,15 +55,10 @@ pub mod drivers {
 
     pub use gpu;
 
+    #[cfg(target_arch = "aarch64")]
+    pub use rpi;
+
     pub mod firmware {
-        pub mod input {
-            #[cfg(target_arch = "x86_64")]
-            pub use ps2;
-        }
-
-        #[cfg(target_arch = "aarch64")]
-        pub use rpi;
-
         pub use usbd;
     }
 }

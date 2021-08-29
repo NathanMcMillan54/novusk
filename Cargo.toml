@@ -25,9 +25,8 @@ members = [
     # Drivers
     "drivers/blue/",
     "drivers/firmware/arm/nrfd/",
-    "drivers/firmware/input/",
-    "drivers/firmware/input/ps2/",
     "drivers/gpu/",
+    "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
     "drivers/input/keyboard/ps2_keyboard/",
     "drivers/nkuefi/",
@@ -46,6 +45,7 @@ members = [
     "kernel/kinfo/",
     "kernel/konfig/",
     "kernel/modules/",
+    "kernel/notify/",
     "kernel/printk/",
     "kernel/setup/",
     # Libraries
@@ -75,7 +75,6 @@ usbd = { path = "drivers/usbd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
-ps2 = { path = "drivers/firmware/input/ps2/" }
 x86_64 = { path = "arch/x86_64/" }
 x86_64-sound = { path = "sound/x86_64-sound" }
 
@@ -102,14 +101,11 @@ xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
 
 [features]
 bios_boot = ["x86_64/bios_boot"]
-custom_keyboard = ["x86_64/custom_keyboard"]
 grub = ["x86_64/grub"]
 hifive = ["riscv/hifive"]
 nrf = ["arm/nrf"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["arm/rpi3", "aarch64/rpi3"]
 uefi_boot = ["x86_64/uefi_boot"]
-uk_keyboard = ["x86_64/uk_keyboard"]
-us_keyboard = ["x86_64/us_keyboard"]
 vga_0xa = ["x86_64/vga_0xa"]
 virt = ["aarch64/qemu_virt", "arm/virt", "riscv/virt", "x86_64/virt"]

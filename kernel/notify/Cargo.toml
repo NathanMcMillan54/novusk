@@ -1,0 +1,8 @@
+[package]
+name = "notify"
+version = "0.1.0"
+edition = "2018"
+description = "Handles events"
+
+[dependencies]
+keyboard = { path = "../../drivers/input/keyboard/" }

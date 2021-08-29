@@ -2,7 +2,6 @@ use init::kmain;
 use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
-use ps2::test::ps2_keyboard_test;
 use setup::{setup_kernel, after_kernel_setup};
 use crate::kernel::task::executor::Executor;
 use crate::kernel::task::Task;
@@ -26,14 +25,6 @@ pub unsafe fn x86_kernel_init() {
     kinfo!("Interrupts initialized");
     x86_printk!("    IDT initialized");
     x86_printk!("    Interrupts are enabled");
-
-    x86_printk!("Running PS2 input tests...");
-    if !ps2_keyboard_test() {
-        x86_printk!("    PS2 keyboard test failed");
-    } else {
-        x86_printk!("    PS2 keyboard test passed");
-    }
-    kinfo!("PS2 input tests finished");
 
     set_drivers();
     kinfo!("Drivers set");
