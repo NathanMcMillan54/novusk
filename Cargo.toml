@@ -28,6 +28,8 @@ members = [
     "drivers/firmware/input/",
     "drivers/firmware/input/ps2/",
     "drivers/gpu/",
+    "drivers/input/keyboard/pc_keyboard/",
+    "drivers/input/keyboard/ps2_keyboard/",
     "drivers/nkuefi/",
     "drivers/rpi/",
     "drivers/sos/",

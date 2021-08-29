@@ -2,7 +2,6 @@ pub(crate) mod cpu;
 pub mod interrupts;
 pub mod io;
 pub(crate) mod kernel;
-pub(crate) mod modules;
 pub mod printk;
 pub mod early_printk;
 pub mod syscalls;

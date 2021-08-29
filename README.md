@@ -26,9 +26,6 @@ it will be closed
 Read [``Documentation/``](https://github.com/NathanMcMillan54/novusk/tree/v2.1.3/Documentation) for Novusk
 [v2.1.3](https://github.com/NathanMcMillan54/novusk/releases/tag/v2.1.3) help and setup
 
-[``samples/``](https://github.com/NathanMcMillan54/novusk/tree/v2.1.3/samples) has examples for OS and kernel
-development
-
 ---
 
 #### Novusk v1.2:

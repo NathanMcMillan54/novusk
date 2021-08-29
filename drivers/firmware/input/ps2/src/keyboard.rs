@@ -6,6 +6,7 @@ use crossbeam_queue::ArrayQueue;
 use futures_util::StreamExt;
 use futures_util::stream::Stream;
 use futures_util::task::AtomicWaker;
+use input::KeyboardDevice;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts};
 use crate::keyboard_layout;
 
@@ -25,6 +26,7 @@ pub fn add_scancode(scancode: u8) {
 }
 
 struct KeyboardScancode;
+pub struct Ps2Keyboard;
 
 impl KeyboardScancode {
     pub fn new() -> Self {
@@ -67,5 +69,11 @@ pub async fn ps2_keyboard_input() {
                 };
             }
         }
+    }
+}
+
+impl KeyboardDevice for Ps2Keyboard {
+    fn read(&mut self) -> char {
+        'a'
     }
 }

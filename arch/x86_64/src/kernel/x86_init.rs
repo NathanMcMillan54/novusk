@@ -2,7 +2,6 @@ use init::kmain;
 use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
-use super::modules::x86_modules_init;
 use ps2::test::ps2_keyboard_test;
 use setup::{setup_kernel, after_kernel_setup};
 use crate::kernel::task::executor::Executor;
@@ -40,13 +39,13 @@ pub unsafe fn x86_kernel_init() {
     kinfo!("Drivers set");
     x86_printk!("    Set GPU Graphics to VGA");
 
-    x86_modules_init();
-
+    printk!("\nSetting up main kernel...");
     setup_kernel();
 
     kmain::kernel_init();
     kinfo!("Novusk initialized");
 
+    printk!("Setting up after kernel...");
     after_kernel_setup();
 
     extern "C" { fn kernel_main(); }
