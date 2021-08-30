@@ -1,5 +1,7 @@
 #![no_std]
 
+#[macro_use] extern crate alloc;
+
 pub mod input;
 pub mod layout;
 

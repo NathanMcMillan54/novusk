@@ -2,7 +2,7 @@ use core::pin::Pin;
 use core::task::{Context, Poll};
 use crossbeam_queue::ArrayQueue;
 use futures_util::stream::{Stream, StreamExt};
-use keyboard::{SCAN_CODE, WAKER, KeyboardDevice};
+use keyboard::{add_char, SCAN_CODE, WAKER, KeyboardDevice, INPUT};
 use crate::PcKeyboard;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts::*};
 
@@ -36,21 +36,21 @@ impl Stream for KeyboardScancode {
     }
 }
 
-fn stuff() {
-
+pub fn input() -> char {
+    unsafe { return INPUT; }
 }
 
 impl PcKeyboard {
-    async fn read_char(&mut self) {
+    pub async fn read_char(&mut self) {
         let mut scancodes = KeyboardScancode::new();
         let mut keyboard = Keyboard::new(Us104Key, ScancodeSet1, HandleControl::MapLettersToUnicode);
 
-        while let Some(scancode) = scancodes.next().await {
+        if let Some(scancode) = scancodes.next().await {
             if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
                 if let Some(key) = keyboard.process_keyevent(key_event) {
-                    match key {
-                        DecodedKey::Unicode(character) => stuff(),
-                        _ => stuff(),
+                    return match key {
+                        DecodedKey::Unicode(character) => unsafe { INPUT = character },
+                        DecodedKey::RawKey(key) => unsafe { INPUT = 'A' },
                     };
                 }
             }
@@ -58,13 +58,3 @@ impl PcKeyboard {
     }
 }
 
-/*impl KeyboardDevice for PcKeyboard {
-    fn last_ret(&mut self, ret: char) -> char {
-        ret
-    }
-
-    fn read_buf(&mut self, buf: i32) -> &[u8] {
-        // TODO
-        b""
-    }
-}*/
