@@ -14,7 +14,8 @@ unsafe fn gpu_init() {
 }
 
 unsafe fn input_init() {
-
+    KERNEL.lock().keyboard_driver().init();
+    KERNEL.lock().mouse_driver().init();
 }
 
 #[no_mangle]

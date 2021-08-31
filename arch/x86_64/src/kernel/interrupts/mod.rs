@@ -10,7 +10,7 @@ pub mod interrupts;
 
 pub const PIC_1_OFFSET: u8 = 32;
 pub const PIC_2_OFFSET: u8 = PIC_1_OFFSET + 8;
-pub const PIC_12_OFFSET: u8 = todo!();
+pub const PIC_12_OFFSET: u8 = 0;
 
 pub static PIC: Mutex<ChainedPics> = Mutex::new(unsafe { ChainedPics::new(PIC_1_OFFSET, PIC_2_OFFSET) });
 
