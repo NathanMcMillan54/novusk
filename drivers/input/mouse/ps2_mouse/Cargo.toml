@@ -1,0 +1,13 @@
+[package]
+name = "ps2_mouse"
+version = "0.1.0"
+edition = "2018"
+description = "PS2 mouse support"
+
+[dependencies]
+kinfo = { path = "../../../../kernel/kinfo/" }
+mouse = { path = "../" }
+printk = { path = "../../../../kernel/printk/" }
+ps2-mouse = "0.1.4"
+spin = { version = "0.9.2", features = ["spin_mutex"] }
+spinning_top = "0.2.4"
