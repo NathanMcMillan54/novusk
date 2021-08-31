@@ -7,6 +7,7 @@ pub use libc::memory as mem;
 
 pub mod gpio;
 pub use gpio::Gpio;
+pub mod macros;
 pub mod time;
 pub use time::Time;
 
