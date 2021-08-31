@@ -1,6 +1,6 @@
 [package]
 name = "novusk"
-version = "3.0.0-beta-kernel-v1"
+version = "3.0.0-beta-kernel-v2"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
