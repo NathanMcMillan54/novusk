@@ -5,7 +5,7 @@ edition = "2018"
 description = "PC keyboard support"
 
 [dependencies]
-keyboard = { path = "../../keyboard/" }
+keyboard = { path = "../" }
 pc-keyboard = "0.5.1"
 printk = { path = "../../../../kernel/printk/" }
 

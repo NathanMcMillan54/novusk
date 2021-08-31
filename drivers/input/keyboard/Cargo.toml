@@ -5,6 +5,7 @@ edition = "2018"
 description = "Keyboard input handler"
 
 [dependencies]
+pc-keyboard = "0.5.1"
 printk = { path = "../../../kernel/printk/" }
 
 [dependencies.conquer-once]

@@ -7,12 +7,13 @@ use conquer_once::spin::OnceCell;
 use crossbeam_queue::ArrayQueue;
 use futures_util::task::AtomicWaker;
 
-pub mod traits;
-
+pub use scancode::*;
 pub use traits::*;
-use alloc::vec::Vec;
 
-pub static mut INPUT: char = ' ';
+pub mod scancode;
+pub mod traits;
+pub mod layout;
+
 pub static SCAN_CODE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 pub static WAKER: AtomicWaker = AtomicWaker::new();
 

@@ -12,6 +12,7 @@ konfig = { path = "../kernel/konfig/", features = ["default_config"] }
 lazy_static = "1.4.0"
 modules = { path = "../kernel/modules/" }
 pc_keyboard = { path = "../drivers/input/keyboard/pc_keyboard/" }
+ps2_keyboard = { path = "../drivers/input/keyboard/ps2_keyboard/" }
 novuskinc = { path = "../include/novusk/" }
 printk = { path = "../kernel/printk/" }
 spin = { version = "0.9.2", features = ["spin_mutex"] }

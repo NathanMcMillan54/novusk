@@ -5,4 +5,10 @@ edition = "2018"
 description = "PS2 keyboard support"
 
 [dependencies]
+keyboard = { path = "../" }
 pc-keyboard = "0.5.1"
+
+[dependencies.futures-util]
+version = "0.3.4"
+default-features = false
+features = ["alloc"]

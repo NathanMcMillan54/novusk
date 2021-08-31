@@ -1,5 +1,7 @@
 #![no_std]
 
+pub mod input;
+
 pub struct Ps2Keyboard;
 
 impl Ps2Keyboard {
