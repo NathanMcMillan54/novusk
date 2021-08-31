@@ -29,6 +29,7 @@ members = [
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
     "drivers/input/keyboard/ps2_keyboard/",
+    "drivers/input/mouse/",
     "drivers/nkuefi/",
     "drivers/rpi/",
     "drivers/sos/",
