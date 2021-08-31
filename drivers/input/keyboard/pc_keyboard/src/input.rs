@@ -2,16 +2,20 @@ use core::pin::Pin;
 use core::task::{Context, Poll};
 use crossbeam_queue::ArrayQueue;
 use futures_util::stream::{Stream, StreamExt};
-use keyboard::{add_char, SCAN_CODE, WAKER, KeyboardDevice, INPUT};
+use keyboard::{KeyboardDevice, INPUT, SCAN_CODE, WAKER};
 use crate::PcKeyboard;
-use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts::*};
+use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts::*, KeyCode};
+use printk::put::puts;
 
 struct KeyboardScancode;
 
 impl KeyboardScancode {
     pub fn new() -> Self {
-        SCAN_CODE.try_init_once(|| ArrayQueue::new(9)).unwrap();
         return KeyboardScancode;
+    }
+
+    pub fn init(&mut self) {
+        SCAN_CODE.try_init_once(|| ArrayQueue::new(9)).unwrap();
     }
 }
 
@@ -36,25 +40,49 @@ impl Stream for KeyboardScancode {
     }
 }
 
-pub fn input() -> char {
-    unsafe { return INPUT; }
+fn char_input(input: char) -> char {
+    printk!("char input: {}", input);
+
+    return input;
 }
 
 impl PcKeyboard {
-    pub async fn read_char(&mut self) {
+    pub fn init(&mut self) {
+        let mut scancodes = KeyboardScancode::new();
+        scancodes.init();
+    }
+
+    pub async fn read_char(&mut self) -> char {
         let mut scancodes = KeyboardScancode::new();
         let mut keyboard = Keyboard::new(Us104Key, ScancodeSet1, HandleControl::MapLettersToUnicode);
 
         if let Some(scancode) = scancodes.next().await {
             if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
                 if let Some(key) = keyboard.process_keyevent(key_event) {
-                    return match key {
-                        DecodedKey::Unicode(character) => unsafe { INPUT = character },
-                        DecodedKey::RawKey(key) => unsafe { INPUT = 'A' },
+                     return match key {
+                        DecodedKey::Unicode(character) => char_input(character),
+                        DecodedKey::RawKey(key) => 'B',
                     };
                 }
             }
         }
+
+        return ' ';
     }
 }
 
+pub async fn read_chars() {
+    let mut scancodes = KeyboardScancode::new();
+    let mut keyboard = Keyboard::new(Us104Key, ScancodeSet1, HandleControl::MapLettersToUnicode);
+
+    while let Some(scancode) = scancodes.next().await {
+        if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
+            if let Some(key) = keyboard.process_keyevent(key_event) {
+                match key {
+                    DecodedKey::Unicode(character) => puts(character.encode_utf8(&mut [0u8; 4])),
+                    DecodedKey::RawKey(key) => puts("B"),
+                };
+            }
+        }
+    }
+}
