@@ -1,18 +1,16 @@
+use alloc_cortex_m::CortexMHeap;
 use crate::include::asm::wfe;
 use core::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
+use cortex_m_rt::heap_start;
 
-pub struct Allocator;
 
 #[global_allocator]
-pub static ALLOCATOR: Allocator = Allocator;
+pub static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 
-unsafe impl GlobalAlloc for Allocator {
-    unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
-        null_mut()
-    }
+pub(crate) unsafe fn allocator_init() {
+    ALLOCATOR.init(heap_start() as usize, 1024);
 
-    unsafe fn dealloc(&self, ptr: *mut u8, layout: Layout) {
-        wfe();
-    }
+    // Test if it worked
+    vec![1];
 }
