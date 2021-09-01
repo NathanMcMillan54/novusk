@@ -1,4 +1,4 @@
-use arm::rpi::MMIO_BASE;
+use rpi::MMIO_BASE;
 use tock_registers::registers::ReadWrite;
 
 register_bitfields! {

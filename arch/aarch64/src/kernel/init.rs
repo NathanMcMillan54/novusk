@@ -1,5 +1,4 @@
 use crate::aarch64_printk;
-use arm::rpi::aarch64_rpi_setup;
 use libbmu::bmu_init;
 use modules::modules::KernelModules;
 use rpi::mb::MailBox;

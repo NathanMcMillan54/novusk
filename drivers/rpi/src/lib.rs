@@ -15,3 +15,19 @@ pub mod gpio;
 
 // This will probably be added to the Aarch64 kernel
 pub mod mb;
+
+pub fn aarch64_rpi_init(board: i8) {
+    if board == 3 {
+
+    } else if board == 4 {
+
+    } else {  }
+}
+
+pub fn arm_rpi_init(board: i8) {
+    if board == 1 {
+
+    } else if board == 2 {
+
+    } else {  }
+}

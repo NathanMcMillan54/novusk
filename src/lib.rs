@@ -12,9 +12,7 @@ pub mod x86_64 {
 
 #[cfg(target_arch = "arm")]
 pub mod arm {
-    pub use arm::{arm32_printk, dprint};
     pub use arm::include::asm;
-    pub use arm::mm;
     pub use libbmu;
 }
 

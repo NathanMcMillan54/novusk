@@ -7,7 +7,7 @@ extern "C" {
 
 #[no_mangle]
 pub unsafe extern "C" fn wfe() -> ! {
-    wait_for_event();
+    wait_for_event()
 }
 
 #[no_mangle]

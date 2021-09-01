@@ -1,7 +1,7 @@
-use arm::rpi::MMIO_BASE;
 use core::fmt::{Arguments, Result, Write};
 use core::ops;
 use super::gpio;
+use rpi::MMIO_BASE;
 use tock_registers::interfaces::{ReadWriteable, Readable, Writeable};
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
 
