@@ -1,4 +1,3 @@
-use crate::boot::hio::hio_write;
 use crate::include::asm::wfe;
 use crate::kernel::{device, setup};
 use crate::mm::early_memory_init;

@@ -4,8 +4,13 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate cortex_m_rt;
+#[macro_use] extern crate lazy_static;
+#[macro_use] extern crate novuskinc;
 
 pub mod boot;
 pub mod include;
 pub mod kernel;
 pub mod mm;
+
+// CPUs
+pub mod cortex_m3;
