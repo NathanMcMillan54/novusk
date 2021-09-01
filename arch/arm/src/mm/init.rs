@@ -11,5 +11,4 @@ pub unsafe fn arm32_memory_init() {
     clear_bss_se(__sbss, __ebss);
 
     kinfo!("Memory initialized");
-    arm32_printk!("    BSS {{ start: {} end: {} }}", __sbss, __ebss);
 }

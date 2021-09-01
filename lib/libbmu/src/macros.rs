@@ -8,4 +8,3 @@ macro_rules! app_main {
         }
     };
 }
-
