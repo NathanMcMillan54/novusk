@@ -8,8 +8,6 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
-pub extern crate arm;
-
 pub mod boot;
 pub mod include;
 pub mod kernel;

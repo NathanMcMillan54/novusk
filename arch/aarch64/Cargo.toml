@@ -5,7 +5,6 @@ edition = "2018"
 description = "Aarch64/arm64 support for Novusk, mostly a kernel for the RaspberryPi"
 
 [dependencies]
-arm = { path = "../arm/" }
 io = { path = "../../mm/io/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }

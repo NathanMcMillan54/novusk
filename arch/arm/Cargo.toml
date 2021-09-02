@@ -10,7 +10,9 @@ cortex-m-rt = "0.7.0"
 cortex-m-semihosting = "0.3.7"
 lazy_static = "1.4.0"
 novuskinc = { path = "../../include/novusk/" }
+nrfd = { path = "../../drivers/firmware/arm/nrfd/" }
 spin = { version = "0.9.2", features = ["spin_mutex"] }
 
 [features]
+nrf52840 = []
 stellaris_6965 = []

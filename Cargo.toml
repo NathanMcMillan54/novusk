@@ -105,6 +105,7 @@ xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
 bios_boot = ["x86_64/bios_boot"]
 grub = ["x86_64/grub"]
 hifive = ["riscv/hifive"]
+nrf52840 = ["arm/nrf52840"]
 rpi3 = ["aarch64/rpi3"]
 stellaris_6965 = ["arm/stellaris_6965"]
 uefi_boot = ["x86_64/uefi_boot"]

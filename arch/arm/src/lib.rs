@@ -14,3 +14,4 @@ pub mod mm;
 
 // CPUs
 pub mod cortex_m3;
+pub mod cortex_m4;

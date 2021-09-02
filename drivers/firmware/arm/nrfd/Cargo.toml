@@ -2,16 +2,10 @@
 name = "nrfd"
 version = "0.1.0"
 edition = "2018"
-description = "Nrf drivers"
+description = "Nrf board support"
 
 [dependencies]
-cortex-m = "0.7.3"
-defmt = "0.2.3"
-kinfo = { path = "../../../../kernel/kinfo" }
+kinfo = { path = "../../../../kernel/kinfo/" }
+nrf52840-hal = "0.13.0"
+nrf52840-pac = "0.10.1"
 printk = { path = "../../../../kernel/printk/" }
-nrf52840-hal = "0.12.2"
-nrf52840-pac = "0.9.0"
-nrf-usbd = "0.1.0"
-usbd = { path = "../../../usbd/" }
-usb-device = "0.2.8"
-usbd-serial = "0.1.1"

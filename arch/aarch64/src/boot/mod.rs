@@ -3,7 +3,7 @@ global_asm!(include_str!("boot64.S"));
 use crate::aarch64_printk;
 use crate::kernel::init::aarch64_init;
 use crate::kernel::uart::Uart;
-use arm::include::asm::wfe;
+use crate::include::asm::wfe;
 use rpi::aarch64_rpi_init;
 
 #[no_mangle]

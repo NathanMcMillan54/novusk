@@ -1,9 +1,11 @@
 use core::fmt::Arguments;
 use crate::status::{set_status, KSTATUS};
 
-pub unsafe fn _kinfo(msg: Arguments) {
-    printk!("INFO [ {} ] {}", KSTATUS, msg);
-    set_status("ok");
+pub fn _kinfo(msg: Arguments) {
+    unsafe {
+        printk!("INFO [ {} ] {}", KSTATUS, msg);
+        set_status("ok");
+    }
 }
 
 #[macro_export]
