@@ -39,3 +39,9 @@ impl Write for EarlyPrintk {
         Ok(())
     }
 }
+
+#[export_name = "arch_printk"]
+#[no_mangle]
+pub extern "C" fn arm32_printk(fmt: Arguments) {
+    EARLYPRINTK.lock().write_fmt(format_args!("{}{}", fmt, "\n"));
+}
