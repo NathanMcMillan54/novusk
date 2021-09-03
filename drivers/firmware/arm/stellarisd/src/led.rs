@@ -3,7 +3,7 @@ use tm4c123x_hal::gpio::GpioExt;
 use tm4c123x_hal::sysctl::SysctlExt;
 use libbmu::Time;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialOrd, PartialEq)]
 pub enum LedColor {
     Red,
     Green,

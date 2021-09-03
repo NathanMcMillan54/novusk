@@ -7,5 +7,6 @@ description = ""
 [dependencies]
 io = { path = "../../mm/io/" }
 libbmu = { path = "../../lib/libbmu/" }
+novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"
