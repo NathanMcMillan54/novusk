@@ -8,6 +8,12 @@
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;
 
+#[cfg(feature = "nrf52840")]
+pub extern crate nrfd;
+
+#[cfg(feature = "stellaris_6965")]
+pub extern crate stellarisd;
+
 pub mod boot;
 pub mod include;
 pub mod kernel;

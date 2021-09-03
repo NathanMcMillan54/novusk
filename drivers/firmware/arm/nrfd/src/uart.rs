@@ -3,11 +3,11 @@ use nrf52840_hal::uarte::{Baudrate, Pins, Parity, Uarte};
 use nrf52840_hal::pac::{Peripherals, UARTE0};
 use nrf52840_hal::gpio::{Level, p0::Parts};
 
-pub struct NrfUartIo {
+pub struct NrfUart {
     pub uarte: Uarte<UARTE0>,
 }
 
-impl NrfUartIo {
+impl NrfUart {
     pub fn init() -> Self {
         let peripherals = Peripherals::take().unwrap();
 
@@ -24,7 +24,7 @@ impl NrfUartIo {
             )
         };
 
-        return NrfUartIo { uarte: Uarte::new(uart0, cdc_pins, Parity::EXCLUDED, Baudrate::BAUD115200) };
+        return NrfUart { uarte: Uarte::new(uart0, cdc_pins, Parity::EXCLUDED, Baudrate::BAUD115200) };
     }
 
     pub fn write_bytes(&mut self, bytes: &[u8]) {

@@ -5,6 +5,4 @@ edition = "2018"
 description = "A lib used for anything related to Novusk"
 
 [dependencies]
-fat32 = "0.2.0"
 printk = { path = "../../kernel/printk/" }
-sdio_sdhc = { version = "0.2", features = ["filesystem"] }

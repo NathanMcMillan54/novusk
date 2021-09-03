@@ -24,7 +24,7 @@ impl EarlyPrintk {
             cortex_m3::hio::hio_write_bytes(bytes);
         } else if self.print_method == "UART" {
             #[cfg(feature = "nrf52840")]
-            nrfd::NrfUartIo::init().write_bytes(bytes);
+            nrfd::NrfUart::init().write_bytes(bytes);
         } else { return; }
     }
 

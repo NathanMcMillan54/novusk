@@ -9,6 +9,9 @@ pub fn device_init() {
     cortex_m4::cortex_m4_init();
 
     // Setup specific board
+    #[cfg(feature = "stellaris_6965")]
+    stellarisd::stellars_init();
+
     #[cfg(feature = "nrf52840")]
-    nrfd::nrf_board_init();
+    nrfd::nrf_board_init()
 }

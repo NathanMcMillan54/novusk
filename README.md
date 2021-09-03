@@ -11,6 +11,8 @@ Also, this is Jared:
 
 Say hi to Jared
 
+If you're going to contribute, please read ``CODESTYLE.md``. It shows how you should write your code.
+
 ---
 
 #### Novusk v2 - v2.1.3:

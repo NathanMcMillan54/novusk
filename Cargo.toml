@@ -25,6 +25,7 @@ members = [
     # Drivers
     "drivers/blue/",
     "drivers/firmware/arm/nrfd/",
+    "drivers/firmware/arm/stellarisd/",
     "drivers/gpu/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
