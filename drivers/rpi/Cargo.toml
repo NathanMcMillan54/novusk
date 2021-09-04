@@ -6,6 +6,7 @@ description = ""
 
 [dependencies]
 io = { path = "../../mm/io/" }
+kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }

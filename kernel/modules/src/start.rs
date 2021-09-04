@@ -4,7 +4,8 @@ pub(crate) unsafe fn run(module: KernelModules) {
     match module {
         KernelModules::None => return,
         KernelModules::Ex1 => ex1::ex1_init(),
-        KernelModules::FsCheck => fscheck::fscheck_init()
+        KernelModules::FsCheck => fscheck::fscheck_init(),
+        _ => return,
     }
 
     printk!("    {:?} initialized", module);

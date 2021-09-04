@@ -8,3 +8,4 @@ description = "Starts and handles kernel modules"
 printk = { path = "../printk/" }
 ex1 = { path = "ex1/" }
 fscheck = { path = "fscheck/" }
+sf_rpilcd_35 = { path = "../../drivers/firmware/sunfounder/sf_rpilcd_35/" }
