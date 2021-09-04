@@ -24,7 +24,7 @@ extern crate setup;
 ## Assembly
 
 Global and external symbols:
-```6502 assembly
+```assembly
 // These should be at the top of the file
 .globl a_global_function
 .extern an_external_function

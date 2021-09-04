@@ -14,7 +14,7 @@
   "no-compiler-rt": true,
   "features": "+a53,+strict-align",
   "max-atomic-width": 128,
-  "os": "none",
+  "os": "novusk",
   "panic": "abort",
   "panic-strategy": "abort",
   "relocation-model": "pic",
