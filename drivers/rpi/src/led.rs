@@ -15,14 +15,20 @@ impl RpiLed {
         self.gpio.GPFSEL2.write(GPFSEL2::FSEL29::Output);
     }
 
+    pub fn led_on(&mut self) {
+        self.gpio.GPSET0.write(GPSET0::O29::SET);
+    }
+
+    pub fn led_off(&mut self) {
+        self.gpio.GPCLR0.write(GPCLR0::O29::CLEAR);
+    }
+
     pub fn blink(&mut self, sleep_time: usize) {
         let mut time = Time::new();
 
-        self.gpio.GPSET0.write(GPSET0::O29::SET);
+        self.led_on();
         time.sleepc(sleep_time as i64);
-
-        self.gpio.GPCLR0.write(GPCLR0::O29::CLEAR);
-        time.sleepc(sleep_time as i64);
+        self.led_off();
     }
 }
 
