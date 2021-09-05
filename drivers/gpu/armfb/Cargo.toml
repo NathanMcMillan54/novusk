@@ -8,3 +8,5 @@ rpi = { path = "../../rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
 
+[dependencies]
+libcolor = { path = "../../../lib/libcolor/" }
