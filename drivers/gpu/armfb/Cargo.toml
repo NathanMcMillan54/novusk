@@ -10,3 +10,4 @@ rpi = { path = "../../rpi/" }
 
 [dependencies]
 libcolor = { path = "../../../lib/libcolor/" }
+printk = { path = "../../../kernel/printk/" }

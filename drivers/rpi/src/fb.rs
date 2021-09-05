@@ -64,12 +64,16 @@ impl RpiFb {
         }
     }
 
-    pub fn clear_screen(&mut self, color: HtmlColors) {
+    pub fn clear_screen(&mut self, color: usize) {
         let mut cursor = self.ptr as *mut usize;
 
         for y in 0..self.y {
             for x in 0..self.x {
                 // TODO: Draw a pixel with a hexdecimal number (html color)
+                unsafe {
+                    *cursor = color as usize;
+                    cursor = cursor.offset(1);
+                }
             }
         }
     }

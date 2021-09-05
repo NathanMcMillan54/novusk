@@ -114,13 +114,13 @@ impl MailBox {
             let resp = self.READ.get();
 
             if ((resp & 0xF) == channel) && ((resp & !0xF) == buffer) {
-                match self.mb_buffer[1] {
+                return match self.mb_buffer[1] {
                     SUCCESS =>
-                        return 5,
+                        5,
                     ERROR =>
-                        return 0,
+                        0,
                     _ =>
-                        return 1,
+                        1,
                 }
             }
         }

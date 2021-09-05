@@ -3,7 +3,7 @@ use crate::kernel::uart::Uart;
 
 #[export_name = "arch_printk"]
 #[no_mangle]
-pub unsafe extern "C" fn _a64_printk(fmt: Arguments) {
+pub extern "C" fn _a64_printk(fmt: Arguments) {
     let mut uart = Uart::new();
     uart.write_fmt(format_args!("{}{}", fmt, "\n"));
 }
@@ -11,7 +11,8 @@ pub unsafe extern "C" fn _a64_printk(fmt: Arguments) {
 #[export_name = "_kernel_main_print"]
 #[no_mangle]
 pub extern "C" fn _a64_main_printk(fmt: Arguments) {
-
+    // For now just call the "early" printk function
+    _a64_printk(fmt);
 }
 
 #[macro_export]

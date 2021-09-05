@@ -1,4 +1,5 @@
 use crate::aarch64_printk;
+use init::init::KERNEL;
 use libbmu::bmu_init;
 use modules::modules::KernelModules;
 use rpi::mb::MailBox;
@@ -26,6 +27,11 @@ pub unsafe fn aarch64_init() {
         KernelModules::None,
         KernelModules::None
     ]);
+
+    KERNEL.lock().gpu_graphics().init();
+    KERNEL.lock().kernel_console().init();
+    kinfo!("GPU/FB graphics initialized");
+    kinfo!("Kernel console initialized");
 
     bmu_init();
 }

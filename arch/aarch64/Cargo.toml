@@ -5,6 +5,8 @@ edition = "2018"
 description = "Aarch64/arm64 support for Novusk, mostly a kernel for the RaspberryPi"
 
 [dependencies]
+cortex-a = "6.1.0"
+init = { path = "../../init/" }
 io = { path = "../../mm/io/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
