@@ -38,6 +38,7 @@ members = [
     "drivers/usbd/",
     # Fs
     "fs/fat/",
+    "fs/tempfs/",
     # GPUs
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",

@@ -6,3 +6,4 @@ description = "A lib used for anything related to Novusk"
 
 [dependencies]
 printk = { path = "../../kernel/printk/" }
+tempfs = { path = "../../fs/tempfs/" }
