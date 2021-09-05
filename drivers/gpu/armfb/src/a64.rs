@@ -1,5 +1,5 @@
-use rpi::fb_init;
+use rpi::RpiFb;
 
 pub fn a64_fb_init() {
-    fb_init();
+    let mut fb = RpiFb::fb_init();
 }

@@ -133,6 +133,12 @@ impl Uart {
         self.AUX_MU_IO.set(c as u32);
     }
 
+    pub fn receive(&mut self) -> u8 {
+        let mut ret = self.AUX_MU_IO.get() as u8;
+
+        return ret;
+    }
+
     pub fn input_char(&self) -> char {
         loop {
             if self.AUX_MU_LSR.is_set(AUX_MU_LSR::DATA_READY) {

@@ -3,6 +3,8 @@ use libbmu::bmu_init;
 use modules::modules::KernelModules;
 use rpi::mb::MailBox;
 use rpi::board::check_board;
+use rpi::debug::break_point;
+use core::panic::Location;
 
 pub unsafe fn aarch64_init() {
     let mut mailbox = MailBox::new();

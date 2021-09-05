@@ -14,7 +14,6 @@ pub unsafe fn panic(_info: &PanicInfo) -> ! {
     led.init();
 
     loop {
-        led.blink(99999999);
-        aarch64_printk!("blinked");
+        led.blink(500000);
     }
 }
