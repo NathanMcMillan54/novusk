@@ -17,7 +17,7 @@ unsafe fn print_info() {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn main(bootinfo: &'static BootInfo) -> ! {
+pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     boot_init();
     x86_printk!("Starting kernel...");
 
