@@ -1,6 +1,8 @@
 use super::kernel::writes;
 use core::str::from_utf8_unchecked;
 
+pub use init::version::kernel_version;
+
 pub fn write(write: u8) {
     unsafe { writes(from_utf8_unchecked(vec![write].as_slice())); }
 }
