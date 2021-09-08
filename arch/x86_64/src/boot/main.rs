@@ -1,5 +1,6 @@
 use bootloader::BootInfo;
 use super::boot::{die, boot_init, BOOT};
+use crate::include::asm::hlt;
 use crate::kernel::kernel::*;
 use crate::kernel::vga::{BUFFER_HEIGHT, BUFFER_WIDTH, VGA_ADDRESS_STR};
 use crate::mm::early_memory_init;
@@ -16,6 +17,7 @@ unsafe fn print_info() {
     x86_printk!("Boot took: {} seconds", amd64_timer::ticks() as f64 / 1000000000.0);
 }
 
+#[cfg(not(feature = "grub"))]
 #[no_mangle]
 pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     boot_init();
@@ -29,4 +31,10 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     x86_kernel_init();
 
     die()
+}
+
+#[cfg(feature = "grub")]
+#[no_mangle]
+pub unsafe extern "C" fn grub_start() -> ! {
+    hlt();
 }

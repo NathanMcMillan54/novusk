@@ -1,4 +1,4 @@
-ENTRY(_grub_start)
+ENTRY(_start)
 SECTIONS
 {
 	. = 1M;

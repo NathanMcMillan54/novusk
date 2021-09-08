@@ -1,5 +1,7 @@
-// This file might get delteted soon
-// TODO: Write documentation on how to boot with grub
+.extern grub_start
+.globl _start
+.type _start, @function
+
 .set ALIGN,    1<<0
 .set MEMINFO,  1<<1
 .set FLAGS,    ALIGN | MEMINFO
@@ -18,12 +20,14 @@ stack_bottom:
 stack:
 
 .section .text
-.globl grub_hang
-.globl _grub_start
-.type _grub_start, @function
 
-_grub_start:
+_start:
 	movl $stack, %esp
-	call main
+	call grub_start
+    call grub_halt
+
+.grub_halt:
+    hlt
+    jmp grub_halt
 
 .size _start, . - _start
