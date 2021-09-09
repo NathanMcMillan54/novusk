@@ -1,7 +1,3 @@
-.extern grub_start
-.globl _start
-.type _start, @function
-
 .set ALIGN,    1<<0
 .set MEMINFO,  1<<1
 .set FLAGS,    ALIGN | MEMINFO
@@ -14,20 +10,21 @@
 .long FLAGS
 .long CHECKSUM
 
-.section .bootstrap_stack, "aw", @nobits
+.section .bss
+.align 16
 stack_bottom:
-.skip 16384
-stack:
+.skip 16384 # 16 KiB
+stack_top:
 
 .section .text
-
+.globl _start
+.type _start, @function
 _start:
-	movl $stack, %esp
-	call grub_start
-    call grub_halt
+	mov $stack_top, %esp
+	call main
 
-.grub_halt:
-    hlt
-    jmp grub_halt
+	cli
+1:	hlt
+	jmp 1b
 
 .size _start, . - _start

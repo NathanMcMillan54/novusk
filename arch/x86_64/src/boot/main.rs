@@ -1,5 +1,6 @@
 use bootloader::BootInfo;
 use super::boot::{die, boot_init, BOOT};
+use core::ptr::write_volatile;
 use crate::include::asm::hlt;
 use crate::kernel::kernel::*;
 use crate::kernel::vga::{BUFFER_HEIGHT, BUFFER_WIDTH, VGA_ADDRESS_STR};
@@ -33,8 +34,13 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     die()
 }
 
-#[cfg(feature = "grub")]
 #[no_mangle]
-pub unsafe extern "C" fn grub_start() -> ! {
-    hlt();
+pub extern "C" fn grub_start() -> ! {
+    for y in 0..25 {
+        for x in 0..80 {
+            unsafe { write_volatile(0xb8000 as *mut u8, b" ".as_ptr() as u8); }
+        }
+    }
+
+    loop {  }
 }
