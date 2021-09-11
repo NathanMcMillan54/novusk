@@ -56,10 +56,13 @@ members = [
     # Libraries
     "lib/libbmu/",
     "lib/libc/",
+    "lib/libc/stdio/",
+    "include/ctypes/",
     "lib/libcolor/",
     "lib/libost/",
     # MM
     "mm/io/",
+    "mm/memory/",
     # Sound
     "sound/x86_64-sound/",
     # Kernel Modules
@@ -76,6 +79,7 @@ libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
+stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]

@@ -1,5 +1,6 @@
-// memory.h
-use crate::{c_int, c_macro_int};
+#![no_std]
+
+use ctypes::{c_int, c_macro_int};
 
 #[no_mangle]
 pub unsafe extern "C" fn memcmp(s1: *const u8, s2: *const u8, n: c_macro_int) -> c_int {

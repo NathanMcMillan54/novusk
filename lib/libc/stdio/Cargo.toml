@@ -1,0 +1,11 @@
+[package]
+name = "stdio"
+version = "0.1.0"
+edition = "2018"
+description = "stdio.h"
+
+[dependencies]
+ctypes = { path = "../../../include/ctypes/" }
+
+[build-dependencies]
+cc = "1.0.70"

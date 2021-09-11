@@ -5,3 +5,6 @@ edition = "2018"
 description = "Most of the C stdlib and some C types written in Rust"
 
 [dependencies]
+ctypes = { path = "../../include/ctypes/" }
+memory = { path = "../../mm/memory/" }
+stdio = { path = "stdio/" }

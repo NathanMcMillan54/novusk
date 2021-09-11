@@ -1,3 +1,5 @@
+#![no_std]
+
 mod arm;
 mod risc;
 mod x86;
