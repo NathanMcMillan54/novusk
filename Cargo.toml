@@ -24,6 +24,7 @@ members = [
     "arch/xtensa/",
     # Drivers
     "drivers/blue/",
+    "drivers/boot/grubb/",
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/arm/stellarisd/",
     "drivers/gpu/",

@@ -21,7 +21,7 @@ stack_top:
 .type _start, @function
 _start:
 	mov $stack_top, %esp
-	call main
+	call grub_start
 
 	cli
 1:	hlt
