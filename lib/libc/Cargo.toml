@@ -8,3 +8,4 @@ description = "Most of the C stdlib and some C types written in Rust"
 ctypes = { path = "../../include/ctypes/" }
 memory = { path = "../../mm/memory/" }
 stdio = { path = "stdio/" }
+unistd = { path = "unistd/" }

@@ -44,6 +44,7 @@ members = [
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
     # Include
+    "include/ctypes/",
     "include/novusk/",
     # Kernel
     "init/",
@@ -57,7 +58,7 @@ members = [
     "lib/libbmu/",
     "lib/libc/",
     "lib/libc/stdio/",
-    "include/ctypes/",
+    "lib/libc/unistd/",
     "lib/libcolor/",
     "lib/libost/",
     # MM
