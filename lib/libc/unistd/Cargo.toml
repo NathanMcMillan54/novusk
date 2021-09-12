@@ -5,3 +5,4 @@ edition = "2018"
 description = "unistd.h"
 
 [dependencies]
+novuskinc = { path  = "../../../include/novusk/" }

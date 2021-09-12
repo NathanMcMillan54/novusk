@@ -6,15 +6,13 @@ pub mod table;
 pub use table as _;
 use table::*;
 
-fn write() {
+use novuskinc::syscalls::*;
 
-}
-
-pub unsafe fn sys_call(sys_num: i32, sys_arg: u8) -> u8 {
+pub unsafe fn syscall(sys_num: i32, sys_arg: u8) -> u8 {
     match sys_num {
-        WRITE => write(),
+        WRITE => write(sys_arg),
         _ => return 0,
-    }
+    };
 
     return 0;
 }

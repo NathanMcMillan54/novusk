@@ -4,8 +4,9 @@ use core::str::from_utf8_unchecked;
 pub use init::version::kernel_version;
 pub use super::reboot::reboot;
 
-pub fn write(write: u8) {
+pub fn write(write: u8) -> u8 {
     unsafe { writes(from_utf8_unchecked(vec![write].as_slice())); }
+    return 0;
 }
 
 pub fn read(buf: u8) -> u8 {
