@@ -42,4 +42,6 @@ pub unsafe fn x86_kernel_init() {
     extern "C" { fn kernel_main(); }
 
     kernel_main();
+
+    super::reboot::reboot();
 }
