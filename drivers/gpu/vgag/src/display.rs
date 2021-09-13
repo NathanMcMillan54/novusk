@@ -1,4 +1,5 @@
 use core::fmt::{Arguments, Write, Result};
+use core::iter::Enumerate;
 use vga::colors::Color16;
 use vga::writers::{Graphics640x480x16, GraphicsWriter};
 
@@ -37,3 +38,16 @@ impl Write for VgaDisplay {
         Ok(())
     }
 }
+
+// -----------------
+// Write/sys_write system call
+//
+// This is intended to be used with a high resolution graphics mode so it should be set before using
+fn write(sys_arg: u8) -> u8 {
+    let mode = Graphics640x480x16::new();
+    mode.draw_character(0, 0, sys_arg as char, Color16::White);
+
+    return 0;
+}
+
+
