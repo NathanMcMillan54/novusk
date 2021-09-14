@@ -81,6 +81,7 @@ libcolor = { path = "lib/libcolor/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 stdio = { path = "lib/libc/stdio/" }
+unistd = { path = "lib/libc/unistd/" }
 usbd = { path = "drivers/usbd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]

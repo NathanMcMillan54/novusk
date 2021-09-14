@@ -1,4 +1,5 @@
 #![no_std]
+#![feature(const_fmt_arguments_new)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;

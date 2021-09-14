@@ -5,7 +5,6 @@ pub(crate) mod kernel;
 pub mod printk;
 pub mod early_printk;
 pub mod reboot;
-pub mod syscalls;
 pub mod task;
 pub mod usb;
 pub(crate) mod x86_init;

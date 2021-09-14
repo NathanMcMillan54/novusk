@@ -1,12 +1,8 @@
 use super::init::KERNEL;
 use super::modules::modules_init;
-use super::version::*;
+use super::version::novusk_banner;
 use kinfo::status::set_status;
-
-pub fn print_version_number() {
-    printk!("Running on:");
-    printk!("    Novusk v{}.{}.{} {}", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
-}
+use novuskinc::version::*;
 
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();
@@ -36,7 +32,7 @@ pub unsafe extern "C" fn kernel_init() {
         kinfo!("GPU graphics initialized");
     }
 
-    print_version_number();
+    novusk_banner();
 
     #[cfg(target_arch = "x86_64")]
     input_init();

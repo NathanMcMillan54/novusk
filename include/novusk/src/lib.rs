@@ -8,3 +8,4 @@ pub mod led;
 pub mod module;
 pub mod fs;
 pub mod syscalls;
+pub mod version;

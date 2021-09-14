@@ -1,10 +1,32 @@
-pub const MAJOR_VERSION: i32 = 3;
-pub const MINOR_VERSION: i32 = 0;
-pub const REALLY_MINOR_VERSION: i32 = 0;
-pub const VERSION_NAME: &str = "beta";
+use novuskinc::version::*;
 
-pub fn kernel_version(sys_arg: u8) -> u8 {
-    return MAJOR_VERSION as u8;
+struct Banner {
+    pub kernel: &'static str,
+    pub major_version: i32,
+    pub minor_version: i32,
+    pub really_minor_version: i32,
+    pub version_name: &'static str,
 }
 
-// define_syscall!(sys_kernel_version, kernel_version);
+impl Banner {
+    pub fn new() -> Self {
+        return Banner {
+            kernel: "Novusk",
+            major_version: MAJOR_VERSION,
+            minor_version: MINOR_VERSION,
+            really_minor_version: REALLY_MINOR_VERSION,
+            version_name: VERSION_NAME,
+        };
+    }
+
+    pub fn display(&mut self) {
+        printk!("______________________");
+        printk!("| Novusk v{}.{}.{}-{} |", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
+        printk!("----------------------");
+    }
+}
+
+pub fn novusk_banner() {
+    let mut banner = Banner::new();
+    banner.display();
+}
