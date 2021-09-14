@@ -75,14 +75,15 @@ members = [
 
 [dependencies]
 gpu = { path = "drivers/gpu/" }
+vgag = { path = "drivers/gpu/vgag/" }
 kinfo = { path = "kernel/kinfo/" }
 libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 stdio = { path = "lib/libc/stdio/" }
-unistd = { path = "lib/libc/unistd/" }
 usbd = { path = "drivers/usbd/" }
+unistd = { path = "lib/libc/unistd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"

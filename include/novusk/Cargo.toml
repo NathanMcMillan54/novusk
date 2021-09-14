@@ -5,6 +5,7 @@ edition = "2018"
 description = "A lib used for anything related to Novusk"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
+pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
 vgag = { path = "../../drivers/gpu/vgag/" }
 
 [dependencies]
