@@ -1,4 +1,3 @@
-use crate::include::asm::nop;
 use x86_64::instructions::port::Port;
 
 pub unsafe fn reboot() -> ! {

@@ -13,6 +13,7 @@ pub unsafe fn syscall(sys_num: i32, sys_arg: u8) -> u8 {
         VERSION => return sys_version(sys_arg),
         WRITE => sys_write(sys_arg),
         READ => return sys_read(sys_arg),
+        REBOOT => sys_reboot(sys_arg),
         _ => return 0,
     };
 

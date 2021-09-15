@@ -44,6 +44,7 @@ pub mod libs {
 
 pub mod kernel {
     pub use kinfo;
+    pub use power;
     pub use printk;
 }
 

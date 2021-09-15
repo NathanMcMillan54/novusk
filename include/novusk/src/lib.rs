@@ -8,6 +8,7 @@ pub mod input;
 pub mod io;
 pub mod led;
 pub mod module;
+pub mod power;
 pub mod fs;
 pub mod syscalls;
 pub mod version;

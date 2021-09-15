@@ -52,6 +52,7 @@ members = [
     "kernel/konfig/",
     "kernel/modules/",
     "kernel/notify/",
+    "kernel/power/",
     "kernel/printk/",
     "kernel/setup/",
     # Libraries
@@ -81,6 +82,7 @@ libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
+power = { path = "kernel/power/" }
 stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
