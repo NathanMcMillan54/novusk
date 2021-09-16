@@ -9,7 +9,6 @@ pub mod defs;
 pub mod gpu;
 pub mod input;
 pub mod kernel;
-pub mod io;
 pub mod led;
 pub mod module;
 pub mod power;
