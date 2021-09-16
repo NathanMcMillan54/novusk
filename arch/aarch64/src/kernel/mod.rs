@@ -3,4 +3,5 @@ pub mod init;
 pub mod panic;
 pub mod printk;
 pub mod sys;
+pub mod reboot;
 pub mod uart;

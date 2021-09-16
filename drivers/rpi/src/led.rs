@@ -37,5 +37,3 @@ fn blink(sleep: usize) {
     led.init();
     led.blink(sleep);
 }
-
-define_led_blink_function!(blink);

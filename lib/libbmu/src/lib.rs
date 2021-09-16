@@ -3,7 +3,7 @@
 
 #[macro_use] extern crate printk;
 
-pub use libc::memory as mem;
+pub use memory;
 
 pub mod gpio;
 pub use gpio::Gpio;

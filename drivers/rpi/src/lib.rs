@@ -2,7 +2,6 @@
 #![feature(asm, llvm_asm)]
 
 #[macro_use] extern crate kinfo;
-#[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 

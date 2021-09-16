@@ -9,6 +9,5 @@ io = { path = "../../mm/io/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 libbmu = { path = "../../lib/libbmu/" }
-novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"

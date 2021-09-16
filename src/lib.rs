@@ -38,7 +38,12 @@ pub mod xtensa {
 }
 
 pub mod libs {
-    pub use libc;
+    pub mod libc {
+        pub use memory;
+        pub use stdio;
+        pub use unistd;
+    }
+
     pub use libcolor;
 }
 

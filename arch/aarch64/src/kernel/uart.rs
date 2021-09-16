@@ -1,7 +1,7 @@
+use crate::define_syscall;
 use core::fmt::{Arguments, Result, Write};
 use core::ops;
-use super::gpio;
-use rpi::MMIO_BASE;
+use rpi::{MMIO_BASE, gpio};
 use tock_registers::interfaces::{ReadWriteable, Readable, Writeable};
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
 
@@ -174,3 +174,16 @@ impl Write for Uart {
         Ok(())
     }
 }
+
+// -----------
+// Write/sys_write
+//
+// System call for writing for Aarch64
+fn write(write: u8) -> u8 {
+    let mut uart = Uart::new();
+    uart.send(write as char);
+
+    return 0;
+}
+
+define_syscall!(sys_write, write);

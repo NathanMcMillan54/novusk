@@ -5,5 +5,5 @@ edition = "2018"
 description = "Bare Metal Userspace Library, a library for Novusk's 'userspace' on embbeded devices"
 
 [dependencies]
-libc = { path = "../libc/" }
+memory = { path = "../../mm/memory/" }
 printk = { path = "../../kernel/printk/" }

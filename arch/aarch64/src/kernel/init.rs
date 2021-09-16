@@ -28,10 +28,5 @@ pub unsafe fn aarch64_init() {
         KernelModules::None
     ]);
 
-    KERNEL.lock().gpu_graphics().init();
-    KERNEL.lock().kernel_console().init();
-    kinfo!("GPU/FB graphics initialized");
-    kinfo!("Kernel console initialized");
-
     bmu_init();
 }

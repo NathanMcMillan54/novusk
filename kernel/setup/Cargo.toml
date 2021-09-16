@@ -7,6 +7,5 @@ description = "Setup before kernel_init and setup before kernel_main"
 [dependencies]
 kinfo = { path = "../kinfo/" }
 konfig = { path = "../konfig/" }
-libc = { path = "../../lib/libc/" }
 printk = { path = "../printk/" }
 sos = { path = "../../drivers/sos/" }

@@ -57,7 +57,6 @@ members = [
     "kernel/setup/",
     # Libraries
     "lib/libbmu/",
-    "lib/libc/",
     "lib/libc/stdio/",
     "lib/libc/unistd/",
     "lib/libcolor/",
@@ -76,10 +75,9 @@ members = [
 
 [dependencies]
 gpu = { path = "drivers/gpu/" }
-vgag = { path = "drivers/gpu/vgag/" }
 kinfo = { path = "kernel/kinfo/" }
-libc = { path = "lib/libc/" }
 libcolor = { path = "lib/libcolor/" }
+memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 power = { path = "kernel/power/" }
