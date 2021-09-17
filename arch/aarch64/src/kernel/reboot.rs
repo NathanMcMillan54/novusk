@@ -1,3 +1,3 @@
 pub fn reboot() -> ! {
-    panic!("Not available yet");
+    panic!("Reboot is not supported yet");
 }

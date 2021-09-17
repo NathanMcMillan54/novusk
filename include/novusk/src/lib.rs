@@ -1,5 +1,7 @@
 #![no_std]
 
+#[macro_use] extern crate cfg_if;
+
 #[cfg(target_arch = "aarch64")]
 #[macro_use] extern crate tock_registers;
 

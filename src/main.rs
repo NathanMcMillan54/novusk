@@ -7,3 +7,8 @@
 pub unsafe extern "C" fn kernel_main() {
     printk::printk!("\nKernel Main");
 }
+
+#[no_mangle]
+pub extern "C" fn initramfs_main() {
+
+}

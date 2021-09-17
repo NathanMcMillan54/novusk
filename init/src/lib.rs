@@ -9,6 +9,8 @@
 #[macro_use] extern crate printk;
 
 pub mod init;
+pub mod initramfs;
 pub mod kmain;
+pub mod noinitramfs;
 pub mod modules;
 pub mod version;

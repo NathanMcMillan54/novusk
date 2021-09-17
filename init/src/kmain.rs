@@ -1,4 +1,5 @@
 use super::init::KERNEL;
+use super::initramfs::*;
 use super::modules::modules_init;
 use super::version::novusk_banner;
 use kinfo::status::set_status;
@@ -33,6 +34,11 @@ pub unsafe extern "C" fn kernel_init() {
     }
 
     novusk_banner();
+
+    if initramfs_type() == "Kernel" {
+        kinfo!("Starting kernel initramfs...");
+        start_kernel_initramfs();
+    } else if initramfs_type() == "Custom" { start_custom_initramfs(); }
 
     #[cfg(target_arch = "x86_64")]
     input_init();
