@@ -8,6 +8,10 @@ pub mod table;
 #[path = "../../../../arch/aarch64/src/kernel/sys.rs"]
 pub mod table;
 
+#[cfg(target_arch = "arm")]
+#[path = "../../../../arch/arm/src/include/sys_tbl.rs"]
+pub mod table;
+
 pub use table as _;
 use table::*;
 
