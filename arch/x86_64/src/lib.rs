@@ -12,6 +12,9 @@
 #[cfg(feature = "uefi_boot")]
 extern crate nkuefi;
 
+#[cfg(feature = "grub")]
+extern crate grubb;
+
 use core::panic::PanicInfo;
 
 pub mod boot;

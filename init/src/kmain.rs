@@ -4,6 +4,8 @@ use super::modules::modules_init;
 use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
+use novuskinc::fs::TempFs;
+use alloc::boxed::Box;
 
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();

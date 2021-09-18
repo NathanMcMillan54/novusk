@@ -1,6 +1,6 @@
 #![no_std]
 
-use core::ptr::{read, write_volatile};
+use core::ptr::{read_volatile, write_volatile};
 
 pub mod file;
 
@@ -17,7 +17,7 @@ impl TempFs {
     }
 
     pub fn read(&mut self) -> u8 {
-        unsafe { return read(self.mem_address); }
+        unsafe { return read_volatile(self.mem_address); }
     }
 
     pub fn write_byte(&mut self, buf: u8) {

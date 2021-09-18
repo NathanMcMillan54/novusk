@@ -35,12 +35,8 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
 }
 
 #[no_mangle]
-pub extern "C" fn grub_start() -> ! {
-    for y in 0..25 {
-        for x in 0..80 {
-            unsafe { write_volatile(0xb8000 as *mut u8, b" ".as_ptr() as u8); }
-        }
-    }
+pub unsafe extern "C" fn _start() -> ! {
+
 
     loop {  }
 }

@@ -16,15 +16,4 @@ stack_bottom:
 .skip 16384 # 16 KiB
 stack_top:
 
-.section .text
-.globl _start
-.type _start, @function
-_start:
-	mov $stack_top, %esp
-	call grub_start
 
-	cli
-1:	hlt
-	jmp 1b
-
-.size _start, . - _start
