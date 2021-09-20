@@ -34,9 +34,8 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     die()
 }
 
+#[cfg(feature = "grub")]
 #[no_mangle]
 pub unsafe extern "C" fn _start() -> ! {
-
-
-    loop {  }
+    die();
 }
