@@ -3,6 +3,7 @@
 mod arm;
 mod risc;
 mod x86;
+mod xtensa;
 
 #[cfg(target_arch = "arm")]
 pub use arm::*;
@@ -19,8 +20,8 @@ pub use risc::*;
 #[cfg(target_arch = "x86_64")]
 pub use x86::*;
 
-#[cfg(target_arch = "x86")]
-pub use x86::*;
+#[cfg(target_arch = "xtensa")]
+pub use xtensa::*;
 
 pub type c_int = i32;
 pub type c_uint = u32;

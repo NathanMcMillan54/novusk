@@ -14,6 +14,10 @@ pub mod table;
 #[path = "../../../../arch/arm/src/include/sys_tbl.rs"]
 pub mod table;
 
+#[cfg(target_arch = "xtensa")]
+#[path = "../../../../arch/xtensa/src/include/tbl.rs"]
+pub mod table;
+
 pub use table as _;
 use table::*;
 

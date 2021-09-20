@@ -11,6 +11,8 @@ use super::a32::reboot;
 
 impl Power {
     pub fn reboot(&mut self) -> ! {
+        #[cfg(not(target_arch = "xtensa"))]
         unsafe { reboot() }
+        loop {  }
     }
 }
