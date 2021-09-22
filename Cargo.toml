@@ -55,6 +55,7 @@ members = [
     "kernel/power/",
     "kernel/printk/",
     "kernel/setup/",
+    "kernel/time/",
     # Libraries
     "lib/libbmu/",
     "lib/libc/stdio/",

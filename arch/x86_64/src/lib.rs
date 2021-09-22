@@ -25,9 +25,13 @@ pub mod mm;
 
 #[panic_handler]
 pub fn panic(_info: &PanicInfo) -> ! {
+    use time::cpu::CPU_TIME;
+
     printk!("\nKernel panicked:");
     printk!("    Message: {:?}", _info.message().unwrap());
     printk!("    Location: {:?}", _info.location().unwrap());
 
+
+    unsafe { printk!("CPU time: {}", CPU_TIME as f64 / 1000000000.0); }
     loop {  }
 }
