@@ -5,7 +5,18 @@ use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
 use novuskinc::fs::TempFs;
-use alloc::boxed::Box;
+
+fn check_version(version_str: &str) {
+    #[cfg(not(target_arch = "arm"))]
+    if version_str.parse::<i32>().unwrap() != MAJOR_VERSION {
+        panic!("Kernel config and const versions are different, the config file might be bad and unsafe");
+    }
+
+    #[cfg(target_arch = "arm")]
+    if version_str != "3" {
+        panic!("Kernel config and const versions are different, the config file might be bad and unsafe");
+    }
+}
 
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();
@@ -24,11 +35,7 @@ pub unsafe extern "C" fn kernel_init() {
     let mut configs = KERNEL.lock().kernel_configs();
     kinfo!("Got kernel configurations");
 
-    // TODO: Figure out why you can't parse &str to i32 on arm
-    #[cfg(not(target_arch = "arm"))]
-    if configs.get("KERNEL", "MAJORVERSION").parse::<i32>().unwrap() != MAJOR_VERSION {
-        panic!("Kernel config and const versions are different, the config file might be bad and unsafe");
-    }
+    check_version(configs.get("KERNEL", "MAJORVERSION").as_str());
 
     if configs.get("GPU", "INIT") == "True" {
         gpu_init();
