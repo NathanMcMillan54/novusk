@@ -23,3 +23,9 @@ pub fn irq_init() {
         scope.register(Interrupts::INT0, int0);
     })
 }
+
+pub async fn irq_handler() {
+    handler!(int0 = || interrupt0());
+
+    int0.invoke();
+}

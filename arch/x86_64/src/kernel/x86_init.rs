@@ -3,8 +3,8 @@ use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
 use setup::{setup_kernel, after_kernel_setup};
-use crate::kernel::task::executor::Executor;
-use crate::kernel::task::Task;
+use crate::boot::boot::die;
+use crate::kernel::task::{Executor, Task};
 
 unsafe fn set_drivers() {
     // When gop is supported this will change
@@ -41,5 +41,9 @@ pub unsafe fn x86_kernel_init() {
 
     extern "C" { fn kernel_main(); }
 
-    kernel_main();
+    let mut executor = Executor::new();
+    executor.spawn(Task::new(async { kernel_main() }));
+    executor.spawn(Task::new(async { die() }));
+
+    executor.run();
 }

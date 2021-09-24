@@ -4,10 +4,13 @@ use crate::aarch64_printk;
 use crate::kernel::init::aarch64_init;
 use crate::kernel::uart::Uart;
 use crate::include::asm::wfe;
+use crate::mm::memory_init;
 use rpi::aarch64_rpi_init;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
+    memory_init();
+
     #[cfg(feature = "rpi3")]
     aarch64_rpi_init(3);
 
