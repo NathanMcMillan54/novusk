@@ -37,6 +37,8 @@ pub unsafe extern "C" fn kernel_init() {
 
     check_version(configs.get("KERNEL", "MAJORVERSION").as_str());
 
+    printk!("Using {} config", configs.config_type());
+
     if configs.get("GPU", "INIT") == "True" {
         gpu_init();
         kinfo!("GPU graphics initialized");

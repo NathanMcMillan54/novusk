@@ -114,6 +114,7 @@ xtensa-lx-rt = { version = "0.7.0", features = ["lx6"] }
 
 [features]
 bios_boot = ["x86_64/bios_boot"]
+custom_config = []
 esp32 = ["xtensa/esp32"]
 grub = ["x86_64/grub"]
 hifive = ["riscv/hifive"]

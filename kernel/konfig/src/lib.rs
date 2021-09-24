@@ -25,6 +25,12 @@ impl Konfig {
         return Konfig { config: config_file };
     }
 
+    pub fn config_type(&mut self) -> &str {
+        if file::get_config() == file::DEFCONFIG {
+            return "default";
+        } else { return "custom"; }
+    }
+
     pub fn get(&mut self, section: &str, config: &str) -> String {
         let formatted_configs: Vec<&str> = self.config.split("\n").collect();
         let mut ret = String::new();
