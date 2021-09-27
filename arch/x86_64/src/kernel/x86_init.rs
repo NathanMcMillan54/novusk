@@ -2,7 +2,7 @@ use init::kmain;
 use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
-use setup::{setup_kernel, after_kernel_setup};
+use setup::after_kernel_setup;
 use crate::boot::boot::die;
 use crate::kernel::task::{Executor, Task};
 
@@ -29,9 +29,6 @@ pub unsafe fn x86_kernel_init() {
     set_drivers();
     kinfo!("Drivers set");
     x86_printk!("    Set GPU Graphics to VGA");
-
-    printk!("\nSetting up main kernel...");
-    setup_kernel();
 
     kmain::kernel_init();
     kinfo!("Novusk initialized");

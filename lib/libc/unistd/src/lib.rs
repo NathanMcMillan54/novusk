@@ -18,7 +18,7 @@ pub mod table;
 #[path = "../../../../arch/xtensa/src/include/tbl.rs"]
 pub mod table;
 
-pub use table as _;
+pub use table::*;
 use table::*;
 
 use novuskinc::kernel::syscalls::*;

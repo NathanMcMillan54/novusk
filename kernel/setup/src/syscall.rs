@@ -1,5 +1,3 @@
-use libc::unistd;
-
 #[cfg(target_arch = "x86_64")]
 fn x86_64() {
     assert!(unistd::READ == 0, "unistd::READ's value is not 0");

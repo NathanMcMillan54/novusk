@@ -6,13 +6,8 @@
 
 use konfig::KONFIG;
 
-// pub(crate) mod syscall;
+pub(crate) mod syscall;
 pub(crate) mod user;
-
-
-pub fn setup_kernel() {
-    // syscall::check_sys_nums();
-}
 
 pub fn after_kernel_setup() {
     let mut configs = KONFIG.lock();
