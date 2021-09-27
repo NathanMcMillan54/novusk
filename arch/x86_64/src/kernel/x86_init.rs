@@ -38,9 +38,5 @@ pub unsafe fn x86_kernel_init() {
 
     extern "C" { fn kernel_main(); }
 
-    let mut executor = Executor::new();
-    executor.spawn(Task::new(async { kernel_main() }));
-    executor.spawn(Task::new(async { die() }));
-
-    executor.run();
+    kernel_main();
 }

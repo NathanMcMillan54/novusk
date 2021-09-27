@@ -6,19 +6,20 @@
 
 use konfig::KONFIG;
 
+pub(crate) mod types;
 pub(crate) mod syscall;
 pub(crate) mod user;
 
+use types::{str_to_setuptypes, SetupTypes};
+
 pub fn after_kernel_setup() {
     let mut configs = KONFIG.lock();
-    let after = configs.get("KERNEL", "AFTER");
+    let after_str = configs.get("KERNEL", "AFTER");
+    let after_setup = str_to_setuptypes(after_str.as_str());
 
-    if after == "OS" || after == "SERVER" {
-        user::user_setup();
-        sos::sos_init(&*configs.get("OS", "NAME"));
-    } else if after == "Nothing" {
-
+    if after_str == "Nothing" {
+        return;
     } else {
-        panic!("{} isn't a KERNEL_AFTER option, ending the kernel here (there wasn't much to be done anyway).", after);
+        panic!("{} isn't a KERNEL_AFTER option, ending the kernel here (there wasn't much to be done anyway).", after_str);
     }
 }
