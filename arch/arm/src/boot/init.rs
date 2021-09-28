@@ -6,8 +6,8 @@ use crate::mm::early_memory_init;
 #[entry]
 fn init() -> ! {
     unsafe {
-        cpu::cpuid();
         early_memory_init();
+        cpu::cpuid();
         device::device_init();
         setup::setup_kernel();
         wfe();

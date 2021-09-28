@@ -5,7 +5,7 @@ pub fn device_init() {
     #[cfg(any(feature = "stellaris_6965"))]
     cortex_m3::cortex_m3_init();
 
-    #[cfg(any(feature = "nrf52840"))]
+    #[cfg(any(feature = "nrf52840", feature = "stm32f4"))]
     cortex_m4::cortex_m4_init();
 
     // Setup specific board
@@ -13,5 +13,12 @@ pub fn device_init() {
     stellarisd::stellars_init();
 
     #[cfg(feature = "nrf52840")]
-    nrfd::nrf_board_init()
+    nrfd::nrf_board_init();
+
+    cfg_if! {
+        if #[cfg(feature = "stm32f4")] {
+            stmd::stm32f4_init();
+            super::early_printk::EARLYPRINTK.lock().init("hio");
+        }
+    }
 }

@@ -27,6 +27,7 @@ members = [
     "drivers/boot/grubb/",
     "drivers/firmware/arm/nrfd/",
     "drivers/firmware/arm/stellarisd/",
+    "drivers/firmware/arm/stmd/",
     "drivers/gpu/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
@@ -121,6 +122,7 @@ hifive = ["riscv/hifive"]
 nrf52840 = ["arm/nrf52840"]
 rpi3 = ["aarch64/rpi3"]
 stellaris_6965 = ["arm/stellaris_6965"]
+stm32f4 = ["arm/stm32f4"]
 uefi_boot = ["x86_64/uefi_boot"]
 vga_0xa = ["x86_64/vga_0xa", "bootloader/vga_320x200"]
 virt = ["aarch64/qemu_virt", "riscv/virt", "x86_64/virt"]

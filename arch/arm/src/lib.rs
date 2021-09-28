@@ -3,6 +3,7 @@
 #![feature(alloc_error_handler)]
 
 #[macro_use] extern crate alloc;
+#[macro_use] extern crate cfg_if;
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate irq;
 #[macro_use] extern crate kinfo;

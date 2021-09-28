@@ -6,6 +6,7 @@ description = "arm32 support"
 
 [dependencies]
 alloc-cortex-m = "0.4.1"
+cfg-if = "1.0.0"
 cortex-m-rt-macros = "0.7.0"
 cortex-m-rt = "0.7.0"
 cortex-m-semihosting = "0.3.7"
@@ -20,8 +21,10 @@ nrfd = { path = "../../drivers/firmware/arm/nrfd/" }
 printk = { path = "../../kernel/printk/" }
 spin = { version = "0.9.2", features = ["spin_mutex"] }
 stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
+stmd = { path = "../../drivers/firmware/arm/stmd/" }
 time = { path = "../../kernel/time/" }
 
 [features]
 nrf52840 = []
 stellaris_6965 = []
+stm32f4 = []
