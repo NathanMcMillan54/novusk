@@ -17,8 +17,10 @@ pub fn device_init() {
 
     cfg_if! {
         if #[cfg(feature = "stm32f4")] {
+            use super::early_printk::EARLYPRINTK;
+            EARLYPRINTK.lock().init("hio");
+
             stmd::stm32f4_init();
-            super::early_printk::EARLYPRINTK.lock().init("hio");
         }
     }
 }

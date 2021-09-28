@@ -27,4 +27,4 @@ time = { path = "../../kernel/time/" }
 [features]
 nrf52840 = []
 stellaris_6965 = []
-stm32f4 = []
+stm32f4 = ["stmd/stm32f401"]
