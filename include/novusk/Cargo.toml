@@ -15,6 +15,7 @@ rpi = { path = "../../drivers/rpi/" }
 
 [dependencies]
 cfg-if = "1.0.0"
+kinfo = { path = "../../kernel/kinfo/" }
 power = { path = "../../kernel/power/" }
 printk = { path = "../../kernel/printk/" }
 tempfs = { path = "../../fs/tempfs/" }

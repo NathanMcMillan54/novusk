@@ -16,6 +16,9 @@ pub extern crate nrfd;
 #[cfg(feature = "stellaris_6965")]
 pub extern crate stellarisd;
 
+#[cfg(feature = "stm32f4")]
+pub extern crate stmd;
+
 pub mod boot;
 pub mod include;
 pub mod kernel;

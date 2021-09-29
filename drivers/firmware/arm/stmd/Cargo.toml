@@ -10,3 +10,4 @@ stm32f4xx-hal = "0.10.0"
 
 [features]
 stm32f401 = ["stm32f4xx-hal/stm32f401"]
+qemu = []

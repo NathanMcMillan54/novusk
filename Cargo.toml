@@ -126,3 +126,7 @@ stm32f4 = ["arm/stm32f4"]
 uefi_boot = ["x86_64/uefi_boot"]
 vga_0xa = ["x86_64/vga_0xa", "bootloader/vga_320x200"]
 virt = ["aarch64/qemu_virt", "riscv/virt", "x86_64/virt"]
+
+# For developers:
+qemu = ["arm/qemu"]
+debug = []

@@ -25,6 +25,8 @@ stmd = { path = "../../drivers/firmware/arm/stmd/" }
 time = { path = "../../kernel/time/" }
 
 [features]
+default = ["stmd/stm32f401"]
 nrf52840 = []
 stellaris_6965 = []
 stm32f4 = ["stmd/stm32f401"]
+qemu = ["stmd/qemu"]
