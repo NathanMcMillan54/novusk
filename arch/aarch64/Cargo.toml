@@ -7,7 +7,7 @@ description = "Aarch64/arm64 support for Novusk, mostly a kernel for the Raspber
 [dependencies]
 cortex-a = "6.1.0"
 init = { path = "../../init/" }
-io = { path = "../../mm/io/" }
+mio = { path = "../../mm/mio/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
 linked_list_allocator = "0.9.0"

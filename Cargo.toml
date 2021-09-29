@@ -41,6 +41,7 @@ members = [
     # Fs
     "fs/fat/",
     "fs/tempfs/",
+    "fs/vfs/",
     # GPUs
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
@@ -64,7 +65,7 @@ members = [
     "lib/libcolor/",
     "lib/libost/",
     # MM
-    "mm/io/",
+    "mm/mio/",
     "mm/memory/",
     # Sound
     "sound/x86_64-sound/",

@@ -5,7 +5,7 @@ edition = "2018"
 description = ""
 
 [dependencies]
-io = { path = "../../mm/io/" }
+mio = { path = "../../mm/mio/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }
 libbmu = { path = "../../lib/libbmu/" }

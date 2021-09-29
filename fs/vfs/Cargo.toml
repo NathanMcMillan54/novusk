@@ -1,0 +1,8 @@
+[package]
+name = "vfs"
+version = "0.1.0"
+edition = "2018"
+description = "A Virtual File System, for making support for "
+
+[dependencies]
+mio = { path = "../../mm/mio/" }
