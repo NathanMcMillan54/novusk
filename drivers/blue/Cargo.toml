@@ -8,3 +8,4 @@ edition = "2018"
 gpu = { path = "../gpu/" }
 init = { path = "../../init/" }
 libost = { path = "../../lib/libost/" }
+vgag = { path = "../../drivers/gpu/vgag/" }

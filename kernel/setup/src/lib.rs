@@ -19,6 +19,8 @@ pub fn after_kernel_setup() {
 
     if after_str == "Nothing" {
         return;
+    } else if after_str == "Os" || after_str == "Kernel" || after_str == "Server" || after_str == "BmApp" {
+        after_setup.init();
     } else {
         panic!("{} isn't a KERNEL_AFTER option, ending the kernel here (there wasn't much to be done anyway).", after_str);
     }

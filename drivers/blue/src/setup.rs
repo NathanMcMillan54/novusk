@@ -1,10 +1,19 @@
 use crate::Blue;
 use gpu::GpuGraphics;
 use libost::traits::Setup;
+use vgag::display::VgaDisplay;
+use vgag::Color16;
 
 impl Setup for Blue {
     fn clear_screen(&mut self) {
+        let mut graphics = GpuGraphics::new();
 
+        for y in 0..480 {
+            for x in 0..640 {
+                let mut vga = VgaDisplay::new(x, y, Color16::Cyan);
+                vga.pixel();
+            }
+        }
     }
 
     fn draw_logo(&mut self) {
@@ -15,5 +24,6 @@ impl Setup for Blue {
         let mut graphics = GpuGraphics::new();
 
         graphics.graphics_print(200, 240, 15, format_args!("{}", msg));
+        graphics.graphics_print(200, 250, 15, format_args!("{}", "Starting Blue Os..."))
     }
 }

@@ -17,5 +17,5 @@ pub fn blue_init() {
     let mut blue = Blue::new();
 
     unsafe { KERNEL.lock().gpu_graphics().init(); }
-    blue.init("Almost finished ...");
+    blue.init("Kernel is almost finished...\n");
 }
