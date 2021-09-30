@@ -7,6 +7,8 @@ use libbmu::bmu_init;
 pub unsafe fn setup_kernel() {
     printk!("Setting up kernel...");
 
+
+
     cpu_init();
     kinfo!("CPU initialized");
     printk!("   IRQ interrupts initialized");

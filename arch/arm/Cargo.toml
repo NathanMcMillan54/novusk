@@ -7,6 +7,7 @@ description = "arm32 support"
 [dependencies]
 alloc-cortex-m = "0.4.1"
 cfg-if = "1.0.0"
+cortex-m = "0.7.3"
 cortex-m-rt-macros = "0.7.0"
 cortex-m-rt = "0.7.0"
 cortex-m-semihosting = "0.3.7"
