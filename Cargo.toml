@@ -34,6 +34,7 @@ members = [
     "drivers/input/keyboard/ps2_keyboard/",
     "drivers/input/mouse/",
     "drivers/input/mouse/ps2_mouse/",
+    "drivers/net/ethernet/",
     "drivers/nkuefi/",
     "drivers/rpi/",
     "drivers/sos/",
@@ -67,6 +68,8 @@ members = [
     # MM
     "mm/mio/",
     "mm/memory/",
+    # Net
+    "net/ethernet/stm_eth/",
     # Sound
     "sound/x86_64-sound/",
     # Kernel Modules
@@ -124,6 +127,8 @@ nrf52840 = ["arm/nrf52840"]
 rpi3 = ["aarch64/rpi3"]
 stellaris_6965 = ["arm/stellaris_6965"]
 stm32f4 = ["arm/stm32f4"]
+stm32f401 = ["arm/stm32f401"]
+stm32f407 = ["arm/stm32f407"]
 uefi_boot = ["x86_64/uefi_boot"]
 vga_0xa = ["x86_64/vga_0xa", "bootloader/vga_320x200"]
 virt = ["aarch64/qemu_virt", "riscv/virt", "x86_64/virt"]

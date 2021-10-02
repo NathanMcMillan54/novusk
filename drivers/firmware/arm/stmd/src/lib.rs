@@ -6,8 +6,11 @@ use stm32f4xx_hal::pac::Peripherals;
 
 #[cfg(feature = "stm32f401")]
 pub(crate) const BOARD_MODLE: i32 = 01;
+#[cfg(feature = "stm32f407")]
+pub(crate) const BOARD_MODLE: i32 = 07;
 
 pub mod io;
+pub mod net;
 
 pub fn stm32f4_init() {
     let mut peripherals = Peripherals::take();
@@ -18,6 +21,8 @@ pub fn stm32f4_init() {
         panic!("Can't find peripherals");
     } else { printk!("Got peripherals"); }
 
-    printk!("Before init");
+    #[cfg(not(feature = "qemu"))]
     io::io_init();
+
+    net::net_init();
 }

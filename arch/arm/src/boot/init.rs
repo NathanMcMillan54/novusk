@@ -8,7 +8,7 @@ fn init() -> ! {
     unsafe {
         EARLYPRINTK.lock().init("hio");
         kinfo!("Early printk initialized");
-        printk!("    Using hio");
+        printk!("    Using hio (for now)");
         early_memory_init();
         cpu::cpu_init();
         device::device_init();
