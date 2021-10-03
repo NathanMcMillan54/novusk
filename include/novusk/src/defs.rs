@@ -44,3 +44,14 @@ macro_rules! define_ethernet_init {
         }
     };
 }
+
+#[macro_export]
+macro_rules! define_wireless_init {
+    ($init:ident) => {
+        #[no_mangle]
+        pub extern "C" fn wireless_init() {
+            let w: fn() = $init;
+            w();
+        }
+    };
+}

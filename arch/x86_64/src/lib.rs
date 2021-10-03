@@ -22,6 +22,7 @@ pub mod include;
 pub mod kernel;
 pub mod libx;
 pub mod mm;
+pub mod net;
 
 #[panic_handler]
 pub fn panic(_info: &PanicInfo) -> ! {
