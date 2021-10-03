@@ -6,6 +6,7 @@ description = "Ethernet driver for STM32 devices"
 
 [dependencies]
 ethernet = { path = "../../../drivers/net/ethernet/" }
+novuskinc = { path = "../../../include/novusk/" }
 stm32-eth = { version = "0.2.0" }
 
 [features]

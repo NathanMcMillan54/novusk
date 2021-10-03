@@ -34,3 +34,13 @@ macro_rules! define_syscall {
     };
 }
 
+#[macro_export]
+macro_rules! define_ethernet_init {
+    ($init:ident) => {
+        #[no_mangle]
+        pub extern "C" fn ethernet_init() {
+            let i: fn() = $init;
+            i();
+        }
+    };
+}

@@ -12,6 +12,10 @@ pub(crate) const BOARD_MODLE: i32 = 07;
 pub mod io;
 pub mod net;
 
+pub mod board {
+    pub use crate::net::{is_supported, net_init};
+}
+
 pub fn stm32f4_init() {
     let mut peripherals = Peripherals::take();
 

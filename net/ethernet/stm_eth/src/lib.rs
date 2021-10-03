@@ -1,8 +1,12 @@
 #![no_std]
 
+#[macro_use] extern crate ethernet;
+#[macro_use] extern crate novuskinc;
+
 use ethernet::*;
 
 pub mod driver;
+pub mod init;
 
 #[derive(Copy, Clone)]
 pub struct StmEth {

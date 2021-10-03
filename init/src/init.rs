@@ -1,4 +1,5 @@
 use gpu::GpuGraphics;
+use kinfo::info::*;
 use konfig::Konfig;
 use printk::console::KernelConsole;
 use spin::Mutex;
@@ -44,5 +45,22 @@ impl Kernel {
     #[cfg(not(target_arch = "x86_64"))]
     pub fn mouse_driver(&mut self) {
 
+    }
+
+    pub unsafe fn net_init(&mut self) {
+        extern "C" {
+            fn ethernet_init();
+            fn wireless_init();
+        }
+
+        //if NETWORK_ETHERNET == true {
+            ethernet_init();
+        //} else if NETWORK_WIRELESS == true {
+            wireless_init();
+        //}
+
+        /* if NETWORK_ETHERNET == false && NETWORK_WIRELESS == false {
+            printk!("There are no networking drivers available for this architecture or device");
+        } */
     }
 }

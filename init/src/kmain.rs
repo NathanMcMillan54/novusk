@@ -30,6 +30,11 @@ unsafe fn input_init() {
     kinfo!("Input devices initialized");
 }
 
+unsafe fn net_init() {
+    KERNEL.lock().net_init();
+    kinfo!("Network drivers initialized");
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     let mut configs = KERNEL.lock().kernel_configs();
@@ -53,6 +58,8 @@ pub unsafe extern "C" fn kernel_init() {
 
     #[cfg(target_arch = "x86_64")]
     input_init();
+
+    net_init();
 
     printk!("\nSetting up main kernel modules...");
     modules_init(configs);

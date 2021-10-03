@@ -16,13 +16,14 @@ pub extern crate nrfd;
 #[cfg(feature = "stellaris_6965")]
 pub extern crate stellarisd;
 
-#[cfg(feature = "stm32f4")]
+#[cfg(any(feature = "stm32f401", feature = "stm32f407"))]
 pub extern crate stmd;
 
 pub mod boot;
 pub mod include;
 pub mod kernel;
 pub mod mm;
+pub mod net;
 
 // CPUs
 pub mod cortex_m3;
