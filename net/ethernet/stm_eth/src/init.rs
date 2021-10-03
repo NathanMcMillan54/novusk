@@ -5,7 +5,7 @@ fn is_supported() -> bool {
     #[cfg(feature = "unsupported_stm32fxxx")]
     return false;
 
-    #[cfg(not(feature = "stm32f407"))]
+    #[cfg(feature = "stm32f407")]
     return true;
 }
 

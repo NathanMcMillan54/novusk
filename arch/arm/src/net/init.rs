@@ -17,8 +17,10 @@ pub(crate) fn arm_ethernet_init() {
     } else { printk!(""); }
 }
 
-#[link_name = "wireless_init"]
-pub(crate) fn arm_wrireless_init() {
+
+#[export_name = "wireless_init"]
+#[no_mangle]
+pub(crate) extern "C" fn arm_wrireless_init() {
 
 }
 

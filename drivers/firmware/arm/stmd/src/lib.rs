@@ -27,6 +27,4 @@ pub fn stm32f4_init() {
 
     #[cfg(not(feature = "qemu"))]
     io::io_init();
-
-    net::net_init();
 }
