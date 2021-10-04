@@ -18,15 +18,15 @@ edition = "2018"
 members = [
     # Architectures
     "arch/aarch64/",
-    "arch/arm/",
+    # "arch/arm/",
     "arch/riscv/",
     "arch/x86_64/",
     "arch/xtensa/",
     # Drivers
     "drivers/blue/",
     "drivers/boot/grubb/",
-    "drivers/firmware/arm/stellarisd/",
-    "drivers/firmware/arm/stmd/",
+    # "drivers/firmware/arm/stellarisd/",
+    # "drivers/firmware/arm/stmd/",
     "drivers/gpu/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
@@ -68,7 +68,7 @@ members = [
     "mm/mio/",
     "mm/memory/",
     # Net
-    "net/ethernet/stm_eth/",
+    # "net/ethernet/stm_eth/",
     # Sound
     "sound/x86_64-sound/",
     # Kernel Modules
@@ -101,8 +101,8 @@ libbmu = { path = "lib/libbmu/" }
 rpi = { path = "drivers/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
-libbmu = { path = "lib/libbmu/" }
-arm = { path = "arch/arm/" }
+# libbmu = { path = "lib/libbmu/" }
+# arm = { path = "arch/arm/" }
 
 [target.'cfg(target_arch = "riscv64")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
@@ -123,14 +123,14 @@ esp32 = ["xtensa/esp32"]
 grub = ["x86_64/grub"]
 hifive = ["riscv/hifive"]
 rpi3 = ["aarch64/rpi3"]
-stellaris_6965 = ["arm/stellaris_6965"]
-stm32f4 = ["arm/stm32f4"]
-stm32f401 = ["arm/stm32f401"]
-stm32f407 = ["arm/stm32f407"]
+# stellaris_6965 = ["arm/stellaris_6965"]
+# stm32f4 = ["arm/stm32f4"]
+# stm32f401 = ["arm/stm32f401"]
+# stm32f407 = ["arm/stm32f407"]
 uefi_boot = ["x86_64/uefi_boot"]
 vga_0xa = ["x86_64/vga_0xa", "bootloader/vga_320x200"]
 virt = ["aarch64/qemu_virt", "riscv/virt", "x86_64/virt"]
 
 # For developers:
-qemu = ["arm/qemu"]
+qemu = []
 debug = []
