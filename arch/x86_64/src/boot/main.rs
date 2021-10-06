@@ -34,8 +34,7 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     die()
 }
 
-#[cfg(feature = "grub")]
 #[no_mangle]
-pub unsafe extern "C" fn _start() -> ! {
-    die();
+pub extern "C" fn grub_start_novusk() -> ! {
+    loop {  }
 }

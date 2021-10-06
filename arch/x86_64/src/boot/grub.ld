@@ -1,33 +1,15 @@
-ENTRY(_start)
+ENTRY(start)
 SECTIONS
 {
-	. = 1M;
+    . = 1M;
 
-	.text BLOCK(4K) : ALIGN(4K)
-	{
-		*(.multiboot)
-		*(.text)
-	}
+    .boot :
+    {
+        KEEP(*(.multiboot_header))
+    }
 
-	.note.gnu.build-id BLOCK(4K) : ALIGN(4K)
-	{
-		*(.note.gnu.build-id)
-	}
-
-	.rodata BLOCK(4K) : ALIGN(4K)
-	{
-		*(.rodata)
-	}
-
-	.data BLOCK(4K) : ALIGN(4K)
-	{
-		*(.data)
-	}
-
-	.bss BLOCK(4K) : ALIGN(4K)
-	{
-		*(COMMON)
-		*(.bss)
-		*(.bootstrap_stack)
-	}
+    .text :
+    {
+        *(.text)
+    }
 }

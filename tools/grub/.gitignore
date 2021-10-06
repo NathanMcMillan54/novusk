@@ -1,2 +1,7 @@
 boot/novusk.iso
 boot/novusk
+
+*.asm
+grub_boot
+long_mode_init
+multiboot_header
