@@ -18,9 +18,8 @@ unsafe fn print_info() {
     x86_printk!("Boot took: {} seconds", amd64_timer::ticks() as f64 / 1000000000.0);
 }
 
-#[cfg(not(feature = "grub"))]
 #[no_mangle]
-pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
+pub unsafe extern "C" fn main(bootinfo: &'static BootInfo) -> ! {
     boot_init();
     x86_printk!("Starting kernel...");
 
@@ -32,9 +31,4 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     x86_kernel_init();
 
     die()
-}
-
-#[no_mangle]
-pub extern "C" fn grub_start_novusk() -> ! {
-    loop {  }
 }
