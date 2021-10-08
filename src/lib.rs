@@ -69,3 +69,15 @@ pub mod drivers {
         pub use usbd;
     }
 }
+
+#[cfg(feature = "grub")]
+#[no_mangle]
+pub extern "C" fn kernel_main() {
+    printk::printk!("Kernel main");
+}
+
+#[cfg(feature = "grub")]
+#[no_mangle]
+pub extern "C" fn initramfs_main() {
+
+}
