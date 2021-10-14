@@ -4,6 +4,7 @@ use fixed_size_block::FixedSizeBlockAllocator;
 use x86_64::VirtAddr;
 use x86_64::structures::paging::{Mapper, Size4KiB, FrameAllocator, Page, PageTableFlags};
 use x86_64::structures::paging::mapper::MapToError;
+use linked_list_allocator::LockedHeap;
 
 pub mod bump;
 pub mod error;

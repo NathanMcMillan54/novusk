@@ -5,7 +5,5 @@ edition = "2018"
 description = "Sets up x86_64 kernel that was booted with Grub"
 
 [dependencies]
-
-[build-dependencies]
-cc = "1.0.70"
-
+multiboot2 = "0.12.2"
+printk = { path = "../../../kernel/printk/" }

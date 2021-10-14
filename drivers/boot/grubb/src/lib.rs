@@ -1,6 +1,12 @@
 #![no_std]
 #![feature(asm)]
 
-extern "C" { pub(crate) fn grub_start() -> !;}
+#[macro_use] extern crate printk;
 
-pub mod vga;
+pub mod memory;
+
+use multiboot2::{load, BootInformation};
+
+pub unsafe fn grub_init(address: usize) {
+    let bootinfo = load(address);
+}
