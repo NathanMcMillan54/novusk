@@ -9,6 +9,5 @@ pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {
     grub_init(bootinfo_address);
     kinfo!("GRUB bootloader initialized");
 
-    loop {  }
     main();
 }
