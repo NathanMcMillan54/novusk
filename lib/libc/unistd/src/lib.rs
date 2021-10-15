@@ -18,6 +18,10 @@ pub mod table;
 #[path = "../../../../arch/xtensa/src/include/tbl.rs"]
 pub mod table;
 
+#[cfg(target_arch = "riscv32")]
+#[path = "../../../../arch/riscv/src/kernel/syscall_table.rs"]
+pub mod table;
+
 pub use table::*;
 use table::*;
 

@@ -5,12 +5,13 @@ edition = "2018"
 description = "RISCV32/64 kernel support"
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]
-hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
+hifived = { path = "../../drivers/firmware/riscv/hifived/" }
 
 [target.'cfg(target_arch = "riscv64")'.dependencies]
 mio = { path = "../../mm/mio/" }
 
 [dependencies]
+device = { path = "../../drivers/firmware/device/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
 modules = { path = "../../kernel/modules/" }

@@ -6,9 +6,10 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate riscv_rt;
 
+#[cfg(feature = "hifive")]
+pub extern crate hifived;
+
 pub mod boot;
 pub mod include;
 pub mod kernel;
-
-#[cfg(not(feature = "no-mem"))]
 pub mod mm;

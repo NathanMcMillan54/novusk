@@ -1,0 +1,7 @@
+[package]
+name = "device"
+version = "0.1.0"
+edition = "2018"
+description = "Traits for device specific drivers"
+
+[dependencies]

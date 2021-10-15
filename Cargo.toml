@@ -14,7 +14,7 @@ name = "novusk"
 path = "src/lib.rs"
 edition = "2018"
 #
-crate-type = ["staticlib"]
+# crate-type = ["staticlib"]
 
 [workspace]
 members = [
@@ -27,6 +27,8 @@ members = [
     # Drivers
     "drivers/blue/",
     "drivers/boot/grubb/",
+    "drivers/firmware/device/",
+    "drivers/firmware/riscv/hifived/",
     # "drivers/firmware/arm/stellarisd/",
     # "drivers/firmware/arm/stmd/",
     "drivers/gpu/",

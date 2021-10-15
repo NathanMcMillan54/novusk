@@ -11,3 +11,7 @@ pub mod a64_power;
 #[cfg(target_arch = "arm")]
 #[path = "../../../../arch/arm/src/cortex_m3/power.rs"]
 pub mod a32;
+
+#[cfg(target_arch = "riscv32")]
+#[path = "../../../../arch/riscv/src/kernel/power/reboot.rs"]
+pub mod riscv;
