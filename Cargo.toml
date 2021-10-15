@@ -14,7 +14,7 @@ name = "novusk"
 path = "src/lib.rs"
 edition = "2018"
 #
-crate-type = ["staticlib"]
+# crate-type = ["staticlib"]
 
 [workspace]
 members = [
