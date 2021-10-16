@@ -6,7 +6,7 @@
 #[macro_use] extern crate tock_registers;
 
 pub use printk::printk;
-pub use kinfo;
+pub use kinfo::kinfo;
 
 pub mod defs;
 pub mod gpu;

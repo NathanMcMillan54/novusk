@@ -1,5 +1,5 @@
 use core::fmt::{Arguments, Write};
-use super::{DriverNames, GpuGraphics, DRIVER};
+use super::{GpuDrivers, GpuGraphics};
 
 #[cfg(target_arch = "x86_64")]
 fn vga_print(x: usize, y: usize, color: usize, args: Arguments) {
@@ -14,9 +14,9 @@ fn vga_print(x: usize, y: usize, color: usize, args: Arguments) {
 impl GpuGraphics {
     pub fn graphics_print(&mut self, x: usize, y: usize, color: usize, args: Arguments) {
         unsafe {
-            if DRIVER == DriverNames::Vgag {
+            if self.driver_name == GpuDrivers::Vgag {
                 #[cfg(target_arch = "x86_64")]
-                    vga_print(x, y, color, args);
+                vga_print(x, y, color, args);
             } else {
                 return;
             }

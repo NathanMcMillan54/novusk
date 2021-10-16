@@ -20,7 +20,8 @@ fn check_version(version_str: &str) {
 
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();
-    KERNEL.lock().gpu_graphics().init();
+
+    let driver = KERNEL.lock().gpu_graphics().driver_name;
 }
 
 #[cfg(target_arch = "x86_64")]

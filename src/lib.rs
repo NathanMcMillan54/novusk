@@ -68,6 +68,10 @@ pub mod drivers {
     pub mod firmware {
         pub use usbd;
     }
+
+    pub mod input {
+        pub use pc_keyboard;
+    }
 }
 
 #[cfg(feature = "grub")]

@@ -23,7 +23,7 @@ impl PcKeyboard {
                 if let Some(key) = keyboard.process_keyevent(key_event) {
                      return match key {
                         DecodedKey::Unicode(character) => character,
-                        DecodedKey::RawKey(key) => 'B',
+                        DecodedKey::RawKey(key) => 'K',
                     };
                 }
             }
