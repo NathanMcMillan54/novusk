@@ -7,4 +7,4 @@ description = "Hifive/Sifive board setup"
 [dependencies]
 device = { path = "../../device/" }
 hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
-
+novuskinc = { path = "../../../../include/novusk/" }
