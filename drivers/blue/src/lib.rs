@@ -16,6 +16,6 @@ impl Blue {
 pub fn blue_init() {
     let mut blue = Blue::new();
 
-    // unsafe { KERNEL.lock().gpu_graphics().init(); }
+    // KERNEL.lock().gpu_graphics().init((0, 0));
     blue.init("Kernel is almost finished...\n");
 }

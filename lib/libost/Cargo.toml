@@ -5,4 +5,3 @@ edition = "2018"
 description = "OS tools"
 
 [dependencies]
-gpu = { path = "../../drivers/gpu/" }

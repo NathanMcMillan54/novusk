@@ -5,6 +5,7 @@ use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
 use novuskinc::fs::TempFs;
+use novuskinc::gpu::vga::vga_write;
 
 fn check_version(version_str: &str) {
     #[cfg(not(target_arch = "arm"))]
@@ -20,8 +21,7 @@ fn check_version(version_str: &str) {
 
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();
-
-    let driver = KERNEL.lock().gpu_graphics().driver_name;
+    // KERNEL.lock().gpu_graphics().init((0, 0));
 }
 
 #[cfg(target_arch = "x86_64")]
@@ -49,6 +49,8 @@ pub unsafe extern "C" fn kernel_init() {
         gpu_init();
         kinfo!("GPU graphics initialized");
     }
+
+    //vga_write(0, 0, format_args!("{}", "k"));
 
     novusk_banner();
 

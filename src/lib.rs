@@ -60,8 +60,6 @@ pub mod drivers {
     #[cfg(target_arch = "x86_64")]
     pub use x86_64::kernel::task as multitask;
 
-    pub use gpu;
-
     #[cfg(target_arch = "aarch64")]
     pub use rpi;
 

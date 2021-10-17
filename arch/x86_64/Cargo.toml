@@ -7,7 +7,6 @@ description = "x86_64 support for Novusk"
 [dependencies]
 amd64_timer = "1.3.0"
 bootloader = { version = "0.9.19", features = ["map_physical_memory"] }
-gpu = { path = "../../drivers/gpu/" }
 grubb = { path = "../../drivers/boot/grubb/" }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }

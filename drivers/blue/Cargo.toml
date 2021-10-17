@@ -5,7 +5,5 @@ authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-gpu = { path = "../gpu/" }
 init = { path = "../../init/" }
 libost = { path = "../../lib/libost/" }
-vgag = { path = "../../drivers/gpu/vgag/" }

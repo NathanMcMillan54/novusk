@@ -31,7 +31,6 @@ members = [
     "drivers/firmware/riscv/hifived/",
     # "drivers/firmware/arm/stellarisd/",
     # "drivers/firmware/arm/stmd/",
-    "drivers/gpu/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
     "drivers/input/keyboard/ps2_keyboard/",
@@ -46,9 +45,6 @@ members = [
     "fs/fat/",
     "fs/tempfs/",
     "fs/vfs/",
-    # GPUs
-    "drivers/gpu/armfb/",
-    "drivers/gpu/vgag/",
     # Include
     "include/ctypes/",
     "include/novusk/",
@@ -83,7 +79,6 @@ members = [
 ]
 
 [dependencies]
-gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
