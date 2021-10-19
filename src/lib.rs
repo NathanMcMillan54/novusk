@@ -68,6 +68,7 @@ pub mod drivers {
     }
 
     pub mod input {
+        #[cfg(target_arch = "x86_64")]
         pub use pc_keyboard;
     }
 }

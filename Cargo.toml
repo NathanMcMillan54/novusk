@@ -31,6 +31,7 @@ members = [
     "drivers/firmware/riscv/hifived/",
     # "drivers/firmware/arm/stellarisd/",
     # "drivers/firmware/arm/stmd/",
+    "drivers/gpu/vgag/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
     "drivers/input/keyboard/ps2_keyboard/",

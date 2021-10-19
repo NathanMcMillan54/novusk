@@ -2,11 +2,11 @@
 
 pub struct Fb {
     pub name: &'static str,
-    pub address: *mut u64,
+    pub address: usize,
 }
 
 impl Fb {
-    pub fn new(fb_name: &str, fb_address: usize) -> Self {
+    pub fn new(fb_name: &'static str, fb_address: usize) -> Self {
         return Fb {
             name: fb_name,
             address: fb_address,
@@ -14,6 +14,6 @@ impl Fb {
     }
 
     pub unsafe fn fb_write(&mut self, write: u8) {
-        *self.address = write;
+        self.address = write as usize;
     }
 }

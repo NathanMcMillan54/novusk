@@ -5,7 +5,6 @@ use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
 use novuskinc::fs::TempFs;
-use novuskinc::gpu::vga::vga_write;
 
 fn check_version(version_str: &str) {
     #[cfg(not(target_arch = "arm"))]
