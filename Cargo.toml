@@ -68,6 +68,7 @@ members = [
     # MM
     "mm/mio/",
     "mm/memory/",
+    "mm/nmallocator/",
     # Net
     # "net/ethernet/stm_eth/",
     # Sound

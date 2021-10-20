@@ -1,0 +1,9 @@
+[package]
+name = "nmallocator"
+version = "0.1.0"
+edition = "2018"
+description = "Novusk Memory Allocator"
+
+[dependencies]
+linked_list_allocator = "0.9.1"
+

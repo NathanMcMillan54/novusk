@@ -6,4 +6,5 @@ description = "Sets up x86_64 kernel that was booted with Grub"
 
 [dependencies]
 multiboot2 = "0.12.0"
+nmallocator = { path = "../../../mm/nmallocator/" }
 novuskinc = { path = "../../../include/novusk/" }
