@@ -9,7 +9,7 @@ pub mod x64_power;
 pub mod a64_power;
 
 #[cfg(target_arch = "arm")]
-#[path = "../../../../arch/arm/src/cortex_m3/power.rs"]
+#[path = "../../../../arch/arm32/src/kernel/power.rs"]
 pub mod a32;
 
 #[cfg(target_arch = "riscv32")]

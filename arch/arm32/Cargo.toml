@@ -1,0 +1,9 @@
+[package]
+name = "arm32"
+version = "0.1.0"
+edition = "2018"
+description = "ARM32 and some Aarch64 kernel support"
+
+[dependencies]
+alloc-cortex-m = "0.4.1"
+cortex-m-rt = "0.7.0"

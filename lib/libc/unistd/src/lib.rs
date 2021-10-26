@@ -11,7 +11,7 @@ pub mod table;
 pub mod table;
 
 #[cfg(target_arch = "arm")]
-#[path = "../../../../arch/arm/src/include/sys_tbl.rs"]
+#[path = "../../../../arch/arm32/src/include/asm/sys_tbl.rs"]
 pub mod table;
 
 #[cfg(target_arch = "xtensa")]

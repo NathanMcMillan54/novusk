@@ -20,7 +20,7 @@ edition = "2018"
 members = [
     # Architectures
     "arch/aarch64/",
-    # "arch/arm/",
+    "arch/arm32/",
     "arch/riscv/",
     "arch/x86_64/",
     "arch/xtensa/",
@@ -103,8 +103,8 @@ libbmu = { path = "lib/libbmu/" }
 rpi = { path = "drivers/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
-# libbmu = { path = "lib/libbmu/" }
-# arm = { path = "arch/arm/" }
+arm32 = { path = "arch/arm32/" }
+libbmu = { path = "lib/libbmu/" }
 
 [target.'cfg(target_arch = "riscv64")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
