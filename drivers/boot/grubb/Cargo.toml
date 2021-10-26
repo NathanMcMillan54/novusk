@@ -5,6 +5,8 @@ edition = "2018"
 description = "Sets up x86_64 kernel that was booted with Grub"
 
 [dependencies]
-multiboot2 = "0.12.0"
+multiboot2 = "0.12.2"
 nmallocator = { path = "../../../mm/nmallocator/" }
 novuskinc = { path = "../../../include/novusk/" }
+tock-registers = "0.7.0"
+x86_64 = "0.14.6"
