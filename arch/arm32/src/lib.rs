@@ -5,3 +5,6 @@ pub mod boot;
 pub mod include;
 pub mod kernel;
 pub mod mm;
+
+// CPUs
+pub mod cortex_m;

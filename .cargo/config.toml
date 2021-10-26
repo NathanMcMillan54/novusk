@@ -5,7 +5,7 @@ build-std-features = ["compiler-builtins-mem"]
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 rustflags = [
     "-C", "link-arg=--nmagic",
-    #"-C", "link-arg=-Tlink.x",
+    "-C", "link-arg=-Tlink.x",
 ]
 
 [target.riscv64gc-unknown-none-elf]

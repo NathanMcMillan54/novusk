@@ -1,5 +1,6 @@
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+use cortex_m_rt_macros::entry;
 
+#[entry]
+fn init() -> ! {
     loop {  }
 }
