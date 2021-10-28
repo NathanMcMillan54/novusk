@@ -3,7 +3,7 @@ use alloc_cortex_m::CortexMHeap;
 
 pub mod error;
 pub mod init;
-pub(crate) use init::allocator_init;
+pub(crate) use self::init::allocator_init;
 
 #[cfg(feature = "cortex_m")]
 #[global_allocator]

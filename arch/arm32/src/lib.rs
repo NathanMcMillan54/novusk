@@ -3,6 +3,7 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate lazy_static;
+#[macro_use] extern crate novuskinc;
 
 #[cfg(feature = "cortex_m")]
 #[macro_use] extern crate cortex_m_semihosting;
@@ -14,6 +15,7 @@ pub mod boot;
 pub mod include;
 pub mod kernel;
 pub mod mm;
+pub mod net;
 
 // CPUs
 pub mod cortex_m;
