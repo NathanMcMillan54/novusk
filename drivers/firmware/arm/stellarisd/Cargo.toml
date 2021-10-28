@@ -5,7 +5,7 @@ edition = "2018"
 description = "Board support for Stellaris boards"
 
 [dependencies]
-# embedded-hal = "1.0.0-alpha.4"
+embedded-hal = "1.0.0-alpha.4"
 libbmu = { path = "../../../../lib/libbmu/" }
 novuskinc = { path = "../../../../include/novusk/" }
-# tm4c123x-hal = "0.10.2"
+tm4c123x-hal = "0.10.2"

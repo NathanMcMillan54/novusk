@@ -1,7 +1,7 @@
 #![no_std]
 
 #[macro_use] extern crate novuskinc;
-// use tm4c123x_hal::Peripherals;
+use tm4c123x_hal::Peripherals;
 
 // pub mod led;
 
@@ -11,9 +11,13 @@ pub mod board {
 
 #[no_mangle]
 pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
-    // if Peripherals::take().is_none() {
-        // panic!("Can't find peripherals");
-    // }
+    let mut error = false;
 
-    return (Ok(()), "Stellaris");
+    if unsafe { Peripherals::take().is_none() } {
+        error = true;
+    } else { error = false; }
+
+    if error {
+        return (Err("Cannot find peripherals"), "Stellaris");
+    } else { return (Ok(()), "Stellaris"); }
 }
