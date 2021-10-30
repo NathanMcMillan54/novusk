@@ -18,6 +18,6 @@ pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     } else { error = false; }
 
     if error {
-        return (Err("Cannot find peripherals"), "Stellaris");
-    } else { return (Ok(()), "Stellaris"); }
+        return (Err("Cannot find peripherals"), "Stellaris 6965");
+    } else { return (Ok(()), "Stellaris 6965"); }
 }

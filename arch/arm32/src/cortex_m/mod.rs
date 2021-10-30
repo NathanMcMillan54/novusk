@@ -1,14 +1,10 @@
-use crate::kernel::device_init;
+use crate::arm32_printk;
 use crate::kernel::io::ARM32IO;
-use crate::mm::allocator::allocator_init;
+use cortex_m::Peripherals;
+use cortex_m::peripheral::CPUID;
 
 pub unsafe fn cortex_m_init() {
-    allocator_init();
-    let (init, name) = device_init();
+    let mut cpu_peripherals = Peripherals::take().unwrap();
 
-    if init.is_err() {
-        panic!("Failed to initialize device");
-    }
-
-    ARM32IO.lock().init("hio", name);
+    let cpuid = cpu_peripherals.CPUID;
 }
