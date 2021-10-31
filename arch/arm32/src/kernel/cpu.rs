@@ -1,10 +1,10 @@
 use cpu::CPUINFO;
 
-pub fn set_cpu_info(arch: &str, name: &str, address: Option<u32>) {
+pub fn set_cpu_info(arch: &'static str, name: &'static str, address: Option<u32>) {
     unsafe { CPUINFO.init(arch, name, address); }
 }
 
-fn get_cpu_info() -> (&str, &str, Option<u32>) {
+fn get_cpu_info() -> (&'static str, &'static str, Option<u32>) {
     return ("ARM32", "Cortex-m", None);
 }
 

@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(alloc_error_handler)]
+#![feature(alloc_error_handler, panic_info_message)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate lazy_static;
