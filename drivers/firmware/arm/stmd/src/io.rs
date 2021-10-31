@@ -1,5 +1,5 @@
 use core::fmt::Write;
-use novuskinc::kinfo::{status::set_status, kinfo};
+use kinfo::status::set_status;
 use crate::BOARD_MODLE;
 use stm32f4xx_hal::{pac::Peripherals, prelude::*, serial::{config::Config, Serial}};
 use stm32f4xx_hal::pac::USART2;

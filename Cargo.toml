@@ -31,7 +31,7 @@ members = [
     "drivers/firmware/device/",
     "drivers/firmware/riscv/hifived/",
     "drivers/firmware/arm/stellarisd/",
-    # "drivers/firmware/arm/stmd/",
+    "drivers/firmware/arm/stmd/",
     "drivers/gpu/vgag/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
@@ -128,6 +128,7 @@ hifive = ["riscv/hifive"]
 multiboot = []
 rpi3 = ["aarch64/rpi3"]
 stellaris_6965 = ["arm32/stellaris_6965"]
+stm32f407 = ["arm32/stm32f407"]
 # stm32f4 = ["arm/stm32f4"]
 # stm32f401 = ["arm/stm32f401"]
 # stm32f407 = ["arm/stm32f407"]

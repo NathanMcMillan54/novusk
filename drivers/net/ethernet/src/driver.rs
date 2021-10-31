@@ -1,5 +1,3 @@
-use novuskinc::kinfo::{kinfo};
-
 #[derive(Copy, Clone)]
 pub struct EthNet {
     pub name: &'static str,

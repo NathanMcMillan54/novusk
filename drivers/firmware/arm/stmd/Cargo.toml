@@ -6,6 +6,7 @@ description = "Support for STM32 boards"
 
 [dependencies]
 ethernet = { path = "../../../../drivers/net/ethernet/" }
+kinfo = { path = "../../../../kernel/kinfo/" }
 novuskinc = { path = "../../../../include/novusk/" }
 stm_eth = { path = "../../../../net/ethernet/stm_eth/" }
 stm32f4xx-hal = "0.10.0"

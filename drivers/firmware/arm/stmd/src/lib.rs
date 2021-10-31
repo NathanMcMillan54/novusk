@@ -16,7 +16,8 @@ pub mod board {
     pub use crate::net::{is_supported, net_init};
 }
 
-pub fn stm32f4_init() {
+#[no_mangle]
+pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     let mut peripherals = Peripherals::take();
 
     unsafe { Peripherals::steal(); }
@@ -27,4 +28,6 @@ pub fn stm32f4_init() {
 
     #[cfg(not(feature = "qemu"))]
     io::io_init();
+
+    return (Ok(()), "STM32");
 }

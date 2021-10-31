@@ -7,7 +7,7 @@ description = "ARM32 and some Aarch64 kernel support"
 [dependencies]
 alloc-cortex-m = "0.4.1"
 cortex-m = "0.7.3"
-cortex-m-rt = "0.7.0"
+cortex-m-rt = "0.6.15"
 cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/firmware/cpu/" }
 init = { path = "../../init/" }
@@ -16,9 +16,13 @@ novuskinc = { path = "../../include/novusk/" }
 setup = { path = "../../kernel/setup/" }
 spin = "0.9.2"
 stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
+stmd = { path = "../../drivers/firmware/arm/stmd/" }
 
 [features]
 default = []
 cortex_a = []
 cortex_m = []
 stellaris_6965 = ["cortex_m"]
+stm = []
+stm32f407 = ["cortex_m", "stm", "stmd/stm32f407"]
+stm32f701 = ["cortex_m", "stm"]

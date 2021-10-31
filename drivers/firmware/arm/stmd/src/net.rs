@@ -1,5 +1,4 @@
 use ethernet::EthNetDriver;
-use novuskinc::kinfo::info::NETWORK_ETHERNET;
 pub use stm_eth::StmEth;
 
 pub fn is_supported() -> bool {
