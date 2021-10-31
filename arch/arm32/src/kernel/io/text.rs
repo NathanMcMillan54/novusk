@@ -1,5 +1,6 @@
+use super::{ARM32IO, Arm32Io};
 use core::fmt::Arguments;
-use crate::kernel::io::{ARM32IO, Arm32Io};
+use super::types::TextMethods;
 
 #[no_mangle]
 pub extern "C" fn arch_printk(fmt: Arguments) {
@@ -18,7 +19,7 @@ macro_rules! arm32_printk {
 
 impl Arm32Io {
     pub fn write_fmt(&mut self, fmt: Arguments) {
-        if self.text_method == "hio" {
+        if self.text_method == TextMethods::Hio {
             self.hio_write(fmt);
         }
     }

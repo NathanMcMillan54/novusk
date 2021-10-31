@@ -1,26 +1,28 @@
 use spin::Mutex;
 
 pub mod text;
+pub mod types;
+use types::{str_to_textmethods, TextMethods};
 
 lazy_static! {
     pub static ref ARM32IO: Mutex<Arm32Io> = Mutex::new(Arm32Io::empty());
 }
 
 pub struct Arm32Io {
-    pub text_method: &'static str,
-    pub gpio_method: &'static str,
+    text_method: TextMethods,
+    pub device: &'static str,
 }
 
 impl Arm32Io {
     pub fn empty() -> Self {
         return Arm32Io {
-            text_method: "",
-            gpio_method: ""
+            text_method: TextMethods::default(),
+            device: "",
         };
     }
 
-    pub fn init(&mut self, text: &'static str, gpio: &'static str) {
-        self.text_method = text;
-        self.gpio_method = gpio;
+    pub fn init(&mut self, device: &'static str) {
+        self.text_method = str_to_textmethods(device);
+        self.device = device;
     }
 }

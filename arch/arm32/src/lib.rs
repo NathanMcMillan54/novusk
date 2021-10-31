@@ -18,4 +18,4 @@ pub mod mm;
 pub mod net;
 
 // CPUs
-pub mod cortex_m;
+pub(crate) mod cortex_m;

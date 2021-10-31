@@ -1,7 +1,11 @@
-use crate::kernel::io::ARM32IO;
+use crate::kernel::device::{device_init, device_supported};
 use super::cpu::early_cpu_init;
 
-pub(crate) fn early_init() {
-    ARM32IO.lock().init("hio", "");
-    unsafe { early_cpu_init(); }
+pub(crate) unsafe fn early_init() {
+    early_cpu_init();
+
+    let (success, device) = device_init();
+    if success.is_err() {
+        panic!("{}", success.err().unwrap());
+    }
 }
