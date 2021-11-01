@@ -11,6 +11,9 @@
 #[cfg(feature = "stellaris_6965")]
 pub(crate) extern crate stellarisd;
 
+#[cfg(feature = "stm")]
+pub(crate) extern crate stmd;
+
 pub mod boot;
 pub mod include;
 pub mod kernel;

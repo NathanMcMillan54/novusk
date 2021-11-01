@@ -1,4 +1,4 @@
-pub unsafe fn early_cpu_init() {
+pub unsafe fn early_cpu_init() -> (&'static str, u32) {
     #[cfg(feature = "cortex_m")]
-    crate::cortex_m::cortex_m_init();
+    return crate::cortex_m::cortex_m_init();
 }

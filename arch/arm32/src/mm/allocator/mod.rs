@@ -1,13 +1,10 @@
 use alloc::vec::Vec;
-use alloc_cortex_m::CortexMHeap;
+use linked_list_allocator::LockedHeap;
 
 pub mod error;
 pub mod init;
 pub(crate) use self::init::allocator_init;
-
-#[cfg(feature = "cortex_m")]
-#[global_allocator]
-pub(crate) static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+pub(self) use nmallocator::ALLOCATOR;
 
 pub(crate) fn test_allocator() {
     let mut test_vec = vec![];

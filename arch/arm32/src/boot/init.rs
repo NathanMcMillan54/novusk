@@ -3,7 +3,7 @@ use crate::kernel::io::ARM32IO;
 use super::cpu::early_cpu_init;
 
 pub(crate) unsafe fn early_init() {
-    early_cpu_init();
+    let (cpu_model, cpu_base) = early_cpu_init();
 
     let (success, device) = device_init();
 

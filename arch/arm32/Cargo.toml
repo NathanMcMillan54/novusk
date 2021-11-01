@@ -5,13 +5,14 @@ edition = "2018"
 description = "ARM32 and some Aarch64 kernel support"
 
 [dependencies]
-alloc-cortex-m = "0.4.1"
 cortex-m = "0.7.3"
 cortex-m-rt = "0.6.15"
 cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/firmware/cpu/" }
 init = { path = "../../init/" }
 lazy_static = "1.4.0"
+linked_list_allocator = "0.9.1"
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 setup = { path = "../../kernel/setup/" }
 spin = "0.9.2"
@@ -19,7 +20,7 @@ stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
 stmd = { path = "../../drivers/firmware/arm/stmd/" }
 
 [features]
-default = []
+default = ["stmd/stm32f401"]
 cortex_a = []
 cortex_m = []
 stellaris_6965 = ["cortex_m"]
