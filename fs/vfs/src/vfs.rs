@@ -1,24 +1,14 @@
-use mio::{mmio_read, mmio_write};
+use core::ptr::{read, write};
+use super::Dir;
 
-pub struct Vfs {
-    pub name: &'static str,
-    pub author: &'static str,
-}
-
-impl Vfs {
-    pub fn new(vfs: Vfs) -> Self {
-        return vfs;
+pub trait Vfs {
+    fn write(&self, byte: u8, addr: usize) {
+        //ROOT_DIR.new_dir("temp/");
+        unsafe { write(byte as *mut usize, addr); }
     }
 
-    pub fn info(&mut self) -> (&str, &str) {
-        return (self.name, self.author);
-    }
-
-    pub fn open(&mut self, file: &str, mode: usize) {
-
-    }
-
-    pub fn read(&mut self, buf: u8) -> &[u8] {
-        return b"";
+    fn read(&self, buf: u8, addr: usize) -> u8 {
+        unsafe { return read(addr as *const u8); }
     }
 }
+

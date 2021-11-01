@@ -4,7 +4,6 @@ use super::modules::modules_init;
 use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
-use novuskinc::fs::TempFs;
 
 fn check_version(version_str: &str) {
     #[cfg(not(target_arch = "arm"))]
@@ -35,6 +34,12 @@ unsafe fn net_init() {
     kinfo!("Network drivers initialized");
 }
 
+fn fs_init() {
+    let mut root = KERNEL.lock().get_root_dir();
+
+    root.root.new_dir("temp/");
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     let mut configs = KERNEL.lock().kernel_configs();
@@ -62,6 +67,8 @@ pub unsafe extern "C" fn kernel_init() {
     input_init();
 
     net_init();
+
+    // fs_init();
 
     printk!("\nSetting up main kernel modules...");
     modules_init(configs);

@@ -1,4 +1,4 @@
-// Supported cpu modles
+// Supported cpu models
 pub const CPU_MODELS: [&str; 2] = ["Cortex-M3", "Cortex-M4"];
 
 pub fn get_model(base_addr: u32) -> &'static str {

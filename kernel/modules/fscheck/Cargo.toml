@@ -6,7 +6,7 @@ edition = "2018"
 
 
 [dependencies]
-fat = { path = "../../../fs/fat/" }
+# fat = { path = "../../../fs/fat/" }
 kinfo = { path = "../../kinfo/" }
 konfig = { path = "../../konfig/", features = ["default_config"] }
 novuskinc = { path = "../../../include/novusk/" }

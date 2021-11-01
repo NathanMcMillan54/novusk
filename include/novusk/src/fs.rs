@@ -1,2 +1,1 @@
-pub use tempfs::TempFs;
-
+pub use crate::vfs::*;

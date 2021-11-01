@@ -1,6 +1,7 @@
 // use gpu::GpuGraphics;
 use kinfo::info::*;
 use konfig::Konfig;
+use novuskinc::fs::RootDir;
 use printk::console::KernelConsole;
 use spin::Mutex;
 
@@ -62,5 +63,9 @@ impl Kernel {
         /* if NETWORK_ETHERNET == false && NETWORK_WIRELESS == false {
             printk!("There are no networking drivers available for this architecture or device");
         } */
+    }
+
+    pub fn get_root_dir(&mut self) -> RootDir {
+        return RootDir::get();
     }
 }
