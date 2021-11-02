@@ -86,7 +86,7 @@ libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
-power = { path = "kernel/power/" }
+# power = { path = "kernel/power/" }
 stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
@@ -105,10 +105,6 @@ rpi = { path = "drivers/rpi/" }
 [target.'cfg(target_arch = "arm")'.dependencies]
 arm32 = { path = "arch/arm32/" }
 libbmu = { path = "lib/libbmu/" }
-
-[target.'cfg(target_arch = "riscv64")'.dependencies]
-libbmu = { path = "lib/libbmu/" }
-riscv = { path = "arch/riscv" }
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]
 libbmu = { path = "lib/libbmu/" }
