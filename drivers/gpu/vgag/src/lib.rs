@@ -7,7 +7,7 @@ pub mod color;
 pub mod display;
 pub mod switch;
 
-pub use color::{convert_usize_to_color16, Color16};
+pub use color::*;
 pub use display::{graphics_pixel, graphics_write, VgaDisplay};
 
 use fb::Fb;

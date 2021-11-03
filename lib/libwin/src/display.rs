@@ -1,13 +1,27 @@
-use crate::{Window, graphics::graphics::{graphics_write, graphics_pixel}};
+use crate::{Window, graphics::graphics::{graphics_write, graphics_pixel, LIGHT_GRAY}};
+use crate::graphics::graphics::WHITE;
 
 impl Window {
     pub fn display(&mut self) {
-        let (x, y) = self.size.unwrap();
+        if self.open == false {
+            return;
+        }
 
-        for wy in 0..y {
-            for wx in 0..x {
-                graphics_pixel(wx as usize, wy as usize, self.color);
+        let (sx, sy) = self.size.unwrap();
+        let (px, py) = self.pos;
+
+        for wy in 0..sy {
+            for wx in 0..sx {
+                graphics_pixel(px as usize + wx as usize, py as usize + wy as usize, self.color);
             }
         }
+
+        for y in 0..16 {
+            for x in 0..sx {
+                graphics_pixel(px as usize + x as usize, py as usize + y as usize, LIGHT_GRAY);
+            }
+        }
+
+        graphics_write(px as usize + 5, py as usize + 4, WHITE, self.title.unwrap());
     }
 }

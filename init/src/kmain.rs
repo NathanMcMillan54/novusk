@@ -20,7 +20,7 @@ fn check_version(version_str: &str) {
 unsafe fn gpu_init() {
     KERNEL.lock().kernel_console().init();
     // KERNEL.lock().gpu_graphics().);
-    // vgag::switch::vga_switch(3);
+    vgag::switch::vga_switch(3);
 }
 
 #[cfg(target_arch = "x86_64")]

@@ -96,6 +96,7 @@ unistd = { path = "lib/libc/unistd/" }
 bootloader = "0.9.18"
 libwin = { path = "lib/libwin/" }
 pc_keyboard = { path = "drivers/input/keyboard/pc_keyboard/" }
+vgag = { path = "drivers/gpu/vgag/" }
 x86_64 = { path = "arch/x86_64/" }
 x86_64-sound = { path = "sound/x86_64-sound" }
 
