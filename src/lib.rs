@@ -43,6 +43,9 @@ pub mod libs {
         pub use unistd;
     }
 
+    #[cfg(target_arch = "x86_64")]
+    pub use libwin;
+
     pub use libcolor;
 }
 

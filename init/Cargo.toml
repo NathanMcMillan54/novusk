@@ -8,6 +8,7 @@ description = "Main kernel initialization"
 pc_keyboard = { path = "../drivers/input/keyboard/pc_keyboard/" }
 ps2_keyboard = { path = "../drivers/input/keyboard/ps2_keyboard/" }
 ps2_mouse = { path = "../drivers/input/mouse/ps2_mouse/" }
+vgag = { path = "../drivers/gpu/vgag/" }
 
 [dependencies]
 cfg-if = "1.0.0"

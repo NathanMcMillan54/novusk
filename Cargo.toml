@@ -94,6 +94,7 @@ unistd = { path = "lib/libc/unistd/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
+libwin = { path = "lib/libwin/" }
 pc_keyboard = { path = "drivers/input/keyboard/pc_keyboard/" }
 x86_64 = { path = "arch/x86_64/" }
 x86_64-sound = { path = "sound/x86_64-sound" }

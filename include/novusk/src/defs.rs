@@ -55,3 +55,14 @@ macro_rules! define_wireless_init {
         }
     };
 }
+
+#[macro_export]
+macro_rules! define_graphics_pixel {
+    ($pixel_fun:ident) => {
+        #[no_mangle]
+        pub extern "C" pixel(x: usize, y: usize, color: usize) {
+            let pixel: fn(usize, usize, usize) = $pixel_fun;
+            pixel();
+        }
+    };
+}
