@@ -65,6 +65,7 @@ members = [
     "lib/libc/unistd/",
     "lib/libcolor/",
     "lib/libost/",
+    "lib/libwin/",
     # MM
     "mm/mio/",
     "mm/memory/",

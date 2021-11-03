@@ -1,0 +1,9 @@
+[package]
+name = "libwin"
+version = "0.1.0"
+edition = "2018"
+description = "Library for GUI windows"
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+vgag = { path = "../../drivers/gpu/vgag/" }
+
