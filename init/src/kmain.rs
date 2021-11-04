@@ -50,10 +50,10 @@ pub unsafe extern "C" fn kernel_init() {
 
     printk!("Using {} config", configs.config_type());
 
-    if configs.get("GPU", "INIT") == "True" {
+    // if configs.get("GPU", "INIT") == "True" {
         gpu_init();
         kinfo!("GPU graphics initialized");
-    }
+    //}
 
     //vga_write(0, 0, format_args!("{}", "k"));
 

@@ -88,6 +88,8 @@ memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 # power = { path = "kernel/power/" }
+libwin = { path = "lib/libwin/" }
+libost = { path = "lib/libost/" }
 stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
