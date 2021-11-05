@@ -28,10 +28,10 @@ members = [
     "drivers/blue/",
     "drivers/boot/grubb/",
     "drivers/firmware/cpu/",
-    "drivers/firmware/device/",
-    "drivers/firmware/riscv/hifived/",
+    "drivers/device/",
     "drivers/firmware/arm/stellarisd/",
     "drivers/firmware/arm/stmd/",
+    "drivers/firmware/sifive/",
     "drivers/gpu/vgag/",
     "drivers/input/keyboard/",
     "drivers/input/keyboard/pc_keyboard/",
@@ -88,8 +88,6 @@ memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 # power = { path = "kernel/power/" }
-libwin = { path = "lib/libwin/" }
-libost = { path = "lib/libost/" }
 stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
@@ -97,6 +95,7 @@ unistd = { path = "lib/libc/unistd/" }
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
 libwin = { path = "lib/libwin/" }
+libost = { path = "lib/libost/" }
 pc_keyboard = { path = "drivers/input/keyboard/pc_keyboard/" }
 vgag = { path = "drivers/gpu/vgag/" }
 x86_64 = { path = "arch/x86_64/" }
