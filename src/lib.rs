@@ -46,6 +46,9 @@ pub mod libs {
     #[cfg(target_arch = "x86_64")]
     pub use libwin;
 
+    #[cfg(target_arch = "x86_64")]
+    pub use libost;
+
     pub use libcolor;
 }
 
