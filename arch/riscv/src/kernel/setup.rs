@@ -1,5 +1,5 @@
-use crate::board::board_init;
+use crate::board::get_board;
 
 pub fn setup_riscv_kernel() {
-    board_init();
+    let mut board = get_board();
 }

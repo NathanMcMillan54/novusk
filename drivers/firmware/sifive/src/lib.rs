@@ -1,6 +1,9 @@
 #![no_std]
 
+#[macro_use] extern crate hifive1;
+
 use device::{Device};
+use core::any::Any;
 
 pub(crate) mod hifive;
 pub(crate) mod lofive;
@@ -8,16 +11,24 @@ pub(crate) mod lofive;
 pub struct HiFiveBoard;
 pub struct LoFiveBoard;
 
-pub fn board_init() {
-    #[cfg(feature = "hifive")]
-    HiFiveBoard::new().init();
+#[cfg(feature = "hifive")]
+pub fn get_board() -> HiFiveBoard {
+    return HiFiveBoard::new();
+}
 
-    #[cfg(feature = "lofive")]
-    LoFiveBoard::new().init();
+#[cfg(feature = "lofive")]
+pub fn get_board() -> LoFiveBoard {
+    return LoFiveBoard::new();
 }
 
 impl HiFiveBoard {
     pub fn new() -> Self {
+        let dev_res = hifive1::hal::DeviceResources::take();
+
+        if dev_res.is_none() {
+            panic!("Can't find device resources");
+        }
+
         return HiFiveBoard;
     }
 
@@ -29,6 +40,12 @@ impl HiFiveBoard {
 
 impl LoFiveBoard {
     pub fn new() -> Self {
+        let dev_res = hifive1::hal::DeviceResources::take();
+
+        if dev_res.is_none() {
+            panic!("Can't find device resources");
+        }
+
         return LoFiveBoard;
     }
 
@@ -37,3 +54,4 @@ impl LoFiveBoard {
         self.gpio_init();
     }
 }
+
