@@ -27,7 +27,7 @@ members = [
     # Drivers
     "drivers/blue/",
     "drivers/boot/grubb/",
-    "drivers/firmware/cpu/",
+    "drivers/cpu/",
     "drivers/device/",
     "drivers/firmware/arm/stellarisd/",
     "drivers/firmware/arm/stmd/",
