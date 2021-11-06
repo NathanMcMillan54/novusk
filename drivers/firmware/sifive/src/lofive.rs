@@ -13,4 +13,8 @@ impl Device for LoFiveBoard {
     fn gpio_init(&self) {
 
     }
+
+    fn write_bytes(&self, bytes: &[u8]) {
+        
+    }
 }

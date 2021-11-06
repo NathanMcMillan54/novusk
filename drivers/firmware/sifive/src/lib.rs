@@ -6,7 +6,10 @@ use device::{Device};
 use core::any::Any;
 
 pub(crate) mod hifive;
+pub(crate) mod common;
 pub(crate) mod lofive;
+
+pub(crate) use common::{io::SiFiveIo};
 
 pub struct HiFiveBoard;
 pub struct LoFiveBoard;
