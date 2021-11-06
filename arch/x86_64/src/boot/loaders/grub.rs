@@ -1,4 +1,4 @@
-use grubb::grub_init;
+use multiboot::multiboot_init;
 use crate::x86_printk;
 use crate::boot::main::main;
 
@@ -6,8 +6,12 @@ use crate::boot::main::main;
 pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {
     x86_printk!("Booted with GRUB\n");
 
-    grub_init(bootinfo_address);
+    multiboot_init(bootinfo_address);
     kinfo!("GRUB bootloader initialized");
+
+    loop {
+
+    }
 
     main();
 }
