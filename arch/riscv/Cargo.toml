@@ -9,7 +9,9 @@ sifive = { path = "../../drivers/firmware/sifive/" }
 
 [dependencies]
 device = { path = "../../drivers/device/" }
+kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/" }
+printk = { path = "../../kernel/printk/" }
 riscv-rt = "0.8.0"
 
 [features]

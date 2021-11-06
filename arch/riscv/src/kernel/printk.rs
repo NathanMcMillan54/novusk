@@ -4,7 +4,8 @@ use crate::board::get_board;
 
 #[no_mangle]
 pub extern "C" fn arch_printk(fmt: Arguments) {
-    let board = get_board();
+    let mut board = get_board();
+    let bytes = fmt.as_str().unwrap().as_bytes();
+
+    board.write_bytes(bytes);
 }
-
-

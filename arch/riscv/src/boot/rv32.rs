@@ -7,8 +7,10 @@ use riscv_rt::entry;
 fn rv32_boot() -> ! {
     let mut board = get_board();
     board.serial_io_init();
+    kinfo!("Early I/O initialized");
 
     setup_riscv_kernel();
+    kinfo!("RISCV kernel initialized");
 
     panic!("Kernel ended, nothing to run");
 }
