@@ -19,12 +19,12 @@ pub unsafe fn early_memory_init(bootinfo: &'static BootInfo) {
 
     let alloc_init = match alloc_heap_init(&mut mem_map, &mut frame_allocator) {
         Ok(..) => {
-            x86_printk!("Alloc heap memory initialized successfully");
+            x86_printk!("Alloc heap memory initialized successfully\n");
         }
 
         Err(..) => {
             set_status("not ok");
-            x86_printk!("Alloc heap memory initialized unsuccessfully, this will likely cause errors in the future");
+            x86_printk!("Alloc heap memory initialized unsuccessfully, this will likely cause errors in the future\n");
         }
     };
 }

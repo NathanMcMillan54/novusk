@@ -5,7 +5,7 @@ use crate::kernel::uart::Uart;
 #[no_mangle]
 pub extern "C" fn _a64_printk(fmt: Arguments) {
     let mut uart = Uart::new();
-    uart.write_fmt(format_args!("{}{}", fmt, "\n"));
+    uart.write_fmt(format_args!("{}", fmt));
 }
 
 #[export_name = "_kernel_main_print"]

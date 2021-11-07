@@ -20,9 +20,9 @@ impl Banner {
     }
 
     pub fn display(&mut self) {
-        printk!("______________________");
-        printk!("| Novusk v{}.{}.{}-{} |", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
-        printk!("----------------------");
+        printk!("______________________\n");
+        printk!("| Novusk v{}.{}.{}-{} |\n", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
+        printk!("----------------------\n");
     }
 }
 

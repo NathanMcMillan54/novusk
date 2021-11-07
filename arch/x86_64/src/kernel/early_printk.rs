@@ -7,7 +7,7 @@ use crate::boot::boot::BOOT;
 #[no_mangle]
 pub extern "C" fn _x86_printk(fmt: Arguments) {
     if BOOT == "BIOS" {
-        _vga_print(format_args!("{}{}", fmt, "\n"));
+        _vga_print(format_args!("{}", fmt));
     } else if BOOT == "UEFI" {
         _serial_print(fmt);
     } else {

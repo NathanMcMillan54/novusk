@@ -8,7 +8,7 @@ pub(crate) unsafe fn run(module: KernelModules) {
         _ => return,
     }
 
-    printk!("    {:?} initialized", module);
+    printk!("    {:?} initialized\n", module);
 }
 
 pub fn arch_modules_init(modules: &[KernelModules; 10]) {

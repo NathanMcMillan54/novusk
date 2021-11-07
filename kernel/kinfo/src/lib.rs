@@ -24,6 +24,6 @@ impl Kinfo {
     pub fn display_kinfo(&mut self) {
         if self.should_panic {
             panic!("INFO [ {} ] {}", self.status, self.msg.unwrap());
-        } else { printk!("INFO [ {} ] {}", self.status, self.msg.unwrap()); }
+        } else { printk!("INFO [ {} ] {}\n", self.status, self.msg.unwrap()); }
     }
 }

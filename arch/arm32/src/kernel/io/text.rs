@@ -25,6 +25,6 @@ impl Arm32Io {
     }
 
     pub fn hio_write(&mut self, write: Arguments) {
-        hprintln!("{}", write);
+        hprint!("{}", write);
     }
 }

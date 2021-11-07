@@ -10,5 +10,5 @@ pub fn ex1_init() {
 
 
 pub fn ex1_end() {
-    unsafe { printk!("SUM = {}", SUM); }
+    unsafe { printk!("SUM = {}\n", SUM); }
 }

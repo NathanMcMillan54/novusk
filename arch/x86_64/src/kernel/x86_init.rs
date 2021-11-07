@@ -14,27 +14,27 @@ unsafe fn set_drivers() {
 
 pub unsafe fn x86_kernel_init() {
     id::get_cpuid();
-    kinfo!("Got cpuid");
-    x86_printk!("    CPU brand: {}", id::BRAND);
+    kinfo!("Got cpuid\n");
+    x86_printk!("    CPU brand: {}\n", id::BRAND);
 
     cpu_init();
-    kinfo!("CPU initialized");
-    x86_printk!("    GDT initialized");
-    x86_printk!("    Brand specific CPU initialized");
+    kinfo!("CPU initialized\n");
+    x86_printk!("    GDT initialized\n");
+    x86_printk!("    Brand specific CPU initialized\n");
 
     idt_init();
-    kinfo!("Interrupts initialized");
-    x86_printk!("    IDT initialized");
-    x86_printk!("    Interrupts are enabled");
+    kinfo!("Interrupts initialized\n");
+    x86_printk!("    IDT initialized\n");
+    x86_printk!("    Interrupts are enabled\n");
 
     set_drivers();
-    kinfo!("Drivers set");
-    x86_printk!("    Set GPU Graphics to VGA");
+    kinfo!("Drivers set\n");
+    x86_printk!("    Set GPU Graphics to VGA\n");
 
     kmain::kernel_init();
-    kinfo!("Novusk initialized");
+    kinfo!("Novusk initialized\n");
 
-    printk!("Setting up after kernel...");
+    printk!("Setting up after kernel...\n");
     after_kernel_setup();
 
     extern "C" { fn kernel_main(); }

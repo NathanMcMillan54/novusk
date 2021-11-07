@@ -5,8 +5,6 @@ edition = "2018"
 description = "Main kernel initialization"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-pc_keyboard = { path = "../drivers/input/keyboard/pc_keyboard/" }
-ps2_mouse = { path = "../drivers/input/mouse/ps2_mouse/" }
 vgag = { path = "../drivers/gpu/vgag/" }
 
 [dependencies]

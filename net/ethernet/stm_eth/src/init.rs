@@ -15,7 +15,7 @@ fn stm_ethernet_init() {
 
     if is_supported() {
         eth.init();
-    } else { printk!("Driver: {} by: {} is not supported", name, author); }
+    } else { printk!("Driver: {} by: {} is not supported\n", name, author); }
 }
 
 define_ethernet_init!(stm_ethernet_init);

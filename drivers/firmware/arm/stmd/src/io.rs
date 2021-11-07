@@ -21,7 +21,7 @@ pub fn get_serial() -> Tx<USART2> {
 
     if !tx_uart.is_ok() {
         unsafe { set_status("not ok"); }
-        printk!("Couldn't get serial for STM32f4{}", BOARD_MODLE);
+        printk!("Couldn't get serial for STM32f4{}\n", BOARD_MODLE);
     }
 
     return tx_uart.unwrap();

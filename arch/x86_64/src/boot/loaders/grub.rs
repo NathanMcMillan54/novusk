@@ -4,14 +4,10 @@ use crate::boot::main::main;
 
 #[no_mangle]
 pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {
-    x86_printk!("Booted with GRUB\n");
+    x86_printk!("Booted with GRUB\n\n");
 
     multiboot_init(bootinfo_address);
-    kinfo!("GRUB bootloader initialized");
-
-    loop {
-
-    }
+    kinfo!("GRUB bootloader initialized\n");
 
     main();
 }

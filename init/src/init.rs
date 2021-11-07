@@ -28,16 +28,6 @@ impl Kernel {
         return Konfig::new();
     }
 
-    #[cfg(target_arch = "x86_64")]
-    pub fn keyboard_driver(&mut self) -> pc_keyboard::PcKeyboard {
-        return pc_keyboard::PcKeyboard::new();
-    }
-
-    #[cfg(target_arch = "x86_64")]
-    pub fn mouse_driver(&mut self) -> ps2_mouse::Ps2Mouse {
-        return ps2_mouse::Ps2Mouse::new();
-    }
-
     #[cfg(not(target_arch = "x86_64"))]
     pub fn keyboard_driver(&mut self) {
 

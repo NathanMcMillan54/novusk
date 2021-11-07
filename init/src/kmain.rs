@@ -25,14 +25,14 @@ unsafe fn gpu_init() {
 
 #[cfg(target_arch = "x86_64")]
 unsafe fn input_init() {
-    KERNEL.lock().keyboard_driver().init();
+    /* KERNEL.lock().keyboard_driver().init();
     KERNEL.lock().mouse_driver().init();
-    kinfo!("Input devices initialized");
+    kinfo!("Input devices initialized"); */
 }
 
 unsafe fn net_init() {
     KERNEL.lock().net_init();
-    kinfo!("Network drivers initialized");
+    kinfo!("Network drivers initialized\n");
 }
 
 fn fs_init() {
@@ -44,15 +44,15 @@ fn fs_init() {
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     let mut configs = KERNEL.lock().kernel_configs();
-    kinfo!("Got kernel configurations");
+    kinfo!("Got kernel configurations\n");
 
     check_version(configs.get("KERNEL", "MAJORVERSION").as_str());
 
-    printk!("Using {} config", configs.config_type());
+    printk!("Using {} config\n", configs.config_type());
 
     if configs.get("GPU", "INIT") == "True" {
         gpu_init();
-        kinfo!("GPU graphics initialized");
+        kinfo!("GPU graphics initialized\n");
     }
 
     //vga_write(0, 0, format_args!("{}", "k"));
@@ -60,18 +60,18 @@ pub unsafe extern "C" fn kernel_init() {
     novusk_banner();
 
     if initramfs_type() == "Kernel" {
-        kinfo!("Starting kernel initramfs...");
+        kinfo!("Starting kernel initramfs...\n");
         start_kernel_initramfs();
     } else if initramfs_type() == "Custom" { start_custom_initramfs(); }
 
-    #[cfg(target_arch = "x86_64")]
-    input_init();
+    //#[cfg(target_arch = "x86_64")]
+    //input_init();
 
     net_init();
 
     // fs_init();
 
-    printk!("\nSetting up main kernel modules...");
+    printk!("\nSetting up main kernel modules...\n");
     modules_init(configs);
-    kinfo!("Initialized main kernel modules");
+    kinfo!("Initialized main kernel modules\n");
 }

@@ -12,9 +12,6 @@
 #[cfg(feature = "uefi_boot")]
 extern crate nkuefi;
 
-#[cfg(feature = "grub")]
-extern crate grubb;
-
 use core::panic::PanicInfo;
 
 pub mod boot;
@@ -26,13 +23,16 @@ pub mod net;
 
 #[panic_handler]
 pub fn panic(_info: &PanicInfo) -> ! {
+    use include::asm::{cli, hlt};
     use time::cpu::CPU_TIME;
 
-    printk!("\nKernel panicked:");
-    printk!("    Message: {:?}", _info.message().unwrap());
-    printk!("    Location: {:?}", _info.location().unwrap());
+    printk!("\nKernel panicked:\n");
+    printk!("    Message: {:?}\n", _info.message().unwrap());
+    printk!("    Location: {:?}\n", _info.location().unwrap());
 
 
-    unsafe { printk!("CPU time: {}", CPU_TIME as f64 / 1000000000.0); }
-    loop {  }
+    unsafe {
+        printk!("CPU time: {}\n", CPU_TIME as f64 / 1000000000.0);
+        hlt();
+    }
 }
