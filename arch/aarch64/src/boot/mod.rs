@@ -17,8 +17,8 @@ pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
     let mut uart = Uart::new();
     uart.init();
 
-    aarch64_printk!("Uart I/O initialized");
-    aarch64_printk!("Starting kernel...\n");
+    aarch64_printk!("Uart I/O initialized\n");
+    aarch64_printk!("Starting kernel...\n\n");
 
     aarch64_init();
     panic!("Nothing to run");

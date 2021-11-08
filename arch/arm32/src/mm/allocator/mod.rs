@@ -1,7 +1,6 @@
 use alloc::vec::Vec;
 use linked_list_allocator::LockedHeap;
 
-pub mod error;
 pub mod init;
 pub(crate) use self::init::allocator_init;
 pub(self) use nmallocator::ALLOCATOR;

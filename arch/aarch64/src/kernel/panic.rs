@@ -7,9 +7,9 @@ use rpi::led::RpiLed;
 
 #[panic_handler]
 pub unsafe fn panic(_info: &PanicInfo) -> ! {
-    aarch64_printk!("\nAarch64 kernel panicked");
-    aarch64_printk!("    Message: {:?}", _info.message().unwrap());
-    aarch64_printk!("    Location: {:?}", _info.location().unwrap());
+    aarch64_printk!("\nAarch64 kernel panicked\n");
+    aarch64_printk!("    Message: {:?}\n", _info.message().unwrap());
+    aarch64_printk!("    Location: {:?}\n", _info.location().unwrap());
 
     print_memory_map();
 

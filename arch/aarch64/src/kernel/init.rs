@@ -10,11 +10,11 @@ use core::panic::Location;
 pub unsafe fn aarch64_init() {
     let mut mailbox = MailBox::new();
     mailbox.clear();
-    kinfo!("Mail box cleared");
+    kinfo!("Mail box cleared\n");
 
-    aarch64_printk!("RPi board: {}", check_board());
+    aarch64_printk!("RPi board: {}\n", check_board());
 
-    aarch64_printk!("Starting Aarch64 kernel modules...");
+    aarch64_printk!("Starting Aarch64 kernel modules...\n");
     modules::start::arch_modules_init(&[
         KernelModules::Ex1,
         KernelModules::None,

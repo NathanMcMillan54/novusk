@@ -10,12 +10,12 @@ pub unsafe fn memory_map() -> (usize, usize) {
 }
 
 pub fn print_memory_map() {
-    aarch64_printk!("_________________");
-    aarch64_printk!("| Memory map    |");
+    aarch64_printk!("_________________\n");
+    aarch64_printk!("| Memory map    |\n");
 
     let (end, start) = unsafe { memory_map() };
-    aarch64_printk!("_________________");
-    aarch64_printk!("| Bss start: {}  |", start);
-    aarch64_printk!("| Bss end: {}    |", end);
-    aarch64_printk!("-----------------");
+    aarch64_printk!("_________________\n");
+    aarch64_printk!("| Bss start: {}  |\n", start);
+    aarch64_printk!("| Bss end: {}    |\n", end);
+    aarch64_printk!("-----------------\n");
 }
