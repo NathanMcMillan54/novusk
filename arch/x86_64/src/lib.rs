@@ -13,6 +13,7 @@
 extern crate nkuefi;
 
 use core::panic::PanicInfo;
+pub use x86_64::instructions::port::Port;
 
 pub mod boot;
 pub mod include;

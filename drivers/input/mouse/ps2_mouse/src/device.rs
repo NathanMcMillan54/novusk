@@ -4,6 +4,7 @@ use ps2_mouse::{Mouse, MouseState};
 use spin::Lazy;
 use spinning_top::Spinlock;
 use kinfo::status::set_status;
+use x86_64::instructions::port::Port;
 
 static PS2MOUSE: Lazy<Spinlock<Mouse>> = Lazy::new(|| Spinlock::new(Mouse::new()));
 
@@ -23,6 +24,7 @@ impl Ps2Mouse {
     }
 
     fn mouse_state(&mut self) -> MouseState {
+        unsafe { PS2MOUSE.lock().process_packet(Port::new(0x60).read()); }
         return PS2MOUSE.lock().get_state();
     }
 }

@@ -11,3 +11,4 @@ printk = { path = "../../../../kernel/printk/" }
 ps2-mouse = "0.1.4"
 spin = { version = "0.9.2", features = ["spin_mutex"] }
 spinning_top = "0.2.4"
+x86_64 = "0.14.6"
