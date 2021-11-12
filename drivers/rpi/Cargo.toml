@@ -5,6 +5,7 @@ edition = "2018"
 description = ""
 
 [dependencies]
+device = { path = "../device/" }
 mio = { path = "../../mm/mio/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }

@@ -5,17 +5,20 @@
 #[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 
-pub mod bases;
 pub use bases::*;
-pub mod board;
 pub use board::check_board;
+pub use fb::RpiFb;
+pub use gpio::*;
+pub use rpi3::led::RpiLed;
+
+pub mod bases;
+pub mod board;
 pub mod debug;
 pub mod fb;
-pub use fb::RpiFb;
 pub mod gpio;
-pub use gpio::*;
-pub mod led;
-pub use led::RpiLed;
+pub mod rpi3;
+use rpi3::Rpi3;
+use core::marker::PhantomData;
 
 
 // This will probably be added to the Aarch64 kernel
@@ -23,9 +26,11 @@ pub mod mb;
 
 pub fn aarch64_rpi_init(board: i8) {
     if board == 3 {
-        let mut led = led::RpiLed::new();
-        led.init();
-        kinfo!("ACT LED initialized");
+        let mut rpi = Rpi3::new();
+        rpi.init();
+    } else if board == 4 {
+        // let mut rpi = Rpi4::new();
+        // rpi.init();
     }
 }
 

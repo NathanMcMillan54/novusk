@@ -3,7 +3,7 @@ use crate::include::asm::wfe;
 use crate::mm::map::print_memory_map;
 use core::panic::PanicInfo;
 use libbmu::Time;
-use rpi::led::RpiLed;
+use rpi::rpi3::led::RpiLed;
 
 #[panic_handler]
 pub unsafe fn panic(_info: &PanicInfo) -> ! {
