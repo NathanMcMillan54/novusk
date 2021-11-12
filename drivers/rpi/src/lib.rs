@@ -9,7 +9,6 @@ pub use bases::*;
 pub use board::check_board;
 pub use fb::RpiFb;
 pub use gpio::*;
-pub use rpi3::led::RpiLed;
 
 pub mod bases;
 pub mod board;

@@ -44,6 +44,10 @@ impl EthNetDriver for StmEth {
             PhyAddress::_0,
             peripherals.RCC.constrain().cfgr.sysclk(32.mhz()).hclk(32.mhz()).freeze(),
             eth_pins
-        ).unwrap();
+        );
+
+        if eth.is_err() {
+            printk!("Error occurred while initializing ethernet");
+        }
     }
 }

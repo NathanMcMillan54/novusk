@@ -19,3 +19,4 @@ fn stm_ethernet_init() {
 }
 
 define_ethernet_init!(stm_ethernet_init);
+// define_wireless_init!()

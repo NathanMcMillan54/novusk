@@ -20,10 +20,9 @@ stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
 stmd = { path = "../../drivers/firmware/arm/stmd/" }
 
 [features]
-default = ["stmd/stm32f401"]
+default = ["stmd/stm32f407"]
 cortex_a = []
 cortex_m = []
 stellaris_6965 = ["cortex_m"]
 stm = []
 stm32f407 = ["cortex_m", "stm", "stmd/stm32f407"]
-stm32f701 = ["cortex_m", "stm"]

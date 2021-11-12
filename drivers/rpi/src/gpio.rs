@@ -1,6 +1,7 @@
 use core::ops::Deref;
 use crate::{MMIO_BASE, GPIO_BASE};
 use tock_registers::registers::ReadWrite;
+use tock_registers::interfaces::Writeable;
 
 register_bitfields! {
     u32,
