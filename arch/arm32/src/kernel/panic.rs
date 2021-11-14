@@ -5,7 +5,7 @@ use core::panic::PanicInfo;
 fn _panic(info: &PanicInfo) -> ! {
     let location = info.location().unwrap();
 
-    arm32_printk!("File: {}, line: {} | ARM kernel panicked", location.file(), location.line());
-    arm32_printk!("{}", info.message().unwrap());
+    arm32_printk!("\nFile: {}, line: {} | ARM kernel panicked\n", location.file(), location.line());
+    arm32_printk!("{}\n", info.message().unwrap());
     loop {  }
 }

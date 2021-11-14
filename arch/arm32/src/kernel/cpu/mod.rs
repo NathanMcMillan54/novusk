@@ -1,5 +1,7 @@
 use cpu::CPUINFO;
 
+pub mod interrupts;
+
 pub fn set_cpu_info(arch: &'static str, name: &'static str, address: Option<u32>) {
     unsafe { CPUINFO.init(arch, name, address); }
 }

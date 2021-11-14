@@ -1,5 +1,5 @@
 use crate::StmEth;
-use ethernet::EthNetDriver;
+use ethernet::{EthNetDriver, EthNet};
 
 fn is_supported() -> bool {
     #[cfg(feature = "unsupported_stm32fxxx")]

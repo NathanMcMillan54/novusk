@@ -4,6 +4,7 @@ use cortex_m::Peripherals;
 use cortex_m::peripheral::CPUID;
 pub use cortex_m_rt::heap_start;
 
+pub mod ints;
 pub mod model;
 
 pub unsafe fn cortex_m_init() -> (&'static str, u32) {
