@@ -5,9 +5,10 @@ edition = "2018"
 description = "Starts and handles kernel modules"
 
 [dependencies]
+novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }
 ex1 = { path = "ex1/" }
 fscheck = { path = "fscheck/" }
 
-[target.'cfg(target_arch = "aarcg64")'.dependencies]
+[target.'cfg(target_arch = "aarch64")'.dependencies]
 sf_rpilcd_35 = { path = "../../drivers/firmware/sunfounder/sf_rpilcd_35/" }
