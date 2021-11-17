@@ -7,7 +7,7 @@ pub mod config;
 
 use kinfo::info::FS;
 
-pub fn fscheck_init() {
+pub fn fscheck_start() {
     let mut fs = config::get_fs();
 
     if fs == "None" || fs == "" {
@@ -15,6 +15,10 @@ pub fn fscheck_init() {
     }
 }
 
-pub fn fscheck_end() {
+module_init!(fscheck_init, fscheck_start);
+
+pub fn fscheck_finish() {
 
 }
+
+module_end!(fscheck_end, fscheck_finish);

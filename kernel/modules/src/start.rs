@@ -21,8 +21,8 @@ pub fn arch_modules_init(modules: &[KernelModules; 10]) {
     }
 }
 
-pub unsafe fn kernel_modules_init(modules: &[KernelModules; 10]) {
+pub fn kernel_modules_init(modules: &[KernelModules; 10]) {
     for i in 0..10 {
-        unsafe { run(modules[i]) }
+        unsafe { run(modules[i]); }
     }
 }

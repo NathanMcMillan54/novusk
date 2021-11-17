@@ -9,6 +9,8 @@ use futures_util::task::AtomicWaker;
 
 pub mod input;
 
+pub use pc_keyboard::{DecodedKey, KeyCode, KeyEvent, KeyState};
+
 pub struct PcKeyboard;
 
 impl PcKeyboard {

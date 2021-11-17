@@ -8,3 +8,4 @@ description = "OS tools"
 vgag = { path = "../../drivers/gpu/vgag/" }
 
 [dependencies]
+mouse = { path = "../../drivers/input/mouse/" }

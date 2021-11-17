@@ -1,0 +1,10 @@
+[package]
+name = "kb_mouse"
+version = "0.1.0"
+edition = "2018"
+description = "Kb Mouse (keyboard mouse), if mouse drivers aren't working you can use the arrow keys."
+
+[dependencies]
+novuskinc = { path = "../../../../include/novusk/" }
+pc_keyboard = { path = "../../keyboard/pc_keyboard/" }
+x86_64 = "0.14.6"

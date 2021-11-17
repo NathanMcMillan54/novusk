@@ -1,17 +1,26 @@
 use alloc::vec::Vec;
 use crate::graphics::graphics_pixel;
+use mouse::types::MouseCursor;
 
 #[derive(Copy, Clone)]
 pub struct DesktopIcon {
     pub size: (usize, usize),
     pub color: usize,
+    pub cursor: Option<MouseCursor>,
 }
 
 impl DesktopIcon {
-    pub fn new(icon_size: (usize, usize), color: usize) -> Self {
+    pub fn new(icon_size: (usize, usize), color: usize, cursor: bool) -> Self {
+        let mut mouse_cursor: Option<MouseCursor>;
+
+        if cursor == true {
+            mouse_cursor = Some(MouseCursor::new());
+        } else { mouse_cursor = None; }
+
         return DesktopIcon {
             size: icon_size,
             color: color,
+            cursor: mouse_cursor,
         };
     }
 
