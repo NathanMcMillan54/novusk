@@ -1,7 +1,6 @@
-pub mod device;
+#[path = "../../../../kernel/device.rs"]
+pub(crate) mod device;
 mod panic;
 pub mod printk;
+pub mod setup;
 
-#[cfg(feature = "esp32")]
-pub(crate) mod esp32;
-pub use esp32 as board;
