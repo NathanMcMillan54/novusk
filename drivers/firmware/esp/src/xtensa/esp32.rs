@@ -1,15 +1,13 @@
 use core::fmt;
 use device::Device;
-use esp32_hal::target::{Peripherals, UART1};
-use esp32_hal::serial::{Serial, Pins, Error, Tx};
-use esp32_hal::gpio::{GpioExt, Unknown, Gpio3, Gpio1};
-use esp32_hal::serial::config::Config;
 use esp32_hal::clock_control::{ClockControl, XTAL_FREQUENCY_AUTO};
 use esp32_hal::dport::Split;
+use esp32_hal::gpio::{GpioExt, Unknown, Gpio3, Gpio1};
+use esp32_hal::hal::{serial::Write, watchdog::WatchdogDisable};
 use esp32_hal::prelude::FromValueType;
+use esp32_hal::target::{Peripherals, UART1};
 use esp32_hal::timer::Timer;
-use esp32_hal::hal::serial::Write;
-use esp32_hal::hal::watchdog::WatchdogDisable;
+use esp32_hal::serial::{Error, Pins, Serial, Tx, config::Config};
 
 pub struct Esp32;
 
@@ -24,6 +22,8 @@ impl Esp32 {
         if peripherals.is_none() {
             return Err("Cannot find device peripherals");
         }
+
+        self.serial_io_init();
 
         return Ok(());
     }
@@ -71,6 +71,10 @@ impl Device for Esp32 {
     }
 
     fn time_init(&self) {
+
+    }
+
+    fn disable_wdt(&self) {
         let peripherals = Peripherals::take().unwrap();
 
         let (clock_config, mut watchdog_timer) = self.get_clock_control().freeze().unwrap();
@@ -80,6 +84,10 @@ impl Device for Esp32 {
         watchdog_timer.disable();
         watchdog0.disable();
         watchdog1.disable();
+    }
+
+    fn enable_wdt(&self) {
+
     }
 
     fn write_bytes(&self, bytes: &[u8]) {

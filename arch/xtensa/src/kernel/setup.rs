@@ -1,10 +1,10 @@
 use super::device::initialize_device;
-use crate::xpirntk;
+use crate::xprintk;
 
 pub(crate) fn setup_xtensa() {
     if setup_device().is_err() {
         panic!("A problem occurred after device setup");
-    } else {  }
+    } else { unsafe { xprintk!("Successfully initialized {}", super::DEVICE_NAME); } }
 }
 
 fn setup_device() -> Result<(), i32> {

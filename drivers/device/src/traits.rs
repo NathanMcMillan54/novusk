@@ -11,6 +11,14 @@ pub trait Device {
 
     }
 
+    fn disable_wdt(&self) {
+
+    }
+
+    fn enable_wdt(&self) {
+
+    }
+
     fn gpio_init(&self) {
 
     }
