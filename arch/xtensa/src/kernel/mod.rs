@@ -4,3 +4,4 @@ mod panic;
 pub mod printk;
 pub mod setup;
 
+pub(crate) static mut DEVICE_NAME: &'static str = "";

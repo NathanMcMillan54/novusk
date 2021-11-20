@@ -1,11 +1,12 @@
 #![no_std]
+#![feature(asm, global_asm)]
 #![feature(alloc_error_handler)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate xtensa_lx_rt;
 
-#[cfg(feature = "esp32")]
-#[macro_use] extern crate esp32_hal;
+#[cfg(any(feature = "esp32"))]
+pub(crate) extern crate esp as board;
 
 pub mod boot;
 pub mod include;

@@ -1,8 +1,9 @@
 #![no_std]
 
-#[export_name = "device_init"]
-#[no_mangle]
-pub extern "C" fn xtensa_esp_init() -> (Result<(), &'static str>, &'static str) {
+// #[cfg(target_arch = "xtensa")]
+pub mod xtensa;
 
-    return (Ok(()), "ESP");
+#[cfg(feature = "esp32")]
+pub fn get_board() -> xtensa::esp32::Esp32 {
+    return xtensa::esp32::Esp32::new();
 }

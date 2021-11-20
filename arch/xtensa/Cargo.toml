@@ -4,9 +4,11 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-esp32-hal = "0.3.0"
+esp = { path = "../../drivers/firmware/esp/" }
+kinfo = { path = "../../kernel/kinfo/" }
+xtensa-lx = "0.4.0"
 xtensa-lx-rt = "0.7.0"
 
 [features]
 default = ["esp32"]
-esp32 = []
+esp32 = ["esp/esp32"]
