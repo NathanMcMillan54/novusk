@@ -1,5 +1,6 @@
 use core::ops::Deref;
 use crate::{MMIO_BASE, GPIO_BASE};
+use crate::{Rpi3, RaspberryPi};
 use tock_registers::registers::ReadWrite;
 use tock_registers::interfaces::Writeable;
 
@@ -92,5 +93,15 @@ impl RpiGpio {
 
     pub fn ptr() -> *const RegisterBlock {
         return GPIO_BASE as *const _;
+    }
+}
+
+impl RaspberryPi for Rpi3 {
+    fn gpio_init(&self) {
+        let mut gpio_deref = self.gpio.deref();
+
+        if gpio_deref.__GPFSEL0 == 0 || gpio_deref.__GPFSEL1 == 0 || gpio_deref.__GPFSEL3 == 0 || gpio_deref.__GPFSEL4 == 0 || gpio_deref.__GPFSEL5 == 0 {
+            panic!("A GPIO value is wrong");
+        }
     }
 }

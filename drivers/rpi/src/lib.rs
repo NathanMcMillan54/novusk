@@ -1,8 +1,11 @@
+#![feature(concat_idents)]
 #![no_std]
 
 
 #[macro_use] extern crate tock_registers;
 
+pub mod board;
+pub use board::RaspberryPi;
 pub mod common;
 pub use common::*;
 
@@ -20,6 +23,7 @@ pub use rpi3::*;
 #[export_name = "device_init"]
 pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) {
     let mut pi = Rpi3::new();
+    pi.init();
 
     return (Ok(()), "RPi 3");
 }

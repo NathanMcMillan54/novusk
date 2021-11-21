@@ -1,14 +1,14 @@
 use libbmu::Time;
-use crate::gpio::*;
+use crate::{gpio::*, };
 use tock_registers::interfaces::Writeable;
 
-pub struct RpiLed {
+pub struct Rpi3Led {
     pub gpio: RpiGpio,
 }
 
-impl RpiLed {
+impl Rpi3Led {
     pub fn new() -> Self {
-        return RpiLed { gpio: RpiGpio::new() };
+        return Rpi3Led { gpio: RpiGpio::new() };
     }
 
     pub fn init(&mut self) {
@@ -33,7 +33,7 @@ impl RpiLed {
 }
 
 fn blink(sleep: usize) {
-    let mut led = RpiLed::new();
+    let mut led = Rpi3Led::new();
     led.init();
     led.blink(sleep);
 }
