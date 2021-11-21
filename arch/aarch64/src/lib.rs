@@ -8,7 +8,10 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
-pub use novuskinc::define_syscall;
+pub(crate) use novuskinc::define_syscall;
+
+#[cfg(feature = "rpi3")]
+pub(crate) extern crate rpi;
 
 pub mod boot;
 pub mod include;

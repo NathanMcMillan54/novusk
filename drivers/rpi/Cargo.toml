@@ -2,13 +2,13 @@
 name = "rpi"
 version = "0.1.0"
 edition = "2018"
-description = ""
+description = "Drivers for RaspberryPi boards"
 
 [dependencies]
-device = { path = "../device/" }
-mio = { path = "../../mm/mio/" }
-kinfo = { path = "../../kernel/kinfo/" }
-libcolor = { path = "../../lib/libcolor/" }
+cortex-a = "6.1.0"
 libbmu = { path = "../../lib/libbmu/" }
-printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"
+
+[features]
+rpi3 = []
+rpi2 = []

@@ -1,7 +1,7 @@
 #![no_std]
 
 #[macro_use] extern crate novuskinc;
-use rpi::RpiGpio;
+use rpi::gpio::RpiGpio;
 
 pub fn sf_rpilcd_35_init() {
     let mut gpio = RpiGpio::new();

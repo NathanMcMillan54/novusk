@@ -19,5 +19,6 @@ tock-registers = "0.7.0"
 
 [features]
 default = ["rpi3"]
-rpi3 = []
+rpi3 = ["rpi/rpi3"]
+rpi4 = [] # soon
 qemu_virt = []
