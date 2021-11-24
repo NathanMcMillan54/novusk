@@ -32,6 +32,7 @@ members = [
     "drivers/firmware/arm/stellarisd/",
     "drivers/firmware/arm/stmd/",
     "drivers/firmware/esp/",
+    "drivers/firmware/mailbox/",
     "drivers/firmware/sifive/",
     "drivers/gpu/vgag/",
     "drivers/input/keyboard/",

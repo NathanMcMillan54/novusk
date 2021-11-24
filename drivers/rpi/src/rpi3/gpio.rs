@@ -63,12 +63,12 @@ pub const GPPUDCLK0: *const ReadWrite<u32, GPPUDCLK0::Register> = (MMIO_BASE + 0
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct RegisterBlock {
-    __GPFSEL0: u32,                                 // 0x00
-    __GPFSEL1: u32,                                 // 0x04
+    pub __GPFSEL0: u32,                                 // 0x00
+    pub __GPFSEL1: u32,                                 // 0x04
     pub GPFSEL2: ReadWrite<u32, GPFSEL2::Register>, // 0x08
-    __GPFSEL3: u32,                                 // 0x0C
-    __GPFSEL4: u32,                                 // 0x10
-    __GPFSEL5: u32,                                 // 0x14
+    pub __GPFSEL3: u32,                                 // 0x0C
+    pub __GPFSEL4: u32,                                 // 0x10
+    pub __GPFSEL5: u32,                                 // 0x14
     __reserved_0: u32,                              // 0x18
     pub GPSET0: ReadWrite<u32, GPSET0::Register>,   // 0x1C
     __GPSET1: u32,                                  // 0x20
@@ -76,9 +76,9 @@ pub struct RegisterBlock {
     pub GPCLR0: ReadWrite<u32, GPCLR0::Register>,   // 0x28
 }
 
-pub struct RpiGpio;
+pub struct Rpi3Gpio;
 
-impl Deref for RpiGpio {
+impl Deref for Rpi3Gpio {
     type Target = RegisterBlock;
 
     fn deref(&self) -> &Self::Target {
@@ -86,22 +86,12 @@ impl Deref for RpiGpio {
     }
 }
 
-impl RpiGpio {
+impl Rpi3Gpio {
     pub fn new() -> Self {
-        return RpiGpio;
+        return Rpi3Gpio;
     }
 
     pub fn ptr() -> *const RegisterBlock {
         return GPIO_BASE as *const _;
-    }
-}
-
-impl RaspberryPi for Rpi3 {
-    fn gpio_init(&self) {
-        let mut gpio_deref = self.gpio.deref();
-
-        if gpio_deref.__GPFSEL0 == 0 || gpio_deref.__GPFSEL1 == 0 || gpio_deref.__GPFSEL3 == 0 || gpio_deref.__GPFSEL4 == 0 || gpio_deref.__GPFSEL5 == 0 {
-            panic!("A GPIO value is wrong");
-        }
     }
 }

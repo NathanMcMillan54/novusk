@@ -9,6 +9,14 @@ pub trait RaspberryPi {
 
     }
 
+    fn led_on(&self) {
+
+    }
+
+    fn led_off(&self) {
+
+    }
+
     fn mailbox_init(&self) {
 
     }
