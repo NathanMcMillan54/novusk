@@ -24,6 +24,7 @@ time = { path = "../../kernel/time/" }
 default = ["stmd/stm32f407"]
 cortex_a = []
 cortex_m = []
+rpi2 = ["cortex_a"]
 stellaris_6965 = ["cortex_m"]
 stm = []
 stm32f407 = ["cortex_m", "stm", "stmd/stm32f407"]

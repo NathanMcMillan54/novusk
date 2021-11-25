@@ -1,5 +1,5 @@
 #[derive(Copy, Clone, PartialEq)]
-pub enum TextMethods {
+pub enum SerialMethods {
     Hio,
     Uart,
     Display,
@@ -7,18 +7,18 @@ pub enum TextMethods {
     None,
 }
 
-impl Default for TextMethods {
+impl Default for SerialMethods {
     fn default() -> Self {
-        return TextMethods::None;
+        return SerialMethods::None;
     }
 }
 
-pub fn str_to_textmethods(string: &str) -> TextMethods {
+pub fn str_to_serialmethods(string: &str) -> SerialMethods {
     return match string {
-        "Hio" => TextMethods::Hio,
-        "Uart" => TextMethods::Uart,
-        "Display" => TextMethods::Display,
-        "Fb" => TextMethods::Fb,
-        _ => TextMethods::Hio,
+        "Hio" => SerialMethods::Hio,
+        "Uart" => SerialMethods::Uart,
+        "Display" => SerialMethods::Display,
+        "Fb" => SerialMethods::Fb,
+        _ => SerialMethods::Hio,
     };
 }

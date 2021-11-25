@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(alloc_error_handler, panic_info_message)]
+#![feature(alloc_error_handler, lang_items, panic_info_message)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate lazy_static;
@@ -21,4 +21,9 @@ pub mod mm;
 pub mod net;
 
 // CPUs
+pub(crate) mod cortex_a;
 pub(crate) mod cortex_m;
+
+// Lang
+#[lang = "eh_personality"]
+extern "C" fn eh_personality() { }
