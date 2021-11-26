@@ -2,29 +2,18 @@
 name = "arm32"
 version = "0.1.0"
 edition = "2018"
-description = "ARM32 and some Aarch64 kernel support"
+description = "ARM32 kernel support"
 
 [dependencies]
+cfg-if = "1.0.0"
+cortex-a = "6.1.0"
 cortex-m = "0.7.3"
-cortex-m-rt = "0.6.15"
-cortex-m-semihosting = "0.3.7"
-cpu = { path = "../../drivers/cpu/" }
-init = { path = "../../init/" }
-lazy_static = "1.4.0"
-linked_list_allocator = "0.9.1"
+cortex-m-rt = "^0.6.15"
 nmallocator = { path = "../../mm/nmallocator/" }
-novuskinc = { path = "../../include/novusk/" }
-setup = { path = "../../kernel/setup/" }
-spin = "0.9.2"
-stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
-stmd = { path = "../../drivers/firmware/arm/stmd/" }
-time = { path = "../../kernel/time/" }
 
 [features]
-default = ["stmd/stm32f407"]
 cortex_a = []
 cortex_m = []
 rpi2 = ["cortex_a"]
 stellaris_6965 = ["cortex_m"]
-stm = []
-stm32f407 = ["cortex_m", "stm", "stmd/stm32f407"]
+stm32f407 = ["cortex_m"]

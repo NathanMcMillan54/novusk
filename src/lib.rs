@@ -15,7 +15,7 @@ pub mod x86_64 {
 
 #[cfg(target_arch = "arm")]
 pub mod arm {
-    pub use arm32::include::asm;
+    pub use arm32;
     pub use libbmu;
 }
 
