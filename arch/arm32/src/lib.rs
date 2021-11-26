@@ -10,6 +10,7 @@ cfg_if! {
     } else if #[cfg(feature = "cortex_m")] {
         // Cortex M crates
         #[macro_use] extern crate cortex_m_rt;
+        #[macro_use] extern crate cortex_m_semihosting;
     }
 }
 
