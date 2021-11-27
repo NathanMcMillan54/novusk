@@ -6,6 +6,7 @@ description = "Drivers for RaspberryPi boards"
 
 [dependencies]
 cortex-a = "6.1.0"
+device = { path = "../device" }
 libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../firmware/mailbox/" }
 tock-registers = "0.7.0"

@@ -1,5 +1,6 @@
 use core::fmt::{Result, Write};
 use core::ptr::write_volatile;
+use device::Device;
 
 pub struct Rpi2Uart {
     pub address: *mut u8,
@@ -28,3 +29,5 @@ impl Write for Rpi2Uart {
         Ok(())
     }
 }
+
+impl Device for Rpi2Uart {}

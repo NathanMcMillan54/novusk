@@ -10,8 +10,8 @@ pub use common::*;
 pub mod rpi2;
 pub mod rpi3;
 
-use rpi2::Rpi2;
-use rpi3::Rpi3;
+pub use rpi2::Rpi2;
+pub use rpi3::Rpi3;
 
 #[cfg(feature = "rpi3")]
 pub use rpi3::*;
