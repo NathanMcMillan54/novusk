@@ -8,7 +8,6 @@ description = "Drivers for RaspberryPi boards"
 cortex-a = "6.1.0"
 libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../firmware/mailbox/" }
-printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"
 
 [features]

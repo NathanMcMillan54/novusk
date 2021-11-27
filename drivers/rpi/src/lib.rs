@@ -1,6 +1,5 @@
 #![no_std]
 
-#[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 
 pub mod board;

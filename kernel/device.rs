@@ -1,4 +1,6 @@
-// For initializing the device
+// For initializing the device and storing some information
+
+pub static mut DEVICE_NAME: &'static str = "Unknown";
 
 extern "C" {
     pub fn device_init() -> (Result<(), &'static str>, &'static str);
