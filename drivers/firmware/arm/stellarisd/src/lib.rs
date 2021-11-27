@@ -11,6 +11,7 @@ pub mod board {
 
 #[no_mangle]
 pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
+    cortex_m_semihosting::hprintln!("test");
     let mut error = false;
 
     if unsafe { Peripherals::take().is_none() } {

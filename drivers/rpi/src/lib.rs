@@ -26,9 +26,12 @@ pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) 
     return (Ok(()), "RPi 3");
 }
 
-#[cfg(feature = "rpi2")]
+#[cfg(not(feature = "rpi3"))]
 #[no_mangle]
 #[export_name = "device_init"]
 pub extern "C" fn rpi2_board_init() -> (Result<(), &'static str>, &'static str) {
+    let mut pi = Rpi2::new();
+    pi.init();
+
     return (Ok(()), "RPi 2");
 }

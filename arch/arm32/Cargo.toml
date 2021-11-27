@@ -13,6 +13,7 @@ cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/cpu/" }
 nmallocator = { path = "../../mm/nmallocator/" }
 rpi = { path = "../../drivers/rpi/" }
+stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
 
 [features]
 cortex_a = []

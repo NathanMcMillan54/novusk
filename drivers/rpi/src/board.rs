@@ -1,5 +1,3 @@
-
-
 pub trait RaspberryPi {
     fn uart_io_init(&self) {
 

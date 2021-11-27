@@ -14,6 +14,12 @@ cfg_if! {
     }
 }
 
+#[cfg(feature = "rpi2")]
+pub(crate) extern crate rpi;
+
+#[cfg(feature = "stellaris_6965")]
+pub(crate) extern crate stellarisd;
+
 pub mod boot;
 pub mod kernel;
 
