@@ -4,6 +4,7 @@ use core::fmt::{Result, Write};
 pub static mut IO: ArmIo = ArmIo::empty();
 
 mod types {
+    #[derive(Copy, Clone, PartialEq)]
     pub enum SerialMethod {
         Hio,
         Uart,
@@ -56,7 +57,7 @@ impl ArmIo {
 }
 
 impl Write for ArmIo {
-    fn write_str(&self, string: &str) -> Result {
+    fn write_str(&mut self, string: &str) -> Result {
         self.write_string(string);
 
         Ok(())

@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(lang_items)]
+#![feature(lang_items, panic_info_message)]
 
 #[macro_use] extern crate cfg_if;
 extern crate nmallocator;

@@ -16,7 +16,7 @@ pub use rpi3::Rpi3;
 #[cfg(feature = "rpi3")]
 pub use rpi3::*;
 
-#[cfg(feature = "rpi3")]
+#[cfg(target_arch = "aarch64")]
 #[no_mangle]
 #[export_name = "device_init"]
 pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) {
@@ -26,7 +26,7 @@ pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) 
     return (Ok(()), "RPi 3");
 }
 
-#[cfg(not(feature = "rpi3"))]
+#[cfg(target_arch = "arm")]
 #[no_mangle]
 #[export_name = "device_init"]
 pub extern "C" fn rpi2_board_init() -> (Result<(), &'static str>, &'static str) {

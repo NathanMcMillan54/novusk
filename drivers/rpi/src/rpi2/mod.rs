@@ -21,8 +21,6 @@ impl Rpi2 {
 
 impl RaspberryPi for Rpi2 {
     fn uart_io_init(&self) {
-        for c in b"Using Qemu output as UART" {
-            unsafe { write_volatile(0x3F20_1000 as *mut u8, *c); }
-        }
+        self.uart.write_bytes(b"Using Qemu Output as UART (for now)\n");
     }
 }

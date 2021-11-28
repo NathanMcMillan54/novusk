@@ -29,5 +29,3 @@ impl Write for Rpi2Uart {
         Ok(())
     }
 }
-
-impl Device for Rpi2Uart {}
