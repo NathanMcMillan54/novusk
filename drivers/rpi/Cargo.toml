@@ -9,6 +9,7 @@ cortex-a = "6.1.0"
 device = { path = "../device" }
 libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../firmware/mailbox/" }
+mio = { path = "../../mm/mio/" }
 tock-registers = "0.7.0"
 
 [features]

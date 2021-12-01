@@ -1,6 +1,7 @@
 #![no_std]
-#![feature(lang_items, panic_info_message)]
+#![feature(alloc_error_handler, lang_items, panic_info_message)]
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;
 extern crate nmallocator;
 
@@ -22,6 +23,7 @@ pub(crate) extern crate stellarisd;
 
 pub mod boot;
 pub mod kernel;
+pub mod mm;
 
 #[cfg(feature = "cortex_a")]
 pub(crate) mod cortex_a;

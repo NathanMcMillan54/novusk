@@ -1,6 +1,8 @@
 use crate::kernel::cpu::{CPUINFO};
 use cortex_m::Peripherals;
 
+pub mod mm;
+
 pub fn cortex_m_init() {
     set_info();
 }

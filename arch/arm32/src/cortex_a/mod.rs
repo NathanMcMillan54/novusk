@@ -1,5 +1,6 @@
 use crate::kernel::cpu::{CPUINFO};
 
+pub mod mm;
 pub mod symbols;
 
 pub fn cortex_a_init() {
