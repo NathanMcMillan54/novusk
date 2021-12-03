@@ -12,5 +12,5 @@ pub extern "C" fn bmain() -> ! {
 
     init_arm_kernel();
 
-    loop {  }
+    panic!("Nothing to run");
 }

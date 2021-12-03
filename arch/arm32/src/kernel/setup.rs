@@ -1,8 +1,12 @@
 use crate::arm32_printk;
 use crate::mm::memory_init;
+use super::cpu::cpu_setup;
 use super::device::{device_init, DEVICE_NAME};
 
 pub unsafe fn setup_arm32_kernel() {
+    cpu_setup();
+    arm32_printk!("    CPU setup\n");
+
     setup_device();
     arm32_printk!("Device initialized\n");
 
