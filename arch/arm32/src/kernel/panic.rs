@@ -7,5 +7,5 @@ fn _panic(info: &PanicInfo) -> ! {
     arm32_printk!("Message: {:?}\n", info.message().unwrap());
     arm32_printk!("Location: {:?}:{:?}\n", info.location().unwrap().file(), info.location().unwrap().line());
 
-    loop {  }
+    loop {    }
 }

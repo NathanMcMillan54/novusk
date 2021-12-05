@@ -15,6 +15,4 @@ pub fn cpu_setup() {
 
     #[cfg(feature = "cortex_a")]
     crate::target::CortexATarget::new().irq_setup();
-
-    arm32_printk!("IRQs setup\n");
 }

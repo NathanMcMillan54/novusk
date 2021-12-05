@@ -7,6 +7,10 @@ pub use board::RaspberryPi;
 pub mod common;
 pub use common::*;
 
+#[macro_use]
+#[path = "../../../kernel/irq.rs"]
+pub mod irq;
+
 pub mod rpi2;
 pub mod rpi3;
 
@@ -35,3 +39,9 @@ pub extern "C" fn rpi2_board_init() -> (Result<(), &'static str>, &'static str) 
 
     return (Ok(()), "RPi 2");
 }
+
+fn irq_init() {
+
+}
+
+define_dev_irq_init!(irq_init);

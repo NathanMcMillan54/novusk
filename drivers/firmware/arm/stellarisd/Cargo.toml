@@ -6,7 +6,7 @@ description = "Board support for Stellaris boards"
 
 [dependencies]
 cortex-m-semihosting = "0.3.7"
-embedded-hal = "1.0.0-alpha.4"
+device = { path = "../../../device/" }
 libbmu = { path = "../../../../lib/libbmu/" }
 novuskinc = { path = "../../../../include/novusk/" }
 tm4c123x-hal = "0.10.2"

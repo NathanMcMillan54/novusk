@@ -5,20 +5,24 @@ use super::device::{device_init, DEVICE_NAME};
 
 pub unsafe fn setup_arm32_kernel() {
     cpu_setup();
-    arm32_printk!("    CPU setup\n");
+    kinfo!("Setup CPU\n");
+    arm32_printk!("    Common IRQs setup\n");
 
     setup_device();
-    arm32_printk!("Device initialized\n");
+    kinfo!("Device initialized\n");
 
     memory_init();
-    arm32_printk!("Memory initialized\n");
+    kinfo!("Memory initialized\n");
 }
 
 unsafe fn setup_device() {
     let (success, name) = device_init();
 
     match success {
-        Err(e) => panic!("Error while initializing device: {:?}", e),
+        Err(e) => {
+            panic!("Error while initializing device: {:?}", e);
+            kinfo::status::set_status("not ok");
+        },
         _ => DEVICE_NAME = name,
     };
 }

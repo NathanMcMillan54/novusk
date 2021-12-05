@@ -1,4 +1,4 @@
-/* use tm4c123x_hal::Peripherals;
+use tm4c123x_hal::Peripherals;
 use tm4c123x_hal::gpio::GpioExt;
 use tm4c123x_hal::sysctl::SysctlExt;
 use libbmu::Time;
@@ -38,4 +38,3 @@ fn blink(sleep: usize) {
 }
 
 define_led_blink_function!(blink);
-*/
