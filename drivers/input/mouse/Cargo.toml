@@ -1,7 +1,0 @@
-[package]
-name = "mouse"
-version = "0.1.0"
-edition = "2018"
-description = "Mouse traits and handler"
-
-[dependencies]

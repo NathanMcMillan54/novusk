@@ -1,7 +1,0 @@
-[package]
-name = "libcolor"
-version = "0.1.0"
-edition = "2018"
-description = "Colors in enums"
-
-[dependencies]

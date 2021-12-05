@@ -1,8 +1,0 @@
-[package]
-name = "nkuefi"
-version = "0.1.0"
-edition = "2018"
-description = "Novusk Kernel UEFI driver"
-
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-uart_16550 = "0.2.15"

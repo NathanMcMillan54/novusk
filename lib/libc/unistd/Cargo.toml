@@ -1,9 +1,0 @@
-[package]
-name = "unistd"
-version = "0.1.0"
-edition = "2018"
-description = "unistd.h"
-
-[dependencies]
-cfg-if = "1.0.0"
-novuskinc = { path  = "../../../include/novusk/" }

@@ -1,8 +1,0 @@
-[package]
-name = "tempfs"
-version = "0.1.0"
-edition = "2018"
-description = "Temporary File System"
-
-[dependencies]
-vfs = { path = "../vfs/" }
