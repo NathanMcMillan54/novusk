@@ -2,75 +2,84 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate lazy_static;
+#[macro_use] extern crate novuskinc;
 
 pub mod color;
 pub mod display;
 pub mod switch;
+pub mod types;
 
 pub use color::*;
 pub use display::{graphics_pixel, graphics_write, VgaDisplay};
 
 use fb::Fb;
 use spin::Mutex;
+use types::*;
 use vga::writers::{Text80x25, Graphics640x480x16};
 use crate::VgaModes::Graphics640x480;
 
-lazy_static! {
-    pub static ref VGAG: Mutex<VgaG> = Mutex::new(VgaG::new(VgaModes::default()));
-}
+pub static mut VGAG: VgaG = VgaG {
+    switch: 0,
+    mode: VgaModes::Text80x25,
+    first_init: true,
+};
 
 pub struct VgaG {
-    pub fb: Fb,
+    pub switch: u32,
+    pub first_init: bool,
     pub mode: VgaModes,
-    pub display: VgaDisplay,
 }
 
 impl VgaG {
-    pub fn new(vga_mode: VgaModes) -> Self {
-        return VgaG {
-            fb: Fb::new("VGA", vga_mode.address().unwrap()),
-            mode: vga_mode,
-            display: VgaDisplay::new(vga_mode),
+    fn check_switch(&mut self) -> VgaModes {
+        return match self.switch {
+            0 => VgaModes::Text80x25,
+            1 => VgaModes::Graphics320x200,
+            2 => VgaModes::Graphics320x240,
+            3 => VgaModes::Graphics640x480,
+            4 => {
+                self.switch = 0;
+                VgaModes::Text80x25
+            },
+
+            _ => VgaModes::None,
         };
     }
 
     pub fn init(&mut self) {
+        if self.first_init == true {
+            self.switch = 3;
+        }
+
+        let mode = self.check_switch();
+        self.mode = mode;
+
         self.mode.switch();
     }
 }
 
-#[derive(Copy, Clone, PartialOrd, PartialEq)]
-pub enum VgaModes {
-    Text80x25,
-    Graphics320x200,
-    Graphics320x240,
-    Graphics640x480,
-    None,
-}
+fn vgag_init() {
+    unsafe {
+        let mode = VGAG.check_switch();
 
-impl VgaModes {
-    pub fn address(self) -> Option<usize> {
-        if self == VgaModes::Text80x25 {
-            return Some(0xb8000);
-        } else if self == VgaModes::Graphics320x200 || self == VgaModes::Graphics320x240 || self == VgaModes::Graphics640x480 {
-            return Some(0xa0000)
-        } else { return None }
+        if mode == VgaModes::None {
+            panic!("{} is an invalid switch value", VGAG.switch);
+        }
+
+        VGAG.init();
+        VGAG.switch += 1;
+        VGAG.first_init = false;
     }
 }
 
-impl Default for VgaModes {
-    fn default() -> Self {
-        return VgaModes::None;
+module_init!(gpug_init, vgag_init);
+
+fn vgag_end() {
+    unsafe {
+        if VGAG.check_switch() == VgaModes::None {
+            VGAG.switch = 0;
+        }
     }
 }
 
-pub fn convert_usize_to_vgamode(vgamode: usize) -> VgaModes {
-    return match vgamode {
-        0 => VgaModes::Text80x25,
-        1 => VgaModes::Graphics320x240,
-        2 => VgaModes::Graphics320x240,
-        3 => VgaModes::Graphics640x480,
-
-        _ => VgaModes::None,
-    };
-}
+module_end!(gpug_end, vgag_end);

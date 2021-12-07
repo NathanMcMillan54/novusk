@@ -18,6 +18,7 @@ fn check_version(version_str: &str) {
 }
 
 unsafe fn gpu_init() {
+    start_module!(gpug_init, gpug_end);
     KERNEL.lock().kernel_console().init();
     // KERNEL.lock().gpu_graphics().);
     // vgag::switch::vga_switch(3);
