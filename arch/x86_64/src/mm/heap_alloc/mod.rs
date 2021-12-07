@@ -1,16 +1,18 @@
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
 use fixed_size_block::FixedSizeBlockAllocator;
-use linked_list_allocator::LockedHeap;
-use nmallocator::{ALLOCATOR, x86_64::*};
+use nmallocator::{LockedHeap, x86_64::*};
 use x86_64::VirtAddr;
-use x86_64::structures::paging::{Mapper, Size4KiB, FrameAllocator, Page, PageTableFlags};
+use x86_64::structures::paging::{FrameAllocator, Mapper, Page, PageTableFlags, Size4KiB};
 use x86_64::structures::paging::mapper::MapToError;
 
 pub mod bump;
-// pub mod error;
 pub mod fixed_size_block;
 pub mod linked_list;
+pub mod memory;
+
+#[global_allocator]
+pub static mut ALLOCATOR: LockedHeap = LockedHeap::empty();
 
 pub unsafe fn allocator_init() {
     ALLOCATOR.lock().init(HEAP_START, HEAP_SIZE);

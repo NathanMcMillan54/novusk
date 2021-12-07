@@ -1,6 +1,7 @@
 use multiboot::multiboot_init;
 use crate::x86_printk;
 use crate::boot::main::main;
+use crate::mm::early_memory_init;
 
 #[no_mangle]
 pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {

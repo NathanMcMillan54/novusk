@@ -10,8 +10,8 @@ init = { path = "../../init/" }
 mio = { path = "../../mm/mio/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libbmu = { path = "../../lib/libbmu/" }
-wee_alloc = { version = "0.4.5", features = ["static_array_backend"] }
 modules = { path = "../../kernel/modules/" }
+nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/" }
 r0 = "1.0.0"
 rpi = { path = "../../drivers/rpi/" }

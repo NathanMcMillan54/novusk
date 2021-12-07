@@ -1,7 +1,7 @@
 #![no_std]
 #![feature(alloc_error_handler)]
 
-use linked_list_allocator::LockedHeap;
+#[macro_use] extern crate cfg_if;
 
 pub mod error;
 
@@ -11,5 +11,8 @@ pub mod riscv;
 #[cfg(target_arch = "x86_64")]
 pub mod x86_64;
 
-#[global_allocator]
-pub static ALLOCATOR: LockedHeap = LockedHeap::empty();
+#[cfg(feature = "linked_list")]
+pub use linked_list_allocator::LockedHeap;
+
+#[cfg(feature = "wee_allocator")]
+pub use wee_alloc::WeeAlloc;

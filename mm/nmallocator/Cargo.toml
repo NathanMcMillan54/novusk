@@ -5,5 +5,10 @@ edition = "2018"
 description = "Novusk Memory Allocator"
 
 [dependencies]
+cfg-if = "1.0.0"
 linked_list_allocator = "0.9.1"
+wee_alloc = { version = "0.4.5", features = ["static_array_backend"] }
 
+[features]
+linked_list = []
+wee_allocator = []

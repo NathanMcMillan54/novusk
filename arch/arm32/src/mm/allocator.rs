@@ -1,4 +1,8 @@
 use crate::arm32_printk;
+use nmallocator::LockedHeap;
+
+#[global_allocator]
+pub static mut ALLOCATOR: LockedHeap = LockedHeap::empty();
 
 pub unsafe fn allocator_init() {
     #[cfg(feature = "cortex_a")]
@@ -10,5 +14,5 @@ pub unsafe fn allocator_init() {
     #[cfg(feature = "cortex_a")]
     let start = 0;
 
-    nmallocator::ALLOCATOR.lock().init(start as usize, 1024);
+    ALLOCATOR.lock().init(start as usize, 1024);
 }

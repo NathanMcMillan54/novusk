@@ -1,7 +1,7 @@
 use bootloader::BootInfo;
 use crate::x86_printk;
 use crate::boot::main::main;
-use crate::mm::{early_memory_init, allocator::allocator_init};
+use crate::mm::{early_memory_init, heap_alloc::allocator_init};
 
 #[no_mangle]
 pub unsafe extern "C" fn bootloader_start_novusk(bootinfo: &'static BootInfo) -> ! {
