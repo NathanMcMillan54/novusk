@@ -2,6 +2,7 @@ extern "C" {
     pub(crate) fn device_specific_irq_init();
 }
 
+#[macro_export]
 macro_rules! define_dev_irq_init {
     ($init_fun:ident) => {
         #[no_mangle]

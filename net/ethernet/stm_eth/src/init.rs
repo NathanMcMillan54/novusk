@@ -18,5 +18,9 @@ fn stm_ethernet_init() {
     } else { printk!("Driver: {} by: {} is not supported\n", name, author); }
 }
 
+fn stm_wireless_init() {
+
+}
+
 define_ethernet_init!(stm_ethernet_init);
-// define_wireless_init!()
+define_wireless_init!(stm_wireless_init);

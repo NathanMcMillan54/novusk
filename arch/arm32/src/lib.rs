@@ -6,6 +6,7 @@
 #[macro_use] extern crate cfg_if;
 #[macro_use] extern crate kinfo;
 extern crate nmallocator;
+#[macro_use] extern crate novuskinc;
 
 cfg_if! {
     if #[cfg(feature = "cortex_a")] {
@@ -29,6 +30,7 @@ pub(crate) extern crate stmd;
 pub mod boot;
 pub mod kernel;
 pub mod mm;
+pub mod net;
 
 cfg_if! {
     if #[cfg(feature = "cortex_a")] {

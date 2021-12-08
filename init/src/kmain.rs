@@ -18,17 +18,13 @@ fn check_version(version_str: &str) {
 }
 
 unsafe fn gpu_init() {
+    #[cfg(any(target_arch = "x86_64"))]
     start_module!(gpug_init, gpug_end);
     KERNEL.lock().kernel_console().init();
-    // KERNEL.lock().gpu_graphics().);
-    // vgag::switch::vga_switch(3);
 }
 
-#[cfg(target_arch = "x86_64")]
-unsafe fn input_init() {
-    /* KERNEL.lock().keyboard_driver().init();
-    KERNEL.lock().mouse_driver().init();
-    kinfo!("Input devices initialized"); */
+fn input_init() {
+
 }
 
 unsafe fn net_init() {
@@ -56,10 +52,6 @@ pub unsafe extern "C" fn kernel_init() {
         kinfo!("GPU graphics initialized\n");
     }
 
-    //vga_write(0, 0, format_args!("{}", "k"));
-
-    novusk_banner();
-
     if initramfs_type() == "Kernel" {
         kinfo!("Starting kernel initramfs...\n");
         start_kernel_initramfs();
@@ -75,4 +67,6 @@ pub unsafe extern "C" fn kernel_init() {
     printk!("\nSetting up main kernel modules...\n");
     modules_init(configs);
     kinfo!("Initialized main kernel modules\n");
+
+    novusk_banner();
 }

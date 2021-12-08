@@ -5,11 +5,12 @@
 use stm32f4xx_hal::pac::Peripherals;
 
 #[cfg(feature = "stm32f401")]
-pub(crate) const BOARD_MODLE: i32 = 01;
+pub(crate) const BOARD_MODLE: &'static str = "STM32f401";
 #[cfg(feature = "stm32f407")]
-pub(crate) const BOARD_MODLE: i32 = 07;
+pub(crate) const BOARD_MODLE: &'static str = "STM32f407";
 
 pub mod io;
+pub mod irq;
 pub mod net;
 
 pub mod board {
@@ -29,5 +30,5 @@ pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     #[cfg(not(feature = "qemu"))]
     io::io_init();
 
-    return (Ok(()), "STM32");
+    return (Ok(()), BOARD_MODLE);
 }

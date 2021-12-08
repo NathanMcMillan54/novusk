@@ -13,7 +13,7 @@ edition = "2018"
 name = "novusk"
 path = "src/lib.rs"
 edition = "2018"
-#
+# Remove the comment if you're going to link Novusk to something else
 # crate-type = ["staticlib"]
 
 [workspace]
