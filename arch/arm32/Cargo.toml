@@ -16,6 +16,7 @@ init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["linked_list"] }
 novuskinc = { path = "../../include/novusk/" }
+rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/" }
 rpi = { path = "../../drivers/rpi/" }
 stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
 stmd = { path = "../../drivers/firmware/arm/stmd/" }

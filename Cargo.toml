@@ -43,6 +43,7 @@ members = [
     "drivers/net/ethernet/",
     "drivers/nkuefi/",
     "drivers/rpi/",
+    "drivers/rpi/rpi2kernel/",
     "drivers/sos/",
     "drivers/usbd/",
     # Fs

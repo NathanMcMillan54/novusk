@@ -8,10 +8,7 @@ pub mod uart;
 
 extern "C" {
     static mut BOARD: Board;
-}
-
-fn rpi_kernel_init() {
-
+    fn rpi2_kernel_init();
 }
 
 pub struct Rpi2 {
@@ -35,7 +32,7 @@ impl Rpi2 {
             main_printing_method: "Fb",
             arch_init: true,
             kernel_init: false,
-            board_specific_kernel: Some(rpi_kernel_init),
+            board_specific_kernel: Some(rpi2_kernel_init),
         }); }
         self.uart_io_init();
     }

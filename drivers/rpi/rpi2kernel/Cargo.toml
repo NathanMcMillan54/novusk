@@ -1,0 +1,11 @@
+[package]
+name = "rpi2kernel"
+version = "0.1.0"
+edition = "2021"
+description = "RPi 2 specific kernel"
+
+[dependencies]
+kinfo = { path = "../../../kernel/kinfo/" }
+konfig = { path = "../../../kernel/konfig/" }
+printk = { path = "../../../kernel/printk/" }
+rpi = { path = "../" }

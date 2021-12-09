@@ -5,7 +5,7 @@ pub struct Board {
     pub main_printing_method: &'static str,
     pub arch_init: bool,
     pub kernel_init: bool,
-    pub board_specific_kernel: Option<fn()>,
+    pub board_specific_kernel: Option<unsafe extern "C" fn()>,
 }
 
 impl Board {
@@ -31,11 +31,11 @@ impl Board {
         self.board_specific_kernel = board.board_specific_kernel;
     }
 
-    pub fn run_board_specific_kernel(&self) {
+    pub unsafe fn run_board_specific_kernel(&self) {
         if self.board_specific_kernel.is_none() {
             panic!("Can't find board specific kernel for {}", self.name);
         } else {
-            self.board_specific_kernel.unwrap();
+            self.board_specific_kernel.unwrap()();
         }
     }
 }
