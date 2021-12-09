@@ -7,7 +7,7 @@ pub trait MailBox {
 
     }
 
-    fn call(&self, channel: u32) -> Result<(), &str> {
+    fn call(&mut self, channel: u32) -> Result<(), &str> {
         return Ok(())
     }
 

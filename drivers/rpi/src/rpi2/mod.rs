@@ -3,6 +3,7 @@ use device::Board;
 use mailbox::MailBox;
 use crate::RaspberryPi;
 
+pub mod registers;
 pub mod mb;
 pub mod uart;
 

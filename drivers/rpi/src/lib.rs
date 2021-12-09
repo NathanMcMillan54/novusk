@@ -17,6 +17,9 @@ pub mod rpi3;
 pub use rpi2::Rpi2;
 pub use rpi3::Rpi3;
 
+#[cfg(feature = "rpi2")]
+pub use rpi2::registers::*;
+
 #[cfg(feature = "rpi3")]
 pub use rpi3::*;
 
