@@ -1,9 +1,18 @@
 use core::ptr::write_volatile;
+use device::Board;
 use mailbox::MailBox;
 use crate::RaspberryPi;
 
 pub mod mb;
 pub mod uart;
+
+extern "C" {
+    static mut BOARD: Board;
+}
+
+fn rpi_kernel_init() {
+
+}
 
 pub struct Rpi2 {
     pub mb: mb::Rpi2Mb,
@@ -19,6 +28,15 @@ impl Rpi2 {
     }
 
     pub fn init(&self) {
+        unsafe { BOARD.set(Board {
+            name: "RPi 2",
+            peripheral_addr: 0x3F00_0000,
+            early_printing_method: "Serial",
+            main_printing_method: "Fb",
+            arch_init: true,
+            kernel_init: false,
+            board_specific_kernel: Some(rpi_kernel_init),
+        }); }
         self.uart_io_init();
     }
 }
