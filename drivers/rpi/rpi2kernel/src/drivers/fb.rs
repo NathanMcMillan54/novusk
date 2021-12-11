@@ -1,6 +1,8 @@
+use fb::{FbColor, FrameBufferGraphics};
 use printk::console::KernelConsole;
 
 pub struct Rpi2FrameBuffer {
+    pub color: FbColor,
     pub x: usize,
     pub y: usize,
 }
@@ -8,6 +10,7 @@ pub struct Rpi2FrameBuffer {
 impl Rpi2FrameBuffer {
     pub fn new() -> Self {
         return Rpi2FrameBuffer {
+            color: FbColor::new(0, 0, 0),
             x: 0,
             y: 0,
         };
@@ -15,6 +18,12 @@ impl Rpi2FrameBuffer {
 
     pub fn init(&self) {
 
+    }
+}
+
+impl FrameBufferGraphics for Rpi2FrameBuffer {
+    fn pixel(&self, x: usize, y: usize, color: FbColor) {
+        
     }
 }
 
