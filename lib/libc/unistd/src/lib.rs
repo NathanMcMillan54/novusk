@@ -27,7 +27,8 @@ use table::*;
 
 use novuskinc::kernel::syscalls::*;
 
-pub unsafe fn syscall(sys_num: i32, sys_arg: u8) -> u8 {
+#[no_mangle]
+pub unsafe extern "C" fn syscall(sys_num: i32, sys_arg: u8) -> u8 {
     cfg_if! {
         if #[cfg(any(target_arch = "aarch64", target_arch = "arm", target_arch = "x86_64"))] {
             match sys_num {
