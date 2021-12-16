@@ -25,7 +25,7 @@ impl Rpi2 {
         };
     }
 
-    pub fn init(&self) {
+    pub fn init(&mut self) {
         unsafe { BOARD.set(Board {
             name: "RPi 2",
             peripheral_addr: 0x3F00_0000,
@@ -35,16 +35,17 @@ impl Rpi2 {
             kernel_init: false,
             board_specific_kernel: Some(rpi2_kernel_init),
         }); }
+
         self.uart_io_init();
     }
 }
 
 impl RaspberryPi for Rpi2 {
-    fn uart_io_init(&self) {
+    fn uart_io_init(&mut self) {
         self.uart.write_bytes(b"Using Qemu Output as UART (for now)\n");
     }
 
-    fn mailbox_init(&self) {
+    fn mailbox_init(&mut self) {
         self.mb.init();
     }
 }

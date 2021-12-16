@@ -1,20 +1,21 @@
 use crate::aarch64_printk;
-use init::kmain::kernel_init;
-use super::device;
-use libbmu::bmu_init;
+use init::kmain;
+use super::device::{device_init};
 
-pub unsafe fn aarch64_init() {
-    setup_device();
+pub unsafe fn aarch64_kernel_init() {
+    initialize_device();
+    kinfo!("Device initialized\n");
 
-    bmu_init();
+    kmain::kernel_init();
+    kinfo!("Novusk initialized\n");
 }
 
-fn setup_device() {
-    let (success, device) = device::initialize_device();
+unsafe fn initialize_device() {
+    let (success, name) = device_init();
 
     if success.is_err() {
-        panic!("Error while initializing device: {:?}", success.err());
+        panic!("Failed to initialize device: {}", success.err().unwrap());
     }
 
-    aarch64_printk!("Initialized {}", device);
+    aarch64_printk!("Successfully initialized {}\n", name);
 }

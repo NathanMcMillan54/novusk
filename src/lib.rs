@@ -1,6 +1,6 @@
 #![no_std]
 
-pub use novuskinc as novusk;
+// pub use novuskinc as novusk;
 
 #[cfg(not(feature = "custom_config"))]
 pub mod config;
@@ -21,9 +21,7 @@ pub mod arm {
 
 #[cfg(target_arch = "aarch64")]
 pub mod aarch64 {
-    pub use aarch64::aarch64_printk;
-    pub use aarch64::include::asm;
-    pub use libbmu;
+    pub use aarch64;
 }
 
 #[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
@@ -38,32 +36,32 @@ pub mod xtensa {
 
 pub mod libs {
     pub mod libc {
-        pub use memory;
+        /*pub use memory;
         pub use stdio;
-        pub use unistd;
+        pub use unistd;*/
     }
 
-    #[cfg(target_arch = "x86_64")]
+    /* #[cfg(target_arch = "x86_64")]
     pub use libwin;
 
     #[cfg(target_arch = "x86_64")]
     pub use libost;
 
-    pub use libcolor;
+    pub use libcolor; */
 }
 
 pub mod kernel {
-    pub use kinfo;
+    /* pub use kinfo;
     // pub use power;
-    pub use printk;
+    pub use printk; */
 }
 
 pub mod drivers {
     #[cfg(target_arch = "x86_64")]
     pub use x86_64::kernel::task as multitask;
 
-    #[cfg(target_arch = "aarch64")]
-    pub use rpi;
+    /* #[cfg(target_arch = "aarch64")]
+    pub use rpi;*/
 
     pub mod firmware {
         pub use usbd;

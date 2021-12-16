@@ -1,5 +1,8 @@
 #![no_std]
+#![feature(llvm_asm)]
 
+extern crate nmallocator;
+#[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 
 pub mod board;
@@ -30,7 +33,9 @@ pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) 
     let mut pi = Rpi3::new();
     pi.init();
 
-    return (Ok(()), "RPi 3");
+    if pi.error.0 {
+        return (Err(pi.error.1), "RPi 3");
+    } else { return (Ok(()), "RPi 3"); }
 }
 
 #[cfg(target_arch = "arm")]

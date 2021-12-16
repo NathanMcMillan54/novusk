@@ -2,23 +2,17 @@
 name = "aarch64"
 version = "0.1.0"
 edition = "2018"
-description = "Aarch64/arm64 support for Novusk, mostly a kernel for the RaspberryPi"
+description = "Aarch64/arm64 kernel support"
 
 [dependencies]
-cortex-a = "6.1.0"
 init = { path = "../../init/" }
-mio = { path = "../../mm/mio/" }
 kinfo = { path = "../../kernel/kinfo/" }
-libbmu = { path = "../../lib/libbmu/" }
-modules = { path = "../../kernel/modules/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/" }
+tock-registers = "0.7.0"
 r0 = "1.0.0"
 rpi = { path = "../../drivers/rpi/" }
-tock-registers = "0.7.0"
 
 [features]
-default = ["rpi3"]
 rpi3 = ["rpi/rpi3"]
-rpi4 = [] # soon
 qemu_virt = []

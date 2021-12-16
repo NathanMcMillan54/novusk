@@ -1,18 +1,20 @@
-global_asm!(include_str!("boot64.S"));
-
 use crate::aarch64_printk;
-use crate::kernel::init::aarch64_init;
-use crate::kernel::serial;
-use crate::include::asm::wfe;
-use crate::mm::memory_init;
+use crate::kernel::init::aarch64_kernel_init;
+
+mod early;
+use early::early_aarch64_init;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_boot_setup() -> ! {
-    memory_init();
+    early_aarch64_init();
+    kinfo!("Early kernel initialized\n");
+    aarch64_printk!("    Setup early memory\n");
+    aarch64_printk!("    Initialized UART I/O\n");
 
-    serial::serial_init();
     aarch64_printk!("Starting kernel...\n\n");
+    aarch64_kernel_init();
 
-    aarch64_init();
     panic!("Nothing to run");
 }
+
+global_asm!(include_str!("boot64.S"));

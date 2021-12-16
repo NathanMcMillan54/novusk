@@ -1,9 +1,9 @@
-use crate::define_syscall;
-use core::fmt::{Arguments, Result, Write};
+use core::fmt::{Arguments, Write};
 use core::ops;
-use libbmu::Time;
-use rpi::{MMIO_BASE, gpio};
-use tock_registers::interfaces::{ReadWriteable, Readable, Writeable};
+use rpi::rpi3::gpio;
+use rpi::MMIO_BASE;
+use tock_registers::interfaces::{Readable, ReadWriteable, Writeable};
+use tock_registers::register_bitfields;
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
 
 register_bitfields! {
@@ -81,8 +81,6 @@ impl ops::Deref for Uart {
 }
 
 impl Uart {
-    // Because the Aarch64 kernel is for the RPi you won't set the uart address in the "new"
-    // function like in RISCV, if a new board is supported it'll take arguments.
     pub fn new() -> Self {
         return Uart;
     }
@@ -92,8 +90,6 @@ impl Uart {
     }
 
     pub fn init(&self) {
-        let mut time = Time::new();
-
         self.AUX_ENABLES.modify(AUX_ENABLES::MINI_UART_ENABLE::SET);
         self.AUX_MU_IER.set(0);
         self.AUX_MU_CNTL.set(0);
@@ -103,54 +99,48 @@ impl Uart {
         self.AUX_MU_IIR.write(AUX_MU_IIR::FIFO_CLEAR::All);
         self.AUX_MU_BAUD.write(AUX_MU_BAUD::RATE.val(270));
 
+        // Map UART1 to GPIO pins
         unsafe {
             (*gpio::GPFSEL1).modify(gpio::GPFSEL1::FSEL14::TXD1 + gpio::GPFSEL1::FSEL15::RXD1);
 
-            (*gpio::GPPUD).set(0);
-
-            time.sleepc(150);
+            (*gpio::GPPUD).set(0); // enable pins 14 and 15
+            for _ in 0..150 {
+                llvm_asm!("nop" :::: "volatile");
+            }
 
             (*gpio::GPPUDCLK0).write(
                 gpio::GPPUDCLK0::PUDCLK14::AssertClock + gpio::GPPUDCLK0::PUDCLK15::AssertClock,
             );
-
-            time.sleepc(150);
+            for _ in 0..150 {
+                llvm_asm!("nop" :::: "volatile");
+            }
 
             (*gpio::GPPUDCLK0).set(0);
         }
 
-        self.AUX_MU_CNTL.write(AUX_MU_CNTL::RX_EN::Enabled + AUX_MU_CNTL::TX_EN::Enabled);
+        self.AUX_MU_CNTL
+            .write(AUX_MU_CNTL::RX_EN::Enabled + AUX_MU_CNTL::TX_EN::Enabled);
     }
 
     pub fn send(&self, c: char) {
-        let mut time = Time::new();
-
         loop {
             if self.AUX_MU_LSR.is_set(AUX_MU_LSR::TX_EMPTY) {
                 break;
             }
 
-            time.sleepc(1);
+            unsafe { llvm_asm!("nop" :::: "volatile") };
         }
 
         self.AUX_MU_IO.set(c as u32);
     }
 
-    pub fn receive(&mut self) -> u8 {
-        let mut ret = self.AUX_MU_IO.get() as u8;
-
-        return ret;
-    }
-
-    pub fn input_char(&self) -> char {
-        let mut time = Time::new();
-
+    pub fn readc(&self) -> char {
         loop {
             if self.AUX_MU_LSR.is_set(AUX_MU_LSR::DATA_READY) {
                 break;
             }
 
-            time.sleepc(1);
+            unsafe { llvm_asm!("nop" :::: "volatile") };
         }
 
         let mut ret = self.AUX_MU_IO.get() as u8 as char;
@@ -171,36 +161,33 @@ impl Uart {
             self.send(c);
         }
     }
+
+    pub fn hex(&self, d: u32) {
+        let mut n;
+
+        for i in 0..8 {
+            n = d.wrapping_shr(28 - i * 4) & 0xF;
+
+            if n > 9 {
+                n += 0x37;
+            } else {
+                n += 0x30;
+            }
+
+            self.send(n as u8 as char);
+        }
+    }
 }
 
 impl Write for Uart {
-    fn write_str(self: &mut Self, s: &str) -> Result {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
         self.write_string(s);
         Ok(())
     }
 }
 
-// -----------
-// Write/sys_write
-//
-// System call for writing for Aarch64
-fn write(write: u8) -> u8 {
+pub fn uart_init() {
     let mut uart = Uart::new();
-    uart.send(write as char);
 
-    return 0;
+    uart.init();
 }
-
-define_syscall!(sys_write, write);
-
-// Read/sys_read
-//
-// System call for reading for Aarch64
-fn read(sys_arg: u8) -> u8 {
-    let mut uart = Uart::new();
-    let ret = uart.receive();
-
-    return ret;
-}
-
-define_syscall!(sys_read, read);

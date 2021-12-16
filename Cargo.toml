@@ -85,11 +85,11 @@ members = [
 ]
 
 [dependencies]
-kinfo = { path = "kernel/kinfo/" }
-libcolor = { path = "lib/libcolor/" }
-memory = { path = "mm/memory/" }
-novuskinc = { path = "include/novusk/" }
-printk = { path = "kernel/printk/" }
+#kinfo = { path = "kernel/kinfo/" }
+#libcolor = { path = "lib/libcolor/" }
+#memory = { path = "mm/memory/" }
+#novuskinc = { path = "include/novusk/" }
+#printk = { path = "kernel/printk/" }
 # power = { path = "kernel/power/" }
 stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
@@ -108,7 +108,7 @@ x86_64-sound = { path = "sound/x86_64-sound" }
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 aarch64 = { path = "arch/aarch64/" }
 libbmu = { path = "lib/libbmu/" }
-rpi = { path = "drivers/rpi/" }
+# rpi = { path = "drivers/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
 arm32 = { path = "arch/arm32/" }

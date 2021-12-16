@@ -11,7 +11,7 @@ vgag = { path = "../../drivers/gpu/vgag/" }
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 libbmu = { path = "../../lib/libbmu/" }
 tock-registers = "0.7.0"
-rpi = { path = "../../drivers/rpi/" }
+# rpi = { path = "../../drivers/rpi/" }
 
 [dependencies]
 cfg-if = "1.0.0"

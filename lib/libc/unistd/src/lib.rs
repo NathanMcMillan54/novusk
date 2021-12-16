@@ -6,9 +6,9 @@
 #[path = "../../../../arch/x86_64/src/include/sys_tbl.rs"]
 pub mod table;
 
-#[cfg(target_arch = "aarch64")]
+/* #[cfg(target_arch = "aarch64")]
 #[path = "../../../../arch/aarch64/src/kernel/sys.rs"]
-pub mod table;
+pub mod table; */
 
 #[cfg(target_arch = "arm")]
 #[path = "../../../../arch/arm32/src/include/asm/sys_tbl.rs"]
@@ -22,7 +22,7 @@ pub mod table;
 #[path = "../../../../arch/riscv/src/include/syscall_table.rs"]
 pub mod table;
 
-pub use table::*;
+#[cfg(not(target_arch = "aarch64"))]
 use table::*;
 
 use novuskinc::kernel::syscalls::*;

@@ -1,21 +1,20 @@
 use core::fmt::{Arguments, Write};
-use crate::kernel::uart::Uart;
+use super::uart::Uart;
 
-#[export_name = "arch_printk"]
 #[no_mangle]
-pub extern "C" fn _a64_printk(fmt: Arguments) {
+#[export_name = "arch_printk"]
+pub extern "C" fn _aarch64_printk(fmt: Arguments) {
     let mut uart = Uart::new();
-    uart.write_fmt(format_args!("{}", fmt));
+
+    uart.write_fmt(fmt);
 }
 
-#[export_name = "_kernel_main_print"]
 #[no_mangle]
-pub extern "C" fn _a64_main_printk(fmt: Arguments) {
-    // For now just call the "early" printk function
-    _a64_printk(fmt);
+pub extern "C" fn _kernel_main_print(fmt: Arguments) {
+
 }
 
 #[macro_export]
 macro_rules! aarch64_printk {
-    ($($arg:tt)*) => {$crate::kernel::printk::_a64_printk(format_args!($($arg)*))};
+    ($($arg:tt)*) => {$crate::kernel::printk::_aarch64_printk(format_args!($($arg)*))};
 }
