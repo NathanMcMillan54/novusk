@@ -5,6 +5,7 @@ edition = "2018"
 description = "Aarch64/arm64 kernel support"
 
 [dependencies]
+armfb = { path = "../../drivers/gpu/armfb/" }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }

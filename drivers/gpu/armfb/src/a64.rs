@@ -79,5 +79,7 @@ impl A64Fb {
 }
 
 pub fn a64_fb_init() {
+    let mut fb = A64Fb::new();
 
+    fb.init();
 }
