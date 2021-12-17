@@ -1,0 +1,12 @@
+[package]
+name = "armfb"
+version = "0.1.0"
+edition = "2021"
+description = "ARM 32/64 bit frambuffer graphics"
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+rpi = { path = "../../rpi/" }
+
+[dependencies]
+fb = { path = "../../fb/" }
+novuskinc = "0.1.0"

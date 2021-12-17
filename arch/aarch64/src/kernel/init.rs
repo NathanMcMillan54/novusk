@@ -1,6 +1,7 @@
 use crate::aarch64_printk;
 use init::kmain;
 use super::device::{device_init};
+// use setup::after_kernel_setup;
 
 pub unsafe fn aarch64_kernel_init() {
     initialize_device();
@@ -8,6 +9,16 @@ pub unsafe fn aarch64_kernel_init() {
 
     kmain::kernel_init();
     kinfo!("Novusk initialized\n");
+
+    extern "C" {
+        fn kernel_main();
+    }
+
+    aarch64_printk!("Starting main...\n");
+    //after_kernel_setup();
+    //kinfo!("After kernel initialized\n");
+
+    kernel_main();
 }
 
 unsafe fn initialize_device() {
