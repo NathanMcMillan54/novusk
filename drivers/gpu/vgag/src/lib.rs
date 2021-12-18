@@ -58,7 +58,7 @@ impl VgaG {
     }
 }
 
-fn vgag_init() {
+pub fn vgag_init() {
     unsafe {
         let mode = VGAG.check_switch();
 
@@ -72,9 +72,9 @@ fn vgag_init() {
     }
 }
 
-module_init!(gpug_init, vgag_init);
+// module_init!(gpug_init, vgag_init);
 
-fn vgag_end() {
+pub fn vgag_end() {
     unsafe {
         if VGAG.check_switch() == VgaModes::None {
             VGAG.switch = 0;
@@ -82,4 +82,4 @@ fn vgag_end() {
     }
 }
 
-module_end!(gpug_end, vgag_end);
+// module_end!(gpug_end, vgag_end);

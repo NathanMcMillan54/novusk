@@ -4,11 +4,9 @@ version = "0.1.0"
 edition = "2018"
 description = "Main kernel initialization"
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-vgag = { path = "../drivers/gpu/vgag/" }
-
 [dependencies]
 cfg-if = "1.0.0"
+gpu = { path = "../drivers/gpu/" }
 kinfo = { path = "../kernel/kinfo/" }
 konfig = { path = "../kernel/konfig/", features = ["default_config"] }
 lazy_static = "1.4.0"

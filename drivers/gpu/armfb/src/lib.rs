@@ -25,14 +25,14 @@ impl ArmFb {
     }
 }
 
-fn armfb_init() {
+pub fn armfb_init() {
     unsafe { ARMFB.init(); }
 }
 
-module_init!(gpug_init, armfb_init);
+// module_init!(gpug_init, armfb_init);
 
-fn armfb_end() {
+pub fn armfb_end() {
     unsafe { ARMFB.first_init = false; }
 }
 
-module_end!(gpug_end, armfb_end);
+// module_end!(gpug_end, armfb_end);

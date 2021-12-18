@@ -34,6 +34,7 @@ members = [
     "drivers/firmware/esp/",
     "drivers/firmware/mailbox/",
     "drivers/firmware/sifive/",
+    "drivers/gpu/",
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
     "drivers/input/keyboard/",

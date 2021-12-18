@@ -1,0 +1,13 @@
+[package]
+name = "gpu"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+novuskinc = { path = "../../include/novusk/" }
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+armfb = { path = "armfb/" }
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+vgag = { path = "vgag/" }

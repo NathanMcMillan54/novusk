@@ -102,9 +102,9 @@ impl FrameBufferGraphics for A64Fb {
     }
 }
 
-pub fn a64_fb_init() {\
+pub fn a64_fb_init() {
     let mut fb = A64Fb::new();
 
     fb.init();
-    fb.clear_screen(FbColor::new(0x666666, 0, 0));
+    fb.clear_screen(FbColor::new(0x383838, 0, 0));
 }

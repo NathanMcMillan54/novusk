@@ -1,3 +1,4 @@
+use armfb::{armfb_end, armfb_init};
 use crate::aarch64_printk;
 use init::kmain;
 use super::device::{device_init};
@@ -6,6 +7,9 @@ use setup::after_kernel_setup;
 pub unsafe fn aarch64_kernel_init() {
     initialize_device();
     kinfo!("Device initialized\n");
+
+    /* armfb_init();
+    armfb_end();*/
 
     kmain::kernel_init();
     kinfo!("Novusk initialized\n");

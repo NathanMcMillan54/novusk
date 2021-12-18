@@ -1,4 +1,4 @@
-// use gpu::GpuGraphics;
+use gpu::GpuGraphics;
 use kinfo::info::*;
 use konfig::Konfig;
 use novuskinc::fs::RootDir;
@@ -16,8 +16,8 @@ impl Kernel {
         return Kernel;
     }
 
-    pub fn gpu_graphics(&mut self) {
-        // return GpuGraphics::new();
+    pub fn gpu_graphics(&mut self) -> GpuGraphics {
+        return GpuGraphics::new();
     }
 
     pub fn kernel_console(&mut self) -> KernelConsole {
