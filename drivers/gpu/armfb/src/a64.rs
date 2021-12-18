@@ -1,5 +1,5 @@
 use core::sync::atomic::{compiler_fence, Ordering};
-use fb::Fb;
+use fb::{Fb, FbColor, FrameBufferGraphics};
 use rpi::rpi3::mb::*;
 
 pub struct A64Fb {
@@ -78,8 +78,33 @@ impl A64Fb {
     }
 }
 
-pub fn a64_fb_init() {
+impl FrameBufferGraphics for A64Fb {
+    fn pixel(&self, x: usize, y: usize, color: FbColor) {
+        let mut cursor = self.ptr as *mut u32;
+
+        unsafe {
+            *cursor = color.r as u32;
+            cursor = cursor.offset(1);
+        }
+    }
+
+    fn clear_screen(&self, color: FbColor) {
+        let mut cursor = self.ptr as *mut u32;
+
+        for y in 0..self.height {
+            for x in 0..self.width {
+                unsafe {
+                    *cursor = color.r as u32;
+                    cursor = cursor.offset(1);
+                }
+            }
+        }
+    }
+}
+
+pub fn a64_fb_init() {\
     let mut fb = A64Fb::new();
 
     fb.init();
+    fb.clear_screen(FbColor::new(0x666666, 0, 0));
 }

@@ -7,5 +7,8 @@ description = "OS tools"
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 vgag = { path = "../../drivers/gpu/vgag/" }
 
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+armfb = { path = "../../drivers/gpu/armfb/" }
+
 [dependencies]
 mouse = { path = "../../drivers/input/mouse/" }

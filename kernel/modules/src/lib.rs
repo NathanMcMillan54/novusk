@@ -10,3 +10,9 @@ pub use start::*;
 
 extern crate ex1;
 extern crate fscheck;
+
+#[cfg(target_arch = "x86_64")]
+extern crate vgag;
+
+#[cfg(target_arch = "aarch64")]
+extern crate armfb;

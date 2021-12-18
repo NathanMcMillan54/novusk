@@ -11,7 +11,7 @@ pub extern "C" fn _aarch64_printk(fmt: Arguments) {
 
 #[no_mangle]
 pub extern "C" fn _kernel_main_print(fmt: Arguments) {
-
+    _aarch64_printk(fmt);
 }
 
 #[macro_export]

@@ -7,3 +7,6 @@ description = "Library for GUI windows"
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 novuskinc = { path = "../../include/novusk/" }
 vgag = { path = "../../drivers/gpu/vgag/" }
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+armfb = { path = "../../drivers/gpu/armfb/" }

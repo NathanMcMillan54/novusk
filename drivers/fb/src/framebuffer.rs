@@ -23,6 +23,10 @@ pub trait FrameBufferGraphics {
 
     }
 
+    fn clear_screen(&self, color: FbColor) {
+
+    }
+
     fn write_char(&self, x: usize, y: usize, color: FbColor, c: char) {
 
     }
