@@ -1,5 +1,6 @@
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub enum HtmlColors {
+#[repr(usize)]
+pub enum HexColors {
     Black = 0x000000,
     Red = 0xff0000,
     Blue = 0x0000ff,
@@ -7,5 +8,6 @@ pub enum HtmlColors {
     Yellow = 0xffff00,
     Purple = 0xff00ff,
     Orange = 0xff9900,
+    LightGray = 0xa6a6a6,
     White = 0xffffff
 }

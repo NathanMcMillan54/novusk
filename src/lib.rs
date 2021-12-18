@@ -41,19 +41,18 @@ pub mod libs {
         pub use unistd;*/
     }
 
-    /* #[cfg(target_arch = "x86_64")]
+    #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
     pub use libwin;
 
-    #[cfg(target_arch = "x86_64")]
+    #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
     pub use libost;
 
-    pub use libcolor; */
+    pub use libcolor;
 }
 
 pub mod kernel {
-    /* pub use kinfo;
-    // pub use power;
-    pub use printk; */
+    pub use kinfo;
+    pub use printk;
 }
 
 pub mod drivers {

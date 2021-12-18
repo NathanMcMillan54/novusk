@@ -1,7 +1,7 @@
 #![no_std]
 
-#[cfg(not(target_arch = "x86_64"))]
-compile_error!("This crate is intended for x86_64");
+#[cfg(not(any(target_arch = "x86_64", target_arch = "aarch64")))]
+compile_error!("This crate is intended for x86_64 and Aarch64");
 
 pub(crate) mod display;
 pub mod graphics;

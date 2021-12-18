@@ -9,4 +9,5 @@ rpi = { path = "../../rpi/" }
 
 [dependencies]
 fb = { path = "../../fb/" }
+libcolor = { path = "../../../lib/libcolor/" }
 novuskinc = "0.1.0"
