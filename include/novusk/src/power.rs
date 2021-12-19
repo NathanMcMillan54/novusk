@@ -11,4 +11,11 @@ fn reboot(sys_arg: u8) -> u8 {
     return 1;
 }
 
-define_syscall!(sys_reboot, reboot);
+#[cfg(target_arch = "x86_64")]
+define_syscall!(REBOOT, sys_reboot, 3, reboot);
+
+#[cfg(target_arch = "aarch64")]
+define_syscall!(REBOOT, sys_reboot, 142, reboot);
+
+#[cfg(any(target_arch = "arm", target_arch = "riscv32"))]
+define_syscall!(REBOOT, sys_reboot, 5, reboot);

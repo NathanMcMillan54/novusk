@@ -15,5 +15,5 @@ pub fn read(sys_arg: u8) -> u8 {
 }
 
 #[cfg(target_arch = "x86_64")]
-define_syscall!(sys_read, read);
+define_syscall!(READ, sys_read, 0, read);
 

@@ -2,7 +2,7 @@ use crate::arm32_printk;
 use nmallocator::LockedHeap;
 
 #[global_allocator]
-pub static mut ALLOCATOR: LockedHeap = LockedHeap::empty();
+pub static mut ALLOCATOR: nmallocator::LockedHeap = nmallocator::LockedHeap::empty();
 
 pub unsafe fn allocator_init() {
     #[cfg(feature = "cortex_a")]

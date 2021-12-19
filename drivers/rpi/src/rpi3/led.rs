@@ -1,5 +1,5 @@
 use libbmu::Time;
-use crate::{gpio::*, RaspberryPi, Rpi3};
+use crate::{rpi3::gpio::*, RaspberryPi, Rpi3};
 use tock_registers::interfaces::Writeable;
 
 pub struct Rpi3Led {

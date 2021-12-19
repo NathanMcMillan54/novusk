@@ -14,7 +14,7 @@ cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
-nmallocator = { path = "../../mm/nmallocator/", features = ["linked_list"] }
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/" }
 rpi = { path = "../../drivers/rpi/" }
@@ -23,8 +23,8 @@ stmd = { path = "../../drivers/firmware/arm/stmd/" }
 time = { path = "../../kernel/time/" }
 
 [features]
-cortex_a = []
-cortex_m = []
+cortex_a = ["nmallocator/wee_allocator"]
+cortex_m = ["nmallocator/linked_list"]
 rpi2 = ["cortex_a", "rpi/rpi2", "not_stm32"]
 stellaris_6965 = ["cortex_m", "not_stm32"]
 not_stm32 = ["stmd/stm32f401"]

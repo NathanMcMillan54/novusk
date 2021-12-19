@@ -13,4 +13,4 @@ fn version(sys_arg: u8) -> u8 {
     return MAJOR_VERSION as u8;
 }
 
-define_syscall!(sys_version, version);
+define_syscall!(VERSION, sys_version, 2, version);

@@ -16,7 +16,7 @@ cfg_if! {
             return 1;
         }
 
-        define_syscall!(sys_write, a32_write);
-        define_syscall!(sys_read, a32_read);
+        define_syscall!(WRITE, sys_write, 4, a32_write);
+        define_syscall!(READ, sys_read, 3, a32_read);
     }
 }
