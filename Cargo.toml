@@ -2,19 +2,19 @@
 name = "novusk"
 version = "3.0.0-beta-kernel-v3"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [[bin]]
 name = "novusk_kernel"
 path = "src/main.rs"
-edition = "2018"
+edition = "2021"
 
 [lib]
 name = "novusk"
 path = "src/lib.rs"
-edition = "2018"
+edition = "2021"
 # Remove the comment if you're going to link Novusk to something else
-# crate-type = ["staticlib"]
+crate-type = ["staticlib"]
 
 [workspace]
 members = [

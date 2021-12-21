@@ -1,7 +1,7 @@
 [package]
 name = "riscv"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 description = "RISCV32/64 support"
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]

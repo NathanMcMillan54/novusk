@@ -2,7 +2,7 @@
 name = "blue"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 init = { path = "../../init/" }

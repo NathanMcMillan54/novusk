@@ -1,7 +1,7 @@
 [package]
 name = "stm_eth"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 description = "Ethernet driver for STM32 devices"
 
 [dependencies]
