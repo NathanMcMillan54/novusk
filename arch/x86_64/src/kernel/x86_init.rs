@@ -5,6 +5,7 @@ use super::kernel::*;
 // use gpu::{GpuDrivers, GPUGRAPHICS};
 use setup::after_kernel_setup;
 use crate::boot::boot::die;
+use crate::kernel::power::shutdown;
 use crate::kernel::task::{Executor, Task};
 
 unsafe fn set_drivers() {
