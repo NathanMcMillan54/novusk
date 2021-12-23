@@ -19,6 +19,7 @@ pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
 nmallocator = { path = "../../mm/nmallocator/" }
 notify = { path = "../../kernel/notify/" }
 novuskinc = { path = "../../include/novusk/" }
+novusk_syscalls = "0.2.0"
 pic8259 = "0.10.2"
 printk = { path = "../../kernel/printk/" }
 volatile = "0.2.6"

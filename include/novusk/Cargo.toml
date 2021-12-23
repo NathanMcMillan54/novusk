@@ -16,7 +16,7 @@ tock-registers = "0.7.0"
 [dependencies]
 cfg-if = "1.0.0"
 kinfo = { path = "../../kernel/kinfo/" }
+novusk_syscalls = "0.2.0"
 printk = { path = "../../kernel/printk/" }
 tempfs = { path = "../../fs/tempfs/" }
 vfs = { path = "../../fs/vfs/" }
-

@@ -5,6 +5,7 @@ use super::kernel::*;
 // use gpu::{GpuDrivers, GPUGRAPHICS};
 use setup::after_kernel_setup;
 use crate::boot::boot::die;
+use crate::include::sys::syscall::syscalls_init;
 use crate::kernel::power::shutdown;
 use crate::kernel::task::{Executor, Task};
 
@@ -31,6 +32,9 @@ pub unsafe fn x86_kernel_init() {
     set_drivers();
     kinfo!("Drivers set\n");
     x86_printk!("    Set GPU Graphics to VGA\n");
+
+    syscalls_init();
+    kinfo!("System calls initialized\n");
 
     kmain::kernel_init();
     kinfo!("Novusk initialized\n");

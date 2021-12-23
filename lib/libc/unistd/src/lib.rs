@@ -3,7 +3,7 @@
 #[macro_use] extern crate cfg_if;
 
 #[cfg(target_arch = "x86_64")]
-#[path = "../../../../arch/x86_64/src/include/sys_tbl.rs"]
+#[path = "../../../../arch/x86_64/src/include/sys/sys_tbl.rs"]
 pub mod table;
 
 #[cfg(target_arch = "aarch64")]
