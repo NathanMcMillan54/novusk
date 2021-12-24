@@ -31,12 +31,11 @@ impl KernelConsole {
 
     pub fn write_fmt(&mut self, fmt: Arguments) {
         extern "C" {
-            fn _kernel_main_print(x: usize, y: usize, args: Arguments);
+            fn _kernel_main_print(args: Arguments);
         }
 
         unsafe {
-            WRITER_Y = WRITER_Y + 12;
-            _kernel_main_print(self.x, WRITER_Y, fmt);
+            _kernel_main_print(fmt);
         }
     }
 }

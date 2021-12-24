@@ -10,7 +10,7 @@ pub unsafe fn aarch64_kernel_init() {
     kinfo!("Device initialized\n");
 
     syscalls_init();
-    kinfo!("System calls initialized");
+    kinfo!("System calls initialized\n");
 
     kmain::kernel_init();
     kinfo!("Novusk initialized\n");
