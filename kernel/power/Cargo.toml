@@ -8,5 +8,4 @@ description = "Power managment for Novusk"
 x86_64 = "0.14.5"
 
 [dependencies]
-novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }

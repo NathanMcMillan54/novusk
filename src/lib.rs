@@ -36,9 +36,9 @@ pub mod xtensa {
 
 pub mod libs {
     pub mod libc {
-        /*pub use memory;
+        pub use memory;
         pub use stdio;
-        pub use unistd;*/
+        pub use unistd;
     }
 
     #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]

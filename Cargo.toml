@@ -89,7 +89,7 @@ members = [
 [dependencies]
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
-#memory = { path = "mm/memory/" }
+memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
 # power = { path = "kernel/power/" }

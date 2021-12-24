@@ -24,10 +24,10 @@ pub unsafe fn x86_kernel_init() {
     x86_printk!("    GDT initialized\n");
     x86_printk!("    Brand specific CPU initialized\n");
 
-    idt_init();
+    /*idt_init();
     kinfo!("Interrupts initialized\n");
     x86_printk!("    IDT initialized\n");
-    x86_printk!("    Interrupts are enabled\n");
+    x86_printk!("    Interrupts are enabled\n");*/
 
     set_drivers();
     kinfo!("Drivers set\n");

@@ -1,3 +1,5 @@
+use crate::define_syscall;
+use alloc::vec::Vec;
 use core::fmt::{Arguments, Write};
 use core::ops;
 use rpi::rpi3::gpio;
@@ -191,3 +193,28 @@ pub fn uart_init() {
 
     uart.init();
 }
+
+fn write(write_byte: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
+    let mut uart = Uart::new();
+
+    uart.send(write_byte as char);
+
+    return sys_arg3;
+}
+
+define_syscall!(sys_write, write);
+
+unsafe fn read(buf: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
+    let mut ret: Vec<u8> = vec![];
+    let mut uart = Uart::new();
+
+    for _ in 0..buf {
+        let input = uart.readc() as u8;
+
+        ret.push(input);
+    }
+
+    return *ret.as_ptr();
+}
+
+define_syscall!(sys_read, read);

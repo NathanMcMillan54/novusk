@@ -1,9 +1,9 @@
 use core::str::from_utf8_unchecked;
 use crate::define_syscall;
 
-/* #[cfg(target_arch = "aarch64")]
+#[cfg(target_arch = "aarch64")]
 #[path = "../../../../arch/aarch64/src/kernel/uart.rs"]
-pub mod a64_io; */
+pub mod a64_io;
 
 cfg_if! {
     if #[cfg(target_arch = "arm")] {

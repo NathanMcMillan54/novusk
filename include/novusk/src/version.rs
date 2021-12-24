@@ -9,8 +9,8 @@ pub const VERSION_NAME: &str = "beta";
 // Version/sys_version
 //
 // This is used for getting the major version of Novusk
-fn version(sys_arg: u8) -> u8 {
+fn version(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
     return MAJOR_VERSION as u8;
 }
 
-define_syscall!(VERSION, sys_version, 2, version);
+define_syscall!(sys_version, version);

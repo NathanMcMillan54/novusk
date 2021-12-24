@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-#[macro_use] pub extern crate novusk;
+#[macro_use] extern crate novusk;
 
 #[no_mangle]
 pub unsafe extern "C" fn kernel_main() {

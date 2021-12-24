@@ -22,13 +22,10 @@ macro_rules! define_elf_starter_function {
 
 #[macro_export]
 macro_rules! define_syscall {
-    ($syscall_name:ident, $sys_name:ident, $syscall_num:expr, $syscall_fun:ident) => {
+    ($sys_name:ident, $syscall_fun:ident) => {
         #[no_mangle]
-        pub static $syscall_name: usize = $syscall_num;
-
-        #[no_mangle]
-        pub extern "C" fn $sys_name(sys_arg: u8) {
-            $syscall_fun(sys_arg);
+        pub unsafe extern "C" fn $sys_name(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) {
+            $syscall_fun(sys_arg1, sys_arg2, sys_arg3);
         }
     };
 }

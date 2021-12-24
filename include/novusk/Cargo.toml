@@ -11,12 +11,13 @@ vgag = { path = "../../drivers/gpu/vgag/" }
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 libbmu = { path = "../../lib/libbmu/" }
 tock-registers = "0.7.0"
-# rpi = { path = "../../drivers/rpi/" }
+rpi = { path = "../../drivers/rpi/" }
 
 [dependencies]
 cfg-if = "1.0.0"
 kinfo = { path = "../../kernel/kinfo/" }
-novusk_syscalls = "0.2.0"
+novusk_syscalls = "0.2.1"
+power = { path = "../../kernel/power/" }
 printk = { path = "../../kernel/printk/" }
 tempfs = { path = "../../fs/tempfs/" }
 vfs = { path = "../../fs/vfs/" }

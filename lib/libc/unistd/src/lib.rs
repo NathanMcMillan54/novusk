@@ -7,7 +7,7 @@
 pub mod table;
 
 #[cfg(target_arch = "aarch64")]
-#[path = "../../../../arch/aarch64/src/include/asm/systbl.rs"]
+#[path = "../../../../arch/aarch64/src/include/sys/systbl.rs"]
 pub mod table;
 
 #[cfg(target_arch = "arm")]
@@ -25,22 +25,11 @@ pub mod table;
 use table::*;
 pub use table::*;
 
-use novuskinc::kernel::syscalls::*;
+use novuskinc::kernel::syscalls::table::SYSCALL_TABLE;
 
 #[no_mangle]
-pub unsafe extern "C" fn syscall(sys_num: i32, sys_arg: u8) -> u8 {
-    cfg_if! {
-        if #[cfg(any(target_arch = "aarch64", target_arch = "arm", target_arch = "x86_64"))] {
-            match sys_num {
-                VERSION => return sys_version(sys_arg),
-                // WRITE => sys_write(sys_arg),
-                READ => return sys_read(sys_arg),
-                REBOOT => sys_reboot(sys_arg),
-                _ => 0 + 0,
-            };
-        }
-    }
-
+pub unsafe extern "C" fn syscall(sys_num: u32, sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
+    SYSCALL_TABLE.make_call(sys_num, sys_arg1, sys_arg2, sys_arg3);
 
     return 0;
 }

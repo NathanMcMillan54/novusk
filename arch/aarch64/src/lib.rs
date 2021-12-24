@@ -6,7 +6,10 @@
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate novuskinc;
 
+pub(crate) use novuskinc::define_syscall;
+
 mod boot;
-pub(crate) mod kernel;
-pub(crate) mod mm;
+pub mod include;
+pub mod kernel;
+pub mod mm;
 mod net;

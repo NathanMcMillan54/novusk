@@ -1,6 +1,8 @@
 #![no_std]
+#![feature(asm, llvm_asm)]
 #![feature(concat_idents)]
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;
 
 #[cfg(target_arch = "aarch64")]
