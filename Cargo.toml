@@ -109,6 +109,7 @@ x86_64-sound = { path = "sound/x86_64-sound" }
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 aarch64 = { path = "arch/aarch64/" }
+armfb = { path = "drivers/gpu/armfb/" }
 libbmu = { path = "lib/libbmu/" }
 libwin = { path = "lib/libwin/" }
 libost = { path = "lib/libost/" }

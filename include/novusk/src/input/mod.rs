@@ -1,3 +1,4 @@
+use printk::printk;
 use crate::define_syscall;
 
 // -----------------
@@ -5,15 +6,14 @@ use crate::define_syscall;
 //
 // Read system call
 #[cfg(target_arch = "x86_64")]
-pub fn read(sys_arg: u8) -> u8 {
+pub unsafe fn read(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
     use pc_keyboard::PcKeyboard;
 
     let mut keyboard = PcKeyboard::new();
-    let mut ret = 0;
+    let mut input = keyboard.read_bytes();
 
-    return ret;
+    return *input.as_ptr();
 }
 
 #[cfg(target_arch = "x86_64")]
-define_syscall!(READ, sys_read, 0, read);
-
+define_syscall!(sys_read, read);

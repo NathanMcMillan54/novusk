@@ -11,6 +11,7 @@ pub mod types;
 
 pub use color::*;
 pub use display::{graphics_pixel, graphics_write, VgaDisplay};
+pub use types::*;
 
 use fb::Fb;
 use spin::Mutex;
@@ -22,12 +23,18 @@ pub static mut VGAG: VgaG = VgaG {
     switch: 0,
     mode: VgaModes::Text80x25,
     first_init: true,
+    y_pos: 0,
+    x_pos: 0,
+    chars_written: 1,
 };
 
 pub struct VgaG {
     pub switch: u32,
     pub first_init: bool,
     pub mode: VgaModes,
+    pub y_pos: usize,
+    pub x_pos: usize,
+    pub chars_written: usize,
 }
 
 impl VgaG {

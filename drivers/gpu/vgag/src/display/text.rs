@@ -4,9 +4,18 @@ use vga::colors::{TextModeColor, Color16};
 
 pub(crate) fn text_80x25_write(x: usize, y: usize, color: usize, string: &str) {
     let mode = Text80x25::new();
-    let screen_char = ScreenCharacter::new(unsafe { *string.as_ptr() }, TextModeColor::new(convert_usize_to_color16(color), Color16::Black));
 
-    mode.write_character(x, y, screen_char)
+    let mut nx = x;
+    let mut ny = y;
+
+    for b in string.as_bytes() {
+        let screen_char = ScreenCharacter::new(*b, TextModeColor::new(convert_usize_to_color16(color), Color16::Black));
+
+        if b == &b'\n' { ny += 1; nx = x; } else {
+            mode.write_character(nx, ny, screen_char);
+            nx += 1;
+        }
+    }
 }
 
 pub(crate) fn text_80x25_pixel(x: usize, y: usize, color: usize) {
