@@ -11,6 +11,8 @@ sifive = { path = "../../drivers/firmware/sifive/" }
 device = { path = "../../drivers/device/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/" }
+novusk_syscalls = "0.2.1"
+novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
 riscv-rt = "0.8.0"
 

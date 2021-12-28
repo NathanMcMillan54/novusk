@@ -1,3 +1,3 @@
-pub const VERSION: usize = 3;
-pub const READ: usize = 63;
-pub const WRITE: usize = 64;
+pub const VERSION: u32 = 3;
+pub const READ: u32 = 63;
+pub const WRITE: u32 = 64;

@@ -205,16 +205,10 @@ fn write(write_byte: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
 define_syscall!(sys_write, write);
 
 unsafe fn read(buf: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
-    let mut ret: Vec<u8> = vec![];
     let mut uart = Uart::new();
+    let ret = uart.readc() as u8;
 
-    for _ in 0..buf {
-        let input = uart.readc() as u8;
-
-        ret.push(input);
-    }
-
-    return *ret.as_ptr();
+    return ret;
 }
 
 define_syscall!(sys_read, read);

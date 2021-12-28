@@ -5,7 +5,7 @@ use crate::define_syscall;
 #[path = "../../../../arch/aarch64/src/kernel/uart.rs"]
 pub mod a64_io;
 
-cfg_if! {
+/*cfg_if! {
     if #[cfg(target_arch = "arm")] {
         fn a32_write(sys_arg: u8) -> u8 {
             unsafe { printk::printk!("{}", from_utf8_unchecked(sys_arg.to_be_bytes().as_ref())); }
@@ -20,3 +20,4 @@ cfg_if! {
         define_syscall!(READ, sys_read, 3, a32_read);
     }
 }
+*/

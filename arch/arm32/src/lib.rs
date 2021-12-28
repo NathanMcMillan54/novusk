@@ -31,6 +31,7 @@ pub(crate) extern crate stellarisd;
 pub(crate) extern crate stmd;
 
 pub mod boot;
+pub mod include;
 pub mod kernel;
 pub mod mm;
 pub mod net;
