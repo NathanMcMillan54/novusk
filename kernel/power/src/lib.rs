@@ -15,7 +15,7 @@ pub(crate) mod arch_power;
 pub(crate) mod arch_power;
 
 #[cfg(target_arch = "riscv32")]
-#[path = "../../../arch/riscv/src/kernel/power/power"]
+#[path = "../../../arch/riscv/src/kernel/power.rs"]
 pub(crate) mod arch_power;
 
 pub mod reboot;

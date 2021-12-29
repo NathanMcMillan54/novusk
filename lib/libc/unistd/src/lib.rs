@@ -1,4 +1,9 @@
 #![no_std]
+#![feature(alloc_error_handler)]
+
+#[cfg(feature = "libc")]
+#[path = "lang.rs"]
+pub mod lang;
 
 pub extern crate novuskinc;
 

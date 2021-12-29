@@ -7,3 +7,6 @@ description = "unistd.h"
 [dependencies]
 cfg-if = "1.0.0"
 novuskinc = { path  = "../../../include/novusk/" }
+
+[features]
+libc = []

@@ -14,7 +14,7 @@ pub extern "C" fn __sync_val_compare_and_swap_1() {  }
 pub extern "C" fn __sync_lock_test_and_set_1() {  }
 
 #[no_mangle]
-pub extern "C" fn __sync_lock_test_and_set_4() { printk!("4\n"); }
+pub extern "C" fn __sync_lock_test_and_set_4() {  }
 
 #[no_mangle]
 pub extern "C" fn __sync_val_compare_and_swap_2() {  }

@@ -66,7 +66,6 @@ members = [
     "kernel/time/",
     # Libraries
     "lib/libbmu/",
-    "lib/libc/stdio/",
     "lib/libc/unistd/",
     "lib/libcolor/",
     "lib/libost/",
@@ -92,8 +91,6 @@ libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
-# power = { path = "kernel/power/" }
-stdio = { path = "lib/libc/stdio/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
 
