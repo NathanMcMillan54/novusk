@@ -1,5 +1,22 @@
-use novusk_syscalls::SysCall;
-use super::{*, sys_tbl::*};
+use novusk_syscalls::{SysCall, SysCallTable};
+//use super::{*, sys_tbl::*};
+
+extern "C" {
+    pub(crate) static mut SYSCALL_TABLE: SysCallTable;
+    pub(self) fn sys_read(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
+    pub(self) fn sys_write(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
+    pub(self) fn sys_write_init(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
+}
+
+pub const READ: u32 = 0;
+pub const WRITE: u32 = 1;
+pub const REBOOT: u32 = 20;
+pub const MODULE: u32 = 21;
+pub const VERSION: u32 = 30;
+pub const UNAME: u32 = 31;
+pub const KINFO: u32 = 32;
+pub const WRITE_INIT: u32 = 35;
+
 
 pub unsafe fn syscalls_init() {
     SYSCALL_TABLE.start_init();
@@ -9,3 +26,4 @@ pub unsafe fn syscalls_init() {
     SYSCALL_TABLE.add_syscall(SysCall::new("sys_write", WRITE, sys_write));
     SYSCALL_TABLE.add_syscall(SysCall::new("write_init", WRITE_INIT, sys_write_init));
 }
+

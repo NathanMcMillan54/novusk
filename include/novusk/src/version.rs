@@ -14,3 +14,7 @@ fn version(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
 }
 
 define_syscall!(sys_version, version);
+
+pub unsafe fn version_init() {
+
+}

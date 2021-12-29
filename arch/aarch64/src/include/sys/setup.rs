@@ -1,5 +1,8 @@
 use novusk_syscalls::{SysCall, SysCallTable};
-use super::systbl::*;
+
+pub const VERSION: u32 = 3;
+pub const READ: u32 = 63;
+pub const WRITE: u32 = 64;
 
 extern "C" {
     static mut SYSCALL_TABLE: SysCallTable;
