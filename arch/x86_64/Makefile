@@ -1,9 +1,14 @@
-TARGET_DIR = ../../target
+TARGET = ../../targets/x86_64-novusk.json
 AS = x86_64-linux-gnu-as
 LD = x86_64-linux-gnu-ld
 
-arch:
-	@ $(AS) -o src/boot/header.o src/boot/header.S
+arch: boot
+	@ cargo build --target $(TARGET)
+
+boot:
+	@ echo "Compiling boot..."
+	@ cd ../../drivers/boot/nkuefi/
+	@ make all ARCH=x86_64
 
 link:
-	@ $(LD) -o src/boot/bzImage --oformat binary -Ttext 0x7c00 src/boot/header.o $(TARGET_DIR)/x86_64-novusk/release/libarch_x86_64.rlib
+	@ echo "Linking..."

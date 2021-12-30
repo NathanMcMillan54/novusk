@@ -10,7 +10,6 @@ all: build_arch link
 	@ echo "Compiling..."
 
 build_arch:
-	@ cargo build --release -p arch_$(ARCH) --target $(TARGET)
 	@ cd arch/$(ARCH)/ && make arch
 
 link:

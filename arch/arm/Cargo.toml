@@ -1,10 +1,10 @@
 [package]
-name = "arch_x86_64"
+name = "arm"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "arch_x86_64"
+name = "arch_arm"
 edition = "2021"
 crate-type = ["staticlib"]
 

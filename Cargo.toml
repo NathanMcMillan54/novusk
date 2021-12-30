@@ -1,4 +1,0 @@
-[workspace]
-members = [
-    "arch/x86_64"
-]

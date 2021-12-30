@@ -1,11 +1,6 @@
 #![no_std]
 #![feature(asm)]
 
-use core::panic::PanicInfo;
-
 pub mod boot;
+pub mod kernel;
 
-#[panic_handler]
-fn _panic(info: &PanicInfo) -> ! {
-    loop {  }
-}

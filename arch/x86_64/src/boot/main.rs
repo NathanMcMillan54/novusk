@@ -1,10 +1,7 @@
-extern "C" {
-    fn bios_print(c: char);
-}
+use super::bootinfo::BootInfo;
 
 #[no_mangle]
-pub unsafe extern "C" fn main() -> ! {
-    bios_print('a');
+pub unsafe extern "C" fn main(bootinfo: &'static BootInfo) -> ! {
 
-    loop { asm!("hlt"); }
+    panic!("Kernel should not have reached the end of main()");
 }
