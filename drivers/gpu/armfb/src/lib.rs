@@ -7,7 +7,11 @@ use fb::{Fb};
 #[cfg(target_arch = "aarch64")]
 pub(crate) mod a64;
 
+#[cfg(target_arch = "arm")]
+pub(crate) mod a32;
+
 pub mod graphics;
+
 pub use graphics::*;
 
 pub static mut ARMFB: ArmFb = ArmFb {

@@ -52,7 +52,7 @@ impl Desktop {
 
         for dy in 0..y {
             for dx in 0..x {
-                graphics_pixel(dx, dy, self.color);
+                unsafe { graphics_pixel(dx, dy, self.color); }
             }
         }
     }

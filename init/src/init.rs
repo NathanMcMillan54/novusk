@@ -51,6 +51,6 @@ impl Kernel {
     }
 
     pub fn get_root_dir(&mut self) -> RootDir {
-        return RootDir::get();
+        return RootDir::make();
     }
 }

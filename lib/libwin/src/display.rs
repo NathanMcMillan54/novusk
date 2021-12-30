@@ -12,16 +12,16 @@ impl Window {
 
         for wy in 0..sy {
             for wx in 0..sx {
-                graphics_pixel(px as usize + wx as usize, py as usize + wy as usize, self.color);
+                unsafe { graphics_pixel(px as usize + wx as usize, py as usize + wy as usize, self.color); }
             }
         }
 
         for y in 0..16 {
             for x in 0..sx {
-                graphics_pixel(px as usize + x as usize, py as usize + y as usize, LIGHT_GRAY);
+                unsafe { graphics_pixel(px as usize + x as usize, py as usize + y as usize, LIGHT_GRAY); }
             }
         }
 
-        graphics_write(px as usize + 5, py as usize + 4, WHITE, self.title.unwrap());
+        unsafe { graphics_write(px as usize + 5, py as usize + 4, WHITE, self.title.unwrap()); }
     }
 }

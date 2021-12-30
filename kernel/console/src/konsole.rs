@@ -1,4 +1,5 @@
 use crate::Console;
+use core::str::from_utf8;
 use gpu::GpuGraphics;
 
 pub struct KernelConsole {
@@ -44,7 +45,7 @@ impl Console for KernelConsole {
             self.row += 1;
         } else {
             self.column += 1;
-            self.gpug.write_string(self.column, self.row, white, byte as &str);
+            unsafe { self.gpug.write_string(self.column, self.row, white, from_utf8(&[byte]).unwrap()); }
         }
     }
 }

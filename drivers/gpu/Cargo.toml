@@ -10,5 +10,8 @@ novuskinc = { path = "../../include/novusk/" }
 armfb = { path = "armfb/" }
 rpi = { path = "../rpi/", features = ["rpi3"] }
 
+[target.'cfg(target_arch = "arm")'.dependencies]
+armfb = { path = "armfb/" }
+
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 vgag = { path = "vgag/" }

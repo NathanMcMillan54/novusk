@@ -4,6 +4,21 @@ use super::modules::modules_init;
 use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
+use tempfs::TempFs;
+use vfs::{Dir, File, NewFs, RootDir};
+
+pub static mut TEMPFS: TempFs = TempFs {
+    fs: NewFs {
+        fs_name: "Temp",
+    },
+    root: RootDir {
+        root: Dir {
+            name: "Root",
+            files: vec![],
+            dirs: vec![]
+        },
+    },
+};
 
 fn check_version(version_str: &str) {
     #[cfg(not(target_arch = "arm"))]
@@ -32,10 +47,8 @@ unsafe fn net_init() {
     kinfo!("Network drivers initialized\n");
 }
 
-fn fs_init() {
-    let mut root = KERNEL.lock().get_root_dir();
-
-    root.root.new_dir("temp/");
+unsafe fn fs_init() {
+    TEMPFS.root.root.new_dir("temp/");
 }
 
 #[no_mangle]

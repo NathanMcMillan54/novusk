@@ -6,7 +6,7 @@ pub struct RootDir {
 }
 
 impl RootDir {
-    pub fn get() -> Self {
+    pub fn make() -> Self {
         return RootDir {
             root: Dir::new("Root"),
         };

@@ -5,7 +5,6 @@ use crossbeam_queue::ArrayQueue;
 use futures_util::stream::{Stream, StreamExt};
 use crate::PcKeyboard;
 use pc_keyboard::{DecodedKey, HandleControl, Keyboard, KeyEvent, ScancodeSet1, layouts::*, KeyCode, KeyState};
-use printk::put::puts;
 use x86_64::instructions::port::Port;
 
 
@@ -33,7 +32,7 @@ impl PcKeyboard {
                     match key {
                         DecodedKey::Unicode(character) => {
                             ret.push(character as u8);
-                            printk!("{} ", character);
+                            printk!("{}", character);
                             if character == '\n' {
                                 break
                             }

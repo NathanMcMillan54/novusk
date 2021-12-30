@@ -4,22 +4,22 @@ use super::file::File;
 #[derive(Clone, Debug)]
 pub struct Dir {
     pub name: &'static str,
-    pub files: Option<Vec<File>>,
-    pub dirs: Option<Vec<Self>>,
+    pub files: Vec<File>,
+    pub dirs: Vec<Self>,
 }
 
 impl Dir {
     pub fn new(dir_name: &'static str) -> Self {
         return Dir {
             name: dir_name,
-            files: None,
-            dirs: None,
+            files: vec![],
+            dirs: vec![],
         };
     }
 
     pub fn new_dir(&mut self, dir_name: &'static str) {
         let dir = Dir::new(dir_name);
 
-        self.dirs.clone().unwrap().push(dir);
+        self.dirs.push(dir);
     }
 }

@@ -1,5 +1,4 @@
 use fb::{FbColor, FrameBufferGraphics};
-use printk::console::KernelConsole;
 
 pub struct Rpi2FrameBuffer {
     pub color: FbColor,
@@ -28,9 +27,7 @@ impl FrameBufferGraphics for Rpi2FrameBuffer {
 }
 
 pub fn fb_init() {
-    let mut console = KernelConsole::new();
     let mut fb = Rpi2FrameBuffer::new();
 
-    unsafe { console.init(); }
     fb.init();
 }
