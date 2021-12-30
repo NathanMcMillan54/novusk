@@ -11,7 +11,6 @@ libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../firmware/mailbox/" }
 mio = { path = "../../mm/mio/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
-printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"
 
 [features]

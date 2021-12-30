@@ -1,4 +1,4 @@
-use crate::VgaModes;
+use crate::{VGAG, VgaModes};
 
 pub mod graphics;
 pub mod text;
@@ -38,15 +38,15 @@ impl VgaDisplay {
 }
 
 #[no_mangle]
-pub extern "C" fn graphics_write(x: usize, y: usize, color: usize, string: &str) {
-    let vgad = VgaDisplay::new(VgaModes::Graphics640x480);
+pub unsafe extern "C" fn graphics_write(x: usize, y: usize, color: usize, string: &str) {
+    let vgad = VgaDisplay::new(VGAG.mode);
 
     (vgad.write_fun)(x, y, color, string);
 }
 
 #[no_mangle]
-pub extern "C" fn graphics_pixel(x: usize, y: usize, color: usize) {
-    let vgad = VgaDisplay::new(VgaModes::Graphics640x480);
+pub unsafe extern "C" fn graphics_pixel(x: usize, y: usize, color: usize) {
+    let vgad = VgaDisplay::new(VGAG.mode);
 
     (vgad.pixel_fun)(x, y, color);
 }

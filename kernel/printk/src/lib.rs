@@ -4,23 +4,18 @@
 
 use core::fmt::Arguments;
 
-pub mod console;
-pub mod put;
-
 static mut KMAIN_PRINT: bool = false;
 
 extern "C" {
     pub(crate) fn arch_printk(fmt: Arguments);
+    pub(crate) fn kmain_printk(fmt: Arguments);
 }
 
 pub fn _printk(fmt: Arguments) -> Arguments {
     unsafe {
         if !KMAIN_PRINT {
-            unsafe { arch_printk(fmt); }
-        } else if KMAIN_PRINT {
-            let mut kconsole = console::KernelConsole::new();
-            kconsole.write_fmt(fmt);
-        }
+            arch_printk(fmt);
+        } else { kmain_printk(fmt); }
     }
 
     return fmt;

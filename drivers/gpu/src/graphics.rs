@@ -1,8 +1,21 @@
 pub struct GpuGraphics;
 
+extern "C" {
+    pub fn graphics_write(x: usize, y: usize, color: usize, string: &str);
+    pub fn graphics_pixel(x: usize, y: usize, color: usize);
+}
+
 impl GpuGraphics {
     pub fn new() -> Self {
         return GpuGraphics;
+    }
+
+    pub fn write_string(&self, x: usize, y: usize, color: usize, string: &str) {
+        unsafe { graphics_write(x, y, color, string); }
+    }
+
+    pub fn draw_pixel(&self, x: usize, y: usize, color: usize) {
+        unsafe { graphics_pixel(x, y, color); }
     }
 }
 

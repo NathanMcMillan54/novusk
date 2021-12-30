@@ -2,7 +2,6 @@ use gpu::GpuGraphics;
 use kinfo::info::*;
 use konfig::Konfig;
 use novuskinc::fs::RootDir;
-use printk::console::KernelConsole;
 use spin::Mutex;
 
 lazy_static! {
@@ -18,10 +17,6 @@ impl Kernel {
 
     pub fn gpu_graphics(&mut self) -> GpuGraphics {
         return GpuGraphics::new();
-    }
-
-    pub fn kernel_console(&mut self) -> KernelConsole {
-        return KernelConsole::new();
     }
 
     pub fn kernel_configs(&mut self) -> Konfig {

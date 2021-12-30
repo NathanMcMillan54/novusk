@@ -20,7 +20,7 @@ fn check_version(version_str: &str) {
 unsafe fn gpu_init() {
     #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
     start_module!(gpug_init, gpug_end);
-    KERNEL.lock().kernel_console().init();
+    //KERNEL.lock().kernel_console().init();
 }
 
 fn input_init() {

@@ -2,7 +2,6 @@
 #![feature(llvm_asm)]
 
 extern crate nmallocator;
-#[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 
 pub mod board;

@@ -6,4 +6,3 @@ description = "Bare Metal Userspace Library, a library for Novusk's 'userspace' 
 
 [dependencies]
 memory = { path = "../../mm/memory/" }
-printk = { path = "../../kernel/printk/" }
