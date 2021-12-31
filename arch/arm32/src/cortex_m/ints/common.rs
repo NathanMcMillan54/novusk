@@ -13,7 +13,7 @@ unsafe fn HardFault(ef: &ExceptionFrame) -> ! {
     arm32_printk!("Hard Fault Interrupt\n");
     arm32_printk!("Exception frame:\n    {:?}", ef);
 
-    panic!("Attempted to access none-existent address");
+    panic!("Attempted to access a none-existent address");
 }
 
 #[exception]

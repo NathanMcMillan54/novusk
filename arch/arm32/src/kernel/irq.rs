@@ -1,3 +1,4 @@
+use crate::arm32_printk;
 use crate::target::ints::enable_interrupts;
 use super::irqs::device_specific_irq_init;
 

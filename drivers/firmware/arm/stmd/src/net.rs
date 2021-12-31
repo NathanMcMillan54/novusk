@@ -5,8 +5,10 @@ pub fn is_supported() -> bool {
     #[cfg(any(feature = "stm32f407"))]
     return true;
 
-    #[cfg(any(feature = "stm32f401"))]
+    #[cfg(all(not(feature = "stmf407")))]
     return false;
+
+    return true;
 }
 
 pub fn net_init() {

@@ -13,5 +13,5 @@ pub unsafe fn allocator_init() {
     vec![0, 1, 2].push(3);
 
     #[cfg(feature = "cortex_m")]
-    ALLOCATOR.lock().init(start as usize, 1024);
+    ALLOCATOR.lock().init(cortex_m_rt::heap_start() as usize, 1024);
 }

@@ -8,6 +8,7 @@ use device::Device;
 #[path = "../../../../../kernel/irq.rs"]
 pub(crate) mod irq;
 
+pub mod irqs;
 pub mod io;
 pub mod led;
 
@@ -30,7 +31,9 @@ impl Device for Stellaris6965 {
 }
 
 #[no_mangle]
-pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
+pub unsafe extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
+    let cp = cortex_m::Peripherals::steal();
+
     let mut error = false;
 
     if unsafe { Peripherals::take().is_none() } {
@@ -41,9 +44,3 @@ pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
         return (Err("Cannot find peripherals"), "Stellaris 6965");
     } else { return (Ok(()), "Stellaris 6965"); }
 }
-
-fn stellaris_irq_init() {
-
-}
-
-define_dev_irq_init!(stellaris_irq_init);

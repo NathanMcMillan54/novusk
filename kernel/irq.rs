@@ -11,3 +11,10 @@ macro_rules! define_dev_irq_init {
         }
     };
 }
+
+pub fn irq_error(irq_name: &str, message: &str) -> ! {
+    /*printk!("An error occurred while running IRQ: {}\n", irq_name);
+    printk!("{}\n", message);*/
+
+    panic!("Interrupt error occurred while running {} interrupt", irq_name);
+}

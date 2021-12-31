@@ -1,12 +1,13 @@
 use crate::arm32_printk;
 use crate::mm::memory_init;
-use super::cpu::cpu_setup;
+use super::cpu::{cpu_setup, CPUINFO};
 use super::device::{device_init, DEVICE_NAME};
 
 pub unsafe fn setup_arm32_kernel() {
     cpu_setup();
     kinfo!("Setup CPU\n");
     arm32_printk!("    Common IRQs setup\n");
+    arm32_printk!("    CPU info: {{ arch: {}, cpu: {} }}\n", CPUINFO.architecture, CPUINFO.brand_name);
 
     setup_device();
     kinfo!("Device initialized\n");

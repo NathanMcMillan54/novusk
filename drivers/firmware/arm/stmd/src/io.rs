@@ -1,12 +1,11 @@
 use core::fmt::Write;
+use core::ops::Deref;
 use kinfo::status::set_status;
 use crate::BOARD_MODLE;
-use stm32f4xx_hal::{pac::Peripherals, prelude::*, serial::{config::Config, Serial}};
-use stm32f4xx_hal::pac::USART2;
-use stm32f4xx_hal::serial::Tx;
+use crate::device::{pac::{Peripherals, USART2}, prelude::*, serial::{config::Config, Serial, Tx}};
 
 pub fn get_serial() -> Tx<USART2> {
-    let peripherals = unsafe { Peripherals::steal() };
+    let peripherals = Peripherals::take().unwrap();
     let gpioa = peripherals.GPIOA.split();
     let rcc = peripherals.RCC.constrain();
     let clocks = rcc.cfgr.use_hse(8.mhz()).freeze();
@@ -28,6 +27,5 @@ pub fn get_serial() -> Tx<USART2> {
 }
 
 pub(crate) fn io_init() {
-    #[cfg(not(feature = "qemu"))]
     get_serial();
 }
