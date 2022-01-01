@@ -1,6 +1,6 @@
 #![no_std]
 
-pub(crate) use vfs::{Dir, File, NewFs, RootDir, Vfs};
+pub(crate) use vfs::{Dir, File, NewFs, RootDir, VfsIo};
 
 pub mod io;
 pub mod root;

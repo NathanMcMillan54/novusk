@@ -11,7 +11,7 @@ pub mod vfs;
 pub use dir::Dir;
 pub use file::File;
 pub use root::RootDir;
-pub use vfs::Vfs;
+pub use vfs::*;
 
 pub struct NewFs {
     pub fs_name: &'static str,

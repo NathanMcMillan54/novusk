@@ -1,11 +1,11 @@
-use super::{TempFs, Vfs};
+use super::{TempFs, VfsIo};
 
-impl Vfs for TempFs {
-    fn write(&self, byte: u8, addr: usize) {
+impl VfsIo for TempFs {
+    fn write(name: &str, content: &[u8]) {
         
     }
 
-    fn read(&self, buf: u8, addr: usize) -> u8 {
-        0
+    fn read(name: &str) -> &[u8] {
+        b""
     }
 }
