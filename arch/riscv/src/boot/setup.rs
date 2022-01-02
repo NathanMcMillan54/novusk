@@ -17,11 +17,13 @@ impl RiscvBoot {
         let ld_mem_ret = unsafe { self.linker_setup() };
 
         rv_printk!("Finished boot setup\n");
-        rv_printk!("{}\n{}\n", io_ret.1, ld_mem_ret.1);
+        rv_printk!("{}\n", io_ret.1);
+        rv_printk!("{}\n", ld_mem_ret.1);
 
-        if io_ret.0.is_err() || ld_mem_ret.0.is_err() {
+        // This for some reason crashes
+        /*if io_ret.0.is_err() || ld_mem_ret.0.is_err() {
             panic!("An error occurred during boot setup");
-        } else { kinfo!("Boot setup successful\n"); }
+        } else { kinfo!("Boot setup successful\n"); }*/
     }
 }
 

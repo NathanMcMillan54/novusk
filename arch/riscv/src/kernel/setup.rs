@@ -14,8 +14,10 @@ impl RiscvKernel {
     pub fn setup(&self) {
         let irq_ret = self.irq_init();
         let mem_ret = self.memory_setup();
+        let dev_ret = unsafe { self.device_init() };
 
         rv_printk!("Finished RISCV kernel setup\n");
+        rv_printk!("Running on: {}\n", dev_ret.1);
         rv_printk!("{}\n{}\n", irq_ret.1, mem_ret.1);
     }
 }
@@ -34,12 +36,19 @@ impl ArchKernelSetup for RiscvKernel {
     }
 }
 
+unsafe fn start_main() {
+    extern "C" {
+        fn kernel_main();
+    }
+
+    rv_printk!("Starting kernel main...\n");
+    kernel_main();
+}
+
 pub fn setup_riscv_kernel() {
     let kernel_setup = RiscvKernel::new();
 
     kernel_setup.setup();
-    kinfo!("Setup finish\n");
 
-    rv_printk!("Starting after kernel...\n");
-    // TODO: Setup after kernel if init can't be called
+    //unsafe { start_main(); }
 }
