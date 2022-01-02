@@ -1,5 +1,5 @@
-use sifive::sprint;
 use super::setup::RiscvBoot;
+use crate::kernel::setup::setup_riscv_kernel;
 
 fn setup() {
     let riscv_boot = RiscvBoot::new();
@@ -11,7 +11,8 @@ fn setup() {
 fn rv32_start() -> ! {
     setup();
 
-    sprint!("Test\n");
+    setup_riscv_kernel();
+    kinfo!("Kernel initialized\n");
 
-    loop {  }
+    panic!("Kernel ended");
 }
