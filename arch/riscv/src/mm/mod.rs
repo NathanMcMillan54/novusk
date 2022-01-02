@@ -1,1 +1,1 @@
-pub use nmallocator::error;
+pub mod allocator;

@@ -1,7 +1,7 @@
 pub fn reboot() -> ! {
-    panic!("Not supported");
+    panic!("Reboot is not supported");
 }
 
 pub fn shutdown() -> ! {
-    panic!("Not supported");
+    panic!("Shutdown is not supported");
 }

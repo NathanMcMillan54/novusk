@@ -1,6 +1,6 @@
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
+fn _panic(_info: &PanicInfo) -> ! {
     loop {  }
 }

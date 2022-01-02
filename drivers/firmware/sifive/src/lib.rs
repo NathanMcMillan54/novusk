@@ -6,23 +6,13 @@ use device::{Device};
 use core::any::Any;
 
 pub(crate) mod hifive;
-pub(crate) mod common;
+pub mod common;
 pub(crate) mod lofive;
 
-pub(crate) use common::{io::SiFiveIo};
+pub use common::{io::SiFiveIo};
 
 pub struct HiFiveBoard;
 pub struct LoFiveBoard;
-
-#[cfg(feature = "hifive")]
-pub fn get_board() -> HiFiveBoard {
-    return HiFiveBoard::new();
-}
-
-#[cfg(feature = "lofive")]
-pub fn get_board() -> LoFiveBoard {
-    return LoFiveBoard::new();
-}
 
 impl HiFiveBoard {
     pub fn new() -> Self {

@@ -1,5 +1,7 @@
 use konfig::Konfig;
 
+pub type SetupReturn = (Result<(), &'static str>, &'static str);
+
 #[derive(Copy, Clone, PartialEq)]
 pub(crate) enum SetupTypes {
     BmApp,

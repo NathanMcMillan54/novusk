@@ -2,22 +2,16 @@
 name = "riscv"
 version = "0.1.0"
 edition = "2021"
-description = "RISCV32/64 support"
-
-[target.'cfg(target_arch = "riscv32")'.dependencies]
-sifive = { path = "../../drivers/firmware/sifive/" }
+description = "Support for RISCV32/64"
 
 [dependencies]
-device = { path = "../../drivers/device/" }
-kinfo = { path = "../../kernel/kinfo/" }
-nmallocator = { path = "../../mm/nmallocator/" }
-novusk_syscalls = "0.2.1"
-novuskinc = { path = "../../include/novusk/" }
-printk = { path = "../../kernel/printk/" }
+nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
+r0 = "1.0.0"
 riscv-rt = "0.8.0"
+setup = { path = "../../kernel/setup/" }
+sifive = { path = "../../drivers/firmware/sifive/" }
 
 [features]
-default = []
 hifive = ["sifive/hifive"]
 lofive = ["sifive/lofive"]
 virt = []

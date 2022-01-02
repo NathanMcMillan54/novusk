@@ -1,10 +1,11 @@
 use crate::{HiFiveBoard, LoFiveBoard};
 
+use hifive1::clock;
+use hifive1::hal::clock::Clocks;
 use hifive1::stdout;
 use hifive1::hal::DeviceResources;
 use hifive1::hal::time::U32Ext;
 use device::Device;
-use hifive1::hal::clock::Clocks;
 
 pub struct SiFiveIo {
     // *has same i/o setup but not for clocks/time*
@@ -12,8 +13,17 @@ pub struct SiFiveIo {
 }
 
 impl SiFiveIo {
-    pub fn new(clocks: Clocks) -> Self {
-        return SiFiveIo { clocks: clocks };
+    fn get_clock() -> Clocks {
+        let dev_res = DeviceResources::take().unwrap();
+        let peripherals = dev_res.peripherals;
+
+        let clocks = clock::configure(peripherals.PRCI, peripherals.AONCLK, 320.mhz().into());
+
+        return clocks;
+    }
+
+    pub fn new() -> Self {
+        return SiFiveIo { clocks: SiFiveIo::get_clock() };
     }
 
     pub fn sifive_io_init(&self) {

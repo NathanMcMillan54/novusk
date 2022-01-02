@@ -1,16 +1,14 @@
-use device::Device;
-use crate::board::get_board;
-use crate::kernel::setup::setup_riscv_kernel;
-use riscv_rt::entry;
+use super::setup::RiscvBoot;
+
+fn setup() {
+    let riscv_boot = RiscvBoot::new();
+
+    riscv_boot.setup();
+}
 
 #[entry]
-fn rv32_boot() -> ! {
-    let mut board = get_board();
-    board.serial_io_init();
-    kinfo!("Early I/O initialized");
+fn rv32_start() -> ! {
+    setup();
 
-    setup_riscv_kernel();
-    kinfo!("RISCV kernel initialized");
-
-    panic!("Kernel ended, nothing to run");
+    loop {  }
 }

@@ -25,7 +25,7 @@ impl Device for HiFiveBoard {
     }
 
     fn serial_io_init(&self) {
-        SiFiveIo::new(self.get_clocks()).sifive_io_init();
+        SiFiveIo::new().sifive_io_init();
     }
 
     fn time_init(&self) {
@@ -37,6 +37,7 @@ impl Device for HiFiveBoard {
     }
 
     fn write_bytes(&self, bytes: &[u8]) {
+        sprintln!("a");
         unsafe { stdout::write_str(from_utf8_unchecked(bytes)); }
     }
 }

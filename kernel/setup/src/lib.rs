@@ -6,9 +6,13 @@
 
 use konfig::KONFIG;
 
-pub(crate) mod types;
+pub mod boot;
+pub mod types;
 pub(crate) mod syscall;
 pub(crate) mod user;
+
+pub use boot::BootSetup;
+pub use types::SetupReturn;
 
 use types::{str_to_setuptypes, SetupTypes};
 

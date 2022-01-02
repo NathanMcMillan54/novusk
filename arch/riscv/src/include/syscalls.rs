@@ -1,6 +1,3 @@
-use novuskinc::kernel::syscalls::table::SYSCALL_TABLE;
+pub unsafe fn syscalls_init() {
 
-pub(crate) unsafe fn syscalls_init() {
-    SYSCALL_TABLE.start_init();
-    SYSCALL_TABLE.set_name("RISCV Novusk System call Table");
 }
