@@ -5,6 +5,8 @@ edition = "2021"
 description = "Support for RISCV32/64"
 
 [dependencies]
+hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
+kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 r0 = "1.0.0"
 riscv-rt = "0.8.0"

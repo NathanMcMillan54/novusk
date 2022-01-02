@@ -1,3 +1,4 @@
+use sifive::sprint;
 use super::setup::RiscvBoot;
 
 fn setup() {
@@ -9,6 +10,8 @@ fn setup() {
 #[entry]
 fn rv32_start() -> ! {
     setup();
+
+    sprint!("Test\n");
 
     loop {  }
 }

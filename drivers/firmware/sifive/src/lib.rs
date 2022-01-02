@@ -9,7 +9,7 @@ pub(crate) mod hifive;
 pub mod common;
 pub(crate) mod lofive;
 
-pub use common::{io::SiFiveIo};
+pub use hifive1::sprint;
 
 pub struct HiFiveBoard;
 pub struct LoFiveBoard;

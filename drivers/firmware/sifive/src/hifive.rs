@@ -1,6 +1,6 @@
 use core::str::from_utf8_unchecked;
 use device::Device;
-use crate::{HiFiveBoard, SiFiveIo};
+use crate::{HiFiveBoard};
 
 use hifive1::clock;
 use hifive1::stdout;
@@ -24,10 +24,6 @@ impl Device for HiFiveBoard {
         return "HiFive";
     }
 
-    fn serial_io_init(&self) {
-        SiFiveIo::new().sifive_io_init();
-    }
-
     fn time_init(&self) {
         self.get_clocks();
     }
@@ -37,7 +33,6 @@ impl Device for HiFiveBoard {
     }
 
     fn write_bytes(&self, bytes: &[u8]) {
-        sprintln!("a");
         unsafe { stdout::write_str(from_utf8_unchecked(bytes)); }
     }
 }
