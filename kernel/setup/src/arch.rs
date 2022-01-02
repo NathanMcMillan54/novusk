@@ -16,4 +16,8 @@ pub trait ArchKernelSetup {
     fn irq_init(&self) -> SetupReturn {
         return (Ok(()), "IRQ initialized successfully");
     }
+
+    unsafe fn sys_setup(&self) -> SetupReturn {
+        return (Ok(()), "System functions setup successfully");
+    }
 }

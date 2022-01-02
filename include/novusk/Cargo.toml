@@ -13,6 +13,9 @@ libbmu = { path = "../../lib/libbmu/" }
 tock-registers = "0.7.0"
 rpi = { path = "../../drivers/rpi/" }
 
+[target.'cfg(target_arch = "riscv32")'.dependencies]
+hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
+
 [dependencies]
 cfg-if = "1.0.0"
 kinfo = { path = "../../kernel/kinfo/" }

@@ -5,9 +5,11 @@ edition = "2021"
 description = "Support for RISCV32/64"
 
 [dependencies]
-hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
+hifive1 = { version = "0.10.0" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
+novusk_syscalls = "0.2.1"
+novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
 r0 = "1.0.0"
 riscv = "0.7.0"
@@ -16,6 +18,6 @@ setup = { path = "../../kernel/setup/" }
 sifive = { path = "../../drivers/firmware/sifive/" }
 
 [features]
-hifive = ["sifive/hifive"]
-lofive = ["sifive/lofive"]
+hifive = ["sifive/hifive", "hifive1/board-hifive1"]
+lofive = ["sifive/lofive", "hifive1/board-lofive"]
 virt = []
