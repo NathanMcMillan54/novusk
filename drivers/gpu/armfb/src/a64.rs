@@ -82,9 +82,11 @@ impl FrameBufferGraphics for A64Fb {
     fn pixel(&self, x: usize, y: usize, color: FbColor) {
         let mut cursor = self.ptr as *mut u32;
 
+        let pos: isize = x as isize + (y as isize * self.width as isize);
+
         unsafe {
+            cursor = cursor.offset(pos);
             *cursor = color.r as u32;
-            cursor = cursor.offset(1);
         }
     }
 
@@ -95,6 +97,9 @@ impl FrameBufferGraphics for A64Fb {
             for x in 0..self.width {
                 unsafe {
                     *cursor = color.r as u32;
+
+                    //unsafe { printk!("({}, {}) {:p}\n", x, y, cursor); }
+
                     cursor = cursor.offset(1);
                 }
             }
@@ -106,5 +111,5 @@ pub fn a64_fb_init() {
     let mut fb = A64Fb::new();
 
     fb.init();
-    fb.clear_screen(FbColor::new(0x383838, 0, 0));
+    fb.clear_screen(FbColor::new(0xff0000, 0, 0));
 }

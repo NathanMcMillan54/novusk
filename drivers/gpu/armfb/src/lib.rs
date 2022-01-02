@@ -1,11 +1,12 @@
 #![no_std]
 
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 
 use fb::{Fb};
 
 #[cfg(target_arch = "aarch64")]
-pub(crate) mod a64;
+pub mod a64;
 
 #[cfg(target_arch = "arm")]
 pub(crate) mod a32;

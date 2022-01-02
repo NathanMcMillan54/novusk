@@ -65,6 +65,17 @@ pub mod drivers {
         pub use usbd;
     }
 
+    pub mod gpu {
+        pub use gpu::*;
+
+        #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
+        pub use armfb;
+
+        #[cfg(target_arch = "x86_64")]
+        pub use vgag;
+
+    }
+
     pub mod input {
         #[cfg(target_arch = "x86_64")]
         pub use pc_keyboard;

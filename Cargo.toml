@@ -87,6 +87,8 @@ members = [
 ]
 
 [dependencies]
+fb = { path = "drivers/fb/" }
+gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
@@ -115,6 +117,7 @@ libost = { path = "lib/libost/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
 arm32 = { path = "arch/arm32/" }
+armfb = { path = "drivers/gpu/armfb/" }
 libbmu = { path = "lib/libbmu/" }
 
 [target.'cfg(target_arch = "riscv32")'.dependencies]
