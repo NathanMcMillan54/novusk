@@ -4,8 +4,9 @@ use esp32_hal::clock_control::{ClockControl, XTAL_FREQUENCY_AUTO};
 use esp32_hal::dport::Split;
 use esp32_hal::gpio::{GpioExt, Unknown, Gpio3, Gpio1};
 use esp32_hal::hal::{serial::Write, watchdog::WatchdogDisable};
-use esp32_hal::prelude::FromValueType;
+use esp32_hal::prelude::*;
 use esp32_hal::target::{Peripherals, UART1};
+use esp32_hal::units::FromValueType;
 use esp32_hal::timer::Timer;
 use esp32_hal::serial::{Error, Pins, Serial, Tx, config::Config};
 
@@ -41,7 +42,7 @@ impl Esp32 {
                 rts: None,
             },
             Config {
-                baudrate: 115200.Hz(),
+                baudrate: Hertz(115200),
                 ..Config::default()
             },
             self.get_clock_control().freeze().unwrap().0,
@@ -53,7 +54,7 @@ impl Esp32 {
     pub fn get_clock_control(&self) -> ClockControl {
         let peripherals = Peripherals::take().unwrap();
 
-        let clock_control = ClockControl::new(peripherals.RTCCNTL, peripherals.APB_CTRL,peripherals.DPORT.split().1,XTAL_FREQUENCY_AUTO).unwrap();
+        let clock_control = ClockControl::new(peripherals.RTCCNTL, peripherals.APB_CTRL, peripherals.DPORT.split().1, XTAL_FREQUENCY_AUTO).unwrap();
 
         return clock_control;
     }

@@ -2,6 +2,10 @@
 #[path = "../../../../../arch/x86_64/src/include/sys/syscall.rs"]
 pub mod arch_syscalls;
 
+#[cfg(target_arch = "xtensa")]
+#[path = "../../../../../arch/xtensa/src/include/syscalls.rs"]
+pub mod arch_syscalls;
+
 #[cfg(target_arch = "aarch64")]
 #[path = "../../../../../arch/aarch64/src/include/sys/setup.rs"]
 pub mod arch_syscalls;

@@ -6,6 +6,10 @@
 #[path = "../../../arch/x86_64/src/kernel/power.rs"]
 pub(crate) mod arch_power;
 
+#[cfg(target_arch = "xtensa")]
+#[path = "../../../arch/xtensa/src/kernel/power.rs"]
+pub(crate) mod arch_power;
+
 #[cfg(target_arch = "aarch64")]
 #[path = "../../../arch/aarch64/src/kernel/power.rs"]
 pub(crate) mod arch_power;

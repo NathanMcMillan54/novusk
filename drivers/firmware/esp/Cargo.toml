@@ -4,10 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "Support for Xtensa Esp boards and RISCV in the fututre"
 
-[target.'cfg(target_arch = "xtensa")'.dependencies]
-esp32-hal = "0.3.0"
-
 [dependencies]
+esp32-hal = "0.3.0"
 device = { path = "../../device/" }
 
 [features]
