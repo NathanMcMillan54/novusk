@@ -1,0 +1,29 @@
+{
+  "arch": "xtensa",
+  "cpu": "esp32",
+  "data-layout": "e-m:e-p:32:32-i8:8:32-i16:16:32-i64:64-n32",
+  "emit-debug-gdb-scripts": false,
+  "env": "",
+  "executables": true,
+  "is-builtin": true,
+  "linker": "xtensa-esp32-elf-gcc",
+  "linker-flavor": "gcc",
+  "llvm-target": "xtensa-none-elf",
+  "max-atomic-width": 32,
+  "os": "novusk",
+  "panic-strategy": "abort",
+  "relocation-model": "static",
+  "target-c-int-width": "32",
+  "target-endian": "little",
+  "target-pointer-width": "32",
+  "no-builtins": true,
+  "unsupported-abis": [
+    "stdcall",
+    "fastcall",
+    "vectorcall",
+    "thiscall",
+    "win64",
+    "sysv64"
+  ],
+  "vendor": ""
+}
