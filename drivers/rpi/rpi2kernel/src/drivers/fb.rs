@@ -1,33 +1,9 @@
+use armfb::a64::A64Fb;
 use fb::{FbColor, FrameBufferGraphics};
 
-pub struct Rpi2FrameBuffer {
-    pub color: FbColor,
-    pub x: usize,
-    pub y: usize,
-}
-
-impl Rpi2FrameBuffer {
-    pub fn new() -> Self {
-        return Rpi2FrameBuffer {
-            color: FbColor::new(0, 0, 0),
-            x: 0,
-            y: 0,
-        };
-    }
-
-    pub fn init(&self) {
-
-    }
-}
-
-impl FrameBufferGraphics for Rpi2FrameBuffer {
-    fn pixel(&self, x: usize, y: usize, color: FbColor) {
-        
-    }
-}
-
 pub fn fb_init() {
-    let mut fb = Rpi2FrameBuffer::new();
+    let mut fb = A64Fb::new();
 
     fb.init();
+    fb.clear_screen(FbColor::new(0x4d0000, 0, 0));
 }

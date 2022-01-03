@@ -5,7 +5,7 @@
 
 use fb::{Fb};
 
-#[cfg(target_arch = "aarch64")]
+//#[cfg(target_arch = "aarch64")]
 pub mod a64;
 
 #[cfg(target_arch = "arm")]

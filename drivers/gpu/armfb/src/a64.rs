@@ -1,6 +1,6 @@
 use core::sync::atomic::{compiler_fence, Ordering};
 use fb::{Fb, FbColor, FrameBufferGraphics};
-use rpi::rpi3::mb::*;
+use rpi::common::*;
 
 pub struct A64Fb {
     pub fb: Fb,
@@ -20,7 +20,7 @@ impl A64Fb {
     }
 
     pub fn init(&mut self) {
-        let mut mb = Rpi3Mb::new();
+        let mut mb = RpiMb::new();
 
         mb.mb_buffer[0] = 35 * 4;
         mb.mb_buffer[1] = REQUEST;
@@ -111,5 +111,5 @@ pub fn a64_fb_init() {
     let mut fb = A64Fb::new();
 
     fb.init();
-    fb.clear_screen(FbColor::new(0xff0000, 0, 0));
+    fb.clear_screen(FbColor::new(0x000000, 0, 0));
 }

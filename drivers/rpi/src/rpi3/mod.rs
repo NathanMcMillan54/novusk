@@ -1,16 +1,16 @@
 use core::sync::atomic::{compiler_fence, Ordering};
 use crate::board::RaspberryPi;
+use crate::common::RpiMb;
 use mailbox::MailBox;
 
 pub mod gpio;
 pub mod led;
-pub mod mb;
 
 pub struct Rpi3 {
     pub error: (bool, &'static str),
     pub gpio: gpio::Rpi3Gpio,
     pub led: led::Rpi3Led,
-    pub mb: mb::Rpi3Mb,
+    pub mb: RpiMb,
 }
 
 impl Rpi3 {
@@ -19,7 +19,7 @@ impl Rpi3 {
             error: (false, ""),
             gpio: gpio::Rpi3Gpio::new(),
             led: led::Rpi3Led::new(),
-            mb: mb::Rpi3Mb::new(),
+            mb: RpiMb::new(),
         };
     }
 

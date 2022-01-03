@@ -13,14 +13,12 @@ extern "C" {
 }
 
 pub struct Rpi2 {
-    pub mb: mb::Rpi2Mb,
     pub uart: uart::Rpi2Uart,
 }
 
 impl Rpi2 {
     pub fn new() -> Self {
         return Rpi2 {
-            mb: mb::Rpi2Mb::new(),
             uart: uart::Rpi2Uart::new(),
         };
     }
@@ -46,6 +44,6 @@ impl RaspberryPi for Rpi2 {
     }
 
     fn mailbox_init(&mut self) {
-        self.mb.init();
+
     }
 }

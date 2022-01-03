@@ -5,6 +5,8 @@ edition = "2021"
 description = "RPi 2 specific kernel"
 
 [dependencies]
+armfb = { path = "../../gpu/armfb/" }
+console = { path = "../../../kernel/console/" }
 fb = { path = "../../fb/" }
 kinfo = { path = "../../../kernel/kinfo/" }
 konfig = { path = "../../../kernel/konfig/" }

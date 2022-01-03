@@ -1,9 +1,9 @@
 #[cfg(target_arch = "aarch64")]
 pub mod a64_mb {
     use core::sync::atomic::{compiler_fence, Ordering};
-    use rpi::rpi3::mb::Rpi3Mb;
+    use rpi::common::RpiMb;
 
-    static mut A64MB: Rpi3Mb = Rpi3Mb { mb_buffer: [0; 36] };
+    static mut A64MB: RpiMb = RpiMb { mb_buffer: [0; 36] };
 
     pub unsafe fn aarch64_mailbox_call(mb_do: u8, mailbox_num: u8, mailbox_arg: u8) -> u8 {
         let mut ret = 0;

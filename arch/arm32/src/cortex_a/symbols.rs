@@ -23,6 +23,9 @@ pub extern "C" fn __sync_val_compare_and_swap_2() {  }
 pub extern "C" fn __sync_val_compare_and_swap_4() {  }
 
 #[no_mangle]
+pub extern "C" fn __sync_synchronize() {  }
+
+#[no_mangle]
 pub extern fn _Unwind_Resume() { loop {  } }
 
 // Kernel symbols

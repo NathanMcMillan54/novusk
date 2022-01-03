@@ -14,5 +14,8 @@ pub unsafe fn arm_kernel_init() {
     if BOARD.kernel_init == true {
         kmain::kernel_init();
         kinfo!("Novusk initialized\n");
-    } else { BOARD.run_board_specific_kernel(); }
+    } else {
+        arm32_printk!("\nStarting Board specific kernel...\n");
+        BOARD.run_board_specific_kernel();
+    }
 }

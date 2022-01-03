@@ -21,6 +21,10 @@ pub unsafe extern "C" fn sys_sleep(sec: u8, arg2: u8, arg3: u8) -> u8 {
 }
 
 pub unsafe fn syscalls_init() {
+    // Novusk syscalls will need to remove alloc in the future
+    #[cfg(feature = "cortex_a")]
+    return;
+
     SYSCALL_TABLE.start_init();
     SYSCALL_TABLE.set_name("ARM32 Novusk System call Table");
 
