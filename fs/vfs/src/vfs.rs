@@ -1,7 +1,7 @@
 use alloc::vec::Vec;
 use core::borrow::Borrow;
 use core::ops::Deref;
-use core::ptr::{read, write};
+use core::ptr::{read_volatile, write_volatile};
 use super::Dir;
 
 pub struct Vfs {
@@ -15,12 +15,12 @@ impl Vfs {
         };
     }
 
-    pub unsafe fn write_file(address: *mut u8, write: u8) {
-        *address = write;
+    pub unsafe fn write_file(&self, address: *mut u8, write: u8) {
+        write_volatile(address, write);
     }
 
-    pub unsafe fn read_file(address: *mut u8) -> u8 {
-        return *address;
+    pub unsafe fn read_file(&self, address: *mut u8) -> u8 {
+        return read_volatile(address);
     }
 }
 
