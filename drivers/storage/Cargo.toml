@@ -5,4 +5,4 @@ edition = "2021"
 description = "Initializes disk/card and Fs"
 
 [dependencies]
-
+novuskinc = "0.1.0"

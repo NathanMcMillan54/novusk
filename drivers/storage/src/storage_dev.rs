@@ -1,6 +1,3 @@
-use alloc::boxed::Box;
-use core::ops::Deref;
-
 pub trait StorageIo {
     fn read_sector(&mut self, sectors: u32, buffer: &mut [u16]) -> u32 { 0 }
 

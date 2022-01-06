@@ -48,6 +48,7 @@ members = [
     "drivers/rpi/rpi2kernel/",
     "drivers/sos/",
     "drivers/storage/",
+    "drivers/storage/lba/",
     "drivers/usbd/",
     # Fs
     "fs/tempfs/",
