@@ -10,8 +10,7 @@ all: build_arch link
 	@ echo "Compiling..."
 
 build_arch:
-	@ cd arch/$(ARCH)/ && make arch
+	@ $(MAKE) -C arch/$(ARCH)/ arch
 
 link:
-	@ echo "Linking..."
-	@ cd arch/$(ARCH) && make link
+	@ $(MAKE) -C arch/$(ARCH)/ link
