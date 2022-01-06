@@ -1,4 +1,5 @@
-pub fn storage_init() {
-    // start_module!(stoarge_device_init, stoarge_device_end);
-}
+use crate::empty::EmptyStorage;
 
+pub fn storage_init() {
+    // start_module!(storage_device_init, storage_device_end);
+}

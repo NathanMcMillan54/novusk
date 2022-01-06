@@ -1,3 +1,5 @@
+use super::empty::EmptyStorage;
+
 pub trait StorageIo {
     fn read_sector(&mut self, sectors: u32, buffer: &mut [u16]) -> u32 { 0 }
 
@@ -23,4 +25,3 @@ where
         };
     }
 }
-
