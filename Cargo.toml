@@ -102,6 +102,7 @@ unistd = { path = "lib/libc/unistd/" }
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 bootloader = "0.9.18"
 kb_mouse = { path = "drivers/input/mouse/kb_mouse/" }
+lba = { path = "drivers/storage/lba/" }
 libwin = { path = "lib/libwin/" }
 libost = { path = "lib/libost/" }
 pc_keyboard = { path = "drivers/input/keyboard/pc_keyboard/" }

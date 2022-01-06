@@ -4,6 +4,12 @@ version = "0.1.0"
 edition = "2021"
 description = "Main kernel initialization"
 
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+storage = { path = "../drivers/storage/" }
+
+[target.'cfg(not(target_arch = "x86_64"))'.dependencies]
+storage = { path = "../drivers/storage/", features = ["empty"] }
+
 [dependencies]
 cfg-if = "1.0.0"
 console = { path = "../kernel/console/" }

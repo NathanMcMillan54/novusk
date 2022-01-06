@@ -4,21 +4,7 @@ use super::modules::modules_init;
 use super::version::novusk_banner;
 use kinfo::status::set_status;
 use novuskinc::version::*;
-use tempfs::TempFs;
-use vfs::{Dir, File, NewFs, RootDir};
-
-pub static mut TEMPFS: TempFs = TempFs {
-    fs: NewFs {
-        fs_name: "Temp",
-    },
-    root: RootDir {
-        root: Dir {
-            name: "Root",
-            files: vec![],
-            dirs: vec![]
-        },
-    },
-};
+use storage::storage_init;
 
 fn check_version(version_str: &str) {
     #[cfg(not(target_arch = "arm"))]
@@ -48,7 +34,9 @@ unsafe fn net_init() {
 }
 
 unsafe fn fs_init() {
-    TEMPFS.root.root.new_dir("temp/");
+    storage_init();
+
+    // Call fs init function
 }
 
 #[no_mangle]
@@ -75,7 +63,9 @@ pub unsafe extern "C" fn kernel_init() {
 
     net_init();
 
-    // fs_init();
+    fs_init();
+    kinfo!("Fs initialized\n");
+    printk!("    Storage device initialized\n");
 
     printk!("\nSetting up main kernel modules...\n");
     modules_init(configs);

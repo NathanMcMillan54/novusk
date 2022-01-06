@@ -26,18 +26,22 @@ impl StorageIo for EmptyStorage {
     }
 }
 
-unsafe fn emptystorage_init() {
-    let reading_sector = 1;
-    let buffer = &mut [0; 512];
+fn emptystorage_init() {
+    unsafe {
+        let reading_sector = 1;
+        let buffer = &mut [0; 512];
 
-    if STORAGE_DEVICE.stroage_io.read_sector(reading_sector, buffer) == 0 {
-        STORAGE_DEVICE.stroage_io.init_success = true;
+        if STORAGE_DEVICE.stroage_io.read_sector(reading_sector, buffer) == 0 {
+            STORAGE_DEVICE.stroage_io.init_success = true;
+        }
     }
 }
 
-unsafe fn emptystorage_end() {
-    if !STORAGE_DEVICE.stroage_io.init_success {
-        panic!("Initialized EmptyStorage unsuccessfully");
+fn emptystorage_end() {
+    unsafe {
+        if !STORAGE_DEVICE.stroage_io.init_success {
+            panic!("Initialized EmptyStorage unsuccessfully");
+        }
     }
 }
 

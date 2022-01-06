@@ -83,6 +83,11 @@ pub mod drivers {
         #[cfg(target_arch = "x86_64")]
         pub use kb_mouse;
     }
+
+    pub mod storage {
+        #[cfg(target_arch = "x86_64")]
+        pub use lba;
+    }
 }
 
 #[cfg(feature = "grub")]
