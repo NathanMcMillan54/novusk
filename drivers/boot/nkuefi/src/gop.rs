@@ -40,4 +40,12 @@ impl GopWriter {
             dims: (self.width, self.height),
         });
     }
+
+    pub fn pixel(&self, bt: &BootServices, color: (u8, u8, u8)) {
+        let gop = self.get_gop(bt);
+
+        let mut fb = gop.frame_buffer();
+
+        unsafe { fb.write_value(0, [1, 1, 1]); }
+    }
 }

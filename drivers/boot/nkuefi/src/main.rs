@@ -33,9 +33,9 @@ pub extern "C" fn efi_main(image: Handle, mut system_table: SystemTable<Boot>) -
     let gop = GopWriter::new();
     gop.init(system_table.boot_services());
 
-    _efi_print(format_args!("{}", "GOP initialized"));
-
     gop.clear_screen(system_table.boot_services(), (222, 165, 132));
+
+    _efi_print(format_args!("{}", "GOP initialized"));
 
     panic!("Bootloader ended");
 }
