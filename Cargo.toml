@@ -49,6 +49,7 @@ members = [
     "drivers/sos/",
     "drivers/storage/",
     "drivers/storage/lba/",
+    "drivers/storage/sd/rpisd/",
     "drivers/usbd/",
     # Fs
     "fs/tempfs/",

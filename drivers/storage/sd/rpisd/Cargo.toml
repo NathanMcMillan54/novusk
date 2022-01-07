@@ -1,0 +1,9 @@
+[package]
+name = "rpisd"
+version = "0.1.0"
+edition = "2021"
+description = "Driver for Rpi sd card"
+
+[dependencies]
+novuskinc = "0.1.0"
+storage = { path = "../../" }
