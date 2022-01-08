@@ -5,6 +5,6 @@ edition = "2021"
 description = "Driver for Rpi sd card"
 
 [dependencies]
-novuskinc = "0.1.0"
+novuskinc = "0.1.1"
 rpi = { path = "../../../rpi/" }
 storage = { path = "../../" }

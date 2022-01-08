@@ -5,6 +5,6 @@ edition = "2021"
 description = "Logical Block Addressing (LBA) driver"
 
 [dependencies]
-novuskinc = "0.1.0"
+novuskinc = "0.1.1"
 storage = { path = "../" }
 x86_64 = "0.14.7"
