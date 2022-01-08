@@ -98,8 +98,6 @@ impl FrameBufferGraphics for A64Fb {
                 unsafe {
                     *cursor = color.r as u32;
 
-                    //unsafe { printk!("({}, {}) {:p}\n", x, y, cursor); }
-
                     cursor = cursor.offset(1);
                 }
             }
