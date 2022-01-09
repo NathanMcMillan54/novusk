@@ -14,7 +14,7 @@ name = "novusk"
 path = "src/lib.rs"
 edition = "2021"
 # Remove the comment if you're going to link Novusk to something else
-#crate-type = ["staticlib"]
+crate-type = ["staticlib"]
 
 [workspace]
 members = [
@@ -97,6 +97,7 @@ libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
 novuskinc = { path = "include/novusk/" }
 printk = { path = "kernel/printk/" }
+storage = { path = "drivers/storage/" }
 usbd = { path = "drivers/usbd/" }
 unistd = { path = "lib/libc/unistd/" }
 

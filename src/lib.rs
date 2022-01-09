@@ -2,6 +2,12 @@
 
 // pub use novuskinc as novusk;
 
+extern crate alloc;
+use alloc::boxed::Box;
+use lba::Lba;
+use printk::printk;
+use storage::StorageIo;
+
 #[cfg(not(feature = "custom_config"))]
 pub mod config;
 
@@ -85,6 +91,8 @@ pub mod drivers {
     }
 
     pub mod storage {
+        pub use storage::*;
+
         #[cfg(target_arch = "x86_64")]
         pub use lba;
     }
@@ -93,7 +101,7 @@ pub mod drivers {
 #[cfg(feature = "grub")]
 #[no_mangle]
 pub extern "C" fn kernel_main() {
-    printk::printk!("Kernel main");
+    printk::printk!("Kernel main\n");
 }
 
 #[cfg(feature = "grub")]
