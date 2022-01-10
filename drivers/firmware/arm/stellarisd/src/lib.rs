@@ -44,3 +44,6 @@ pub unsafe extern "C" fn device_init() -> (Result<(), &'static str>, &'static st
         return (Err("Cannot find peripherals"), "Stellaris 6965");
     } else { return (Ok(()), "Stellaris 6965"); }
 }
+
+#[no_mangle]
+pub extern "C" fn rpi2_kernel_init() { }

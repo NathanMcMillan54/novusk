@@ -17,6 +17,7 @@ cfg_if! {
         #[macro_use] extern crate cortex_m_semihosting;
     }
 }
+
 cfg_if! {
     if #[cfg(feature = "rpi2")] {
         pub(crate) extern crate rpi;

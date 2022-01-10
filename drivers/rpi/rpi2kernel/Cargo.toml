@@ -11,4 +11,4 @@ fb = { path = "../../fb/" }
 kinfo = { path = "../../../kernel/kinfo/" }
 konfig = { path = "../../../kernel/konfig/" }
 printk = { path = "../../../kernel/printk/" }
-rpi = { path = "../" }
+rpi = { path = "../", features = ["rpi2"] }

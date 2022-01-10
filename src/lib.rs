@@ -2,12 +2,6 @@
 
 // pub use novuskinc as novusk;
 
-extern crate alloc;
-use alloc::boxed::Box;
-use lba::Lba;
-use printk::printk;
-use storage::StorageIo;
-
 #[cfg(not(feature = "custom_config"))]
 pub mod config;
 

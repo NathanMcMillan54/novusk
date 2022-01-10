@@ -13,10 +13,14 @@ pub use common::*;
 #[path = "../../../kernel/irq.rs"]
 pub mod irq;
 
+#[cfg(feature = "rpi2")]
 pub mod rpi2;
+
 pub mod rpi3;
 
+#[cfg(feature = "rpi2")]
 pub use rpi2::Rpi2;
+
 pub use rpi3::Rpi3;
 
 #[cfg(feature = "rpi2")]
@@ -37,6 +41,7 @@ pub extern "C" fn rpi3_board_init() -> (Result<(), &'static str>, &'static str) 
     } else { return (Ok(()), "RPi 3"); }
 }
 
+#[cfg(feature = "rpi2")]
 #[cfg(target_arch = "arm")]
 #[no_mangle]
 #[export_name = "device_init"]

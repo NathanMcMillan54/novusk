@@ -26,7 +26,7 @@ time = { path = "../../kernel/time/" }
 [features]
 cortex_a = ["nmallocator/wee_allocator"]
 cortex_m = ["nmallocator/linked_list"]
-rpi2 = ["cortex_a", "rpi/rpi2", "not_stm32"]
+rpi2 = ["cortex_a", "not_stm32"]
 stellaris_6965 = ["cortex_m", "not_stm32"]
 not_stm32 = ["stmd/stm32f407"]
 stm32f407 = ["cortex_m", "stmd/stm32f407"]

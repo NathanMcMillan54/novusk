@@ -24,6 +24,7 @@ impl Rpi2 {
     }
 
     pub fn init(&mut self) {
+        #[cfg(feature = "rpi2")]
         unsafe { BOARD.set(Board {
             name: "RPi 2",
             peripheral_addr: 0x3F00_0000,
