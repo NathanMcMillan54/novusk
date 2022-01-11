@@ -1,8 +1,17 @@
 use alloc::vec::Vec;
 use core::borrow::Borrow;
-use core::ops::Deref;
-use core::ptr::{read_volatile, write_volatile};
+use core::ptr::{read, read_volatile, write, write_volatile};
 use super::Dir;
+
+pub trait VfsIo {
+    fn write(&mut self, name: &str, content: &[u8]) {
+
+    }
+
+    fn read(&mut self, name: &str) -> &[u8] {
+        return b"";
+    }
+}
 
 pub struct Vfs {
     pub disk_size: u64,
@@ -24,13 +33,42 @@ impl Vfs {
     }
 }
 
-pub trait VfsIo {
-    fn write(name: &str, content: &[u8]) {
+pub struct VfsFile {
+    pub address: *mut u8,
+    pub len: u32,
+}
 
-    }
-
-    fn read(name: &str) -> &[u8] {
-        return b"";
+impl VfsFile {
+    pub fn new(address: *mut u8) -> Self {
+        return VfsFile {
+            address: address,
+            len: 0,
+        }
     }
 }
 
+impl VfsIo for VfsFile {
+    fn write(&mut self, name: &str, content: &[u8]) {
+        for o in 0..content.len() {
+            for b in content {
+                unsafe { write(self.address.offset(self.len as isize + o as isize), *b); }
+            }
+        }
+
+        self.len += content.len() as u32;
+    }
+
+    fn read(&mut self, name: &str) -> &[u8] {
+        let mut ret = &[];
+
+        for o in 0..self.len {
+            unsafe {
+                ret.iter().map(|x| read(self.address.offset(o as isize)));
+            }
+        }
+
+        ret.map(|x| b'A');
+
+        return ret;
+    }
+}

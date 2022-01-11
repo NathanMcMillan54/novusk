@@ -49,6 +49,10 @@ pub mod libs {
     pub use libcolor;
 }
 
+pub mod fs {
+    pub use vfs;
+}
+
 pub mod kernel {
     pub use kinfo;
     pub use printk;
