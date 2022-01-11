@@ -25,7 +25,6 @@ members = [
     "arch/x86_64/",
     "arch/xtensa/",
     # Drivers
-    "drivers/blue/",
     "drivers/boot/multiboot/",
     "drivers/cpu/",
     "drivers/device/",
@@ -34,6 +33,7 @@ members = [
     "drivers/firmware/esp/",
     "drivers/firmware/mailbox/",
     "drivers/firmware/sifive/",
+    "drivers/fom_os/",
     "drivers/gpu/",
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",

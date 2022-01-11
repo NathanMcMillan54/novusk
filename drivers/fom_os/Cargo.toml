@@ -1,10 +1,10 @@
 [package]
-name = "blue"
+name = "fom_os"
 version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2021"
+description = "Setup for all versions of the FOMOS operating system"
 
 [dependencies]
-gpu = { path = "../../drivers/gpu/" }
-init = { path = "../../init/" }
+novuskinc = "0.1.1"
 libost = { path = "../../lib/libost/" }

@@ -5,6 +5,6 @@ edition = "2021"
 description = "Starts Novusk based OSes"
 
 [dependencies]
-blue = { path = "../blue/" }
+fom_os = { path = "../fom_os/" }
 libost = { path = "../../lib/libost" }
 printk = { path = "../../kernel/printk/" }
