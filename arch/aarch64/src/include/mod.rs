@@ -1,2 +1,2 @@
 pub mod asm;
-pub mod sys;
+pub(crate) mod sys;

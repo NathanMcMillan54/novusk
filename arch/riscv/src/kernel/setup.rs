@@ -67,5 +67,5 @@ pub fn setup_riscv_kernel() {
 
     kernel_setup.setup();
 
-    //unsafe { start_main(); }
+    unsafe { start_main(); }
 }

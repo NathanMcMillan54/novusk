@@ -6,7 +6,7 @@ pub const READ: u32 = 63;
 pub const WRITE: u32 = 64;
 
 extern "C" {
-    static mut SYSCALL_TABLE: SysCallTable;
+    pub static mut SYSCALL_TABLE: SysCallTable;
     fn sys_mailbox_do(mb_do: u8, mailbox_num: u8, mailbox_arg: u8) -> u8;
     fn sys_write(write_byte: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
     fn sys_read(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;

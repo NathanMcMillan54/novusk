@@ -95,15 +95,3 @@ pub mod drivers {
         pub use lba;
     }
 }
-
-#[cfg(feature = "grub")]
-#[no_mangle]
-pub extern "C" fn kernel_main() {
-    printk::printk!("Kernel main\n");
-}
-
-#[cfg(feature = "grub")]
-#[no_mangle]
-pub extern "C" fn initramfs_main() {
-
-}

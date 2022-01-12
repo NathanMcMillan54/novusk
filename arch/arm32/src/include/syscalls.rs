@@ -4,7 +4,7 @@ pub const WRITE: u32 = 4;
 pub const SLEEP: u32 = 24;
 
 extern "C" {
-    static mut SYSCALL_TABLE: SysCallTable;
+    pub static mut SYSCALL_TABLE: SysCallTable;
     fn sys_write(byte: u8, arg2: u8, arg3: u8) -> u8;
 }
 
