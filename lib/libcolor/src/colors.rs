@@ -5,6 +5,7 @@ pub enum Colors {
     LightGray,
     DarkGray,
     Black,
+    // ROYGBIV (sorta)
     Red,
     LightRed,
     Orange,

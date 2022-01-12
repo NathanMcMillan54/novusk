@@ -23,6 +23,7 @@ pub(crate) mod arch_power;
 pub(crate) mod arch_power;
 
 pub mod reboot;
+pub mod shutdown;
 
 pub struct Power;
 
