@@ -62,9 +62,6 @@ pub mod drivers {
     #[cfg(target_arch = "x86_64")]
     pub use x86_64::kernel::task as multitask;
 
-    /* #[cfg(target_arch = "aarch64")]
-    pub use rpi;*/
-
     pub mod firmware {
         pub use usbd;
     }
