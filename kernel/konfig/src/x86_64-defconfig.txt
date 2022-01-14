@@ -1,0 +1,2 @@
+BOOT_METHOD=UEFI
+DISPLAY_MODULE=drivers/gpu/vgag

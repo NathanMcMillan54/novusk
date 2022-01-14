@@ -1,0 +1,7 @@
+[package]
+name = "buildkern"
+version = "0.1.0"
+edition = "2021"
+description = "Reads configuration file to see what needs to be compiled."
+
+[dependencies]
