@@ -13,6 +13,7 @@ all: build_tools
 	@ echo "Compiling $(ARCH) Novusk..."
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
 	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
+	@ $(MAKE) -C arch/$(ARCH) all
 
 build_tools:
 	@ echo "Compiling build tools..."
@@ -23,3 +24,5 @@ package:
 
 clean:
 	@ cd tools/build/buildkern/ && cargo clean
+	@ cd drivers/gpu/vgag/ && cargo clean
+	@ cd arch/$(ARCH)/ && cargo clean

@@ -5,4 +5,4 @@ edition = "2021"
 description = "Vga graphics driver"
 
 [dependencies]
-
+novuskinc = { path = "../../../include/novusk/" }
