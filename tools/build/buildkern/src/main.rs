@@ -4,6 +4,7 @@ use std::io::{BufRead, BufReader};
 use std::path::Path;
 
 pub mod compile;
+pub mod fields;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
