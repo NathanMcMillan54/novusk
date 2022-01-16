@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 description = "A small bootloader for Novusk"
 
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+x86_64 = "0.14.7"
+xmas-elf = "0.8.0"
+
 [dependencies]
 rlibc = "1.0.0"
 uefi = "0.13.0"
