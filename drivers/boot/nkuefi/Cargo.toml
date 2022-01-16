@@ -2,7 +2,9 @@
 name = "nkuefi"
 version = "0.1.0"
 edition = "2021"
-description = "Novusk Kernel UEFI driver"
+description = "A small bootloader for Novusk"
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-uart_16550 = "0.2.15"
+[dependencies]
+rlibc = "1.0.0"
+uefi = "0.13.0"
+uefi-services = "0.10.0"
