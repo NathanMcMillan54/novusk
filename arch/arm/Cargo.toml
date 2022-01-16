@@ -1,5 +1,5 @@
 [package]
-name = "arm32"
+name = "arm"
 version = "0.1.0"
 edition = "2021"
 description = "ARM32 kernel support"

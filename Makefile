@@ -1,12 +1,14 @@
 ARCH =?
 CONFIG =?
+CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
+DEFCONFIG =?
 TARGET =?
 LOCAL_TARGET =?
 FEATURES =?
 CRATE =?
 
 ifeq ($(DEFCONFIG), True)
-	CONFIG = kernel/konfig/$(ARCH)-defconfig.txt
+	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
 endif
 
 all: build_tools
