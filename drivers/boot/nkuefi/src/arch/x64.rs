@@ -1,12 +1,14 @@
 use alloc::string::ToString;
 use core::fmt::{Arguments, Write};
 use crate::{KERNEL_BIN_PATH, SfsInterface, _efi_print};
-use uefi::prelude::BootServices;
+use uefi::prelude::{Boot, BootServices};
 use uefi::proto::media::file::{File, FileAttribute, FileInfo, FileMode, FileSystemVolumeLabel, RegularFile};
-use uefi::ResultExt;
+use uefi::{Handle, ResultExt};
 use uefi::table::boot::{AllocateType, MemoryType};
+use uefi::table::SystemTable;
 use x86_64::VirtAddr;
 use xmas_elf::ElfFile;
+use crate::exit::exit_bootservices;
 
 unsafe fn load_kernel(bt: &BootServices) -> (ElfFile, VirtAddr) {
     let mut info_buffer = [0u8; 0x100];
@@ -17,7 +19,7 @@ unsafe fn load_kernel(bt: &BootServices) -> (ElfFile, VirtAddr) {
     let mut root = sfs.open_volume().unwrap().unwrap();
     let volume_label = root.get_info::<FileSystemVolumeLabel>(&mut info_buffer).unwrap().unwrap().volume_label().to_string();
 
-    let kernel_handle = root.open(KERNEL_BIN_PATH, FileMode::Read, FileAttribute::empty()).expect_success("Couldn't kernel binary");
+    let kernel_handle = root.open(KERNEL_BIN_PATH, FileMode::Read, FileAttribute::empty()).expect_success("Couldn't open kernel binary");
     let mut kernel_handle = RegularFile::new(kernel_handle);
 
     let info_mem = kernel_handle.get_info::<FileInfo>(&mut info_buffer).unwrap().unwrap();
@@ -31,17 +33,19 @@ unsafe fn load_kernel(bt: &BootServices) -> (ElfFile, VirtAddr) {
     let kernel_elf = ElfFile::new(buffer[..len].as_ref()).expect("Failed to parse kernel ELF");
     let kernel_entry_addr = kernel_elf.header.pt2.entry_point();
 
-    _efi_print(format_args!("{}{}", "/boot/efi/kernel.elf Entry address: ", kernel_entry_addr));
+    _efi_print(format_args!("{}{}", "kernel.elf Entry address: ", kernel_entry_addr));
 
     return (kernel_elf, VirtAddr::new(kernel_entry_addr));
 }
 
-pub fn start_loading_kernel(bt: &BootServices) {
-    let (elf, kernel_addr) = unsafe { load_kernel(bt) };
+pub fn start_loading_kernel(image: Handle, mut st: SystemTable<Boot>) {
+    let (elf, kernel_addr) = unsafe { load_kernel(st.boot_services()) };
 
     _efi_print(format_args!("{}", "Starting kernel..."));
 
-    let kernel_entry: extern "sysv64" fn() = unsafe { core::mem::transmute(kernel_addr) };
+    exit_bootservices(image, st);
 
-    kernel_entry();
+    let kernel_entry: extern "C" fn() = unsafe { core::mem::transmute(kernel_addr.as_u64()) };
+
+    (kernel_entry)();
 }

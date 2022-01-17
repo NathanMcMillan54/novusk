@@ -1,8 +1,9 @@
 #![no_std]
+#![feature(asm)]
 
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn _panic(_info: &PanicInfo) -> ! {
-    loop { }
+unsafe fn _panic(_info: &PanicInfo) -> ! {
+    loop { asm!("hlt"); }
 }

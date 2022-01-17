@@ -77,7 +77,7 @@ pub extern "C" fn efi_main(image: Handle, mut system_table: SystemTable<Boot>) -
     _efi_print(format_args!("{}", "Read root directory from SFS"));
     _efi_print(format_args!("{}", "Loading kernel..."));
 
-    arch::start_loading_kernel(system_table.boot_services());
+    arch::start_loading_kernel(image, system_table);
 
     panic!("Bootloader ended");
 }
