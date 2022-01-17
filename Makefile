@@ -11,15 +11,18 @@ ifeq ($(DEFCONFIG), True)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
 endif
 
-all: build_tools
+all: build_tools build_arch
 	@ echo "Compiling $(ARCH) Novusk..."
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
 	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
-	@ $(MAKE) -C arch/$(ARCH) all
 
 build_tools:
 	@ echo "Compiling build tools..."
 	@ $(MAKE) -C tools/build/buildkern all
+
+build_arch:
+	@ echo "Compiling architecture specific kernel..."
+	@ $(MAKE) -C arch/$(ARCH) all
 
 package:
 	@ cargo build --release -p $(CRATE) --target $(TARGET)

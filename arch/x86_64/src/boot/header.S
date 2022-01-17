@@ -1,9 +1,5 @@
-.code32
+.globl boot_setup
 
-.globl _start
-.extern bootloader_start_novusk
+boot_setup:
+    ret /* Unitl all boot setup functions are implemented */
 
-_start:
-    cli
-    call bootloader_start_novusk
-    hlt

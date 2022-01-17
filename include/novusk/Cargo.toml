@@ -4,22 +4,4 @@ version = "0.1.0"
 edition = "2021"
 description = "A lib used for anything related to Novusk"
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
-
-[target.'cfg(target_arch = "aarch64")'.dependencies]
-libbmu = { path = "../../lib/libbmu/" }
-tock-registers = "0.7.0"
-rpi = { path = "../../drivers/rpi/" }
-
-[target.'cfg(target_arch = "riscv32")'.dependencies]
-hifive1 = { version = "0.10.0", features = ["board-hifive1"] }
-
 [dependencies]
-cfg-if = "1.0.0"
-kinfo = { path = "../../kernel/kinfo/" }
-novusk_syscalls = "0.2.1"
-power = { path = "../../kernel/power/" }
-printk = { path = "../../kernel/printk/" }
-tempfs = { path = "../../fs/tempfs/" }
-vfs = { path = "../../fs/vfs/" }
