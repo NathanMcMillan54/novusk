@@ -6,7 +6,7 @@ description = "x86_64 support for Novusk"
 
 [dependencies]
 amd64_timer = "1.3.0"
-bootloader = { version = "0.9.19", features = ["map_physical_memory"] }
+bootloader = { version = "0.9.21", features = ["map_physical_memory"] }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 libcolor = { path = "../../lib/libcolor/" }

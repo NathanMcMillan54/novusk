@@ -103,7 +103,7 @@ unistd = { path = "lib/libc/unistd/" }
 vfs = { path = "fs/vfs/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = "0.9.18"
+bootloader = "0.9.21"
 kb_mouse = { path = "drivers/input/mouse/kb_mouse/" }
 lba = { path = "drivers/storage/lba/" }
 libwin = { path = "lib/libwin/" }
