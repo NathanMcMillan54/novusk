@@ -1,2 +1,1 @@
-BOOT_METHOD=drivers/boot/nkuefi
 DISPLAY_MODULE=drivers/gpu/vgag

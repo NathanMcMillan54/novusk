@@ -15,6 +15,7 @@ all: build_tools build_arch
 	@ echo "Compiling $(ARCH) Novusk..."
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
 	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
+	@ sleep 1 && echo "Finished compiling Novusk"
 
 build_tools:
 	@ echo "Compiling build tools..."

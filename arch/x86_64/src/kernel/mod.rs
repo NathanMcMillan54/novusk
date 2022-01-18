@@ -1,4 +1,6 @@
-pub(crate) mod cpu;
+pub mod panic;
+
+/*pub(crate) mod cpu;
 pub mod interrupts;
 pub mod io;
 pub(crate) mod kernel;
@@ -14,3 +16,4 @@ pub(crate) mod gop;
 
 #[path = "video/vga/mod.rs"]
 pub(crate) mod vga;
+*/

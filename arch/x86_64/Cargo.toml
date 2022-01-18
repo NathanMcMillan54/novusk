@@ -7,10 +7,11 @@ description = "x86_64 support for Novusk"
 [lib]
 name = "x86_64_kernel_lib"
 edition = "2021"
+crate-type = ["staticlib"]
 path = "src/lib.rs"
 
 [[bin]]
-name = "x86_64_kernel"
+name = "x86_64_kernel_bin"
 edition = "2021"
 path = "src/main.rs"
 

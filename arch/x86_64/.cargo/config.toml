@@ -1,0 +1,3 @@
+rustflags = [
+    "-C", "target-feature=+crt-static"
+]

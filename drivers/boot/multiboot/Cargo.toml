@@ -1,9 +1,0 @@
-[package]
-name = "multiboot"
-version = "0.1.0"
-edition = "2021"
-description = "Setup for multibooted kernel"
-
-[dependencies]
-multiboot2 = "0.12.2"
-printk = { path = "../../../kernel/printk/" }
