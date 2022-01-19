@@ -32,4 +32,5 @@ clean:
 	@ cd tools/build/buildkern/ && cargo clean
 	@ cd drivers/boot/nkuefi && cargo clean
 	@ cd drivers/gpu/vgag/ && cargo clean
+	@ cd drivers/platform/rpi && cargo clean
 	@ cd arch/$(ARCH)/ && cargo clean

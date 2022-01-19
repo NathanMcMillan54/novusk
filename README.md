@@ -8,7 +8,7 @@ Read ``Documentaion/`` for help with compiling, configurations and platforms, et
 
 ### Compiling:
 ```commandline
-make all TARGET=<target> FEATURES=<features>
+make all TARGET=<target> DEFCONFIG=<true/false> CONFIG=<path if DEFCONFIG=false>
 ```
 
 ---
