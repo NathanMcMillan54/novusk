@@ -1,3 +1,5 @@
+TARGET =?
+
 all:
 	@ echo "Compiling arm kernel..."
-	@ cargo build --release --target thumbv7m-none-eabi # For now
+	@ cargo build --release -Z build-std=core,alloc --target $(TARGET)

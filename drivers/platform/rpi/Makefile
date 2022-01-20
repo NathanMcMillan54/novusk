@@ -1,2 +1,2 @@
 all:
-	@ cargo build --release --target ../../../targets/aarch64-novusk.json
+	@ cargo build --release -Z build-std=core,alloc --target ../../../targets/aarch64-novusk.json

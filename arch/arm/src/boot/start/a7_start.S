@@ -28,7 +28,7 @@ _start:
 	cmp r4, r9
 	blo 1b
 
-	ldr r3, =bmain
+	ldr r3, =arm_boot_start
 	blx r3
 
 halt:

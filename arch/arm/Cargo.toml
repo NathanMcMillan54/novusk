@@ -2,7 +2,18 @@
 name = "arm"
 version = "0.1.0"
 edition = "2021"
-description = "ARM32 kernel support"
+description = "ARM kernel support"
+
+[lib]
+name = "arm_kernel_lib"
+path = "src/lib.rs"
+crate-type = ["staticlib"]
+edition = "2021"
+
+[[bin]]
+name = "arm_kernel_bin"
+path = "src/main.rs"
+edition = "2021"
 
 [dependencies]
 cfg-if = "1.0.0"
@@ -12,21 +23,12 @@ cortex-m-rt = "^0.6.15"
 cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
-init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/" }
-novusk_syscalls = "0.2.1"
-novuskinc = { path = "../../include/novusk/" }
-rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/" }
-rpi = { path = "../../drivers/rpi/" }
-stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
-stmd = { path = "../../drivers/firmware/arm/stmd/" }
-time = { path = "../../kernel/time/" }
+rlibc = "1.0.0"
 
 [features]
 cortex_a = ["nmallocator/wee_allocator"]
 cortex_m = ["nmallocator/linked_list"]
-rpi2 = ["cortex_a", "not_stm32"]
-stellaris_6965 = ["cortex_m", "not_stm32"]
-not_stm32 = ["stmd/stm32f407"]
-stm32f407 = ["cortex_m", "stmd/stm32f407"]
+rpi2 = ["cortex_a"]
+stellaris_6965 = ["cortex_m"]

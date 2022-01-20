@@ -1,5 +1,6 @@
 #![no_std]
-#![feature(asm, global_asm, llvm_asm)]
+#![no_main]
+#![feature(asm)]
 
 #[path = "../aarch64.rs"]
 pub mod arch;

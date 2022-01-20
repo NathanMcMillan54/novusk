@@ -1,6 +1,7 @@
 .section ".text.boot"
 
 .global _start
+.extern aarch64_boot_setup
 
 _start:
     mrs     x1, mpidr_el1
