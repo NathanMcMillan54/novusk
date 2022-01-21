@@ -22,5 +22,5 @@ pub mod a64_mb {
         return ret;
     }
 
-    define_syscall!(sys_mailbox_do, aarch64_mailbox_call);
+    //define_syscall!(sys_mailbox_do, aarch64_mailbox_call);
 }

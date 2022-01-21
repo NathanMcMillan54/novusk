@@ -1,8 +1,8 @@
+pub mod cpu;
 pub mod panic;
 
 /*pub mod arm_init;
 pub mod board;
-pub mod cpu;
 pub mod io;
 pub mod irq;
 pub mod printk;

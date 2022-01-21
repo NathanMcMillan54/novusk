@@ -1,11 +1,8 @@
-#[cfg(target_arch = "aarch64")]
-#[no_mangle]
-extern "C" {
-    pub(self) fn aarch64_boot_start() -> !;
-}
+use crate::boot::main::arm_boot_main;
 
-#[cfg(target_arch = "arm")]
 #[no_mangle]
-pub extern "C" fn arm_boot_start() -> ! {
-    panic!("ARM boot finished");
+pub unsafe extern "C" fn start_boot() -> ! {
+    arm_boot_main();
+
+    panic!("Boot function should not return");
 }

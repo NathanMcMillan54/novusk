@@ -16,6 +16,7 @@ fn main() {
     // Reruns
     println!("cargo:rerun-if-changed=stellaris_mem.x");
     println!("cargo:rerun-if-changed=src/boot/start/linker.ld");
+    println!("cargo:rerun-if-changed=src/boot/start/a53_start.S");
     println!("cargo:rerun-if-changed=src/boot/start/a7_start.S");
 
     #[cfg(feature = "cortex_m")]

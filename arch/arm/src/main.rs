@@ -9,3 +9,6 @@ pub(crate) extern crate rlibc;
 pub mod arch;
 
 pub use arch::*;
+
+#[cfg(target_arch = "aarch64")]
+pub mod bits64;

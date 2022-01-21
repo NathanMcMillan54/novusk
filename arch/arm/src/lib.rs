@@ -9,5 +9,8 @@ pub mod arch;
 
 pub use arch::*;
 
+#[cfg(target_arch = "aarch64")]
+pub mod bits64;
+
 #[lang = "eh_personality"]
 extern "C" fn eh_personality() { }

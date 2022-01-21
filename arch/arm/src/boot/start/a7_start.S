@@ -28,9 +28,5 @@ _start:
 	cmp r4, r9
 	blo 1b
 
-	ldr r3, =arm_boot_start
+	ldr r3, =start_boot
 	blx r3
-
-halt:
-	wfe
-	b halt
