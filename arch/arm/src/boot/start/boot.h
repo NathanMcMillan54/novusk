@@ -1,5 +1,5 @@
-void boot_die() {
-    while (1) {
-        asm("wfe");
-    }
-}
+.globl boot_die
+
+boot_die:
+    wfe
+    b .

@@ -30,3 +30,5 @@ _start:
 
 	ldr r3, =start_boot
 	blx r3
+3:
+    bl boot_die

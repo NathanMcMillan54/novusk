@@ -26,6 +26,7 @@ device = { path = "../../drivers/device/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/" }
 rlibc = "1.0.0"
+setup = { path = "../../kernel/setup/" }
 
 [features]
 cortex_a = ["nmallocator/wee_allocator"]

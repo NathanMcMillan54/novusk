@@ -1,5 +1,10 @@
+pub mod arm_init;
 pub mod cpu;
 pub mod panic;
+pub mod setup;
+
+pub use arm_init::arm_kernel_init;
+pub use setup::setup_arm_kernel;
 
 /*pub mod arm_init;
 pub mod board;
