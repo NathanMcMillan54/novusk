@@ -20,7 +20,7 @@ impl SetupTypes {
         let mut configs = Konfig::new();
 
         if self == SetupTypes::Os {
-            sos::sos_init(configs.get("OS", "NAME").as_str());
+            //sos::sos_init(configs.get("OS", "NAME").as_str());
         } else if self == SetupTypes::Server {
             self.server_init()
         } else if self == SetupTypes::BmApp {

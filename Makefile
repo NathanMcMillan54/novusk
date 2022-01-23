@@ -5,32 +5,35 @@ DEFCONFIG =?
 TARGET =?
 LOCAL_TARGET =?
 FEATURES =?
-CRATE =?
 
 ifeq ($(DEFCONFIG), True)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
 endif
 
-all: build_tools build_arch
-	@ echo "Compiling $(ARCH) Novusk..."
-	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
-	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
+all: build_tools setup build_config build_arch
 	@ sleep 1 && echo "Finished compiling Novusk"
 
 build_tools:
 	@ echo "Compiling build tools..."
 	@ $(MAKE) -C tools/build/buildkern all
 
-build_arch:
-	@ echo "Compiling architecture specific kernel..."
-	@ $(MAKE) -C arch/$(ARCH) all
+setup:
+	#@ rm -rf include/novusk/build
+	@ mkdir include/novusk/build
 
-package:
-	@ cargo build --release -p $(CRATE) --target $(TARGET)
+build_config:
+	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
+	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
+
+build_arch:
+	@ echo "Compiling $(ARCH) Novusk..."
+	@ $(MAKE) -C arch/$(ARCH) all
 
 clean:
 	@ cd tools/build/buildkern/ && cargo clean
 	@ cd drivers/boot/nkuefi && cargo clean
 	@ cd drivers/gpu/vgag/ && cargo clean
+	@ cd drivers/gpu/armfb/ && cargo clean
 	@ cd drivers/platform/rpi && cargo clean
 	@ cd arch/$(ARCH)/ && cargo clean
+	@ cd include/novusk/ && make clean

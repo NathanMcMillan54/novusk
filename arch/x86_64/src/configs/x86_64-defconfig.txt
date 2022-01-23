@@ -1,1 +1,1 @@
-DISPLAY_MODULE=drivers/gpu/vgag
+DISPLAY_MODULE=drivers/gpu/vgag/

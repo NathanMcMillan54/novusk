@@ -5,3 +5,7 @@ edition = "2021"
 description = "A lib used for anything related to Novusk"
 
 [dependencies]
+
+[features]
+default = []
+library = []

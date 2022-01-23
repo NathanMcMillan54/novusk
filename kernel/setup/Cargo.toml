@@ -9,5 +9,4 @@ kinfo = { path = "../kinfo/" }
 konfig = { path = "../konfig/" }
 libbmu = { path = "../../lib/libbmu/" }
 printk = { path = "../printk/" }
-sos = { path = "../../drivers/sos/" }
 unistd = { path = "../../lib/libc/unistd/" }

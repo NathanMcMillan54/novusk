@@ -14,6 +14,7 @@ pub(crate) mod syscall;
 pub(crate) mod user;
 
 pub use boot::BootSetup;
+pub use kernel::ArchKernelSetup;
 pub use types::SetupReturn;
 
 use types::{str_to_setuptypes, SetupTypes};

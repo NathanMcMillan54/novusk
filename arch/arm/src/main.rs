@@ -3,6 +3,7 @@
 #![feature(asm, global_asm)]
 #![feature(alloc_error_handler, lang_items)]
 
+#[macro_use] extern crate novuskinc;
 pub(crate) extern crate rlibc;
 
 #[path = "../arm.rs"]

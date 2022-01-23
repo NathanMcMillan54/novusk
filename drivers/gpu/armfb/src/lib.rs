@@ -1,7 +1,10 @@
 #![no_std]
 
 #[macro_use] extern crate novuskinc;
-#[macro_use] extern crate printk;
+
+use core::panic::PanicInfo;
+
+/* [macro_use] extern crate printk;
 
 use fb::{Fb};
 
@@ -28,16 +31,21 @@ impl ArmFb {
         #[cfg(target_arch = "aarch64")]
         a64::a64_fb_init();
     }
-}
+}*/
 
 pub fn armfb_init() {
-    unsafe { ARMFB.init(); }
+
 }
 
-// module_init!(gpug_init, armfb_init);
+module_init!(core_display_init, armfb_init);
 
 pub fn armfb_end() {
-    unsafe { ARMFB.first_init = false; }
+
 }
 
-// module_end!(gpug_end, armfb_end);
+module_end!(core_display_end, armfb_end);
+
+#[panic_handler]
+fn panic(info: &PanicInfo) -> ! {
+    loop {  }
+}

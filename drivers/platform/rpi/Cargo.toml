@@ -4,5 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "Setup for RaspberryPi devices"
 
+[lib]
+crate-type = ["staticlib"]
+
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }

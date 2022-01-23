@@ -16,6 +16,6 @@ edition = "2021"
 path = "src/main.rs"
 
 [dependencies]
-novuskinc = { path = "../../include/novusk/" }
+novuskinc = { path = "../../include/novusk/", features = ["library"] }
 
 [features]
