@@ -1,5 +1,8 @@
 .idea/
 target/
 
-Cargo.lock
-
+*.a
+*.img
+*.lock
+*.o
+*.rlib

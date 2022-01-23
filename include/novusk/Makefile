@@ -4,9 +4,10 @@ TARGET =?
 all:
 	@ echo "Compiling Novuskinc..."
 	@ cargo build --release -Z build-std=core,alloc --target $(TARGET)
-	@ $(ARCH)-linux-gnu-gcc -shared target/$(ARCH)-novusk/release/libnovuskinc.rlib build/display.km build/device.km -static -o libnovuskinc
+	@ cd .
+	@ $(ARCH)-linux-gnu-ar -crs libnovuskinc.a target/$(ARCH)-novusk/release/libnovuskinc.rlib build/display.km build/device.km
 
 clean:
 	@ cargo clean
-	@ rm -rf libnovusk.a
+	@ rm -rf libnovuskinc.a
 	@ rm -rf build/

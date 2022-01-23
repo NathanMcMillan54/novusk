@@ -12,6 +12,3 @@ use ::core::panic::PanicInfo;
 fn panic(info: &PanicInfo) -> ! {
     loop {  }
 }
-
-#[no_mangle]
-pub extern "C" fn test_no_mangle() {  }

@@ -18,7 +18,7 @@ build_tools:
 	@ $(MAKE) -C tools/build/buildkern all
 
 setup:
-	#@ rm -rf include/novusk/build
+	@ rm -rf include/novusk/build
 	@ mkdir include/novusk/build
 
 build_config:
@@ -26,7 +26,9 @@ build_config:
 	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
 
 build_arch:
+	@ sleep 2
 	@ echo "Compiling $(ARCH) Novusk..."
+	@ sleep 1
 	@ $(MAKE) -C arch/$(ARCH) all
 
 clean:
