@@ -2,7 +2,7 @@ ARCH =?
 CONFIG =?
 CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
 DEFCONFIG =?
-TARGET =?
+TARGET = targets/$(ARCH)-novusk.json
 LOCAL_TARGET =?
 FEATURES =?
 
@@ -18,8 +18,6 @@ build_tools:
 	@ $(MAKE) -C tools/build/buildkern all
 
 setup:
-	@ rm -rf include/novusk/build
-	@ mkdir include/novusk/build
 
 build_config:
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
@@ -38,4 +36,4 @@ clean:
 	@ cd drivers/gpu/armfb/ && cargo clean
 	@ cd drivers/platform/rpi && cargo clean
 	@ cd arch/$(ARCH)/ && cargo clean
-	@ cd include/novusk/ && make clean
+	@ #cd include/novusk/ && make clean

@@ -6,7 +6,6 @@ pub struct Aarch64Boot;
 
 impl Aarch64Boot {
     pub fn new() -> Self {
-        unsafe { write_volatile(0x3F20_100 as *mut u8, b'A'); }
         return Aarch64Boot;
     }
 

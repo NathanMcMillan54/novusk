@@ -28,7 +28,13 @@ impl ArchKernelSetup for ArmKernel {
     }
 
     fn device_init(&self) -> SetupReturn {
-        start_module!(early_device_init, early_device_end);
+        //start_module!(early_device_init, early_device_end);
+        extern {
+            fn early_device_init();
+        }
+
+        unsafe { early_device_init(); }
+
         (Ok(()), "")
     }
 }
