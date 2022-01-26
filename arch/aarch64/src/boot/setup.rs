@@ -10,6 +10,12 @@ impl Aarch64Boot {
     }
 
     pub fn setup(&self) {
+        let uart_addr = MMIO_BASE + UART_OFFSET;
+
+        for b in b"Starting kernel...\n" {
+            unsafe { core::ptr::write_volatile(0x3F20_1000 as *mut u8, *b); }
+        }
+
         let linker = unsafe { self.linker_setup() };
 
         if linker.0.is_err() {

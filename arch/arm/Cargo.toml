@@ -23,6 +23,7 @@ cortex-m-rt = "^0.6.15"
 cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
+dif = { path = "../../include/dif/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/", features = ["library"] }
