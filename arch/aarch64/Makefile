@@ -2,7 +2,9 @@ all: arm boot
 	@ echo "Compiling Aarch64 kernel..."
 	@ cargo build --release -Z build-std=core,alloc --target ../../targets/aarch64-novusk.json
 	@ echo "Linking..."
-	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld ../arm/src/boot/start/a53_start.o ../arm/target/aarch64-novusk/release/libarm_kernel_lib.a target/aarch64-novusk/release/libaarch64_kernel_lib.a ../../include/novusk/libdevice.a -o src/boot/kernel7.img
+	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld ../arm/src/boot/start/a53_start.o ../arm/target/aarch64-novusk/release/libarm_kernel_lib.a target/aarch64-novusk/release/libaarch64_kernel_lib.a ../../include/novusk/kms/*.km -o src/boot/aadImage
+	@ echo "Created kernel image:"
+	@ echo "arch/aarch64/src/boot/aadImage"
 
 arm:
 	@ echo "Compiling parts of ARM kernel..."
@@ -13,4 +15,4 @@ boot:
 
 clean:
 	@ cargo clean && cd ../arm && cargo clean
-
+	@ rm -rf src/boot/aadImage
