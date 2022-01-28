@@ -7,7 +7,7 @@ use crate::{Dif, libcopy};
 use libcopy::copy_value;
 
 extern "C" {
-    fn _early_printk(print: Arguments);
+    pub(crate) fn _early_printk(print: Arguments);
 }
 
 fn trim_line(line: &str) -> Cow<str> {

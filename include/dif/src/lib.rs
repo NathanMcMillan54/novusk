@@ -2,8 +2,10 @@
 
 #[macro_use] extern crate alloc;
 
+use alloc::string::ToString;
 use alloc::vec::Vec;
 use core::borrow::Borrow;
+use core::ptr::read;
 use rjson::parse;
 
 #[path = "../../../lib/libcopy.rs"]
@@ -13,6 +15,7 @@ pub(crate) mod json;
 pub mod parse;
 
 use json::*;
+use parse::_early_printk;
 
 pub struct Dif {
     pub device_name: &'static str,
@@ -85,6 +88,6 @@ impl Dif {
 
         if read_data.is_none() {
             panic!("DIF is either empty or not formatted properly");
-        }
+        } else { unsafe { _early_printk(format_args!("{}", read_data.unwrap().to_string())); } }
     }
 }
