@@ -11,6 +11,7 @@ impl ArmKernel {
     pub fn setup(&self) {
         let irq = self.irq_setup();
         let dev = self.device_init();
+        let serial = self.serial_io_init();
 
         if irq.0.is_err() {
             panic!("{}", irq.1);
@@ -18,6 +19,10 @@ impl ArmKernel {
 
         if dev.0.is_err() {
             panic!("{}", irq.1);
+        }
+
+        if serial.0.is_err() {
+            panic!("{}", serial.1);
         }
     }
 }
@@ -36,6 +41,12 @@ impl ArchKernelSetup for ArmKernel {
         unsafe { early_device_init(); }
 
         (Ok(()), "")
+    }
+
+    fn serial_io_init(&self) -> SetupReturn {
+        unsafe { super::uart::ARMUART.init(); }
+
+        return (Ok(()), "Set UART address");
     }
 }
 

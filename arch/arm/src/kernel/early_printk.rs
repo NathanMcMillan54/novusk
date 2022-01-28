@@ -3,7 +3,7 @@ use super::{serial, uart};
 
 #[no_mangle]
 pub extern "C" fn _early_printk(print: Arguments) {
-    serial::hio_write(print);
+    uart::uart_write(print);
 }
 
 pub fn setup_early_printk() {
