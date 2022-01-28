@@ -1,6 +1,6 @@
 #![no_std]
 #![feature(asm, global_asm)]
-#![feature(alloc_error_handler, lang_items)]
+#![feature(alloc_error_handler, lang_items, panic_info_message)]
 
 #[macro_use] extern crate novuskinc;
 pub(crate) extern crate rlibc;

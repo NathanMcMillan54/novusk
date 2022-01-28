@@ -1,4 +1,5 @@
-use alloc::string::String;
+use alloc::borrow::Cow;
+use alloc::string::{String, ToString};
 use alloc::vec::Vec;
 use core::borrow::Borrow;
 use core::fmt::Arguments;
@@ -7,6 +8,10 @@ use libcopy::copy_value;
 
 extern "C" {
     fn _early_printk(print: Arguments);
+}
+
+fn trim_line(line: &str) -> Cow<str> {
+    return Cow::Owned(line.replace(" ", "").replace("\"", "").replace(":", "").replace(",", ""));
 }
 
 impl Dif {
@@ -19,8 +24,17 @@ impl Dif {
             panic!("DIF doesn't have the minumum number of feilds");
         }
 
-        let name_line = file_feilds[1];
-        let name = "";
+        let mut name_line = file_feilds[1];
+        let mut name = "";
+
+        if !name_line.contains("\"name\"") {
+            unsafe { _early_printk(format_args!("{}\n", name_line)) }
+            panic!("name_line doesn't include \"name\"");
+        } else {
+            //name = &trim_line(name_line);
+        }
+
+        unsafe { _early_printk(format_args!("{}{}", "name: ", name)) }
 
         let periph_line = file_feilds[2];
         let periph_addr = 0x0 as u32;
