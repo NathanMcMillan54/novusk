@@ -2,12 +2,17 @@
 
 #[macro_use] extern crate alloc;
 
+use alloc::vec::Vec;
 use core::borrow::Borrow;
+use rjson::parse;
 
 #[path = "../../../lib/libcopy.rs"]
 pub mod libcopy;
 
+pub(crate) mod json;
 pub mod parse;
+
+use json::*;
 
 pub struct Dif {
     pub device_name: &'static str,
@@ -23,6 +28,7 @@ pub struct Dif {
     pub mb_addr: Option<u32>,
     pub debug: Option<bool>,
 }
+
 
 impl Dif {
     pub const fn empty() -> Self {
@@ -72,6 +78,13 @@ impl Dif {
     }
 
     pub fn set(&mut self, dif_file: &'static str) {
-        self.parse(dif_file);
+        let json_data: Vec<char> = dif_file.chars().collect();
+        let mut index = 0;
+
+        let read_data = parse::<JsonValue, JsonArray, JsonObject, JsonValue>(&*json_data, &mut index);
+
+        if read_data.is_none() {
+            panic!("DIF is either empty or not formatted properly");
+        }
     }
 }

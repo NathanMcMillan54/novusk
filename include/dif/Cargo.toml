@@ -5,3 +5,4 @@ edition = "2021"
 description = "A library for reading DIF files."
 
 [dependencies]
+rjson = { version = "0.3.1" }
