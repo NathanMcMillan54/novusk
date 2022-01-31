@@ -38,5 +38,5 @@ clean:
 	@ cd drivers/gpu/vgag/ && cargo clean
 	@ cd drivers/gpu/armfb/ && cargo clean
 	@ cd drivers/platform/rpi && cargo clean
-	@ cd arch/$(ARCH)/ && cargo clean
+	@ cd arch/$(ARCH)/ && make clean
 	@ cd include/novusk/ && make clean

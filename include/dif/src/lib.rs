@@ -4,20 +4,16 @@
 
 use alloc::string::ToString;
 use alloc::vec::Vec;
-use core::borrow::Borrow;
-use core::ptr::read;
-use rjson::parse;
 
 #[path = "../../../lib/libcopy.rs"]
 pub mod libcopy;
 
-pub(crate) mod json;
 pub mod parse;
 
-use json::*;
 use parse::_early_printk;
 
 pub struct Dif {
+    pub diff: Vec<&'static str>,
     pub device_name: &'static str,
     pub peripheral_addr: Option<u32>,
     pub gpio0_addr: Option<u32>,
@@ -36,6 +32,7 @@ pub struct Dif {
 impl Dif {
     pub const fn empty() -> Self {
         return Dif {
+            diff: vec![],
             device_name: "",
             peripheral_addr: None,
             gpio0_addr: None,
@@ -65,6 +62,7 @@ impl Dif {
                debug: Option<bool>) -> Self {
 
         return Dif {
+            diff: vec![],
             device_name: name,
             peripheral_addr: periph_addr,
             gpio0_addr: gpio0,
@@ -81,13 +79,6 @@ impl Dif {
     }
 
     pub fn set(&mut self, dif_file: &'static str) {
-        let json_data: Vec<char> = dif_file.chars().collect();
-        let mut index = 0;
-
-        let read_data = parse::<JsonValue, JsonArray, JsonObject, JsonValue>(&*json_data, &mut index);
-
-        if read_data.is_none() {
-            panic!("DIF is either empty or not formatted properly");
-        } else { unsafe { _early_printk(format_args!("{}", read_data.unwrap().to_string())); } }
+        self.parse_and_set(dif_file);
     }
 }
