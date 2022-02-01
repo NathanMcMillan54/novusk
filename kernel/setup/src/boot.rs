@@ -9,12 +9,16 @@ pub trait BootSetup {
         return (Ok(()), "Successfully setup linker memory");
     }
 
-    fn disable_dwt(&self) -> SetupReturn {
+    fn disable_wdt(&self) -> SetupReturn {
         return (Ok(()), "DWT successfully initialized");
     }
 
     fn cpuid_init(&self) -> SetupReturn {
         return (Ok(()), "Successfully got and set CPU info");
+    }
+
+    fn early_cpu_init(&self) -> SetupReturn {
+        return (Ok(()), "Successfully finished early CPU initialization");
     }
 }
 

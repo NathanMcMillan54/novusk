@@ -1,7 +1,7 @@
 use ::setup::{ArchKernelSetup, SetupReturn};
 use novuskinc::core::prelude::{early_device_init, early_device_end};
 
-struct ArmKernel;
+pub(crate) struct ArmKernel;
 
 impl ArmKernel {
     pub fn new() -> Self {

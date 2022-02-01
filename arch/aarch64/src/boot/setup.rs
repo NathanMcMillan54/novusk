@@ -16,11 +16,11 @@ impl Aarch64Boot {
             unsafe { core::ptr::write_volatile(0x3F20_1000 as *mut u8, *b); }
         }
 
-        let linker = unsafe { self.linker_setup() };
+        //let linker = unsafe { self.linker_setup() };
 
-        if linker.0.is_err() {
+        /*if linker.0.is_err() {
             panic!("{}", linker.1);
-        }
+        }*/
     }
 }
 

@@ -1,17 +1,14 @@
-use crate::kernel::cpu::CPUINFO;
+use crate::kernel::cpu::info::CPUINFO;
 use crate::kernel::{arm_kernel_init, setup_arm_kernel};
-
-#[cfg(target_arch = "arm")]
-fn boot_setup() {
-    use super::setup::Arm32Boot;
-
-    let arm_boot = Arm32Boot::new();
-}
+use super::setup::ArmBoot;
 
 #[no_mangle]
 pub unsafe extern "C" fn arm_boot_main() {
+    let arm_boot = ArmBoot::new();
+    arm_boot.setup();
+
     #[cfg(target_arch = "arm")]
-    boot_setup();
+    super::setup::boot32::arm32_boot_setup();
 
     #[cfg(target_arch = "aarch64")]
     crate::bits64::arm64_boot_setup();
@@ -19,5 +16,6 @@ pub unsafe extern "C" fn arm_boot_main() {
     setup_arm_kernel();
     arm_kernel_init();
 
-    panic!("{}: {} bit kernel ended", CPUINFO.architecture, CPUINFO.bits);
+    panic!("{}:{} kernel ended", CPUINFO.architecture, CPUINFO.bits);
 }
+
