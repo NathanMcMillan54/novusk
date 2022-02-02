@@ -12,22 +12,17 @@ impl ArmBoot {
     pub fn setup(&self) {
         let early_io = self.early_io_init();
         let ld_mem = unsafe { self.linker_setup() };
-        let cpu = self.early_cpu_init();
 
         if early_io.0.is_err() {
             panic!("{}", early_io.1);
         } else if ld_mem.0.is_err() {
             panic!("{}", ld_mem.1);
-        } else if cpu.0.is_err() {
-            panic!("{}", cpu.1);
         }
 
         if early_io.0.is_ok() {
             crate::early_printk!("{}\n", early_io.1);
         } else if ld_mem.0.is_ok() {
             crate::early_printk!("{}\n", ld_mem.1);
-        } else if cpu.0.is_ok() {
-            crate::early_printk!("{}\n", cpu.1);
         }
     }
 }
@@ -50,10 +45,6 @@ impl BootSetup for ArmBoot {
             return (Err("__bss_end doesn't equal 0"), "Failed to setup linker memory");
         } else { return (Ok(()), "Cleared linker memory"); }
     }
-
-    fn early_cpu_init(&self) -> SetupReturn {
-        return (Ok(()), "");
-    }
 }
 
 #[cfg(target_arch = "arm")]
@@ -69,24 +60,45 @@ pub mod boot32 {
         }
 
         pub fn setup(&self) {
-            let dwt = self.disable_wdt();
-            let cpuid = self.cpuid_init();
+            let cpu = self.early_cpu_init();
 
-            if dwt.0.is_err() {
-                panic!("{}", dwt.1);
-            } else if cpuid.0.is_err() {
-                panic!("{}", cpuid.1);
-            }
+            if cpu.0.is_err() {
+                panic!("{}", cpu.1);
+            } else { crate::early_printk!("{}\n", cpu.1); }
         }
     }
 
     impl BootSetup for Arm32Boot {
         fn disable_wdt(&self) -> SetupReturn {
+
             return (Ok(()), "Successfully disabled Watch Dog Timer");
         }
 
         fn cpuid_init(&self) -> SetupReturn {
+            unsafe {
+                CPUINFO.architecture = "ARM";
+                CPUINFO.bits = 32;
+                CPUINFO.base_address = Some(0xE000_ED00 as usize as u32);
+                CPUINFO.brand_name = "Unknown";
+            }
+
             return (Ok(()), "Successfully got and set CPU Id and info");
+        }
+
+        fn early_cpu_init(&self) -> SetupReturn {
+            if self.disable_wdt().0.is_err() {
+                return (Err("WDT error"), "Failed to disable DWT");
+            } else if self.cpuid_init().0.is_err() {
+                return (Err("CPU Id error"), "Failed to set CPU info and id");
+            }
+
+            let soc_ret = soc_init();
+
+            if soc_ret != 0 {
+                return (Err("SOC init error"), "Failed to initialize SOC");
+            }
+
+            return (Ok(()), "Early CPU initialization failed");
         }
     }
 

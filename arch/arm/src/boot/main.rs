@@ -18,4 +18,3 @@ pub unsafe extern "C" fn arm_boot_main() {
 
     panic!("{}:{} kernel ended", CPUINFO.architecture, CPUINFO.bits);
 }
-

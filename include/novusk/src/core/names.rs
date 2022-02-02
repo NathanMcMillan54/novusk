@@ -1,5 +1,5 @@
 pub enum CoreFunctionName {
-
+    cpu_disable_dwt,
 }
 
 pub enum CoreModuleNames {
