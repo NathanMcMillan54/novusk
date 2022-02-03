@@ -10,29 +10,20 @@ impl Aarch64Boot {
     }
 
     pub fn setup(&self) {
-        let uart_addr = MMIO_BASE + UART_OFFSET;
+        let early_cpu = self.early_cpu_init();
 
-        for b in b"Starting kernel...\n" {
-            unsafe { core::ptr::write_volatile(0x3F20_1000 as *mut u8, *b); }
+        if early_cpu.0.is_err() {
+            panic!("{}", early_cpu.1);
         }
 
-        //let linker = unsafe { self.linker_setup() };
-
-        /*if linker.0.is_err() {
-            panic!("{}", linker.1);
-        }*/
+        if early_cpu.0.is_ok() {
+            crate::early_printk!("{}", early_cpu.1);
+        }
     }
 }
 
 impl BootSetup for Aarch64Boot {
-    unsafe fn linker_setup(&self) -> SetupReturn {
-        extern "C" {
-            static mut __bss_start: u64;
-            static mut __bss_end: u64;
-        }
-
-        r0::zero_bss(__bss_start as *mut u64, __bss_end as *mut u64);
-
-        return (Ok(()), "Linker mem setup successfully");
+    fn early_cpu_init(&self) -> SetupReturn {
+        return (Ok(()), "Success");
     }
 }

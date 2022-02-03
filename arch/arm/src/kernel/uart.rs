@@ -16,6 +16,7 @@ impl ArmUart {
     }
 
     pub fn init(&mut self) {
+        // Basic uart address for Rpi 2 and 3
         self.addr = 0x3F20_1000 as *mut u8;
     }
 

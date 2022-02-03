@@ -3,7 +3,7 @@
 .section ".text.boot"
 
 .global _start
-.extern boot_setup
+.extern start_boot
 
 _start:
     mrs     x1, mpidr_el1

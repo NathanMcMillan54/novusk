@@ -7,7 +7,8 @@ pub extern "C" fn _early_printk(print: Arguments) {
 }
 
 pub fn setup_early_printk() {
-
+    #[cfg(target_arch = "aarch64")]
+    unsafe { crate::bits64::arm64_setup_early_printk(); }
 }
 
 #[macro_export]

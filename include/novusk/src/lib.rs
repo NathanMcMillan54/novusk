@@ -4,6 +4,7 @@
 pub mod core;
 pub mod module;
 pub mod syscalls;
+pub mod serial;
 
 use ::core::panic::PanicInfo;
 

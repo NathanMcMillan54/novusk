@@ -1,6 +1,7 @@
 .section ".text.boot"
 
 .globl _start
+.extern start_boot
 
         .org 0x8000
 
