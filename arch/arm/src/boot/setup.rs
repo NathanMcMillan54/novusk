@@ -12,17 +12,22 @@ impl ArmBoot {
     pub fn setup(&self) {
         let early_io = self.early_io_init();
         let ld_mem = unsafe { self.linker_setup() };
+        let cpu = self.cpuid_init();
 
         if early_io.0.is_err() {
             panic!("{}", early_io.1);
         } else if ld_mem.0.is_err() {
             panic!("{}", ld_mem.1);
+        } else if cpu.0.is_err() {
+            panic!("{}", cpu.1);
         }
 
         if early_io.0.is_ok() {
             crate::early_printk!("{}\n", early_io.1);
         } else if ld_mem.0.is_ok() {
             crate::early_printk!("{}\n", ld_mem.1);
+        } else if cpu.0.is_ok() {
+            crate::early_printk!("{}\n", cpu.1);
         }
     }
 }
@@ -44,6 +49,15 @@ impl BootSetup for ArmBoot {
         if __bss_end != 0 {
             return (Err("__bss_end doesn't equal 0"), "Failed to setup linker memory");
         } else { return (Ok(()), "Cleared linker memory"); }
+    }
+
+    fn cpuid_init(&self) -> SetupReturn {
+        unsafe { CPUINFO.architecture = "ARM" }
+
+        #[cfg(target_arch = "aarch64")]
+        unsafe { CPUINFO.bits = 64; }
+
+        return (Ok(()), "Some CPU info set");
     }
 }
 
@@ -76,8 +90,8 @@ pub mod boot32 {
 
         fn cpuid_init(&self) -> SetupReturn {
             unsafe {
-                CPUINFO.architecture = "ARM";
                 CPUINFO.bits = 32;
+                // Assuming it's on a Cortex M cpu
                 CPUINFO.base_address = Some(0xE000_ED00 as usize as u32);
                 CPUINFO.brand_name = "Unknown";
             }
