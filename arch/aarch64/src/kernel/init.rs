@@ -1,12 +1,13 @@
-use armfb::{armfb_end, armfb_init};
+/*use armfb::{armfb_end, armfb_init};
 use crate::aarch64_printk;
 use init::kmain;
 use super::device::{device_init};
 use setup::after_kernel_setup;
-use crate::include::sys::setup::syscalls_init;
+use crate::include::sys::setup::syscalls_init;*/
 
-pub unsafe fn aarch64_kernel_init() {
-    initialize_device();
+#[no_mangle]
+pub unsafe extern "C" fn aarch64_kernel_init() {
+    /*initialize_device();
     kinfo!("Device initialized\n");
 
     syscalls_init();
@@ -23,15 +24,15 @@ pub unsafe fn aarch64_kernel_init() {
     after_kernel_setup();
     kinfo!("After kernel initialized\n");
 
-    kernel_main();
+    kernel_main();*/
 }
 
 unsafe fn initialize_device() {
-    let (success, name) = device_init();
+    /*let (success, name) = device_init();
 
     if success.is_err() {
         panic!("Failed to initialize device: {}", success.err().unwrap());
     }
 
-    aarch64_printk!("Successfully initialized {}\n", name);
+    aarch64_printk!("Successfully initialized {}\n", name);*/
 }

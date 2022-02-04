@@ -1,5 +1,6 @@
 use crate::kernel::cpu::info::CPUINFO;
 use setup::{ArchKernelSetup, BootSetup, SetupReturn};
+use crate::kernel::cpu::soc::soc_init;
 use crate::kernel::setup::ArmKernel;
 
 pub struct ArmBoot;
@@ -54,8 +55,15 @@ impl BootSetup for ArmBoot {
     fn cpuid_init(&self) -> SetupReturn {
         unsafe { CPUINFO.architecture = "ARM" }
 
-        #[cfg(target_arch = "aarch64")]
-        unsafe { CPUINFO.bits = 64; }
+        cfg_if! {
+            if #[cfg(target_arch = "aarch64")] {
+                unsafe { CPUINFO.bits = 64; }
+
+                if soc_init() != 0 {
+                    return (Err("SOC init error"), "Failed to initialize SOC");
+                }
+            }
+        }
 
         return (Ok(()), "Some CPU info set");
     }

@@ -4,6 +4,7 @@ pub mod power;
 pub mod printk;
 pub mod uart;*/
 pub mod early_printk;
+pub mod init;
 pub mod panic;
 pub mod setup;
 
