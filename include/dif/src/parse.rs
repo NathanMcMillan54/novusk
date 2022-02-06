@@ -10,39 +10,33 @@ extern "C" {
     pub(crate) fn trim_line(line: &'static str, field_name: &'static str) -> &'static str;
 }
 
+static mut LOCAL_DIF: Dif = Dif::empty();
+
 impl Dif {
     pub fn parse_and_set(&mut self, file: &'static str) -> Dif {
         let mut file_feilds: Vec<&str> = file.split("\n").collect();
 
-        const MINIMUM_FEILDS: usize = 12;
+        const MINIMUM_FEILDS: usize = 11;
         const REPLACE_CHARS: &[char; 3] = &['\"', ',', ':'];
 
-        if file_feilds.len() - 2 > MINIMUM_FEILDS {
-            panic!("DIF doesn't have the minumum number of feilds, has {}, needs atleast {}", file_feilds.len(), MINIMUM_FEILDS);
+        if file_feilds.len() != MINIMUM_FEILDS {
+            panic!("DIF missing minumun feilds. Has {} feilds, needs {}", file_feilds.len(), MINIMUM_FEILDS);
         }
 
-        if !file_feilds[1].contains("\"name\":") {
-            panic!("Expected line 2 to contatin the name feild");
+        if file_feilds[0].is_ascii() {
+            self.device_name = file_feilds[0];
+        } else { panic!("Name line dosen't contain ASCII charater[s], name: {}", file_feilds[0]); }
+
+        // Stack overflow is down as of rn lol
+        // https://stackoverflow.com/questions/49203561/how-do-i-convert-a-str-to-a-const-u8
+        /* if file_feilds[1].parse::<i32>().is_ok() {
+            self.peripheral_addr = Some(file_feilds[1].parse::<u32>().unwrap());
+        } else { panic!("Peripheral line cannot be converted to u32, peripherla_addr: {}", file_feilds[1]); }*/
+
+        for gpio in 2..6 {
+
         }
 
-        let mut name = "";
-
-        let periph_addr = 0x0;
-
-        let mut gen_dif = Dif::new(
-            name,
-            Some(periph_addr),
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None);
-
-        return gen_dif;
+        unsafe { return LOCAL_DIF; }
     }
 }

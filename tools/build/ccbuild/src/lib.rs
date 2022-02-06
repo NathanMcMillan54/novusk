@@ -66,8 +66,5 @@ impl Gcc {
             .spawn();
 
         copy(self.output_file.unwrap(), out_dir.join(self.output_file.unwrap()));
-
-        /*println!("cargo:rustc-link-lib=static=-L{:?}", out_dir.join(self.output_file.unwrap()));
-        println!("cargo:rustc-link-search=native=$OUT_DIR");*/
     }
 }

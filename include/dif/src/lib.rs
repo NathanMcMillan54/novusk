@@ -12,8 +12,8 @@ pub mod parse;
 
 use parse::_early_printk;
 
+#[derive(Copy, Clone)]
 pub struct Dif {
-    pub diff: Vec<&'static str>,
     pub device_name: &'static str,
     pub peripheral_addr: Option<u32>,
     pub gpio0_addr: Option<u32>,
@@ -32,7 +32,6 @@ pub struct Dif {
 impl Dif {
     pub const fn empty() -> Self {
         return Dif {
-            diff: vec![],
             device_name: "",
             peripheral_addr: None,
             gpio0_addr: None,
@@ -62,7 +61,6 @@ impl Dif {
                debug: Option<bool>) -> Self {
 
         return Dif {
-            diff: vec![],
             device_name: name,
             peripheral_addr: periph_addr,
             gpio0_addr: gpio0,
@@ -82,3 +80,22 @@ impl Dif {
         self.parse_and_set(dif_file);
     }
 }
+
+/* impl Clone for Dif {
+    fn clone(&self) -> Self {
+        return Dif {
+            device_name: self.device_name,
+            peripheral_addr: self.peripheral_addr,
+            gpio0_addr: self.gpio0_addr,
+            gpio1_addr: self.gpio1_addr,
+            gpio2_addr: self.gpio2_addr,
+            gpio3_addr: self.gpio3_addr,
+            gpio4_addr: self.gpio4_addr,
+            serial_addr: self.serial_addr,
+            uart_addr: self.uart_addr,
+            fb_addr: self.fb_addr,
+            mb_addr: self.mb_addr,
+            debug: self.debug
+        };
+    }
+} */

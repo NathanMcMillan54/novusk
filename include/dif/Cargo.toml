@@ -7,4 +7,5 @@ description = "A library for reading DIF files."
 [dependencies]
 
 [build-dependencies]
+cc = "1.0.72"
 ccbuild = { path = "../../tools/build/ccbuild/" }
