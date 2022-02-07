@@ -5,8 +5,8 @@
 use alloc::string::ToString;
 use alloc::vec::Vec;
 
-#[path = "../../../lib/libcopy.rs"]
-pub mod libcopy;
+#[path = "../../../lib/str_to_addr.rs"]
+pub mod str_to_addr;
 
 pub mod parse;
 
