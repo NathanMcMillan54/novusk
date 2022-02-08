@@ -16,6 +16,7 @@ path = "src/main.rs"
 edition = "2021"
 
 [dependencies]
+dif = { path = "../../include/dif/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novusk_syscalls = "0.2.1"

@@ -1,10 +1,8 @@
-use dif::Dif;
+use ::dif::Dif;
 
-pub(crate) const DIF_FILE: &'static str = include_str!("difs/rpi3b.dif");
-pub(crate) static mut DIF: Dif = Dif::empty();
+pub(crate) mod dif;
+use self::dif::{DIF_FILE, DIF};
 
 pub fn dif_init() {
-    unsafe {
-        DIF.set(DIF_FILE);
-    }
+    unsafe { DIF.set(DIF_FILE); }
 }
