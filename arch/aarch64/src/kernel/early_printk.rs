@@ -1,5 +1,6 @@
 use core::fmt::{Arguments, Write};
 use novuskinc::serial::{SerialIo, KERNEL_SERIALIO};
+use crate::include::dif::DIF;
 
 pub static mut AARCH64_SERIALIO: SerialIo = SerialIo::empty();
 
@@ -10,7 +11,7 @@ pub unsafe extern "C" fn _early64_printk(fmt: Arguments) {
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_setup_early_printk() {
-    AARCH64_SERIALIO.serial_addr = 0x3F20_1000 as *mut u8;
+    AARCH64_SERIALIO.serial_addr = DIF.uart_addr.unwrap() as *mut u8;
 }
 
 #[macro_export]

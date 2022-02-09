@@ -1,3 +1,4 @@
+use crate::include::dif::dif::DIF;
 use core::borrow::Borrow;
 use core::fmt::{Arguments, Write};
 use core::ptr::{read_volatile, write_volatile};
@@ -16,8 +17,7 @@ impl ArmUart {
     }
 
     pub fn init(&mut self) {
-        // Basic uart address for Rpi 2 and 3
-        self.addr = 0x3F20_1000 as *mut u8;
+        unsafe { self.addr = DIF.uart_addr.unwrap() as *mut u8; }
     }
 
     pub fn write_byte(&self, byte: u8) {
