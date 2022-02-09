@@ -2,6 +2,8 @@
 #![allow(warnings)]
 
 pub mod core;
+pub mod fb;
+pub mod mb;
 pub mod module;
 pub mod syscalls;
 pub mod serial;

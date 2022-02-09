@@ -1,0 +1,8 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+edition = "2021"
+description = "A library to access all of Novusk's features"
+
+[dependencies]
+novuskinc = { path = "../include/novusk/" }

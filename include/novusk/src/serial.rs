@@ -3,6 +3,7 @@ use core::ptr::{read_volatile, write_volatile};
 
 pub static mut KERNEL_SERIALIO: SerialIo = SerialIo::empty();
 
+#[derive(Debug, Copy, Clone)]
 pub struct SerialIo {
     pub serial_addr: *mut u8,
 }

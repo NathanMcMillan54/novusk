@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(asm, global_asm, llvm_asm)]
+#![allow(warnings)]
 
 #[macro_use] extern crate alloc;
 
