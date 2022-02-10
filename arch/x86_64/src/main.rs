@@ -1,5 +1,11 @@
 #![no_std]
 #![no_main]
 #![feature(asm)]
+#![feature(panic_info_message)]
 
-include!("../x86_64.rs");
+#[macro_use] extern crate lazy_static;
+
+#[path = "../x86_64.rs"]
+pub mod arch;
+
+pub use arch::*;

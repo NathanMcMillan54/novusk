@@ -1,6 +1,6 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u8)]
-pub enum Color {
+pub enum Color16 {
     Black = 0,
     Blue = 1,
     Green = 2,

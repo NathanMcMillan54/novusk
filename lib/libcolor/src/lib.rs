@@ -1,5 +1,8 @@
 #![no_std]
 
-pub mod colors;
-pub mod vga_colors;
-pub mod hex_colors;
+pub mod color;
+pub mod bits16;
+
+pub use color::ColorCode;
+
+pub use bits16::Color16;

@@ -1,39 +1,37 @@
 use core::fmt::{Arguments, Result, Write};
-use libcolor::vga_colors::Color;
-use super::{color::ColorCode, BUFFER_HEIGHT, BUFFER_WIDTH};
+use libcolor::{ColorCode, bits16::Color16};
+use spin::Mutex;
 use volatile::Volatile;
+
+const BUFFER_WIDTH: usize = 80;
+const BUFFER_HEIGHT: usize = 25;
+const BUFFER_ADDRESS: usize = 0xb8000;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
-pub struct ScreenChar {
-    pub ascii_character: u8,
-    pub color_code: ColorCode,
+struct ScreenChar {
+    ascii_character: u8,
+    color_code: ColorCode,
 }
 
 #[repr(transparent)]
-pub struct Buffer {
-    pub chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
+struct Buffer {
+    chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
-pub struct VgaWriter {
-    pub address: usize,
-    pub width: usize,
-    pub height: usize,
-    pub column_position: usize,
-    pub color_code: ColorCode,
-    pub buffer: &'static mut Buffer,
+pub struct EarlyVga {
+    column_position: usize,
+    color_code: ColorCode,
+    buffer: &'static mut Buffer,
 }
 
-impl VgaWriter {
-    pub fn new(vga_address: usize, vga_width: usize, vga_height: usize, colors: ColorCode) -> Self {
-        return VgaWriter {
-            address: vga_address,
-            width: vga_width,
-            height: vga_height,
+impl EarlyVga {
+    pub fn new() -> Self {
+        return EarlyVga {
             column_position: 0,
-            color_code: colors,
-            buffer: unsafe { &mut *(vga_address as *mut Buffer) }
-        };
+            color_code: ColorCode::new(Color16::White as u8, Color16::Black as u8),
+            buffer: unsafe { &mut *(BUFFER_ADDRESS as *mut Buffer) }
+        }
     }
 
     pub fn write_byte(&mut self, byte: u8) {
@@ -57,12 +55,11 @@ impl VgaWriter {
         }
     }
 
-    pub fn write_string(&mut self, s: &str) {
+    fn write_string(&mut self, s: &str) {
         for byte in s.bytes() {
             match byte {
-                // printable ASCII byte or newline
                 0x20..=0x7e | b'\n' => self.write_byte(byte),
-                // not part of printable ASCII range
+
                 _ => self.write_byte(0xfe),
             }
         }
@@ -90,9 +87,17 @@ impl VgaWriter {
     }
 }
 
-impl Write for VgaWriter {
+impl Write for EarlyVga {
     fn write_str(&mut self, s: &str) -> Result {
         self.write_string(s);
         Ok(())
     }
+}
+
+lazy_static! {
+    pub static ref EARLY_VGA: Mutex<EarlyVga> = Mutex::new(EarlyVga {
+        column_position: 0,
+        color_code: ColorCode::new(Color16::White as u8, Color16::Black as u8),
+        buffer: unsafe { &mut *(BUFFER_ADDRESS as *mut Buffer) }
+    });
 }

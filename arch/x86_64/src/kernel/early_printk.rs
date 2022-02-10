@@ -1,21 +1,12 @@
-use core::fmt::Arguments;
-use super::vga::_vga_print;
-use nkuefi::x64_uefi::_serial_print;
-use crate::boot::boot::BOOT;
+use core::fmt::{Arguments, Write};
+use super::video_vga::EARLY_VGA;
 
-#[export_name = "arch_printk"]
 #[no_mangle]
-pub extern "C" fn _x86_printk(fmt: Arguments) {
-    if BOOT == "BIOS" {
-        _vga_print(format_args!("{}", fmt));
-    } else if BOOT == "UEFI" {
-        _serial_print(fmt);
-    } else {
-        // \_('_')_/ <( idk? )
-    }
+pub unsafe extern "C" fn _early_printk(fmt: Arguments) {
+    EARLY_VGA.lock().write_fmt(fmt);
 }
 
 #[macro_export]
-macro_rules! x86_printk {
-    ($($arg:tt)*) => {$crate::kernel::early_printk::_x86_printk(format_args!($($arg)*))};
+macro_rules! early_printk {
+    ($($arg:tt)*) => { $crate::kernel::early_printk::_early_printk(format_args!($($arg)*)); }
 }

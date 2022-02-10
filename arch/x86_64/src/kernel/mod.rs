@@ -1,4 +1,8 @@
+pub mod early_printk;
 pub mod panic;
+
+#[path = "video/video_vga.rs"]
+pub mod video_vga;
 
 /*pub(crate) mod cpu;
 pub mod interrupts;
