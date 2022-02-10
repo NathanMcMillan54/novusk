@@ -1,15 +1,24 @@
-use crate::Kinfo;
-
-pub static mut KSTATUS: &'static str = "ok";
-
-#[no_mangle]
-pub unsafe extern "C" fn set_status(status: &'static str) {
-    KSTATUS = status;
+#[derive(Copy, Clone, Debug, PartialEq)]
+pub struct KStatus {
+    pub status: &'static str,
+    pub should_panic: bool,
+    pub panic_message: Option<&'static str>,
+    pub message1: &'static str,
+    pub message2: Option<&'static str>,
 }
 
-impl Kinfo {
-    pub fn status_not_ok(&mut self) -> &'static str {
-        self.status = "not ok";
-        return self.status;
+impl KStatus {
+    pub fn display(&self) {
+        printk!("INFO [ {} ] {}\n", self.status, self.message1);
+
+        if self.message2.is_some() {
+            printk!("    {}\n", self.message2.unwrap());
+        }
+
+        if self.should_panic {
+            if self.panic_message.is_some() {
+                panic!("{}", self.panic_message.unwrap());
+            } else { panic!("A problem occured"); }
+        }
     }
 }

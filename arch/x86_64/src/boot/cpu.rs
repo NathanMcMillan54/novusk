@@ -14,7 +14,7 @@ pub fn validate_cpu() -> bool {
         return false;
     }
 
-    match brand.unwrap().as_str() {
+    match brand.as_ref().unwrap().as_str() {
         "GenuineIntel" => {  },
         "AuthenticAMD" => {  },
         _ => {

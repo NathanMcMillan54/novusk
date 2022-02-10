@@ -1,14 +1,5 @@
-use core::fmt::Arguments;
-use crate::status::{set_status, KSTATUS};
-
-pub fn _kinfo(msg: Arguments) {
-    unsafe {
-        printk!("INFO [ {} ] {}", KSTATUS, msg);
-        set_status("ok");
-    }
-}
-
+// For now this will only handle status
 #[macro_export]
 macro_rules! kinfo {
-    ($($arg:tt)*) => {$crate::macros::_kinfo(format_args!($($arg)*))};
+    ($status:expr) => { $status.display(); };
 }

@@ -8,5 +8,5 @@ pub unsafe extern "C" fn _early_printk(fmt: Arguments) {
 
 #[macro_export]
 macro_rules! early_printk {
-    ($($arg:tt)*) => { $crate::kernel::early_printk::_early_printk(format_args!($($arg)*)); }
+    ($($arg:tt)*) => { unsafe { $crate::kernel::early_printk::_early_printk(format_args!($($arg)*)); } }
 }
