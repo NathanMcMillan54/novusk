@@ -1,5 +1,8 @@
 pub mod early_printk;
+pub mod io;
+pub mod irq;
 pub mod panic;
+pub mod setup;
 
 #[path = "video/video_vga.rs"]
 pub mod video_vga;
