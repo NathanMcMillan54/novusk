@@ -1,4 +1,4 @@
-use super::irq::IRQS;
+use super::irq::start_irq_setup;
 use setup::{ArchKernelSetup, SetupReturn};
 
 struct X86_64Kernel;
@@ -15,8 +15,8 @@ impl X86_64Kernel {
 
 impl ArchKernelSetup for X86_64Kernel {
     fn irq_setup(&self) -> SetupReturn {
-        unsafe { IRQS.disable(); }
-        (Ok(()), "IRQs setup")
+        unsafe { start_irq_setup(); }
+        return (Ok(()), "IRQs setup");
     }
 
     fn serial_io_init(&self) -> SetupReturn {

@@ -1,3 +1,7 @@
+use pic8259::ChainedPics;
+use spin::Mutex;
+
+pub(crate) static mut PIC: ChainedPics = unsafe { ChainedPics::new(32, 40) };
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
 
 pub struct X64Irqs {
@@ -8,7 +12,7 @@ impl X64Irqs {
     pub const fn new() -> Self {
         return X64Irqs {
             enabled: false,
-        }
+        };
     }
 
     pub fn enable(&mut self) {
@@ -25,4 +29,11 @@ impl X64Irqs {
         self.disable();
         unsafe { asm!("hlt"); }
     }
+}
+
+pub unsafe fn start_irq_setup() {
+    let mut irqs = X64Irqs::new();
+    irqs.disable();
+
+    PIC.initialize();
 }
