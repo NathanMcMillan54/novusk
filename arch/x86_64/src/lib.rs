@@ -5,6 +5,7 @@
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate lazy_static;
+#[macro_use] extern crate novuskinc;
 pub(crate) extern crate memory;
 
 #[path = "../x86_64.rs"]

@@ -7,19 +7,19 @@ mod mailbox;
 
 use core::fmt::Write;
 use mailbox::MailBoxSender;
-use novuskinc::{fb::FrameBuffer, mb::MailBox, serial::SerialIo};
+use novuskinc::{fb::{FrameBuffer, FrameBufferGraphics}, mb::MailBox, serial::SerialIo};
 
 #[no_mangle]
 pub static mut KERNEL: Kernel = Kernel::empty();
 
-#[derive(Debug, Copy, Clone)]
-pub struct Kernel {
-    pub fb: FrameBuffer,
+#[derive(Copy, Clone)]
+pub struct Kernel<'a> {
+    pub fb: FrameBuffer<'a>,
     pub mb: MailBox,
     pub serial: SerialIo,
 }
 
-impl Kernel {
+impl Kernel<'static> {
     pub const fn empty() -> Self {
         return Kernel {
             fb: FrameBuffer::empty(),
@@ -32,7 +32,7 @@ impl Kernel {
         self.serial = kernel_serial;
     }
 
-    pub fn set_fb(&mut self, kernel_fb: FrameBuffer) {
+    pub fn set_fb(&mut self, kernel_fb: FrameBuffer<'static>) {
         self.fb = kernel_fb;
     }
 
@@ -48,7 +48,11 @@ impl Kernel {
         return self.fb;
     }
 
-    pub fn get_mailbox_sender(&self) -> impl MailBoxSender {
+    pub fn get_framebuffer_graphics(&self) -> &'static (dyn FrameBufferGraphics + 'static) {
+        return self.fb.graphics;
+    }
+
+    pub fn get_mailbox_sender(&self) -> MailBox {
         return self.mb;
     }
 }

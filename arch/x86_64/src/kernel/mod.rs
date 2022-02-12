@@ -1,6 +1,7 @@
 pub mod early_printk;
 pub mod io;
 pub mod irq;
+pub mod kernel;
 pub mod panic;
 pub mod setup;
 

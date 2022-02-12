@@ -16,6 +16,7 @@ edition = "2021"
 path = "src/main.rs"
 
 [dependencies]
+kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 libcolor = { path = "../../lib/libcolor/" }

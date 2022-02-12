@@ -1,4 +1,5 @@
 use super::irq::start_irq_setup;
+use novuskinc::core::prelude::*;
 use setup::{ArchKernelSetup, SetupReturn};
 
 struct X86_64Kernel;
@@ -21,6 +22,11 @@ impl ArchKernelSetup for X86_64Kernel {
 
     fn serial_io_init(&self) -> SetupReturn {
         (Ok(()), "Serial setup")
+    }
+
+    fn display_init(&self) -> SetupReturn {
+        start_module!(core_display_init, core_display_end);
+        (Ok(()), "Display initialized")
     }
 }
 

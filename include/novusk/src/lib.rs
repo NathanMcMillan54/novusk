@@ -1,5 +1,6 @@
 #![no_std]
 #![allow(warnings)]
+#![feature(const_fn_trait_bound)]
 
 pub mod core;
 pub mod fb;

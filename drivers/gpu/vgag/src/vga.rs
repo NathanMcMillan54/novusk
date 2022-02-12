@@ -1,3 +1,4 @@
+use novuskinc::fb::FrameBufferGraphics;
 use vga::vga::VGA;
 
 pub struct VgaG {
@@ -54,5 +55,19 @@ impl VgaG {
                 unsafe { fb.offset(y as isize + x as isize).write_volatile(y); }
             }
         }
+    }
+}
+
+impl FrameBufferGraphics for VgaG {
+    fn graphics_write(&mut self, byte: u8, x: usize, y: usize) {
+        
+    }
+
+    fn graphics_write_string(&mut self, string: &'static str, x: usize, y: usize) {
+        
+    }
+
+    fn graphics_pixel(&self, color: u32, x: u32, y: u32) {
+
     }
 }
