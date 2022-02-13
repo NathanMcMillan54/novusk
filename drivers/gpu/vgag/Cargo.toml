@@ -5,7 +5,7 @@ edition = "2021"
 description = "Vga graphics driver"
 
 [lib]
-#crate-type = ["staticlib",]
+crate-type = ["staticlib",]
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/", features = ["library"] }

@@ -1,6 +1,8 @@
+use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
 use novuskinc::core::prelude::*;
 use setup::{ArchKernelSetup, SetupReturn};
+use crate::early_printk;
 
 struct X86_64Kernel;
 
@@ -10,7 +12,42 @@ impl X86_64Kernel {
     }
     
     pub fn setup(&self) {
-        self.irq_setup();
+        let irq = self.irq_setup();
+        let display = self.display_init();
+
+        if irq.0.is_err() {
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: true,
+                panic_message: Some("Failed setup IRQs"),
+                message1: irq.1,
+                message2: Some("IRQs won't be initialized later which will cause huge problems")
+            });
+        } else if display.0.is_err() {
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: false,
+                panic_message: None,
+                message1: display.1,
+                message2: Some("This won't prevent the kernel from running"),
+            });
+        }
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: irq.1,
+            message2: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: display.1,
+            message2: None,
+        })
     }
 }
 
