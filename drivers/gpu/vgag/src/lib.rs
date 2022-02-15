@@ -28,7 +28,7 @@ fn vgag_end() {
 
 module_end!(core_display_end, vgag_end);
 
-/*#[panic_handler]
+#[panic_handler]
 fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {  }
-}*/
+}

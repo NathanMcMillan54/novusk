@@ -1,5 +1,6 @@
 use ::setup::{ArchKernelSetup, SetupReturn};
 use novuskinc::core::prelude::{early_device_init, early_device_end};
+use crate::include::dif::dif::DIF;
 use crate::include::dif::dif_init;
 
 pub(crate) struct ArmKernel;
@@ -52,6 +53,8 @@ pub unsafe fn setup_arm_kernel() {
     arm_kernel.setup();
 
     dif_init();
+
+    crate::early_printk!("{:p}\n", DIF.uart_addr.unwrap() as *mut u8);
 
     #[cfg(target_arch = "aarch64")]
     crate::bits64::arm64_kernel_setup();

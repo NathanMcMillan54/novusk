@@ -2,6 +2,7 @@ use crate::early_printk;
 use super::early_printk::aarch64_setup_early_printk;
 use setup::{ArchKernelSetup, SetupReturn};
 use crate::include::dif::DIF;
+use crate::kernel::early_printk::AARCH64_SERIALIO;
 
 struct Aarch64Setup;
 
@@ -19,6 +20,7 @@ impl Aarch64Setup {
         }
 
         early_printk!("{}\n", irq.1);
+        early_printk!("DIF uart: {:p}, UART: {:p}\n", DIF.uart_addr.unwrap() as *mut u8, AARCH64_SERIALIO.serial_addr);
     }
 
     fn test_memory(&self) {
