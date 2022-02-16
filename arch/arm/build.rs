@@ -10,6 +10,7 @@ fn arm_ld_setup() {
         .write_all(include_bytes!("src/boot/start/stellaris_mem.x"))
         .unwrap();
     println!("cargo:rustc-link-search={}", out.display());
+    println!("cargo:rerun-if-changed=src/boot/start/stellaris_mem.x");
 }
 
 fn main() {

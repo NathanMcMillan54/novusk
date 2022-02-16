@@ -1,3 +1,6 @@
+[target.'cfg(feature = "cortex_m")']
 rustflags = [
-    "-C", "target-feature=+crt-static"
+    "-C", "link-arg=--nmagic",
+    "-C", "link-arg=-Tlink.x",
+    # "-C", "target-feature=+crt-static"
 ]

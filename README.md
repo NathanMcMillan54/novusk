@@ -10,7 +10,7 @@ Read ``Documentaion/`` for help with compiling, configurations and platforms, et
 ```commandline
 make all TARGET=<target> DEFCONFIG=<true/false> CONFIG=<path if DEFCONFIG=false>
 ```
-   
+
 ---
 
 Also, this is Jared:
