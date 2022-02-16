@@ -1,8 +1,15 @@
 BIT64 = False
+KERNEL =
+KERNEL_IMG =?
+PLATFORM =?
 TARGET =?
 
 ifeq ($(BIT64), False)
 	TARGET = thumbv7m-none-eabi
+endif
+
+ifeq ($(KERNEL), Image)
+	KERNEL_IMG := adImage
 endif
 
 all: boot kernel link
@@ -15,4 +22,4 @@ kernel:
 	@ cargo build --release -Z build-std=core,alloc --target $(TARGET)
 
 link:
-	@ arm-linux-gnueabi-ld src/boot/start/cm_boot32.o target/thumbv7m-none-eabi/release/arm_kernel_bin ../../include/novusk/kms/device.km -o src/boot/adImage
+	@ arm-linux-gnueabi-ld src/boot/start/cm_boot32.o target/thumbv7m-none-eabi/release/arm_kernel_bin ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)

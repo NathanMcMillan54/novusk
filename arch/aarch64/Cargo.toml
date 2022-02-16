@@ -28,4 +28,7 @@ rpi = { path = "../../drivers/rpi/" }
 setup = { path = "../../kernel/setup/" }
 
 [features]
+default = []
+rpi3b = []
+rpi4b = []
 qemu_virt = []

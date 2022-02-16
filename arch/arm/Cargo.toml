@@ -34,7 +34,9 @@ rlibc = "1.0.0"
 setup = { path = "../../kernel/setup/" }
 
 [features]
+default = []
 cortex_a = ["nmallocator/wee_allocator"]
 cortex_m = ["nmallocator/linked_list"]
-rpi2 = ["cortex_a"]
-stellaris_6965 = ["cortex_m"]
+rpi3b = ["cortex_a"]
+rpi4b = ["cortex_a"]
+stellaris6965 = ["cortex_m"]

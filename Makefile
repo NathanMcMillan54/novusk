@@ -1,14 +1,19 @@
 ARCH =?
 CONFIG =?
 CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
-DEFCONFIG =?
-KERNEL =
+DEFCONFIG = True
+KERNEL = Image
+PLATFORM = default
 TARGET = targets/$(ARCH)-novusk.json
 LOCAL_TARGET =?
 FEATURES =?
 
 ifeq ($(DEFCONFIG), True)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
+endif
+
+ifeq ($(DEFCONFIG), False)
+	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-$(PLATFORM)-defconfig.txt
 endif
 
 all: build_tools setup build_config build_arch
@@ -30,7 +35,7 @@ build_arch:
 	@ sleep 2
 	@ echo "Compiling $(ARCH) Novusk..."
 	@ sleep 1
-	@ $(MAKE) -C arch/$(ARCH) all
+	@ $(MAKE) -C arch/$(ARCH) all KERNEL=$(KERNEL) PLATFORM=$(PLATFORM)
 
 clean:
 	@ cd tools/build/buildkern/ && cargo clean
