@@ -13,7 +13,7 @@ pub unsafe extern "C" fn _early64_printk(fmt: Arguments) {
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_setup_early_printk() {
     //AARCH64_SERIALIO.serial_addr = 0x3F20_1000 as *mut u8;
-    AARCH64_SERIALIO.serial_addr = DIF.uart_addr.unwrap() as *mut u8;
+    AARCH64_SERIALIO.serial_addr = DIF.serial_addr.unwrap() as *mut u8;
     KERNEL.set_serial(AARCH64_SERIALIO);
 }
 

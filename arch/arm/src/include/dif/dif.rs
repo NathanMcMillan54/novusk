@@ -6,6 +6,20 @@ extern "C" {
     pub static DIF_FILE: &'static str;
 }
 
-#[cfg(target_arch = "arm")]
+// arch/arm/src/include/dif/difs/stellari6965.dif
+#[cfg(feature = "stellaris6965")]
 #[no_mangle]
-pub(crate) static mut DIF: Dif = Dif::empty();
+pub static mut DIF: Dif = Dif {
+    device_name: "",
+    peripheral_addr: None,
+    gpio0_addr: None,
+    gpio1_addr: None,
+    gpio2_addr: None,
+    gpio3_addr: None,
+    gpio4_addr: None,
+    serial_addr: None,
+    uart_addr: None,
+    fb_addr: None,
+    mb_addr: None,
+    debug: None
+};
