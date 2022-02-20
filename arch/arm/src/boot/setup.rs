@@ -45,12 +45,11 @@ impl BootSetup for ArmBoot {
             static mut __bss_end: u64;
         }
 
-        //r0::zero_bss(&mut __bss_start, &mut __bss_end);
+        r0::zero_bss(&mut __bss_start, &mut __bss_end);
 
-        /*if __bss_end != 0 {
+        if __bss_end != 0 {
             return (Err("__bss_end doesn't equal 0"), "Failed to setup linker memory");
-        } else { return (Ok(()), "Cleared linker memory"); }*/
-        (Ok(()), "")
+        } else { return (Ok(()), "Cleared linker memory"); }
     }
 
     fn cpuid_init(&self) -> SetupReturn {

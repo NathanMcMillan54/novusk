@@ -21,6 +21,10 @@ impl Aarch64Setup {
 
         early_printk!("{}\n", irq.1);
         early_printk!("DIF uart: {:p}, UART: {:p}\n", DIF.uart_addr.unwrap() as *mut u8, AARCH64_SERIALIO.serial_addr);
+
+        unsafe { AARCH64_SERIALIO.serial_addr = DIF.uart_addr.unwrap() as *mut u8; }
+
+        early_printk!("Test\n");
     }
 
     fn test_memory(&self) {
