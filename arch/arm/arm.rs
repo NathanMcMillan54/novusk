@@ -9,3 +9,6 @@ pub mod kernel;
 
 #[path = "src/mm/mod.rs"]
 pub mod mm;
+
+#[path = "bcm2837/mod.rs"]
+pub mod bcm2837;

@@ -3,6 +3,8 @@
 #[macro_use] extern crate novuskinc;
 use novuskinc::core::prelude::*;
 
+pub(crate) mod mailbox;
+
 pub(crate) struct RaspberryPi {
 
 }

@@ -5,6 +5,7 @@ edition = "2021"
 description = "Setup for RaspberryPi devices"
 
 [lib]
+path = "src/lib.rs"
 crate-type = ["staticlib"]
 
 [dependencies]

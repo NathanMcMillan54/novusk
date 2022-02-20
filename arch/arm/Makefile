@@ -2,6 +2,7 @@ BIT64 = False
 KERNEL =
 KERNEL_IMG =?
 PLATFORM =?
+SOC =?
 TARGET =?
 
 ifeq ($(BIT64), False)
@@ -19,7 +20,7 @@ boot:
 
 kernel:
 	@ echo "Compiling arm kernel..."
-	@ cargo build --release -Z build-std=core,alloc --target $(TARGET)
+	@ cargo build --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target $(TARGET)
 
 link:
 	@ arm-linux-gnueabi-ld src/boot/start/cm_boot32.o target/thumbv7m-none-eabi/release/arm_kernel_bin ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)

@@ -7,6 +7,7 @@ PLATFORM = default
 TARGET = targets/$(ARCH)-novusk.json
 LOCAL_TARGET =?
 FEATURES =?
+SOC =?
 
 ifeq ($(DEFCONFIG), True)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
@@ -35,7 +36,7 @@ build_arch:
 	@ sleep 2
 	@ echo "Compiling $(ARCH) Novusk..."
 	@ sleep 1
-	@ $(MAKE) -C arch/$(ARCH) all KERNEL=$(KERNEL) PLATFORM=$(PLATFORM)
+	@ $(MAKE) -C arch/$(ARCH) all KERNEL=$(KERNEL) PLATFORM=$(PLATFORM) SOC=$(SOC)
 
 clean:
 	@ cd tools/build/buildkern/ && cargo clean
