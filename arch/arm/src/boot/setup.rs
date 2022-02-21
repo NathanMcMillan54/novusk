@@ -1,5 +1,6 @@
 use crate::kernel::cpu::info::CPUINFO;
 use setup::{ArchKernelSetup, BootSetup, SetupReturn};
+use crate::early_printk;
 use crate::kernel::cpu::soc::soc_init;
 use crate::kernel::setup::ArmKernel;
 
@@ -13,7 +14,8 @@ impl ArmBoot {
     pub fn setup(&self) {
         let early_io = self.early_io_init();
         let ld_mem = unsafe { self.linker_setup() };
-        let cpu = self.cpuid_init();
+        let cpu = self.early_cpu_init();
+        let cpuid = self.cpuid_init();
 
         if early_io.0.is_err() {
             panic!("{}", early_io.1);
@@ -21,14 +23,18 @@ impl ArmBoot {
             panic!("{}", ld_mem.1);
         } else if cpu.0.is_err() {
             panic!("{}", cpu.1);
+        } else if cpuid.0.is_err() {
+            panic!("{}", cpuid.1);
         }
 
         if early_io.0.is_ok() {
             crate::early_printk!("{}\n", early_io.1);
         } else if ld_mem.0.is_ok() {
             crate::early_printk!("{}\n", ld_mem.1);
-        } else if cpu.0.is_ok() {
+        } else if cpuid.0.is_ok() {
             crate::early_printk!("{}\n", cpu.1);
+        } else if cpu.0.is_ok() {
+            crate::early_printk!("{}\n", cpuid.1);
         }
     }
 }
@@ -55,23 +61,22 @@ impl BootSetup for ArmBoot {
     fn cpuid_init(&self) -> SetupReturn {
         unsafe { CPUINFO.architecture = "ARM" }
 
-        cfg_if! {
-            if #[cfg(target_arch = "aarch64")] {
-                unsafe { CPUINFO.bits = 64; }
-
-                if soc_init() != 0 {
-                    return (Err("SOC init error"), "Failed to initialize SOC");
-                }
-            }
-        }
+        #[cfg(target_arch = "aarch64")]
+        unsafe { CPUINFO.bits = 64; }
 
         return (Ok(()), "Some CPU info set");
+    }
+
+    fn early_cpu_init(&self) -> SetupReturn {
+        if unsafe { soc_init() } == 1 {
+            return (Err("SOC init error"), "Failed to initialize SOC")
+        } else { return (Ok(()), "Successfully initialized SOC"); }
     }
 }
 
 #[cfg(target_arch = "arm")]
 pub mod boot32 {
-    use crate::kernel::cpu::{info::CPUINFO, soc::soc_init};
+    use crate::kernel::cpu::{info::CPUINFO};
     use setup::{BootSetup, SetupReturn};
 
     pub struct Arm32Boot;

@@ -10,5 +10,8 @@ pub mod kernel;
 #[path = "src/mm/mod.rs"]
 pub mod mm;
 
-#[path = "bcm2837/mod.rs"]
-pub mod bcm2837;
+#[path = "bcm/mod.rs"]
+pub mod bcm;
+
+#[path = "soc_unknown.rs"]
+pub mod soc_unknown;

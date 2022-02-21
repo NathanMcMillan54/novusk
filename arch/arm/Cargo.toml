@@ -32,6 +32,7 @@ novuskinc = { path = "../../include/novusk/", features = ["library"] }
 r0 = "1.0.0"
 rlibc = "1.0.0"
 setup = { path = "../../kernel/setup/" }
+soc = { path = "../../drivers/soc/" }
 
 [features]
 default = []
@@ -40,4 +41,6 @@ cortex_m = ["nmallocator/linked_list"]
 rpi3b = ["cortex_a"]
 rpi4b = ["cortex_a"]
 stellaris6965 = ["cortex_m"]
-bcm2837 = []
+
+unknown_soc = []
+bcm28xx = []

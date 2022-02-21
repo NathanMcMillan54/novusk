@@ -10,7 +10,7 @@ endif
 
 all: arm boot
 	@ echo "Compiling Aarch64 kernel..."
-	cargo build --release -Z build-std=core,alloc --features $(PLATFORM) --target ../../targets/aarch64-novusk.json
+	@ cargo build --release -Z build-std=core,alloc --features $(PLATFORM) --target ../../targets/aarch64-novusk.json
 	@ echo "Linking..."
 	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld ../arm/src/boot/start/a53_start.o ../arm/target/aarch64-novusk/release/libarm_kernel_lib.a target/aarch64-novusk/release/libaarch64_kernel_lib.a $(KMS_LIST) -o src/boot/$(KERNEL_IMG)
 	@ echo "Created kernel image:"

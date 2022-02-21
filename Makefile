@@ -7,7 +7,7 @@ PLATFORM = default
 TARGET = targets/$(ARCH)-novusk.json
 LOCAL_TARGET =?
 FEATURES =?
-SOC =?
+SOC = unknown_soc
 
 ifeq ($(DEFCONFIG), True)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-defconfig.txt
