@@ -3,6 +3,7 @@
 #![feature(const_fn_trait_bound)]
 
 pub mod core;
+pub mod elf;
 pub mod fb;
 pub mod mb;
 pub mod module;
