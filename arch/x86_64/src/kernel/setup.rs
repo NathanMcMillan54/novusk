@@ -3,6 +3,7 @@ use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
 use novuskinc::core::prelude::*;
 use setup::{ArchKernelSetup, SetupReturn};
+use x86_64::instructions::bochs_breakpoint;
 use crate::early_printk;
 
 struct X86_64Kernel;
@@ -73,9 +74,5 @@ impl ArchKernelSetup for X86_64Kernel {
 pub unsafe fn setup_x86_64() {
     let kernel = X86_64Kernel::new();
     kernel.setup();
-
-    for i in 0..254 {
-        write_volatile(0xde2d8e3f as *mut u8, i);
-    }
 }
 

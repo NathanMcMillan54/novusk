@@ -1,5 +1,7 @@
+use pic8259::ChainedPics;
 use super::idt::{idt_init, set_idt};
 
+pub static mut PIC: ChainedPics = unsafe { ChainedPics::new(32, 40) };
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
 
 pub struct X64Irqs {

@@ -3,6 +3,7 @@
 #![feature(abi_x86_interrupt, alloc_error_handler, panic_info_message)]
 
 #[macro_use] extern crate alloc;
+#[macro_use] extern crate asminc;
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;

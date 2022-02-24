@@ -16,6 +16,7 @@ edition = "2021"
 path = "src/main.rs"
 
 [dependencies]
+asminc = { path = "../../include/asm/" }
 kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
