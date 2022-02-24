@@ -1,3 +1,4 @@
+use core::ptr::write_volatile;
 use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
 use novuskinc::core::prelude::*;
@@ -47,27 +48,34 @@ impl X86_64Kernel {
             panic_message: None,
             message1: display.1,
             message2: None,
-        })
+        });
     }
 }
+
 
 impl ArchKernelSetup for X86_64Kernel {
     fn irq_setup(&self) -> SetupReturn {
         unsafe { start_irq_setup(); }
-        return (Ok(()), "IRQs setup");
-    }
 
-    fn serial_io_init(&self) -> SetupReturn {
-        (Ok(()), "Serial setup")
+        return (Ok(()), "IRQs setup");
     }
 
     fn display_init(&self) -> SetupReturn {
         start_module!(core_display_init, core_display_end);
         (Ok(()), "Display initialized")
     }
+
+    fn serial_io_init(&self) -> SetupReturn {
+        (Ok(()), "Serial setup")
+    }
 }
 
 pub unsafe fn setup_x86_64() {
     let kernel = X86_64Kernel::new();
     kernel.setup();
+
+    for i in 0..254 {
+        write_volatile(0xde2d8e3f as *mut u8, i);
+    }
 }
+

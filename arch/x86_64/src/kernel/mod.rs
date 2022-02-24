@@ -1,8 +1,9 @@
 pub mod early_printk;
+pub mod handlers;
+pub mod idt;
 pub mod io;
 pub mod irq;
 pub mod kernel;
-pub mod panic;
 pub mod setup;
 
 #[path = "video/video_vga.rs"]

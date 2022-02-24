@@ -1,5 +1,4 @@
 use novuskinc::fb::FrameBufferGraphics;
-use vga::vga::VGA;
 
 pub struct VgaG {
     pub mode: u32,

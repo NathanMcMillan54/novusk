@@ -1,7 +1,5 @@
-use pic8259::ChainedPics;
-use spin::Mutex;
+use super::idt::{idt_init, set_idt};
 
-pub(crate) static mut PIC: ChainedPics = unsafe { ChainedPics::new(32, 40) };
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
 
 pub struct X64Irqs {
@@ -35,5 +33,6 @@ pub unsafe fn start_irq_setup() {
     let mut irqs = X64Irqs::new();
     irqs.disable();
 
-    PIC.initialize();
+    set_idt();
+    idt_init();
 }

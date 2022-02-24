@@ -8,6 +8,12 @@ use novuskinc::core::prelude::*;
 pub mod vga;
 use crate::vga::VgaG;
 
+#[cfg(not(feature = "no_panic"))]
+#[panic_handler]
+fn panic(_info: &core::panic::PanicInfo) -> ! {
+    loop {  }
+}
+
 #[no_mangle]
 pub static mut FB: FrameBuffer = FrameBuffer::empty();
 
@@ -27,8 +33,3 @@ fn vgag_end() {
 }
 
 module_end!(core_display_end, vgag_end);
-
-#[panic_handler]
-fn panic(_info: &core::panic::PanicInfo) -> ! {
-    loop {  }
-}
