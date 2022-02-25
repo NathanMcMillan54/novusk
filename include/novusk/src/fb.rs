@@ -63,29 +63,3 @@ impl<'a> FrameBuffer<'a> {
         self.graphics = fb_graphics;
     }
 }
-
-
-trait Foo {}
-
-struct MyFoo;
-
-impl Foo for MyFoo {}
-
-struct Bar<'a> {
-    foo: &'a (dyn Foo + 'a),
-}
-
-impl<'a> Bar<'a> {
-    fn new(the_foo: &'a dyn Foo) -> Bar<'a> {
-        Bar { foo: the_foo }
-    }
-
-    fn get_foo(&'a self) -> &'a dyn Foo {
-        self.foo
-    }
-}
-
-fn main() {
-    let myfoo = MyFoo;
-    let mybar = Bar::new(&myfoo as &dyn Foo);
-}

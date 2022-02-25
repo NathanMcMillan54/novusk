@@ -9,10 +9,10 @@ pub unsafe fn inb(port: u16) -> u8 {
     return in_ret;
 }
 
-unsafe fn ps2_keyboard(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
+unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
     let input = inb(0x60);
 
     super::irq::PIC.notify_end_of_interrupt(40);
 }
 
-gen_x86_int!(ps2_keyboard);
+gen_x86_int!(ps2_keyboard, ps2_input);
