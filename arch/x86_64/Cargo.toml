@@ -25,6 +25,7 @@ memory = { path = "../../mm/memory/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/", features = ["library"] }
 pic8259 = "0.10.2"
+printk = { path = "../../kernel/printk/" }
 ps2_keyboard = { path = "../../drivers/input/keyboard/ps2_keyboard/" }
 raw-cpuid = "10.2.0"
 setup = { path = "../../kernel/setup/" }

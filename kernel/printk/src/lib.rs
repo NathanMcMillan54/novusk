@@ -1,22 +1,26 @@
 #![no_std]
 
-#[macro_use] extern crate alloc;
+#[macro_use] extern crate lazy_static;
 
-use core::fmt::Arguments;
+use core::fmt::{Arguments, Result, Write};
+use spin::Mutex;
 
-static mut KMAIN_PRINT: bool = false;
+pub mod printer;
+pub mod setup;
 
-extern "C" {
-    pub(crate) fn _early_printk(fmt: Arguments);
-    pub(crate) fn kmain_printk(fmt: Arguments);
+lazy_static! {
+    #[no_mangle]
+    pub static ref PRINTK: Mutex<PrintK> = Mutex::new(PrintK::new());
 }
 
-pub fn _printk(fmt: Arguments) -> Arguments {
-    unsafe { _early_printk(fmt); }
-    return fmt;
+pub struct PrintK {
+    pub kernel_printer: extern "C" fn(Arguments) -> Result,
 }
 
-#[macro_export]
-macro_rules! printk {
-    ($($arg:tt)*) => {$crate::_printk(format_args!($($arg)*))};
+impl PrintK {
+    pub fn new() -> Self {
+        return PrintK {
+            kernel_printer: printer::empty_printk,
+        };
+    }
 }
