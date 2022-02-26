@@ -1,0 +1,11 @@
+[package]
+name = "ps2_keyboard"
+version = "0.1.0"
+edition = "2021"
+desription = "Driver for PS2/Pc keyboards"
+
+[dependencies]
+asminc = { path = "../../../../include/asm/" }
+novuskinc = { path = "../../../../include/novusk/" }
+pc-keyboard = "0.5.1"
+x86_64 = "0.14.8"

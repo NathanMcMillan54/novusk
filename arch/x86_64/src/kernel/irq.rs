@@ -38,3 +38,9 @@ pub unsafe fn start_irq_setup() {
     set_idt();
     idt_init();
 }
+
+pub(crate) mod offsets {
+    pub const PIC_0_OFFSET: u8 = 32;
+    pub const PIC_1_OFFSET: u8 = PIC_0_OFFSET + 8;
+    pub const PIC_2_OFFSET: u8 = PIC_1_OFFSET + 8;
+}
