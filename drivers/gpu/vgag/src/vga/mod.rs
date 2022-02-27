@@ -1,17 +1,36 @@
+use libcolor::ColorCode;
 use novuskinc::fb::FrameBufferGraphics;
 
+pub mod vga_80x25;
+
+use vga_80x25::Vga80x25;
+
+pub trait VgaMode {
+    const WIDTH: usize = 0;
+    const HEIGHT: usize = 0;
+    const BUFFER_ADDRESS: usize = 0x0;
+
+    fn write_byte(&mut self, byte: u8) {    }
+}
+
+#[derive(Copy, Clone)]
+pub struct ScreenChar {
+    character: u8,
+    color: ColorCode,
+}
+
 pub struct VgaG {
+    vga80x25: Vga80x25,
     pub mode: u32,
-    pub fb_address: *mut u32,
-    pub size: (u32, u32),
+    pub size: (usize, usize),
 }
 
 impl VgaG {
     pub fn new() -> Self {
         return VgaG {
+            vga80x25: Vga80x25::new(),
             mode: 0,
-            fb_address: 0xb8000 as *mut u32,
-            size: (80, 25),
+            size: (0, 0)
         };
     }
 
@@ -28,7 +47,6 @@ impl VgaG {
 
     pub fn set_80x25_mode(&mut self) {
         self.mode = 0;
-        self.fb_address = 0xb8000 as *mut u32;
         self.size = (80, 25);
 
         self.clear_screen();
@@ -46,12 +64,10 @@ impl VgaG {
 
     }
 
-    pub fn clear_screen(&self) {
-        let mut fb = self.fb_address;
-
+    pub fn clear_screen(&mut self) {
         for y in 0..self.size.1 {
             for x in 0..self.size.0 {
-                unsafe { fb.offset(y as isize + x as isize).write_volatile(y); }
+                self.graphics_write(b' ', x, y);
             }
         }
     }
@@ -59,11 +75,13 @@ impl VgaG {
 
 impl FrameBufferGraphics for VgaG {
     fn graphics_write(&mut self, byte: u8, x: usize, y: usize) {
-        
+        self.vga80x25.write_byte(byte);
     }
 
     fn graphics_write_string(&mut self, string: &'static str, x: usize, y: usize) {
-        
+        for b in string.as_bytes() {
+            self.graphics_write(*b, 0, 0)
+        }
     }
 
     fn graphics_pixel(&self, color: u32, x: u32, y: u32) {

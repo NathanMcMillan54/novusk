@@ -5,7 +5,10 @@ edition = "2021"
 description = "Vga graphics driver"
 
 [dependencies]
+libcolor = { path = "../../../lib/libcolor/" }
 novuskinc = { path = "../../../include/novusk/", features = ["library"] }
+printk = { path = "../../../kernel/printk/" }
+volatile = "0.2.7"
 
 [features]
 default = []

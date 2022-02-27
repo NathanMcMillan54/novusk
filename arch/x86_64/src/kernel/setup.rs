@@ -2,6 +2,7 @@ use core::ptr::write_volatile;
 use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
 use novuskinc::core::prelude::*;
+use printk::PRINTK;
 use setup::{ArchKernelSetup, SetupReturn};
 use x86_64::instructions::bochs_breakpoint;
 use crate::early_printk;
