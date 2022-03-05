@@ -8,10 +8,12 @@ use spin::Mutex;
 pub mod printer;
 pub mod setup;
 
-lazy_static! {
-    #[no_mangle]
-    pub static ref PRINTK: Mutex<PrintK> = Mutex::new(PrintK::new());
-}
+use printer::empty_printk;
+
+#[no_mangle]
+pub static mut PRINTK: PrintK = PrintK {
+    kernel_printer: empty_printk
+};
 
 pub struct PrintK {
     pub kernel_printer: extern "C" fn(Arguments) -> Result,
@@ -20,7 +22,7 @@ pub struct PrintK {
 impl PrintK {
     pub fn new() -> Self {
         return PrintK {
-            kernel_printer: printer::empty_printk,
+            kernel_printer: empty_printk,
         };
     }
 }

@@ -22,11 +22,12 @@ macro_rules! set_printk {
     ($print_fun:ident) => {
         #[no_mangle]
         pub unsafe extern "C" fn set_kernel_printer() {
+            use printk::PrintK;
             extern "C" {
-                static mut PRINTK: Mutex<PrintK>;
+                static mut PRINTK: PrintK;
             }
 
-            PRINTK.lock().set_printer($print_fun);
+            PRINTK.set_printer($print_fun);
         }
     };
 }

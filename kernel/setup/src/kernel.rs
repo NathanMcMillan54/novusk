@@ -26,7 +26,7 @@ pub trait ArchKernelSetup {
             fn set_kernel_printer();
         }
 
-        //set_kernel_printer();
+        set_kernel_printer();
 
         (Ok(()), "Successfully setup early main kernel")
     }

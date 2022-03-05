@@ -1,6 +1,4 @@
 use core::fmt::{Arguments, Result};
-use printk::PrintK;
-use spin::Mutex;
 use crate::FB;
 
 #[no_mangle]

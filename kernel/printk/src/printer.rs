@@ -17,6 +17,6 @@ impl Write for PrintK {
 macro_rules! printk {
     ($($args:tt)*) => {
         use core::fmt::Write;
-        $crate::PRINTK.lock().write_fmt(format_args!($($args)*))
+        unsafe { $crate::PRINTK.write_fmt(format_args!($($args)*)) }
     };
 }
