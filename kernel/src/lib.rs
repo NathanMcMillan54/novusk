@@ -12,14 +12,13 @@ use novuskinc::{fb::{FrameBuffer, FrameBufferGraphics}, mb::MailBox, serial::Ser
 #[no_mangle]
 pub static mut KERNEL: Kernel = Kernel::empty();
 
-#[derive(Copy, Clone)]
 pub struct Kernel<'a> {
     pub fb: FrameBuffer<'a>,
     pub mb: MailBox,
     pub serial: SerialIo,
 }
 
-impl Kernel<'static> {
+impl <'a>Kernel<'a> {
     pub const fn empty() -> Self {
         return Kernel {
             fb: FrameBuffer::empty(),
@@ -32,7 +31,7 @@ impl Kernel<'static> {
         self.serial = kernel_serial;
     }
 
-    pub fn set_fb(&mut self, kernel_fb: FrameBuffer<'static>) {
+    pub fn set_fb(&mut self, kernel_fb: FrameBuffer<'a>) {
         self.fb = kernel_fb;
     }
 
@@ -48,7 +47,7 @@ impl Kernel<'static> {
         return self.fb;
     }
 
-    pub fn get_framebuffer_graphics(&self) -> &'static (dyn FrameBufferGraphics + 'static) {
+    pub fn get_framebuffer_graphics(&'a self) -> &'static (dyn FrameBufferGraphics + 'a) {
         return self.fb.graphics;
     }
 

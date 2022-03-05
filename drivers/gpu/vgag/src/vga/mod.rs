@@ -1,9 +1,9 @@
-use libcolor::ColorCode;
+use core::fmt::{Arguments, Write};
+use libcolor::{Color16, ColorCode};
 use novuskinc::fb::FrameBufferGraphics;
+use spin::Mutex;
 
 pub mod vga_80x25;
-
-use vga_80x25::Vga80x25;
 
 pub trait VgaMode {
     const WIDTH: usize = 0;
@@ -19,68 +19,60 @@ pub struct ScreenChar {
     color: ColorCode,
 }
 
-pub struct VgaG {
-    vga80x25: Vga80x25,
-    pub mode: u32,
-    pub size: (usize, usize),
+static mut VGA_MODE: u32 = 0;
+
+lazy_static! {
+    static ref VGA_80X25: Mutex<vga_80x25::Vga80x25> = Mutex::new(vga_80x25::Vga80x25::new());
 }
+
+
+pub struct VgaG;
 
 impl VgaG {
     pub fn new() -> Self {
-        return VgaG {
-            vga80x25: Vga80x25::new(),
-            mode: 0,
-            size: (0, 0)
-        };
+        return VgaG;
     }
 
     pub fn set_mode(&mut self, mode: u32) {
-        match mode {
-            0 => self.set_80x25_mode(),
-            1 => self.set_320x200x256_mode(),
-            2 => self.set_320x240x256_mode(),
-            3 => self.set_640x480x16_mode(),
-
-            _ => self.set_80x25_mode(),
-        }
-    }
-
-    pub fn set_80x25_mode(&mut self) {
-        self.mode = 0;
-        self.size = (80, 25);
-
-        self.clear_screen();
-    }
-
-    pub fn set_320x200x256_mode(&mut self) {
-
-    }
-
-    pub fn set_320x240x256_mode(&mut self) {
-
-    }
-
-    pub fn set_640x480x16_mode(&mut self) {
-
+        if mode > 3 {
+            panic!("VGA mode cannot be above 3, mode: {}", mode);
+        } else { unsafe { VGA_MODE = mode; } }
     }
 
     pub fn clear_screen(&mut self) {
-        for y in 0..self.size.1 {
-            for x in 0..self.size.0 {
-                self.graphics_write(b' ', x, y);
-            }
-        }
+
+    }
+
+    fn write(&mut self, s: &str) {
+        self.graphics_write_string(s,0, 0);
     }
 }
 
 impl FrameBufferGraphics for VgaG {
-    fn graphics_write(&mut self, byte: u8, x: usize, y: usize) {
-        self.vga80x25.write_byte(byte);
+    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
+        unsafe {
+            match VGA_MODE {
+                0 => { VGA_80X25.lock().write_byte(byte); },
+                _ => return,
+            }
+        }
     }
 
-    fn graphics_write_string(&mut self, string: &'static str, x: usize, y: usize) {
-        for b in string.as_bytes() {
-            self.graphics_write(*b, 0, 0)
+    fn graphics_write_string(&self, string: &str, x: usize, y: usize) {
+        unsafe {
+            match VGA_MODE {
+                0 => { VGA_80X25.lock().write_str(string); },
+                _ => return,
+            }
+        }
+    }
+
+    fn graphics_write_fmt(&self, fmt: Arguments) {
+        unsafe {
+            match VGA_MODE {
+                0 => { VGA_80X25.lock().write_fmt(fmt); },
+                _ => return,
+            }
         }
     }
 
@@ -88,3 +80,10 @@ impl FrameBufferGraphics for VgaG {
 
     }
 }
+
+/*impl Write for VgaG {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        self.graphics_write_string(s, 0, 0);
+        Ok(())
+    }
+}*/

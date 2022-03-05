@@ -1,6 +1,6 @@
 #![no_std]
 #![allow(warnings)]
-#![feature(const_fn_trait_bound)]
+#![feature(const_fn_trait_bound, const_mut_refs)]
 
 pub mod core;
 pub mod elf;

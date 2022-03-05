@@ -20,4 +20,14 @@ pub trait ArchKernelSetup {
     fn serial_io_init(&self) -> SetupReturn {
         (Ok(()), "Success")
     }
+
+    unsafe fn early_kernel_setup(&self) -> SetupReturn {
+        extern "C" {
+            fn set_kernel_printer();
+        }
+
+        //set_kernel_printer();
+
+        (Ok(()), "Successfully setup early main kernel")
+    }
 }

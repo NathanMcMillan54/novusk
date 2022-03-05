@@ -1,9 +1,12 @@
+use core::borrow::BorrowMut;
+use core::fmt::Arguments;
+
 pub trait FrameBufferGraphics {
-    fn graphics_write(&mut self, byte: u8, x: usize, y: usize) {
+    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
 
     }
 
-    fn graphics_write_string(&mut self, string: &'static str, x: usize, y: usize) {
+    fn graphics_write_string(&self, string: &str, x: usize, y: usize) {
         let mut nx = x;
         let mut ny = y;
 
@@ -16,15 +19,20 @@ pub trait FrameBufferGraphics {
         }
     }
 
+    fn graphics_write_fmt(&self, fmt: Arguments) {
+
+    }
+
     fn graphics_pixel(&self, color: u32, x: u32, y: u32) {
 
     }
 }
 
+#[derive(Copy, Clone)]
 struct EmptyGraphics;
 
 impl FrameBufferGraphics for EmptyGraphics {
-    fn graphics_write(&mut self, byte: u8, x: usize, y: usize) {
+    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
 
     }
 }
@@ -61,5 +69,9 @@ impl<'a> FrameBuffer<'a> {
         self.fb_size = size;
         self.fb_addr = addr;
         self.graphics = fb_graphics;
+    }
+
+    pub fn get_graphics(&'a self) -> &'a dyn FrameBufferGraphics {
+        return self.graphics;
     }
 }

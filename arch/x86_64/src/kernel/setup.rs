@@ -1,10 +1,12 @@
+use core::fmt::Write;
 use core::ptr::write_volatile;
 use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
 use novuskinc::core::prelude::*;
-use printk::PRINTK;
+use printk::PrintK;
 use setup::{ArchKernelSetup, SetupReturn};
-use x86_64::instructions::bochs_breakpoint;
+use spin::Mutex;
+use vgag::display::vga_write_fmt;
 use crate::early_printk;
 
 struct X86_64Kernel;
@@ -17,6 +19,7 @@ impl X86_64Kernel {
     pub fn setup(&self) {
         let irq = self.irq_setup();
         let display = self.display_init();
+        let kernel = unsafe { self.early_kernel_setup() };
 
         if irq.0.is_err() {
             kinfo!(KStatus {
@@ -76,4 +79,3 @@ pub unsafe fn setup_x86_64() {
     let kernel = X86_64Kernel::new();
     kernel.setup();
 }
-

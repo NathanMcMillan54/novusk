@@ -1,5 +1,6 @@
 use core::fmt::{Arguments, Result};
 use crate::PrintK;
+use spin::Mutex;
 
 impl PrintK {
     pub fn printing_ok(&self, printer: extern "C" fn(Arguments) -> Result) -> bool {
@@ -14,4 +15,18 @@ impl PrintK {
             return 0;
         } else { return 1; }
     }
+}
+
+#[macro_export]
+macro_rules! set_printk {
+    ($print_fun:ident) => {
+        #[no_mangle]
+        pub unsafe extern "C" fn set_kernel_printer() {
+            extern "C" {
+                static mut PRINTK: Mutex<PrintK>;
+            }
+
+            PRINTK.lock().set_printer($print_fun);
+        }
+    };
 }

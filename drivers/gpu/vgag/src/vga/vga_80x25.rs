@@ -1,15 +1,16 @@
+use core::fmt::{Arguments, Write};
 use libcolor::{ColorCode, bits16::Color16};
 use super::{ScreenChar, VgaG, VgaMode};
 use volatile::Volatile;
 
-struct Vga80x25Buffer {
+pub struct Vga80x25Buffer {
     chars: [[Volatile<ScreenChar>; Vga80x25::WIDTH]; Vga80x25::HEIGHT],
 }
 
 pub struct Vga80x25 {
-    col: usize,
-    color: ColorCode,
-    buffer: &'static mut Vga80x25Buffer,
+    pub col: usize,
+    pub color: ColorCode,
+    pub buffer: &'static mut Vga80x25Buffer,
 }
 
 impl Vga80x25 {
@@ -69,3 +70,12 @@ impl VgaMode for Vga80x25 {
     }
 }
 
+impl Write for Vga80x25 {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        for b in s.as_bytes() {
+            self.write_byte(*b);
+        }
+
+        Ok(())
+    }
+}
