@@ -7,9 +7,6 @@
 #[macro_use] extern crate novuskinc;
 pub(crate) extern crate rlibc;
 
-#[cfg(target_arch = "arm")]
-pub(crate) extern crate cortex_m_rt;
-
 #[path = "../arm.rs"]
 pub mod arch;
 

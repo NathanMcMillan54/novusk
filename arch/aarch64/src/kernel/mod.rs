@@ -10,3 +10,6 @@ pub mod setup;
 
 #[path = "../../../../kernel/device.rs"]
 pub mod device;
+
+#[no_mangle]
+pub extern "C" fn test() {}

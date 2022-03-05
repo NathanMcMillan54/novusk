@@ -6,7 +6,7 @@ SOC =?
 TARGET =?
 
 ifeq ($(BIT64), False)
-	TARGET = thumbv7m-none-eabi
+	TARGET = ../../targets/thumbv7m-novusk.json
 endif
 
 ifeq ($(KERNEL), Image)
@@ -23,4 +23,8 @@ kernel:
 	@ cargo build --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target $(TARGET)
 
 link:
-	@ arm-linux-gnueabi-ld src/boot/start/cm_boot32.o target/thumbv7m-none-eabi/release/arm_kernel_bin ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)
+	@ arm-linux-gnueabi-ld src/boot/start/cm_boot32.o target/thumbv7m-novusk/release/arm_kernel_bin ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)
+
+clean:
+	@ cargo clean
+	@ rm -rf src/boot/*.o

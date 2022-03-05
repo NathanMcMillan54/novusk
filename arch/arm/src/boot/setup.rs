@@ -113,13 +113,15 @@ pub mod boot32 {
         }
 
         fn early_cpu_init(&self) -> SetupReturn {
+            use crate::kernel::cpu::soc::soc_init;
+
             if self.disable_wdt().0.is_err() {
                 return (Err("WDT error"), "Failed to disable DWT");
             } else if self.cpuid_init().0.is_err() {
                 return (Err("CPU Id error"), "Failed to set CPU info and id");
             }
 
-            let soc_ret = soc_init();
+            let soc_ret = unsafe { soc_init() };
 
             if soc_ret != 0 {
                 return (Err("SOC init error"), "Failed to initialize SOC");
