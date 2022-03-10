@@ -1,10 +1,13 @@
+/* Copied and edited from https://github.com/rust-embedded/cortex-m-rt/blob/master/link.x.in */
+INCLUDE src/boot/start/memory.x
+
 EXTERN(__RESET_VECTOR);
 EXTERN(_start);
 ENTRY(_start);
 
 EXTERN(__EXCEPTIONS);
-
 EXTERN(DefaultHandler);
+/*EXTERN(DefaultHandler_);*/
 
 PROVIDE(NonMaskableInt = DefaultHandler);
 EXTERN(HardFaultTrampoline);
@@ -17,7 +20,7 @@ PROVIDE(DebugMonitor = DefaultHandler);
 PROVIDE(PendSV = DefaultHandler);
 PROVIDE(SysTick = DefaultHandler);
 
-PROVIDE(DefaultHandler = DefaultHandler_);
+/* PROVIDE(DefaultHandler = DefaultHandler_); */
 PROVIDE(HardFault = HardFault_);
 
 EXTERN(__INTERRUPTS);
@@ -123,50 +126,3 @@ SECTIONS
     *(.ARM.extab.*);
   }
 }
-
-ASSERT(ORIGIN(FLASH) % 4 == 0, "
-ERROR(cortex-m-rt): the start of the FLASH region must be 4-byte aligned");
-
-ASSERT(ORIGIN(RAM) % 4 == 0, "
-ERROR(cortex-m-rt): the start of the RAM region must be 4-byte aligned");
-
-ASSERT(__sdata % 4 == 0 && __edata % 4 == 0, "
-BUG(cortex-m-rt): .data is not 4-byte aligned");
-
-ASSERT(__sidata % 4 == 0, "
-BUG(cortex-m-rt): the LMA of .data is not 4-byte aligned");
-
-ASSERT(__bss_start % 4 == 0 && __bss_end % 4 == 0, "
-BUG(cortex-m-rt): .bss is not 4-byte aligned");
-
-ASSERT(__sheap % 4 == 0, "
-BUG(cortex-m-rt): start of .heap is not 4-byte aligned");
-
-ASSERT(__reset_vector == ADDR(.vector_table) + 0x8, "
-BUG(cortex-m-rt): the reset vector is missing");
-
-ASSERT(__eexceptions == ADDR(.vector_table) + 0x40, "
-BUG(cortex-m-rt): the exception vectors are missing");
-
-ASSERT(SIZEOF(.vector_table) > 0x40, "
-ERROR(cortex-m-rt): The interrupt vectors are missing.
-Possible solutions, from most likely to less likely:
-- Link to a svd2rust generated device crate
-- Check that you actually use the device/hal/bsp crate in your code
-- Disable the 'device' feature of cortex-m-rt to build a generic application (a dependency
-may be enabling it)
-- Supply the interrupt handlers yourself. Check the documentation for details.");
-
-ASSERT(ADDR(.vector_table) + SIZEOF(.vector_table) <= _stext, "
-ERROR(cortex-m-rt): The .text section can't be placed inside the .vector_table section
-Set _stext to an address greater than the end of .vector_table (See output of `nm`)");
-
-ASSERT(_stext + SIZEOF(.text) < ORIGIN(FLASH) + LENGTH(FLASH), "
-ERROR(cortex-m-rt): The .text section must be placed inside the FLASH memory.
-Set _stext to an address smaller than 'ORIGIN(FLASH) + LENGTH(FLASH)'");
-
-ASSERT(SIZEOF(.got) == 0, "
-ERROR(cortex-m-rt): .got section detected in the input object files
-Dynamic relocations are not supported. If you are linking to C code compiled using
-the 'cc' crate then modify your build script to compile the C code _without_
-the -fPIC flag. See the documentation of the `cc::Build.pic` method for details.");

@@ -1,6 +1,6 @@
-[target.'cfg(feature = "cortex_m")']
+[target.'cfg(target_arch = "arm")']
 rustflags = [
-    "-C", "link-arg=--nmagic",
-    "-C", "link-arg=-Tlink.x",
-    # "-C", "target-feature=+crt-static"
+    "-C", "linker=arm-none-eabi-gcc",
+    "-C", "link-arg=-Wl,-Tlink.x",
+    "-C", "link-arg=-nostartfiles",
 ]

@@ -7,7 +7,7 @@ fn arm_ld_setup() {
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
     File::create(out.join("memory.x"))
         .unwrap()
-        .write_all(include_bytes!("src/boot/start/stellaris_mem.x"))
+        .write_all(include_bytes!("src/boot/start/stellaris6965_mem.x"))
         .unwrap();
     println!("cargo:rustc-link-search={}", out.display());
     println!("cargo:rerun-if-changed=src/boot/start/stellaris_mem.x");
