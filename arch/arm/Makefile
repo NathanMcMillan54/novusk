@@ -31,11 +31,11 @@ boot:
 
 kernel:
 	@ echo "Compiling arm kernel..."
-	@ cargo build --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target $(TARGET)
+	@ cargo build --lib --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target $(TARGET)
 
 link:
 	@ cp -r src/boot/start/$(PLATFORM)_mem.x src/boot/start/memory.x
-	@ arm-linux-gnueabi-ld $(BOOT_FILE).o target/thumbv7m-novusk/release/arm_kernel_bin ../../include/novusk/kms/device.km -T$(LINKER)  -o src/boot/$(KERNEL_IMG)
+	@ arm-linux-gnueabi-ld $(BOOT_FILE).o target/thumbv7m-novusk/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -T$(LINKER)  -o src/boot/$(KERNEL_IMG)
 
 clean:
 	@ cargo clean
