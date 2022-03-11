@@ -1,0 +1,7 @@
+[package]
+name = "hio"
+version = "0.1.0"
+edition = "2021"
+description = "Semihosting I/O for ARM"
+
+[dependencies]
