@@ -1,4 +1,4 @@
-use core::fmt::{Arguments, Result, Write};
+use core::fmt::{Arguments, Write};
 use crate::syscall::syscall;
 
 pub struct HioWriter {
@@ -6,10 +6,8 @@ pub struct HioWriter {
 }
 
 impl HioWriter {
-    pub fn new(fd: usize) -> Self {
-        return HioWriter {
-            fd: fd,
-        }
+    pub fn new() -> Self {
+        return get_hio();
     }
 
     pub fn write_bytes(&self, bytes: &[u8]) {
@@ -18,7 +16,7 @@ impl HioWriter {
 }
 
 impl Write for HioWriter {
-    fn write_str(&mut self, s: &str) -> Result {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
         self.write_bytes(s.as_bytes());
         Ok(())
     }
@@ -40,4 +38,10 @@ fn open(name: &[u8], mode: usize) -> Result<usize, ()> {
         -1 => Err(()),
         fd => Ok(fd as usize),
     }
+}
+
+#[no_mangle]
+pub extern "C" fn hio_write_fmt(fmt: Arguments) -> core::fmt::Result {
+    let mut hio = HioWriter::new();
+    hio.write_fmt(fmt)
 }

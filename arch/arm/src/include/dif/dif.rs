@@ -6,8 +6,7 @@ extern "C" {
     pub static DIF_FILE: &'static str;
 }
 
-// arch/arm/src/include/dif/difs/stellari6965.dif
-#[cfg(feature = "stellaris6965")]
+#[cfg(target_arch = "arm")]
 #[no_mangle]
 pub static mut DIF: Dif = Dif {
     device_name: "",
