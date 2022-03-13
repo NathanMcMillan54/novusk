@@ -4,8 +4,11 @@ version = "0.1.0"
 edition = "2021"
 description = "A driver for Stellaris devices"
 
+[lib]
+crate-type = ["staticlib"]
+
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
 
-[lib]
-crate-type = ["staticlib"]
+[build-dependencies]
+difi = { path = "../../../tools/build/difi/" }

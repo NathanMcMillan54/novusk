@@ -10,3 +10,6 @@ crate-type = ["staticlib"]
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
+
+[build-dependencies]
+difi = { path = "../../../tools/build/difi/" }

@@ -18,7 +18,7 @@ fn raspberrypi_end() {
 }
 
 #[no_mangle]
-pub static DIF_FILE: &'static str = include_str!("../../../../arch/arm/src/include/dif/difs/rpi3b.dif");
+pub static DIF_FILE: &'static str = include_str!("../../../../arch/aarch64/src/include/dif/rpi3b.dif");
 
 module_init!(early_device_init, raspberrypi_init);
 module_end!(early_device_end, raspberrypi_end);
