@@ -3,7 +3,7 @@ use dif::Dif;
 extern "C" {
     #[cfg(target_arch = "aarch64")]
     pub static mut DIF: Dif;
-    pub static DIF_FILE: &'static str;
+    pub static DIF_FILE: &'static [&'static str; 11];
 }
 
 #[cfg(target_arch = "arm")]

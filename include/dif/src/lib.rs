@@ -5,12 +5,7 @@
 use alloc::string::ToString;
 use alloc::vec::Vec;
 
-#[path = "../../../lib/str_to_addr.rs"]
-pub mod str_to_addr;
-
 pub mod parse;
-
-use parse::_early_printk;
 
 #[derive(Copy, Clone)]
 pub struct Dif {
@@ -76,26 +71,7 @@ impl Dif {
         }
     }
 
-    pub fn set(&mut self, dif_file: &'static str) {
+    pub fn set(&mut self, dif_file: &[&'static str; 11]) {
         self.parse_and_set(dif_file);
     }
 }
-
-/* impl Clone for Dif {
-    fn clone(&self) -> Self {
-        return Dif {
-            device_name: self.device_name,
-            peripheral_addr: self.peripheral_addr,
-            gpio0_addr: self.gpio0_addr,
-            gpio1_addr: self.gpio1_addr,
-            gpio2_addr: self.gpio2_addr,
-            gpio3_addr: self.gpio3_addr,
-            gpio4_addr: self.gpio4_addr,
-            serial_addr: self.serial_addr,
-            uart_addr: self.uart_addr,
-            fb_addr: self.fb_addr,
-            mb_addr: self.mb_addr,
-            debug: self.debug
-        };
-    }
-} */

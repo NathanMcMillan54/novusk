@@ -22,7 +22,7 @@ pub unsafe extern "C" fn _start() -> ! {
 
     r0::init_data(&mut __sdata, &mut __edata, __sidata as *const u64);
 
-    //crate::
+    crate::boot::main::arm_boot_main();
 
     boot_die();
 }

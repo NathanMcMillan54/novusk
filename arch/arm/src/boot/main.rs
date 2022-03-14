@@ -1,11 +1,18 @@
+use crate::include::dif::{dif_init, dif::DIF};
 use crate::kernel::cpu::info::CPUINFO;
 use crate::kernel::{arm_kernel_init, setup_arm_kernel};
 use super::setup::ArmBoot;
 
 #[no_mangle]
 pub unsafe extern "C" fn arm_boot_main() {
+    hio::io::hio_write_fmt(format_args!("{}", "Test\n"));
+
+    dif_init();
+
     let arm_boot = ArmBoot::new();
     arm_boot.setup();
+
+    hio::io::hio_write_fmt(format_args!("{}{}", DIF.debug.unwrap(), "\n"));
 
     #[cfg(target_arch = "arm")]
     super::setup::boot32::arm32_boot_setup();

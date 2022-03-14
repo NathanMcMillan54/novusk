@@ -2,7 +2,7 @@ use std::fs::{read_to_string, File};
 use std::io::Write;
 use std::path::Path;
 
-const DIF_STATIC: &'static str = "#[no_mangle]\npub static DIF_FILE: &[&'static str; 11] = ";
+const DIF_STATIC: &'static str = "#[no_mangle]\npub static DIF_FILE: &'static [&'static str; 11] = ";
 
 pub fn add_kernel_dif(dif: &str) {
     let kernel_dif = File::open(dif);
