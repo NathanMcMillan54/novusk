@@ -39,6 +39,8 @@ link:
 
 clean:
 	@ cargo clean
+	@ rm -rf src/boot/adImage
 	@ rm -rf src/boot/*.o
 	@ rm -rf src/boot/start/*.o
 	@ rm -rf src/boot/start/memory.x
+	@ rm -rf src/include/dif/kernel_dif.dif

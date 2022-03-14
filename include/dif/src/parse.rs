@@ -17,9 +17,12 @@ impl Dif {
         new_dif.fb_addr = Some(file[8].parse::<u32>().unwrap());
         new_dif.mb_addr = Some(file[9].parse::<u32>().unwrap());
 
-        if file[10] == "debug_on" {
+        // Why does this work?
+        if file[10] == "debug_off" {
             new_dif.debug = Some(true);
-        } else { new_dif.debug = Some(false); }
+        } else if file[10] == "debug_on" {
+            new_dif.debug = Some(false);
+        } else { panic!("Last line should be \"debug_on\" or \"debug_off\", not {}", file[10]); }
 
         return new_dif;
     }
