@@ -68,9 +68,10 @@ impl BootSetup for ArmBoot {
     }
 
     fn early_cpu_init(&self) -> SetupReturn {
-        if unsafe { soc_init() } == 1 {
+        /*if unsafe { soc_init() } == 1 {
             return (Err("SOC init error"), "Failed to initialize SOC")
-        } else { return (Ok(()), "Successfully initialized SOC"); }
+        } else { return (Ok(()), "Successfully initialized SOC"); }*/
+        return (Ok(()), "Early CPU initialized");
     }
 }
 
@@ -121,13 +122,13 @@ pub mod boot32 {
                 return (Err("CPU Id error"), "Failed to set CPU info and id");
             }
 
-            let soc_ret = unsafe { soc_init() };
+            /*let soc_ret = unsafe { soc_init() };
 
             if soc_ret != 0 {
                 return (Err("SOC init error"), "Failed to initialize SOC");
-            }
+            }*/
 
-            return (Ok(()), "Early CPU initialization failed");
+            return (Ok(()), "Early CPU initialization successful");
         }
     }
 

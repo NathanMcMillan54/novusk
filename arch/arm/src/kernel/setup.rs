@@ -54,8 +54,6 @@ pub unsafe fn setup_arm_kernel() {
 
     dif_init();
 
-    crate::early_printk!("{:p}\n", DIF.uart_addr.unwrap() as *mut u8);
-
     #[cfg(target_arch = "aarch64")]
     crate::bits64::arm64_kernel_setup();
 }

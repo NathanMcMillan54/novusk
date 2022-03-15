@@ -1,4 +1,5 @@
-&["RaspberryPi 3B",
+#[no_mangle]
+pub static DIF_FILE: &'static [&'static str; 11] = &["RaspberryPi 3B",
   "1056964608", // Peripheral base (pointer) as a decimal
   "0",
   "0",

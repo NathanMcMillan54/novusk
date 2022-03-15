@@ -11,6 +11,7 @@ pub unsafe extern "C" fn arm_boot_main() {
     let arm_boot = ArmBoot::new();
     arm_boot.setup();
 
+
     #[cfg(target_arch = "arm")]
     super::setup::boot32::arm32_boot_setup();
 
