@@ -1,6 +1,7 @@
 pub mod arm_init;
 pub mod cpu;
 pub mod early_printk;
+pub mod irq;
 pub mod panic;
 pub mod serial;
 pub mod setup;

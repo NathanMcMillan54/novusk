@@ -1,4 +1,3 @@
-[target.'cfg(target_arch = "arm")']
 rustflags = [
     "-C", "linker=arm-none-eabi-gcc",
     "-C", "link-arg=-Wl,-Tlink.x",

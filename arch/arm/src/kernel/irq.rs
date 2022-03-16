@@ -1,6 +1,26 @@
-use crate::arm32_printk;
-use super::irqs::device_specific_irq_init;
+// For ARMv7+ (novusk should only support "new" hardware)
+/* #[cfg(feature = "cortex_m")]
+#[link_section = ".vector_table.interrupts"]
+#[no_mangle]
+pub static __INTERRUPTS: [unsafe extern "C" fn(); 240] = [{
+    extern "C" {
+        fn DefaultHandler();
+    }
 
-pub unsafe fn irq_init() {
-    device_specific_irq_init();
+    DefaultHandler
+}; 240]; */
+
+mod cm_ints {
+    use cortex_m_rt::{exception, ExceptionFrame};
+
+    #[exception]
+    unsafe fn DefaultHandler(irq: i16) -> ! {
+        hprintln!("IRQ: {}", irq);
+        loop { asm!("wfe"); }
+    }
+
+    /*#[exception]
+    unsafe fn HardFault(_ef: &ExceptionFrame) -> ! {
+        loop { }
+    }*/
 }
