@@ -9,7 +9,7 @@ SOC =?
 TARGET =?
 
 ifeq ($(BIT64), False)
-	TARGET = ../../targets/thumbv7m-novusk.json
+	TARGET = ../../targets/thumbv7m-none-eabi.json
 endif
 
 ifeq ($(KERNEL), Image)
@@ -35,7 +35,7 @@ kernel:
 
 link:
 	@ cp -r src/boot/start/$(PLATFORM)_mem.x src/boot/start/memory.x
-	@ arm-linux-gnueabi-ld $(BOOT_FILE).o target/thumbv7m-novusk/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -T$(LINKER)  -o src/boot/$(KERNEL_IMG)
+	@ arm-linux-gnueabi-ld $(BOOT_FILE).o target/thumbv7m-none-eabi/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -T$(LINKER)  -o src/boot/$(KERNEL_IMG)
 
 clean:
 	@ cargo clean
