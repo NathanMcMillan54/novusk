@@ -19,11 +19,12 @@ impl Dif {
 
         // Why does this work?
         if file[10] == "debug_off" {
-            new_dif.debug = Some(true);
-        } else if file[10] == "debug_on" {
             new_dif.debug = Some(false);
+        } else if file[10] == "debug_on" {
+            new_dif.debug = Some(true);
         } else { panic!("Last line should be \"debug_on\" or \"debug_off\", not {}", file[10]); }
 
+        *self = new_dif;
         return new_dif;
     }
 }

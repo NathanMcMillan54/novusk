@@ -8,7 +8,7 @@ pub extern "C" fn _early_printk(print: Arguments) {
         if DIF.debug.is_some() {
             if DIF.debug.unwrap() {
                 #[cfg(target_arch = "arm")]
-                hio::io::hio_write_fmt(print);
+                hprint!("{}", print);
             }
         } else { uart::uart_write(print); }
     }

@@ -7,6 +7,12 @@
 #[macro_use] extern crate novuskinc;
 pub(crate) extern crate rlibc;
 
+cfg_if! {
+    if #[cfg(feature = "cortex_m")] {
+        #[macro_use] extern crate cortex_m_semihosting;
+    }
+}
+
 #[path = "../arm.rs"]
 pub mod arch;
 

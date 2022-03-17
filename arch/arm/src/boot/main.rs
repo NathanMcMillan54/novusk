@@ -1,5 +1,5 @@
 use crate::include::dif::{dif_init, dif::DIF};
-use crate::include::dif::dif::DIF_FILE;
+use crate::include::dif::dif::{DIF_FILE};
 use crate::kernel::cpu::info::CPUINFO;
 use crate::kernel::{arm_kernel_init, setup_arm_kernel};
 use super::setup::ArmBoot;
@@ -10,7 +10,6 @@ pub unsafe extern "C" fn arm_boot_main() {
 
     let arm_boot = ArmBoot::new();
     arm_boot.setup();
-
 
     #[cfg(target_arch = "arm")]
     super::setup::boot32::arm32_boot_setup();

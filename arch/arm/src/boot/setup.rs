@@ -12,15 +12,20 @@ impl ArmBoot {
     }
 
     pub fn setup(&self) {
-        let early_io = self.early_io_init();
+        #[cfg(not(feature = "cortex_m"))]
         let ld_mem = unsafe { self.linker_setup() };
+
+        let early_io = self.early_io_init();
         let cpu = self.early_cpu_init();
         let cpuid = self.cpuid_init();
 
+        #[cfg(not(feature = "cortex_m"))]
+        if ld_mem.0.is_err() {
+            panic!("{}", ld_mem.1);
+        } else { crate::early_printk!("{}", ld_mem.1); }
+
         if early_io.0.is_err() {
             panic!("{}", early_io.1);
-        } else if ld_mem.0.is_err() {
-            panic!("{}", ld_mem.1);
         } else if cpu.0.is_err() {
             panic!("{}", cpu.1);
         } else if cpuid.0.is_err() {
@@ -29,8 +34,6 @@ impl ArmBoot {
 
         if early_io.0.is_ok() {
             crate::early_printk!("{}\n", early_io.1);
-        } else if ld_mem.0.is_ok() {
-            crate::early_printk!("{}\n", ld_mem.1);
         } else if cpuid.0.is_ok() {
             crate::early_printk!("{}\n", cpu.1);
         } else if cpu.0.is_ok() {
