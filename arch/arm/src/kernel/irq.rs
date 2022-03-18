@@ -1,27 +1,44 @@
-// For ARMv7+ (novusk should only support "new" hardware)
-/* #[cfg(feature = "cortex_m")]
-#[link_section = ".vector_table.interrupts"]
-#[no_mangle]
-pub static __INTERRUPTS: [unsafe extern "C" fn(); 240] = [{
-    extern "C" {
-        fn DefaultHandler();
-    }
+pub unsafe fn setup_irqs() {
+    #[cfg(feature = "cortex_m")]
+    cm_ints::cortex_m_irq_setup();
+}
 
-    DefaultHandler
-}; 240]; */
+pub unsafe fn irqs_init() {
+    #[cfg(feature = "cortex_m")]
+    cm_ints::cortex_m_irq_init();
+}
 
 #[cfg(feature = "cortex_m")]
 mod cm_ints {
+    use cortex_m::peripheral::syst::SystClkSource;
+    use cortex_m::Peripherals;
     use cortex_m_rt::{exception, ExceptionFrame};
+
+    pub unsafe fn cortex_m_irq_setup() {
+        let cpu_peripherals = Peripherals::steal();
+        let mut syst = cpu_peripherals.SYST;
+
+        // Setup system timer for IRQs
+        syst.set_clock_source(SystClkSource::Core);
+        syst.set_reload(8_000_000);
+    }
+
+    pub unsafe fn cortex_m_irq_init() {
+        let cpu_peripherals = Peripherals::steal();
+        let mut syst = cpu_peripherals.SYST;
+
+        syst.enable_counter();
+        syst.enable_interrupt();
+    }
 
     #[exception]
     unsafe fn DefaultHandler(irq: i16) -> ! {
-        // hprintln!("IRQ: {}", irq);
+        hprintln!("IRQ: {}", irq);
         loop { asm!("wfe"); }
     }
 
-    /*#[exception]
-    unsafe fn HardFault(_ef: &ExceptionFrame) -> ! {
-        loop { }
-    }*/
+    #[exception]
+    unsafe fn SysTick() {
+
+    }
 }

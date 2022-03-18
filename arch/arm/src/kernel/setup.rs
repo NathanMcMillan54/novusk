@@ -1,7 +1,7 @@
-use ::setup::{ArchKernelSetup, SetupReturn};
-use novuskinc::core::prelude::{early_device_init, early_device_end};
 use crate::include::dif::dif::DIF;
-use crate::include::dif::dif_init;
+use super::irq::setup_irqs;
+use novuskinc::core::prelude::{early_device_init, early_device_end};
+use ::setup::{ArchKernelSetup, SetupReturn};
 
 pub(crate) struct ArmKernel;
 
@@ -31,6 +31,8 @@ impl ArmKernel {
 
 impl ArchKernelSetup for ArmKernel {
     fn irq_setup(&self) -> SetupReturn {
+        unsafe { setup_irqs(); }
+
         (Ok(()), "")
     }
 
@@ -51,8 +53,6 @@ pub unsafe fn setup_arm_kernel() {
     let arm_kernel = ArmKernel::new();
 
     arm_kernel.setup();
-
-    dif_init();
 
     #[cfg(target_arch = "aarch64")]
     crate::bits64::arm64_kernel_setup();

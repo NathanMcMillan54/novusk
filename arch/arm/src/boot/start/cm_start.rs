@@ -1,5 +1,6 @@
 // All these start functions are called from the cortex-m-rt library
 use crate::boot::main::arm_boot_main;
+use cortex_m::Peripherals;
 
 extern "C" {
     fn boot_die() -> !;
@@ -25,5 +26,10 @@ pub unsafe extern "C" fn __pre_init() {
     if __ebss != 0 {
         hprintln!("BSS end = {}", __ebss);
         panic!("BSS end does not equal 0");
+    }
+
+    if Peripherals::take().is_none() {
+        hprintln!("Can't find CPU peripherals");
+        panic!("Can't find CPU peripherals, the buid target of Novusk image might be running on  an incompatible CPU");
     }
 }
