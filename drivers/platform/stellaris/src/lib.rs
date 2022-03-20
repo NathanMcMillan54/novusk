@@ -1,6 +1,11 @@
 #![no_std]
+#![feature(core_intrinsics)]
+#![feature(asm)]
 
 #[macro_use] extern crate novuskinc;
+
+use core::panic::PanicInfo;
+use cortex_m_semihosting::hprintln;
 
 #[path = "dif.rs"]
 pub mod dif;

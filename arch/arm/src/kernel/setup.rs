@@ -26,6 +26,14 @@ impl ArmKernel {
         if serial.0.is_err() {
             panic!("{}", serial.1);
         }
+
+        if irq.0.is_ok() {
+            crate::early_printk!("{}", irq.1);
+        } else if dev.0.is_ok() {
+            crate::early_printk!("{}", dev.1);
+        } else if serial.0.is_ok() {
+            crate::early_printk!("{}", serial.1);
+        }
     }
 }
 
@@ -39,7 +47,7 @@ impl ArchKernelSetup for ArmKernel {
     fn device_init(&self) -> SetupReturn {
         start_module!(early_device_init, early_device_end);
 
-        (Ok(()), "")
+        (Ok(()), "Device initialized")
     }
 
     fn serial_io_init(&self) -> SetupReturn {

@@ -1,11 +1,20 @@
 pub unsafe fn setup_irqs() {
     #[cfg(feature = "cortex_m")]
     cm_ints::cortex_m_irq_setup();
+
+    #[cfg(feature = "cortex_a")]
+    ca_ints::ca_irqs_setup();
 }
 
 pub unsafe fn irqs_init() {
     #[cfg(feature = "cortex_m")]
     cm_ints::cortex_m_irq_init();
+
+    extern "C" {
+        fn device_specific_irqs_init();
+    }
+
+    device_specific_irqs_init();
 }
 
 #[cfg(feature = "cortex_m")]
@@ -40,5 +49,18 @@ mod cm_ints {
     #[exception]
     unsafe fn SysTick() {
 
+    }
+}
+
+#[cfg(feature = "cortex_a")]
+mod ca_ints {
+    #[cfg(feature = "cortex_a")]
+    fn cortex_a32_irq_setup() {
+
+    }
+
+    pub fn ca_irqs_setup() {
+        #[cfg(target_arch = "arm")]
+        cortex_a32_irq_setup();
     }
 }

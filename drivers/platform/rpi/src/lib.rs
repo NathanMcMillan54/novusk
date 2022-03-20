@@ -3,6 +3,9 @@
 #[macro_use] extern crate novuskinc;
 use novuskinc::core::prelude::*;
 
+#[path = "dif.rs"]
+mod dif;
+
 pub(crate) mod mailbox;
 
 pub(crate) struct RaspberryPi {
@@ -17,8 +20,10 @@ fn raspberrypi_end() {
 
 }
 
-#[no_mangle]
-pub static DIF_FILE: &'static str = include_str!("../../../../arch/aarch64/src/include/dif/rpi3b.dif");
-
 module_init!(early_device_init, raspberrypi_init);
 module_end!(early_device_end, raspberrypi_end);
+
+#[no_mangle]
+pub extern "C" fn device_specific_irqs_init() {
+
+}
