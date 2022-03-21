@@ -42,6 +42,7 @@ cortex_m = ["nmallocator/linked_list"]
 rpi3b = ["cortex_a"]
 rpi4b = ["cortex_a"]
 stellaris6965 = ["cortex_m"]
+stm32f4xx = ["cortex_m"]
 
 unknown_soc = []
 bcm28xx = []

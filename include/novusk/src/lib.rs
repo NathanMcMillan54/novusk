@@ -16,8 +16,6 @@ use ::core::panic::PanicInfo;
 #[cfg(not(feature = "library"))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    cortex_m_semihosting::hprintln!("Panic: {} {}:{}", info.message().unwrap(), info.location().unwrap().file(), info.location().unwrap().line());
-
     loop {  }
 }
 

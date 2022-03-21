@@ -5,7 +5,6 @@ edition = "2021"
 description = "A lib used for anything related to Novusk"
 
 [dependencies]
-cortex-m-semihosting = "0.3.7"
 
 [features]
 default = []

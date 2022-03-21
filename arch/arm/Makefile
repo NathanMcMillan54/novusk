@@ -17,6 +17,9 @@ ifeq ($(KERNEL), Image)
 endif
 
 ifeq ($(PLATFORM), stellaris6965)
+	CPU = cortex-m3
+	BOOT_FILE = src/boot/start/cm_boot
+else ifeq ($(PLATFORM), stm32f4xx)
 	CPU = cortex-m4
 	BOOT_FILE = src/boot/start/cm_boot
 else ifeq ($(PLATFORM), rpi2b)
