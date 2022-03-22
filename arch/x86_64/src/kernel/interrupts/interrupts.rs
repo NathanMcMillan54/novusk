@@ -12,7 +12,6 @@ pub extern "x86-interrupt" fn time_interrupt(stack_frame: InterruptStackFrame) {
     unsafe { PIC.lock().notify_end_of_interrupt(InterruptIndex::Timer as u8); }
 }
 
-// Hardware I/O
 pub extern "x86-interrupt" fn keyboard_interrupt(stack_frame: InterruptStackFrame) {
     let mut keyboard_port = Port::new(0x60);
     let scancode = unsafe { keyboard_port.read() };
@@ -20,8 +19,4 @@ pub extern "x86-interrupt" fn keyboard_interrupt(stack_frame: InterruptStackFram
     notify_keyboard_input(scancode);
 
     unsafe { PIC.lock().notify_end_of_interrupt(InterruptIndex::Keyboard as u8); }
-}
-
-pub extern "x86-interrupt" fn mouse_interrupt(stack_frame: InterruptStackFrame) {
-    unsafe { PIC.lock().notify_end_of_interrupt(InterruptIndex::Mouse as u8); }
 }

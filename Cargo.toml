@@ -14,7 +14,7 @@ name = "novusk"
 path = "src/lib.rs"
 edition = "2021"
 # Remove the comment if you're going to link Novusk to something else
-# crate-type = ["staticlib"]
+crate-type = ["staticlib"]
 
 [workspace]
 members = [
@@ -103,7 +103,7 @@ unistd = { path = "lib/libc/unistd/" }
 vfs = { path = "fs/vfs/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
-bootloader = "0.9.21"
+bootloader = "0.9.18"
 kb_mouse = { path = "drivers/input/mouse/kb_mouse/" }
 lba = { path = "drivers/storage/lba/" }
 libwin = { path = "lib/libwin/" }
