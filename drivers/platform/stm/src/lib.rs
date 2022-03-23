@@ -5,6 +5,8 @@
 #[path = "dif.rs"]
 mod dif;
 
+pub mod irqs;
+
 fn stm_init() {
 
 }

@@ -8,10 +8,6 @@ PLATFORM =?
 SOC =?
 TARGET =?
 
-ifeq ($(BIT64), False)
-	TARGET = ../../targets/thumbv7m-none-eabi.json
-endif
-
 ifeq ($(KERNEL), Image)
 	KERNEL_IMG := adImage
 endif
@@ -19,12 +15,15 @@ endif
 ifeq ($(PLATFORM), stellaris6965)
 	CPU = cortex-m3
 	BOOT_FILE = src/boot/start/cm_boot
+	TARGET = thumbv7m-none-eabi
 else ifeq ($(PLATFORM), stm32f4xx)
 	CPU = cortex-m4
 	BOOT_FILE = src/boot/start/cm_boot
+	TARGET = thumbv7em-none-eabihf
 else ifeq ($(PLATFORM), rpi2b)
 	CPU = cortex-a7
 	BOOT_FILE = src/boot/start/a7_start
+	TARGET = arm-a-novusk
 endif
 
 all: boot kernel link
@@ -34,11 +33,10 @@ boot:
 
 kernel:
 	@ echo "Compiling arm kernel..."
-	@ cargo build --lib --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target $(TARGET)
+	@ cargo build --lib --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target ../../targets/$(TARGET).json
 
 link:
-	@ cp -r src/boot/start/$(PLATFORM)_mem.x src/boot/start/memory.x
-	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) target/thumbv7m-none-eabi/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)
+	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) target/$(TARGET)/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)
 
 clean:
 	@ cargo clean
