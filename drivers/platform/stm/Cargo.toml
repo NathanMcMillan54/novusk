@@ -8,6 +8,8 @@ description = "Support for ST devices, mainly STM32 boards"
 crate-type = ["staticlib"]
 
 [dependencies]
+asminc = { path = "../../../include/asm/" }
+stm32f4xx-hal = { version = "0.12.0", features = ["stm32f407"] }
 novuskinc = { path = "../../../include/novusk/" }
 
 [build-dependencies]

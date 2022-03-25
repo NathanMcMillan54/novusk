@@ -1,7 +1,6 @@
 // All these start functions are called from the cortex-m-rt library
 use crate::boot::main::arm_boot_main;
 use cortex_m::Peripherals;
-use alloc::vec;
 
 extern "C" {
     fn boot_die() -> !;
@@ -10,9 +9,6 @@ extern "C" {
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
     hprintln!("Starting kernel on Cortex M CPU...");
-
-    let mut test = vec![0];
-    test.push(1);
 
     arm_boot_main();
 

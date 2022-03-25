@@ -1,5 +1,6 @@
 #![no_std]
 
+#[macro_use] extern crate asminc;
 #[macro_use] extern crate novuskinc;
 
 #[path = "dif.rs"]
@@ -7,8 +8,12 @@ mod dif;
 
 pub mod irqs;
 
-fn stm_init() {
+pub mod stm32f4xx;
 
+fn stm_init() {
+    if dif::DIF_FILE[0] == "STM32F4xx" {
+        stm32f4xx::setup_stm32f407();
+    } else { panic!("Wrong DIF file should be using a STM32Xxxx DIF not a {} DIF", dif::DIF_FILE[0]); }
 }
 
 fn stm_end() {

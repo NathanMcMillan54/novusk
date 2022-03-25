@@ -16,7 +16,7 @@ ifeq ($(PLATFORM), stellaris6965)
 	CPU = cortex-m3
 	BOOT_FILE = src/boot/start/cm_boot
 	TARGET = thumbv7m-none-eabi
-else ifeq ($(PLATFORM), stm32f4xx)
+else ifeq ($(PLATFORM), stm32f407)
 	CPU = cortex-m4
 	BOOT_FILE = src/boot/start/cm_boot
 	TARGET = thumbv7em-none-eabihf
