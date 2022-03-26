@@ -1,5 +1,7 @@
 use stm32f4xx_hal::pac::{interrupt, CorePeripherals, NVIC};
 
+const COMMON_INTERRUPTS: &[interrupt; 5] = &[interrupt::EXTI0, interrupt::EXTI1, interrupt::EXTI2, interrupt::EXTI3, interrupt::EXTI4];
+
 empty_interrupt!(EXTI0);
 empty_interrupt!(EXTI1);
 empty_interrupt!(EXTI2);
@@ -48,5 +50,7 @@ empty_interrupt!(RTC_WKUP);
 empty_interrupt!(TAMP_STAMP);
 
 pub unsafe fn setup_interrupts() {
-    NVIC::unmask(interrupt::EXTI0);
+    for int in 0..COMMON_INTERRUPTS.len() {
+        NVIC::unmask(COMMON_INTERRUPTS[int]);
+    }
 }

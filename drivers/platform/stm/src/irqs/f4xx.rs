@@ -1,4 +1,7 @@
 use stm32f4xx_hal::pac::interrupt;
+use stm32f4xx_hal::pac::NVIC;
+
+pub(crate) const STM32F4XX_INTERRUPTS: &[interrupt; 1] = &[interrupt::TIM7];
 
 empty_interrupt!(LCD_TFT);
 empty_interrupt!(LCD_TFT_1);
@@ -37,3 +40,9 @@ empty_interrupt!(OTG_FS_WKUP);
 empty_interrupt!(ADC);
 empty_interrupt!(RCC);
 empty_interrupt!(WWDG);
+
+pub unsafe fn stm32f4xx_specific_interrupts_setup() {
+    for int in 0..STM32F4XX_INTERRUPTS.len() {
+        NVIC::unmask(STM32F4XX_INTERRUPTS[int]);
+    }
+}
