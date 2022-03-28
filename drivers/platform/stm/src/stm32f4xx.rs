@@ -2,7 +2,7 @@ use stm32f4xx_hal::pac::{CorePeripherals, Peripherals};
 use stm32f4xx_hal::prelude::*;
 use stm32f4xx_hal::rcc::Clocks;
 
-fn get_clocks() -> Clocks {
+pub(crate) fn get_clocks() -> Clocks {
     let peripherals = unsafe { Peripherals::steal() };
 
     let rcc = peripherals.RCC.constrain();

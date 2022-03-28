@@ -10,6 +10,7 @@ crate-type = ["staticlib"]
 [dependencies]
 asminc = { path = "../../../include/asm/" }
 stm32f4xx-hal = { version = "0.12.0", features = ["stm32f407"] }
+ssd1306 = "0.7.0"
 novuskinc = { path = "../../../include/novusk/" }
 
 [build-dependencies]

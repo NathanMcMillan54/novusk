@@ -6,8 +6,8 @@
 #[path = "dif.rs"]
 mod dif;
 
+mod displays;
 pub mod irqs;
-
 pub mod stm32f4xx;
 
 fn stm_init() {

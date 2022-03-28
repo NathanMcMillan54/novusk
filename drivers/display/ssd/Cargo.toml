@@ -1,0 +1,10 @@
+[package]
+name = "ssd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+display-interface-i2c = "0.4.0"
+embedded-hal = "0.2.7"
+ssd1306 = "0.7.0"
+novuskinc = { path = "../../../include/novusk/" }
