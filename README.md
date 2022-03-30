@@ -2,8 +2,12 @@
 
 Novusk - A kernel written in Rust inspired by Linux
 
-This branch is dedicated to maintaining updating Novusk v3, [this issue]() has a list of things that are needed in this 
-current major version and in future major versions.
+This version of Novusk is a Rust library kernel, you can add it as a dependency to a Cargo project to develop simple 
+OSes and bare metal apps
+
+This branch is dedicated to maintaining updating Novusk v3, 
+[this issue](https://github.com/NathanMcMillan54/novusk/issues/14) has a list of things that are needed in this current 
+major version and in future major versions.
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kernel and projects for the kernel.
 
