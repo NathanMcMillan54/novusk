@@ -29,7 +29,7 @@ mod mem {
     pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stellaris/stellaris6965_mem.x");
 
     #[cfg(feature = "stellaris6965")]
-    pub const MEM_FILE_PATH: &'static str = "../../drivers/platform/stellaris/stellais6965_mem.x";
+    pub const MEM_FILE_PATH: &'static str = "../../drivers/platform/stellaris/stellaris6965_mem.x";
 
     #[cfg(feature = "stm32f407")]
     pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stm/stm32f407_mem.x");

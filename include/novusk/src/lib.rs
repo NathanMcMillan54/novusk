@@ -6,6 +6,7 @@ pub mod core;
 pub mod elf;
 pub mod fb;
 pub mod keyboard;
+pub mod led;
 pub mod mb;
 pub mod module;
 pub mod syscalls;

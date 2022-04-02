@@ -11,8 +11,5 @@ pub mod riscv;
 #[cfg(target_arch = "x86_64")]
 pub mod x86_64;
 
-#[cfg(feature = "linked_list")]
-pub use linked_list_allocator::LockedHeap;
-
 #[cfg(feature = "wee_allocator")]
 pub use wee_alloc::WeeAlloc;

@@ -34,6 +34,24 @@ pub fn setup_stm32f407() {
     setup_stm32f4xx();
 }
 
-pub fn check_stm32f4xx_setup() {
+pub fn finish_stm32f4xx_setup() {
+    let peripherals = unsafe { Peripherals::steal() };
 
+    let gpioa = peripherals.GPIOA.split();
+    let mut led = gpioa.pa5.into_push_pull_output();
+
+    // Blink to show nothing went wrong
+    for _ in 0..1000 {
+        led.set_high();
+
+        for _ in 0..1000 {
+            unsafe { asm!("nop"); }
+        }
+
+        led.set_low();
+
+        for _ in 0..1000 {
+            unsafe { asm!("nop"); }
+        }
+    }
 }
