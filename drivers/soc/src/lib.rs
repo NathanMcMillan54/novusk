@@ -11,6 +11,18 @@ pub struct SocInfo {
     pub addresses: [SocAddr; 11],
 }
 
+impl SocInfo {
+    pub fn get(&self, name: &'static str) -> Option<*mut u8> {
+        for n in 0..self.addresses.len() {
+            if name == self.addresses[n].0 {
+                return Some(self.addresses[n].1);
+            }
+        }
+
+        return None;
+    }
+}
+
 impl Default for SocInfo {
     fn default() -> Self {
         return SocInfo {

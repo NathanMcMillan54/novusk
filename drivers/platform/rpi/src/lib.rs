@@ -1,23 +1,32 @@
 #![no_std]
+#![feature(asm)]
 
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate tock_registers;
+
+use core::ptr::write_volatile;
 use novuskinc::core::prelude::*;
+use soc::SocInfo;
 
 #[path = "dif.rs"]
 mod dif;
 
+pub(crate) mod gpio;
+pub(crate) mod led;
 pub(crate) mod mailbox;
 
 pub(crate) struct RaspberryPi {
 
 }
 
-fn raspberrypi_init() {
-
+unsafe fn raspberrypi_init() {
+    gpio::gpio_init();
 }
 
 fn raspberrypi_end() {
+    let act = led::RpiLed::new();
 
+    act.blink(15000);
 }
 
 module_init!(early_device_init, raspberrypi_init);

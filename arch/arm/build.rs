@@ -3,7 +3,8 @@ use std::fs::{copy, File};
 use std::io::Write;
 use std::path::PathBuf;
 
-fn arm_ld_setup() {
+#[cfg(feature = "cortex_m")]
+fn arm_cortexm_ld_setup() {
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
     File::create(out.join("memory.x"))
         .unwrap()
@@ -21,7 +22,8 @@ fn main() {
     println!("cargo:rerun-if-changed=src/boot/start/a7_start.S");
     println!("cargo:rerun-if-changed=src/boot/start/cm_boot32.S");
 
-    arm_ld_setup();
+    #[cfg(feature = "cortex_m")]
+    arm_cortexm_ld_setup();
 }
 
 mod mem {

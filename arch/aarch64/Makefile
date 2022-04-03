@@ -18,12 +18,12 @@ all: arm boot
 
 arm:
 	@ echo "Compiling parts of ARM kernel..."
-	@ $(MAKE) -C ../arm kernel BITS64=True TARGET=../../targets/aarch64-novusk.json PLATFORM=$(PLATFORM)
+	@ $(MAKE) -C ../arm kernel BITS64=True TARGET=aarch64-novusk PLATFORM=$(PLATFORM)
 
 boot:
 	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c ../arm/src/boot/start/a53_start.S -o ../arm/src/boot/start/a53_start.o
 
 clean:
 	@ cargo clean
-	@ cd ../arm && cargo clean
+	@ cd ../arm && make clean
 	@ rm -rf src/boot/aadImage

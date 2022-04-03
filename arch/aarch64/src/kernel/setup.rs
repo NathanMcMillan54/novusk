@@ -1,3 +1,4 @@
+use core::ptr::write_volatile;
 use crate::early_printk;
 use super::early_printk::aarch64_setup_early_printk;
 use setup::{ArchKernelSetup, SetupReturn};
@@ -23,7 +24,7 @@ impl Aarch64Setup {
 
         unsafe { AARCH64_SERIALIO.serial_addr = DIF.uart_addr.unwrap() as *mut u8; }
 
-        early_printk!("Test\n");
+        early_printk!("Test1\n");
     }
 
     fn test_memory(&self) {
@@ -51,4 +52,6 @@ pub unsafe extern "C" fn aarch64_kernel_setup() {
     let aarch64_setup = Aarch64Setup::new();
 
     aarch64_setup.setup();
+
+    early_printk!("test again\n");
 }
