@@ -18,3 +18,10 @@
 #### Xtensa documentation
 - ``xtensa/main.md`` - Xtensa documentation
 
+
+### Kernel documentation:
+
+---
+
+#### Main kernel documentation
+- ``kernel/configs.md`` - Kernel configuration documentation
