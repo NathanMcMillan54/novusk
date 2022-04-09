@@ -2,7 +2,6 @@ use core::fmt::Write;
 use core::ptr::write_volatile;
 use kinfo::status::KStatus;
 use super::irq::start_irq_setup;
-use novuskinc::core::prelude::*;
 use printk::PrintK;
 use setup::{ArchKernelSetup, SetupReturn};
 use spin::Mutex;

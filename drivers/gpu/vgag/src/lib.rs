@@ -1,4 +1,5 @@
 #![no_std]
+#![feature(asm)]
 #![allow(warnings)]
 
 #[macro_use] extern crate lazy_static;
@@ -9,7 +10,7 @@ pub mod display;
 pub mod vga;
 
 use libcolor::{Color16, ColorCode};
-use novuskinc::core::prelude::*;
+use novuskinc::fb::*;
 use vga::vga_80x25::{Vga80x25Buffer, Vga80x25};
 use vga::{VgaG, VgaMode};
 

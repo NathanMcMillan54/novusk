@@ -1,3 +1,4 @@
+use core::arch::asm;
 use pic8259::ChainedPics;
 use super::idt::{idt_init, set_idt};
 

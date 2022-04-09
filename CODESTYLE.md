@@ -11,7 +11,6 @@ Importing with ``use``:
 ```rust
 use alloc::vec::Vec; // uses should be at the top of the file and arranged in alphabetical order
 use core::ptr::write_volatile;
-use core::prelude; // Even though the libraries are in alphabetical order the modules aren't, this should be the second use
 ```
 
 Importing with ``extern``:

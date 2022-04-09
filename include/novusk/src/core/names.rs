@@ -1,4 +1,6 @@
+#[derive(Copy, Clone, PartialEq)]
 pub enum CoreFunctionName {
+    empty,
     cpu_disable_dwt,
 }
 

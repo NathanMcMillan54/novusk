@@ -5,7 +5,6 @@
 #[macro_use] extern crate tock_registers;
 
 use core::ptr::write_volatile;
-use novuskinc::core::prelude::*;
 use soc::SocInfo;
 
 #[path = "dif.rs"]

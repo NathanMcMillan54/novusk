@@ -4,6 +4,7 @@
 
 #[macro_use] extern crate novuskinc;
 
+use core::arch::asm;
 use core::panic::PanicInfo;
 use cortex_m_semihosting::hprintln;
 

@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 global_asm!("
 .section .text.semihost_syscall
 .global semihost_syscall

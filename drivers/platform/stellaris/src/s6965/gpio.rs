@@ -1,3 +1,4 @@
+use core::arch::asm;
 use super::leds::*;
 
 pub const GPIO_PDDR: *mut u8 = 0x400F_F094 as *mut u8;

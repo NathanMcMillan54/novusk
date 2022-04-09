@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 pub unsafe fn outb(port: u16, out: u8) {
     asm!("outb %al, %dx", in("al") out, in("dx") port, options(att_syntax));
 }
