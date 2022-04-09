@@ -1,4 +1,4 @@
-use core::arch::asm;
+use core::arch::global_asm;
 
 global_asm!("
 .section .text.semihost_syscall

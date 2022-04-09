@@ -104,7 +104,7 @@ pub mod rpi_2_3_mb {
                     break;
                 }
 
-                unsafe { llvm_asm!("nop" :::: "volatile") };
+                // unsafe { llvm_asm!("nop" :::: "volatile") };
             }
 
             let buf_ptr = self.mb_buffer.as_ptr() as u32;
@@ -117,7 +117,7 @@ pub mod rpi_2_3_mb {
                         break;
                     }
 
-                    unsafe { llvm_asm!("nop" :::: "volatile") };
+                    // unsafe { llvm_asm!("nop" :::: "volatile") };
                 }
 
                 let resp: u32 = self.READ.get();

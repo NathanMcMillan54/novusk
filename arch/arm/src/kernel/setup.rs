@@ -1,6 +1,5 @@
 use crate::include::dif::dif::DIF;
 use super::irq::setup_irqs;
-use novuskinc::core::prelude::{early_device_init, early_device_end};
 use ::setup::{ArchKernelSetup, SetupReturn};
 
 pub(crate) struct ArmKernel;

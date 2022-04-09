@@ -1,5 +1,4 @@
 #![no_std]
-#![feature(llvm_asm)]
 
 extern crate nmallocator;
 #[macro_use] extern crate tock_registers;

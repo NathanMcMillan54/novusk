@@ -1,5 +1,4 @@
 use core::ptr::write_volatile;
-use rpi::common::{MMIO_BASE, UART_OFFSET};
 use setup::{BootSetup, SetupReturn};
 
 pub struct Aarch64Boot;

@@ -19,6 +19,7 @@ pub unsafe fn irqs_init() {
 
 #[cfg(feature = "cortex_m")]
 mod cm_ints {
+    use core::arch::asm;
     use cortex_m::peripheral::syst::SystClkSource;
     use cortex_m::Peripherals;
     use cortex_m_rt::{exception, ExceptionFrame};

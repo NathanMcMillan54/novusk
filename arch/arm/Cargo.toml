@@ -23,7 +23,6 @@ hio = { path = "../../drivers/platform/arm/hio/" }
 
 [dependencies]
 cfg-if = "1.0.0"
-cortex-a = "6.1.0"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
 dif = { path = "../../include/dif/" }
