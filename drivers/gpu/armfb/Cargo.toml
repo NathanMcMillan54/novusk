@@ -12,4 +12,3 @@ fb = { path = "../../fb/" }
 libcolor = { path = "../../../lib/libcolor/" }
 novuskinc = { path = "../../../include/novusk/", features = ["library"] }
 printk = { path = "../../../kernel/printk/" }
-rpi = { path = "../../rpi/" }

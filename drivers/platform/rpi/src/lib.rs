@@ -4,8 +4,9 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
-use core::ptr::write_volatile;
 use soc::SocInfo;
+use novuskinc::drivers::manager::DeviceDriverManager;
+use crate::rpi3::Rpi3;
 
 #[path = "dif.rs"]
 mod dif;
@@ -17,12 +18,15 @@ pub(crate) mod led;
 pub(crate) mod mailbox;
 pub(crate) mod uart;
 
-pub(crate) struct RaspberryPi {
-
+extern "C" {
+    static mut DEVICE_DRIVERS: DeviceDriverManager;
 }
 
 unsafe fn raspberrypi_init() {
-    gpio::gpio_init();
+    match dif::DIF_FILE[0] {
+        "RaspberryPi 3B" => rpi3::rpi3_init(),
+        _ => panic!("This driver is meant for RaspberryPi boards not {}", dif::DIF_FILE[0]),
+    }
 }
 
 fn raspberrypi_end() {

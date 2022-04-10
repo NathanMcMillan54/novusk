@@ -1,4 +1,5 @@
 /// The KernelConsole struct shoylde be used as a field value of the console driver.
+#[derive(Copy, Clone)]
 pub struct KernelConsole {
     pub name: &'static str,
     pub width: u16,
@@ -7,9 +8,9 @@ pub struct KernelConsole {
 }
 
 impl KernelConsole {
-    /// Add the name of the console drivver with the console demisions.
+    /// Add the name of the console driver with the console dimensions.
     ///
-    /// Examplw:
+    /// Example:
     /// ```rust
     /// use novuskinc::console::KernelConsole;
     ///
@@ -18,7 +19,7 @@ impl KernelConsole {
     /// }
     /// ```
     ///
-    /// This kernrl console be used for with the VGA text mode because it can fit 80 characters
+    /// This kernel console be used for with the VGA text mode because it can fit 80 characters
     /// across and 25 characters up and down.
     pub fn new(console_name: &'static str, console_width: u16, console_height: u16) -> Self {
         return KernelConsole {
@@ -33,18 +34,18 @@ impl KernelConsole {
 /// The console driver has to implement KernelConsoleDriver, the functions the driver implements
 /// gets called by the kernel
 pub trait KernelConsoleDriver {
-    /// The write_char fuction is used to write a single character to a certian place
-    fn write_char(&mut self, c: char, x: u16, y: u16) {
+    /// The write_character function is used to write a single character to a certain place
+    fn write_character(&mut self, c: char, x: u16, y: u16) {
 
     }
 
-    /// The write_str function is used to write a string and should call write_char to write the
+    /// The write_string function is used to write a string and should call write_character to write the
     /// individual character
-    fn write_str(&mut self, string: &str, x: u16, y: u16) {
+    fn write_string(&mut self, string: &str, x: u16, y: u16) {
 
     }
 
-    /// The new_line function is used to move to the next line for the next character to be plcaced.
+    /// The new_line function is used to move to the next line for the next character to be placed.
     fn new_line(&mut self) {
 
     }

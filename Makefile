@@ -18,8 +18,10 @@ ifeq ($(DEFCONFIG), False)
 	CONFIG = arch/$(ARCH)/src/configs/$(ARCH)-$(PLATFORM)-defconfig.txt
 endif
 
-ifeq ($(DIF), None)
-	DIF = empty_unknown.dif
+ifneq ($(PLATFORM), default)
+	ifeq ($(DIF), None)
+		DIF = $(PLATFORM).dif
+	endif
 endif
 
 all: dif build_tools setup build_config build_arch
