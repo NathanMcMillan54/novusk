@@ -1,3 +1,4 @@
+use core::fmt::Write;
 use crate::include::dif::dif::DIF;
 use super::irq::setup_irqs;
 use ::setup::{ArchKernelSetup, SetupReturn};

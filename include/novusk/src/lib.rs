@@ -2,13 +2,16 @@
 #![allow(warnings)]
 #![feature(const_fn_trait_bound, const_mut_refs, panic_info_message)]
 
+pub mod console;
 pub mod core;
+pub mod drivers;
 pub mod elf;
 pub mod fb;
 pub mod keyboard;
 pub mod led;
 pub mod mb;
 pub mod module;
+pub mod prelude;
 pub mod syscalls;
 pub mod serial;
 

@@ -18,7 +18,6 @@ impl ArmUart {
 
     pub fn init(&mut self) {
         unsafe { self.addr = DIF.serial_addr.unwrap() as *mut u8; }
-        //self.addr = 0x3F20_1000 as *mut u8;
     }
 
     pub fn write_byte(&self, byte: u8) {
