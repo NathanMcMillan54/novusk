@@ -43,4 +43,20 @@ pub trait KernelConsoleDriver {
     fn write_str(&mut self, string: &str, x: u16, y: u16) {
 
     }
+
+    /// The new_line function is used to move to the next line for the next character to be plcaced.
+    fn new_line(&mut self) {
+
+    }
+
+    /// The clear_screen function is used to clear the kernel console, the option value is an
+    /// optional argument, you can use it for whatever you want.
+    fn clear_screen(&mut self, option: u16) {
+
+    }
+
+    /// This should return the ``width`` and ``height`` field of KernelConsole.
+    fn dimensions(&mut self) -> (u16, u16) {
+        return (0, 0);
+    }
 }

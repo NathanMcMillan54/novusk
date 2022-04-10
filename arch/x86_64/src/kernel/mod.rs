@@ -6,6 +6,9 @@ pub mod irq;
 pub mod kernel;
 pub mod setup;
 
+#[path = "../../../../drivers/drivers.rs"]
+pub(crate) mod kernel_drivers;
+
 #[path = "video/video_vga.rs"]
 pub mod video_vga;
 

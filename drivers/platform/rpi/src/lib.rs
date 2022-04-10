@@ -10,9 +10,12 @@ use soc::SocInfo;
 #[path = "dif.rs"]
 mod dif;
 
+pub(crate) mod rpi3;
+
 pub(crate) mod gpio;
 pub(crate) mod led;
 pub(crate) mod mailbox;
+pub(crate) mod uart;
 
 pub(crate) struct RaspberryPi {
 

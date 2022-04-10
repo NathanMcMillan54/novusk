@@ -5,8 +5,7 @@ pub mod manager;
 
 pub type DriverResult = Result<(), &'static str>;
 
-pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardInput {
-
+pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput {
     fn name(&self) -> &'static str {
         return "None"
     }

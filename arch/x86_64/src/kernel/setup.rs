@@ -5,8 +5,13 @@ use super::irq::start_irq_setup;
 use printk::PrintK;
 use setup::{ArchKernelSetup, SetupReturn};
 use spin::Mutex;
+use novuskinc::console::KernelConsoleDriver;
+use novuskinc::drivers::{Driver, DriverResult};
+use novuskinc::fb::FrameBufferGraphics;
+use novuskinc::keyboard::KeyboardInput;
 use vgag::display::vga_write_fmt;
 use crate::early_printk;
+use crate::kernel::kernel_drivers::DEVICE_DRIVERS;
 
 struct X86_64Kernel;
 
