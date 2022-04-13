@@ -10,6 +10,8 @@ pub mod display;
 pub mod vga;
 
 use libcolor::{Color16, ColorCode};
+use novuskinc::drivers::Driver;
+use novuskinc::drivers::manager::DeviceDriverManager;
 use novuskinc::fb::*;
 use vga::vga_80x25::{Vga80x25Buffer, Vga80x25};
 use vga::{VgaG, VgaMode};
@@ -23,11 +25,17 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
 #[no_mangle]
 pub static mut FB: FrameBuffer = FrameBuffer::empty();
 
+extern "C" {
+    static mut DEVICE_DRIVERS: DeviceDriverManager;
+}
+
 unsafe fn vgag_init() {
     FB.set("VGA FrameBuffer",
            (80, 25),
            0xb8000 as *mut u8,
     &VgaG as &dyn FrameBufferGraphics);
+
+    DEVICE_DRIVERS.add_driver(&VgaG as &dyn Driver);
 }
 
 module_init!(core_display_init, vgag_init);

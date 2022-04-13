@@ -1,3 +1,5 @@
+use core::fmt::Write;
+
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct KStatus {
     pub status: &'static str,

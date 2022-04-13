@@ -33,6 +33,7 @@ impl Rpi3Uart {
 impl Write for Rpi3Uart {
     fn write_str(&mut self, s: &str) -> Result {
         for b in s.as_bytes() {
+            self.console.chars_written += 1;
             if self.debug {
                 self.uart_debug_write_byte(*b);
             } else { self.uart_write_byte(*b); }
@@ -43,12 +44,11 @@ impl Write for Rpi3Uart {
 }
 
 impl KernelConsoleDriver for Rpi3Uart {
-    fn write_character(&mut self, c: char, x: u16, y: u16) {
-        self.uart_write_byte(c as u8);
-        self.console.chars_written += 1;
+    fn write_character(&self, c: char, x: u16, y: u16) {
+        self.uart_debug_write_byte(c as u8);
     }
 
-    fn write_string(&mut self, string: &str, x: u16, y: u16) {
+    fn write_string(&self, string: &str, x: u16, y: u16) {
         for b in string.as_bytes() {
             self.write_character(*b as char, x, y);
         }
@@ -69,6 +69,10 @@ impl FrameBufferGraphics for Rpi3Uart {}
 impl KeyboardInput for Rpi3Uart {}
 
 impl Driver for Rpi3Uart {
+    fn driver_name(&self) -> &'static str {
+        return self.console.name;
+    }
+
     fn name(&self) -> &'static str {
         return "Console Driver";
     }

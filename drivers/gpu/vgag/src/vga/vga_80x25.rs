@@ -11,6 +11,7 @@ pub struct Vga80x25 {
     pub col: usize,
     pub color: ColorCode,
     pub buffer: &'static mut Vga80x25Buffer,
+    pub size: (u16, u16),
 }
 
 impl Vga80x25 {
@@ -18,7 +19,8 @@ impl Vga80x25 {
         return Vga80x25 {
             col: 0,
             color: ColorCode::new(Color16::White as u8, Color16::Black as u8),
-            buffer: unsafe { &mut *(Vga80x25::BUFFER_ADDRESS as *mut Vga80x25Buffer) }
+            buffer: unsafe { &mut *(Vga80x25::BUFFER_ADDRESS as *mut Vga80x25Buffer) },
+            size: (80, 25),
         }
     }
 

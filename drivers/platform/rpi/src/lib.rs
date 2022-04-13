@@ -4,7 +4,9 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
+use core::fmt::Write;
 use soc::SocInfo;
+use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::manager::DeviceDriverManager;
 use crate::rpi3::Rpi3;
 
@@ -23,10 +25,11 @@ extern "C" {
 }
 
 unsafe fn raspberrypi_init() {
-    match dif::DIF_FILE[0] {
+    /* match dif::DIF_FILE[0] {
         "RaspberryPi 3B" => rpi3::rpi3_init(),
         _ => panic!("This driver is meant for RaspberryPi boards not {}", dif::DIF_FILE[0]),
-    }
+    } */
+    rpi3::rpi3_init();
 }
 
 fn raspberrypi_end() {

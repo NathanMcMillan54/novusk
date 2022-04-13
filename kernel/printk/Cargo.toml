@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 description = "Kernel printing function and macro"
 
+[lib]
+name = "printk"
+edition = "2021"
+path = "src/lib.rs"
+
 [dependencies]
-lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
-spin = "0.9.2"
+novuskinc = { path = "../../include/novusk/" }

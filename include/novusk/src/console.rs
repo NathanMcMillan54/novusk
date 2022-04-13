@@ -35,13 +35,13 @@ impl KernelConsole {
 /// gets called by the kernel
 pub trait KernelConsoleDriver {
     /// The write_character function is used to write a single character to a certain place
-    fn write_character(&mut self, c: char, x: u16, y: u16) {
+    fn write_character(&self, c: char, x: u16, y: u16) {
 
     }
 
     /// The write_string function is used to write a string and should call write_character to write the
     /// individual character
-    fn write_string(&mut self, string: &str, x: u16, y: u16) {
+    fn write_string(&self, string: &str, x: u16, y: u16) {
 
     }
 

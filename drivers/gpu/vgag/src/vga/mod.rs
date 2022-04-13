@@ -2,6 +2,9 @@ use core::fmt::{Arguments, Write};
 use libcolor::{Color16, ColorCode};
 use novuskinc::fb::FrameBufferGraphics;
 use spin::Mutex;
+use novuskinc::console::KernelConsoleDriver;
+use novuskinc::drivers::{Driver, DriverResult};
+use novuskinc::keyboard::KeyboardInput;
 
 pub mod vga_80x25;
 
@@ -78,6 +81,69 @@ impl FrameBufferGraphics for VgaG {
 
     fn graphics_pixel(&self, color: u32, x: u32, y: u32) {
 
+    }
+}
+
+impl Write for VgaG {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result { Ok(()) }
+}
+
+impl KernelConsoleDriver for VgaG {
+    fn write_character(&self, c: char, x: u16, y: u16) {
+        unsafe {
+            match VGA_MODE {
+                0 => {
+                    VGA_80X25.lock().write_char(c);
+                }
+                _ => return,
+            };
+        }
+    }
+
+    fn write_string(&self, string: &str, x: u16, y: u16) {
+        for b in string.as_bytes() {
+            self.write_character(*b as char, x, y);
+        }
+    }
+
+    fn new_line(&mut self) {
+        unsafe {
+            match VGA_MODE {
+                0 => VGA_80X25.lock().write_str("\n"),
+                _ => return,
+            };
+        }
+    }
+
+    fn clear_screen(&mut self, option: u16) {
+        for _ in 0..VGA_80X25.lock().size.1 {
+            self.new_line();
+        }
+    }
+
+    fn dimensions(&mut self) -> (u16, u16) {
+        unsafe {
+            return match VGA_MODE {
+                0 => VGA_80X25.lock().size,
+                _ => (0, 0),
+            };
+        }
+    }
+}
+
+impl KeyboardInput for VgaG {}
+
+impl Driver for VgaG {
+    fn driver_name(&self) -> &'static str {
+        return "VGAG (VGA Graphics) Driver";
+    }
+
+    fn name(&self) -> &'static str {
+        return "Graphics Driver";
+    }
+
+    fn init(&self) -> Option<DriverResult> {
+        return Some(Ok(()));
     }
 }
 

@@ -1,3 +1,4 @@
+use printk::printk_init;
 use crate::SetupReturn;
 
 pub trait ArchKernelSetup {
@@ -22,11 +23,7 @@ pub trait ArchKernelSetup {
     }
 
     unsafe fn early_kernel_setup(&self) -> SetupReturn {
-        extern "C" {
-            fn set_kernel_printer();
-        }
-
-        set_kernel_printer();
+        printk_init("Graphics Driver");
 
         (Ok(()), "Successfully setup early main kernel")
     }
