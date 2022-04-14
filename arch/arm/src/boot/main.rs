@@ -3,14 +3,9 @@ use crate::include::dif::dif::{DIF_FILE};
 use crate::kernel::cpu::info::CPUINFO;
 use crate::kernel::{arm_kernel_init, setup_arm_kernel};
 use super::setup::ArmBoot;
-use core::ptr::write_volatile;
 
 #[no_mangle]
 pub unsafe extern "C" fn arm_boot_main() {
-    for b in b"This still works!\n" {
-        write_volatile(0x3F20_1000 as *mut u8, *b);
-    }
-
     dif_init();
 
     let arm_boot = ArmBoot::new();

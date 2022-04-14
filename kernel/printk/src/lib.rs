@@ -47,13 +47,6 @@ pub(crate) unsafe  fn can_printk_work() -> bool {
 }
 
 pub unsafe fn printk_init(writer_driver: &'static str) {
-    for d in 0..DEVICE_DRIVERS.drivers.unwrap().len() {
-        extern "C" {
-            fn _early_printk(fmt: Arguments);
-        }
-
-        _early_printk(format_args!("{}{}{}", "Driver: ", DEVICE_DRIVERS.drivers.unwrap()[d].name(), "\n"));
-    }
     if DEVICE_DRIVERS.get_driver(writer_driver).is_some() {
         PRINTK.writer = writer_driver;
     } else {
