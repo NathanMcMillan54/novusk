@@ -1,8 +1,4 @@
-/*pub mod init;
-pub mod panic;
-pub mod power;
-pub mod printk;
-pub mod uart;*/
+pub mod cpu;
 pub mod early_printk;
 pub mod init;
 pub mod panic;

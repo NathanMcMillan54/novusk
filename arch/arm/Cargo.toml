@@ -5,9 +5,9 @@ edition = "2021"
 description = "ARM kernel support"
 
 [lib]
-name = "arm_kernel_lib"
+name = "arm"
 path = "src/lib.rs"
-crate-type = ["staticlib"]
+# crate-type = ["staticlib"]
 edition = "2021"
 
 [[bin]]
@@ -19,7 +19,6 @@ edition = "2021"
 cortex-m = "0.7.4"
 cortex-m-rt = "0.7.1"
 cortex-m-semihosting = "0.3.7"
-hio = { path = "../../drivers/platform/arm/hio/" }
 
 [dependencies]
 cfg-if = "1.0.0"
@@ -36,6 +35,8 @@ soc = { path = "../../drivers/soc/" }
 
 [features]
 default = []
+no_panic = []
+no_alloc = []
 cortex_a = []
 cortex_m = []
 rpi3b = ["cortex_a"]

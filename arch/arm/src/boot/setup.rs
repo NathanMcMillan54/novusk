@@ -69,13 +69,6 @@ impl BootSetup for ArmBoot {
 
         return (Ok(()), "Some CPU info set");
     }
-
-    fn early_cpu_init(&self) -> SetupReturn {
-        /*if unsafe { soc_init() } == 1 {
-            return (Err("SOC init error"), "Failed to initialize SOC")
-        } else { return (Ok(()), "Successfully initialized SOC"); }*/
-        return (Ok(()), "Early CPU initialized");
-    }
 }
 
 #[cfg(target_arch = "arm")]

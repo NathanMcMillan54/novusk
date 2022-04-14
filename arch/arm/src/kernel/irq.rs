@@ -63,5 +63,8 @@ mod ca_ints {
     pub fn ca_irqs_setup() {
         #[cfg(target_arch = "arm")]
         cortex_a32_irq_setup();
+
+        #[cfg(target_arch = "aarch64")]
+        unsafe { crate::bits64::arm64_irq_setup(); }
     }
 }

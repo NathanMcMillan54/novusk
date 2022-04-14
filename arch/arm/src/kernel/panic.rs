@@ -1,6 +1,7 @@
 use core::arch::asm;
 use core::panic::PanicInfo;
 
+#[cfg(not(feature = "no_panic"))]
 #[panic_handler]
 unsafe fn _panic(info: &PanicInfo) -> ! {
     crate::early_printk!("\nKernel panicked\n");

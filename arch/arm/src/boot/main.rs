@@ -25,5 +25,5 @@ pub unsafe extern "C" fn arm_boot_main() {
     #[cfg(target_arch = "aarch64")]
     crate::bits64::arm64_kernel_init();
 
-    panic!("{}:{} kernel ended", CPUINFO.architecture, CPUINFO.bits);
+    panic!("{} ({}) kernel ended", CPUINFO.architecture, CPUINFO.bits);
 }
