@@ -1,5 +1,7 @@
 use core::arch::asm;
 
+pub mod handlers;
+
 pub(crate) static mut AARCH64_IRQS: Aarch64Irqs = Aarch64Irqs::new();
 
 pub struct Aarch64Irqs {

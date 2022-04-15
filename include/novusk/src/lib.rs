@@ -7,6 +7,7 @@ pub mod core;
 pub mod drivers;
 pub mod elf;
 pub mod fb;
+pub mod irq;
 pub mod keyboard;
 pub mod led;
 pub mod mb;
