@@ -1,5 +1,6 @@
 use super::Driver;
 
+/// ``DeviceDriverManager`` is used to manage main device drivers
 pub struct DeviceDriverManager {
     pub drivers: Option<[&'static dyn Driver; 10]>,
 }
@@ -11,6 +12,8 @@ impl DeviceDriverManager {
         }
     }
 
+    /// ``add_driver`` is used to add a device driver to the manager, the "driver" argument can be
+    /// any struct that implements ``Driver``
     pub fn add_driver(&mut self, driver: &'static dyn Driver) {
         if self.drivers.is_none() {
             self.drivers = Some([driver; 10])
@@ -19,6 +22,8 @@ impl DeviceDriverManager {
         }); }
     }
 
+    /// The ``get_driver`` function returns a device driver. The "name" argument is what
+    /// ``driver_name`` returns from ``Driver``
     pub fn get_driver(&mut self, name: &'static str) -> Option<&'static dyn Driver> {
         if self.drivers.is_none() {
             return None;

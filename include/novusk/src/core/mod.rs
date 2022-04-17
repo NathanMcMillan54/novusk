@@ -1,13 +1,11 @@
-pub mod defs;
+pub mod macros;
 pub mod names;
 
-use names::CoreFunctionName;
+use macros::define_core_function;
+use names::CoreFunctionNames;
 
-pub struct CoreArguments {
-    pub arg0: Option<u8>,
-    pub arg1: Option<u16>,
-    pub arg3: Option<&'static[u8; 64]>
+fn impl_empty(_arg: *mut u8) -> *mut u8 {
+    return 0x0 as *mut u8;
 }
 
-#[no_mangle]
-pub static mut CORE_FUNCTIONS: Option<[(CoreFunctionName, unsafe extern "C" fn(CoreArguments) -> u8); 1]> = None;
+define_core_function!(CoreFunctionNames::empty, arg: *mut u8, -> *mut u8, impl_empty);

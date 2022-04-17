@@ -6,7 +6,7 @@ pub mod manager;
 pub type DriverResult = Result<(), &'static str>;
 
 pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardInput {
-    /// The driver_name should return the "type" of driver it is so the kernel can easily index it
+    /// The ``driver_name`` should return the "type" of driver it is so the kernel can easily index it
     /// in the driver manager
     ///
     /// Example:
@@ -14,6 +14,9 @@ pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardIn
     ///     fn driver_name(&self) -> &'static str {
     ///         return "Console Driver" // This is for a console driver
     ///     }
+    /// ```
+    ///
+    /// [This page](link) has a list of driver names and what they're used for.
     fn driver_name(&self) -> &'static str {
         return "None"
     }

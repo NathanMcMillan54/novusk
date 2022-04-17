@@ -1,12 +1,7 @@
+/// The ``CoreFunctionNames`` enum is used for defining core kernel functions.
+#[allow(non_snake_case)]
 #[derive(Copy, Clone, PartialEq)]
-pub enum CoreFunctionName {
+pub enum CoreFunctionNames {
+    /// This is an empty function that does nothing, it's just an empty function.
     empty,
-    cpu_disable_dwt,
-}
-
-pub enum CoreModuleNames {
-    early_device_init,
-    early_device_end,
-    core_display_init,
-    core_display_end,
 }

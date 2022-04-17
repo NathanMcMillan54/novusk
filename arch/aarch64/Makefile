@@ -8,7 +8,7 @@ ifeq ($(KERNEL), Image)
 	KERNEL_IMG = aadImage
 endif
 
-all: arm boot
+all: boot
 	@ echo "Compiling Aarch64 kernel..."
 	@ cargo build --release -Z build-std=core,alloc --features $(PLATFORM) --target ../../targets/aarch64-novusk.json
 	@ echo "Linking..."
@@ -16,14 +16,9 @@ all: arm boot
 	@ echo "Created kernel image:"
 	@ echo "arch/aarch64/src/boot/$(KERNEL_IMG)"
 
-arm:
-	@ echo "Compiling parts of ARM kernel..."
-	@ $(MAKE) -C ../arm kernel BITS64=True TARGET=aarch64-novusk PLATFORM=$(PLATFORM)
-
 boot:
 	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c ../arm/src/boot/start/a53_start.S -o ../arm/src/boot/start/a53_start.o
 
 clean:
 	@ cargo clean
-	@ cd ../arm && make clean
 	@ rm -rf src/boot/aadImage
