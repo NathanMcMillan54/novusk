@@ -15,6 +15,7 @@ pub mod module;
 pub mod prelude;
 pub mod syscalls;
 pub mod serial;
+pub mod timer;
 
 use ::core::panic::PanicInfo;
 

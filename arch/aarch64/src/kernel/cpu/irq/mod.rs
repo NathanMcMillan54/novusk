@@ -1,4 +1,5 @@
 use core::arch::asm;
+use novuskinc::irq::device_specific_irqs_init;
 
 pub mod handlers;
 
@@ -29,4 +30,6 @@ impl Aarch64Irqs {
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_irq_setup() {
     AARCH64_IRQS.disable();
+
+    device_specific_irqs_init();
 }

@@ -1,6 +1,7 @@
 // #[path = "../../../../char/pl011uart.rs"]
 // pub mod pl011uart;
 
+pub mod timer;
 pub mod uart;
 
 use core::borrow::BorrowMut;

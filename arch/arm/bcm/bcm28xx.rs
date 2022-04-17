@@ -8,7 +8,7 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
     addresses: [
         ("Peripheral Base", 0x3F00_0000 as *mut u8),
         ("UART0 Address", 0x3F20_1000 as *mut u8),
-        ("None", 0x0 as *mut u8),
+        ("Timer CS Address", 0x3F00_3000 as *mut u8),
         ("None", 0x0 as *mut u8),
         ("None", 0x0 as *mut u8),
         ("None", 0x0 as *mut u8),
@@ -19,3 +19,4 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
         ("None", 0x0 as *mut u8),
     ],
 };
+
