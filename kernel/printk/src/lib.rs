@@ -9,6 +9,7 @@ pub mod macros;
 
 extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
+    pub(crate) static mut PRINTK: Printk;
 }
 
 pub struct Printk {
@@ -34,9 +35,6 @@ impl Write for Printk {
         return Ok(());
     }
 }
-
-#[no_mangle]
-pub static mut PRINTK: Printk = Printk::new();
 
 pub(crate) unsafe  fn can_printk_work() -> bool {
     if PRINTK.write_str("").is_err() {

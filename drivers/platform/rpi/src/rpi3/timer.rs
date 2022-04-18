@@ -20,6 +20,7 @@ pub unsafe fn get_timer_address() -> *mut u8 {
 }
 
 unsafe fn rpi3_timer_init(_n: ()) -> () {
+    let timer = get_timer_address();
 
     return;
 }

@@ -1,2 +1,3 @@
 DEVICE_DRIVER=drivers/platform/rpi/
 DISPLAY_MODULE=drivers/gpu/armfb/
+SOC_DRIVER=drivers/soc/bcm/

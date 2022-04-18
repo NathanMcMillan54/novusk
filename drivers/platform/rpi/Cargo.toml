@@ -10,6 +10,7 @@ crate-type = ["staticlib"]
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
+printk = { path = "../../../kernel/printk/" }
 soc = { path = "../../soc/" }
 tock-registers = "0.7.0"
 

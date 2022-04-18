@@ -1,7 +1,7 @@
 KERNEL =
 KERNEL_IMG =?
 KMS = ../../include/novusk/kms/
-KMS_LIST = $(KMS)device.km $(KMS)display.km
+KMS_LIST = $(KMS)*.km
 PLATFORM =?
 
 ifeq ($(KERNEL), Image)

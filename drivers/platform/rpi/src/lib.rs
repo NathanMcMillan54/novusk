@@ -2,12 +2,14 @@
 #![feature(asm)]
 
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
 
+use core::fmt::Write;
 use novuskinc::core::names::CoreFunctionNames;
 use novuskinc::drivers::manager::DeviceDriverManager;
-use crate::rpi3::Rpi3;
-use soc::SocInfo;
+use novuskinc::prelude::KernelConsoleDriver;
+use soc::info::SocInfo;
 
 #[path = "dif.rs"]
 mod dif;

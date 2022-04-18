@@ -1,4 +1,4 @@
-use soc::validate_soc_dif;
+use soc::info::validate_soc_dif;
 use crate::include::dif::dif::DIF;
 
 pub(crate) unsafe fn soc_init() -> i32 {
