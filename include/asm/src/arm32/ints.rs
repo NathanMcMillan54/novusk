@@ -7,3 +7,4 @@ macro_rules! empty_interrupt {
         }
     };
 }
+

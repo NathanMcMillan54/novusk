@@ -1,6 +1,7 @@
 #![no_std]
 #![feature(asm)]
 
+#[macro_use] extern crate asminc;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
 #[macro_use] extern crate tock_registers;
@@ -10,6 +11,7 @@ use novuskinc::core::names::CoreFunctionNames;
 use novuskinc::drivers::manager::DeviceDriverManager;
 use novuskinc::prelude::KernelConsoleDriver;
 use soc::info::SocInfo;
+use crate::dif::DIF_FILE;
 
 #[path = "dif.rs"]
 mod dif;
@@ -42,13 +44,17 @@ module_init!(early_device_init, raspberrypi_init);
 module_end!(early_device_end, raspberrypi_end);
 
 unsafe fn handle_irqs(irqn: i16) -> () {
-    ()
+    if DIF_FILE[0].contains("RaspberryPi 3") {
+        rpi3::irqs::rpi3_irq_handler(irqn);
+    }
 }
 
 define_core_function!(CoreFunctionNames::device_irq_handler, irqn: i16, -> (), handle_irqs);
 
 unsafe fn device_irqs_init(_n: ()) -> () {
-    ()
+    if dif::DIF_FILE[0].contains("RaspberryPi 3") {
+        rpi3::irqs::rpi3_enable_irqs();
+    }
 }
 
 define_core_function!(CoreFunctions::device_specific_irqs_init, _n: (), -> (), device_irqs_init);

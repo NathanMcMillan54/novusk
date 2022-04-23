@@ -3,6 +3,7 @@ use core::arch::asm;
 use core::panic::PanicInfo;
 
 #[panic_handler]
+#[no_mangle]
 unsafe fn _panic(info: &PanicInfo) -> ! {
     let location = info.location().unwrap();
 

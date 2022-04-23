@@ -11,4 +11,5 @@ path = "src/lib.rs"
 crate-type = ["staticlib"]
 
 [dependencies]
+novuskinc = { path = "../../../include/novusk/", features = ["library"] }
 soc = { path = "../" }

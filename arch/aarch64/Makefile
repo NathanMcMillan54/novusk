@@ -8,17 +8,22 @@ ifeq ($(KERNEL), Image)
 	KERNEL_IMG = aadImage
 endif
 
-all: boot
+all: boot kernel
 	@ echo "Compiling Aarch64 kernel..."
 	@ cargo build --release -Z build-std=core,alloc --features $(PLATFORM) --target ../../targets/aarch64-novusk.json
 	@ echo "Linking..."
-	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld ../arm/src/boot/start/a53_start.o target/aarch64-novusk/release/libaarch64_kernel_lib.a $(KMS_LIST) -o src/boot/$(KERNEL_IMG)
+	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld ../arm/src/boot/start/a53_start.o target/aarch64-novusk/release/libaarch64_kernel_lib.a src/kernel/cpu/irq/vector.o $(KMS_LIST) -o src/boot/$(KERNEL_IMG)
 	@ echo "Created kernel image:"
 	@ echo "arch/aarch64/src/boot/$(KERNEL_IMG)"
 
 boot:
 	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c ../arm/src/boot/start/a53_start.S -o ../arm/src/boot/start/a53_start.o
 
+kernel:
+	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c src/kernel/cpu/irq/vector.S -o src/kernel/cpu/irq/vector.o
+
 clean:
 	@ cargo clean
 	@ rm -rf src/boot/aadImage
+	@ rm -rf src/kernel/cpu/irq/vector.o
+	@ cd ../arm/ && make clean

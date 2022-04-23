@@ -1,6 +1,4 @@
-// #[path = "../../../../char/pl011uart.rs"]
-// pub mod pl011uart;
-
+pub mod irqs;
 pub mod timer;
 pub mod uart;
 

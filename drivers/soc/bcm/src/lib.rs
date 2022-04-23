@@ -1,5 +1,7 @@
 #![no_std]
 
+#[macro_use] extern crate novuskinc;
+
 use core::panic::PanicInfo;
 use soc::info::*;
 
@@ -32,6 +34,7 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
 };
 
 #[panic_handler]
-fn _panic(_info: &PanicInfo) -> ! {
+fn panic(_info: &PanicInfo) -> ! {
     loop {  }
 }
+
