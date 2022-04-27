@@ -14,5 +14,6 @@ nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 tock-registers = "0.7.0"
 
 [features]
+default = []
 rpi3 = []
 rpi2 = []

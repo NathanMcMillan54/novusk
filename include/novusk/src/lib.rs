@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(asm, llvm_asm)]
+#![feature(asm)]
 #![feature(concat_idents)]
 
 #[macro_use] extern crate alloc;

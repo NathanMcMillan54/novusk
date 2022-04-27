@@ -14,7 +14,7 @@ name = "novusk"
 path = "src/lib.rs"
 edition = "2021"
 # Remove the comment if you're going to link Novusk to something else
-crate-type = ["staticlib"]
+# crate-type = ["staticlib"]
 
 [workspace]
 members = [
@@ -146,7 +146,7 @@ multiboot = []
 rpi3 = ["aarch64/rpi3"]
 rpi2 = ["arm32/rpi2"]
 stellaris_6965 = ["arm32/stellaris_6965"]
-stm32f407 = ["arm32/stm32f407"]
+# stm32f407 = ["arm32/stm32f407"]
 # stm32f4 = ["arm/stm32f4"]
 # stm32f401 = ["arm/stm32f401"]
 # stm32f407 = ["arm/stm32f407"]

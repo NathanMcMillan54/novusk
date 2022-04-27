@@ -30,6 +30,7 @@ impl Device for Stellaris6965 {
     }
 }
 
+#[cfg(feature = "stellaris_6965")]
 #[no_mangle]
 pub unsafe extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     let cp = cortex_m::Peripherals::steal();

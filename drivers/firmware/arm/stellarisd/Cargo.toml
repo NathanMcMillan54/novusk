@@ -11,3 +11,7 @@ device = { path = "../../../device/" }
 libbmu = { path = "../../../../lib/libbmu/" }
 novuskinc = { path = "../../../../include/novusk/" }
 tm4c123x-hal = "0.10.2"
+
+[features]
+default = []
+stellaris_6965 = []

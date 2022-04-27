@@ -13,6 +13,7 @@ pub mod bases {
 
 //#[cfg(any(feature = "rpi2", feature = "rpi3"))]
 pub mod rpi_2_3_mb {
+    use core::arch::asm;
     use core::ops;
     use tock_registers::register_bitfields;
     use tock_registers::registers::{ReadOnly, WriteOnly};
@@ -104,7 +105,7 @@ pub mod rpi_2_3_mb {
                     break;
                 }
 
-                unsafe { llvm_asm!("nop" :::: "volatile") };
+                unsafe { asm!("nop") };
             }
 
             let buf_ptr = self.mb_buffer.as_ptr() as u32;
@@ -117,7 +118,7 @@ pub mod rpi_2_3_mb {
                         break;
                     }
 
-                    unsafe { llvm_asm!("nop" :::: "volatile") };
+                    unsafe { asm!("nop") };
                 }
 
                 let resp: u32 = self.READ.get();

@@ -20,13 +20,13 @@ novuskinc = { path = "../../include/novusk/" }
 rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/" }
 rpi = { path = "../../drivers/rpi/" }
 stellarisd = { path = "../../drivers/firmware/arm/stellarisd/" }
-stmd = { path = "../../drivers/firmware/arm/stmd/" }
+# stmd = { path = "../../drivers/firmware/arm/stmd/" }
 time = { path = "../../kernel/time/" }
 
 [features]
 cortex_a = ["nmallocator/wee_allocator"]
 cortex_m = ["nmallocator/linked_list"]
-rpi2 = ["cortex_a", "not_stm32"]
-stellaris_6965 = ["cortex_m", "not_stm32"]
-not_stm32 = ["stmd/stm32f407"]
-stm32f407 = ["cortex_m", "stmd/stm32f407"]
+rpi2 = ["cortex_a", "rpi/rpi2"]
+stellaris_6965 = ["cortex_m", "stellarisd/stellaris_6965"]
+# not_stm32 = ["stmd/stm32f407"]
+# stm32f407 = ["cortex_m", "stmd/stm32f407"]
