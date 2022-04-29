@@ -1,5 +1,6 @@
 use crate::aarch64_printk;
 use crate::kernel::init::aarch64_kernel_init;
+use core::arch::global_asm;
 
 mod early;
 use early::early_aarch64_init;

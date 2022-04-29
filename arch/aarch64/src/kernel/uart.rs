@@ -1,5 +1,6 @@
 use crate::define_syscall;
 use alloc::vec::Vec;
+use core::arch::asm;
 use core::fmt::{Arguments, Write};
 use core::ops;
 use rpi::rpi3::gpio;
@@ -107,14 +108,14 @@ impl Uart {
 
             (*gpio::GPPUD).set(0); // enable pins 14 and 15
             for _ in 0..150 {
-                llvm_asm!("nop" :::: "volatile");
+                asm!("nop");
             }
 
             (*gpio::GPPUDCLK0).write(
                 gpio::GPPUDCLK0::PUDCLK14::AssertClock + gpio::GPPUDCLK0::PUDCLK15::AssertClock,
             );
             for _ in 0..150 {
-                llvm_asm!("nop" :::: "volatile");
+                asm!("nop");
             }
 
             (*gpio::GPPUDCLK0).set(0);
@@ -130,7 +131,7 @@ impl Uart {
                 break;
             }
 
-            unsafe { llvm_asm!("nop" :::: "volatile") };
+            unsafe { asm!("nop") };
         }
 
         self.AUX_MU_IO.set(c as u32);
@@ -142,7 +143,7 @@ impl Uart {
                 break;
             }
 
-            unsafe { llvm_asm!("nop" :::: "volatile") };
+            unsafe { asm!("nop") };
         }
 
         let mut ret = self.AUX_MU_IO.get() as u8 as char;

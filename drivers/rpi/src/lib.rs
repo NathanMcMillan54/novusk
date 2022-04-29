@@ -15,11 +15,13 @@ pub mod irq;
 #[cfg(feature = "rpi2")]
 pub mod rpi2;
 
+#[cfg(feature = "rpi3")]
 pub mod rpi3;
 
 #[cfg(feature = "rpi2")]
 pub use rpi2::Rpi2;
 
+#[cfg(feature = "rpi3")]
 pub use rpi3::Rpi3;
 
 #[cfg(feature = "rpi2")]
@@ -28,8 +30,10 @@ pub use rpi2::registers::*;
 #[cfg(feature = "rpi3")]
 pub use rpi3::*;
 
-#[cfg(target_arch = "rpi3")]
+
+#[cfg(feature = "rpi3")]
 #[no_mangle]
+// #[export_name = "device_init"]
 pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     let mut pi = Rpi3::new();
     pi.init();
