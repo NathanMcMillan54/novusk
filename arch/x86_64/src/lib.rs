@@ -1,4 +1,5 @@
 #![no_std]
+#![allow(warnings)]
 #![feature(asm)]
 #![feature(abi_x86_interrupt, alloc_error_handler, panic_info_message)]
 

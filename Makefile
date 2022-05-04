@@ -22,8 +22,7 @@ ifeq ($(DIF), None)
 	DIF = empty_unknown.dif
 endif
 
-all: dif build_tools setup build_config build_arch
-	@ sleep 1 && echo "Finished compiling Novusk"
+all: dif build_tools setup build_config
 
 dif:
 	@ cp -r arch/$(ARCH)/src/include/dif/$(DIF) arch/$(ARCH)/src/include/dif/kernel_dif.dif
@@ -39,18 +38,9 @@ setup:
 build_config:
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
 	@ ./target/debug/buildkern $(CONFIG)
-
-build_arch:
-	@ sleep 2
-	@ echo "Compiling $(ARCH) Novusk..."
-	@ sleep 1
-	@ $(MAKE) -C arch/$(ARCH) all KERNEL=$(KERNEL) PLATFORM=$(PLATFORM) SOC=$(SOC) DIF=$(DIF)
+	@ echo "Finished compiling"
 
 clean:
-	@ cd tools/build/buildkern/ && cargo clean
-	@ cd drivers/boot/nkuefi && cargo clean
-	@ cd drivers/gpu/vgag/ && cargo clean
-	@ cd drivers/gpu/armfb/ && cargo clean
-	@ cd drivers/platform/rpi && cargo clean
+	@ cargo clean
 	@ cd arch/$(ARCH)/ && make clean
 	@ cd include/novusk/ && make clean

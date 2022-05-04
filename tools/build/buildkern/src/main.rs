@@ -21,6 +21,8 @@ fn main() {
     let konfig_reader = BufReader::new(konfig.try_clone().unwrap());
 
     for config_field in konfig_reader.lines() {
-        compile::compile_field(config_field.unwrap());
+        if !config_field.as_ref().unwrap().starts_with("#") {
+            compile::compile_field(config_field.unwrap());
+        }
     }
 }

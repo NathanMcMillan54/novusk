@@ -1,6 +1,6 @@
 #![no_std]
-#![feature(asm)]
 #![allow(warnings)]
+#![feature(asm)]
 
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;
