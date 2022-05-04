@@ -6,5 +6,5 @@ description = "Driver for Rpi sd card"
 
 [dependencies]
 novuskinc = "0.1.1"
-rpi = { path = "../../../rpi/" }
+rpi = { path = "../../../platform/rpi/" }
 storage = { path = "../../" }

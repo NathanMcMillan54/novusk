@@ -4,6 +4,7 @@ pub mod idt;
 pub mod io;
 pub mod irq;
 pub mod kernel;
+pub mod printk;
 pub mod setup;
 
 #[path = "../../../../drivers/drivers.rs"]

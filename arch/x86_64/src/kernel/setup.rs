@@ -30,7 +30,7 @@ impl X86_64Kernel {
                 should_panic: true,
                 panic_message: Some("Failed setup IRQs"),
                 message1: irq.1,
-                message2: Some("IRQs won't be initialized later which will cause huge problems")
+                message2: Some("IRQs won't be initialized later which will cause problems")
             });
         } else if display.0.is_err() {
             kinfo!(KStatus {
@@ -38,7 +38,15 @@ impl X86_64Kernel {
                 should_panic: false,
                 panic_message: None,
                 message1: display.1,
-                message2: Some("This won't prevent the kernel from running"),
+                message2: Some("This won't prevent the kernel from running, this will just make it hard to read kernel messages"),
+            });
+        } else if kernel.0.is_err() {
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: true,
+                panic_message: None,
+                message1: kernel.1,
+                message2: Some("Early kernel functions failed which will cause problems when the main kernel starts"),
             });
         }
 
@@ -55,6 +63,14 @@ impl X86_64Kernel {
             should_panic: false,
             panic_message: None,
             message1: display.1,
+            message2: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: kernel.1,
             message2: None,
         });
     }

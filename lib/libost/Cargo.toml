@@ -5,5 +5,5 @@ edition = "2021"
 description = "OS tools"
 
 [dependencies]
-gpu = { path = "../../drivers/gpu/" }
+# gpu = { path = "../../drivers/gpu/" }
 mouse = { path = "../../drivers/input/mouse/" }

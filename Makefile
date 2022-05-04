@@ -30,7 +30,7 @@ dif:
 
 build_tools:
 	@ echo "Compiling build tools..."
-	@ $(MAKE) -C tools/build/buildkern all
+	@ cargo build -p buildkern
 
 setup:
 	@ rm -rf include/novusk/kms
@@ -38,7 +38,7 @@ setup:
 
 build_config:
 	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
-	@ ./tools/build/buildkern/target/debug/buildkern $(CONFIG)
+	@ ./target/debug/buildkern $(CONFIG)
 
 build_arch:
 	@ sleep 2

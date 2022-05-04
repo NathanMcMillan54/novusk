@@ -7,4 +7,4 @@ description = "Setup for all versions of the FOMOS operating system"
 
 [dependencies]
 novuskinc = "0.1.1"
-libost = { path = "../../lib/libost/" }
+# libost = { path = "../../lib/libost/" }

@@ -1,0 +1,68 @@
+[package]
+name = "novusk"
+version = "4.0.0"
+authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
+edition = "2018"
+
+[workspace]
+members = [
+    "arch/aarch64/",
+    "arch/arm/",
+    "arch/riscv/",
+    "arch/x86_64/",
+    "arch/xtensa/",
+
+    "drivers/boot/nkuefi/",
+    "drivers/cpu/",
+    "drivers/device/",
+    "drivers/display/ssd/",
+    "drivers/fb/",
+    "drivers/fom_os/",
+    "drivers/gpu/armfb/",
+    "drivers/gpu/vgag/",
+    "drivers/input/keyboard/ps2_keyboard/",
+    "drivers/input/mouse/kb_mouse/",
+    "drivers/input/mouse/ps2_mouse/",
+    "drivers/net/ethernet/",
+    "drivers/platform/arm/hio/",
+    "drivers/platform/rpi/",
+    "drivers/platform/stellaris/",
+    "drivers/platform/stm/",
+    "drivers/soc/",
+    "drivers/soc/bcm/",
+    "drivers/storage/",
+    "drivers/storage/lba/",
+    "drivers/storage/sd/rpisd/",
+    "drivers/usbd/",
+
+    "fs/tempfs/",
+    "fs/vfs/",
+
+    "include/asm/",
+    "include/ctypes/",
+    "include/dif/",
+    "include/novusk/",
+
+    "init/",
+    "kernel/",
+
+    "lib/libbmu/",
+    "lib/libc/unistd/",
+    "lib/libcolor/",
+    "lib/libost/",
+    "lib/libwin/",
+
+    "mm/memory/",
+    "mm/mio/",
+    "mm/nmallocator/",
+
+    # "net/ethernet/stm_eth/",
+    "sound/x86_64-sound/",
+
+    "tools/build/ccbuild/",
+    "tools/build/buildkern/",
+]
+
+[lib]
+name = "libnovusk"
+path = "src/lib.rs"
