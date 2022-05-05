@@ -7,7 +7,7 @@ description = "ARM kernel support"
 [lib]
 name = "arm"
 path = "src/lib.rs"
-# crate-type = ["staticlib"]
+crate-type = ["staticlib"]
 edition = "2021"
 
 [[bin]]

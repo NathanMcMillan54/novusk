@@ -22,7 +22,8 @@ ifeq ($(DIF), None)
 	DIF = empty_unknown.dif
 endif
 
-all: dif build_tools setup build_config
+setup_build: dif build_tools setup
+	@ $(link)
 
 dif:
 	@ cp -r arch/$(ARCH)/src/include/dif/$(DIF) arch/$(ARCH)/src/include/dif/kernel_dif.dif
@@ -35,10 +36,13 @@ setup:
 	@ rm -rf include/novusk/kms
 	@ mkdir include/novusk/kms
 
-build_config:
-	@ echo "Compiling based off CONFIG file ($(CONFIG))..."
-	@ ./target/debug/buildkern $(CONFIG)
+buildkern:
+	@ echo "Running buildkern with CONFIG file ($(CONFIG))..."
+	@ ./target/debug/buildkern $(ARCH) $(CONFIG)
 	@ echo "Finished compiling"
+
+link:
+	@ $(MAKE) -C arch/$(ARCH)/ KERNEL=$(KERNEL) PLATFORM=$(PLATFORM) link
 
 clean:
 	@ cargo clean

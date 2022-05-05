@@ -1,1 +1,3 @@
-DEVICE_DRIVER=drivers/platform/stm/
+# Default config for the arm32 kernel on a STM32f407 board
+ARCH_KERNEL=arm --release -Z build-std=core,alloc --features arm/stm32f407 --target targets/thumbv7m-none-eabi.json
+DEVICE_DRIVER=stm --release -Z build-std=core,alloc --target targets/thumbv7em-none-eabihf.json

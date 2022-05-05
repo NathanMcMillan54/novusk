@@ -26,18 +26,11 @@ else ifeq ($(PLATFORM), rpi2b)
 	TARGET = arm-a-novusk
 endif
 
-all: boot kernel link
-	@ echo "Created image: arch/arm/src/boot/$(KERNEL_IMG)"
-
 boot:
 	@ arm-linux-gnueabi-gcc -mcpu=$(CPU) -c $(BOOT_FILE).S -o $(BOOT_FILE).o
 
-kernel:
-	@ echo "Compiling arm kernel..."
-	@ cargo build --release --features $(PLATFORM),$(SOC) -Z build-std=core,alloc --target ../../targets/$(TARGET).json
-
-link:
-	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) target/$(TARGET)/release/libarm_kernel_lib.a ../../include/novusk/kms/device.km -o src/boot/$(KERNEL_IMG)
+link: boot
+	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) ../../target/$(TARGET)/release/*.a -o src/boot/$(KERNEL_IMG)
 
 clean:
 	@ cargo clean
