@@ -10,6 +10,7 @@ use novuskinc::fb::FrameBufferGraphics;
 use novuskinc::keyboard::KeyboardInput;
 use vgag::display::vga_write_fmt;
 use crate::early_printk;
+use crate::boot::cpu::gdt::gdt_init;
 use crate::kernel::kernel_drivers::DEVICE_DRIVERS;
 
 struct X86_64Kernel;
@@ -79,7 +80,10 @@ impl X86_64Kernel {
 
 impl ArchKernelSetup for X86_64Kernel {
     fn irq_setup(&self) -> SetupReturn {
-        unsafe { start_irq_setup(); }
+        unsafe {
+            gdt_init();
+            start_irq_setup();
+        }
 
         return (Ok(()), "IRQs setup");
     }

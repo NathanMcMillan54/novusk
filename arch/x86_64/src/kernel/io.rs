@@ -16,6 +16,8 @@ unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
 
     let input = inb(0x60);
 
+    crate::early_printk!("Input: {}", input);
+
     ps2_keyboard::PS2_KEYBOARD.input.interrpret_byte(input);
 
     super::irq::PIC.notify_end_of_interrupt(PIC_1_OFFSET);

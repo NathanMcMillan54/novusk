@@ -33,11 +33,15 @@ impl X64Irqs {
 }
 
 pub unsafe fn start_irq_setup() {
-    let mut irqs = X64Irqs::new();
-    irqs.disable();
+    // IRQS.disable();
 
     set_idt();
     idt_init();
+}
+
+pub unsafe fn irq_init() {
+    PIC.initialize();
+    IRQS.enable();
 }
 
 pub(crate) mod offsets {

@@ -1,3 +1,4 @@
+pub mod cpu;
 pub mod early_printk;
 pub mod handlers;
 pub mod idt;
@@ -6,6 +7,7 @@ pub mod irq;
 pub mod kernel;
 pub mod printk;
 pub mod setup;
+pub mod x86_init;
 
 #[path = "../../../../drivers/drivers.rs"]
 pub mod kernel_drivers;

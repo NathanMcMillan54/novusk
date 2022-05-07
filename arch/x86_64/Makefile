@@ -6,5 +6,8 @@ ifeq ($(KERNEL), Image)
 	KERNEL := xuImage
 endif
 
+link:
+	@ echo "nothing"
+
 clean:
 	@ cargo clean
