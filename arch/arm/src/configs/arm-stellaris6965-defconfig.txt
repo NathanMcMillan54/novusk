@@ -1,3 +1,3 @@
 # Default config for the arm32 kernel on a Stellaris 6965 board
-ARCH_KERNEL=arm --release -Z build-std=core,alloc --features arm/stellaris6965 --target targets/thumbv7m-none-eabi.json
-DEVICE_DRIVER=stellaris --release -Z build-std=core,alloc --target targets/thumbv7m-none-eabi.json
+ARCH_KERNEL=arm -Z build-std=core,alloc --features arm/stellaris6965 --target targets/thumbv7m-none-eabi.json
+DEVICE_DRIVER=stellaris -Z build-std=core,alloc --target targets/thumbv7m-none-eabi.json

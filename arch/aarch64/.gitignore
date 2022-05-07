@@ -1,3 +1,4 @@
+src/kernel/libarm.a
 target/
 
 Cargo.lock

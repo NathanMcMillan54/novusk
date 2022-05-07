@@ -4,7 +4,7 @@
 #![allow(warnings)]
 
 #[macro_use] extern crate alloc;
-pub(crate) extern crate arm;
+//pub(crate) extern crate arm;
 
 #[path = "../aarch64.rs"]
 pub mod arch;

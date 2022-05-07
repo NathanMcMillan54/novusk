@@ -16,7 +16,6 @@ path = "src/main.rs"
 edition = "2021"
 
 [dependencies]
-arm = { path = "../arm/", features = ["no_panic", "no_alloc"] }
 dif = { path = "../../include/dif/" }
 kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }
@@ -31,6 +30,6 @@ spin = "0.9.2"
 
 [features]
 default = []
-rpi3b = ["arm/rpi3b", "arm/bcm28xx"]
+rpi3b = []
 rpi4b = []
 qemu_virt = []
