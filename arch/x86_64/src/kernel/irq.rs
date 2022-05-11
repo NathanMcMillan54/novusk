@@ -1,9 +1,11 @@
 use core::arch::asm;
-use pic8259::ChainedPics;
+use super::i8259::PIC_8259;
 use super::idt::{idt_init, set_idt};
 
-pub static mut PIC: ChainedPics = unsafe { ChainedPics::new(32, 40) };
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
+
+pub const PIC_START: u8 = 32;
+pub const PIC_OFFSETS: &[u8; 12] = &[0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88];
 
 pub struct X64Irqs {
     pub enabled: bool,
@@ -33,19 +35,12 @@ impl X64Irqs {
 }
 
 pub unsafe fn start_irq_setup() {
-    // IRQS.disable();
-
     set_idt();
     idt_init();
 }
 
 pub unsafe fn irq_init() {
-    PIC.initialize();
+    PIC_8259.lock().initialize();
     IRQS.enable();
 }
 
-pub(crate) mod offsets {
-    pub const PIC_0_OFFSET: u8 = 32;
-    pub const PIC_1_OFFSET: u8 = PIC_0_OFFSET + 8;
-    pub const PIC_2_OFFSET: u8 = PIC_1_OFFSET + 8;
-}
