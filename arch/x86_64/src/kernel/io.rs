@@ -1,4 +1,5 @@
 use core::arch::asm;
+use crate::early_printk;
 
 pub unsafe fn outb(port: u16, out: u8) {
     asm!("outb %al, %dx", in("al") out, in("dx") port, options(att_syntax));
@@ -17,11 +18,13 @@ unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
 
     let input = inb(0x60);
 
+    early_printk!("Keyboard {} ", input);
+
     if input != 156 {
         // ps2_keyboard::PS2_KEYBOARD.input.interrpret_byte(input);
     }
 
-    PIC_8259.lock().notify_end_of_interrupt(PIC_START + PIC_OFFSETS[0]);
+    PIC_8259.lock().notify_end_of_interrupt(PIC_START + PIC_OFFSETS[1]);
 }
 
 gen_x86_int!(ps2_keyboard, ps2_input);

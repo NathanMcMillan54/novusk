@@ -8,6 +8,7 @@ pub mod irq;
 pub mod kernel;
 pub mod printk;
 pub mod setup;
+pub mod time;
 pub mod x86_init;
 
 #[path = "../../../../drivers/drivers.rs"]

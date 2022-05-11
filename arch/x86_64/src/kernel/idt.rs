@@ -1,3 +1,4 @@
+use x86_64::instructions::tlb::Pcid;
 use super::handlers::*;
 use super::irq::{PIC_OFFSETS, PIC_START};
 use x86_64::structures::idt::InterruptDescriptorTable;
@@ -9,7 +10,8 @@ pub unsafe fn set_idt() {
     IDT.page_fault.set_handler_fn(page_fault_handler);
     IDT.breakpoint.set_handler_fn(break_point_handler);
 
-    IDT[(PIC_START + PIC_OFFSETS[0]) as usize].set_handler_fn(super::io::ps2_keyboard);
+    IDT[32 as usize].set_handler_fn(super::time::time_irq);
+    IDT[33 as usize].set_handler_fn(super::io::ps2_keyboard);
 }
 
 pub unsafe fn idt_init() {
