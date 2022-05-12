@@ -1,7 +1,6 @@
 pub mod cpu;
 pub mod early_printk;
 pub mod handlers;
-pub mod i8259;
 pub mod idt;
 pub mod io;
 pub mod irq;

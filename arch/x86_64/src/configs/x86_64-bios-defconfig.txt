@@ -1,4 +1,4 @@
 # This is the default config for the x86_64 kernel, it doesn't have any special features it's just the essentials for
 # the kernel.
-ARCH_KERNEL=x86_64:0.1.0 --release -Z build-std=core,alloc --target targets/x86_64-novusk.json
+ARCH_KERNEL=x86_64:0.1.0 --release --features=x86_64/pic8259_irqchip -Z build-std=core,alloc --target targets/x86_64-novusk.json
 DISPLAY_MODULE=vgag --release -Z build-std=core,alloc --target targets/x86_64-novusk.json

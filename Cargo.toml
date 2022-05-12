@@ -23,6 +23,7 @@ members = [
     "drivers/input/keyboard/ps2_keyboard/",
     "drivers/input/mouse/kb_mouse/",
     "drivers/input/mouse/ps2_mouse/",
+    "drivers/irqchip/i8259/",
     "drivers/net/ethernet/",
     "drivers/platform/arm/hio/",
     "drivers/platform/rpi/",

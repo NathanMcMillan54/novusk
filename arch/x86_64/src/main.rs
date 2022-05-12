@@ -12,6 +12,9 @@
 pub(crate) extern crate memory;
 pub(crate) extern crate vgag;
 
+#[cfg(feature = "pic8259_irqchip")]
+pub(crate) extern crate i8259;
+
 #[path = "../x86_64.rs"]
 pub mod arch;
 

@@ -16,5 +16,15 @@ extern "C" {
     /// ```
     pub fn device_irq_handler(irq: i16);
 
+    /// ``device_specific_irqs_init`` is used for initializing IRQs that are specific to the device
+    /// Novusk is running on.
     pub fn device_specific_irqs_init();
+
+    /// ``irqchip_init`` is used to initialize the device's IRQ chip. The IRQ chip is what controls
+    /// the IRQs, this function needs to be implemented in the IRQ chip driver.
+    pub fn irqchip_init();
+
+    /// The ``notify_irq`` function needs to be implemented to tell the IRQ chip that an IRQ has
+    /// finished
+    pub fn notify_irq(irqn: u8);
 }

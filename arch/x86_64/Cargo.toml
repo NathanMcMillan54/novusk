@@ -17,6 +17,7 @@ path = "src/main.rs"
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
+i8259 = { path = "../../drivers/irqchip/i8259/" }
 kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
@@ -24,7 +25,6 @@ libcolor = { path = "../../lib/libcolor/" }
 memory = { path = "../../mm/memory/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/", features = ["library"] }
-pic8259 = "0.10.2"
 printk = { path = "../../kernel/printk/" }
 ps2_keyboard = { path = "../../drivers/input/keyboard/ps2_keyboard/" }
 raw-cpuid = "10.2.0"
@@ -35,3 +35,4 @@ volatile = "0.2.7"
 x86_64 = "0.14.9"
 
 [features]
+pic8259_irqchip = []

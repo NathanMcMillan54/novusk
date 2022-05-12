@@ -1,4 +1,5 @@
 use core::arch::asm;
+use novuskinc::irq::notify_irq;
 use crate::early_printk;
 
 pub unsafe fn outb(port: u16, out: u8) {
@@ -13,7 +14,6 @@ pub unsafe fn inb(port: u16) -> u8 {
 }
 
 unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
-    use super::i8259::PIC_8259;
     use super::irq::irqns::IRQ_2;
 
     let input = inb(0x60);
@@ -22,7 +22,7 @@ unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
 
     }
 
-    PIC_8259.lock().notify_end_of_interrupt(IRQ_2);
+    notify_irq(IRQ_2);
 }
 
 gen_x86_int!(ps2_keyboard, ps2_input);

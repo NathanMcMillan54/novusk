@@ -1,6 +1,6 @@
 use core::arch::asm;
-use super::i8259::PIC_8259;
 use super::idt::{idt_init, set_idt};
+use novuskinc::irq::irqchip_init;
 
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
 
@@ -38,7 +38,7 @@ pub unsafe fn start_irq_setup() {
 }
 
 pub unsafe fn irq_init() {
-    PIC_8259.lock().initialize();
+    irqchip_init();
     IRQS.enable();
 }
 
