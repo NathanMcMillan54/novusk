@@ -18,7 +18,7 @@ pub extern "x86-interrupt" fn page_fault_handler(isf: InterruptStackFrame, pg_er
     early_printk!("Interrupt stack frame: {:?}\n", isf);
     early_printk!("Page fault error code: {:?}\n", pg_error);
 
-    panic!("Page fault error");
+    loop {  }
 }
 
 #[no_mangle]
@@ -27,6 +27,6 @@ pub(crate) extern "x86-interrupt" fn double_fault(isf: InterruptStackFrame, int_
     early_printk!("Interrupt stack frame: {:?}\n", isf);
     early_printk!("Interrupt error code: {}\n", int_error);
 
-    panic!("Double fault error");
+    loop {  }
 }
 

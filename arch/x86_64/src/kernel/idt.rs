@@ -1,6 +1,6 @@
 use x86_64::instructions::tlb::Pcid;
 use super::handlers::*;
-use super::irq::{PIC_OFFSETS, PIC_START};
+use super::irq::irqns::*;
 use x86_64::structures::idt::InterruptDescriptorTable;
 
 static mut IDT: InterruptDescriptorTable = InterruptDescriptorTable::new();

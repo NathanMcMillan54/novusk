@@ -1,9 +1,12 @@
 use core::fmt::{Arguments, Write};
 use super::video_vga::EARLY_VGA;
+use x86_64::instructions::interrupts::without_interrupts;
 
 #[no_mangle]
 pub unsafe extern "C" fn _early_printk(fmt: Arguments) {
-    EARLY_VGA.lock().write_fmt(fmt);
+    without_interrupts(||{
+        EARLY_VGA.lock().write_fmt(fmt);
+    });
 }
 
 #[macro_export]

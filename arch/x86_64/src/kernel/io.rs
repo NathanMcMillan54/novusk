@@ -14,17 +14,15 @@ pub unsafe fn inb(port: u16) -> u8 {
 
 unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
     use super::i8259::PIC_8259;
-    use super::irq::{PIC_OFFSETS, PIC_START};
+    use super::irq::irqns::IRQ_2;
 
     let input = inb(0x60);
 
-    early_printk!("Keyboard {} ", input);
-
     if input != 156 {
-        // ps2_keyboard::PS2_KEYBOARD.input.interrpret_byte(input);
+
     }
 
-    PIC_8259.lock().notify_end_of_interrupt(PIC_START + PIC_OFFSETS[1]);
+    PIC_8259.lock().notify_end_of_interrupt(IRQ_2);
 }
 
 gen_x86_int!(ps2_keyboard, ps2_input);

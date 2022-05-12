@@ -4,8 +4,6 @@ use super::idt::{idt_init, set_idt};
 
 pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
 
-pub const PIC_START: u8 = 32;
-pub const PIC_OFFSETS: &[u8; 12] = &[0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88];
 
 pub struct X64Irqs {
     pub enabled: bool,
@@ -44,3 +42,12 @@ pub unsafe fn irq_init() {
     IRQS.enable();
 }
 
+pub mod irqns {
+    pub const IRQ_1: u8 = 32;
+    pub const IRQ_2: u8 = 33;
+}
+
+pub mod pics {
+    pub const PIC_OFFSET_1: u8 = 32;
+    pub const PIC_OFFSET_2: u8 = 40;
+}
