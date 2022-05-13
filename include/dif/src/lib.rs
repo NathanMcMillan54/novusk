@@ -7,7 +7,7 @@ use alloc::vec::Vec;
 
 pub mod parse;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub struct Dif {
     pub device_name: &'static str,
     pub peripheral_addr: Option<u32>,

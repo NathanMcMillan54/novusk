@@ -1,4 +1,6 @@
-use core::ptr::write_volatile;
+use crate::include::dif::DIF;
+use crate::mm::bss::zero_bss;
+use dif::Dif;
 use setup::{BootSetup, SetupReturn};
 
 pub struct Aarch64Boot;
@@ -9,19 +11,52 @@ impl Aarch64Boot {
     }
 
     pub fn setup(&self) {
+        let dif = unsafe { self.dif_init() };
+        let ld = unsafe { self.linker_setup() };
         let early_cpu = self.early_cpu_init();
 
-        if early_cpu.0.is_err() {
+        if dif.0.is_err() {
+            panic!("{}", dif.1)
+        } else if ld.0.is_err() {
+            panic!("{}", ld.1);
+        } else if early_cpu.0.is_err() {
             panic!("{}", early_cpu.1);
         }
 
-        if early_cpu.0.is_ok() {
+        if dif.0.is_ok() {
+            crate::early_printk!("{}", dif.1);
+        } else if ld.0.is_ok() {
+            crate::early_printk!("{}", ld.1);
+        } else if early_cpu.0.is_ok() {
             crate::early_printk!("{}", early_cpu.1);
         }
+    }
+
+    pub unsafe fn dif_init(&self) -> SetupReturn {
+        extern "C" {
+            static mut DIF_FILE: &'static [&'static str; 11];
+        }
+
+        DIF.set(DIF_FILE);
+
+        if DIF == Dif::empty() {
+            return (Err("Failed to initialize DIF"), "DIF is empty");
+        } else { return (Ok(()), "Successfully set DIF"); }
     }
 }
 
 impl BootSetup for Aarch64Boot {
+    unsafe fn linker_setup(&self) -> SetupReturn {
+        extern "C" {
+            static mut __bss_start: u32;
+            static mut __bss_end: u32;
+        }
+
+        zero_bss(&mut __bss_start, &mut __bss_end);
+
+        (Ok(()), "Cleared bss")
+    }
+
     fn early_cpu_init(&self) -> SetupReturn {
         return (Ok(()), "Success");
     }

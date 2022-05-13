@@ -8,18 +8,18 @@ ifeq ($(KERNEL), Image)
 	KERNEL_IMG = aadImage
 endif
 
-link: asm
-	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld src/boot/arm_kernel_boot.img ../../target/aarch64-novusk/release/*.a -o src/boot/aadImage
+link: clean asm
+	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld src/boot/kernel64.img ../../target/aarch64-novusk/release/*.a -o src/boot/aadImage
 	@ echo "Finished linking"
 
 asm:
-	@ mv ../../target/aarch64-novusk/release/libarm.a src/kernel/libarm.a
-	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c ../arm/src/boot/start/a53_start.S -o ../arm/src/boot/start/a53_start.o
-	@ aarch64-linux-gnu-ld --relocatable ../arm/src/boot/start/a53_start.o src/kernel/libarm.a -o src/boot/arm_kernel_boot.img
+	@ mv ../../target/aarch64-novusk/release/libaarch64_kernel_lib.a src/kernel/libaarch64.a
+	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -c src/boot/a53_start.S -o src/boot/a53_start.o
+	@ aarch64-linux-gnu-ld --relocatable src/boot/a53_start.o src/kernel/libaarch64.a -o src/boot/kernel64.img
 
 clean:
-	@ cargo clean
 	@ rm -rf src/boot/aadImage
+	@ rm -rf src/boot/*.img
+	@ rm -rf src/boot/*.o
 	@ rm -rf src/kernel/cpu/irq/vector.o
-	@ rm -rf src/kernel/libarm.a
-	@ cd ../arm/ && make clean
+	@ rm -rf src/kernel/libaarch64.a

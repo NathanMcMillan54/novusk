@@ -1,5 +1,4 @@
 ARCH_KERNEL=aarch64 --release -Z build-std=core,alloc --features aarch64/rpi3b --target targets/aarch64-novusk.json
-ARCH_SETUP_KERNEL=arm --release -Z build-std=core,alloc --features arm/rpi3b,arm/bcm28xx --target targets/aarch64-novusk.json
 DEVICE_DRIVER=rpi --release -Z build-std=core --target targets/aarch64-novusk.json
 DISPLAY_MODULE=armfb --release -Z build-std=core,alloc --target targets/aarch64-novusk.json
 SOC_DRIVER=bcm --release -Z build-std=core --target targets/aarch64-novusk.json

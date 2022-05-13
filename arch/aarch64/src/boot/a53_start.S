@@ -3,7 +3,8 @@
 .section ".text.boot"
 
 .global _start
-.extern start_boot
+.extern aarch64_boot_setup
+.extern boot_die
 
 _start:
     mrs x1, mpidr_el1
@@ -16,6 +17,6 @@ _start:
     ldr x1, =_start
     mov sp, x1
 
-    bl  start_boot
+    bl aarch64_boot_setup
 
     b 1b

@@ -1,6 +1,5 @@
 pub mod setup;
 
-use core::ptr::write_volatile;
 use self::setup::Aarch64Boot;
 
 #[no_mangle]
