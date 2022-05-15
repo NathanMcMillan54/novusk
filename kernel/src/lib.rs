@@ -7,7 +7,7 @@ mod mailbox;
 
 use core::fmt::Write;
 use mailbox::MailBoxSender;
-use novuskinc::{fb::{FrameBuffer, FrameBufferGraphics}, mb::MailBox, serial::SerialIo};
+use novuskinc::{fb::{FrameBuffer, FrameBufferGraphics}, mb::MailBox, serial::SimpleUart};
 
 #[no_mangle]
 pub static mut KERNEL: Kernel = Kernel::empty();
@@ -15,7 +15,7 @@ pub static mut KERNEL: Kernel = Kernel::empty();
 pub struct Kernel<'a> {
     pub fb: FrameBuffer<'a>,
     pub mb: MailBox,
-    pub serial: SerialIo,
+    pub serial: SimpleUart,
 }
 
 impl <'a>Kernel<'a> {
@@ -23,11 +23,11 @@ impl <'a>Kernel<'a> {
         return Kernel {
             fb: FrameBuffer::empty(),
             mb: MailBox::empty(),
-            serial: SerialIo::empty(),
+            serial: SimpleUart::empty(),
         };
     }
 
-    pub fn set_serial(&mut self, kernel_serial: SerialIo) {
+    pub fn set_serial(&mut self, kernel_serial: SimpleUart) {
         self.serial = kernel_serial;
     }
 

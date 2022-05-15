@@ -4,6 +4,7 @@
 #![allow(warnings)]
 
 #[macro_use] extern crate alloc;
+#[macro_use] extern crate novuskinc;
 //pub(crate) extern crate arm;
 
 #[path = "../aarch64.rs"]

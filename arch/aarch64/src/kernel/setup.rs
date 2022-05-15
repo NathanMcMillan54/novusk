@@ -4,7 +4,6 @@ use crate::early_printk;
 use super::early_printk::aarch64_setup_early_printk;
 use setup::{ArchKernelSetup, SetupReturn};
 use crate::include::dif::DIF;
-use crate::kernel::early_printk::AARCH64_SERIALIO;
 
 struct Aarch64Kernel;
 

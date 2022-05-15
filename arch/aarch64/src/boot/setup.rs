@@ -1,6 +1,8 @@
 use crate::include::dif::DIF;
-use crate::mm::bss::zero_bss;
+use crate::kernel::uart::is_init;
+use crate::mm::bss::*;
 use dif::Dif;
+use novuskinc::serial::early_serial_init;
 use setup::{BootSetup, SetupReturn};
 
 pub struct Aarch64Boot;
@@ -13,6 +15,7 @@ impl Aarch64Boot {
     pub fn setup(&self) {
         let dif = unsafe { self.dif_init() };
         let ld = unsafe { self.linker_setup() };
+        let early_io = self.early_io_init();
         let early_cpu = self.early_cpu_init();
 
         if dif.0.is_err() {
@@ -46,6 +49,16 @@ impl Aarch64Boot {
 }
 
 impl BootSetup for Aarch64Boot {
+    fn early_io_init(&self) -> SetupReturn {
+        unsafe {
+            early_serial_init();
+
+            if is_init() {
+                return (Ok(()), "Early serial I/O succesfully initialized");
+            } else { return (Err("Failed to initialize serial I/O"), "Early serial I/O could not be initialized"); }
+        }
+    }
+
     unsafe fn linker_setup(&self) -> SetupReturn {
         extern "C" {
             static mut __bss_start: u32;
@@ -54,7 +67,9 @@ impl BootSetup for Aarch64Boot {
 
         zero_bss(&mut __bss_start, &mut __bss_end);
 
-        (Ok(()), "Cleared bss")
+        if is_zeroed(__bss_end) {
+            return (Ok(()), "BSS sections successfully cleared");
+        } else { return (Err("Failed to initialize linker memory"), "Failed to clear BSS"); }
     }
 
     fn early_cpu_init(&self) -> SetupReturn {

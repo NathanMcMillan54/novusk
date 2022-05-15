@@ -10,3 +10,9 @@ pub unsafe fn zero_bss(mut sbss: *mut u32, mut ebss: *mut u32) {
 
     compiler_fence(Ordering::SeqCst);
 }
+
+pub fn is_zeroed(ebss: u32) -> bool {
+    if ebss != 0 {
+        return false;
+    } else { return true; }
+}
