@@ -3,3 +3,11 @@ name = "init"
 version = "0.1.0"
 edition = "2021"
 description = "Main kernel initialization"
+
+[lib]
+name = "init"
+edition = "2021"
+crate-type = ["staticlib"]
+
+[dependencies]
+printk = { path = "../kernel/printk/" }

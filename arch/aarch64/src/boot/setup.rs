@@ -22,17 +22,13 @@ impl Aarch64Boot {
             panic!("{}", dif.1)
         } else if ld.0.is_err() {
             panic!("{}", ld.1);
-        } else if early_cpu.0.is_err() {
-            panic!("{}", early_cpu.1);
+        } else if early_io.0.is_err() {
+            panic!("{}", early_io.1);
         }
 
-        if dif.0.is_ok() {
-            crate::early_printk!("{}", dif.1);
-        } else if ld.0.is_ok() {
-            crate::early_printk!("{}", ld.1);
-        } else if early_cpu.0.is_ok() {
-            crate::early_printk!("{}", early_cpu.1);
-        }
+        crate::early_printk!("{}\n", dif.1);
+        crate::early_printk!("{}\n", ld.1);
+        crate::early_printk!("{}\n", early_io.1);
     }
 
     pub unsafe fn dif_init(&self) -> SetupReturn {
@@ -40,7 +36,7 @@ impl Aarch64Boot {
             static mut DIF_FILE: &'static [&'static str; 11];
         }
 
-        DIF.set(DIF_FILE);
+        DIF = DIF.parse_and_set(DIF_FILE);
 
         if DIF == Dif::empty() {
             return (Err("Failed to initialize DIF"), "DIF is empty");
@@ -54,7 +50,7 @@ impl BootSetup for Aarch64Boot {
             early_serial_init();
 
             if is_init() {
-                return (Ok(()), "Early serial I/O succesfully initialized");
+                return (Ok(()), "Early serial I/O successfully initialized");
             } else { return (Err("Failed to initialize serial I/O"), "Early serial I/O could not be initialized"); }
         }
     }
@@ -70,9 +66,5 @@ impl BootSetup for Aarch64Boot {
         if is_zeroed(__bss_end) {
             return (Ok(()), "BSS sections successfully cleared");
         } else { return (Err("Failed to initialize linker memory"), "Failed to clear BSS"); }
-    }
-
-    fn early_cpu_init(&self) -> SetupReturn {
-        return (Ok(()), "Success");
     }
 }

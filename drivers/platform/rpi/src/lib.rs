@@ -58,3 +58,10 @@ unsafe fn device_irqs_init(_n: ()) -> () {
 }
 
 define_core_function!(CoreFunctions::device_specific_irqs_init, _n: (), -> (), device_irqs_init);
+
+#[no_mangle]
+pub unsafe extern "C" fn set_platform_drivers() {
+    if dif::DIF_FILE[0].contains("RaspberryPi 3") {
+        rpi3::set_rpi3_drivers();
+    }
+}

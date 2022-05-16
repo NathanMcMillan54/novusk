@@ -13,6 +13,7 @@ pub mod keyboard;
 pub mod led;
 pub mod mb;
 pub mod module;
+pub mod platform;
 pub mod prelude;
 pub mod syscalls;
 pub mod serial;

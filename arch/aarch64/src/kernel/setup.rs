@@ -37,19 +37,13 @@ impl ArchKernelSetup for Aarch64Kernel {
     fn irq_setup(&self) -> SetupReturn {
         return (Ok(()), "IRQ setup successfully");
     }
-
-    unsafe fn early_kernel_setup(&self) -> SetupReturn {
-        printk_init("Console Driver");
-        return (Ok(()), "Early main kernel setup successfully");
-    }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn aarch64_kernel_setup() {
+pub unsafe extern "C" fn setup_arch() {
     let aarch64_setup = Aarch64Kernel::new();
 
     aarch64_setup_early_printk();
-    aarch64_setup.early_kernel_setup();
 
     early_printk!("Starting Aarch64 kernel...\n");
     early_printk!("Early and main kernel printing for Aarch64 initialized\n");

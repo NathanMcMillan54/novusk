@@ -9,7 +9,7 @@ ifeq ($(KERNEL), Image)
 endif
 
 link: clean asm
-	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld src/boot/kernel64.img ../../target/aarch64-novusk/release/*.a -o src/boot/aadImage
+	@ aarch64-linux-gnu-ld --allow-multiple-definition -Tsrc/boot/linker.ld src/boot/kernel64.img ../../target/aarch64-novusk/release/*.a -o src/boot/aadImage
 	@ echo "Finished linking"
 
 asm:
