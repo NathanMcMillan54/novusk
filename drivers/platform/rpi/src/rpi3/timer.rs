@@ -31,6 +31,7 @@ unsafe fn rpi3_timer_init(_n: ()) -> () {
 define_core_function!(CoreFunctionNames::device_timer_init, _n: (), -> (), rpi3_timer_init);
 
 aarch64_interrupt!(SysTimer1, {
+    printk!(".");
     TIMER_VALUE += INTERVAL;
     outb(0x3F00_3010, TIMER_VALUE as u16);
 });

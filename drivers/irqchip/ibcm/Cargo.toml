@@ -1,0 +1,16 @@
+[package]
+name = "ibcm"
+version = "0.1.0"
+edition = "2021"
+description = "BCM irqchip driver"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+asminc = { path = "../../../include/asm/" }
+novuskinc = { path = "../../../include/novusk/" }
+bcm = { path = "../../soc/bcm/" }
+
+[features]
+bcm2837 = []

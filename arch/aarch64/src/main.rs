@@ -8,6 +8,9 @@
 #[macro_use] extern crate novuskinc;
 // pub(crate) extern crate arm;
 
+#[cfg(feature = "bcm_soc")]
+pub(crate) extern crate bcm;
+
 #[path = "../aarch64.rs"]
 pub mod arch;
 

@@ -13,7 +13,7 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
         ("Peripheral Base", 0x3F00_0000 as *mut u8),
         ("Video Core Address", 0x3F00_B880 as *mut u8),
         ("Timer CS Address", 0x3F00_3000 as *mut u8),
-        ("None", 0x0 as *mut u8),
+        ("IRQ Base Address", 0x3F00_0B210 as *mut u8),
         ("None", 0x0 as *mut u8),
         ("None", 0x0 as *mut u8),
         ("None", 0x0 as *mut u8),
@@ -32,9 +32,3 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
         ("None", 0x0 as *mut u8),
     ]
 };
-
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {  }
-}
-

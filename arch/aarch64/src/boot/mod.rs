@@ -10,8 +10,6 @@ pub unsafe extern "C" fn aarch64_boot_setup() {
 
     aarch64_boot.setup();
 
-    crate::early_printk!("Made it this far\n");
-
     start_aarch64_kernel();
 
     panic!("Boot setup should never return");

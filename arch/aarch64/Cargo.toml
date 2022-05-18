@@ -16,6 +16,7 @@ path = "src/main.rs"
 edition = "2021"
 
 [dependencies]
+bcm = { path = "../../drivers/soc/bcm/" }
 dif = { path = "../../include/dif/" }
 kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }
@@ -30,6 +31,7 @@ spin = "0.9.2"
 
 [features]
 default = []
-rpi3b = []
-rpi4b = []
+rpi3b = ["bcm_soc"]
+rpi4b = ["bcm_soc"]
+bcm_soc = []
 qemu_virt = []

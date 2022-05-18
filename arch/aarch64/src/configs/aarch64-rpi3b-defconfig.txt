@@ -3,3 +3,4 @@ KERNEL_INIT=init --release -Z build-std=core,alloc --target targets/aarch64-novu
 DEVICE_DRIVER=rpi --release -Z build-std=core --target targets/aarch64-novusk.json
 DISPLAY_MODULE=armfb --release -Z build-std=core,alloc --target targets/aarch64-novusk.json
 SOC_DRIVER=bcm --release -Z build-std=core --target targets/aarch64-novusk.json
+IRQCHIP_DRIVER=ibcm --release -Z build-std=core --features ibcm/bcm2837 --target targets/aarch64-novusk.json

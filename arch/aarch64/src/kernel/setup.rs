@@ -1,6 +1,7 @@
 use core::ptr::write_volatile;
 use printk::printk_init;
 use crate::early_printk;
+use super::cpu::irq::aarch64_irq_setup;
 use super::early_printk::aarch64_setup_early_printk;
 use setup::{ArchKernelSetup, SetupReturn};
 use crate::include::dif::DIF;
@@ -35,6 +36,7 @@ impl Aarch64Kernel {
 
 impl ArchKernelSetup for Aarch64Kernel {
     fn irq_setup(&self) -> SetupReturn {
+        unsafe { aarch64_irq_setup(); }
         return (Ok(()), "IRQ setup successfully");
     }
 }
@@ -45,7 +47,7 @@ pub unsafe extern "C" fn setup_arch() {
 
     aarch64_setup_early_printk();
 
-    early_printk!("Starting Aarch64 kernel...\n");
+    early_printk!("\nStarting Aarch64 kernel...\n");
     early_printk!("Early and main kernel printing for Aarch64 initialized\n");
     early_printk!("\nSetting up kernel...\n");
 

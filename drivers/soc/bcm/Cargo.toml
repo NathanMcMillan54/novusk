@@ -4,12 +4,6 @@ version = "0.1.0"
 edition = "2021"
 description = "An SOC driver for Broadcom CPUs, currently intended for BCM2837"
 
-[lib]
-name = "bcm"
-edition = "2021"
-path = "src/lib.rs"
-crate-type = ["staticlib"]
-
 [dependencies]
-novuskinc = { path = "../../../include/novusk/", features = ["library"] }
+novuskinc = { path = "../../../include/novusk/" }
 soc = { path = "../" }
