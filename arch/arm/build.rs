@@ -4,7 +4,7 @@ use std::io::Write;
 use std::path::PathBuf;
 
 #[cfg(feature = "cortex_m")]
-fn arm_cortexm_ld_setup() {
+pub fn arm_cortexm_ld_setup() {
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
     File::create(out.join("memory.x"))
         .unwrap()
@@ -28,13 +28,13 @@ fn main() {
 
 mod mem {
     #[cfg(feature = "stellaris6965")]
-    pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stellaris/stellaris6965_mem.x");
+    pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stellaris/stellariskern/stellaris6965_mem.x");
 
     #[cfg(feature = "stellaris6965")]
     pub const MEM_FILE_PATH: &'static str = "../../drivers/platform/stellaris/stellaris6965_mem.x";
 
     #[cfg(feature = "stm32f407")]
-    pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stm/stm32f407_mem.x");
+    pub const MEM_FILE: &[u8] = include_bytes!("../../drivers/platform/stm/stmkern/stm32f407_mem.x");
 
     #[cfg(feature = "stm32f407")]
     pub const MEM_FILE_PATH: &'static str = "../../drivers/platform/stm/stm32f407_mem.x";

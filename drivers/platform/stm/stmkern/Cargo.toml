@@ -1,0 +1,11 @@
+[package]
+name = "stmkern"
+version = "0.1.0"
+edition = "2021"
+description = "STM device specific kernel"
+
+[dependencies]
+cortex-m-rt = "0.7.1"
+
+[features]
+stm32f407 = []

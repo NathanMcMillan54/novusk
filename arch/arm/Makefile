@@ -30,7 +30,7 @@ boot:
 	@ arm-linux-gnueabi-gcc -mcpu=$(CPU) -c $(BOOT_FILE).S -o $(BOOT_FILE).o
 
 link: boot
-	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) ../../target/$(TARGET)/debug/*.a -o src/boot/$(KERNEL_IMG)
+	@ arm-linux-gnueabi-ld $(BOOT_FILE).o -T$(LINKER) ../../target/$(TARGET)/release/*.a -o src/boot/$(KERNEL_IMG)
 
 clean:
 	@ cargo clean
