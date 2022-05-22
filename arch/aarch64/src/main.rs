@@ -5,6 +5,7 @@
 #![allow(warnings)]
 
 #[macro_use] extern crate alloc;
+pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
 // pub(crate) extern crate arm;
 

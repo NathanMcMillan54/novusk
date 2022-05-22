@@ -5,5 +5,8 @@ edition = "2021"
 description = "Stellaris device specific kernel"
 
 [dependencies]
+arm = { path = "../../../../arch/arm/", features = ["stellaris6965"] }
+asminc = { path = "../../../../include/asm/" }
 cortex-m-rt = "0.7.1"
 cortex-m-semihosting = "0.5.0"
+nmallocator = { path = "../../../../mm/nmallocator/" }

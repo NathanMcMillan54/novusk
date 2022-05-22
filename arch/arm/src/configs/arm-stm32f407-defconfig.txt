@@ -1,3 +1,0 @@
-# Default config for the arm32 kernel on a STM32f407 board
-ARCH_KERNEL=arm --lib --release -Z build-std=core,alloc --features arm/stm32f407 --target targets/thumbv7em-none-eabihf.json
-DEVICE_KERNEL=stmkern --release -Z build-std=core --features stmkern/stm32f407 --target targets/thumbv7em-none-eabihf.json

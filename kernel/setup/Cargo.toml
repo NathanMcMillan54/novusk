@@ -5,8 +5,4 @@ edition = "2021"
 description = "Setup before kernel_init and setup before kernel_main"
 
 [dependencies]
-kinfo = { path = "../kinfo/" }
-konfig = { path = "../konfig/" }
-libbmu = { path = "../../lib/libbmu/" }
 printk = { path = "../printk/" }
-unistd = { path = "../../lib/libc/unistd/" }

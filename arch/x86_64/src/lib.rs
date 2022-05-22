@@ -7,6 +7,7 @@
 #[macro_use] extern crate asminc;
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate lazy_static;
+pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
 pub(crate) extern crate memory;
 pub(crate) extern crate vgag;

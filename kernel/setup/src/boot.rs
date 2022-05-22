@@ -1,7 +1,7 @@
-use crate::types::SetupReturn;
+use crate::SetupReturn;
 
 pub trait BootSetup {
-    fn early_io_init(&self) -> SetupReturn {
+    fn early_serial_io_init(&self) -> SetupReturn {
         return (Ok(()), "Early I/O successfully initialized");
     }
 

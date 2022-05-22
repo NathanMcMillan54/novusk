@@ -4,6 +4,8 @@
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate cortex_m_semihosting;
 
+pub(crate) extern crate nmallocator;
+
 use core::panic::PanicInfo;
 
 pub mod boot;
@@ -14,3 +16,6 @@ fn _panic(_info: &PanicInfo) -> ! {
 
     loop {  }
 }
+
+#[no_mangle]
+pub static KERNEL_NAME: &'static str = "Sellaris Novusk kernel";

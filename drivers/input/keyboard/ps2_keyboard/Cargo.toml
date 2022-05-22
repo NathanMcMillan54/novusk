@@ -2,7 +2,7 @@
 name = "ps2_keyboard"
 version = "0.1.0"
 edition = "2021"
-desription = "Driver for PS2/Pc keyboards"
+description = "Driver for PS2/Pc keyboards"
 
 [dependencies]
 asminc = { path = "../../../../include/asm/" }

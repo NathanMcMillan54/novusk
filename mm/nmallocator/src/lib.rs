@@ -1,15 +1,14 @@
 #![no_std]
 #![feature(alloc_error_handler)]
 
-#[macro_use] extern crate cfg_if;
+#[macro_use] extern crate alloc;
 
-pub mod error;
+use wee_alloc::WeeAlloc;
 
-#[cfg(target_arch = "riscv32")]
-pub mod riscv;
+mod error;
 
-#[cfg(target_arch = "x86_64")]
-pub mod x86_64;
+#[cfg(test)]
+pub mod tests;
 
-#[cfg(feature = "wee_allocator")]
-pub use wee_alloc::WeeAlloc;
+#[global_allocator]
+pub static mut GLOBAL_ALLOCATOR: WeeAlloc = WeeAlloc::INIT;

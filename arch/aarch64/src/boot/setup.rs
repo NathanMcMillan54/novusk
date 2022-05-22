@@ -15,7 +15,7 @@ impl Aarch64Boot {
     pub fn setup(&self) {
         let dif = unsafe { self.dif_init() };
         let ld = unsafe { self.linker_setup() };
-        let early_io = self.early_io_init();
+        let early_io = self.early_serial_io_init();
         let early_cpu = self.early_cpu_init();
 
         if dif.0.is_err() {
@@ -45,7 +45,7 @@ impl Aarch64Boot {
 }
 
 impl BootSetup for Aarch64Boot {
-    fn early_io_init(&self) -> SetupReturn {
+    fn early_serial_io_init(&self) -> SetupReturn {
         unsafe {
             early_serial_init();
 

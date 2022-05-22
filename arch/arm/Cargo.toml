@@ -2,47 +2,14 @@
 name = "arm"
 version = "0.1.0"
 edition = "2021"
-description = "ARM kernel support"
-
-[lib]
-name = "arm"
-path = "src/lib.rs"
-crate-type = ["staticlib"]
-edition = "2021"
-
-[[bin]]
-name = "arm_kernel_bin"
-path = "src/main.rs"
-edition = "2021"
-
-[target.'cfg(target_arch = "arm")'.dependencies]
-cortex-m = "0.7.4"
-cortex-m-rt = "0.7.1"
-cortex-m-semihosting = "0.3.7"
+description = "ARM (32) kernel"
 
 [dependencies]
-cfg-if = "1.0.0"
-cpu = { path = "../../drivers/cpu/" }
-device = { path = "../../drivers/device/" }
-dif = { path = "../../include/dif/" }
-kinfo = { path = "../../kernel/kinfo/" }
-nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
-novuskinc = { path = "../../include/novusk/", features = ["library"] }
-r0 = "1.0.0"
-rlibc = "1.0.0"
 setup = { path = "../../kernel/setup/" }
-soc = { path = "../../drivers/soc/" }
 
 [features]
-default = []
-no_panic = []
-no_alloc = []
 cortex_a = []
 cortex_m = []
-rpi3b = ["cortex_a"]
-rpi4b = ["cortex_a"]
+rpi2b = ["cortex_a"]
 stellaris6965 = ["cortex_m"]
-stm32f407 = ["cortex_m", "cortex-m-rt/device"]
-
-unknown_soc = []
-bcm28xx = []
+stm32f407 = ["cortex_m"]
