@@ -7,5 +7,5 @@ fn main() {
         remove_file("src/dif.rs");
     }*/
 
-    add_kernel_dif("../../../arch/arm/src/include/dif/kernel_dif.dif");
+    add_kernel_dif("../../../arch/arm/src/include/difs/stellaris6965.dif");
 }

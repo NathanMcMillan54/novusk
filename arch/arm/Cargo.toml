@@ -5,6 +5,7 @@ edition = "2021"
 description = "ARM (32) kernel"
 
 [dependencies]
+dif = { path = "../../include/dif/" }
 setup = { path = "../../kernel/setup/" }
 
 [features]

@@ -30,7 +30,7 @@ dif:
 
 build_tools:
 	@ echo "Compiling build tools..."
-	@ cargo build -p buildkern
+	@ cargo build -p buildkern --target x86_64-unknown-linux-gnu
 
 setup:
 	@ rm -rf include/novusk/kms
@@ -38,7 +38,7 @@ setup:
 
 buildkern:
 	@ echo "Running buildkern with CONFIG file ($(CONFIG))..."
-	@ ./target/debug/buildkern $(ARCH) $(CONFIG)
+	@ ./target/x86_64-unknown-linux-gnu/debug/buildkern $(ARCH) $(CONFIG)
 	@ echo "Finished compiling"
 
 link:

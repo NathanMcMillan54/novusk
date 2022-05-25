@@ -14,7 +14,7 @@ fn setup_sys_clocks() {
 
 pub fn stellaris_board_init() {
     if tm4c123x::Peripherals::take().is_none() {
-        panic!("Couldn't find {} peripherals", DIF_FILE[0]);
+        panic!("Couldn't find device peripherals");
     }
 
     setup_sys_clocks();

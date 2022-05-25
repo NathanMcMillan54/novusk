@@ -33,10 +33,10 @@ impl Aarch64Boot {
 
     pub unsafe fn dif_init(&self) -> SetupReturn {
         extern "C" {
-            static mut DIF_FILE: &'static [&'static str; 11];
+            static mut DIF_FILE: &'static [(&'static str, &'static str); 11];
         }
 
-        DIF = DIF.parse_and_set(DIF_FILE);
+        DIF.set_and_parse(DIF_FILE);
 
         if DIF == Dif::empty() {
             return (Err("Failed to initialize DIF"), "DIF is empty");

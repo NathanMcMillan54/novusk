@@ -1,11 +1,13 @@
-&["RaspberryPi 3B",
-  "1056964608", // Peripheral base (pointer) as a decimal
-  "0",
-  "0",
-  "0",
-  "0",
-  "0",
-  "1059065856",
-  "1059065856",
-  "1057011840",
-  "debug_off"];
+[
+    ("DifName", "rpi3b.dif"),
+    ("DeviceName", "RaspberryPi 3B"),
+    ("PeripheralAddress", "1056964608"),
+    ("SocName", "BCM2837"),
+    ("AllocMemory", "true"),
+    ("EnableSerial", "true"),
+    ("EnableFrameBuffer", "true"),
+    ("PrintingMethod", "Serial"),
+    ("EnableDeviceIrqs", "true"),
+    ("InitInput", "true"),
+    ("InitFs", "true"),
+]

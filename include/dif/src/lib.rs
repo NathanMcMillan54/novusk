@@ -1,77 +1,101 @@
 #![no_std]
+#![allow(warnings)]
 
-#[macro_use] extern crate alloc;
-
-use alloc::string::ToString;
-use alloc::vec::Vec;
-
+pub mod fields;
 pub mod parse;
+
+use fields::DifFieldNames;
+use crate::fields::DifLine;
 
 #[derive(Copy, Clone, PartialEq)]
 pub struct Dif {
-    pub device_name: &'static str,
-    pub peripheral_addr: Option<u32>,
-    pub gpio0_addr: Option<u32>,
-    pub gpio1_addr: Option<u32>,
-    pub gpio2_addr: Option<u32>,
-    pub gpio3_addr: Option<u32>,
-    pub gpio4_addr: Option<u32>,
-    pub serial_addr: Option<u32>,
-    pub uart_addr: Option<u32>,
-    pub fb_addr: Option<u32>,
-    pub mb_addr: Option<u32>,
-    pub debug: Option<bool>,
+    pub dif_name: Option<&'static str>,
+    pub line1: DifLine,
+    pub line2: DifLine,
+    pub line3: DifLine,
+    pub line4: DifLine,
+    pub line5: DifLine,
+    pub line6: DifLine,
+    pub line7: DifLine,
+    pub line8: DifLine,
+    pub line9: DifLine,
+    pub line10: DifLine,
+    pub line11: DifLine,
 }
 
-
 impl Dif {
+    pub const DIF_FIELD_NAMES: &'static [DifFieldNames; 18] = &[
+        DifFieldNames::None,
+        DifFieldNames::DifName,
+        DifFieldNames::DeviceName,
+        DifFieldNames::BootMethod,
+        DifFieldNames::PeripheralAddress,
+        DifFieldNames::SocName,
+        DifFieldNames::AllocMemory,
+        DifFieldNames::EnableSerial,
+        DifFieldNames::EnableFrameBuffer,
+        DifFieldNames::PrintingMethod,
+        DifFieldNames::IrqMethod,
+        DifFieldNames::EnableDeviceIrqs,
+        DifFieldNames::DeviceSpecificKernel,
+        DifFieldNames::StartInit,
+        DifFieldNames::InitInput,
+        DifFieldNames::InitFs,
+        DifFieldNames::InitNet,
+        DifFieldNames::ShutdownOnPanic
+    ];
+
     pub const fn empty() -> Self {
         return Dif {
-            device_name: "",
-            peripheral_addr: None,
-            gpio0_addr: None,
-            gpio1_addr: None,
-            gpio2_addr: None,
-            gpio3_addr: None,
-            gpio4_addr: None,
-            serial_addr: None,
-            uart_addr: None,
-            fb_addr: None,
-            mb_addr: None,
-            debug: None
+            dif_name: None,
+            line1: (DifFieldNames::None, ""),
+            line2: (DifFieldNames::None, ""),
+            line3: (DifFieldNames::None, ""),
+            line4: (DifFieldNames::None, ""),
+            line5: (DifFieldNames::None, ""),
+            line6: (DifFieldNames::None, ""),
+            line7: (DifFieldNames::None, ""),
+            line8: (DifFieldNames::None, ""),
+            line9: (DifFieldNames::None, ""),
+            line10: (DifFieldNames::None, ""),
+            line11: (DifFieldNames::None, ""),
         };
     }
 
-    pub fn new(name: &'static str,
-               periph_addr: Option<u32>,
-               gpio0: Option<u32>,
-               gpio1: Option<u32>,
-               gpio2: Option<u32>,
-               gpio3: Option<u32>,
-               gpio4: Option<u32>,
-               serial: Option<u32>,
-               uart: Option<u32>,
-               fb: Option<u32>,
-               mb: Option<u32>,
-               debug: Option<bool>) -> Self {
-
-        return Dif {
-            device_name: name,
-            peripheral_addr: periph_addr,
-            gpio0_addr: gpio0,
-            gpio1_addr: gpio1,
-            gpio2_addr: gpio2,
-            gpio3_addr: gpio3,
-            gpio4_addr: gpio4,
-            serial_addr: serial,
-            uart_addr: uart,
-            fb_addr: fb,
-            mb_addr: mb,
-            debug: debug,
-        }
+    /// Indexes ``Dif`` like an array (start from ``0``), the "array" starts on ``dif_name``
+    pub fn get_index(&self, index: usize) -> DifLine {
+        return match index {
+            0 => (DifFieldNames::DifName, self.dif_name.unwrap_or("unknown.dif")),
+            1 => self.line1,
+            2 => self.line2,
+            3 => self.line3,
+            4 => self.line4,
+            5 => self.line5,
+            6 => self.line6,
+            7 => self.line7,
+            8 => self.line8,
+            9 => self.line9,
+            10 => self.line10,
+            11 => self.line11,
+            _ => (DifFieldNames::None, "Index is expected to be 0 - 11"),
+        };
     }
 
-    pub fn set(&mut self, dif_file: &[&'static str; 11]) {
-        self.parse_and_set(dif_file);
+    pub fn set_index(&mut self, index: usize, line: DifLine) {
+        match index {
+            0 => self.dif_name = Some(line.1),
+            1 => self.line1 = line,
+            2 => self.line2 = line,
+            3 => self.line3 = line,
+            4 => self.line4 = line,
+            5 => self.line5 = line,
+            6 => self.line6 = line,
+            7 => self.line7 = line,
+            8 => self.line8 = line,
+            9 => self.line9 = line,
+            10 => self.line10 = line,
+            11 => self.line11 = line,
+            _ => return,
+        };
     }
 }

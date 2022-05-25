@@ -29,9 +29,7 @@ extern "C" {
 }
 
 unsafe fn raspberrypi_init() {
-    if dif::DIF_FILE[0].contains("RaspberryPi 3") {
-        rpi3::rpi3_init();
-    }
+    rpi3::rpi3_init();
 }
 
 fn raspberrypi_end() {
@@ -44,24 +42,18 @@ module_init!(early_device_init, raspberrypi_init);
 module_end!(early_device_end, raspberrypi_end);
 
 unsafe fn handle_irqs(irqn: i16) -> () {
-    if DIF_FILE[0].contains("RaspberryPi 3") {
-        rpi3::irqs::rpi3_irq_handler(irqn);
-    }
+    rpi3::irqs::rpi3_irq_handler(irqn);
 }
 
 define_core_function!(CoreFunctionNames::device_irq_handler, irqn: i16, -> (), handle_irqs);
 
 unsafe fn device_irqs_init(_n: ()) -> () {
-    if dif::DIF_FILE[0].contains("RaspberryPi 3") {
-        rpi3::irqs::rpi3_enable_irqs();
-    }
+    rpi3::irqs::rpi3_enable_irqs();
 }
 
 define_core_function!(CoreFunctions::device_specific_irqs_init, _n: (), -> (), device_irqs_init);
 
 #[no_mangle]
 pub unsafe extern "C" fn set_platform_drivers() {
-    if dif::DIF_FILE[0].contains("RaspberryPi 3") {
-        rpi3::set_rpi3_drivers();
-    }
+    rpi3::set_rpi3_drivers();
 }

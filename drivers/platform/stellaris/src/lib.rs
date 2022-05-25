@@ -17,10 +17,6 @@ pub(crate) mod s811;
 
 fn stellaris_init() {
     common::stellaris_board_init();
-
-    if dif::DIF_FILE[0] == "Stellaris LM3S6965" {
-        s6965::lm3s6965_init();
-    }
 }
 
 

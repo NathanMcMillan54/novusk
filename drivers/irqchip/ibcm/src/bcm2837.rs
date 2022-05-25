@@ -7,7 +7,7 @@ pub struct Bcm2837IrqChip;
 pub static mut BCM2837_IRQCHIP: Bcm2837IrqChip = Bcm2837IrqChip;
 
 extern "C" {
-    fn _early64_printk(Arguments);
+    fn _early64_printk(args: Arguments);
 }
 
 #[no_mangle]

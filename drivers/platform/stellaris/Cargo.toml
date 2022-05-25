@@ -4,9 +4,6 @@ version = "0.1.0"
 edition = "2021"
 description = "A driver for Stellaris devices"
 
-[lib]
-crate-type = ["staticlib"]
-
 [dependencies]
 cortex-m-semihosting = "0.3.7"
 novuskinc = { path = "../../../include/novusk/" }

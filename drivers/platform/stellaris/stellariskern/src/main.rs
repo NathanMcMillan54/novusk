@@ -3,7 +3,7 @@
 
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate cortex_m_semihosting;
-
+pub(crate) extern crate stellaris;
 pub(crate) extern crate nmallocator;
 
 use core::panic::PanicInfo;

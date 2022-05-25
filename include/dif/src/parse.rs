@@ -1,30 +1,22 @@
-use alloc::vec::Vec;
 use core::fmt::Arguments;
-use crate::Dif;
+use crate::{Dif, DifFieldNames};
 
 impl Dif {
-    pub fn parse_and_set(&mut self, file: &[&'static str; 11]) -> Dif {
-        let mut new_dif = Dif::empty();
+    pub fn set_and_parse(&mut self, file: &[(&'static str, &'static str); 11]) -> Dif {
+        for line in 0..file.len() {
+            for field in 0..Dif::DIF_FIELD_NAMES.len() {
+                if file[line].0 == Dif::DIF_FIELD_NAMES[field].to_str() {
+                    self.set_index(line + 1, (Dif::DIF_FIELD_NAMES[field], file[line].1));
+                }
+            }
+        }
 
-        new_dif.device_name = file[0];
-        new_dif.peripheral_addr = Some(file[1].parse::<u32>().unwrap());
-        new_dif.gpio1_addr = Some(file[2].parse::<u32>().unwrap());
-        new_dif.gpio2_addr = Some(file[3].parse::<u32>().unwrap());
-        new_dif.gpio3_addr = Some(file[4].parse::<u32>().unwrap());
-        new_dif.gpio4_addr = Some(file[5].parse::<u32>().unwrap());
-        new_dif.serial_addr = Some(file[6].parse::<u32>().unwrap());
-        new_dif.uart_addr = Some(file[7].parse::<u32>().unwrap());
-        new_dif.fb_addr = Some(file[8].parse::<u32>().unwrap());
-        new_dif.mb_addr = Some(file[9].parse::<u32>().unwrap());
+        for i in 1..11 {
+            if self.get_index(i).0 == DifFieldNames::DifName {
+                self.dif_name = Some(self.get_index(i).1);
+            }
+        }
 
-        // Why does this work?
-        if file[10] == "debug_off" {
-            new_dif.debug = Some(false);
-        } else if file[10] == "debug_on" {
-            new_dif.debug = Some(true);
-        } else { panic!("Last line should be \"debug_on\" or \"debug_off\", not {}", file[10]); }
-
-        *self = new_dif;
-        return new_dif;
+        return *self;
     }
 }

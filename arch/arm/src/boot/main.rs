@@ -1,9 +1,11 @@
+use crate::include::dif::set_dif;
 use super::setup::ArmBoot;
 
 #[no_mangle]
 pub unsafe extern "C" fn arm_boot_setup() {
-    let boot = ArmBoot::new();
+    set_dif();
 
+    let boot = ArmBoot::new();
     boot.setup();
 }
 

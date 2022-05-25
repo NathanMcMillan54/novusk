@@ -1,7 +1,7 @@
 use alloc::vec::Vec;
 
 #[test]
-fn no_alloc_error() {
+pub fn no_alloc_error() {
     let mut test_vec: Vec<i32> = vec![];
 
     for _ in 0..1024 {

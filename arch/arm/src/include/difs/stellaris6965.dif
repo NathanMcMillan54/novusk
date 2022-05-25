@@ -1,0 +1,13 @@
+[
+    ("DifName", "stellaris6965.dif"),
+    ("DeviceName", "Stellaris 6965 (lm3s6965evb)"),
+    ("PeripheralAddress", "3758157056"),
+    ("AllocMemory", "true"),
+    ("EnableSerial", "true"),
+    ("PrintingMethod", "Serial"),
+    ("DeviceKernel", "false"),
+    ("StartInit", "true"),
+    ("IrqMethod", "NVIC"),
+    ("EnableDeviceIrqs", "true"),
+    ("ShutdownOnPanic", "false")
+]
