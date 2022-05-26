@@ -7,6 +7,7 @@
 #[macro_use] extern crate tock_registers;
 
 use core::fmt::Write;
+use core::panic::PanicInfo;
 use novuskinc::core::names::CoreFunctionNames;
 use novuskinc::drivers::manager::DeviceDriverManager;
 use novuskinc::prelude::KernelConsoleDriver;
@@ -56,4 +57,9 @@ define_core_function!(CoreFunctions::device_specific_irqs_init, _n: (), -> (), d
 #[no_mangle]
 pub unsafe extern "C" fn set_platform_drivers() {
     rpi3::set_rpi3_drivers();
+}
+
+#[panic_handler]
+fn _panic(_info: &PanicInfo) -> ! {
+    loop {  }
 }
