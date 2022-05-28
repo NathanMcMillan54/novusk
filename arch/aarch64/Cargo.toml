@@ -16,7 +16,7 @@ path = "src/main.rs"
 edition = "2021"
 
 [dependencies]
-bcm = { path = "../../drivers/soc/bcm/" }
+# bcm = { path = "../../drivers/soc/bcm/" }
 dif = { path = "../../include/dif/" }
 kernel = { path = "../../kernel/" }
 kinfo = { path = "../../kernel/kinfo/" }

@@ -16,12 +16,16 @@ impl Aarch64Kernel {
     pub fn setup(&self) {
         self.test_memory();
         let irq = self.irq_setup();
+        let dev = self.device_init();
 
         if irq.0.is_err() {
             panic!("{}", irq.1);
+        } else if dev.0.is_err() {
+            panic!("{}", dev.1);
         }
 
         early_printk!("{}\n", irq.1);
+        early_printk!("{}\n", dev.1);
     }
 
     fn test_memory(&self) {

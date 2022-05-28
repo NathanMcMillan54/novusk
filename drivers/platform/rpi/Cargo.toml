@@ -18,3 +18,7 @@ tock-registers = "0.7.0"
 
 [build-dependencies]
 difi = { path = "../../../tools/build/difi/" }
+
+[features]
+dev_selected = []
+rpi3 = ["dev_selected"]

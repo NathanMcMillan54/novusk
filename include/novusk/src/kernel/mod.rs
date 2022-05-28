@@ -1,3 +1,6 @@
+pub mod macros;
+pub mod types;
+
 extern "C" {
     /// ``arch_prepare_init`` uses the architecture specific kernel to get ready for the main kernel
     /// initialization

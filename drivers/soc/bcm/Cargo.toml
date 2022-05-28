@@ -2,8 +2,12 @@
 name = "bcm"
 version = "0.1.0"
 edition = "2021"
-description = "An SOC driver for Broadcom CPUs, currently intended for BCM2837"
+description = "An SOC driver for Broadcom CPUs"
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
 soc = { path = "../" }
+
+[features]
+soc_selected = []
+bcm2837 = ["soc_selected"]

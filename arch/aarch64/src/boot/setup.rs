@@ -16,7 +16,6 @@ impl Aarch64Boot {
         let dif = unsafe { self.dif_init() };
         let ld = unsafe { self.linker_setup() };
         let early_io = self.early_serial_io_init();
-        let early_cpu = self.early_cpu_init();
 
         if dif.0.is_err() {
             panic!("{}", dif.1)

@@ -13,4 +13,4 @@ novuskinc = { path = "../../../include/novusk/" }
 bcm = { path = "../../soc/bcm/" }
 
 [features]
-bcm2837 = []
+bcm2837 = ["bcm/bcm2837"]

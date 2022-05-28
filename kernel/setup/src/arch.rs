@@ -1,12 +1,13 @@
+use novuskinc::platform::device_init;
 use crate::SetupReturn;
 
 pub trait ArchKernelSetup {
     unsafe fn device_init(&self) -> SetupReturn {
-        extern "C" {
-            fn device_init() -> SetupReturn;
-        }
+        let init = device_init();
 
-        return device_init();
+        return if init == 0 {
+            (Ok(()), "Device successfully initialized")
+        } else { (Err("Device init error"), "Device failed to initialize") }
     }
 
     fn memory_setup(&self) -> SetupReturn {

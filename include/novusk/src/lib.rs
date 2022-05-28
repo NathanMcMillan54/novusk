@@ -3,7 +3,6 @@
 #![feature(const_fn_trait_bound, const_mut_refs, panic_info_message)]
 
 pub mod console;
-pub mod core;
 pub mod drivers;
 pub mod elf;
 pub mod fb;

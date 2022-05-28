@@ -41,7 +41,7 @@ pub unsafe extern "C" fn aarch64_irq_setup() {
     }
 
     irq_vector_init();
-    device_timer_init();
+    // device_timer_init();
 
     // device_specific_irqs_init();
     //irqchip_init();

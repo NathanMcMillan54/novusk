@@ -1,7 +1,11 @@
 use core::fmt::{Arguments, Write};
 use kernel::KERNEL;
+use novuskinc::serial::SimpleUart;
 use crate::include::dif::DIF;
-use super::uart::KERNEL_SIMPLEUART;
+
+extern "C" {
+    static mut KERNEL_SIMPLEUART: SimpleUart;
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn _early64_printk(fmt: Arguments) {

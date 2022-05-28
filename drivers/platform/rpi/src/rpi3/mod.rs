@@ -1,30 +1,9 @@
-pub mod irqs;
-pub mod timer;
-pub mod uart;
+use novuskinc::kernel::types::KernelFunctionName;
 
-use core::borrow::BorrowMut;
-use core::fmt::Write;
-use novuskinc::console::{KernelConsole, KernelConsoleDriver};
-use novuskinc::drivers::Driver;
-use uart::Rpi3Uart;
-use crate::DEVICE_DRIVERS;
+unsafe fn rpi3_init() -> u8 {
 
-pub struct Rpi3 {
-    pub uart: Rpi3Uart
+
+    0
 }
 
-impl Rpi3 {
-    pub fn board() -> Self {
-        return Rpi3 {
-            uart: Rpi3Uart::new(),
-        };
-    }
-}
-
-pub unsafe fn rpi3_init() {
-    let mut board = Rpi3::board();
-}
-
-pub(crate) unsafe fn set_rpi3_drivers() {
-    DEVICE_DRIVERS.add_driver(&Rpi3Uart { debug: true, console: KernelConsole { name: "RPi3 UART console", width: 128, height: 64, chars_written: 0 } } as &dyn Driver);
-}
+define_kernel_function!(KernelFunctionName::device_init, -> u8, rpi3_init);

@@ -1,6 +1,6 @@
 ARCH_KERNEL=aarch64 --release --features aarch64/rpi3b --target targets/aarch64-novusk.json
 KERNEL_INIT=init --release --target targets/aarch64-novusk.json
-DEVICE_DRIVER=rpi --release --target targets/aarch64-novusk.json
+DEVICE_DRIVER=rpi --release --features rpi/rpi3 --target targets/aarch64-novusk.json
 DISPLAY_MODULE=armfb --release --target targets/aarch64-novusk.json
-SOC_DRIVER=bcm --release --target targets/aarch64-novusk.json
-IRQCHIP_DRIVER=ibcm --release --features ibcm/bcm2837 --target targets/aarch64-novusk.json
+SOC_DRIVER=bcm --release --features bcm/bcm2837 --target targets/aarch64-novusk.json
+IRQCHIP_DRIVER=ibcm --release --features ibcm/bcm2837 --features ibcm/bcm2837 --target targets/aarch64-novusk.json

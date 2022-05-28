@@ -5,4 +5,5 @@ edition = "2021"
 description = "Setup before kernel_init and setup before kernel_main"
 
 [dependencies]
+novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }
