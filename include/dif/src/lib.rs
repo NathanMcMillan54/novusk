@@ -4,7 +4,7 @@
 pub mod fields;
 pub mod parse;
 
-use fields::DifFieldNames;
+pub use fields::DifFieldNames;
 use crate::fields::DifLine;
 
 #[derive(Copy, Clone, PartialEq)]

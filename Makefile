@@ -3,6 +3,8 @@ CONFIG =?
 CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
 DEFCONFIG = True
 DIF = None
+# Change this if you're not on an x86_64 linux device
+HOST = x86_64-unknown-linux-gnu
 KERNEL = Image
 PLATFORM = default
 TARGET = targets/$(ARCH)-novusk.json
@@ -30,7 +32,7 @@ dif:
 
 build_tools:
 	@ echo "Compiling build tools..."
-	@ cargo build -p buildkern --target x86_64-unknown-linux-gnu
+	@ cargo build -p buildkern --target $(HOST)
 
 setup:
 	@ rm -rf include/novusk/kms
@@ -38,7 +40,7 @@ setup:
 
 buildkern:
 	@ echo "Running buildkern with CONFIG file ($(CONFIG))..."
-	@ ./target/x86_64-unknown-linux-gnu/debug/buildkern $(ARCH) $(CONFIG)
+	./target/$(HOST)/debug/buildkern $(ARCH) $(CONFIG)
 	@ echo "Finished compiling"
 
 link:

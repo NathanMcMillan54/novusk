@@ -30,27 +30,3 @@ impl Default for SocInfo {
     }
 }
 
-pub unsafe fn validate_soc_dif(dif_periph_addr: *mut u8) -> bool {
-    extern "C" {
-        static mut SOC_INFO: SocInfo;
-    }
-
-    let soc_addresses = SOC_INFO.addresses;
-    let mut ret = false;
-
-    if SOC_INFO == SocInfo::default() {
-        ret = true;
-        return ret;
-    }
-
-    for (name, addr) in soc_addresses {
-        if name == "Peripheral Base" {
-            if addr == dif_periph_addr {
-                ret = true;
-            }
-        }
-    }
-
-    return ret;
-}
-

@@ -10,6 +10,7 @@ crate-type = ["staticlib"]
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }
+bcm = { path = "../../soc/bcm/" }
 novuskinc = { path = "../../../include/novusk/" }
 nmallocator = { path = "../../../mm/nmallocator/", features = ["wee_allocator"] }
 printk = { path = "../../../kernel/printk/" }
@@ -21,4 +22,4 @@ difi = { path = "../../../tools/build/difi/" }
 
 [features]
 dev_selected = []
-rpi3 = ["dev_selected"]
+rpi3 = ["dev_selected", "bcm/bcm2837"]

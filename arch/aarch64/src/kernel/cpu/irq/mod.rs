@@ -47,8 +47,4 @@ pub unsafe extern "C" fn aarch64_irq_setup() {
     //irqchip_init();
 
     AARCH64_IRQS.enable();
-
-    for _ in 0..3 {
-        asm!("wfi");
-    }
 }

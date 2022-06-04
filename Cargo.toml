@@ -48,7 +48,6 @@ members = [
     "include/novusk/",
 
     "init/",
-    "kernel/",
 
     "lib/libbmu/",
     "lib/libc/unistd/",

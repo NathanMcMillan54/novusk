@@ -6,6 +6,7 @@ pub mod console;
 pub mod drivers;
 pub mod elf;
 pub mod fb;
+pub mod firmware;
 pub mod irq;
 pub mod kernel;
 pub mod keyboard;

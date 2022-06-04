@@ -1,5 +1,4 @@
 use core::fmt::{Arguments, Write};
-use kernel::KERNEL;
 use novuskinc::serial::SimpleUart;
 use crate::include::dif::DIF;
 
@@ -10,11 +9,6 @@ extern "C" {
 #[no_mangle]
 pub unsafe extern "C" fn _early64_printk(fmt: Arguments) {
    KERNEL_SIMPLEUART.write_fmt(fmt);
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn aarch64_setup_early_printk() {
-
 }
 
 #[macro_export]

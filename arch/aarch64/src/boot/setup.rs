@@ -1,7 +1,7 @@
 use crate::include::dif::DIF;
 use crate::kernel::uart::is_init;
 use crate::mm::bss::*;
-use dif::Dif;
+use dif::{Dif};
 use novuskinc::serial::early_serial_init;
 use setup::{BootSetup, SetupReturn};
 
