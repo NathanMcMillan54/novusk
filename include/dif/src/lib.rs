@@ -98,4 +98,16 @@ impl Dif {
             _ => return,
         };
     }
+
+    pub fn get(&self, name: &'static str) -> DifLine {
+        for f in 0..Dif::DIF_FIELD_NAMES.len() {
+            let line = self.get_index(f);
+
+            if line.0.to_str() == name {
+                return line;
+            }
+        }
+
+        return (DifFieldNames::None, "None");
+    }
 }

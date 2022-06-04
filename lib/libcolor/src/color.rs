@@ -7,4 +7,3 @@ impl ColorCode {
         ColorCode((background) << 4 | (foreground))
     }
 }
-

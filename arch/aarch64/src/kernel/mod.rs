@@ -1,5 +1,6 @@
 pub mod cpu;
 pub mod early_printk;
+pub mod irq;
 pub mod prep_init;
 pub mod panic;
 pub mod printk;

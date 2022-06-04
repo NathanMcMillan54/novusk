@@ -46,6 +46,11 @@ impl Aarch64Boot {
 impl BootSetup for Aarch64Boot {
     fn early_serial_io_init(&self) -> SetupReturn {
         unsafe {
+            // Check if the device needs to init serial
+            if !DIF.get("EnableSerial").1.parse::<bool>().unwrap() {
+                return (Ok(()), "Serial did not need to be initialized");
+            }
+
             early_serial_init();
 
             if is_init() {

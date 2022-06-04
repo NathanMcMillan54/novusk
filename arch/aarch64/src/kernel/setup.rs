@@ -2,7 +2,7 @@ use core::ptr::write_volatile;
 use novuskinc::platform::device_init;
 use printk::printk_init;
 use crate::early_printk;
-use super::cpu::irq::aarch64_irq_setup;
+use super::irq::aarch64_irq_setup;
 use setup::{ArchKernelSetup, SetupReturn};
 use crate::include::dif::DIF;
 
