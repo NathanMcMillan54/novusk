@@ -3,17 +3,17 @@ use core::ops::Deref;
 use novuskinc::firmware::*;
 use tock_registers::registers::{ReadOnly, WriteOnly};
 use tock_registers::interfaces::{Readable, Writeable};
+use crate::bcm2837::SOC_INFO;
 
 register_bitfields! {
-        u32,
+    u32,
 
-        STATUS [
-            FULL  OFFSET(31) NUMBITS(1) [],
-            EMPTY OFFSET(30) NUMBITS(1) []
-        ]
-    }
+    STATUS [
+        FULL  OFFSET(31) NUMBITS(1) [],
+        EMPTY OFFSET(30) NUMBITS(1) []
+    ]
+}
 
-const VIDEOCORE_MBOX: u32 = 0x3F00_0000 + 0xB880;
 
 #[allow(non_snake_case)]
 #[repr(C)]
@@ -69,7 +69,12 @@ impl Bcm2837Mailbox {
     }
 
     fn ptr() -> *const RegisterBlock {
-        VIDEOCORE_MBOX as *const _
+        let periph_addr = unsafe { SOC_INFO.get("Peripheral Address").unwrap() };
+        let video_offset = unsafe { SOC_INFO.get("Video Core Offset").unwrap() };
+
+        let mb_addr = periph_addr + video_offset;
+
+        mb_addr as *const RegisterBlock
     }
 
     fn wait(&self) {

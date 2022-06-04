@@ -65,4 +65,5 @@ pub unsafe extern "C" fn setup_arch() {
     early_printk!("\nSetting up kernel...\n");
 
     AARCH64_KERNEL.setup();
+    AARCH64_KERNEL.early_kernel = false;
 }

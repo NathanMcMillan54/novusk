@@ -30,5 +30,7 @@ impl Aarch64Irqs {
 pub unsafe extern "C" fn aarch64_irq_setup() {
     AARCH64_IRQS.disable();
 
+
+
     AARCH64_IRQS.enable();
 }
