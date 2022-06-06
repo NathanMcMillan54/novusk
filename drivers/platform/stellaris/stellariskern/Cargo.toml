@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 description = "Stellaris device specific kernel"
 
+[[bin]]
+name = "a32dImage"
+path = "src/main.rs"
+
 [dependencies]
 arm = { path = "../../../../arch/arm/", features = ["stellaris6965"] }
 asminc = { path = "../../../../include/asm/" }

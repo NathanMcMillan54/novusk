@@ -2,6 +2,7 @@ ARCH =?
 CONFIG =?
 CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
 DEFCONFIG = True
+DEVICE_KERNEL = False
 DIF = None
 # Change this if you're not on an x86_64 linux device
 HOST = x86_64-unknown-linux-gnu
@@ -25,7 +26,6 @@ ifeq ($(DIF), None)
 endif
 
 setup_build: dif build_tools setup
-	@ $(link)
 
 dif:
 	@ cp -r arch/$(ARCH)/src/include/dif/$(DIF) arch/$(ARCH)/src/include/dif/kernel_dif.dif
@@ -44,7 +44,7 @@ buildkern:
 	@ echo "Finished compiling"
 
 link:
-	@ $(MAKE) -C arch/$(ARCH)/ KERNEL=$(KERNEL) PLATFORM=$(PLATFORM) link
+	@ $(MAKE) -C arch/$(ARCH)/ KERNEL=$(KERNEL) PLATFORM=$(PLATFORM) TARGET=$(TARGET) DEVICE_KERNEL=$(DEVICE_KERNEL) link
 
 clean:
 	@ cargo clean

@@ -8,10 +8,6 @@ description = "Keyboard input handler"
 pc-keyboard = "0.5.1"
 printk = { path = "../../../kernel/printk/" }
 
-[dependencies.conquer-once]
-version = "0.2.0"
-default-features = false
-
 [dependencies.crossbeam-queue]
 version = "0.2.1"
 default-features = false
