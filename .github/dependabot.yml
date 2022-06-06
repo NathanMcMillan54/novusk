@@ -1,0 +1,8 @@
+# Dependabot for Novusk
+
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "weekly"
