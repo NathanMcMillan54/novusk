@@ -10,7 +10,7 @@ members = [
     "arch/arm/",
     "arch/riscv/",
     "arch/x86_64/",
-    "arch/xtensa/",
+    # "arch/xtensa/",
 
     "drivers/boot/nkuefi/",
     "drivers/cpu/",
