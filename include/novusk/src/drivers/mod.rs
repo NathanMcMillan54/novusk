@@ -2,6 +2,7 @@ use core::fmt::Write;
 use crate::prelude::*;
 
 pub mod manager;
+pub mod names;
 
 pub type DriverResult = Result<(), &'static str>;
 

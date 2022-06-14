@@ -3,8 +3,10 @@
 #[macro_use] extern crate novuskinc;
 
 use core::fmt::{Arguments, Write};
+use novuskinc::drivers::Driver;
 use novuskinc::drivers::manager::DeviceDriverManager;
 
+pub mod init;
 pub mod macros;
 
 extern "C" {
@@ -13,20 +15,20 @@ extern "C" {
 }
 
 pub struct Printk {
-    pub writer: &'static str,
+    pub init: bool,
+    pub console_driver: Option<&'static dyn Driver>,
 }
 
 impl Printk {
-    pub const fn new() -> Self {
-        return Printk {
-            writer: "None",
-        };
+    pub fn set_init(&mut self, init: bool, console_driver: &'static dyn Driver) {
+        self.init = init;
+        self.console_driver = Some(console_driver);
     }
 }
 
 impl Write for Printk {
     fn write_str(&mut self, s: &str) -> core::fmt::Result {
-        let writer = unsafe { DEVICE_DRIVERS.get_driver(self.writer) };
+        let writer = self.console_driver;
 
         if writer.is_none() {
             return Err(Default::default());
@@ -46,7 +48,7 @@ pub(crate) unsafe  fn can_printk_work() -> bool {
 
 pub unsafe fn printk_init(writer_driver: &'static str) {
     if DEVICE_DRIVERS.get_driver(writer_driver).is_some() {
-        PRINTK.writer = writer_driver;
+        // PRINTK.writer = writer_driver;
     } else {
         panic!("{} is not a driver option to support printk, use \"Console Driver\" or \"Graphics Driver\"", writer_driver);
     }

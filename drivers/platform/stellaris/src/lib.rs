@@ -15,8 +15,10 @@ pub(crate) mod common;
 pub(crate) mod s6965;
 pub(crate) mod s811;
 
-fn stellaris_init() {
+fn stellaris_init() -> u8 {
     common::stellaris_board_init();
+
+    0
 }
 
 

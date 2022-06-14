@@ -11,6 +11,7 @@ pub static mut BCM2837_SIMPLEUART: SimpleUart = SimpleUart::empty();
 unsafe fn bcm2837_simpleuart_init() -> u8 {
     let peripheral_addr = SOC_INFO.get("Peripheral Address").unwrap() as *mut u8;
 
+    BCM2837_SIMPLEUART.name = "BCM2837 SimpleUart";
     BCM2837_SIMPLEUART.set_addrs(peripheral_addr.offset(0x0020_1000 as isize), 0x0 as *mut u8);
 
     0

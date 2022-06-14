@@ -10,6 +10,8 @@ extern "C" {
 /// ``SimpleUart`` is a serial driver mainly used for early printing and debugging
 #[derive(Debug, Copy, Clone)]
 pub struct SimpleUart {
+    /// The name field is for the SimpleUart's
+    pub name: &'static str,
     /// This address is used for printing
     pub output_addr: *mut u8,
     /// This address is used for receiving input
@@ -20,6 +22,7 @@ impl SimpleUart {
     /// Creates a new ``SimpleUart``
     pub fn new() -> Self {
         return SimpleUart {
+            name: "Unknown",
             output_addr: 0x0 as *mut u8,
             input_addr: 0x0 as *mut u8,
         };
@@ -28,6 +31,7 @@ impl SimpleUart {
     /// Creates a new ``SimpleUart``
     pub const fn empty() -> Self {
         return SimpleUart {
+            name: "Unknown",
             output_addr: 0x0 as *mut u8,
             input_addr: 0x0 as *mut u8,
         };

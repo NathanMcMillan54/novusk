@@ -1,3 +1,4 @@
+use novuskinc::platform::device_init;
 use printk::printk_init;
 use crate::SetupReturn;
 
@@ -7,7 +8,11 @@ pub trait ArchKernelSetup {
     }
 
     fn device_init(&self) -> SetupReturn {
-        (Ok(()), "Success")
+        unsafe {
+            if device_init() == 0 {
+                (Ok(()), "Successfully initialized device")
+            } else { (Err("Device init error"), "Failed to initialize device") }
+        }
     }
 
     fn input_setup(&self) -> SetupReturn {

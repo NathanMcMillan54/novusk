@@ -1,9 +1,13 @@
-/// The ``KernelFunctionName``` enum is used for defining kernel kernel functions.
+/// The ``KernelFunctionName``` enum is used for defining important kernel functions.
 #[allow(non_snake_case)]
 #[derive(Copy, Clone, PartialEq)]
 pub enum KernelFunctionName {
     /// This is an empty function that does nothing, it's just an empty function.
     empty,
+
+    /// This function is intended for setting some device drivers to ``DEVICE_DRIVERS``
+    /// (``DeviceDriverManager``), it helps the early architecture kernel setup.
+    early_device_setup,
 
     /// This function is used to initialize the device Novusk is running on, it doesn't have any
     /// arguments or a return type.

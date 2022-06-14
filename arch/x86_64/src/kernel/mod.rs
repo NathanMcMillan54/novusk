@@ -4,7 +4,7 @@ pub mod handlers;
 pub mod idt;
 pub mod io;
 pub mod irq;
-pub mod kernel;
+// pub mod kernel;
 pub mod printk;
 pub mod setup;
 pub mod time;

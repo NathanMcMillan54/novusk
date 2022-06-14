@@ -8,3 +8,6 @@ endif
 
 link:
 	@ $(LINK_COMMAND)
+
+clean:
+	@ rm -rf src/boot/a32dImage
