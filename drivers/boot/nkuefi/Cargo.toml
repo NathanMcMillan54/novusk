@@ -10,5 +10,5 @@ xmas-elf = "0.8.0"
 
 [dependencies]
 rlibc = "1.0.0"
-uefi = "0.13.0"
-uefi-services = "0.10.0"
+uefi = "0.16.0"
+uefi-services = "0.13.0"
