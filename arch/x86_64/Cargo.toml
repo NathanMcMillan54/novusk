@@ -30,7 +30,7 @@ raw-cpuid = "10.2.0"
 setup = { path = "../../kernel/setup/" }
 spin = "0.9.2"
 vgag = { path = "../../drivers/gpu/vgag/", features = ["no_panic"] }
-volatile = "0.2.7"
+volatile = "0.4.5"
 x86_64 = "0.14.9"
 
 [features]
