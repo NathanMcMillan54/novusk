@@ -2,6 +2,7 @@
 
 #[macro_use] extern crate novuskinc;
 
+use core::borrow::Borrow;
 use core::fmt::{Arguments, Write};
 use novuskinc::drivers::Driver;
 use novuskinc::drivers::manager::DeviceDriverManager;
@@ -23,6 +24,13 @@ impl Printk {
     pub fn set_init(&mut self, init: bool, console_driver: &'static dyn Driver) {
         self.init = init;
         self.console_driver = Some(console_driver);
+    }
+
+    pub fn reset(&mut self) {
+        let writer = self.console_driver;
+
+
+        writer.unwrap().clear_screen(0);
     }
 }
 

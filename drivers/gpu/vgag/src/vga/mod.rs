@@ -3,7 +3,7 @@ use libcolor::{Color16, ColorCode};
 use novuskinc::fb::FrameBufferGraphics;
 use spin::Mutex;
 use novuskinc::console::KernelConsoleDriver;
-use novuskinc::drivers::{Driver, DriverResult};
+use novuskinc::drivers::{names::CONSOLE, Driver, DriverResult};
 use novuskinc::keyboard::KeyboardInput;
 
 pub mod vga_80x25;
@@ -22,6 +22,7 @@ pub struct ScreenChar {
     color: ColorCode,
 }
 
+pub(crate) const VGAG_NAME: &'static str = "VGAG (VGA Graphics) Driver";
 static mut VGA_MODE: u32 = 0;
 
 lazy_static! {
@@ -40,10 +41,6 @@ impl VgaG {
         if mode > 3 {
             panic!("VGA mode cannot be above 3, mode: {}", mode);
         } else { unsafe { VGA_MODE = mode; } }
-    }
-
-    pub fn clear_screen(&mut self) {
-
     }
 
     fn write(&mut self, s: &str) {
@@ -106,7 +103,7 @@ impl KernelConsoleDriver for VgaG {
         }
     }
 
-    fn new_line(&mut self) {
+    fn new_line(&self) {
         unsafe {
             match VGA_MODE {
                 0 => VGA_80X25.lock().write_str("\n"),
@@ -115,13 +112,13 @@ impl KernelConsoleDriver for VgaG {
         }
     }
 
-    fn clear_screen(&mut self, option: u16) {
+    fn clear_screen(&self, option: u16) {
         for _ in 0..VGA_80X25.lock().size.1 {
             self.new_line();
         }
     }
 
-    fn dimensions(&mut self) -> (u16, u16) {
+    fn dimensions(&self) -> (u16, u16) {
         unsafe {
             return match VGA_MODE {
                 0 => VGA_80X25.lock().size,
@@ -135,11 +132,11 @@ impl KeyboardInput for VgaG {}
 
 impl Driver for VgaG {
     fn driver_name(&self) -> &'static str {
-        return "VGAG (VGA Graphics) Driver";
+        return VGAG_NAME;
     }
 
     fn name(&self) -> &'static str {
-        return "Graphics Driver";
+        return CONSOLE;
     }
 
     fn init(&self) -> Option<DriverResult> {

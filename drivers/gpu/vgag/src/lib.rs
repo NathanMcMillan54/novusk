@@ -11,7 +11,7 @@ pub mod vga;
 
 use libcolor::{Color16, ColorCode};
 use novuskinc::drivers::Driver;
-use novuskinc::drivers::manager::DeviceDriverManager;
+use novuskinc::drivers::{manager::DeviceDriverManager, names::CONSOLE};
 use novuskinc::fb::*;
 use vga::vga_80x25::{Vga80x25Buffer, Vga80x25};
 use vga::{VgaG, VgaMode};
@@ -30,18 +30,21 @@ extern "C" {
 }
 
 unsafe fn vgag_init() {
-    FB.set("VGA FrameBuffer",
-           (80, 25),
-           0xb8000 as *mut u8,
-    &VgaG as &dyn FrameBufferGraphics);
-
     DEVICE_DRIVERS.add_driver(&VgaG as &dyn Driver);
 }
 
 module_init!(core_display_init, vgag_init);
 
-fn vgag_end() {
+unsafe fn vgag_end() {
+    let vgag_driver = DEVICE_DRIVERS.get_driver(CONSOLE);
 
+    if vgag_driver.is_none() {
+        panic!("core_display wasn't initialized or was initialized unsuccessfully")
+    } else if vgag_driver.unwrap().driver_name() != vga::VGAG_NAME {
+        panic!("'Console Driver' in 'DEVICE_DRIVERS' is not the VGAG console driver");
+    }
+
+    vgag_driver.unwrap().init();
 }
 
 module_end!(core_display_end, vgag_end);

@@ -1,5 +1,5 @@
 use novuskinc::platform::device_init;
-use printk::printk_init;
+use printk::init::console_init;
 use crate::SetupReturn;
 
 pub trait ArchKernelSetup {
@@ -28,7 +28,7 @@ pub trait ArchKernelSetup {
     }
 
     unsafe fn early_kernel_setup(&self) -> SetupReturn {
-        printk_init("Graphics Driver");
+        console_init();
 
         (Ok(()), "Successfully setup early main kernel")
     }
