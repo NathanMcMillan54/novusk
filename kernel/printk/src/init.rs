@@ -13,5 +13,7 @@ pub unsafe extern "C" fn console_init() {
         }
 
         PRINTK.set_init(true, console.unwrap());
+        PRINTK.console_driver.unwrap().init();
+        //PRINTK.console_driver.unwrap().write_character('a', 0, 0);
     } else { panic!("Could not find Console Driver"); }
 }

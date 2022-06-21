@@ -5,6 +5,7 @@ use crate::early_printk;
 use super::irq::aarch64_irq_setup;
 use setup::{ArchKernelSetup, SetupReturn};
 use crate::include::dif::DIF;
+use crate::kernel::drivers::DEVICE_DRIVERS;
 
 static mut AARCH64_KERNEL: Aarch64Kernel = Aarch64Kernel::new();
 
@@ -24,15 +25,19 @@ impl Aarch64Kernel {
 
         let irq = self.irq_setup();
         let dev = unsafe { self.device_init() };
+        let kernel = unsafe { self.early_kernel_setup() };
 
         if irq.0.is_err() {
             panic!("{}", irq.1);
         } else if dev.0.is_err() {
             panic!("{}", dev.1);
+        } else if kernel.0.is_err() {
+            panic!("{}", kernel.1);
         }
 
         early_printk!("{}\n", irq.1);
         early_printk!("{}\n", dev.1);
+        early_printk!("{}\n", kernel.1);
     }
 
     fn test_memory(&self) {
@@ -52,9 +57,11 @@ impl ArchKernelSetup for Aarch64Kernel {
     }
 
     fn device_init(&self) -> SetupReturn {
-        unsafe { device_init(); }
-
-        (Ok(()), "Device initialized")
+        unsafe {
+            if device_init() == 0 {
+                return (Ok(()), "Device successfully initialized");
+            } else { return (Err("Device init error"), "Device failed to initialize"); }
+        }
     }
 }
 

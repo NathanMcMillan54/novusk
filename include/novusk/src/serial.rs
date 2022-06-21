@@ -4,7 +4,7 @@ use core::ptr::{read_volatile, write_volatile};
 extern "C" {
     /// ``early_serial_init`` is used to initialize a ``SimpleUart`` driver, this is usually used
     /// for debugging and comes before the main ``Uart`` driver is initialized.
-    pub fn early_serial_init();
+    pub fn early_serial_init() -> u8;
 }
 
 /// ``SimpleUart`` is a serial driver mainly used for early printing and debugging

@@ -21,5 +21,6 @@ clean:
 	@ rm -rf src/boot/aadImage
 	@ rm -rf src/boot/*.img
 	@ rm -rf src/boot/*.o
+	@ rm -rf src/include/dif/kernel_dif.dif
 	@ rm -rf src/kernel/irq/vector.o
 	@ rm -rf src/kernel/libaarch64.a
