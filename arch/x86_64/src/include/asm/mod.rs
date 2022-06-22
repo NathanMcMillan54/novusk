@@ -1,3 +1,5 @@
+use core::arch::global_asm;
+
 global_asm!(include_str!("x86.S"));
 
 extern "C" {

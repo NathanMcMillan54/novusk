@@ -12,8 +12,6 @@ unsafe fn print_info() {
         x86_printk!("   Size: {}x{}\n", BUFFER_WIDTH, BUFFER_HEIGHT);
         x86_printk!("   Address: {}\n", VGA_ADDRESS_STR);
     }
-
-    x86_printk!("Boot took: {} seconds\n", amd64_timer::ticks() as f64 / 1000000000.0);
 }
 
 #[no_mangle]
