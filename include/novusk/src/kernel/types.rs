@@ -7,7 +7,7 @@ pub enum KernelFunctionName {
 
     /// This function is intended for setting some device drivers to ``DEVICE_DRIVERS``
     /// (``DeviceDriverManager``), it helps the early architecture kernel setup.
-    early_device_setup,
+    early_device_init,
 
     /// This function is used to initialize the device Novusk is running on, it doesn't have any
     /// arguments or a return type.

@@ -5,3 +5,4 @@ edition = "2021"
 description = "Semihosting I/O for ARM"
 
 [dependencies]
+novuskinc = { path = "../../../../include/novusk/" }

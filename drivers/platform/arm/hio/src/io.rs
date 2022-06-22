@@ -1,11 +1,19 @@
 use core::fmt::{Arguments, Write};
 use crate::syscall::syscall;
 
+pub(crate) static mut HIOWRITER: HioWriter = HioWriter::empty();
+
 pub struct HioWriter {
     pub fd: usize,
 }
 
 impl HioWriter {
+    pub const fn empty() -> Self {
+        return HioWriter {
+            fd: 0,
+        };
+    }
+
     pub fn new() -> Self {
         return get_hio();
     }

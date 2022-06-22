@@ -28,8 +28,8 @@ impl BootSetup for ArmBoot {
     fn early_device_init(&self) -> SetupReturn {
         unsafe {
             if early_device_init() == 0 {
-                (Ok(()), "Early device initialized")
-            } else { (Err("Early device init error"), "Failed to initialize early device") }
+                (Ok(()), "Device initialized")
+            } else { (Err("Device init error"), "Failed to initialize device") }
         }
     }
 
