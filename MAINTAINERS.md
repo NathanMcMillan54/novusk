@@ -12,7 +12,7 @@ These are a list of ROLE values:
     DM - Dependency maintainer
         - Update dependencies and remove them if they're not supported
     CM - Code Maintainer
-        - Update code so it compiles with the newest versions the language
+        - Update code so it compiles with the newest versions of the language
 
 ---
 
