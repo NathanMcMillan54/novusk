@@ -10,6 +10,10 @@ use novuskinc::drivers::manager::DeviceDriverManager;
 pub mod init;
 pub mod macros;
 
+/// This module contains functions that ``kernel/tests/`` uses
+#[cfg(feature = "test")]
+pub mod tests;
+
 extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
     pub(crate) static mut PRINTK: Printk;

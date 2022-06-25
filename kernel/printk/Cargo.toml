@@ -11,3 +11,6 @@ path = "src/lib.rs"
 
 [dependencies]
 novuskinc = { path = "../../include/novusk/", features = ["library"] }
+
+[features]
+test = []

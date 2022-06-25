@@ -1,6 +1,5 @@
 use alloc::vec::Vec;
 
-#[test]
 pub fn no_alloc_error() {
     let mut test_vec: Vec<i32> = vec![];
 

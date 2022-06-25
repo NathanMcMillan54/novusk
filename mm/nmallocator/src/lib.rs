@@ -7,7 +7,7 @@ use wee_alloc::WeeAlloc;
 
 mod error;
 
-#[cfg(test)]
+/// This module contains functions that ``kernel/tests/`` use.
 pub mod tests;
 
 #[global_allocator]

@@ -1,0 +1,9 @@
+[package]
+name = "tests"
+version = "0.1.0"
+edition = "2021"
+description = "Runs tests for Novusk"
+
+[dependencies]
+nmallocator = { path = "../../mm/nmallocator/" }
+printk = { path = "../printk/", features = ["test"] }

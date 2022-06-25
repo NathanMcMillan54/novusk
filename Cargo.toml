@@ -48,6 +48,10 @@ members = [
     "include/novusk/",
 
     "init/",
+    "kernel/kinfo/",
+    "kernel/printk/",
+    "kernel/setup/",
+    "kernel/tests/",
 
     "lib/libbmu/",
     "lib/libc/unistd/",
