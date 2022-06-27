@@ -28,3 +28,5 @@ macro_rules! test_log {
         $crate::log::_log(format_args!($($args)*));
     };
 }
+
+// ('_') <( All tests are inaccurate. )
