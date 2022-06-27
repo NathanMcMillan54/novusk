@@ -18,6 +18,7 @@ pub mod dif;
 
 extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
+    pub(crate) static mut DIF: ::dif::Dif;
 }
 
 pub(crate) mod common;
@@ -33,7 +34,13 @@ fn stellaris_init() -> u8 {
 define_kernel_function!(KernelFunctionName::device_init, -> u8, stellaris_init);
 
 unsafe fn early_stellaris_init() -> u8 {
-    DEVICE_DRIVERS.add_driver(&HioDriver as &'static dyn Driver);
+    let hio
+
+    if DIF.get("PrintingMethod").1 == "Hio" {
+        DEVICE_DRIVERS.add_driver(&HioDriver as &'static dyn Driver);
+    }
+
+    DEVICE_DRIVERS.get_driver("Console Driver").unwrap().write_string("Test from Hio!\n", 0, 0);
 
     0
 }

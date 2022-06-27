@@ -27,5 +27,5 @@ fn panic(info: &PanicInfo) -> ! {
     loop {  }
 }
 
-#[cfg(not(target_os = "novusk"))]
-compile_error!("Novuskinc is meant to only be used for Novusk based OSes");
+/* #[cfg(not(target_os = "novusk"))]
+compile_error!("Novuskinc is meant to only be used for Novusk based OSes"); */

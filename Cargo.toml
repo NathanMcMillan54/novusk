@@ -51,7 +51,6 @@ members = [
     "kernel/kinfo/",
     "kernel/printk/",
     "kernel/setup/",
-    "kernel/tests/",
 
     "lib/libbmu/",
     "lib/libc/unistd/",
@@ -68,6 +67,8 @@ members = [
 
     "tools/build/ccbuild/",
     "tools/build/buildkern/",
+
+    "tests/",
 ]
 
 [lib]

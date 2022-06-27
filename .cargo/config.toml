@@ -7,3 +7,8 @@ rustflags = [
     "-C", "link-arg=--nmagic",
     "-C", "link-arg=-Tlink.x",
 ]
+
+[target.'cfg(target_os = "linux")']
+rustflags = [
+    "-C", "link-args=-lc",
+]

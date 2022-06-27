@@ -7,9 +7,8 @@ Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kern
 Read ``Documentaion/`` for help with compiling, configurations and platforms, etc...
 
 ### Compiling:
-```commandline
-make all TARGET=<target> DEFCONFIG=<true/false> CONFIG=<path if DEFCONFIG=false>
-```
+
+Read ``Documentation/building/`` for compiling
 
 ---
 

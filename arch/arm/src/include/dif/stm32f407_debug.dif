@@ -1,9 +1,9 @@
 [
-    ("DifName", "stellaris6965.dif"),
-    ("DeviceName", "Stellaris 6965 (lm3s6965evb)"),
-    ("PeripheralAddress", "3758157056"),
+    ("DifName", "stm32f407_debug.dif"),
+    ("DeviceName", "STM32f407 (Debugged/Emulated)"),
+    ("PeripheralAddress", "0"),
     ("AllocMemory", "true"),
-    ("EnableSerial", "true"),
+    ("EnableSerial", "false"),
     ("PrintingMethod", "Hio"),
     ("DeviceKernel", "false"),
     ("StartInit", "true"),

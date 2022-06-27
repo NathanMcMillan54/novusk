@@ -1,0 +1,1 @@
+DEVICE_KERNEL=stmkern --bin a32dImage --features stmkern/stm32f407 --release --target thumbv7em-none-eabihf
