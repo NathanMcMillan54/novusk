@@ -1,5 +1,6 @@
 use crate::include::dif::DIF;
 use novuskinc::platform::early_device_init;
+use novuskinc::serial::early_serial_init;
 use setup::{BootSetup, SetupReturn};
 
 pub struct ArmBoot;
@@ -35,12 +36,16 @@ impl BootSetup for ArmBoot {
 
     fn early_serial_io_init(&self) -> SetupReturn {
         unsafe {
-            if DIF.get("EnableSerial").1.parse::<bool>().unwrap() {
+            if DIF.get("EnableSerial").1.parse::<bool>().unwrap() == false {
                 return (Ok(()), "Serial doesn't need to be initialized");
             }
         }
 
-        (Ok(()), "Early I/O initialized")
+        unsafe {
+            if early_serial_init() == 0 {
+                return (Ok(()), "Early I/O initialized");
+            } else { return (Err("Serial init error"), "Failed to initialize early serial I/O"); }
+        }
     }
 
     fn disable_wdt(&self) -> SetupReturn {

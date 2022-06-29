@@ -7,9 +7,9 @@
 use core::arch::asm;
 use core::fmt::Write;
 use core::panic::PanicInfo;
-use cortex_m_semihosting::hprintln;
 use hio::{HioDriver};
 use hio::io::HioWriter;
+use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{Driver, manager::DeviceDriverManager, names::CONSOLE};
 use novuskinc::kernel::{types::KernelFunctionName};
 
@@ -33,12 +33,15 @@ fn stellaris_init() -> u8 {
 
 define_kernel_function!(KernelFunctionName::device_init, -> u8, stellaris_init);
 
+/// Sets drivers for a Stellaris board to ``DEVICE_DRIVERS`` so they can be initialized later
 unsafe fn early_stellaris_init() -> u8 {
     if DIF.get("PrintingMethod").1 == "Hio" {
         DEVICE_DRIVERS.add_driver(&HioDriver as &'static dyn Driver);
     }
 
-    DEVICE_DRIVERS.get_driver("Console Driver").unwrap().write_string("Test from Hio!\n", 0, 0);
+    if DEVICE_DRIVERS.get_driver("Console Driver").is_none() {
+        return 1;
+    }
 
     0
 }

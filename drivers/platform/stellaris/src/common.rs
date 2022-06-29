@@ -1,3 +1,4 @@
+use novuskinc::kernel::types::KernelFunctionName;
 use tm4c123x::Peripherals;
 use tm4c123x_hal::sysctl::{CrystalFrequency, Oscillator, PllOutputFrequency, SystemClock, SysctlExt};
 use crate::dif::DIF_FILE;
@@ -26,3 +27,10 @@ mod irqs {
 
     }
 }
+
+
+fn common_serial_init() -> u8 {
+    return 0;
+}
+
+define_kernel_function!(KernelFunctionName::early_serial_init, -> u8, common_serial_init);
