@@ -1,5 +1,9 @@
 # Documentation index
 
+### Compiling documentation:
+
+- ``building/kernel.md`` - Compiling Novusk on its own
+
 ### Architecture specific documentation:
 
 ---
