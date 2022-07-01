@@ -1,34 +1,18 @@
 #![no_std]
 
-#[macro_use] extern crate printk;
+#[macro_use] extern crate novuskinc;
 
-#[cfg(target_arch = "x86_64")]
-#[path = "../../../arch/x86_64/src/kernel/power.rs"]
-pub(crate) mod arch_power;
+use novuskinc::kernel::types::KernelFunctionName;
+use novuskinc::power::*;
 
-#[cfg(target_arch = "xtensa")]
-#[path = "../../../arch/xtensa/src/kernel/power.rs"]
-pub(crate) mod arch_power;
+unsafe fn kernel_set_pm(mode: u32) -> u32 {
+    match mode {
+        PM_REBOOT => reboot(),
+        PM_SHUTDOWN => shutdown(),
+        _ => return 0,
+    };
 
-#[cfg(target_arch = "aarch64")]
-#[path = "../../../arch/aarch64/src/kernel/power.rs"]
-pub(crate) mod arch_power;
-
-#[cfg(target_arch = "arm")]
-#[path = "../../../arch/arm32/src/kernel/power.rs"]
-pub(crate) mod arch_power;
-
-#[cfg(target_arch = "riscv32")]
-#[path = "../../../arch/riscv/src/kernel/power.rs"]
-pub(crate) mod arch_power;
-
-pub mod reboot;
-pub mod shutdown;
-
-pub struct Power;
-
-impl Power {
-    pub fn new() -> Self {
-        return Power;
-    }
+    0
 }
+
+define_kernel_function!(KernelFunctionName::set_power_mode, mode: u32, -> u32, kernel_set_pm);

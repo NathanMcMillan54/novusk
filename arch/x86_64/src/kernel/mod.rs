@@ -5,6 +5,7 @@ pub mod idt;
 pub mod io;
 pub mod irq;
 // pub mod kernel;
+pub mod power;
 pub mod printk;
 pub mod setup;
 pub mod time;

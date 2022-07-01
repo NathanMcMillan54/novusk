@@ -4,8 +4,5 @@ version = "0.1.0"
 edition = "2021"
 description = "Power managment for Novusk"
 
-[target.'cfg(target_arch = "x86_64")'.dependencies]
-x86_64 = "0.14.5"
-
 [dependencies]
-printk = { path = "../printk/" }
+novuskinc = { path = "../../include/novusk/" }

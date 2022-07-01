@@ -29,4 +29,7 @@ pub enum KernelFunctionName {
     /// Initializes early serial I/O, it gets called by [``ArchSetup``](link) from ``setup`` if the
     /// arch kernel needs it. This is mainly for testing in a virtual machine.
     early_serial_init,
+
+    /// Used to put the device into a certain power mode depending on the argument
+    set_power_mode
 }

@@ -1,23 +1,23 @@
+use printk::printk;
 use x86_64::instructions::port::Port;
 
-pub unsafe fn reboot() -> ! {
+#[no_mangle]
+pub unsafe extern "C" fn reboot() -> ! {
     Port::new(0x64).write(0xfeu8);
 
-    printk!("Didn't reboot properly, waiting a few cycles before panicking...\n");
-    for c in 0..100000000 { }
+    printk!("Failed to reboot, attempting to shutdown...\n");
 
-    panic!("Couldn't reboot from kernel");
+    shutdown();
 }
 
-pub unsafe fn shutdown() -> ! {
+#[no_mangle]
+pub unsafe extern "C" fn shutdown() -> ! {
     Port::new(0xb004).write(0x2000 as u16);
     Port::new(0x604).write(0x2000 as u16);
     Port::new(0x404).write(0x3400 as u16);
     Port::new(0x64).write(0xf3u8);
 
-    printk!("Didn't shutdown properly, waiting a few cycles before panicking...\n");
+    printk!("Shutdown failed\n");
 
-    for c in 0..100000000 { }
-
-    panic!("Couldn't shutdown from kernel");
+    loop {  }
 }

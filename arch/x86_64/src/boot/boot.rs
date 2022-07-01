@@ -1,6 +1,7 @@
 use super::cpu::{gdt, validate};
 use kinfo::status::KStatus;
 use crate::early_printk;
+use crate::include::dif::{init_dif, DIF};
 
 pub unsafe fn die() -> ! {
     early_printk!("\nNothing left to run\n");
@@ -29,6 +30,11 @@ pub unsafe extern "C" fn boot_init() {
         early_printk!("Running on a valid CPU\n");
     }
 
-    test_alloc();
-    early_printk!("Memory allocator tested\n");
+    init_dif();
+    early_printk!("Added Dif\n");
+
+    if DIF.get("AllocMemory").1.parse::<bool>().unwrap() {
+        test_alloc();
+        early_printk!("Memory allocator tested\n");
+    }
 }

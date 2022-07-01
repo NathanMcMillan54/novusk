@@ -49,6 +49,7 @@ members = [
 
     "init/",
     "kernel/kinfo/",
+    "kernel/power/",
     "kernel/printk/",
     "kernel/setup/",
 

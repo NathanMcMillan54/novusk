@@ -14,6 +14,7 @@ pub mod led;
 pub mod mb;
 pub mod module;
 pub mod platform;
+pub mod power;
 pub mod prelude;
 pub mod syscalls;
 pub mod serial;
