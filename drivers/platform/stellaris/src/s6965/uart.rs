@@ -1,7 +1,6 @@
 use core::ops::Deref;
 use core::fmt::Write;
 use core::ptr::write_volatile;
-use cortex_m_semihosting::hprintln;
 use tm4c123x::{Peripherals, UART0};
 use tm4c123x_hal::gpio::{AF1, GpioExt};
 use tm4c123x_hal::serial::{NewlineMode, Serial};
@@ -28,6 +27,4 @@ pub fn uart_init() {
     );
 
     uart0.write_fmt(format_args!("{}", "Test"));
-
-    hprintln!("UART0: {:?}", UART0::ptr());
 }

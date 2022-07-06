@@ -11,7 +11,8 @@ extern "C" {
     /// This function is used to setup the architecture specific kernel
     pub fn setup_arch();
 
-    /// Starts the main kernel, works for both the Novusk kernel and a device specific kernel
+    /// Starts the architecture and main kernel, used for both the main Novusk kernel and a device
+    /// specific kernels
     pub fn start_kernel();
 
     /// ``kernel_init`` is the kernel's "main" function, it initializes all non architecture
