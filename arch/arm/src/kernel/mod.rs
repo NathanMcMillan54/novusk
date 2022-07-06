@@ -1,6 +1,7 @@
 pub mod init;
 pub mod kernel;
 pub mod panic;
+pub mod printk;
 pub mod setup;
 
 #[path = "../../../../drivers/drivers.rs"]

@@ -12,13 +12,17 @@ extern "C" {
     ///     }
     /// }
     ///
-    /// define_core_function!(CoreFunctionNames::device_irq_handler, irqn: i16, -> (), irq_handler);
+    /// define_kernel_function!(KernelFunctionName::device_irq_handler, irqn: i16, -> (), irq_handler);
     /// ```
     pub fn device_irq_handler(irq: i16);
 
     /// ``device_specific_irqs_init`` is used for initializing IRQs that are specific to the device
     /// Novusk is running on.
     pub fn device_specific_irqs_init();
+
+    /// ``irqchip_setup`` is used to start setting up the IRQ chip before it's initialized, it
+    /// should get called in ``setup_arch``. Sometimes it will add some IRQ handlers to "test" them.
+    pub fn irqchip_setup();
 
     /// ``irqchip_init`` is used to initialize the device's IRQ chip. The IRQ chip is what controls
     /// the IRQs, this function needs to be implemented in the IRQ chip driver.

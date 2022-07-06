@@ -2,6 +2,7 @@
 #![feature(core_intrinsics)]
 #![feature(asm)]
 
+pub(crate) extern crate invic;
 #[macro_use] extern crate novuskinc;
 
 use core::arch::asm;

@@ -13,6 +13,14 @@ pub enum KernelFunctionName {
     /// arguments or a return type.
     device_init,
 
+    /// This function is used for setting up the IRQ chip before it's initialized. This usually gets
+    /// called in [``setup_arch``](todo)
+    irqchip_setup,
+
+    /// This function is used to initialize the device's IRQ chip, after this the kernel can start
+    /// using IRQs.
+    irqchip_init,
+
     /// This function is used for initializing device specific IRQs. If a device has it's own IRQs
     /// that won't be handled by the kernel, this function can be defined in a device kernel module
     /// to initialize those IRQs.

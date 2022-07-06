@@ -1,4 +1,5 @@
 use novuskinc::kernel::{arch_prepare_init, kernel_init, setup_arch};
+use setup::ArchKernelSetup;
 use crate::include::dif::DIF;
 
 pub struct ArmKernel {
@@ -7,7 +8,20 @@ pub struct ArmKernel {
 
 impl ArmKernel {
     pub fn setup(&mut self) {
+        let dev = self.device_init();
+        let irq = self.irq_setup();
 
+        if dev.0.is_err() {
+            panic!("{}", dev.1);
+        } else if irq.0.is_err() {
+            panic!("{}", irq.1);
+        }
+
+        if dev.0.is_ok() {
+            printk!("{}", dev.1);
+        } else if irq.0.is_ok() {
+            printk!("{}", irq.1);
+        }
     }
 }
 
@@ -26,7 +40,7 @@ pub unsafe extern "C" fn start_kernel() {
     if start_init {
         kernel_init();
     } else {
-        // printk!("Kernel init doesn't need to be started\n");
+        printk!("kernel_init doesn't need to be started\n");
     }
 
     if dev_kernel {

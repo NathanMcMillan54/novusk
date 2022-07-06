@@ -4,8 +4,10 @@ CONFIG_PATH = arch/$(ARCH)/src/configs/$(CONFIG)-config.txt
 DEFCONFIG = True
 DEVICE_KERNEL = False
 DIF = None
+
 # Change this if you're not on an x86_64 linux device
 HOST = x86_64-unknown-linux-gnu
+
 KERNEL = Image
 PLATFORM = default
 TARGET = targets/$(ARCH)-novusk.json
