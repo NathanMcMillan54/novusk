@@ -5,6 +5,8 @@ edition = "2021"
 description = "A driver for Stellaris devices"
 
 [dependencies]
+cortex-m = "0.7.5"
+cortex-m-rt = "0.7.1"
 dif = { path = "../../../include/dif/" }
 hio = { path = "../arm/hio/" }
 invic = { path = "../../irqchip/invic/" }
@@ -14,3 +16,7 @@ tm4c123x-hal = "0.10.2"
 
 [build-dependencies]
 difi = { path = "../../../tools/build/difi/" }
+
+[features]
+s6965 = []
+s811 = []

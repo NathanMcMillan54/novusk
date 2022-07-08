@@ -1,1 +1,1 @@
-DEVICE_KERNEL=stellariskern --bin a32dImage --release --target targets/thumbv7m-none-eabi.json
+DEVICE_KERNEL=stellariskern --bin a32dImage --features stellariskern/s6965 --release --target targets/thumbv7m-none-eabi.json

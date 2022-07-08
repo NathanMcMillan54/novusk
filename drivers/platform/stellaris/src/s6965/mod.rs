@@ -1,4 +1,5 @@
 pub mod gpio;
+pub mod irqs;
 pub mod leds;
 pub mod uart;
 

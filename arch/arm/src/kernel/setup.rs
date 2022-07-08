@@ -7,7 +7,7 @@ use setup::{SetupReturn, ArchKernelSetup};
 impl ArchKernelSetup for ArmKernel {
     fn irq_setup(&self) -> SetupReturn {
         unsafe { irqchip_setup(); }
-        (Ok(()), "IRQSuccess")
+        (Ok(()), "IRQS successfully setup")
     }
 
     fn input_setup(&self) -> SetupReturn {

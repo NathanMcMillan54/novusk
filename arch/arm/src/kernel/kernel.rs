@@ -10,18 +10,19 @@ impl ArmKernel {
     pub fn setup(&mut self) {
         let dev = self.device_init();
         let irq = self.irq_setup();
+        let kernel = unsafe { self.early_kernel_setup() };
 
         if dev.0.is_err() {
             panic!("{}", dev.1);
         } else if irq.0.is_err() {
             panic!("{}", irq.1);
+        } else if kernel.0.is_err() {
+            panic!("{}", kernel.1);
         }
 
-        if dev.0.is_ok() {
-            printk!("{}", dev.1);
-        } else if irq.0.is_ok() {
-            printk!("{}", irq.1);
-        }
+        printk!("{}\n", dev.1);
+        printk!("{}\n", irq.1);
+        printk!("{}\n", kernel.1);
     }
 }
 

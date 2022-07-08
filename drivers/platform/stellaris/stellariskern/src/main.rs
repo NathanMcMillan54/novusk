@@ -1,21 +1,29 @@
 #![no_std]
 #![no_main]
+#![feature(panic_info_message)]
 
 #[macro_use] extern crate cortex_m_rt;
 pub(crate) extern crate stellaris;
 pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 
+use asminc::arm32::wfi;
 use core::panic::PanicInfo;
 
 pub mod boot;
 pub mod kernel;
 
 #[panic_handler]
-fn _panic(_info: &PanicInfo) -> ! {
-    // hprintln!("Panic!");
+fn _panic(info: &PanicInfo) -> ! {
+    printk!("\n{} panicked:\n", KERNEL_NAME);
 
-    loop {  }
+    printk!("   Message: {}\n", info.message().unwrap_or(&format_args!("{}", "No message")));
+    printk!("   Location: {}\n", info.location().unwrap());
+
+    loop {
+        unsafe { wfi(); }
+    }
 }
 
 #[no_mangle]

@@ -2,6 +2,7 @@
 #![feature(core_intrinsics)]
 #![feature(asm)]
 
+#[macro_use] extern crate cortex_m_rt;
 pub(crate) extern crate invic;
 #[macro_use] extern crate novuskinc;
 
@@ -22,12 +23,20 @@ extern "C" {
     pub(crate) static mut DIF: ::dif::Dif;
 }
 
+pub mod clocks;
 pub(crate) mod common;
+
+#[cfg(feature = "s6965")]
 pub(crate) mod s6965;
+
+#[cfg(feature = "s811")]
 pub(crate) mod s811;
 
 fn stellaris_init() -> u8 {
     common::stellaris_board_init();
+
+    #[cfg(feature = "s6965")]
+    s6965::lm3s6965_init();
 
     0
 }
