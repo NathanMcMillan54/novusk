@@ -2,7 +2,10 @@ use core::arch::asm;
 
 pub mod ints;
 
-#[no_mangle]
-pub unsafe extern "C" fn wfi() {
+pub unsafe fn wfi() {
     asm!("wfi");
+}
+
+pub unsafe fn wfe() {
+    asm!("wfe");
 }

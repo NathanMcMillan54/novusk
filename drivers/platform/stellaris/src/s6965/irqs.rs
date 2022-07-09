@@ -1,4 +1,6 @@
+use core::fmt::Write;
 use tm4c123x::{Interrupt, NVIC};
+use hio::io::HioWriter;
 use super::uart::S6965UART;
 
 /// Adds the implemented IRQ handlers to the NVIC
@@ -13,6 +15,7 @@ pub unsafe extern "C" fn uart0_isr() {
     S6965UART.uart0_write_byte(S6965UART.uart0_read_byte());
 }
 
+/// TIMER0A IRQ
 #[no_mangle]
 pub unsafe extern "C" fn timer0a_isr() {
 

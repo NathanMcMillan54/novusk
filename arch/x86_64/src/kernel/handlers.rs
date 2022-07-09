@@ -1,9 +1,24 @@
+use core::fmt::Write;
 use crate::early_printk;
 use x86_64::structures::idt::{InterruptStackFrame, PageFaultErrorCode};
 
 // Panic handler
-#[path = "panic.rs"]
+#[path = "../../../../kernel/panic.rs"]
 pub mod panic;
+
+#[no_mangle]
+pub extern "C" fn device_indicate_panic() {
+    use super::video_vga::*;
+    use libcolor::{Color16, ColorCode};
+
+    let mut vga = EarlyVga {
+        column_position: 2,
+        color_code: ColorCode::new(Color16::White as u8, Color16::Red as u8),
+        buffer: unsafe { &mut *(BUFFER_ADDRESS as *mut Buffer) }
+    };
+
+    vga.write_str("!!!");
+}
 
 pub extern "x86-interrupt" fn break_point_handler(isf: InterruptStackFrame) {
     early_printk!("\n\nKernel breakpoint\n");

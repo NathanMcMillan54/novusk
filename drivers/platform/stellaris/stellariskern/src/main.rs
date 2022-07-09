@@ -10,13 +10,14 @@ pub(crate) extern crate nmallocator;
 
 use asminc::arm32::wfi;
 use core::panic::PanicInfo;
+use cortex_m::peripheral::NVIC;
 
 pub mod boot;
 pub mod kernel;
 
 #[panic_handler]
 fn _panic(info: &PanicInfo) -> ! {
-    printk!("\n{} panicked:\n", KERNEL_NAME);
+    printk!("\n{} kernel panicked:\n", KERNEL_NAME);
 
     printk!("   Message: {}\n", info.message().unwrap_or(&format_args!("{}", "No message")));
     printk!("   Location: {}\n", info.location().unwrap());
@@ -27,4 +28,4 @@ fn _panic(info: &PanicInfo) -> ! {
 }
 
 #[no_mangle]
-pub static KERNEL_NAME: &'static str = "Sellaris Novusk kernel";
+pub static KERNEL_NAME: &'static str = "Sellaris Novusk";

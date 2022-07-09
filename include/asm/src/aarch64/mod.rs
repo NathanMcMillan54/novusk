@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 pub mod ints;
 
 pub mod io {
@@ -9,4 +11,8 @@ pub mod io {
         pub fn inb(port: u32) -> u32;
         pub fn outb(port: u32, out: u16);
     }
+}
+
+pub unsafe fn wfe() {
+    asm!("wfe");
 }

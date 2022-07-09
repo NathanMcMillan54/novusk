@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 /// This macro is used for defining unimplemented IRQ handlers for Cortex-M CPUs.
 #[macro_export]
 macro_rules! cm_empty_interrupt {
@@ -9,4 +11,6 @@ macro_rules! cm_empty_interrupt {
     };
 }
 
-
+pub unsafe fn cpsid() {
+    // asm!("cpsid");
+}

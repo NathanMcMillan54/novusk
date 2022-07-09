@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 #[macro_export]
 macro_rules! gen_x86_int {
     ($int_name:ident, $int_fun:ident) => {
@@ -7,3 +9,12 @@ macro_rules! gen_x86_int {
         }
     };
 }
+
+pub unsafe fn sti() {
+    asm!("sti");
+}
+
+pub unsafe fn cli() {
+    asm!("cli");
+}
+

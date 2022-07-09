@@ -3,9 +3,9 @@ use libcolor::{ColorCode, bits16::Color16};
 use spin::Mutex;
 use volatile::Volatile;
 
-const BUFFER_WIDTH: usize = 80;
-const BUFFER_HEIGHT: usize = 25;
-const BUFFER_ADDRESS: usize = 0xb8000;
+pub const BUFFER_WIDTH: usize = 80;
+pub const BUFFER_HEIGHT: usize = 25;
+pub const BUFFER_ADDRESS: usize = 0xb8000;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
@@ -15,14 +15,14 @@ struct ScreenChar {
 }
 
 #[repr(transparent)]
-struct Buffer {
+pub struct Buffer {
     chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
 pub struct EarlyVga {
-    column_position: usize,
-    color_code: ColorCode,
-    buffer: &'static mut Buffer,
+    pub column_position: usize,
+    pub color_code: ColorCode,
+    pub buffer: &'static mut Buffer,
 }
 
 impl EarlyVga {

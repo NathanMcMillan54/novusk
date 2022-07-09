@@ -2,3 +2,4 @@
 # special features, it's just the essentials for the kernel.
 ARCH_KERNEL=x86_64:0.1.0 --release --features=x86_64/pic8259_irqchip --target targets/x86_64-novusk.json
 DISPLAY_MODULE=vgag --release --target targets/x86_64-novusk.json
+KERNEL_INIT=init --release --target targets/x86_64-novusk.json
