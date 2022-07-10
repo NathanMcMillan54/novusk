@@ -15,10 +15,8 @@ extern "C" {
 
 pub mod dif;
 
+#[path = "../../../../kernel/panic.rs"]
+pub mod panic;
+
 #[cfg(feature = "rpi3")]
 pub mod rpi3;
-
-#[panic_handler]
-fn _panic(_info: &PanicInfo) -> ! {
-    loop {  }
-}

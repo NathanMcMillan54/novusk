@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(asm)]
+#![feature(panic_info_message)]
 
 #[macro_use] extern crate asminc;
 #[macro_use] extern crate novuskinc;
@@ -11,10 +12,13 @@ mod displays;
 pub mod irqs;
 pub mod stm32f4xx;
 
+#[path = "../../../../kernel/panic.rs"]
+pub mod panic;
+
 fn stm_init() {
-    if dif::DIF_FILE[0] == "STM32F4xx" {
+    if dif::DIF_FILE[0].1 == "STM32F4xx" {
         stm32f4xx::setup_stm32f407();
-    } else { panic!("Wrong DIF file should be using a STM32Xxxx DIF not a {} DIF", dif::DIF_FILE[0]); }
+    } else { panic!("Wrong DIF file should be using a STM32Xxxx DIF not a {} DIF", dif::DIF_FILE[0].1); }
 }
 
 fn stm_end() {

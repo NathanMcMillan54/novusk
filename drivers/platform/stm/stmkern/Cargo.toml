@@ -5,12 +5,16 @@ edition = "2021"
 description = "STM device specific kernel"
 
 [dependencies]
+arm = { path = "../../../../arch/arm/" }
+asminc = { path = "../../../../include/asm/" }
 cortex-m = "0.7.4"
 cortex-m-rt = "0.7.1"
+printk = { path = "../../../../kernel/printk/" }
+stm = { path = "../" }
 
 [[bin]]
 name = "a32dImage"
 path = "src/main.rs"
 
 [features]
-stm32f407 = []
+stm32f407 = ["arm/stm32f407"]

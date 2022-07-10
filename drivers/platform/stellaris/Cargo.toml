@@ -5,6 +5,7 @@ edition = "2021"
 description = "A driver for Stellaris devices"
 
 [dependencies]
+asminc = { path = "../../../include/asm/" }
 cortex-m = "0.7.5"
 cortex-m-rt = "0.7.1"
 dif = { path = "../../../include/dif/" }

@@ -15,17 +15,5 @@ use cortex_m::peripheral::NVIC;
 pub mod boot;
 pub mod kernel;
 
-#[panic_handler]
-fn _panic(info: &PanicInfo) -> ! {
-    printk!("\n{} kernel panicked:\n", KERNEL_NAME);
-
-    printk!("   Message: {}\n", info.message().unwrap_or(&format_args!("{}", "No message")));
-    printk!("   Location: {}\n", info.location().unwrap());
-
-    loop {
-        unsafe { wfi(); }
-    }
-}
-
 #[no_mangle]
 pub static KERNEL_NAME: &'static str = "Sellaris Novusk";

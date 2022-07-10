@@ -6,6 +6,7 @@ description = "ARM (32) kernel"
 
 [dependencies]
 dif = { path = "../../include/dif/" }
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
 setup = { path = "../../kernel/setup/" }

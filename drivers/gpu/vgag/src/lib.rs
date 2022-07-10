@@ -1,6 +1,7 @@
 #![no_std]
 #![allow(warnings)]
 #![feature(asm)]
+#![feature(panic_info_message)]
 
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;
@@ -17,10 +18,8 @@ use vga::vga_80x25::{Vga80x25Buffer, Vga80x25};
 use vga::{VgaG, VgaMode};
 
 #[cfg(not(feature = "no_panic"))]
-#[panic_handler]
-fn panic(_info: &core::panic::PanicInfo) -> ! {
-    loop {  }
-}
+#[path = "../../../../kernel/panic.rs"]
+pub mod panic;
 
 #[no_mangle]
 pub static mut FB: FrameBuffer = FrameBuffer::empty();

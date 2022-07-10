@@ -56,3 +56,13 @@ pub fn finish_stm32f4xx_setup() {
         }
     }
 }
+
+#[no_mangle]
+pub unsafe extern "C" fn device_indicate_panic() {
+    let peripherals = Peripherals::steal();
+
+    let gpiod = peripherals.GPIOD.split();
+    let mut led = gpiod.pd14.into_push_pull_output();
+
+
+}
