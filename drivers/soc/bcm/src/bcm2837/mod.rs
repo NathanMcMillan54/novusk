@@ -12,7 +12,7 @@ pub static mut SOC_INFO: SocInfo = SocInfo {
         ("Video Core Offset", 0xB880),
         ("Timer CS Offset", 0x3000),
         ("IRQ Offset", 0xB210),
-        ("None", 0x0),
+        ("GPIO Offset", 0x20_0000),
         ("None", 0x0),
         ("None", 0x0),
         ("None", 0x0),

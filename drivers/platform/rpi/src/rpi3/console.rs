@@ -4,6 +4,7 @@ use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{Driver, DriverResult};
 use novuskinc::fb::FrameBufferGraphics;
 use novuskinc::keyboard::KeyboardInput;
+use novuskinc::led::Led;
 use novuskinc::serial::early_serial_init;
 
 pub struct Rpi3Console;
@@ -29,6 +30,8 @@ impl KernelConsoleDriver for Rpi3Console {
 impl FrameBufferGraphics for Rpi3Console {}
 
 impl KeyboardInput for Rpi3Console {}
+
+impl Led for Rpi3Console {}
 
 impl Driver for Rpi3Console {
     fn driver_name(&self) -> &'static str {

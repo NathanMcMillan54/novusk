@@ -1,5 +1,6 @@
 #![no_std]
 #![allow(warnings)]
+#![feature(panic_info_message)]
 
 #[macro_use] extern crate novuskinc;
 

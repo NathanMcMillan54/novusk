@@ -2,6 +2,7 @@ use core::arch::asm;
 use stm32f4xx_hal::pac::{CorePeripherals, Peripherals};
 use stm32f4xx_hal::prelude::*;
 use stm32f4xx_hal::rcc::Clocks;
+use asminc::nop;
 
 pub(crate) fn get_clocks() -> Clocks {
     let peripherals = unsafe { Peripherals::steal() };
@@ -64,5 +65,11 @@ pub unsafe extern "C" fn device_indicate_panic() {
     let gpiod = peripherals.GPIOD.split();
     let mut led = gpiod.pd14.into_push_pull_output();
 
+    led.set_high();
 
+    for _ in 0..10000 {
+        nop();
+    }
+
+    led.set_low();
 }
