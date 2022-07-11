@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 #[macro_export]
 macro_rules! aarch64_interrupt {
     ($name:ident, $code:block) => {
@@ -6,4 +8,12 @@ macro_rules! aarch64_interrupt {
             $code
         }
     };
+}
+
+pub unsafe extern "C" fn enable_irqs() {
+    asm!("msr daifclr, #2");
+}
+
+pub unsafe extern "C" fn disable_irqs() {
+    asm!("msr daifset, #2");
 }
