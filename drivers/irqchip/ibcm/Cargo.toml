@@ -9,9 +9,9 @@ crate-type = ["staticlib"]
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }
+bcm = { path = "../../firmware/soc/bcm/" }
 novuskinc = { path = "../../../include/novusk/" }
 printk = { path = "../../../kernel/printk/" }
-bcm = { path = "../../soc/bcm/" }
 
 [features]
 bcm2837 = ["bcm/bcm2837"]

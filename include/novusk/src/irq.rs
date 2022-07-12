@@ -33,6 +33,8 @@ extern "C" {
     /// The ``notify_irq`` function needs to be implemented to tell the IRQ chip that an IRQ has
     /// finished
     pub fn notify_irq(irqn: u8);
+
+    pub fn DefaultHandler(irqn: i16);
 }
 
 pub type IrqHandler = (i16, unsafe extern "C" fn() -> i16);
@@ -43,6 +45,7 @@ pub struct IrqChip {
     pub enabled: bool,
     pub disable: unsafe extern "C" fn(),
     pub enable: unsafe extern "C" fn(),
+    pub irqn: unsafe extern "C" fn() -> i16,
     pub handlers: &'static mut [IrqHandler],
 }
 

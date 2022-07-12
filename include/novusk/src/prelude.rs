@@ -5,3 +5,4 @@ pub use crate::keyboard::*;
 pub use crate::led::*;
 pub use crate::mb::*;
 pub use crate::serial::*;
+pub use crate::timer::*;

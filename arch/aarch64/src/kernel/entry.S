@@ -89,8 +89,10 @@ vectors:
     kernel_ventry el0, t, 32, error
 
 el1_irq:
+    .extern irq_handler
+
     kernel_entry
-    // TODO: Call the main irq handler
+    bl irq_handler
     kernel_exit
 
 // Initializes the IRQ vector

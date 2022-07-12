@@ -10,11 +10,11 @@ crate-type = ["staticlib"]
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }
-bcm = { path = "../../soc/bcm/" }
+bcm = { path = "../../firmware/soc/bcm/" }
 novuskinc = { path = "../../../include/novusk/" }
 nmallocator = { path = "../../../mm/nmallocator/", features = ["wee_allocator"] }
 printk = { path = "../../../kernel/printk/" }
-soc = { path = "../../soc/" }
+soc = { path = "../../firmware/soc/" }
 tock-registers = "0.7.0"
 
 [build-dependencies]

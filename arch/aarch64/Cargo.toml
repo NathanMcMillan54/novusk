@@ -16,6 +16,7 @@ path = "src/main.rs"
 edition = "2021"
 
 [dependencies]
+asminc = { path = "../../include/asm/" }
 # bcm = { path = "../../drivers/soc/bcm/" }
 cortex-a = "7.4.0"
 dif = { path = "../../include/dif/" }
@@ -27,7 +28,7 @@ printk = { path = "../../kernel/printk/" }
 tock-registers = "0.7.0"
 r0 = "1.0.0"
 setup = { path = "../../kernel/setup/" }
-soc = { path = "../../drivers/soc/" }
+soc = { path = "../../drivers/firmware/soc/" }
 spin = "0.9.2"
 
 [features]

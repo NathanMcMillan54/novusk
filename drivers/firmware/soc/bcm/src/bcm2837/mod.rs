@@ -2,6 +2,7 @@ use soc::info::SocInfo;
 
 pub mod mailbox;
 pub mod serial;
+pub mod timer;
 
 #[no_mangle]
 pub static mut SOC_INFO: SocInfo = SocInfo {
