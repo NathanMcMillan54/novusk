@@ -1,6 +1,10 @@
 use core::arch::asm;
 use novuskinc::irq::irqchip_setup;
 
+extern "C" {
+    fn irq_vector_init();
+}
+
 pub mod handlers;
 
 #[no_mangle]
