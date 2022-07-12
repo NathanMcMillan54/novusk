@@ -57,4 +57,10 @@ pub mod handlers {
 
         0
     }
+
+    #[no_mangle]
+    pub extern "C" fn DefaultHandler(ex: usize) {
+        printk!("--- Default Exception Handler ---");
+        printk!("| Exception {} was used", ex);
+    }
 }

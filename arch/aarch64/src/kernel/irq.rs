@@ -1,13 +1,11 @@
-use core::arch::asm;
 use novuskinc::irq::irqchip_setup;
+use crate::early_printk;
 
 extern "C" {
     fn irq_vector_init();
 }
 
-pub mod handlers;
-
-#[no_mangle]
-pub unsafe extern "C" fn aarch64_irq_setup() {
+pub unsafe fn aarch64_irq_setup() {
     irqchip_setup();
+    irq_vector_init();
 }

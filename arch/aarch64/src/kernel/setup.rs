@@ -1,4 +1,7 @@
 use core::ptr::write_volatile;
+use cortex_a::registers::CurrentEL;
+use tock_registers::interfaces::Readable;
+use kinfo::status::KStatus;
 use novuskinc::platform::device_init;
 use printk::printk_init;
 use crate::early_printk;
@@ -28,16 +31,54 @@ impl Aarch64Kernel {
         let kernel = unsafe { self.early_kernel_setup() };
 
         if irq.0.is_err() {
-            panic!("{}", irq.1);
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: true,
+                panic_message: Some(irq.1),
+                message1: "Failed to setup Aarch64 IRQs",
+                message2: Some("This will cause problems later on in the kernel")
+            });
         } else if dev.0.is_err() {
-            panic!("{}", dev.1);
+            KStatus {
+                status: "not ok",
+                should_panic: true,
+                panic_message: Some(dev.1),
+                message1: "Failed to initialize device",
+                message2: None,
+            };
         } else if kernel.0.is_err() {
-            panic!("{}", kernel.1);
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: true,
+                panic_message: Some(kernel.1),
+                message1: "Failed to setup early kernel",
+                message2: Some("This will prevent the main kernel from doing important tasks")
+            });
         }
 
-        early_printk!("{}\n", irq.1);
-        early_printk!("{}\n", dev.1);
-        early_printk!("{}\n", kernel.1);
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: irq.1,
+            message2: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: dev.1,
+            message2: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            message1: kernel.1,
+            message2: Some("Preparing Aarch64 for the main kernel...")
+        })
     }
 
     fn test_memory(&self) {
@@ -67,9 +108,7 @@ impl ArchKernelSetup for Aarch64Kernel {
 
 #[no_mangle]
 pub unsafe extern "C" fn setup_arch() {
-    early_printk!("\nStarting Aarch64 kernel...\n");
-    early_printk!("Early and main kernel printing for Aarch64 initialized\n");
-    early_printk!("\nSetting up kernel...\n");
+    early_printk!("\nStarting Aarch64 kernel setup...\n");
 
     AARCH64_KERNEL.setup();
     AARCH64_KERNEL.early_kernel = false;

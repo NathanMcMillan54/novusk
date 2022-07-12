@@ -20,7 +20,7 @@ impl KStatus {
         if self.should_panic {
             if self.panic_message.is_some() {
                 panic!("{}", self.panic_message.unwrap());
-            } else { panic!("A problem occured"); }
+            } else { panic!("A problem occurred"); }
         }
     }
 }

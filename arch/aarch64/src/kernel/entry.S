@@ -3,13 +3,21 @@
 .globl irq_vector_init
 .globl vectors
 
-    // Adds an entry to the vectors
+    .macro invalid_exception type
+    .extern DefaultHandler
+
+     kernel_entry
+     mov x0, #\type
+     mrs x1, esr_el1
+     mrs x2, elr_el1
+     b DefaultHandler
+     .endm
+
+    // Adds an exception to the vectors
 	.macro kernel_ventry eln ht size label
 	.align	7
 	b	\label\eln\ht\size
 	.endm
-
-	//
 
 	.macro kernel_entry
 	sub	sp, sp, #S_FRAME_SIZE
@@ -57,28 +65,28 @@
 
 vectors:
     // EL1t
-    kernel_ventry 1, t, 64, sync
-    kernel_ventry 1, t, 64, irq
-    kernel_ventry 1, t, 64, fiq
-    kernel_ventry 1, t, 64, error
+    kernel_ventry el1, t, 64, sync
+    kernel_ventry el1, t, 64, irq
+    kernel_ventry el1, t, 64, fiq
+    kernel_ventry el1, t, 64, error
 
     // EL1h
-    kernel_ventry 1, h, 64, sync
-    kernel_ventry 1, h, 64, irq
-    kernel_ventry 1, h, 64, fiq
-    kernel_ventry 1, h, 64, error
+    kernel_ventry el1, h, 64, sync
+    kernel_ventry el1, h, 64, irq
+    kernel_ventry el1, h, 64, fiq
+    kernel_ventry el1, h, 64, error
 
     // EL0 64
-    kernel_ventry 0, t, 64, sync
-    kernel_ventry 0, t, 64, irq
-    kernel_ventry 0, t, 64, fiq
-    kernel_ventry 0, t, 64, error
+    kernel_ventry el0, t, 64, sync
+    kernel_ventry el0, t, 64, irq
+    kernel_ventry el0, t, 64, fiq
+    kernel_ventry el0, t, 64, error
 
     // EL0 32
-    kernel_ventry 0, t, 32, sync
-    kernel_ventry 0, t, 32, irq
-    kernel_ventry 0, t, 32, fiq
-    kernel_ventry 0, t, 32, error
+    kernel_ventry el0, t, 32, sync
+    kernel_ventry el0, t, 32, irq
+    kernel_ventry el0, t, 32, fiq
+    kernel_ventry el0, t, 32, error
 
 el1_irq:
     kernel_entry
@@ -91,3 +99,53 @@ irq_vector_init:
     msr	vbar_el1, x0
     ret
 
+// Exceptions:
+// EL1t
+syncel1t64:
+    invalid_exception INVALID_SYNCEL1t
+
+irqel1t64:
+    invalid_exception INVALID_IRQEL1t
+
+fiqel1t64:
+    invalid_exception INVALID_FIQEL1t
+
+errorel1t64:
+    invalid_exception INVALID_ERROREL1t
+
+syncel1h64:
+    invalid_exception INVALID_SYNCEL1h
+
+irqel1h64:
+    invalid_exception INVALID_IRQEL1h
+
+fiqel1h64:
+    invalid_exception INVALID_FIQEL1h
+
+errorel1h64:
+    invalid_exception INVALID_ERROREL1h
+
+
+syncel0t64:
+    invalid_exception INVALID_SYNCEL0t_32
+
+irqel0t64:
+    invalid_exception INVALID_IRQEL0t_32
+
+fiqel0t64:
+    invalid_exception INVALID_FIQEL0t_32
+
+errorel0t64:
+    invalid_exception INVALID_ERROREL0t_32
+
+syncel0t32:
+    invalid_exception INVALID_SYNCEL0t_32
+
+irqel0t32:
+    invalid_exception INVALID_IRQEL0t_32
+
+fiqel0t32:
+    invalid_exception INVALID_FIQEL0t_32
+
+errorel0t32:
+    invalid_exception INVALID_ERROREL0t_32
