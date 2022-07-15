@@ -34,11 +34,20 @@ extern "C" {
     /// finished
     pub fn notify_irq(irqn: u8);
 
+    /// Sets the ``IRQCHIP`` value in ``irq`` to ``Some(chip)``, this should be called during
+    /// ``irqchip``.
+    pub fn set_irqchip(chip: IrqChip);
+
     pub fn DefaultHandler(irqn: i16);
 }
 
-pub type IrqHandler = (i16, unsafe extern "C" fn() -> i16);
+#[derive(PartialEq)]
+pub struct IrqHandler {
+    pub irqn: i16,
+    pub irqh: unsafe extern "C" fn() -> i16
+}
 
+#[derive(PartialEq)]
 pub struct IrqChip {
     pub name: &'static str,
     pub irq_address: u32,
@@ -46,14 +55,16 @@ pub struct IrqChip {
     pub disable: unsafe extern "C" fn(),
     pub enable: unsafe extern "C" fn(),
     pub irqn: unsafe extern "C" fn() -> i16,
-    pub handlers: &'static mut [IrqHandler],
+    pub handlers: alloc::vec::Vec<IrqHandler>,
 }
 
 impl IrqChip {
     pub fn set_handler(&mut self, irq_handler: IrqHandler) {
-        self.handlers.iter().map(|handler| {
-            irq_handler
-        });
+        self.handlers.push(irq_handler);
+    }
+
+    pub fn get_irqn(&self) -> i16 {
+        unsafe { return (self.irqn)(); }
     }
 }
 
@@ -64,6 +75,15 @@ impl Debug for IrqChip {
             .field("irq_address", &self.irq_address)
             .field("enabled", &self.enabled)
             .field("handlers", &self.handlers);
+
+        Ok(())
+    }
+}
+
+impl Debug for IrqHandler {
+    fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
+        f.debug_struct("IrqHandler")
+            .field("irqn", &self.irqn);
 
         Ok(())
     }

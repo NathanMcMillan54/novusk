@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use core::ops::Add;
 use asminc::aarch64::ints::{enable_irqs, disable_irqs};
 use asminc::aarch64::io::{inb, outb};
@@ -14,7 +15,7 @@ pub static mut IRQCHIP: IrqChip = IrqChip {
     disable: disable_irqs,
     enable: enable_irqs,
     irqn: get_irqn,
-    handlers: &mut []
+    handlers: vec![],
 };
 
 #[no_mangle]
@@ -26,7 +27,10 @@ unsafe extern "C" fn get_irqn() -> i16 {
 }
 
 pub unsafe fn bcm2837_irqchip_init() -> i16 {
-    IRQCHIP.set_handler((irqs::TIMER1, handlers::TIMER1_irq));
+    IRQCHIP.set_handler(IrqHandler {
+        irqn: irqs::TIMER1,
+        irqh: handlers::TIMER1_irq,
+    });
 
     let peripheral_addr = SOC_INFO.get("Peripheral Address").unwrap();
     let irq_addr = peripheral_addr + SOC_INFO.get("IRQ Offset").unwrap();

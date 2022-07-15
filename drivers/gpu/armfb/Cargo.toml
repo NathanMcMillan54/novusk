@@ -10,5 +10,6 @@ crate-type = ["staticlib"]
 [dependencies]
 fb = { path = "../../fb/" }
 libcolor = { path = "../../../lib/libcolor/" }
+nmallocator = { path = "../../../mm/nmallocator/" }
 novuskinc = { path = "../../../include/novusk/", features = ["library"] }
 printk = { path = "../../../kernel/printk/" }

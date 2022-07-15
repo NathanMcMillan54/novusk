@@ -1,8 +1,10 @@
 #![no_std]
 #![feature(panic_info_message)]
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate asminc;
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate nmallocator;
 #[macro_use] extern crate printk;
 
 #[cfg(feature = "bcm2837")]

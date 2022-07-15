@@ -10,5 +10,17 @@ crate-type = ["staticlib"]
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }
+
+[features]
+default = ["16irqs"]
+12irqs = []
+16irqs = []
+24irqs = []
+32irqs = []
+48irqs = []
+64irqs = []
+120irqs = []
+240irqs = []

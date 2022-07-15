@@ -10,4 +10,5 @@ edition = "2021"
 crate-type = ["staticlib"]
 
 [dependencies]
+nmallocator = { path = "../mm/nmallocator/" }
 printk = { path = "../kernel/printk/" }

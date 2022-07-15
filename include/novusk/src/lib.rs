@@ -2,6 +2,8 @@
 #![allow(warnings)]
 #![feature(const_fn_trait_bound, const_mut_refs, panic_info_message)]
 
+#[macro_use] extern crate alloc;
+
 pub mod console;
 pub mod drivers;
 pub mod elf;
