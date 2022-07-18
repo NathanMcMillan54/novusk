@@ -3,6 +3,7 @@ use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{names::CONSOLE, Driver, DriverResult};
 use novuskinc::fb::FrameBufferGraphics;
 use novuskinc::keyboard::KeyboardInput;
+use novuskinc::led::Led;
 use crate::{HioDriver, io::{HIOWRITER, HioWriter}};
 
 impl Write for HioDriver {
@@ -44,6 +45,8 @@ impl KernelConsoleDriver for HioDriver {
 impl FrameBufferGraphics for HioDriver {}
 
 impl KeyboardInput for HioDriver {}
+
+impl Led for HioDriver {}
 
 impl Driver for HioDriver {
     fn driver_name(&self) -> &'static str {

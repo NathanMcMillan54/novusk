@@ -3,7 +3,7 @@
 #![feature(asm)]
 
 #[macro_use] extern crate cortex_m_rt;
-pub(crate) extern crate invic;
+pub extern crate invic;
 #[macro_use] extern crate novuskinc;
 
 use core::arch::asm;

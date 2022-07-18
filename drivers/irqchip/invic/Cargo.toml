@@ -9,6 +9,7 @@ cortex-m = "0.7.5"
 cortex-m-rt = "0.7.1"
 hio = { path = "../../platform/arm/hio/" }
 novuskinc = { path = "../../../include/novusk/" }
+printk = { path = "../../../kernel/printk/" }
 
 [features]
 debug = []

@@ -18,5 +18,10 @@ novuskinc = { path = "../../../../include/novusk/" }
 printk = { path = "../../../../kernel/printk/" }
 stellaris = { path = "../" }
 
+[dependencies.irq]
+path = "../../../../kernel/irq"
+default-features = false
+features = ["120irqs"]
+
 [features]
 s6965 = ["stellaris/s6965"]

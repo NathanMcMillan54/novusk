@@ -2,6 +2,7 @@
 
 #[macro_use] extern crate cortex_m_rt;
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 
 use core::arch::asm;
 use cortex_m::peripheral::{Peripherals, syst::SystClkSource};

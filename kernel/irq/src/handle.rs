@@ -1,10 +1,8 @@
 use alloc::vec::Vec;
-use novuskinc::irq::{device_irq_handler, IrqHandler};
+use core::borrow::BorrowMut;
+use novuskinc::irq::{empty_handler, IRQH_NOT_EXISTENT, IrqHandler};
 use printk::printk;
 use crate::chip::IRQCHIP;
-
-#[no_mangle]
-unsafe extern "C" fn empty_handler() -> i16 { 0 }
 
 #[cfg(feature = "12irqs")]
 pub const MAX_IRQS: usize = 12;
@@ -31,11 +29,28 @@ pub const MAX_IRQS: usize = 120;
 pub const MAX_IRQS: usize = 240;
 
 #[no_mangle]
-pub static mut IRQ_HANDLERS: Vec<IrqHandler> = vec![];
+pub static mut IRQ_HANDLERS: [IrqHandler; MAX_IRQS] = [
+    IrqHandler {
+        irqn: (MAX_IRQS + 1) as i16,
+        irqh: empty_handler,
+    }; MAX_IRQS
+];
+
+#[no_mangle]
+pub unsafe extern "C" fn add_irq(irqh: IrqHandler) {
+    IRQ_HANDLERS[irqh.irqn as usize] = irqh;
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn irq_handler() {
-    printk!("\nIRQ\n");
+    printk!("\nIRQ handler\n");
     let irqn = IRQCHIP.get_irqn();
     // device_irq_handler(irqn);
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn handle_irq(irqn: i16) -> i16 {
+    let irq_ret = (IRQ_HANDLERS[irqn as usize].irqh)();
+
+    return irq_ret;
 }

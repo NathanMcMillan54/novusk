@@ -25,7 +25,7 @@ pub(crate) fn compile_field(field: String) {
         println!("Compiling {}...", arguments[0]);
         let mut command = Command::new("cargo");
 
-        command.args(&["build", "-p"]);
+        command.args(&["rustc", "-p"]);
 
         for a in 0..arguments.len() {
             command.arg(arguments[a]);

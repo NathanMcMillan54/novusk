@@ -1,3 +1,5 @@
+use tm4c123x::{Interrupt, NVIC};
+
 pub mod gpio;
 pub mod irqs;
 pub mod leds;

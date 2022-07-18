@@ -39,9 +39,24 @@ extern "C" {
     pub fn set_irqchip(chip: IrqChip);
 
     pub fn DefaultHandler(irqn: i16);
+    pub fn handle_irq(irqn: i16) -> i16;
+    pub fn add_irq(irqh: IrqHandler);
 }
 
-#[derive(PartialEq)]
+/// If an IRQ is not implemented this function can be set as its handler, it returns
+/// [``IRQH_NOT_EXISTENT``](todo).
+#[no_mangle]
+pub unsafe extern "C" fn empty_handler() -> i16 { IRQH_NOT_EXISTENT }
+
+/// When an interrupt is invoked the handler function should return ``IRQH_SUCCESS`` or
+/// ``IRQH_FAILED``, these values might be checked on some architectures or IRQ chip drivers
+pub const IRQH_SUCCESS: i16 = 0;
+pub const IRQH_FAILED: i16 = 1;
+
+/// This constant is used for unimplemented IRQ handlers.
+pub const IRQH_NOT_EXISTENT: i16 = 2;
+
+#[derive(Copy, Clone, PartialEq)]
 pub struct IrqHandler {
     pub irqn: i16,
     pub irqh: unsafe extern "C" fn() -> i16

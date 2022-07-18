@@ -4,18 +4,19 @@ version = "0.1.0"
 edition = "2021"
 description = "Main kernel IRQ handler"
 
-[lib]
-name = "irq"
-crate-type = ["staticlib"]
+# [lib]
+# name = "irq"
+# crate-type = ["staticlib"]
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
-nmallocator = { path = "../../mm/nmallocator/" }
+# nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }
 
 [features]
 default = ["16irqs"]
+staticlib = []
 12irqs = []
 16irqs = []
 24irqs = []
