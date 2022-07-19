@@ -32,6 +32,15 @@ pub mod exceptions {
         }
     }
 
+    #[exception]
+    unsafe fn SVCall() {
+        extern "C" {
+            fn cortex_m_svcall();
+        }
+
+        cortex_m_svcall();
+    }
+
     // This causes an error in ``cortex-m-rt`` when building
     /* #[exception]
     unsafe fn HardFault(exf: &ExceptionFrame) -> ! {
