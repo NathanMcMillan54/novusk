@@ -34,3 +34,9 @@ pub unsafe extern "C" fn disable_irqs() {
     #[cfg(target_arch = "x86_64")]
     x86_64::ints::cli();
 }
+
+#[no_mangle]
+pub unsafe extern "C" fn enable_irqs() {
+    #[cfg(target_arch = "x86_64")]
+    x86_64::ints::sti();
+}

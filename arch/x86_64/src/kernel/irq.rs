@@ -39,7 +39,6 @@ pub unsafe fn start_irq_setup() {
 
 pub unsafe fn irq_init() {
     irqchip_init();
-    IRQS.enable();
 }
 
 pub mod irqns {

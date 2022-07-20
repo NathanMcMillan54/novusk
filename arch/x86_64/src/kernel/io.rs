@@ -1,5 +1,6 @@
 use core::arch::asm;
 use novuskinc::irq::notify_irq;
+use printk::printk;
 use crate::early_printk;
 
 pub unsafe fn outb(port: u16, out: u8) {
@@ -21,6 +22,8 @@ unsafe fn ps2_input(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
     if input != 156 {
 
     }
+
+    printk!("{}", input);
 
     notify_irq(IRQ_2);
 }
