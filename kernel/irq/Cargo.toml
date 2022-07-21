@@ -11,6 +11,7 @@ description = "Main kernel IRQ handler"
 [dependencies]
 asminc = { path = "../../include/asm/" }
 # nmallocator = { path = "../../mm/nmallocator/" }
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../printk/" }
 

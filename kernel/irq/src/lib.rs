@@ -2,7 +2,9 @@
 #![feature(panic_info_message)]
 
 #[macro_use] extern crate alloc;
-// extern crate nmallocator;
+
+#[cfg(feature = "staticlib")]
+extern crate nmallocator;
 
 #[cfg(feature = "staticlib")]
 #[path = "../../panic.rs"]

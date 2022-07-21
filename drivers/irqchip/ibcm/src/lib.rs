@@ -3,6 +3,7 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate asminc;
+extern crate irq;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate nmallocator;
 #[macro_use] extern crate printk;

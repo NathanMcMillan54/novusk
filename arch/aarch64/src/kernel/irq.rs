@@ -16,6 +16,4 @@ pub unsafe fn aarch64_irq_setup() {
 pub unsafe fn aarch64_irq_init() {
     device_timer_init();
     irqchip_init();
-
-
 }

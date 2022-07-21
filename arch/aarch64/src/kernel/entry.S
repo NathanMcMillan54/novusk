@@ -2,6 +2,7 @@
 
 .globl irq_vector_init
 .globl vectors
+.extern irq_handler
 
     .macro invalid_exception type
     .extern DefaultHandler

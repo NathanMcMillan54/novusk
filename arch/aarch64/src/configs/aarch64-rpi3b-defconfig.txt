@@ -4,4 +4,3 @@ DEVICE_DRIVER=rpi --release --features rpi/rpi3 --target targets/aarch64-novusk.
 DISPLAY_MODULE=armfb --release --target targets/aarch64-novusk.json
 SOC_DRIVER=bcm --release --features bcm/bcm2837 --target targets/aarch64-novusk.json
 IRQCHIP_DRIVER=ibcm --release --features ibcm/bcm2837 --features ibcm/bcm2837 --target targets/aarch64-novusk.json
-IRQ_HANDLER=irq --release --target targets/aarch64-novusk.json

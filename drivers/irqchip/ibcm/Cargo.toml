@@ -10,6 +10,7 @@ crate-type = ["staticlib"]
 [dependencies]
 asminc = { path = "../../../include/asm/" }
 bcm = { path = "../../firmware/soc/bcm/" }
+irq = { path = "../../../kernel/irq/" }
 novuskinc = { path = "../../../include/novusk/" }
 nmallocator = { path = "../../../mm/nmallocator/" }
 printk = { path = "../../../kernel/printk/" }
