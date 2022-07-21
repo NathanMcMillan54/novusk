@@ -117,6 +117,7 @@ pub mod led {
     use novuskinc::fb::FrameBufferGraphics;
     use novuskinc::keyboard::KeyboardInput;
     use novuskinc::led::Led;
+    use novuskinc::prelude::Storage;
 
     pub struct Rpi3Led {
         pub gpio: Rpi3Gpio,
@@ -167,6 +168,8 @@ pub mod led {
             0
         }
     }
+
+    impl Storage for Rpi3Led {}
 
     impl Driver for Rpi3Led {
         fn driver_name(&self) -> &'static str {

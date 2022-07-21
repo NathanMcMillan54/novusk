@@ -33,9 +33,7 @@ members = [
     "drivers/platform/stellaris/stellariskern/",
     "drivers/platform/stm/",
     "drivers/platform/stm/stmkern/",
-    "drivers/storage/",
     "drivers/storage/lba/",
-    "drivers/storage/sd/rpisd/",
     "drivers/usbd/",
 
     "fs/tempfs/",

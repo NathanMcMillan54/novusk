@@ -6,6 +6,7 @@ use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{names::CONSOLE, Driver, DriverResult};
 use novuskinc::keyboard::KeyboardInput;
 use novuskinc::led::Led;
+use novuskinc::prelude::Storage;
 
 pub mod vga_80x25;
 
@@ -132,6 +133,8 @@ impl KernelConsoleDriver for VgaG {
 impl KeyboardInput for VgaG {}
 
 impl Led for VgaG {}
+
+impl Storage for VgaG {}
 
 impl Driver for VgaG {
     fn driver_name(&self) -> &'static str {

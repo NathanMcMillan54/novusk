@@ -94,7 +94,7 @@ impl Aarch64Kernel {
 impl ArchKernelSetup for Aarch64Kernel {
     fn irq_setup(&self) -> SetupReturn {
         unsafe { aarch64_irq_setup(); }
-        return (Ok(()), "IRQ successfully setup");
+        return (Ok(()), "IRQs successfully setup");
     }
 
     fn device_init(&self) -> SetupReturn {

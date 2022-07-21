@@ -2,10 +2,9 @@
 name = "lba"
 version = "0.1.0"
 edition = "2021"
-description = "Logical Block Addressing (LBA) driver"
+description = "Logical Block Addressing (LBA) driver for x86_64"
 
 [dependencies]
-novuskinc = "0.1.1"
+asminc = { path = "../../../include/asm/" }
+novuskinc = { path = "../../../include/novusk/" }
 printk = { path = "../../../kernel/printk/" }
-storage = { path = "../" }
-x86_64 = "0.14.7"

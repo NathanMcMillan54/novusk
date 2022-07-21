@@ -6,7 +6,7 @@ pub mod names;
 
 pub type DriverResult = Result<(), &'static str>;
 
-pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Led {
+pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Led + Storage {
     /// The ``driver_name`` function should be used to return the driver's name
     ///
     /// Example:
