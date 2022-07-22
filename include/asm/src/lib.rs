@@ -29,8 +29,7 @@ pub unsafe extern "C" fn arch_asm_loop() {
     x86_64::hlt();
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn disable_irqs() {
+pub unsafe fn disable_irqs() {
     #[cfg(target_arch = "arm")]
     arm32::ints::cpsid();
 
@@ -38,8 +37,7 @@ pub unsafe extern "C" fn disable_irqs() {
     x86_64::ints::cli();
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn enable_irqs() {
+pub unsafe fn enable_irqs() {
     #[cfg(target_arch = "x86_64")]
     x86_64::ints::sti();
 }

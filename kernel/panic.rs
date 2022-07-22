@@ -1,6 +1,7 @@
 /// This file is for a global panic handler used throughout the kernel, any library/module that
 /// needs a panic handler should be linked to this file.
 
+use asminc::irq::ARCH_IRQS;
 use core::panic::PanicInfo;
 use printk::printk;
 
@@ -10,10 +11,6 @@ extern "C" {
     /// This function is used to indicate that the kernel panicked. If the device doesn't have a
     /// display this should flash an onboard LED.
     pub fn device_indicate_panic();
-
-    /// The ``disable_irqs`` function should come from the device IRQ chip driver or ``asminc`` so
-    /// it doesn't need to be implemented.
-    pub fn disable_irqs();
 
     /// Check the Dif to see if the kernel needs to shutdown after the panic.
     pub fn check_dif_panic();
@@ -29,7 +26,7 @@ pub unsafe fn _panic(info: &PanicInfo) -> ! {
     printk!("| Getting ready to end...\n|");
 
     device_indicate_panic();
-    // disable_irqs();
+    ARCH_IRQS.enable_if_disabled();
 
     printk!("\n| Panic message: {}\n", info.message().unwrap_or(&format_args!("{}", "No message was given")));
     printk!("| Panic location: {}:{}\n", info.location().unwrap().file(), info.location().unwrap().line());

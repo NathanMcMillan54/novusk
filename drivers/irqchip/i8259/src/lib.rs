@@ -7,7 +7,7 @@
 use pic8259::ChainedPics;
 use spin::Mutex;
 
-use asminc::{disable_irqs, enable_irqs};
+use asminc::irq::{disable_irqs, enable_irqs};
 use novuskinc::irq::{IrqChip, IrqHandler};
 
 // This is only meant to hold PIC1 and PIC2 which is for a timer and ps2 keyboard input

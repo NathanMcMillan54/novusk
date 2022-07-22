@@ -8,8 +8,6 @@ unsafe fn update_timer(stack_frame: x86_64::structures::idt::InterruptStackFrame
 
     TIMER_VALUE += 0.06;
 
-    printk::printk!(".");
-
     notify_irq(IRQ_1);
 }
 

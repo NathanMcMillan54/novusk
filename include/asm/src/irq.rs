@@ -3,6 +3,9 @@ extern "C" {
     pub fn disable_irqs();
     /// Enables IRQs.
     pub fn enable_irqs();
+
+    /// A static with ``ArchIrqs`` value.
+    pub static mut ARCH_IRQS: ArchIrqs;
 }
 
 /// ``ArchIrqs`` are used to enable or disable IRQs and let the kernel know if IRQs are disabled or
@@ -12,6 +15,12 @@ pub struct ArchIrqs {
 }
 
 impl ArchIrqs {
+    pub const fn new() -> Self {
+        return ArchIrqs {
+            enabled: false,
+        };
+    }
+
     /// Returns the value of ``self.enabled``.
     pub fn is_enabled(&self) -> bool {
         return self.enabled;

@@ -10,5 +10,6 @@ edition = "2021"
 crate-type = ["staticlib"]
 
 [dependencies]
+asminc = { path = "../include/asm/" }
 nmallocator = { path = "../mm/nmallocator/" }
 printk = { path = "../kernel/printk/" }

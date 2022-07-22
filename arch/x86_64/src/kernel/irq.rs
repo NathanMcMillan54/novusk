@@ -1,36 +1,7 @@
 use core::arch::asm;
 use super::idt::{idt_init, set_idt};
 use novuskinc::irq::irqchip_init;
-
-pub(crate) static mut IRQS: X64Irqs = X64Irqs::new();
-
-
-pub struct X64Irqs {
-    pub enabled: bool,
-}
-
-impl X64Irqs {
-    pub const fn new() -> Self {
-        return X64Irqs {
-            enabled: false,
-        };
-    }
-
-    pub fn enable(&mut self) {
-        unsafe { asm!("sti"); }
-        self.enabled = true;
-    }
-
-    pub fn disable(&mut self) {
-        unsafe { asm!("cli"); }
-        self.enabled = false;
-    }
-
-    pub fn disable_and_halt(&mut self) {
-        self.disable();
-        unsafe { asm!("hlt"); }
-    }
-}
+use crate::include::asm::irq::ARCH_IRQS;
 
 pub unsafe fn start_irq_setup() {
     set_idt();
@@ -40,7 +11,7 @@ pub unsafe fn start_irq_setup() {
 pub unsafe fn irq_init() {
     //super::i8259::PIC2859.lock().initialize();
     irqchip_init();
-    IRQS.enable();
+    ARCH_IRQS.enable();
 }
 
 pub mod irqns {

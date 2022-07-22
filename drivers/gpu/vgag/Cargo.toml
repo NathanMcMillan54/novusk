@@ -5,6 +5,7 @@ edition = "2021"
 description = "Vga graphics driver"
 
 [dependencies]
+asminc = { path = "../../../include/asm/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 libcolor = { path = "../../../lib/libcolor/" }
 novuskinc = { path = "../../../include/novusk/", features = ["library"] }
