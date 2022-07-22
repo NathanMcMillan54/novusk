@@ -9,6 +9,9 @@ pub mod arm32;
 #[cfg(target_arch = "aarch64")]
 pub mod aarch64;
 
+pub mod io;
+pub mod irq;
+
 /// Runs ``nop`` instruction which is supported on most architectures
 pub unsafe fn nop() {
     core::arch::asm!("nop");
