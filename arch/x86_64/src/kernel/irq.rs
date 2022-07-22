@@ -38,7 +38,9 @@ pub unsafe fn start_irq_setup() {
 }
 
 pub unsafe fn irq_init() {
+    //super::i8259::PIC2859.lock().initialize();
     irqchip_init();
+    IRQS.enable();
 }
 
 pub mod irqns {

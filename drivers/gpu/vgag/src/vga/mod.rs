@@ -2,6 +2,7 @@ use core::fmt::{Arguments, Write};
 use libcolor::{Color16, ColorCode};
 use novuskinc::fb::FrameBufferGraphics;
 use spin::Mutex;
+use x86_64::instructions::interrupts::without_interrupts;
 use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{names::CONSOLE, Driver, DriverResult};
 use novuskinc::keyboard::KeyboardInput;
@@ -90,12 +91,14 @@ impl Write for VgaG {
 impl KernelConsoleDriver for VgaG {
     fn write_character(&self, c: char, x: u16, y: u16) {
         unsafe {
-            match VGA_MODE {
-                0 => {
-                    VGA_80X25.lock().write_char(c);
-                }
-                _ => return,
-            };
+            without_interrupts(|| {
+                match VGA_MODE {
+                    0 => {
+                        VGA_80X25.lock().write_char(c);
+                    }
+                    _ => return,
+                };
+            });
         }
     }
 

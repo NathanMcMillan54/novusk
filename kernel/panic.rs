@@ -29,7 +29,7 @@ pub unsafe fn _panic(info: &PanicInfo) -> ! {
     printk!("| Getting ready to end...\n|");
 
     device_indicate_panic();
-    disable_irqs();
+    // disable_irqs();
 
     printk!("\n| Panic message: {}\n", info.message().unwrap_or(&format_args!("{}", "No message was given")));
     printk!("| Panic location: {}:{}\n", info.location().unwrap().file(), info.location().unwrap().line());

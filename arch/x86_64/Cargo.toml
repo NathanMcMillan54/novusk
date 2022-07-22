@@ -25,6 +25,7 @@ libcolor = { path = "../../lib/libcolor/" }
 memory = { path = "../../mm/memory/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novuskinc = { path = "../../include/novusk/", features = ["library"] }
+pic8259 = "0.10.2"
 power = { path = "../../kernel/power/" }
 printk = { path = "../../kernel/printk/" }
 raw-cpuid = "10.2.0"
