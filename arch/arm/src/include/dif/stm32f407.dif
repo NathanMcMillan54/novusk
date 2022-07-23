@@ -7,7 +7,7 @@
     ("PrintingMethod", "Serial"),
     ("DeviceKernel", "false"),
     ("StartInit", "true"),
-    ("IrqMethod", "NVIC"),
+    ("IrqChip", "NVIC"),
     ("EnableDeviceIrqs", "true"),
     ("ShutdownOnPanic", "false")
 ]

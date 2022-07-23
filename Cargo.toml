@@ -41,7 +41,6 @@ members = [
 
     "include/asm/",
     "include/ctypes/",
-    "include/dif/",
     "include/novusk/",
 
     "init/",
