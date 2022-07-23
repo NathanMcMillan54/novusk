@@ -1,12 +1,14 @@
 use novuskinc::irq::notify_irq;
+use time::kernel::{update_time, KERNEL_TIME};
 use crate::early_printk;
 
-pub static mut TIMER_VALUE: f64 = 0.0;
+// The timer IRQ gets called about once every half second
+pub(crate) const TIME_RATE: f64 = 0.05;
 
 unsafe fn update_timer(stack_frame: x86_64::structures::idt::InterruptStackFrame) {
     use super::irq::irqns::IRQ_1;
 
-    TIMER_VALUE += 0.06;
+    update_time();
 
     notify_irq(IRQ_1);
 }

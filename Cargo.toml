@@ -50,6 +50,7 @@ members = [
     "kernel/power/",
     "kernel/printk/",
     "kernel/setup/",
+    "kernel/time/",
 
     "lib/libbmu/",
     "lib/libc/unistd/",

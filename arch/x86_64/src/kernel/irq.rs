@@ -1,11 +1,15 @@
 use core::arch::asm;
 use super::idt::{idt_init, set_idt};
+use super::time::TIME_RATE;
 use novuskinc::irq::irqchip_init;
+use time::kernel::set_kernel_time_rate;
 use crate::include::asm::irq::ARCH_IRQS;
 
 pub unsafe fn start_irq_setup() {
     set_idt();
     idt_init();
+
+    set_kernel_time_rate(TIME_RATE);
 }
 
 pub unsafe fn irq_init() {

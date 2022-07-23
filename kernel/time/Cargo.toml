@@ -2,6 +2,6 @@
 name = "time"
 version = "0.1.0"
 edition = "2021"
-description = "Kernel, cpu, and real time (when supported)"
+description = "Kernel and real time (when supported)"
 
 [dependencies]
