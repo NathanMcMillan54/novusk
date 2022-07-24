@@ -4,11 +4,9 @@ version = "0.1.0"
 edition = "2021"
 description = "Support for ST devices, mainly STM32 boards"
 
-[lib]
-crate-type = ["staticlib"]
-
 [dependencies]
 asminc = { path = "../../../include/asm/" }
+invic = { path = "../../irqchip/invic/" }
 printk = { path = "../../../kernel/printk/" }
 stm32f4xx-hal = { version = "0.13.2", features = ["stm32f407"] }
 ssd1306 = "0.7.0"

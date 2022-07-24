@@ -3,27 +3,40 @@
 #![feature(panic_info_message)]
 
 #[macro_use] extern crate asminc;
+extern crate invic;
 #[macro_use] extern crate novuskinc;
+
+use novuskinc::kernel::types::KernelFunctionName;
 
 #[path = "dif.rs"]
 mod dif;
 
-mod displays;
+pub mod clocks;
+pub mod gpio;
 pub mod irqs;
-pub mod stm32f4xx;
 
-#[path = "../../../../kernel/panic.rs"]
-pub mod panic;
+unsafe fn stm_init() -> u8 {
+    clocks::setup_clocks();
+    gpio::gpio_init();
 
-fn stm_init() {
-    if dif::DIF_FILE[0].1 == "STM32F4xx" {
-        stm32f4xx::setup_stm32f407();
-    } else { panic!("Wrong DIF file should be using a STM32Xxxx DIF not a {} DIF", dif::DIF_FILE[0].1); }
+    0
 }
 
-fn stm_end() {
+define_kernel_function!(KernelFunctionName::device_init, -> u8, stm_init);
 
+unsafe fn stm_early_init() -> u8 {
+
+
+    0
 }
 
-module_init!(early_device_init, stm_init);
-module_end!(early_device_end, stm_end);
+define_kernel_function!(KernelFunctionName::early_device_init, -> u8, stm_early_init);
+
+#[no_mangle]
+pub extern "C" fn early_serial_init() { }
+
+#[no_mangle]
+pub extern "C" fn device_indicate_panic() { }
+
+#[no_mangle]
+pub extern "C" fn handle_irq() { }

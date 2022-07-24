@@ -8,7 +8,7 @@ pub static DIF_FILE: &'static [(&'static str, &'static str); 11] = &[
     ("PrintingMethod", "Serial"),
     ("DeviceKernel", "false"),
     ("StartInit", "true"),
-    ("IrqMethod", "NVIC"),
+    ("IrqChip", "NVIC"),
     ("EnableDeviceIrqs", "true"),
     ("ShutdownOnPanic", "false")
 ]

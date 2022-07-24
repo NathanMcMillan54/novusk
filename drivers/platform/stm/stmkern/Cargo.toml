@@ -9,6 +9,7 @@ arm = { path = "../../../../arch/arm/" }
 asminc = { path = "../../../../include/asm/" }
 cortex-m = "0.7.4"
 cortex-m-rt = "0.7.1"
+novuskinc = { path = "../../../../include/novusk/" }
 printk = { path = "../../../../kernel/printk/" }
 stm = { path = "../" }
 

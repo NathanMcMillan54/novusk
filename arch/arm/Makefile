@@ -10,7 +10,7 @@ setup:
 	@ echo "Setting up ARM for build..."
 
 link:
-	@ $(LINK_COMMAND)
+	@ arm-none-eabi-objcopy --strip-all -O binary ../../target/$(TARGET)/release/a32dImage src/boot/a32dImage
 
 clean:
 	@ rm -rf src/boot/a32dImage
