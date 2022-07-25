@@ -12,12 +12,18 @@ use novuskinc::kernel::types::KernelFunctionName;
 mod dif;
 
 pub mod clocks;
-pub mod gpio;
 pub mod irqs;
+pub mod panic;
+
+/// STM32f4xx boards
+#[cfg(feature = "stm32f4")]
+pub mod f4;
+
+#[cfg(feature = "stm32f4")]
+pub use f4::board;
 
 unsafe fn stm_init() -> u8 {
-    clocks::setup_clocks();
-    gpio::gpio_init();
+    board::stm_board_init();
 
     0
 }
@@ -34,9 +40,6 @@ define_kernel_function!(KernelFunctionName::early_device_init, -> u8, stm_early_
 
 #[no_mangle]
 pub extern "C" fn early_serial_init() { }
-
-#[no_mangle]
-pub extern "C" fn device_indicate_panic() { }
 
 #[no_mangle]
 pub extern "C" fn handle_irq() { }

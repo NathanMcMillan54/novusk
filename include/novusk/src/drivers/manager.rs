@@ -1,5 +1,11 @@
 use super::Driver;
 
+extern "C" {
+    /// This is a static that contains all the drivers that Novusk will use, it is defined in
+    /// ``drivers/drivers.rs`` which should be included in the architecture specific kernel.
+    pub static mut DRIVER_MANAGER: DeviceDriverManager;
+}
+
 /// ``DeviceDriverManager`` is used to manage main device drivers
 pub struct DeviceDriverManager {
     pub drivers: Option<[&'static dyn Driver; 10]>,

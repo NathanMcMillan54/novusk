@@ -8,9 +8,13 @@ description = "Support for ST devices, mainly STM32 boards"
 asminc = { path = "../../../include/asm/" }
 invic = { path = "../../irqchip/invic/" }
 printk = { path = "../../../kernel/printk/" }
-stm32f4xx-hal = { version = "0.13.2", features = ["stm32f407"] }
+stm32f4xx-hal = { version = "0.13.2" }
 ssd1306 = "0.7.0"
 novuskinc = { path = "../../../include/novusk/" }
 
 [build-dependencies]
 difi = { path = "../../../tools/build/difi/" }
+
+[features]
+stm32f4 = []
+stm32f407 = ["stm32f4xx-hal/stm32f407", "stm32f4"]

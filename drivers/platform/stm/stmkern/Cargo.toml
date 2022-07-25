@@ -18,4 +18,4 @@ name = "a32dImage"
 path = "src/main.rs"
 
 [features]
-stm32f407 = ["arm/stm32f407"]
+stm32f407 = ["arm/stm32f407", "stm/stm32f407"]

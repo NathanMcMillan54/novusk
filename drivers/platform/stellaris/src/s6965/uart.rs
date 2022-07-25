@@ -86,6 +86,8 @@ impl KeyboardInput for S6965Uart {}
 
 impl Led for S6965Uart {}
 
+impl Storage for S6965Uart {}
+
 impl Driver for S6965Uart {
     fn driver_name(&self) -> &'static str {
         return CONSOLE;
