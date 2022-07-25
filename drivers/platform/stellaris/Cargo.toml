@@ -8,7 +8,7 @@ description = "A driver for Stellaris devices"
 asminc = { path = "../../../include/asm/" }
 cortex-m = "0.7.5"
 cortex-m-rt = "0.7.1"
-dif = { git = "https://github.com/new-kernel/dif" }
+dif = { git = "https://github.com/new-kernel/dif", rev = "e6feae1" }
 hio = { path = "../arm/hio/" }
 invic = { path = "../../irqchip/invic/" }
 novuskinc = { path = "../../../include/novusk/" }

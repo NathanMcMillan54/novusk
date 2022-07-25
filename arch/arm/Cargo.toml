@@ -6,7 +6,7 @@ description = "ARM (32) kernel"
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
-dif = { git = "https://github.com/new-kernel/dif" }
+dif = { git = "https://github.com/new-kernel/dif", rev = "e6feae1" }
 nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { path = "../../include/novusk/" }
 printk = { path = "../../kernel/printk/" }
