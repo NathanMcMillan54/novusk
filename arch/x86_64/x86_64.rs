@@ -13,5 +13,8 @@ pub mod include;
 #[path = "src/kernel/mod.rs"]
 pub mod kernel;
 
+#[path = "src/libx/mod.rs"]
+pub mod libx;
+
 #[path = "src/mm/mod.rs"]
 pub mod mm;

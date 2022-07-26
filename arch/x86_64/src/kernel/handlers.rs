@@ -7,6 +7,11 @@ use x86_64::structures::idt::{InterruptStackFrame, PageFaultErrorCode};
 pub mod panic;
 
 #[no_mangle]
+pub unsafe extern "C" fn check_dif_panic() {
+
+}
+
+#[no_mangle]
 pub extern "C" fn device_indicate_panic() {
     use super::video_vga::*;
     use libcolor::{Color16, ColorCode};

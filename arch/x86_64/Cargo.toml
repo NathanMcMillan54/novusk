@@ -17,7 +17,7 @@ path = "src/main.rs"
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
-dif = { git = "https://github.com/new-kernel/dif", rev = "e6feae1" }
+dif = { git = "https://github.com/new-kernel/dif", features = ["alloc"] }
 i8259 = { path = "../../drivers/irqchip/i8259/" }
 kinfo = { path = "../../kernel/kinfo/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
