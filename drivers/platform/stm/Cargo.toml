@@ -13,7 +13,7 @@ ssd1306 = "0.7.0"
 novuskinc = { path = "../../../include/novusk/" }
 
 [build-dependencies]
-difi = { path = "../../../tools/build/difi/" }
+difi = "0.1.0"
 
 [features]
 stm32f4 = []

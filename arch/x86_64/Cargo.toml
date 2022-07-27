@@ -17,7 +17,7 @@ path = "src/main.rs"
 
 [dependencies]
 asminc = { path = "../../include/asm/" }
-dif = { git = "https://github.com/new-kernel/dif", features = ["alloc"] }
+dif = { version = "0.1.0", features = ["alloc"] }
 i8259 = { path = "../../drivers/irqchip/i8259/" }
 kinfo = { path = "../../kernel/kinfo/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
@@ -37,7 +37,7 @@ volatile = "0.3.0"
 x86_64 = "0.14.9"
 
 [build-dependencies]
-difi = { path = "../../tools/build/difi/" }
+difi = "0.1.0"
 
 [features]
 pic8259_irqchip = []

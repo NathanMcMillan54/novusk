@@ -1,5 +1,5 @@
-use difi::add_kernel_dif;
+use difi::add_dif;
 
 fn main() {
-    add_kernel_dif("src/include/dif/kernel_dif.dif");
+    add_dif("src/include/dif/kernel_dif.dif");
 }

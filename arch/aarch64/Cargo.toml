@@ -19,7 +19,7 @@ edition = "2021"
 asminc = { path = "../../include/asm/" }
 # bcm = { path = "../../drivers/soc/bcm/" }
 cortex-a = "7.4.0"
-dif = { git = "https://github.com/new-kernel/dif/", rev = "e6feae1" }
+dif = { version = "0.1.0", features = ["alloc"] }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novusk_syscalls = "0.2.1"
