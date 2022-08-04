@@ -6,6 +6,7 @@ description = "Aarch64/arm64 kernel support"
 
 [dependencies]
 armfb = { path = "../../drivers/gpu/armfb/" }
+dif = "0.1.1"
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
@@ -15,6 +16,9 @@ setup = { path = "../../kernel/setup/" }
 tock-registers = "0.7.0"
 r0 = "1.0.0"
 rpi = { path = "../../drivers/rpi/" }
+
+[build-dependencies]
+difi = "0.1.0"
 
 [features]
 rpi3 = ["rpi/rpi3"]

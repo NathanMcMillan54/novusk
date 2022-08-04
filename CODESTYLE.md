@@ -23,6 +23,9 @@ extern crate setup;
 
 ## Assembly
 
+Try to use GAS syntax inside the kernel as much as possible, this helps limit the tools needed for compiling since GCC
+and AS should already be installed.
+
 Global and external symbols:
 ```assembly
 // These should be at the top of the file

@@ -8,7 +8,7 @@ description = "Drivers for RaspberryPi boards"
 # cortex-a = "6.1.0"
 device = { path = "../device" }
 libbmu = { path = "../../lib/libbmu/" }
-mailbox = { path = "../firmware/mailbox/" }
+mailbox = { path = "../platform/mailbox/" }
 mio = { path = "../../mm/mio/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 tock-registers = "0.7.0"
