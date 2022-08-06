@@ -31,7 +31,7 @@ pub use rpi2::registers::*;
 pub use rpi3::*;
 
 
-#[cfg(feature = "rpi3")]
+#[cfg(all(feature = "rpi3", not(feature = "rpi2")))]
 #[no_mangle]
 // #[export_name = "device_init"]
 pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
@@ -43,7 +43,7 @@ pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     } else { return (Ok(()), "RPi 3"); }
 }
 
-#[cfg(feature = "rpi2")]
+#[cfg(all(feature = "rpi2", not(feature = "rpi3")))]
 #[no_mangle]
 pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     let mut pi = Rpi2::new();

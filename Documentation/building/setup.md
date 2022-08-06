@@ -2,14 +2,19 @@
 
 ---
 
+## Requirements:
+
+``rustc`` - ~1.61
+``rustup`` - ~1.25
+``nightly`` - ~1.64
+
 ## Install:
 
 Update Rust and install Nightly:
 ```commandline
 rustup update
 rustup toolchain install nightly
-rustup component add rust-src --toolchain nightl
-
+rustup component add rust-src --toolchain nightly
 ```
 
 Install any cross-compilers that might be needed:

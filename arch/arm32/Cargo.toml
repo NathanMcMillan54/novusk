@@ -6,7 +6,7 @@ description = "ARM32 kernel support"
 
 [dependencies]
 cfg-if = "1.0.0"
-cortex-a = "6.1.0"
+cortex-a = "7.0.1"
 cortex-m = "0.7.3"
 cortex-m-rt = "^0.6.15"
 cortex-m-semihosting = "0.3.7"
