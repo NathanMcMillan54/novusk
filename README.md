@@ -9,7 +9,7 @@ This branch is dedicated to maintaining updating Novusk v3,
 [this issue](https://github.com/NathanMcMillan54/novusk/issues/14) has a list of things that are needed in this current 
 major version and in future major versions.
 
-Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kernel and projects for the kernel.
+Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates and discussion related to the kernel.
 
 Also, this is Jared:
 ```commandline

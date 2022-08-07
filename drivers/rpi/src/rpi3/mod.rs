@@ -6,6 +6,17 @@ use mailbox::MailBox;
 pub mod gpio;
 pub mod led;
 
+#[no_mangle]
+// #[export_name = "device_init"]
+pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
+    let mut pi = Rpi3::new();
+    pi.init();
+
+    if pi.error.0 {
+        return (Err(pi.error.1), "RPi 3");
+    } else { return (Ok(()), "RPi 3"); }
+}
+
 pub struct Rpi3 {
     pub error: (bool, &'static str),
     pub gpio: gpio::Rpi3Gpio,
