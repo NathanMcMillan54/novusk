@@ -3,8 +3,6 @@
 version: 2
 updates:
   - package-ecosystem: "cargo"
-    target_branch: master
-    target_branch: v3-branch
     directory: "/"
     schedule:
       interval: "daily"
