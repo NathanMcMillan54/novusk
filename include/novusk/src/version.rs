@@ -4,7 +4,7 @@ use crate::kernel::syscalls::arch_syscalls::SYSCALL_TABLE;
 
 pub const MAJOR_VERSION: i32 = 3;
 pub const MINOR_VERSION: i32 = 0;
-pub const REALLY_MINOR_VERSION: i32 = 1;
+pub const REALLY_MINOR_VERSION: i32 = 2;
 pub const VERSION_NAME: &str = "Coffee";
 
 // -----------------

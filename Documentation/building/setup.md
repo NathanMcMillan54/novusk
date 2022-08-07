@@ -4,9 +4,9 @@
 
 ## Requirements:
 
-``rustc`` - ~1.61
-``rustup`` - ~1.25
-``nightly`` - ~1.64
+- ``rustc`` - ~1.61
+- ``rustup`` - ~1.25
+- ``nightly`` - ~1.64
 
 ## Install:
 
