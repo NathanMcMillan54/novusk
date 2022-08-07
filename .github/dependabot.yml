@@ -3,8 +3,8 @@
 version: 2
 updates:
   - package-ecosystem: "cargo"
+    target_branch: master
+    target_branch: v3-branch
     directory: "/"
     schedule:
       interval: "daily"
-      # Should be 15:00 EST
-      time: "17:00"
