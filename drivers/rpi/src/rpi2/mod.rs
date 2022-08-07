@@ -7,14 +7,6 @@ pub mod registers;
 pub mod mb;
 pub mod uart;
 
-#[no_mangle]
-pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
-    let mut pi = Rpi2::new();
-    pi.init();
-
-    return (Ok(()), "RPi 2");
-}
-
 extern "C" {
     static mut BOARD: Board;
     fn rpi2_kernel_init();
