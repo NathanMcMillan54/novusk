@@ -3,6 +3,7 @@ name = "init"
 version = "0.1.0"
 edition = "2021"
 description = "Main kernel initialization"
+publish = false
 
 [lib]
 name = "init"

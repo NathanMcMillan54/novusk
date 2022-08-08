@@ -3,5 +3,6 @@ name = "mouse"
 version = "0.1.0"
 edition = "2021"
 description = "Mouse traits and handler"
+publish = false
 
 [dependencies]

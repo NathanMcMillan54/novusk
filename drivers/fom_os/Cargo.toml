@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Nathan McMillan <nathanmcmillan54@gmail.com>"]
 edition = "2021"
 description = "Setup for all versions of the FOMOS operating system"
+publish = false
 
 [dependencies]
 novuskinc = "0.1.1"

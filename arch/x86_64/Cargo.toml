@@ -3,6 +3,7 @@ name = "x86_64"
 version = "0.1.0"
 edition = "2021"
 description = "x86_64 support for Novusk"
+publish = false
 
 [lib]
 name = "x86_64_kernel_lib"

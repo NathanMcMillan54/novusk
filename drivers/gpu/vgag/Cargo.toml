@@ -3,6 +3,7 @@ name = "vgag"
 version = "0.1.0"
 edition = "2021"
 description = "Vga graphics driver"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }

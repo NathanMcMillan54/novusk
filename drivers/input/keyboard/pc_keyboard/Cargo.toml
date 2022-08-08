@@ -3,6 +3,7 @@ name = "pc_keyboard"
 version = "0.1.0"
 edition = "2021"
 description = "A driver for to handle PC Keyboard input"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../../include/asm/" }

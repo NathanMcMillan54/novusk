@@ -3,6 +3,7 @@ name = "memory"
 version = "0.1.0"
 edition = "2021"
 description = "memory.h"
+publish = false
 
 [dependencies]
 ctypes = { path = "../../include/ctypes/" }

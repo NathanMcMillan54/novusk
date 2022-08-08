@@ -3,6 +3,7 @@ name = "stmkern"
 version = "0.1.0"
 edition = "2021"
 description = "STM device specific kernel"
+publish = false
 
 [dependencies]
 arm = { path = "../../../../arch/arm/" }

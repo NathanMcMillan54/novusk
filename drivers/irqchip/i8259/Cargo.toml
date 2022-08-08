@@ -3,6 +3,7 @@ name = "i8259"
 version = "0.1.0"
 edition = "2021"
 description = "A driver for the PIC8259 IRQ chip"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }

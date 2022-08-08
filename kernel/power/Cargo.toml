@@ -3,6 +3,7 @@ name = "power"
 version = "0.1.0"
 edition = "2021"
 description = "Power managment for Novusk"
+publish = false
 
 [dependencies]
 novuskinc = { path = "../../include/novusk/" }

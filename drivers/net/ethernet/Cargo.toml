@@ -3,6 +3,7 @@ name = "ethernet"
 version = "0.1.0"
 edition = "2021"
 description = "For writing ethernet drivers"
+publish = false
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
