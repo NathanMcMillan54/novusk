@@ -3,6 +3,7 @@ name = "armfb"
 version = "0.1.0"
 edition = "2021"
 description = "ARM 32/64 bit frambuffer graphics"
+publish = false
 
 [dependencies]
 fb = { path = "../../fb/" }

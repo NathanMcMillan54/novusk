@@ -3,6 +3,7 @@ name = "stmd"
 version = "0.1.0"
 edition = "2021"
 description = "Support for STM32 boards"
+publish = false
 
 [dependencies]
 cortex-m = "0.7.3"

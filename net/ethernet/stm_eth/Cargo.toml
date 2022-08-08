@@ -3,6 +3,7 @@ name = "stm_eth"
 version = "0.1.0"
 edition = "2021"
 description = "Ethernet driver for STM32 devices"
+publish = false
 
 [dependencies]
 ethernet = { path = "../../../drivers/net/ethernet/" }

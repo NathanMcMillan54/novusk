@@ -3,6 +3,7 @@ name = "storage"
 version = "0.1.0"
 edition = "2021"
 description = "Initializes disk/card and Fs"
+publish = false
 
 [dependencies]
 novuskinc = "0.1.1"

@@ -3,6 +3,7 @@ name = "keyboard"
 version = "0.1.0"
 edition = "2021"
 description = "Keyboard input handler"
+publish = false
 
 [dependencies]
 pc-keyboard = "0.5.1"

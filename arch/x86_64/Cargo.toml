@@ -3,6 +3,7 @@ name = "x86_64"
 version = "0.1.0"
 edition = "2021"
 description = "x86_64 support for Novusk"
+publish = false
 
 [dependencies]
 # amd64_timer = "1.3.0"

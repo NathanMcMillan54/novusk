@@ -3,5 +3,6 @@ name = "printk"
 version = "0.1.0"
 edition = "2021"
 description = "Kernel printing function and macro"
+publish = false
 
 [dependencies]
