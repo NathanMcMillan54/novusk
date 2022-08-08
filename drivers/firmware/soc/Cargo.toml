@@ -3,5 +3,6 @@ name = "soc"
 version = "0.1.0"
 edition = "2021"
 description = "Used for writing SOC drivers"
+publish = false
 
 [dependencies]

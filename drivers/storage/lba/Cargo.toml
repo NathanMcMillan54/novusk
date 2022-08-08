@@ -3,6 +3,7 @@ name = "lba"
 version = "0.1.0"
 edition = "2021"
 description = "Logical Block Addressing (LBA) driver for x86_64"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }

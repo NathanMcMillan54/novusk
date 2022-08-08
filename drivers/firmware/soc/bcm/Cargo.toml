@@ -3,6 +3,7 @@ name = "bcm"
 version = "0.1.0"
 edition = "2021"
 description = "An SOC driver for Broadcom CPUs"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../../include/asm/" }

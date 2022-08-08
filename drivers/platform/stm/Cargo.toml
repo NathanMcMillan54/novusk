@@ -3,6 +3,7 @@ name = "stm"
 version = "0.1.0"
 edition = "2021"
 description = "Support for ST devices, mainly STM32 boards"
+publish = false
 
 [dependencies]
 asminc = { path = "../../../include/asm/" }

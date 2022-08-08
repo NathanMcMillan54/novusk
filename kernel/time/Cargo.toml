@@ -3,5 +3,6 @@ name = "time"
 version = "0.1.0"
 edition = "2021"
 description = "Kernel and real time (when supported)"
+publish = false
 
 [dependencies]

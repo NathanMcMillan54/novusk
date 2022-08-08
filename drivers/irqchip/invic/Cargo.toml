@@ -3,6 +3,7 @@ name = "invic"
 version = "0.1.0"
 edition = "2021"
 description = "NVIC irqchip driver"
+publish = false
 
 [dependencies]
 cortex-m = "0.7.5"

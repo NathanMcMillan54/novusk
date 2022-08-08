@@ -3,6 +3,7 @@ name = "stellariskern"
 version = "0.1.0"
 edition = "2021"
 description = "Stellaris device specific kernel"
+publish = false
 
 [[bin]]
 name = "a32dImage"
