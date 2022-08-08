@@ -3,6 +3,7 @@ name = "rpi2kernel"
 version = "0.1.0"
 edition = "2021"
 description = "RPi 2 specific kernel"
+publish = false
 
 [dependencies]
 armfb = { path = "../../gpu/armfb/" }

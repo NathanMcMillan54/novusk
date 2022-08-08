@@ -3,6 +3,7 @@ name = "stellarisd"
 version = "0.1.0"
 edition = "2021"
 description = "Board support for Stellaris boards"
+publish = false
 
 [dependencies]
 cortex-m = "0.7.3"

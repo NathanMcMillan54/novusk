@@ -3,6 +3,7 @@ name = "rpi"
 version = "0.1.0"
 edition = "2021"
 description = "Drivers for RaspberryPi boards"
+publish = false
 
 [dependencies]
 # cortex-a = "6.1.0"

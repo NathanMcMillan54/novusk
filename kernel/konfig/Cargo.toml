@@ -3,6 +3,7 @@ name = "konfig"
 version = "0.1.0"
 edition = "2021"
 description = "Kernel configurations"
+publish = false
 
 [dependencies]
 lazy_static = { version = "1.4", features = ["spin_no_std"] }

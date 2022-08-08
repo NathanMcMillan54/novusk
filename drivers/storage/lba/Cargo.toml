@@ -3,6 +3,7 @@ name = "lba"
 version = "0.1.0"
 edition = "2021"
 description = "Logical Block Addressing (LBA) driver"
+publish = false
 
 [dependencies]
 novuskinc = "0.1.1"

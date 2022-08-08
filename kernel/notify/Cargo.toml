@@ -3,6 +3,7 @@ name = "notify"
 version = "0.1.0"
 edition = "2021"
 description = "Handles events"
+publish = false
 
 [dependencies]
 keyboard = { path = "../../drivers/input/keyboard/" }

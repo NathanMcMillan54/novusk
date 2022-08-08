@@ -3,6 +3,7 @@ name = "libost"
 version = "0.1.0"
 edition = "2021"
 description = "OS tools"
+publish = false
 
 [dependencies]
 gpu = { path = "../../drivers/gpu/" }

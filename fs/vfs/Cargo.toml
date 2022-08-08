@@ -3,6 +3,7 @@ name = "vfs"
 version = "0.1.0"
 edition = "2021"
 description = "A Virtual File System, for making support for other file systems"
+publish = false
 
 [dependencies]
 #mio = { path = "../../mm/mio/" }
