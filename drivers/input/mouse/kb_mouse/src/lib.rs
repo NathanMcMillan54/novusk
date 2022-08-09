@@ -8,7 +8,7 @@ pub mod input;
 pub mod types;
 
 pub fn kb_mouse_start() {
-    printk!("Kb Mouse init");
+    // printk!("Kb Mouse init");
 
     let byte: u8 = unsafe { Port::new(0x60).read() };
     let byte_option = Some(byte);
@@ -21,7 +21,7 @@ pub fn kb_mouse_start() {
 module_init!(kb_mouse_init, kb_mouse_start);
 
 pub fn kb_mouse_finish() {
-    printk!("Kb Mouse end");
+    // printk!("Kb Mouse end");
 }
 
 module_end!(kb_mouse_end, kb_mouse_finish);

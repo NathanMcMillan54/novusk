@@ -1,6 +1,4 @@
-use novusk_syscalls::SysCall;
 use crate::define_syscall;
-use crate::kernel::syscalls::arch_syscalls::SYSCALL_TABLE;
 
 pub const MAJOR_VERSION: i32 = 3;
 pub const MINOR_VERSION: i32 = 0;
@@ -26,5 +24,5 @@ fn version(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
 define_syscall!(sys_version, version);
 
 pub unsafe fn version_init() {
-    SYSCALL_TABLE.add_syscall(SysCall::new("sys_version", 30, sys_version));
+    // SYSCALL_TABLE.add_syscall(SysCall::new("sys_version", 30, sys_version));
 }

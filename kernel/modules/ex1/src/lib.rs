@@ -1,6 +1,7 @@
 #![no_std]
 
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 
 static mut SUM: i32 = 0;
 

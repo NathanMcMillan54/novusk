@@ -1,8 +1,8 @@
 use gpu::GpuGraphics;
 use kinfo::info::*;
 use konfig::Konfig;
-use novuskinc::fs::RootDir;
 use spin::Mutex;
+use vfs::RootDir;
 
 lazy_static! {
     pub static ref KERNEL: Mutex<Kernel> = Mutex::new(Kernel);

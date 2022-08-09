@@ -2,13 +2,16 @@ use novusk_syscalls::{SysCall, SysCallTable};
 //use super::{*, sys_tbl::*};
 
 extern "C" {
-    pub(crate) static mut SYSCALL_TABLE: SysCallTable;
-    pub(self) fn sys_read(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
+    // pub(crate) static mut SYSCALL_TABLE: SysCallTable;
+    // pub(self) fn sys_read(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
     pub(self) fn sys_write(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
     pub(self) fn sys_write_init(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
     pub(self) fn sys_reboot(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
     pub(self) fn sys_shutdown(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8;
 }
+
+#[no_mangle]
+pub static mut SYSCALL_TABLE: SysCallTable = SysCallTable::new();
 
 pub const READ: u32 = 0;
 pub const WRITE: u32 = 1;
@@ -32,3 +35,7 @@ pub unsafe fn syscalls_init() {
     SYSCALL_TABLE.add_syscall(SysCall::new("sys_reboot", REBOOT, sys_reboot));
 }
 
+#[no_mangle]
+pub extern "C" fn sys_read(arg1: u8, arg2: u8, arg3: u8) -> u8 {
+    0
+}

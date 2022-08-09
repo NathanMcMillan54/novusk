@@ -1,4 +1,4 @@
-use crate::printk;
+// use crate::printk;
 
 #[macro_export]
 macro_rules! module_init {

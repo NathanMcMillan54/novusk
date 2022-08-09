@@ -8,3 +8,4 @@ publish = false
 
 [dependencies]
 novuskinc = { path = "../../../include/novusk/" }
+printk = { path = "../../printk/" }

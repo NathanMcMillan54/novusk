@@ -7,6 +7,7 @@
 #[macro_use] extern crate kinfo;
 extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
+#[macro_use] extern crate printk;
 
 cfg_if! {
     if #[cfg(feature = "cortex_a")] {

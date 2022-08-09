@@ -4,9 +4,11 @@ pub const WRITE: u32 = 4;
 pub const SLEEP: u32 = 24;
 
 extern "C" {
-    pub static mut SYSCALL_TABLE: SysCallTable;
-    fn sys_write(byte: u8, arg2: u8, arg3: u8) -> u8;
+    // fn sys_write(byte: u8, arg2: u8, arg3: u8) -> u8;
 }
+
+#[no_mangle]
+pub static mut SYSCALL_TABLE: SysCallTable = SysCallTable::new();
 
 #[cfg(feature = "cortex_m")]
 #[no_mangle]
@@ -32,4 +34,9 @@ pub unsafe fn syscalls_init() {
 
     #[cfg(feature = "cortex_m")]
     SYSCALL_TABLE.add_syscall(SysCall::new("sys_sleep", SLEEP, sys_sleep));
+}
+
+#[no_mangle]
+pub extern "C" fn sys_write(arg1: u8, arg2: u8, arg3: u8) -> u8 {
+    0
 }
