@@ -3,6 +3,7 @@ name = "libbmu"
 version = "0.1.0"
 edition = "2021"
 description = "Bare Metal Userspace Library, a library for Novusk's 'userspace' on embbeded devices"
+license = "MIT"
 publish = false
 
 [dependencies]

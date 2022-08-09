@@ -3,6 +3,7 @@ name = "konfig"
 version = "0.1.0"
 edition = "2021"
 description = "Kernel configurations"
+license = "MIT"
 publish = false
 
 [dependencies]

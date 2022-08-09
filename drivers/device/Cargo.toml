@@ -3,6 +3,7 @@ name = "device"
 version = "0.1.0"
 edition = "2021"
 description = "Traits for device specific drivers"
+license = "MIT"
 publish = false
 
 [dependencies]

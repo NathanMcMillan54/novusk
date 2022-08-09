@@ -3,6 +3,7 @@ name = "riscv"
 version = "0.1.0"
 edition = "2021"
 description = "Support for RISCV32/64"
+license = "MIT"
 publish = false
 
 [dependencies]

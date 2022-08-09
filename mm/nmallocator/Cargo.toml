@@ -3,6 +3,7 @@ name = "nmallocator"
 version = "0.1.0"
 edition = "2021"
 description = "Novusk Memory Allocator"
+license = "MIT"
 publish = false
 
 [dependencies]

@@ -3,6 +3,7 @@ name = "esp"
 version = "0.1.0"
 edition = "2021"
 description = "Support for Xtensa Esp boards and RISCV in the fututre"
+license = "MIT"
 publish = false
 
 [dependencies]

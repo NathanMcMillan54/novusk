@@ -3,6 +3,7 @@ name = "keyboard"
 version = "0.1.0"
 edition = "2021"
 description = "Keyboard input handler"
+license = "MIT"
 publish = false
 
 [dependencies]

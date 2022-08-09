@@ -3,6 +3,7 @@ name = "sf_rpilcd_35"
 version = "0.1.0"
 edition = "2021"
 description = "Support for the SunFounder RaspberryPi 3.5in display"
+license = "MIT"
 publish = false
 
 [dependencies]

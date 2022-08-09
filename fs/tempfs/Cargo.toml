@@ -3,6 +3,7 @@ name = "tempfs"
 version = "0.1.0"
 edition = "2021"
 description = "Temporary File System"
+license = "MIT"
 publish = false
 
 [dependencies]

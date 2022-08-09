@@ -3,6 +3,7 @@ name = "pc_keyboard"
 version = "0.1.0"
 edition = "2021"
 description = "PC keyboard support"
+license = "MIT"
 publish = false
 
 [dependencies]

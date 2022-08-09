@@ -7,7 +7,7 @@ OSes and bare metal apps
 
 This branch is dedicated to maintaining updating Novusk v3, 
 [this issue](https://github.com/NathanMcMillan54/novusk/issues/14) has a list of things that are needed in this current 
-major version and in future major versions.
+major version and in future minor versions.
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates and discussion related to the kernel.
 

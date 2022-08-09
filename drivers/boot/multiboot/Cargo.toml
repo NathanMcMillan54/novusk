@@ -3,6 +3,7 @@ name = "multiboot"
 version = "0.1.0"
 edition = "2021"
 description = "Setup for multibooted kernel"
+license = "MIT"
 publish = false
 
 [dependencies]

@@ -3,6 +3,7 @@ name = "aarch64"
 version = "0.1.0"
 edition = "2021"
 description = "Aarch64/arm64 kernel support"
+license = "MIT"
 publish = false
 
 [dependencies]

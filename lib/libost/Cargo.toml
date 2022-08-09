@@ -3,6 +3,7 @@ name = "libost"
 version = "0.1.0"
 edition = "2021"
 description = "OS tools"
+license = "MIT"
 publish = false
 
 [dependencies]

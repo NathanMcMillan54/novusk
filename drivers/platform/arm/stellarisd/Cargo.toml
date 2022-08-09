@@ -3,6 +3,7 @@ name = "stellarisd"
 version = "0.1.0"
 edition = "2021"
 description = "Board support for Stellaris boards"
+license = "MIT"
 publish = false
 
 [dependencies]

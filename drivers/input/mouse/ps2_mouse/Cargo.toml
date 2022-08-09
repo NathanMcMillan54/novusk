@@ -3,6 +3,7 @@ name = "ps2_mouse"
 version = "0.1.0"
 edition = "2021"
 description = "PS2 mouse support"
+license = "MIT"
 publish = false
 
 [dependencies]
