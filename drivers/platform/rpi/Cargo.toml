@@ -19,7 +19,7 @@ soc = { path = "../../firmware/soc/" }
 tock-registers = "0.7.0"
 
 [build-dependencies]
-difi = { path = "../../../tools/build/difi/" }
+difi = "0.1.0"
 
 [features]
 dev_selected = []
