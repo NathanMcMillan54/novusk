@@ -17,8 +17,32 @@ use core::prelude; // Even though the libraries are in alphabetical order the mo
 Importing with ``extern``:
 ```rust
 // Importing external crates should also be in alphabetical order
-#[macro_use] extern crate printk; // #[macro_use] should be used on the same line so it's easier to read
+#[macro_use] extern crate printk;
 extern crate setup;
+```
+
+## TOML
+
+Listing dependencies:
+```toml
+# Crate dependencies are listed first in alphabetecal order
+[dependencies]
+crate_1 = { path = "crate_1/" }
+crate_a = "0.1.0"
+crate_b = "0.1.0"
+
+# Build dependencies come last
+[build-dependencies]
+build_crate = "0.1.0"
+```
+
+Feature names:
+```toml
+# Features should come last in the file and sorted alphabetcally
+[features]
+default = ["feature_b"]
+feature_a = []
+feature_b = []
 ```
 
 ## Assembly

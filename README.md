@@ -11,11 +11,13 @@ major version and in future minor versions.
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates and discussion related to the kernel.
 
+If you're going to contribute, please read ``CODESTYLE.md``. It shows how you should write your code.
+
+---
+
 Also, this is Jared:
 ```commandline
 ('_') <( Hi! )
 ```
 
 Say hi to Jared
-
-If you're going to contribute, please read ``CODESTYLE.md``. It shows how you should write your code.

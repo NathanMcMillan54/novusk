@@ -1,5 +1,7 @@
-fn not_ethernet_init() {    }
-fn not_wireless_init() {    }
+use novuskinc::kernel::types::KernelFunctionName;
 
-define_ethernet_init!(not_ethernet_init);
-define_wireless_init!(not_wireless_init);
+fn aarch64_net_init() -> u8 {
+    0
+}
+
+define_kernel_function!(KernelFunctionName::net_init, -> u8, aarch64_net_init);

@@ -34,20 +34,7 @@ impl Kernel {
     }
 
     pub unsafe fn net_init(&mut self) {
-        extern "C" {
-            fn ethernet_init();
-            fn wireless_init();
-        }
 
-        //if NETWORK_ETHERNET == true {
-            ethernet_init();
-        //} else if NETWORK_WIRELESS == true {
-            wireless_init();
-        //}
-
-        /* if NETWORK_ETHERNET == false && NETWORK_WIRELESS == false {
-            printk!("There are no networking drivers available for this architecture or device");
-        } */
     }
 
     pub fn get_root_dir(&mut self) -> RootDir {

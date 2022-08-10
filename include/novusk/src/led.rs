@@ -1,5 +1,4 @@
-pub fn blink(sleep_time: usize) {
-    extern "C" { fn led_blink(sleep: usize); }
-
-    unsafe { led_blink(sleep_time); }
+extern "C" {
+    /// Turns on an led for ``sleep`` seconds or CPU cycles.
+    pub fn led_blink(sleep: usize);
 }

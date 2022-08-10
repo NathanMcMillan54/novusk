@@ -1,10 +1,7 @@
-fn unsupported_ethernet_init() {
-    printk!("Ethernet is not supported\n");
+use novuskinc::kernel::types::KernelFunctionName;
+
+fn arm_net_init() -> u8 {
+    0
 }
 
-fn unsupported_wireless_init() {
-    printk!("Wireless is not supported");
-}
-
-define_ethernet_init!(unsupported_ethernet_init);
-define_wireless_init!(unsupported_wireless_init);
+define_kernel_function!(KernelFunctionName::net_init, -> u8, arm_net_init);

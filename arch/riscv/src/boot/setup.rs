@@ -13,7 +13,7 @@ impl RiscvBoot {
     }
 
     pub fn setup(&self) {
-        let io_ret = self.early_io_init();
+        let io_ret = self.early_serial_io_init();
         let ld_mem_ret = unsafe { self.linker_setup() };
 
         rv_printk!("Finished boot setup\n");
@@ -28,7 +28,7 @@ impl RiscvBoot {
 }
 
 impl BootSetup for RiscvBoot{
-    fn early_io_init(&self) -> SetupReturn {
+    fn early_serial_io_init(&self) -> SetupReturn {
         // The only devices the riscv kernel supports is sifive this doesn't need to change for a while
         let dev_res = DeviceResources::take().unwrap();
         let peripherals = dev_res.peripherals;

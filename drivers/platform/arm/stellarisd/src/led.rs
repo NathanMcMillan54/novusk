@@ -2,6 +2,7 @@ use tm4c123x_hal::Peripherals;
 use tm4c123x_hal::gpio::GpioExt;
 use tm4c123x_hal::sysctl::SysctlExt;
 use libbmu::Time;
+use novuskinc::kernel::types::KernelFunctionName;
 
 #[derive(Copy, Clone, PartialOrd, PartialEq)]
 pub enum LedColor {
@@ -32,9 +33,11 @@ impl StellarisLed {
     }
 }
 
-fn blink(sleep: usize) {
+fn stellaris_blink(sleep: usize) -> u8 {
     let mut led = StellarisLed::new(LedColor::Red);
     led.blink(sleep);
+
+    0
 }
 
-define_led_blink_function!(blink);
+define_kernel_function!(KernelFunctionName::led_blink, sleep: usize, -> u8, stellaris_blink);

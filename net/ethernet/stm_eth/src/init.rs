@@ -9,18 +9,17 @@ fn is_supported() -> bool {
     return true;
 }
 
-fn stm_ethernet_init() {
+fn stm_ethernet_init() -> u8 {
     let mut eth = StmEth::new();
     let (name, author) = eth.driver.driver_info();
 
     if is_supported() {
         eth.init();
-    } else { printk!("Driver: {} by: {} is not supported\n", name, author); }
+        return 0;
+    } else {
+        printk!("Driver: {} by: {} is not supported\n", name, author);
+        return 1;
+    }
 }
 
-fn stm_wireless_init() {
-
-}
-
-define_ethernet_init!(stm_ethernet_init);
-define_wireless_init!(stm_wireless_init);
+define_kernel_function!(KernelFunctionName::net_init, -> u8, stm_ethernet_init);

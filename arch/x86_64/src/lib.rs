@@ -1,5 +1,4 @@
 #![no_std]
-#![feature(asm, global_asm)]
 // Lang
 #![feature(abi_x86_interrupt, alloc_error_handler, const_mut_refs, panic_info_message)]
 

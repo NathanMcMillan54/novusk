@@ -1,10 +1,7 @@
-fn x86_64_ethernet_init() {
+use novuskinc::kernel::types::KernelFunctionName;
 
+fn x86_64_net_init() -> u8 {
+    0
 }
 
-fn x86_64_wireless_init() {
-
-}
-
-define_ethernet_init!(x86_64_ethernet_init);
-define_wireless_init!(x86_64_wireless_init);
+define_kernel_function!(KernelFunctionName::net_init, -> u8, x86_64_net_init);

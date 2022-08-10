@@ -1,6 +1,7 @@
 #![no_std]
 
 extern crate nmallocator;
+#[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
 pub mod board;

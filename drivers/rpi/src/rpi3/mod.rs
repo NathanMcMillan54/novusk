@@ -1,4 +1,5 @@
 use core::sync::atomic::{compiler_fence, Ordering};
+use novuskinc::kernel::types::KernelFunctionName;
 use crate::board::RaspberryPi;
 use crate::common::RpiMb;
 use mailbox::MailBox;
@@ -6,16 +7,16 @@ use mailbox::MailBox;
 pub mod gpio;
 pub mod led;
 
-#[no_mangle]
-// #[export_name = "device_init"]
-pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
+fn rpi3_init() -> u8 {
     let mut pi = Rpi3::new();
     pi.init();
 
     if pi.error.0 {
-        return (Err(pi.error.1), "RPi 3");
-    } else { return (Ok(()), "RPi 3"); }
+        return 1;
+    } else { return 0; }
 }
+
+define_kernel_function!(KernelFunctionName::device_init, -> u8, rpi3_init);
 
 pub struct Rpi3 {
     pub error: (bool, &'static str),
