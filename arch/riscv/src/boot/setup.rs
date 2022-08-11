@@ -27,7 +27,7 @@ impl RiscvBoot {
     }
 }
 
-impl BootSetup for RiscvBoot{
+impl BootSetup for RiscvBoot {
     fn early_serial_io_init(&self) -> SetupReturn {
         // The only devices the riscv kernel supports is sifive this doesn't need to change for a while
         let dev_res = DeviceResources::take().unwrap();

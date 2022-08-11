@@ -1,27 +1,11 @@
 use crate::define_syscall;
 
-// ------------
-// Reboot/sys_reboot
-//
-// System call for rebooting
-fn reboot(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
-    /*let mut power = Power::new();
-    power.reboot();*/
+pub const PM_REBOOT: u32 = 0;
+pub const PM_SHUTDOWN: u32 = 1;
+pub const PM_SLEEP: u32 = 2;
 
-    return 1;
+extern "C" {
+    pub fn reboot() -> !;
+    pub fn shutdown() -> !;
+    pub fn set_power_mode(mode: u32) -> u32;
 }
-
-define_syscall!(sys_reboot, reboot);
-
-// ------------
-// Shutdown/sys_shutdown
-//
-// System call for shutting down
-fn shutdown(sys_arg1: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
-    /*let mut power = Power::new();
-    power.shutdown();*/
-
-    return 1;
-}
-
-define_syscall!(sys_shutdown, shutdown);
