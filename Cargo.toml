@@ -70,7 +70,3 @@ members = [
 
     "tests/",
 ]
-
-[lib]
-name = "libnovusk"
-path = "src/lib.rs"

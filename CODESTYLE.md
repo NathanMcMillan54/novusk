@@ -20,6 +20,30 @@ Importing with ``extern``:
 extern crate setup;
 ```
 
+## TOML
+
+Listing dependencies:
+```toml
+# Crate dependencies are listed first in alphabetecal order
+[dependencies]
+crate_1 = { path = "crate_1/" }
+crate_a = "0.1.0"
+crate_b = "0.1.0"
+
+# Build dependencies come last
+[build-dependencies]
+build_crate = "0.1.0"
+```
+
+Feature names:
+```toml
+# Features should come last in the file and sorted alphabetcally
+[features]
+default = ["feature_b"]
+feature_a = []
+feature_b = []
+```
+
 ## Assembly
 
 Global and external symbols:

@@ -4,6 +4,8 @@ Novusk - A kernel written in Rust inspired by Linux
 
 Join the [Discord](https://discord.gg/hcVcCugVFP) server for updates on the kernel and projects for the kernel.
 
+If you're going to contribute, please read ``CODESTYLE.md``. It shows how you should write your code.
+
 Read ``Documentaion/`` for help with compiling, configurations and platforms, etc...
 
 ### Compiling:
@@ -18,5 +20,3 @@ Also, this is Jared:
 ```
 
 Say hi to Jared
-
-If you're going to contribute, please read ``CODESTYLE.md``. It shows how you should write your code.
