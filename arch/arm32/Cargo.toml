@@ -10,8 +10,8 @@ publish = false
 cfg-if = "1.0.0"
 cortex-a = "7.0.1"
 cortex-m = "0.7.3"
-cortex-m-rt = "^0.7.1"
-cortex-m-semihosting = "0.3.7"
+cortex-m-rt = "0.7.1"
+cortex-m-semihosting = "0.5.0"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
 dif = "0.1.1"

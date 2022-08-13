@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 cortex-m = "0.7.3"
-cortex-m-semihosting = "0.3.7"
+cortex-m-semihosting = "0.5.0"
 device = { path = "../../../device/" }
 libbmu = { path = "../../../../lib/libbmu/" }
 novuskinc = { path = "../../../../include/novusk/" }
