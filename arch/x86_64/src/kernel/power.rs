@@ -1,5 +1,15 @@
 use x86_64::instructions::port::Port;
 
+#[no_mangle]
+pub unsafe extern "C" fn sys_reboot() {
+    reboot();
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn sys_shutdown() {
+    shutdown();
+}
+
 pub unsafe fn reboot() -> ! {
     Port::new(0x64).write(0xfeu8);
 

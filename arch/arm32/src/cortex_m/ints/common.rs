@@ -17,6 +17,6 @@ unsafe fn HardFault(ef: &ExceptionFrame) -> ! {
 }
 
 #[exception]
-fn DefaultHandler(irq: i16) {
+unsafe fn DefaultHandler(irq: i16) {
     arm32_printk!("Replacing interrupt: {}", irq);
 }
