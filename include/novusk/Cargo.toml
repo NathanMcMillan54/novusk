@@ -1,7 +1,0 @@
-[package]
-name = "novuskinc"
-version = "0.1.0"
-edition = "2021"
-description = "A lib used for anything related to Novusk"
-license = "MIT"
-publish = false

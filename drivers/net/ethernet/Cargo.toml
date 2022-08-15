@@ -7,4 +7,4 @@ license = "MIT"
 publish = false
 
 [dependencies]
-novuskinc = { path = "../../../include/novusk/" }
+novuskinc = { path = "../../../include/novuskinc/", features = ["v3"] }

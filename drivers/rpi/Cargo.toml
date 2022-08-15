@@ -13,7 +13,7 @@ libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../platform/mailbox/" }
 mio = { path = "../../mm/mio/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
-novuskinc = { path = "../../include/novusk/" }
+novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
 tock-registers = "0.7.0"
 
 [features]

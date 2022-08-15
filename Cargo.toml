@@ -58,7 +58,7 @@ members = [
     "fs/vfs/",
     # Include
     "include/ctypes/",
-    "include/novusk/",
+    "include/novuskinc/",
     # Kernel
     "init/",
     "kernel/console/",
@@ -97,7 +97,7 @@ gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
-novuskinc = { path = "include/novusk/" }
+novuskinc = { path = "include/novuskinc/" }
 printk = { path = "kernel/printk/" }
 storage = { path = "drivers/storage/" }
 usbd = { path = "drivers/usbd/" }
@@ -134,7 +134,7 @@ riscv = { path = "arch/riscv" }
 
 [target.'cfg(target_arch = "xtensa")'.dependencies]
 xtensa = { path = "arch/xtensa/" }
-xtensa-lx-rt = { version = "0.13.0", features = ["lx6"] }
+xtensa-lx-rt = { version = "0.13.0" }
 
 [features]
 bios_boot = ["x86_64/bios_boot"]

@@ -5,3 +5,6 @@ pub mod board;
 pub use board::*;
 pub mod traits;
 pub use traits::*;
+
+pub mod arm;
+pub mod riscv;

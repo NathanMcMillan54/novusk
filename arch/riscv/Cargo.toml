@@ -11,7 +11,7 @@ hifive1 = { version = "0.10.0" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novusk_syscalls = "0.2.1"
-novuskinc = { path = "../../include/novusk/" }
+novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
 r0 = "1.0.0"
 riscv = "0.7.0"

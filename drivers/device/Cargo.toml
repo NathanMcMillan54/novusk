@@ -7,3 +7,8 @@ license = "MIT"
 publish = false
 
 [dependencies]
+dif = "0.1.1"
+novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
+
+[features]
+dif_alloc = ["dif/alloc"]
