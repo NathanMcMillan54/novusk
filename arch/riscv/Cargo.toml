@@ -7,6 +7,8 @@ license = "MIT"
 publish = false
 
 [dependencies]
+device = { path = "../../drivers/device/" }
+dif = "0.1.1"
 hifive1 = { version = "0.10.0" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }

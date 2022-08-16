@@ -1,5 +1,4 @@
 use super::irq::irq_init;
-use novuskinc::kernel::syscalls::table::DEFAULT_NAME;
 use crate::rv_printk;
 use crate::include::syscalls::*;
 use crate::mm::memory_init;
@@ -47,9 +46,7 @@ impl ArchKernelSetup for RiscvKernel {
     unsafe fn sys_setup(&self) -> SetupReturn {
         syscalls_init();
 
-        if SYSCALL_TABLE.systable_name != DEFAULT_NAME {
-            return (Ok(()), "System functions setup successfully");
-        } else { return (Err("An error occurred while setting up system functions"), "System functions setup unsuccessfully"); }
+        (Ok(()), "System functions setup successfully")
     }
 }
 

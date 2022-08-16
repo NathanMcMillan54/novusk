@@ -18,21 +18,3 @@ impl HiFiveBoard {
         return clocks;
     }
 }
-
-impl Device for HiFiveBoard {
-    fn name(&self) -> &'static str {
-        return "HiFive";
-    }
-
-    fn time_init(&self) {
-        self.get_clocks();
-    }
-
-    fn gpio_init(&self) {
-
-    }
-
-    fn write_bytes(&self, bytes: &[u8]) {
-        unsafe { stdout::write_str(from_utf8_unchecked(bytes)); }
-    }
-}

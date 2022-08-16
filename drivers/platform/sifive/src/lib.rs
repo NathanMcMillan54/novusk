@@ -22,8 +22,8 @@ impl HiFiveBoard {
     }
 
     fn init(&mut self) {
-        self.serial_io_init();
-        self.gpio_init();
+        //self.serial_io_init();
+        //self.gpio_init();
     }
 }
 
@@ -39,8 +39,8 @@ impl LoFiveBoard {
     }
 
     pub fn init(&mut self) {
-        self.serial_io_init();
-        self.gpio_init();
+        //self.serial_io_init();
+        //self.gpio_init();
     }
 }
 
@@ -52,7 +52,5 @@ pub extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
     #[cfg(feature = "lofive")]
     let mut dev = LoFiveBoard::new();
 
-    dev.init();
-
-    return (Ok(()), dev.name());
+    return (Ok(()), "");
 }
