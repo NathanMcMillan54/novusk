@@ -21,9 +21,9 @@ nmallocator = { path = "../../mm/nmallocator/" }
 novusk_syscalls = "0.2.1"
 novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
-rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/" }
-rpi = { path = "../../drivers/rpi/" }
-stellarisd = { path = "../../drivers/platform/arm/stellarisd/" }
+rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/", optional = true }
+rpi = { path = "../../drivers/rpi/", optional = true }
+stellarisd = { path = "../../drivers/platform/arm/stellarisd/", optional = true }
 # stmd = { path = "../../drivers/firmware/arm/stmd/" }
 time = { path = "../../kernel/time/" }
 
@@ -33,7 +33,7 @@ difi = "0.1.0"
 [features]
 cortex_a = ["nmallocator/wee_allocator"]
 cortex_m = ["nmallocator/linked_list"]
-rpi2 = ["cortex_a", "rpi/rpi2"]
-stellaris_6965 = ["cortex_m", "stellarisd/stellaris_6965"]
+rpi2 = ["cortex_a", "rpi", "rpi2kernel", "rpi/rpi2"]
+stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]
 # not_stm32 = ["stmd/stm32f407"]
 # stm32f407 = ["cortex_m", "stmd/stm32f407"]

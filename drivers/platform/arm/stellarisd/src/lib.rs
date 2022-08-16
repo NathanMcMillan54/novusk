@@ -20,15 +20,6 @@ impl Stellaris6965 {
     }
 }
 
-impl Device for Stellaris6965 {
-    fn name(&self) -> &'static str {
-        return "Stellaris 6965";
-    }
-
-    fn serial_io_init(&self) {
-        
-    }
-}
 
 #[cfg(feature = "stellaris_6965")]
 #[no_mangle]

@@ -1,4 +1,5 @@
-use novuskinc::version::*;
+use novuskinc::prelude::version::{MAJOR_VERSION, VERSION_NAME};
+use vfs::types::FileModes::ReadOnly;
 
 struct Banner {
     pub kernel: &'static str,
@@ -13,15 +14,15 @@ impl Banner {
         return Banner {
             kernel: "Novusk",
             major_version: MAJOR_VERSION,
-            minor_version: MINOR_VERSION,
-            really_minor_version: REALLY_MINOR_VERSION,
+            minor_version: 0,
+            really_minor_version: 2,
             version_name: VERSION_NAME,
         };
     }
 
     pub fn display(&mut self) {
         printk!("________________________\n");
-        printk!("| Novusk v{}.{}.{}-{} |\n", MAJOR_VERSION, MINOR_VERSION, REALLY_MINOR_VERSION, VERSION_NAME);
+        printk!("| Novusk v{}.{}.{}-{} |\n", self.major_version, self.minor_version, self.really_minor_version, self.version_name);
         printk!("------------------------\n");
     }
 }
