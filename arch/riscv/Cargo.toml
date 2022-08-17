@@ -16,7 +16,7 @@ novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
 r0 = "1.0.0"
 riscv = "0.7.0"
-riscv-rt = "0.8.0"
+riscv-rt = "0.9.0"
 setup = { path = "../../kernel/setup/" }
 sifive = { path = "../../drivers/platform/sifive/", optional = true }
 
