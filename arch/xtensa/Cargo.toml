@@ -9,7 +9,7 @@ publish = false
 device = { path = "../../drivers/device/" }
 esp = { path = "../../drivers/platform/esp/" }
 kinfo = { path = "../../kernel/kinfo/" }
-xtensa-lx = "0.4.0"
+xtensa-lx = "0.7.0"
 xtensa-lx-rt = "0.13.0"
 
 [features]
