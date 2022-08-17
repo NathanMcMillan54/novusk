@@ -3,8 +3,7 @@ use core::fmt::Arguments;
 #[no_mangle]
 #[export_name = "arch_printk"]
 pub fn _rv_printk(fmt: Arguments) -> Arguments {
-    #[cfg(any(feature = "hifive", feature = "lofive"))]
-    sifive::sprint!("{}", fmt);
+
 
     return fmt;
 }

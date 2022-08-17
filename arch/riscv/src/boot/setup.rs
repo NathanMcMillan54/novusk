@@ -1,7 +1,6 @@
-use hifive1::{clock, pin};
-use hifive1::stdout;
-use hifive1::hal::{DeviceResources};
-use hifive1::hal::prelude::_e310x_hal_time_U32Ext;
+use novuskinc::serial::early_serial_init;
+use crate::librv::libdif::*;
+use crate::kernel::platform::RISCV_DEVICE;
 use crate::rv_printk;
 use setup::{BootSetup, SetupReturn};
 
@@ -13,6 +12,7 @@ impl RiscvBoot {
     }
 
     pub fn setup(&self) {
+        unsafe { self.set_dif(); }
         let io_ret = self.early_serial_io_init();
         let ld_mem_ret = unsafe { self.linker_setup() };
 
@@ -25,24 +25,16 @@ impl RiscvBoot {
             panic!("An error occurred during boot setup");
         } else { kinfo!("Boot setup successful\n"); }*/
     }
+
+    pub unsafe fn set_dif(&self) {
+        DIF = DIF.parse(DIF_FILE);
+        RISCV_DEVICE.dif = DIF.parse(DIF_FILE);
+    }
 }
 
 impl BootSetup for RiscvBoot {
     fn early_serial_io_init(&self) -> SetupReturn {
-        // The only devices the riscv kernel supports is sifive this doesn't need to change for a while
-        let dev_res = DeviceResources::take().unwrap();
-        let peripherals = dev_res.peripherals;
-        let pins = dev_res.pins;
-
-        let clock = clock::configure(peripherals.PRCI, peripherals.AONCLK, 320.mhz().into());
-
-        stdout::configure(
-            peripherals.UART0,
-            pin!(pins, uart0_tx),
-            pin!(pins, uart0_rx),
-            115_200.bps(),
-            clock
-        );
+        unsafe { early_serial_init(); }
 
         return (Ok(()), "Early I/O initialized");
     }

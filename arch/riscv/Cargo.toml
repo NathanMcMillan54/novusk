@@ -9,7 +9,6 @@ publish = false
 [dependencies]
 device = { path = "../../drivers/device/" }
 dif = "0.1.1"
-hifive1 = { version = "0.10.0" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novusk_syscalls = "0.2.1"
@@ -19,9 +18,12 @@ r0 = "1.0.0"
 riscv = "0.7.0"
 riscv-rt = "0.8.0"
 setup = { path = "../../kernel/setup/" }
-sifive = { path = "../../drivers/platform/sifive/" }
+sifive = { path = "../../drivers/platform/sifive/", optional = true }
+
+[build-dependencies]
+difi = "0.1.0"
 
 [features]
-hifive = ["sifive/hifive", "hifive1/board-hifive1"]
-lofive = ["sifive/lofive", "hifive1/board-lofive"]
+hifive = ["sifive", "sifive/hifive"]
+lofive = ["sifive", "sifive/lofive"]
 virt = []

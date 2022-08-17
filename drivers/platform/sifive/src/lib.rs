@@ -1,6 +1,7 @@
 #![no_std]
 
 #[macro_use] extern crate hifive1;
+#[macro_use] extern crate novuskinc;
 
 use device::{Device};
 use core::any::Any;
