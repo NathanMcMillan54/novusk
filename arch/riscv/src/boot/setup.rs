@@ -47,6 +47,6 @@ impl BootSetup for RiscvBoot {
 
         r0::zero_bss(_sbss as *mut u64, _ebss as *mut u64);
 
-        return (Ok(()), "Linker-mem setup");
+        return (Ok(()), "BSS sections cleared");
     }
 }

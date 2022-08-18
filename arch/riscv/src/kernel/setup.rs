@@ -1,36 +1,12 @@
 use super::irq::irq_init;
+use super::kernel::{RiscVKernel, RISCV_KERNEL};
 use crate::rv_printk;
 use crate::include::syscalls::*;
 use crate::mm::memory_init;
 use setup::arch::ArchKernelSetup;
 use setup::SetupReturn;
 
-struct RiscvKernel;
-
-impl RiscvKernel {
-    pub fn new() -> Self {
-        return RiscvKernel;
-    }
-
-    pub fn setup(&self) {
-        let irq_ret = self.irq_init();
-        let mem_ret = self.memory_setup();
-
-        let mut dev_ret: SetupReturn;
-        //let mut sys_ret: SetupReturn;
-
-        unsafe {
-            dev_ret = self.device_init();
-            //sys_ret = self.sys_setup();
-        }
-
-        rv_printk!("Finished RISCV kernel setup\n");
-        rv_printk!("Running on: {}\n", dev_ret.1);
-        rv_printk!("{}\n{}\n", irq_ret.1, mem_ret.1);
-    }
-}
-
-impl ArchKernelSetup for RiscvKernel {
+impl ArchKernelSetup for RiscVKernel {
     fn memory_setup(&self) -> SetupReturn {
         if memory_init().is_ok() {
             return (Ok(()), "Successfully setup memory");
@@ -50,19 +26,7 @@ impl ArchKernelSetup for RiscvKernel {
     }
 }
 
-unsafe fn start_main() {
-    extern "C" {
-        fn kernel_main();
-    }
-
-    rv_printk!("Starting kernel main...\n");
-    kernel_main();
-}
-
-pub fn setup_riscv_kernel() {
-    let kernel_setup = RiscvKernel::new();
-
-    kernel_setup.setup();
-
-    unsafe { start_main(); }
+#[no_mangle]
+pub unsafe extern "C" fn setup_arch() {
+    RISCV_KERNEL.setup();
 }

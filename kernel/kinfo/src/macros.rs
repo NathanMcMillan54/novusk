@@ -8,7 +8,10 @@ pub fn _kinfo(msg: Arguments) {
     }
 }
 
+/// ``kinfo`` displays anything that implements ``InfoDisplay``
 #[macro_export]
 macro_rules! kinfo {
-    ($($arg:tt)*) => {$crate::macros::_kinfo(format_args!($($arg)*))};
+    ($info:expr) => {
+        $info.display_info();
+    };
 }

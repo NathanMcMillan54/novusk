@@ -27,3 +27,8 @@ impl Kinfo {
         } else { printk!("INFO [ {} ] {}\n", self.status, self.msg.unwrap()); }
     }
 }
+
+/// A trait for displaying kernel information
+pub trait InfoDisplay {
+    fn display_info(&self) {    }
+}
