@@ -6,7 +6,7 @@ use crate::Device;
 /// A RISCV 32/64 device struct
 pub struct RiscVDevice {
     pub dif: Dif,
-    pub console: Option<&'static mut dyn KernelConsoleDriver>,
+    pub console: Option<&'static dyn KernelConsoleDriver>,
 }
 
 impl Device for RiscVDevice {

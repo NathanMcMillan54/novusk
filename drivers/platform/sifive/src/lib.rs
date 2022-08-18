@@ -1,16 +1,19 @@
 #![no_std]
+#![feature(trait_upcasting)]
 
 #[macro_use] extern crate hifive1;
 #[macro_use] extern crate novuskinc;
 
-use device::{Device};
+use device::{riscv::RiscVDevice, Device};
 use core::any::Any;
 
 pub(crate) mod hifive;
 pub mod common;
 pub(crate) mod lofive;
 
-pub use hifive1::sprint;
+extern "C" {
+    pub(crate) static mut RISCV_DEVICE: RiscVDevice;
+}
 
 pub struct HiFiveBoard;
 pub struct LoFiveBoard;

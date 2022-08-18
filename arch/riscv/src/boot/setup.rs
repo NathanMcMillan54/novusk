@@ -1,3 +1,4 @@
+use dif::{DifFieldNames};
 use novuskinc::serial::early_serial_init;
 use crate::librv::libdif::*;
 use crate::kernel::platform::RISCV_DEVICE;
@@ -16,14 +17,7 @@ impl RiscvBoot {
         let io_ret = self.early_serial_io_init();
         let ld_mem_ret = unsafe { self.linker_setup() };
 
-        rv_printk!("Finished boot setup\n");
-        rv_printk!("{}\n", io_ret.1);
-        rv_printk!("{}\n", ld_mem_ret.1);
 
-        // This for some reason crashes
-        /*if io_ret.0.is_err() || ld_mem_ret.0.is_err() {
-            panic!("An error occurred during boot setup");
-        } else { kinfo!("Boot setup successful\n"); }*/
     }
 
     pub unsafe fn set_dif(&self) {
@@ -34,9 +28,15 @@ impl RiscvBoot {
 
 impl BootSetup for RiscvBoot {
     fn early_serial_io_init(&self) -> SetupReturn {
-        unsafe { early_serial_init(); }
+        unsafe {
+            if RISCV_DEVICE.dif.get(DifFieldNames::EnableSerial).parse::<bool>().unwrap_or(false) {
+                if early_serial_init() != 0 {
+                    return (Ok(()), "Early I/O initialized");
+                } else { return (Err("Failed to initialize serial I/O"), "Failed to initialize serial I/O"); }
+            }
+        }
 
-        return (Ok(()), "Early I/O initialized");
+        (Ok(()), "Device doesn't need to initialize serial I/O")
     }
 
     unsafe fn linker_setup(&self) -> SetupReturn {
