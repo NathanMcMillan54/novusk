@@ -1,27 +1,67 @@
 #![no_std]
 
-#[macro_use] extern crate alloc;
+#[macro_use] extern crate novuskinc;
 
-use core::fmt::Arguments;
+use core::borrow::Borrow;
+use core::fmt::{Arguments, Write};
+use novuskinc::drivers::Driver;
+use novuskinc::drivers::manager::DeviceDriverManager;
 
-static mut KMAIN_PRINT: bool = false;
+pub mod init;
+pub mod macros;
+
+/// This module contains functions that ``kernel/tests/`` uses
+#[cfg(feature = "test")]
+pub mod tests;
 
 extern "C" {
-    pub(crate) fn arch_printk(fmt: Arguments);
-    pub(crate) fn kmain_printk(fmt: Arguments);
+    pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
+    pub(crate) static mut PRINTK: Printk;
 }
 
-pub fn _printk(fmt: Arguments) -> Arguments {
-    unsafe {
-        if !KMAIN_PRINT {
-            arch_printk(fmt);
-        } else { kmain_printk(fmt); }
+pub struct Printk {
+    pub init: bool,
+    pub console_driver: Option<&'static dyn Driver>,
+}
+
+impl Printk {
+    pub fn set_init(&mut self, init: bool, console_driver: &'static dyn Driver) {
+        self.init = init;
+        self.console_driver = Some(console_driver);
     }
 
-    return fmt;
+    pub fn reset(&mut self) {
+        let writer = self.console_driver;
+
+
+        writer.unwrap().clear_screen(0);
+    }
 }
 
-#[macro_export]
-macro_rules! printk {
-    ($($arg:tt)*) => {$crate::_printk(format_args!($($arg)*))};
+impl Write for Printk {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        let writer = self.console_driver;
+
+        if writer.is_none() {
+            return Err(Default::default());
+        } else { writer.unwrap().write_string(s, 0, 0); }
+
+        return Ok(());
+    }
+}
+
+pub(crate) unsafe  fn can_printk_work() -> bool {
+    if PRINTK.write_str("").is_err() {
+        return false;
+    }
+
+    return true;
+}
+
+pub unsafe fn printk_init(writer_driver: &'static str) {
+    if DEVICE_DRIVERS.get_driver(writer_driver).is_some() {
+        // PRINTK.writer = writer_driver;
+    } else {
+        panic!("{} is not a driver option to support printk, use \"Console Driver\" or \"Graphics Driver\"", writer_driver);
+    }
 }

@@ -1,7 +1,6 @@
 use kinfo::InfoDisplay;
 use kinfo::status::KStatus;
 use novuskinc::kernel::{arch_prepare_init, setup_arch};
-use crate::rv_printk;
 use setup::arch::ArchKernelSetup;
 use setup::SetupReturn;
 
@@ -44,8 +43,8 @@ impl RiscVKernel {
             //sys_ret = self.sys_setup();
         }
 
-        rv_printk!("Finished RISCV kernel setup\n");
-        rv_printk!("Running on: {}\n", dev_ret.1);
-        rv_printk!("{}\n{}\n", irq_ret.1, mem_ret.1);
+        early_printk!("Finished RISCV kernel setup\n");
+        early_printk!("Running on: {}\n", dev_ret.1);
+        early_printk!("{}\n{}\n", irq_ret.1, mem_ret.1);
     }
 }

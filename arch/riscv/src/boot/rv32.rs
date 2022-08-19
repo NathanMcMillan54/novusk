@@ -1,7 +1,6 @@
 use setup::BootSetup;
 use super::setup::RiscvBoot;
 use novuskinc::kernel::start_kernel;
-use crate::rv_printk;
 
 fn boot_setup() {
     let riscv_boot = RiscvBoot::new();

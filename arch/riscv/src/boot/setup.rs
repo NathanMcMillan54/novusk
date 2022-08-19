@@ -2,7 +2,6 @@ use dif::{DifFieldNames};
 use novuskinc::serial::early_serial_init;
 use crate::librv::libdif::*;
 use crate::kernel::platform::RISCV_DEVICE;
-use crate::rv_printk;
 use setup::{BootSetup, SetupReturn};
 
 pub struct RiscvBoot;

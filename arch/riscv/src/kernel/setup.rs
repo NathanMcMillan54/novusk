@@ -1,6 +1,5 @@
 use super::irq::irq_init;
 use super::kernel::{RiscVKernel, RISCV_KERNEL};
-use crate::rv_printk;
 use crate::include::syscalls::*;
 use crate::mm::memory_init;
 use setup::arch::ArchKernelSetup;

@@ -1,6 +1,14 @@
 use core::borrow::{Borrow, BorrowMut};
 use core::fmt::{Arguments, Write};
+use printk::Printk;
 use crate::kernel::platform::RISCV_DEVICE;
+
+#[no_mangle]
+pub extern "C" fn _early_printk(fmt: Arguments) -> core::fmt::Result {
+    let mut printer = RvEarlyPrintk;
+
+    printer.write_fmt(fmt)
+}
 
 struct RvEarlyPrintk;
 
@@ -19,21 +27,7 @@ impl Write for RvEarlyPrintk {
 }
 
 #[no_mangle]
-#[export_name = "arch_printk"]
-pub fn _rv_printk(fmt: Arguments) -> Arguments {
-    let mut printer = RvEarlyPrintk;
-
-    printer.write_fmt(fmt);
-
-    return fmt;
-}
-
-#[no_mangle]
-pub extern "C" fn kmain_printk(fmt: Arguments) {
-    _rv_printk(fmt);
-}
-
-#[macro_export]
-macro_rules! rv_printk {
-    ($($arg:tt)*) => {$crate::kernel::printk::_rv_printk(format_args!($($arg)*))};
-}
+pub static mut PRINTK: Printk = Printk {
+    init: false,
+    console_driver: None
+};
