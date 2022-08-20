@@ -16,7 +16,13 @@ impl RiscvBoot {
         let io_ret = self.early_serial_io_init();
         let ld_mem_ret = unsafe { self.linker_setup() };
 
+        if early_printk!("Early kernel printing is working\n").is_err() {
+            panic!("{}", io_ret.1);
+        }
 
+        if ld_mem_ret.0.is_err() {
+            panic!("{}", ld_mem_ret.1);
+        }
     }
 
     pub unsafe fn set_dif(&self) {

@@ -3,7 +3,7 @@ use crate::{can_printk_work, DEVICE_DRIVERS, PRINTK};
 use novuskinc::drivers::names::CONSOLE;
 
 extern "C" {
-    pub fn _early_printk(fmt: Arguments);
+    pub fn _early_printk(fmt: Arguments) -> Result;
 }
 
 pub fn _printk(fmt: Arguments) -> Result {
