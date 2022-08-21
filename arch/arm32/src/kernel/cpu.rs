@@ -1,4 +1,3 @@
-use crate::arm32_printk;
 use cpu::CpuInfo;
 
 pub static mut CPUINFO: CpuInfo = CpuInfo::emtpy();

@@ -1,9 +1,10 @@
-use core::fmt::{Arguments, Write};
+use core::fmt::{Arguments, Result, Write};
+use printk::Printk;
 use super::io::IO;
 
 #[no_mangle]
-pub extern "C" fn arch_printk(fmt: Arguments) {
-    unsafe { IO.write_fmt(fmt); }
+pub extern "C" fn _early_printk(fmt: Arguments) -> Result {
+    unsafe { IO.write_fmt(fmt) }
 }
 
 #[no_mangle]
@@ -11,7 +12,8 @@ pub extern "C" fn _kernel_main_print(fmt: Arguments) {
 
 }
 
-#[macro_export]
-macro_rules! arm32_printk {
-    ($($arg:tt)*) => {$crate::kernel::printk::arch_printk(format_args!($($arg)*))};
-}
+#[no_mangle]
+pub static mut PRINTK: Printk = Printk {
+    init: false,
+    console_driver: None
+};

@@ -1,19 +1,35 @@
-use crate::arm32_printk;
+use kinfo::{InfoDisplay, status::KStatus};
 use crate::mm::memory_init;
 use super::cpu::{cpu_setup, CPUINFO};
 use super::device::{device_init, DEVICE_NAME};
 
 pub unsafe fn setup_arm32_kernel() {
     cpu_setup();
-    kinfo!("Setup CPU\n");
-    arm32_printk!("    Common IRQs setup\n");
-    arm32_printk!("    CPU info: {{ arch: {}, cpu: {} }}\n", CPUINFO.architecture, CPUINFO.brand_name);
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "CPU setup",
+        messages: Some(&["IRQs setup"]),
+    });
 
     setup_device();
-    kinfo!("Device initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Device initialized",
+        messages: None,
+    });
 
     memory_init();
-    kinfo!("Memory initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Memory initialized",
+        messages: None,
+    });
 }
 
 unsafe fn setup_device() {
@@ -22,7 +38,6 @@ unsafe fn setup_device() {
     match success {
         Err(e) => {
             panic!("Error while initializing device: {:?}", e);
-            kinfo::status::set_status("not ok");
         },
         _ => DEVICE_NAME = name,
     };
