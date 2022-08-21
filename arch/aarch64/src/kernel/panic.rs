@@ -1,4 +1,3 @@
-use crate::aarch64_printk;
 use core::arch::asm;
 use core::panic::PanicInfo;
 
@@ -6,9 +5,9 @@ use core::panic::PanicInfo;
 unsafe fn _panic(info: &PanicInfo) -> ! {
     let location = info.location().unwrap();
 
-    aarch64_printk!("\nKernel panicked:\n");
-    aarch64_printk!("   Location: {}:{}\n", location.file(), location.line());
-    aarch64_printk!("   Message: {}\n", info.message().unwrap());
+    printk!("\nKernel panicked:\n");
+    printk!("   Location: {}:{}\n", location.file(), location.line());
+    printk!("   Message: {}\n", info.message().unwrap());
 
     loop { asm!("wfi"); }
 }

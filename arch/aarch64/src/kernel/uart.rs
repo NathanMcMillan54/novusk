@@ -1,4 +1,3 @@
-use crate::define_syscall;
 use alloc::vec::Vec;
 use core::arch::asm;
 use core::fmt::{Arguments, Write};
@@ -194,22 +193,3 @@ pub fn uart_init() {
 
     uart.init();
 }
-
-fn write(write_byte: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
-    let mut uart = Uart::new();
-
-    uart.send(write_byte as char);
-
-    return sys_arg3;
-}
-
-define_syscall!(sys_write, write);
-
-unsafe fn read(buf: u8, sys_arg2: u8, sys_arg3: u8) -> u8 {
-    let mut uart = Uart::new();
-    let ret = uart.readc() as u8;
-
-    return ret;
-}
-
-define_syscall!(sys_read, read);

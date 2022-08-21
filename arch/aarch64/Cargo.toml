@@ -14,6 +14,7 @@ kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 novusk_syscalls = "0.2.1"
 novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
+printk = { path = "../../kernel/printk/" }
 setup = { path = "../../kernel/setup/" }
 tock-registers = "0.7.0"
 r0 = "1.0.0"
