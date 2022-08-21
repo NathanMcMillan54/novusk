@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 # amd64_timer = "1.3.0"
-bootloader = { version = "0.9.18", features = ["map_physical_memory"] }
+bootloader = { version = "0.10.12", features = ["map_physical_memory"] }
 dif = "0.1.1"
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
