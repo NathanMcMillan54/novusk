@@ -1,18 +1,15 @@
 use bootloader::BootInfo;
-use crate::x86_printk;
+use kinfo::status::KStatus;
 use crate::boot::main::main;
-use crate::mm::{early_memory_init, heap_alloc::allocator_init};
+use crate::mm::test_allocator;
+use crate::kinfo::InfoDisplay;
 
 #[no_mangle]
 pub unsafe extern "C" fn bootloader_start_novusk(bootinfo: &'static BootInfo) -> ! {
-    x86_printk!("Booted with bootloader rs\n");
+    early_printk!("Booted with bootloader rs\n");
 
-    early_memory_init(bootinfo);
-    allocator_init();
-    kinfo!("Early memory initialized\n");
-    x86_printk!("    Allocator initialized\n");
-    x86_printk!("    Testing alloc...\n\n");
-    vec![1, 1].push(1);
+    early_printk!("Testing allocator...\n");
+    test_allocator();
 
     main();
 }

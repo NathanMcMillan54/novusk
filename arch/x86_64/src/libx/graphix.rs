@@ -1,5 +1,4 @@
 use libcolor::vga_colors::Color;
-use crate::x86_printk;
 
 pub struct Graphix;
 
@@ -22,7 +21,7 @@ impl Graphix {
     pub fn clear_screen(&mut self) {
         for i in 0..81 {
             self.line(Color::Black, 0, 26);
-            unsafe { x86_printk!("") }
+            unsafe { early_printk!(""); }
         }
     }
 }

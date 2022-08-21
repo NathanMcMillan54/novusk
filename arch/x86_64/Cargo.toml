@@ -16,10 +16,9 @@ libcolor = { path = "../../lib/libcolor/" }
 modules = { path = "../../kernel/modules/" }
 nkuefi = { path = "../../drivers/nkuefi/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
-linked_list_allocator = "0.9.1"
 multiboot = { path = "../../drivers/boot/multiboot/" }
 pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
-nmallocator = { path = "../../mm/nmallocator/" }
+nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 notify = { path = "../../kernel/notify/" }
 novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
 novusk_syscalls = "0.2.0"
@@ -54,8 +53,8 @@ difi = "0.1.0"
 
 [features]
 bios_boot = []
-bootloader_rs = ["nmallocator/linked_list"]
-grub = ["bios_boot", "nmallocator/wee_allocator"]
+bootloader_rs = []
+grub = ["bios_boot"]
 uefi_boot = []
 vga_0xa = []
 virt = []

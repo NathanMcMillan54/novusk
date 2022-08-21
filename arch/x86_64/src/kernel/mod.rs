@@ -3,7 +3,6 @@ pub mod interrupts;
 pub mod io;
 pub(crate) mod kernel;
 pub mod printk;
-pub mod early_printk;
 pub mod power;
 pub mod task;
 pub mod usb;

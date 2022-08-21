@@ -1,37 +1,43 @@
-use kinfo::status::set_status;
-use crate::x86_printk;
+use kinfo::status::{KStatus, set_status};
 use crate::include::asm::hlt;
 use x86_64::structures::idt::{InterruptStackFrame, PageFaultErrorCode};
+use crate::kinfo::InfoDisplay;
 
 pub extern "x86-interrupt" fn break_point_handler(isf: InterruptStackFrame) {
-    unsafe {
-        set_status("not ok");
-        kinfo!("Interrupt breakpoint:\n");
-    }
+    kinfo!(KStatus {
+        status: "not ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Interrupt breakpoint",
+        messages: None,
+    });
 
-    x86_printk!("    {:?}\n", isf);
+    early_printk!("Interrupt stack frame:\n{:?}\n", isf);
 }
 
 pub extern "x86-interrupt" fn page_fault_handler(isf: InterruptStackFrame, error_code: PageFaultErrorCode) {
-    unsafe {
-        set_status("not ok");
-        kinfo!("Page fault:\n");
-    }
+    kinfo!(KStatus {
+        status: "not ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Page fault",
+        messages: None,
+    });
 
-    x86_printk!("    Stack frame: {:?}\n", isf);
-    x86_printk!("    Error code: {:?}\n", error_code);
-
-    panic!("Page fault error");
+    early_printk!("Interrupt stack frame:\n{:?}\n", isf);
+    early_printk!("Error code: {:?}", error_code);
 }
 
 pub extern "x86-interrupt" fn double_fault_handler(isf: InterruptStackFrame, error_code: u64) -> ! {
-    unsafe {
-        set_status("not ok");
-        kinfo!("Double fault:\n");
-    }
-
-    x86_printk!("    Stack frame: {:?}\n", isf);
-    x86_printk!("    Error code: {}\n", error_code);
+    kinfo!(KStatus {
+        status: "not ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Double fault",
+        messages: None,
+    });
+    early_printk!("Stack frame: {:?}\n", isf);
+    early_printk!("Error code: {}\n", error_code);
 
     panic!("Double fault error");
 }

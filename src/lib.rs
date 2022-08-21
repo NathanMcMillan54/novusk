@@ -7,7 +7,7 @@ pub mod config;
 
 #[cfg(target_arch = "x86_64")]
 pub mod x86_64 {
-    pub use x86_64::{x86_printk, panic};
+    pub use x86_64::panic;
     pub use x86_64::kernel as x86_kernel;
     pub use x86_64::include::{asm, other::*};
     pub use x86_64_sound as sound;

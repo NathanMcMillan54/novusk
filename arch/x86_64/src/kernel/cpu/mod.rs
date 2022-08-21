@@ -12,7 +12,7 @@ pub unsafe fn cpu_init() {
         intel::intel_init();
     } else {
         set_status("not ok");
-        crate::x86_printk!("No CPU brand to setup");
+        early_printk!("No CPU brand to setup");
     }
 }
 

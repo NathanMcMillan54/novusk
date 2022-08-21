@@ -11,7 +11,7 @@ pub fn _printk(fmt: Arguments) -> Result {
         if can_printk_work() {
             PRINTK.write_fmt(fmt);
             Ok(())
-        } else { Err(Default::default()) }
+        } else { _early_printk(fmt) }
     }
 }
 

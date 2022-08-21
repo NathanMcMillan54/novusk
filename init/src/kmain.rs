@@ -2,7 +2,8 @@ use super::init::KERNEL;
 use super::initramfs::*;
 use super::modules::modules_init;
 use super::version::novusk_banner;
-use kinfo::status::set_status;
+use kinfo::status::{set_status, KStatus};
+use crate::kinfo::InfoDisplay;
 use novuskinc::version::*;
 use storage::storage_init;
 
@@ -30,7 +31,13 @@ fn input_init() {
 
 unsafe fn net_init() {
     KERNEL.lock().net_init();
-    kinfo!("Network drivers initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Network drivers initialized",
+        messages: None,
+    });
 }
 
 unsafe fn fs_init() {
@@ -42,7 +49,13 @@ unsafe fn fs_init() {
 #[no_mangle]
 pub unsafe extern "C" fn kernel_init() {
     let mut configs = KERNEL.lock().kernel_configs();
-    kinfo!("Got kernel configurations\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Go kernel configurations",
+        messages: None
+    });
 
     check_version(configs.get("KERNEL", "MAJORVERSION").as_str());
 
@@ -50,11 +63,23 @@ pub unsafe extern "C" fn kernel_init() {
 
     if configs.get("GPU", "INIT") == "True" {
         gpu_init();
-        kinfo!("GPU graphics initialized\n");
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: "GPU graphics initialized",
+            messages: None
+        });
     }
 
     if initramfs_type() == "Kernel" {
-        kinfo!("Starting kernel initramfs...\n");
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: "Starting kernel initramfs",
+            messages: Some(&["Using default initramfs"]),
+        });
         start_kernel_initramfs();
     } else if initramfs_type() == "Custom" { start_custom_initramfs(); }
 
@@ -64,12 +89,23 @@ pub unsafe extern "C" fn kernel_init() {
     net_init();
 
     fs_init();
-    kinfo!("Fs initialized\n");
-    printk!("    Storage device initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Fs initialized",
+        messages: Some(&["Storage device initialized"]),
+    });
 
     printk!("\nSetting up main kernel modules...\n");
     modules_init(configs);
-    kinfo!("Initialized main kernel modules\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Initialized main kernel modules",
+        messages: None
+    });
 
     novusk_banner();
 }

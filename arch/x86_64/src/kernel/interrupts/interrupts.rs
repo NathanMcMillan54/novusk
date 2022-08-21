@@ -4,7 +4,6 @@ use notify::input::notify_keyboard_input;
 use time::{cpu, kernel};
 use x86_64::instructions::port::{Port, PortWriteOnly, PortReadOnly};
 use x86_64::structures::idt::InterruptStackFrame;
-use crate::x86_printk;
 
 pub extern "x86-interrupt" fn time_interrupt(stack_frame: InterruptStackFrame) {
     // cpu::update_cpu_time(amd64_timer::ticks_amd());

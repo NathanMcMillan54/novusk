@@ -1,13 +1,14 @@
 use init::kmain;
+use kinfo::status::KStatus;
 use super::cpu::{cpu_init, id};
 use super::interrupts::idt_init;
 use super::kernel::*;
 // use gpu::{GpuDrivers, GPUGRAPHICS};
 use setup::after_kernel_setup;
 use crate::boot::boot::die;
-use crate::include::sys::syscall::syscalls_init;
 use crate::kernel::power::shutdown;
 use crate::kernel::task::{Executor, Task};
+use crate::kinfo::InfoDisplay;
 
 unsafe fn set_drivers() {
     // When gop is supported this will change
@@ -16,28 +17,55 @@ unsafe fn set_drivers() {
 
 pub unsafe fn x86_kernel_init() {
     id::get_cpuid();
-    kinfo!("Got cpuid\n");
-    x86_printk!("    CPU brand: {}\n", id::BRAND);
+    KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Got cpuid",
+        messages: None,
+    };
 
     cpu_init();
-    kinfo!("CPU initialized\n");
-    x86_printk!("    GDT initialized\n");
-    x86_printk!("    Brand specific CPU initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "CPU initialized",
+        messages: Some(&[
+            "GDT initialized",
+            "Brand specific CPU initialized",
+        ])
+    });
 
     idt_init();
-    kinfo!("Interrupts initialized\n");
-    x86_printk!("    IDT initialized\n");
-    x86_printk!("    Interrupts are enabled\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Interrupts initialized",
+        messages: Some(&[
+            "IDT initialized",
+            "Interrupts are enabled",
+        ]),
+    });
 
     set_drivers();
-    kinfo!("Drivers set\n");
-    x86_printk!("    Set GPU Graphics to VGA\n");
-
-    syscalls_init();
-    kinfo!("System calls initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Drivers set",
+        messages: Some(&["Set GPU Graphics to VGA"]),
+    });
 
     kmain::kernel_init();
-    kinfo!("Novusk initialized\n");
+    kinfo!(KStatus {
+        status: "ok",
+        should_panic: false,
+        panic_message: None,
+        main_message: "Novusk initialized",
+        messages: None,
+    });
 
     printk!("Setting up after kernel...\n");
     after_kernel_setup();

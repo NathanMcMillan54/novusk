@@ -14,7 +14,7 @@ pub unsafe extern "C" fn start_kernel() {
         status: "ok",
         should_panic: false,
         panic_message: None,
-        message1: "Finished RISCV kernel setup",
+        main_message: "Finished RISCV kernel setup",
         messages: Some(&[
             "Initialized IRQs",
             "Initialized device",

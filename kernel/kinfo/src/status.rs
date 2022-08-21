@@ -7,13 +7,13 @@ pub struct KStatus {
     pub status: &'static str,
     pub should_panic: bool,
     pub panic_message: Option<&'static str>,
-    pub message1: &'static str,
+    pub main_message: &'static str,
     pub messages: Option<&'static [&'static str]>,
 }
 
 impl InfoDisplay for KStatus {
     fn display_info(&self) {
-        printk!("INFO [ {} ] {}\n", self.status, self.message1);
+        printk!("INFO [ {} ] {}\n", self.status, self.main_message);
 
         if self.messages.is_some() {
             for msg in 0..self.messages.unwrap().len() {
