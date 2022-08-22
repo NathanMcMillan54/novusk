@@ -1,0 +1,3 @@
+/Users/will/novusk/cinclude/test/build/CMakeFiles/stdlib_test.dir
+/Users/will/novusk/cinclude/test/build/CMakeFiles/edit_cache.dir
+/Users/will/novusk/cinclude/test/build/CMakeFiles/rebuild_cache.dir

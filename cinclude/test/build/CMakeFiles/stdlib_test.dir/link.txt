@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/stdlib_test.dir/stdlib_test.c.o -o stdlib_test  /Users/will/novusk/cinclude/test/../lib/libstdlib.a 
