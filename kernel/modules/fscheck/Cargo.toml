@@ -10,4 +10,4 @@ publish = false
 # fat = { path = "../../../fs/fat/" }
 kinfo = { path = "../../kinfo/" }
 konfig = { path = "../../konfig/", features = ["default_config"] }
-novuskinc = { path = "../../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }

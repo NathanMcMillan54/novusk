@@ -19,7 +19,7 @@ init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/" }
 novusk_syscalls = "0.2.1"
-novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
 rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/", optional = true }
 rpi = { path = "../../drivers/rpi/", optional = true }

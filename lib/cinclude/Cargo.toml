@@ -1,0 +1,14 @@
+[package]
+name = "cinclude"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "cinclude-bin"
+path = "src/main.rs"
+
+# [workspace]
+# members = ["stdint/", "stdlib/", "bits/stdint_intn/", "bits/stdint_uintn/", "string", "stddef"]
+
+[dependencies]
+cbindgen = "0.24.3"

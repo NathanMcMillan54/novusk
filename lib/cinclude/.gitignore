@@ -1,0 +1,5 @@
+cmake-build-debug/
+
+inc/*.h
+lib/*.a
+test/build/*

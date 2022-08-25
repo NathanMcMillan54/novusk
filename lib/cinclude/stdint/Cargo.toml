@@ -1,0 +1,13 @@
+[package]
+name = "stdint"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+stdint_intn = { path = "../bits/stdint_intn", features = ["no_lang_items"] }
+stdint_uintn = { path = "../bits/stdint_uintn", features = ["no_lang_items"] }
+
+[features]
+no_lang_items = []

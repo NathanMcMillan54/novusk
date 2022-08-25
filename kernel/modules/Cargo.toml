@@ -7,7 +7,7 @@ license = "MIT"
 publish = false
 
 [dependencies]
-novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "../printk/" }
 ex1 = { path = "ex1/" }
 fscheck = { path = "fscheck/" }

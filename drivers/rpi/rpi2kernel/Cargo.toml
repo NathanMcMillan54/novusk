@@ -12,6 +12,6 @@ console = { path = "../../../kernel/console/" }
 fb = { path = "../../fb/" }
 kinfo = { path = "../../../kernel/kinfo/" }
 konfig = { path = "../../../kernel/konfig/" }
-novuskinc = { path = "../../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
 printk = { path = "../../../kernel/printk/" }
 rpi = { path = "../", features = ["rpi2"] }

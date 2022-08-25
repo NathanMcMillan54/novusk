@@ -20,7 +20,7 @@ multiboot = { path = "../../drivers/boot/multiboot/" }
 pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
 notify = { path = "../../kernel/notify/" }
-novuskinc = { path = "../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 novusk_syscalls = "0.2.0"
 pic8259 = "0.10.2"
 printk = { path = "../../kernel/printk/" }

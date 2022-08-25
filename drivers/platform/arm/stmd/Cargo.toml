@@ -11,7 +11,7 @@ cortex-m = "0.7.3"
 cortex-m-rt = "0.7.1"
 ethernet = { path = "../../../../drivers/net/ethernet/" }
 kinfo = { path = "../../../../kernel/kinfo/" }
-novuskinc = { path = "../../../../include/novusk/" }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc"" }
 stm_eth = { path = "../../../../net/ethernet/stm_eth/" }
 stm32f4xx-hal = { version = "0.10.0", features = ["rt"] }
 

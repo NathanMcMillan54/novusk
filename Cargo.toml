@@ -58,7 +58,7 @@ members = [
     "fs/vfs/",
     # Include
     "include/ctypes/",
-    "include/novuskinc/",
+
     # Kernel
     "init/",
     "kernel/console/",
@@ -71,8 +71,16 @@ members = [
     "kernel/setup/",
     "kernel/time/",
     # Libraries
+    # LibC
+    "lib/cinclude/",
+    "lib/cinclude/bits/stdint_intn/",
+    "lib/cinclude/bits/stdint_uintn/",
+    "lib/cinclude/stddef/",
+    "lib/cinclude/stdint/",
+    "lib/cinclude/stdlib/",
+    "lib/cinclude/string/",
+
     "lib/libbmu/",
-    "lib/libc/unistd/",
     "lib/libcolor/",
     "lib/libost/",
     "lib/libwin/",
@@ -97,11 +105,10 @@ gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
-novuskinc = { path = "include/novuskinc/" }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "kernel/printk/" }
 storage = { path = "drivers/storage/" }
 usbd = { path = "drivers/usbd/" }
-unistd = { path = "lib/libc/unistd/" }
 vfs = { path = "fs/vfs/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]

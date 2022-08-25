@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 ethernet = { path = "../../../drivers/net/ethernet/" }
-novuskinc = { path = "../../../include/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
 stm32-eth = { version = "0.2.0" }
 
 [features]
