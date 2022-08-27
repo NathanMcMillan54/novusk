@@ -71,14 +71,6 @@ members = [
     "kernel/setup/",
     "kernel/time/",
     # Libraries
-    # LibC
-    "lib/cinclude/",
-    "lib/cinclude/bits/stdint_intn/",
-    "lib/cinclude/bits/stdint_uintn/",
-    "lib/cinclude/stddef/",
-    "lib/cinclude/stdint/",
-    "lib/cinclude/stdlib/",
-    "lib/cinclude/string/",
 
     "lib/libbmu/",
     "lib/libcolor/",

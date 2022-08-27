@@ -7,8 +7,8 @@ edition = "2021"
 name = "cinclude-bin"
 path = "src/main.rs"
 
-# [workspace]
-# members = ["stdint/", "stdlib/", "bits/stdint_intn/", "bits/stdint_uintn/", "string", "stddef"]
+ [workspace]
+ members = ["stdint/", "stdlib/", "bits/stdint_intn/", "bits/stdint_uintn/", "string", "stddef"]
 
 [dependencies]
 cbindgen = "0.24.3"
