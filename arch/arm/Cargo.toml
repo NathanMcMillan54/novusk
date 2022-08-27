@@ -1,5 +1,5 @@
 [package]
-name = "arm32"
+name = "arm"
 version = "0.1.0"
 edition = "2021"
 description = "ARM32 kernel support"
@@ -31,8 +31,8 @@ time = { path = "../../kernel/time/" }
 difi = "0.1.0"
 
 [features]
-cortex_a = ["nmallocator/wee_allocator"]
-cortex_m = ["nmallocator/linked_list"]
+cortex_a = ["nmallocator/wee"]
+cortex_m = []
 rpi2 = ["cortex_a", "rpi", "rpi2kernel", "rpi/rpi2"]
 stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]
 # not_stm32 = ["stmd/stm32f407"]

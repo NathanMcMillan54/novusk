@@ -18,7 +18,7 @@ nkuefi = { path = "../../drivers/nkuefi/" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 multiboot = { path = "../../drivers/boot/multiboot/" }
 pc_keyboard = { path = "../../drivers/input/keyboard/pc_keyboard/" }
-nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
+nmallocator = { path = "../../mm/nmallocator/", features = ["wee"] }
 notify = { path = "../../kernel/notify/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 novusk_syscalls = "0.2.0"

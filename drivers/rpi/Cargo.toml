@@ -12,7 +12,7 @@ device = { path = "../device" }
 libbmu = { path = "../../lib/libbmu/" }
 mailbox = { path = "../platform/mailbox/" }
 mio = { path = "../../mm/mio/" }
-nmallocator = { path = "../../mm/nmallocator/", features = ["wee_allocator"] }
+nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 tock-registers = "0.7.0"
 

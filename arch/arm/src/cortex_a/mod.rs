@@ -18,5 +18,5 @@ pub fn cortex_a_init() {
 }
 
 fn set_info() {
-    unsafe { CPUINFO.set("arm32", "Cortex A", Some(0)); }
+    unsafe { CPUINFO.set("arm", "Cortex A", Some(0)); }
 }

@@ -15,7 +15,7 @@ pub mod x86_64 {
 
 #[cfg(target_arch = "arm")]
 pub mod arm {
-    pub use arm32;
+    pub use arm;
     pub use libbmu;
 }
 
@@ -37,7 +37,6 @@ pub mod xtensa {
 pub mod libs {
     pub mod libc {
         pub use memory;
-        pub use unistd;
     }
 
     #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]

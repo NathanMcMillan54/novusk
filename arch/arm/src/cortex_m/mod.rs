@@ -21,5 +21,5 @@ fn set_info() {
     let peripherals = Peripherals::take().unwrap();
     let cpuid = peripherals.CPUID;
 
-    unsafe { CPUINFO.set("arm32", "Cortex M", Some(cpuid.base.read())); }
+    unsafe { CPUINFO.set("arm", "Cortex M", Some(cpuid.base.read())); }
 }

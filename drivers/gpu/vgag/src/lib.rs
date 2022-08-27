@@ -4,6 +4,8 @@
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;
 
+use novuskinc::module::*;
+
 pub mod color;
 pub mod display;
 pub mod switch;

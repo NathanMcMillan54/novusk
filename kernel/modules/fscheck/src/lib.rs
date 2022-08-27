@@ -3,11 +3,13 @@
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate novuskinc;
 
+use novuskinc::module::*;
+
 pub mod config;
 
 use kinfo::info::FS;
 
-pub fn fscheck_start() {
+pub fn _init_fscheck() {
     let mut fs = config::get_fs();
 
     if fs == "None" || fs == "" {
@@ -15,10 +17,10 @@ pub fn fscheck_start() {
     }
 }
 
-module_init!(fscheck_init, fscheck_start);
+module_init!(ModuleType::InKernel, fscheck);
 
-pub fn fscheck_finish() {
+pub fn _end_fscheck() {
 
 }
 
-module_end!(fscheck_end, fscheck_finish);
+module_end!(fscheck);

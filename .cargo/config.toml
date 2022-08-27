@@ -1,5 +1,5 @@
 [unstable]
-build-std = ["core", "alloc", "std", "compiler_builtins"]
+build-std = ["core", "alloc", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
 
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
