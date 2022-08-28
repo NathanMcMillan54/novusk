@@ -5,14 +5,17 @@
 
 pub mod error;
 
-#[cfg(target_arch = "riscv32")]
-pub mod riscv;
+cfg_if! {
+    if #[cfg(feature = "wee")] {
+        pub mod wee;
+        pub use wee::*;
+    }
+}
 
-#[cfg(target_arch = "x86_64")]
-pub mod x86_64;
-
-#[cfg(feature = "linked_list")]
-pub use linked_list_allocator::LockedHeap;
-
-#[cfg(feature = "wee_allocator")]
-pub use wee_alloc::WeeAlloc;
+cfg_if! {
+    if #[cfg(not(feature = "wee"))] {
+        // This could be turned into a proper allocator some day
+        pub mod unimplemented;
+        pub use unimplemented::*;
+    }
+}

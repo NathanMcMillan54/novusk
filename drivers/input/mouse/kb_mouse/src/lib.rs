@@ -2,12 +2,14 @@
 
 #[macro_use] extern crate novuskinc;
 
+use novuskinc::module::*;
+
 use x86_64::instructions::port::Port;
 
 pub mod input;
 pub mod types;
 
-pub fn kb_mouse_start() {
+pub fn _init_kb_mouse() {
     // printk!("Kb Mouse init");
 
     let byte: u8 = unsafe { Port::new(0x60).read() };
@@ -18,10 +20,10 @@ pub fn kb_mouse_start() {
     }
 }
 
-module_init!(kb_mouse_init, kb_mouse_start);
+module_init!(ModuleType::InKernel, kb_mouse);
 
-pub fn kb_mouse_finish() {
+pub fn _end_kb_mouse() {
     // printk!("Kb Mouse end");
 }
 
-module_end!(kb_mouse_end, kb_mouse_finish);
+module_end!(kb_mouse);

@@ -22,7 +22,7 @@ edition = "2021"
 members = [
     # Architectures
     "arch/aarch64/",
-    "arch/arm32/",
+    "arch/arm/",
     "arch/riscv/",
     "arch/x86_64/",
     "arch/xtensa/",
@@ -123,7 +123,7 @@ libost = { path = "lib/libost/" }
 # rpi = { path = "drivers/rpi/" }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
-arm32 = { path = "arch/arm32/" }
+arm = { path = "arch/arm/" }
 armfb = { path = "drivers/gpu/armfb/" }
 libbmu = { path = "lib/libbmu/" }
 
@@ -145,9 +145,9 @@ hifive = ["riscv/hifive"]
 lofive = ["riscv/lofive"]
 multiboot = []
 rpi3 = ["aarch64/rpi3"]
-rpi2 = ["arm32/rpi2"]
-stellaris_6965 = ["arm32/stellaris_6965"]
-# stm32f407 = ["arm32/stm32f407"]
+rpi2 = ["arm/rpi2"]
+stellaris6965 = ["arm/stellaris_6965"]
+# stm32f407 = ["arm/stm32f407"]
 # stm32f4 = ["arm/stm32f4"]
 # stm32f401 = ["arm/stm32f401"]
 # stm32f407 = ["arm/stm32f407"]

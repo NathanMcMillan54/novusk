@@ -1,3 +1,5 @@
+use novuskinc::module::*;
+
 #[cfg(target_arch = "arm")]
 pub use armfb::{graphics_pixel, graphics_write};
 
@@ -23,7 +25,7 @@ impl GpuGraphics {
     }
 }
 
-fn gpug_start() {
+fn _init_gpug() {
     #[cfg(target_arch = "aarch64")]
     armfb::armfb_init();
 
@@ -31,9 +33,9 @@ fn gpug_start() {
     vgag::vgag_init();
 }
 
-module_init!(gpug_init, gpug_start);
+module_init!(ModuleType::InKernel, gpug);
 
-fn gpug_finish() {
+fn _end_gpug() {
     #[cfg(target_arch = "aarch64")]
     armfb::armfb_end();
 
@@ -41,4 +43,4 @@ fn gpug_finish() {
     vgag::vgag_end();
 }
 
-module_end!(gpug_end, gpug_finish);
+module_end!(gpug);

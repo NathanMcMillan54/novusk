@@ -20,8 +20,8 @@ fn check_version(version_str: &str) {
 }
 
 unsafe fn gpu_init() {
-    #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
-    start_module!(gpug_init, gpug_end);
+    // #[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
+    // start_module!(gpug_init, gpug_end);
     //KERNEL.lock().kernel_console().init();
 }
 
@@ -53,7 +53,7 @@ pub unsafe extern "C" fn kernel_init() {
         status: "ok",
         should_panic: false,
         panic_message: None,
-        main_message: "Go kernel configurations",
+        main_message: "Got kernel configurations",
         messages: None
     });
 
