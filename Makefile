@@ -1,12 +1,19 @@
 # Compile for architecture
 ARCH =
+
 # Architecture target
 TARGET_ARCH =
+
+# Target for the host device
+HOST_TARGET =
+
 # Target device
 PLATFORM = none
 
-# Output library for linking or executable for running
+# Output library for linking
+# true/false
 LIB_OUTPUT = false
+
 # Novusk build command
 NOVUSK_BUILD =
 
@@ -14,6 +21,8 @@ ifeq ($(ARCH), aarch64)
 	TARGET_ARCH = aarch64-novusk
 else ifeq ($(ARCH), armv8-a)
 	TARET_ARCH = aarch64-novusk
+else ifeq ($(ARCH), armv7-a)
+	TARGET = arm-a-novusk
 else ifeq ($(ARCH), armv7-m)
 	TARGET_ARCH = thumbv7m-none-eabi
 else ifeq ($(ARCH), armv7e-m)
@@ -39,4 +48,8 @@ novusk:
 	$(NOVUSK_BUILD)
 
 libc:
-	@ $(MAKE) -C lib/cinclude
+	@ $(MAKE) -C lib/cinclude TARGET=$(TARGET_ARCH) HOST=$(HOST_TARGET)
+
+clean:
+	@ cargo clean
+	@ $(MAKE) -C lib/cinclude/ clean

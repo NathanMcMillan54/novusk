@@ -15,8 +15,9 @@ default: clean
 	@ echo "Moving files..."
 	mv *.h inc/
 	@ mkdir inc/bits
+	@ mkdir lib
 	mv bits/*.h inc/bits
-	mv ../../target/$(TARGET)/release/*.a lib/
+	mv target/$(TARGET)/release/*.a lib/
 
 clean:
 	@ cargo clean
