@@ -1,16 +1,6 @@
-#![no_std]
-#![feature(lang_items)]
-
-#[cfg(not(feature = "no_lang_items"))]
-#[path = "../../../lang.rs"]
-pub(crate) mod lang;
-
 pub type ruint8_t = libc::c_uchar;
 pub type ruint16_t = libc::c_ushort;
 pub type ruint32_t = libc::c_uint;
-#[cfg(target_pointer_width = "64")]
-pub type ruint64_t = libc::c_ulong;
-#[cfg(target_pointer_width = "32")]
 pub type ruint64_t = libc::c_ulonglong;
 
 #[no_mangle]
