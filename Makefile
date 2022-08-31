@@ -9,6 +9,8 @@ HOST_TARGET =
 
 # Target device
 PLATFORM = none
+# Build features
+FEATURES =
 
 # Output library for linking
 # true/false
@@ -21,6 +23,8 @@ ifeq ($(ARCH), aarch64)
 	TARGET_ARCH = aarch64-novusk
 else ifeq ($(ARCH), armv8-a)
 	TARET_ARCH = aarch64-novusk
+else ifeq ($(ARCH), arm)
+	TARGET_ARCH = thumbv7em-none-eabihf
 else ifeq ($(ARCH), armv7-a)
 	TARGET = arm-a-novusk
 else ifeq ($(ARCH), armv7-m)
