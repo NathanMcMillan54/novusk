@@ -2,13 +2,13 @@
 build-std = ["core", "alloc", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
 
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+[target.'cfg(all(target_arch = "arm", target_family = "novusk"))']
 rustflags = [
     "-C", "link-arg=--nmagic",
     "-C", "link-arg=-Tlink.x",
 ]
 
-[target.riscv32imac-unknown-none-elf]
+[target.'cfg(all(target_arch = "riscv32", target_family = "novusk"))']
 rustflags = [
     "-C", "link-arg=-Thifive1-link.x",
 ]

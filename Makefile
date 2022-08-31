@@ -30,7 +30,7 @@ else ifeq ($(ARCH), armv7-a)
 else ifeq ($(ARCH), armv7-m)
 	TARGET_ARCH = thumbv7m-none-eabi
 else ifeq ($(ARCH), armv7e-m)
-	TARGET_ARCH = thumb7m-none-eabi
+	TARGET_ARCH = thumbv7em-none-eabihf
 else ifeq ($(ARCH), riscv32)
 	TARGET_ARCH = riscv32imac-unknown-none-elf
 else ifeq ($(ARCH), riscv32imac)
