@@ -8,7 +8,7 @@ name = "cinclude-bin"
 path = "src/main.rs"
 
 [workspace]
-members = ["stdint/", "stdlib/", "bits/stdint_intn/", "bits/stdint_uintn/", "string", "stddef"]
+members = ["stdint", "stdlib", "bits/stdint_intn", "bits/stdint_uintn", "string", "stddef", "_include"]
 
 [dependencies]
 cbindgen = "0.24.3"

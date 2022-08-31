@@ -1,12 +1,5 @@
-#![no_std]
-#![feature(lang_items)]
-
 pub use stdint_intn::*;
 pub use stdint_uintn::*;
-
-#[cfg(not(feature = "no_lang_items"))]
-#[path = "../../lang.rs"]
-pub(crate) mod lang;
 
 // Small types
 // TODO: Small types

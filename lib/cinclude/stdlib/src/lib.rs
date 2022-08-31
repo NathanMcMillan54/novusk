@@ -1,16 +1,10 @@
-#![no_std]
-#![feature(lang_items)]
 #![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
 #![allow(unused)]
 
-#[cfg(not(feature = "no_lang_items"))]
-#[path = "../../lang.rs"]
-pub(crate) mod lang;
-
 use core::borrow::Borrow;
 use core::ptr;
-use libc::{
+use _include::{
     c_char, c_double, c_float, c_int, c_long, c_longlong, c_uchar, c_uint, c_ulong, c_ulonglong,
     c_void, size_t,
 };
@@ -134,7 +128,7 @@ pub extern "C" fn strtoull(s: *const c_char, endp: *mut *mut c_char, base: c_int
 #[no_mangle]
 pub extern "C" fn strfromd(
     s: *mut c_char,
-    buf_size: c_int,
+    buf_size: size_t,
     format: *const c_char,
     d: c_double,
 ) -> *mut c_char {
