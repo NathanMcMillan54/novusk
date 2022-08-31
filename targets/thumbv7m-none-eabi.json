@@ -10,8 +10,9 @@
   "linker-flavor": "ld.lld",
   "llvm-target": "thumbv7m-none-eabi",
   "max-atomic-width": 32,
-  "os": "novusk",
+  "os": "none",
   "panic-strategy": "abort",
   "relocation-model": "static",
+  "target-family": "novusk",
   "target-pointer-width": "32"
 }

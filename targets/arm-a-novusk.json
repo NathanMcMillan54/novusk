@@ -6,8 +6,9 @@
   "linker": "arm-none-eabi-gcc",
   "llvm-target": "arm-none-eabihf",
   "no-compiler-rt": true,
-  "os": "novusk",
+  "os": "none",
   "relocation-model": "static",
+  "target-family": "novusk",
   "target-c-int-width": "32",
   "target-endian": "little",
   "target-pointer-width": "32"
