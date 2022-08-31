@@ -1,6 +1,6 @@
 HOST =?
 TARGET =?
-BUILD_ARGS = --release --target ../../targets/$(TARGET).json
+BUILD_ARGS = --release --target aarch64-apple-darwin # FIXME: Use novusk targets
 
 default: clean
 	@ echo "Compiling libc..."
@@ -11,13 +11,14 @@ default: clean
 	cargo build -p stdlib $(BUILD_ARGS)
 	cargo build -p string $(BUILD_ARGS)
 	@ echo "Generating header files... "
-	cargo run -p cinclude --bin cinclude-bin --release --target $(HOST)
+	cargo run -p cinclude --bin cinclude-bin --release --target aarch64-apple-darwin # FIXME same as above
 	@ echo "Moving files..."
 	mv *.h inc/
-	@ mkdir inc/bits
-	@ mkdir lib
+	@ mkdir -p inc
+	@ mkdir -p inc/bits
+	@ mkdir -p lib
 	mv bits/*.h inc/bits/
-	mv target/$(TARGET)/release/*.a lib/
+	mv target/aarch64-apple-darwin/release/*.a lib/ # FIXME same as above
 
 clean:
 	@ cargo clean

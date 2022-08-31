@@ -1,4 +1,4 @@
-use libc::c_ulong;
+use _include::c_ulong;
 
 type rsize_t = c_ulong;
 
