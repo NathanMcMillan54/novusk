@@ -5,7 +5,6 @@
   "emit-debug-gdb-scripts": false,
   "env": "",
   "executables": true,
-  "is-builtin": true,
   "linker": "xtensa-esp32-elf-gcc",
   "linker-flavor": "gcc",
   "llvm-target": "xtensa-none-elf",

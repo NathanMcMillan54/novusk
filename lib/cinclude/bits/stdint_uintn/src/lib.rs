@@ -1,19 +1,28 @@
-pub type ruint8_t = _include::c_uchar;
-pub type ruint16_t = _include::c_ushort;
-pub type ruint32_t = _include::c_uint;
-pub type ruint64_t = _include::c_ulonglong;
+#![no_std]
+#![feature(lang_items)]
+
+#[cfg(not(feature = "no_lang_items"))]
+#[path = "../../../lang.rs"]
+pub(crate) mod lang;
+
+use libc::*;
+
+pub type ruint8_t = c_uchar;
+pub type ruint16_t = c_ushort;
+pub type ruint32_t = c_uint;
+pub type ruint64_t = c_ulonglong;
 
 // TODO: Come up with a better implementation for least types
-pub type ruint_least8_t = _include::c_uchar;
-pub type ruint_least16_t = _include::c_ushort;
-pub type ruint_least32_t = _include::c_uint;
-pub type ruint_least64_t = _include::c_ulonglong;
+pub type ruint_least8_t = c_uchar;
+pub type ruint_least16_t = c_ushort;
+pub type ruint_least32_t = c_uint;
+pub type ruint_least64_t = c_ulonglong;
 
 // TODO: Come up with a better implementation for fast types
-pub type ruint_fast8_t = _include::c_uchar;
-pub type ruint_fast16_t = _include::c_ushort;
-pub type ruint_fast32_t = _include::c_uint;
-pub type ruint_fast64_t = _include::c_ulonglong;
+pub type ruint_fast8_t = c_uchar;
+pub type ruint_fast16_t = c_ushort;
+pub type ruint_fast32_t = c_uint;
+pub type ruint_fast64_t = c_ulonglong;
 
 #[no_mangle]
 pub extern "C" fn _use_types_stdint_uintn_h(
