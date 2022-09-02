@@ -7,13 +7,23 @@ license = "MIT"
 publish = false
 
 [dependencies]
+cfg-if = "1.0.0"
 cortex-m = "0.7.3"
 cortex-m-semihosting = "0.3.7"
 device = { path = "../../../device/" }
 libbmu = { path = "../../../../lib/libbmu/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
+invic = { path = "../../../irqchip/invic/", optional = true }
 tm4c123x-hal = "0.10.2"
+
+[dependencies.irq]
+path = "../../../../kernel/irq/"
+optional = true
+default-features = false
+features = ["120irqs"]
 
 [features]
 default = []
-stellaris_6965 = []
+all_features = ["invic"]
+stellaris_6965 = ["irqchip"]
+irqchip = ["invic", "irq"]

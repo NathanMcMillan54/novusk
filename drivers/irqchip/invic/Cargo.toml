@@ -1,0 +1,10 @@
+[package]
+name = "invic"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7.6"
+cortex-m-rt = "0.7.1"
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
+printk = { path = "../../../kernel/printk/" }

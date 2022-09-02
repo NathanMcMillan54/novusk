@@ -1,4 +1,11 @@
-use _include::{c_int, c_void, size_t};
+#![no_std]
+#![feature(lang_items)]
+
+use libc::{c_int, c_void, size_t};
+
+#[cfg(not(feature = "no_lang_items"))]
+#[path = "../../lang.rs"]
+pub(crate) mod lang;
 
 /// Copy `n` bytes from `src` to `dest`
 #[no_mangle]

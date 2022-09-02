@@ -1,0 +1,19 @@
+[package]
+name = "irq"
+version = "0.1.0"
+edition = "2021"
+description = "Main kernel IRQ handler"
+
+[dependencies]
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
+
+[features]
+default = ["16irqs"]
+12irqs = []
+16irqs = []
+24irqs = []
+32irqs = []
+48irqs = []
+64irqs = []
+120irqs = []
+240irqs = []

@@ -17,6 +17,10 @@ pub unsafe fn arm_kernel_init() {
     /*syscalls_init();
     kinfo!("ARM32 system calls initialized\n");*/
 
+    core::arch::asm!("svc 0x1");
+    core::arch::asm!("svc 0x1");
+    core::arch::asm!("svc 0x3");
+
     if BOARD.kernel_init == true {
         kmain::kernel_init();
         kinfo!(KStatus {

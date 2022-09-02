@@ -1,13 +1,19 @@
+#![no_std]
+#![feature(lang_items)]
 #![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
 #![allow(unused)]
 
 use core::borrow::Borrow;
 use core::ptr;
-use _include::{
+use libc::{
     c_char, c_double, c_float, c_int, c_long, c_longlong, c_uchar, c_uint, c_ulong, c_ulonglong,
     c_void, size_t,
 };
+
+#[cfg(not(feature = "no_lang_items"))]
+#[path = "../../lang.rs"]
+pub(crate) mod lang;
 
 /// cbindgen:derive-eq=
 /// cbindgen:derive-neq

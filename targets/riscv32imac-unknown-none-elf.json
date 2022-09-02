@@ -5,7 +5,6 @@
   "eh-frame-header": false,
   "emit-debug-gdb-scripts": false,
   "features": "+m,+a,+c",
-  "is-builtin": true,
   "linker": "rust-lld",
   "linker-flavor": "ld.lld",
   "llvm-target": "riscv32",

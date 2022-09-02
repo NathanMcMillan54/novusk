@@ -1,4 +1,11 @@
-use _include::*;
+#![no_std]
+#![feature(lang_items)]
+
+#[cfg(not(feature = "no_lang_items"))]
+#[path = "../../../lang.rs"]
+pub(crate) mod lang;
+
+use libc::*;
 
 pub type rint8_t = c_schar;
 pub type rint16_t = c_short;

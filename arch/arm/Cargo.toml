@@ -31,7 +31,7 @@ time = { path = "../../kernel/time/" }
 difi = "0.1.0"
 
 [features]
-cortex_a = ["nmallocator/wee"]
+cortex_a = []
 cortex_m = []
 rpi2 = ["cortex_a", "rpi", "rpi2kernel", "rpi/rpi2"]
 stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]

@@ -1,7 +1,11 @@
+#![no_std]
+
+// Types for x86_64 and Xtensa
 pub enum c_void {}
 pub type c_char = i8;
 pub type c_long = i64;
 pub type c_ulong = u64;
+
 pub type c_schar = i8;
 pub type c_uchar = u8;
 pub type c_short = i16;
