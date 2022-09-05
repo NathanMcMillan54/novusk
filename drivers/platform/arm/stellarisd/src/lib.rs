@@ -1,12 +1,16 @@
 #![no_std]
 
+#[macro_use] extern crate cfg_if;
 #[macro_use] extern crate novuskinc;
 use tm4c123x_hal::Peripherals;
 use device::Device;
 
-#[macro_use]
-#[path = "../../../../../kernel/irq.rs"]
-pub(crate) mod irq;
+cfg_if! {
+    if #[cfg(feature = "irqchip")] {
+        extern crate invic;
+        extern crate irq;
+    }
+}
 
 pub mod irqs;
 pub mod io;

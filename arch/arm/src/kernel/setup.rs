@@ -1,9 +1,13 @@
+use novuskinc::irq::irqchip_setup;
 use kinfo::{InfoDisplay, status::KStatus};
 use crate::mm::memory_init;
 use super::cpu::{cpu_setup, CPUINFO};
 use super::device::{device_init, DEVICE_NAME};
 
 pub unsafe fn setup_arm32_kernel() {
+    irqchip_setup();
+    printk!("Setup IRQ chip\n");
+
     cpu_setup();
     kinfo!(KStatus {
         status: "ok",

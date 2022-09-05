@@ -44,6 +44,7 @@ members = [
     "drivers/input/mouse/",
     "drivers/input/mouse/kb_mouse/",
     "drivers/input/mouse/ps2_mouse/",
+    "drivers/irqchip/invic/",
     "drivers/net/ethernet/",
     "drivers/nkuefi/",
     "drivers/rpi/",
@@ -62,6 +63,7 @@ members = [
     # Kernel
     "init/",
     "kernel/console/",
+    "kernel/irq/",
     "kernel/kinfo/",
     "kernel/konfig/",
     "kernel/modules/",
