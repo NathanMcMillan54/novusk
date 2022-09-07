@@ -1,6 +1,6 @@
 HOST =?
 TARGET =?
-BUILD_ARGS = --release --target $(TARGET) # FIXME: Use novusk targets
+BUILD_ARGS = --release --target ../../targets/$(TARGET).json # FIXME: Use novusk targets
 
 default: clean libs headers mv_files
 	@ # mv target/aarch64-apple-darwin/release/*.a lib/ # FIXME same as above
