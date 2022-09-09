@@ -234,7 +234,7 @@ pub extern "C" fn a64l(s: *const c_uchar) -> c_long {
         unsafe {
             ptr.add(1);
         }
-        result |= (value as u64) << shift;
+        result |= value << shift;
         shift += 6;
 
         if ptr >= end {
