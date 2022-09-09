@@ -16,15 +16,18 @@ libs:
 
 headers:
 	@ echo "Generating header files... "
-	cargo run -p cinclude --bin cinclude-bin --release --target $(HOST)
+	cargo +stable run -p genheaders --release --target $(HOST)
 
 mv_files:
 	@ echo "Moving files..."
-	mv *.h inc/
 	@ mkdir -p inc
 	@ mkdir -p inc/bits
 	@ mkdir -p lib
+	mv *.h inc/
 	mv bits/*.h inc/bits/
+	mv target/$(TARGET)/release/*.a lib/
+	mv lib/libstdint_intn.a lib/libstdint-intn.a
+	mv lib/libstdint_uintn.a lib/libstdint-uintn.a
 
 clean:
 	@ cargo clean
