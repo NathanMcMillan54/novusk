@@ -12,4 +12,3 @@ konfig = { path = "../konfig/" }
 libbmu = { path = "../../lib/libbmu/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", feature = ["v3"] }
 printk = { path = "../printk/" }
-sos = { path = "../../drivers/sos/" }

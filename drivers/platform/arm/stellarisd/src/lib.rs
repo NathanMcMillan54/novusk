@@ -2,6 +2,9 @@
 
 #[macro_use] extern crate cfg_if;
 #[macro_use] extern crate novuskinc;
+
+use novuskinc::kernel::types::KernelFunctionName;
+use novuskinc::platform::{DRIVERS_FAILD, INVALID_DEVICE, UNKNOWN_ERROR};
 use tm4c123x_hal::Peripherals;
 use device::Device;
 
@@ -24,22 +27,16 @@ impl Stellaris6965 {
     }
 }
 
+unsafe fn early_stellaris_init() -> u8 {
 
-#[cfg(feature = "stellaris_6965")]
-#[no_mangle]
-pub unsafe extern "C" fn device_init() -> (Result<(), &'static str>, &'static str) {
-    let cp = cortex_m::Peripherals::steal();
-
-    let mut error = false;
-
-    if unsafe { Peripherals::take().is_none() } {
-        error = true;
-    } else { error = false; }
-
-    if error {
-        return (Err("Cannot find peripherals"), "Stellaris 6965");
-    } else { return (Ok(()), "Stellaris 6965"); }
+    0
 }
 
-#[no_mangle]
-pub extern "C" fn rpi2_kernel_init() { }
+define_kernel_function!(KernelFunctionName::early_device_init, -> u8, early_stellaris_init);
+
+unsafe fn stellaris_init() -> u8 {
+
+    0
+}
+
+define_kernel_function!(KernelFunctionName::device_init, -> u8, stellaris_init);

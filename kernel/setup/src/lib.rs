@@ -9,6 +9,7 @@ use konfig::KONFIG;
 
 pub mod arch;
 pub mod boot;
+pub mod kernel;
 pub mod types;
 pub(crate) mod syscall;
 pub(crate) mod user;
