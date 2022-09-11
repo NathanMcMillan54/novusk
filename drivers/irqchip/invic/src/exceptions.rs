@@ -1,8 +1,21 @@
+use core::arch::asm;
+use core::ffi::CStr;
+use core::slice::from_raw_parts;
+use core::str::{from_utf8_unchecked};
 use cortex_m_rt::ExceptionFrame;
 use cortex_m_rt::exception;
 use novuskinc::irq::*;
+use novuskinc::syscalls::{arch_syscall, syscall};
 
-static mut SYSTICKS: u64 = 0;
+#[no_mangle]
+pub unsafe extern "C" fn test_exception() -> u8 {
+    // Use SysTick to check if exceptions are working
+    asm!("wfi");
+
+    if SYSTICKS != 0 {
+        return 0;
+    } else { return 1; }
+}
 
 #[exception]
 fn SysTick() {
@@ -28,6 +41,14 @@ unsafe fn HardFault(ef: &ExceptionFrame) -> ! {
 }
 
 #[exception]
-fn SVCall() {
-    printk!("svc");
+unsafe fn SVCall() {
+    let psp_ptr = cortex_m::register::msp::read() as *const *const u8;
+    let psp_array = core::slice::from_raw_parts(psp_ptr, 5);
+    printk!("\nsvc {:?}\n", psp_array);
+
+    /* let sys_ret = syscall(psp_array[0] as usize, psp_array);
+
+    cortex_m::register::psp::write(sys_ret.as_ptr() as u32); */
 }
+
+static mut SYSTICKS: u64 = 0;

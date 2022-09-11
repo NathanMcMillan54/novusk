@@ -5,6 +5,8 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
 
+use cortex_m::peripheral::syst::SystClkSource;
+use cortex_m::Peripherals;
 use novuskinc::irq::{set_irqchip, IrqChip};
 use novuskinc::kernel::types::KernelFunctionName;
 
@@ -20,6 +22,15 @@ unsafe fn nvic_setup() -> u8 {
         irqn: empty_irqn,
         handlers: vec![]
     });
+
+    let peripherals = Peripherals::steal();
+    let mut syst = peripherals.SYST;
+
+    syst.set_clock_source(SystClkSource::Core);
+    // Every half second
+    syst.set_reload(4000000);
+    syst.enable_counter();
+    syst.enable_interrupt();
 
     0
 }
