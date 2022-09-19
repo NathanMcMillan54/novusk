@@ -4,6 +4,9 @@
 #### ARM documentation
 - ``arm/features.md`` - ARM build features
 - ``arm/main.md`` - ARM compiling and capabilities
+- ``arm/platforma.md`` - Supported ARM devices
+- ``arm/syscalls.md`` - ARM system calls
+- ``arm/targets.md`` - ARM compiler targets
 
 #### RISCV documentation
 - ``riscv/main.md`` - RISCV (32/64 bit) documentation

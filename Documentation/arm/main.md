@@ -18,4 +18,8 @@ going to use any features a list of ARM features and there usages can be found i
 
 What the ARM kernel as capable of doing is based on how much support there is for the device it's running on. 
 Generally the ARM kernel can: setup early CPU functions, handle memory allocation, handle IRQs and exceptions, 
-and handle [system calls](syscall link), and most devices have mailbox support (firmware interface).
+and handle system calls, and most devices have mailbox support (firmware interface).
+
+---
+
+- [syscalls.md](syscalls.md)
