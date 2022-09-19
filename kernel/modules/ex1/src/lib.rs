@@ -7,14 +7,17 @@ use novuskinc::module::*;
 
 static mut SUM: i32 = 0;
 
-pub fn _init_ex1() {
+unsafe fn _init_ex1(km: &mut KernelModule) {
     unsafe { SUM += 1; }
+    km.initialized();
 }
 
 module_init!(ModuleType::InKernel, ex1);
 
-pub fn _end_ex1() {
-    unsafe { printk!("SUM = {}\n", SUM); }
+unsafe fn _end_ex1(km: &mut KernelModule) {
+    if SUM == 1 {
+        km.success();
+    }
 }
 
-module_end!(ex1);
+module_end!(ModuleType::InKernel, ex1);

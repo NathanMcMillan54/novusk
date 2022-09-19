@@ -1,11 +1,9 @@
 use core::arch::asm;
-use core::ffi::CStr;
-use core::slice::from_raw_parts;
-use core::str::{from_utf8_unchecked};
 use cortex_m_rt::ExceptionFrame;
 use cortex_m_rt::exception;
+use crate::cpu::ArmCpuRegisters;
 use novuskinc::irq::*;
-use novuskinc::syscalls::{arch_syscall, syscall};
+use novuskinc::syscalls::{arch_syscall, do_syscall};
 
 #[no_mangle]
 pub unsafe extern "C" fn test_exception() -> u8 {
@@ -42,13 +40,7 @@ unsafe fn HardFault(ef: &ExceptionFrame) -> ! {
 
 #[exception]
 unsafe fn SVCall() {
-    let psp_ptr = cortex_m::register::msp::read() as *const *const u8;
-    let psp_array = core::slice::from_raw_parts(psp_ptr, 5);
-    printk!("\nsvc {:?}\n", psp_array);
-
-    /* let sys_ret = syscall(psp_array[0] as usize, psp_array);
-
-    cortex_m::register::psp::write(sys_ret.as_ptr() as u32); */
+    arch_syscall();
 }
 
 static mut SYSTICKS: u64 = 0;

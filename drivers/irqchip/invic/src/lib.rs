@@ -12,6 +12,9 @@ use novuskinc::kernel::types::KernelFunctionName;
 
 pub mod exceptions;
 
+#[path = "../../../../arch/arm/src/kernel/cpu.rs"]
+pub(crate) mod cpu;
+
 unsafe fn nvic_setup() -> u8 {
     set_irqchip(IrqChip {
         name: "NVIC",

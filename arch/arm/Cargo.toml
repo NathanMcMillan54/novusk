@@ -26,6 +26,7 @@ rpi = { path = "../../drivers/rpi/", optional = true }
 stellarisd = { path = "../../drivers/platform/arm/stellarisd/", optional = true }
 # stmd = { path = "../../drivers/firmware/arm/stmd/" }
 setup = { path = "../../kernel/setup/" }
+sys = { path = "../../kernel/sys/" }
 time = { path = "../../kernel/time/" }
 
 [build-dependencies]

@@ -25,22 +25,26 @@ impl GpuGraphics {
     }
 }
 
-fn _init_gpug() {
+fn _init_gpug(km: &mut KernelModule) {
     #[cfg(target_arch = "aarch64")]
     armfb::armfb_init();
 
     #[cfg(target_arch = "x86_64")]
     vgag::vgag_init();
+
+    km.initialized();
 }
 
 module_init!(ModuleType::InKernel, gpug);
 
-fn _end_gpug() {
+fn _end_gpug(km: &mut KernelModule) {
     #[cfg(target_arch = "aarch64")]
     armfb::armfb_end();
 
     #[cfg(target_arch = "x86_64")]
     vgag::vgag_end();
+
+    km.success();
 }
 
-module_end!(gpug);
+module_end!(ModuleType::InKernel, gpug);

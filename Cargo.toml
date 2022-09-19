@@ -71,6 +71,7 @@ members = [
     "kernel/power/",
     "kernel/printk/",
     "kernel/setup/",
+    "kernel/sys/",
     "kernel/time/",
     # Libraries
 

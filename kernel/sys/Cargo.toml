@@ -1,0 +1,9 @@
+[package]
+name = "sys"
+version = "0.1.0"
+edition = "2021"
+description = "Mainly used for handling system calls"
+
+[dependencies]
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
+printk = { path = "../printk/" }

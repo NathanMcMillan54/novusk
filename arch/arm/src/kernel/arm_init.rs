@@ -1,6 +1,7 @@
 use crate::include::syscalls::syscalls_init;
 use init::kmain;
 use kinfo::{InfoDisplay, status::KStatus};
+use crate::kernel::cpu::ArmCpuRegisters;
 use super::board::BOARD;
 use super::irq::irq_init;
 

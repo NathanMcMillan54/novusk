@@ -1,4 +1,3 @@
-use crate::kernel::cpu::{CPUINFO};
 use cortex_m::Peripherals;
 
 pub mod ints;
@@ -20,6 +19,4 @@ pub fn cortex_m_init() {
 fn set_info() {
     let peripherals = Peripherals::take().unwrap();
     let cpuid = peripherals.CPUID;
-
-    unsafe { CPUINFO.set("arm", "Cortex M", Some(cpuid.base.read())); }
 }

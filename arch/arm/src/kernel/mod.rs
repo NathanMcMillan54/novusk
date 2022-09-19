@@ -1,6 +1,7 @@
 pub mod arm_init;
 pub mod board;
 pub mod cpu;
+pub mod entry;
 pub mod io;
 pub mod irq;
 pub mod kernel;

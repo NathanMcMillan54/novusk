@@ -1,4 +1,4 @@
-use novuskinc::prelude::version::{MAJOR_VERSION, VERSION_NAME};
+use novuskinc::version::{MAJOR_VERSION, VERSION_NAME};
 use vfs::types::FileModes::ReadOnly;
 
 struct Banner {
