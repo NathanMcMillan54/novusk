@@ -1,13 +1,12 @@
 use crate::Console;
 use core::str::from_utf8;
-use gpu::GpuGraphics;
 
 pub struct KernelConsole {
     pub console_size: (usize, usize),
     pub column: usize,
     pub row: usize,
     pub color: usize,
-    pub gpug: GpuGraphics,
+    // pub gpug: GpuGraphics,
 }
 
 impl KernelConsole {
@@ -17,14 +16,14 @@ impl KernelConsole {
             column: 0,
             row: 0,
             color: console_color,
-            gpug: GpuGraphics::new(),
+            // gpug: GpuGraphics::new(),
         };
     }
 
     pub fn display_kernel_console(&self) {
         for y in 0..self.console_size.1 {
             for x in 0..self.console_size.0 {
-                self.gpug.draw_pixel(x, y, self.color);
+                // self.gpug.draw_pixel(x, y, self.color);
             }
         }
     }
@@ -45,7 +44,7 @@ impl Console for KernelConsole {
             self.row += 1;
         } else {
             self.column += 1;
-            unsafe { self.gpug.write_string(self.column, self.row, white, from_utf8(&[byte]).unwrap()); }
+            // unsafe { self.gpug.write_string(self.column, self.row, white, from_utf8(&[byte]).unwrap()); }
         }
     }
 }

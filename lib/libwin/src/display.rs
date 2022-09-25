@@ -1,7 +1,5 @@
-use crate::{Window, graphics::graphics::{graphics_write, graphics_pixel, LIGHT_GRAY}};
-use crate::graphics::graphics::WHITE;
 
-impl Window {
+/*impl Window {
     pub fn display(&mut self) {
         if self.open == false {
             return;
@@ -25,3 +23,4 @@ impl Window {
         unsafe { graphics_write(px as usize + 5, py as usize + 4, WHITE, self.title.unwrap()); }
     }
 }
+*/

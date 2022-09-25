@@ -4,6 +4,7 @@ use kinfo::{InfoDisplay, status::KStatus};
 
 mod early;
 use early::early_aarch64_init;
+mod setup;
 
 #[no_mangle]
 pub unsafe extern "C" fn aarch64_boot_setup() -> ! {

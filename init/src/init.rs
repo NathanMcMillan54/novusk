@@ -1,4 +1,3 @@
-use gpu::GpuGraphics;
 use kinfo::info::*;
 use konfig::Konfig;
 use spin::Mutex;
@@ -13,10 +12,6 @@ pub struct Kernel;
 impl Kernel {
     pub fn new() -> Self {
         return Kernel;
-    }
-
-    pub fn gpu_graphics(&mut self) -> GpuGraphics {
-        return GpuGraphics::new();
     }
 
     pub fn kernel_configs(&mut self) -> Konfig {

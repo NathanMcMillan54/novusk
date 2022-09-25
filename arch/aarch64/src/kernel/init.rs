@@ -1,19 +1,29 @@
-use armfb::{armfb_end, armfb_init};
 use init::kmain;
 use kinfo::{InfoDisplay, status::KStatus};
-use super::device::{device_init};
+use novuskinc::platform::{early_device_init, device_init, DEVICE_INIT_ERRORS};
 use setup::after_kernel_setup;
 use crate::include::sys::setup::syscalls_init;
 
 pub unsafe fn aarch64_kernel_init() {
-    initialize_device();
-    kinfo!(KStatus {
-        status: "ok",
-        should_panic: false,
-        panic_message: None,
-        main_message: "Device initialized",
-        messages: None,
-    });
+    let dev_init = device_init();
+
+    if dev_init == 0 {
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: "Device initialized",
+            messages: None,
+        });
+    } else {
+        kinfo!(KStatus {
+            status: "not ok",
+            should_panic: true,
+            panic_message: Some(DEVICE_INIT_ERRORS[dev_init as usize]),
+            main_message: "Device initialization failed",
+            messages: None,
+        });
+    }
 
     /*syscalls_init();
     kinfo!("System calls initialized\n");*/
@@ -42,14 +52,4 @@ pub unsafe fn aarch64_kernel_init() {
     });
 
     kernel_main();
-}
-
-unsafe fn initialize_device() {
-    let (success, name) = device_init();
-
-    if success.is_err() {
-        panic!("Failed to initialize device: {}", success.err().unwrap());
-    }
-
-    early_printk!("Successfully initialized {}\n", name);
 }

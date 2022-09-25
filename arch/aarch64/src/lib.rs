@@ -5,6 +5,7 @@
 #[macro_use] extern crate kinfo;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
+extern crate setup;
 
 #[cfg(feature = "rpi3")]
 pub(crate) extern crate rpi;

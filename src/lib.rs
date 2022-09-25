@@ -66,8 +66,6 @@ pub mod drivers {
     }
 
     pub mod gpu {
-        pub use gpu::*;
-
         #[cfg(any(target_arch = "arm", target_arch = "aarch64"))]
         pub use armfb;
 

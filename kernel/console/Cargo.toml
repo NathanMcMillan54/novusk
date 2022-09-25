@@ -7,4 +7,3 @@ license = "MIT"
 publish = false
 
 [dependencies]
-gpu = { path = "../../drivers/gpu/" }

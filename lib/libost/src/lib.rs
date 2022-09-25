@@ -2,8 +2,6 @@
 
 #[macro_use] extern crate alloc;
 
-pub(crate) use gpu::graphics;
-
 #[cfg(target_arch = "arm")]
 pub(crate) mod graphics {
     pub fn graphics_pixel(x: usize, y: usize, color: usize) {

@@ -1,5 +1,4 @@
 use alloc::vec::Vec;
-use crate::graphics::graphics_pixel;
 use mouse::types::MouseCursor;
 
 #[derive(Copy, Clone)]
@@ -52,7 +51,7 @@ impl Desktop {
 
         for dy in 0..y {
             for dx in 0..x {
-                unsafe { graphics_pixel(dx, dy, self.color); }
+                // unsafe { graphics_pixel(dx, dy, self.color); }
             }
         }
     }

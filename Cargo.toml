@@ -36,7 +36,6 @@ members = [
     "drivers/platform/mailbox/",
     "drivers/platform/sifive/",
     "drivers/fom_os/",
-    "drivers/gpu/",
     "drivers/gpu/armfb/",
     "drivers/gpu/vgag/",
     "drivers/input/keyboard/",
@@ -96,7 +95,6 @@ members = [
 
 [dependencies]
 fb = { path = "drivers/fb/" }
-gpu = { path = "drivers/gpu/" }
 kinfo = { path = "kernel/kinfo/" }
 libcolor = { path = "lib/libcolor/" }
 memory = { path = "mm/memory/" }
