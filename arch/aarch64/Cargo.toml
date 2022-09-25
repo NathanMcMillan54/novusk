@@ -14,7 +14,7 @@ nmallocator = { path = "../../mm/nmallocator/" }
 novusk_syscalls = "0.2.1"
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
-tock-registers = "0.7.0"
+tock-registers = "0.8.0"
 r0 = "1.0.0"
 rpi = { path = "../../drivers/rpi/" }
 setup = { path = "../../kernel/setup/" }
