@@ -1,6 +1,6 @@
 use novuskinc::irq::{irqchip_setup};
 use novuskinc::platform::*;
-use printk::init::console_init;
+use printk::init::{console_init, error::*};
 use crate::SetupReturn;
 
 pub trait ArchKernelSetup {
@@ -10,18 +10,14 @@ pub trait ArchKernelSetup {
     }
 
     fn device_init(&self) -> SetupReturn {
-        let mut early_device= 0;
         let mut device = 0;
 
         unsafe {
-            early_device = early_device_init();
             device = device_init();
         }
 
-        if early_device != 0 {
-            return (Err("Device init error"), DEVICE_INIT_ERRORS[early_device as usize]);
-        } else if device != 0 {
-            return (Err("Device init error"), DEVICE_INIT_ERRORS[device as usize]);
+        if device != 0 {
+            return (Err(DEVICE_INIT_ERRORS[device as usize]), "Device init error");
         }
 
         return (Ok(()), "Device initialized successfully");
@@ -40,7 +36,16 @@ pub trait ArchKernelSetup {
     }
 
     unsafe fn early_kernel_setup(&self) -> SetupReturn {
-        console_init();
+        match console_init() {
+            SUCCESS => {},
+            DRIVER_FAILED => {
+                return (Err("Console init error"), "Failed to initialize console driver");
+            },
+            DRIVER_NOT_FOUND => {
+                return (Err("Console init error"), "Console driver not found");
+            },
+            _ => {}
+        }
 
         (Ok(()), "Successfully setup early main kernel")
     }

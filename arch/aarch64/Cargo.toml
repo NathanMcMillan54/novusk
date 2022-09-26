@@ -10,7 +10,7 @@ publish = false
 dif = "0.1.1"
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
-nmallocator = { path = "../../mm/nmallocator/" }
+nmallocator = { path = "../../mm/nmallocator/", features = ["wee"] }
 novusk_syscalls = "0.2.1"
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }

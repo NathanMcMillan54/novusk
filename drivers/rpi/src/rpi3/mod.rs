@@ -1,19 +1,26 @@
 use core::sync::atomic::{compiler_fence, Ordering};
+use novuskinc::drivers::Driver;
 use novuskinc::kernel::types::KernelFunctionName;
 use crate::board::RaspberryPi;
 use crate::common::RpiMb;
 use mailbox::MailBox;
+use crate::DEVICE_DRIVERS;
 
 pub mod gpio;
 pub mod led;
+pub mod serial;
 
-fn rpi3_init() -> u8 {
-    let mut pi = Rpi3::new();
-    pi.init();
+unsafe fn early_rpi3_init() -> u8 {
+    DEVICE_DRIVERS.add_driver(&serial::KERNEL_SIMPLEUART as &'static dyn Driver);
 
-    if pi.error.0 {
-        return 1;
-    } else { return 0; }
+    0
+}
+
+define_kernel_function!(KernelFunctionName::early_device_init, -> u8, early_rpi3_init);
+
+unsafe fn rpi3_init() -> u8 {
+
+    0
 }
 
 define_kernel_function!(KernelFunctionName::device_init, -> u8, rpi3_init);

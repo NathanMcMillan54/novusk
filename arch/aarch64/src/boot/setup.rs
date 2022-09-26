@@ -13,8 +13,8 @@ impl Aarch64Boot {
 
     pub fn setup(&self) {
         let linker_mem = unsafe { self.linker_setup() };
-        let early_dev = self.early_device_init();
         let early_serial = self.early_serial_io_init();
+        let early_dev = self.early_device_init();
 
         if linker_mem.0.is_err() {
             kinfo!(KStatus {
@@ -24,14 +24,6 @@ impl Aarch64Boot {
                 main_message: "Linker memory setup failed",
                 messages: None,
             });
-        } else if early_dev.0.is_err() {
-            kinfo!(KStatus {
-                status: "not ok",
-                should_panic: false,
-                panic_message: None,
-                main_message: "Early device initialization failed",
-                messages: Some(&["This can cause problems latter"]),
-            });
         } else if early_serial.0.is_err() {
             kinfo!(KStatus {
                 status: "not ok",
@@ -40,7 +32,39 @@ impl Aarch64Boot {
                 main_message: early_serial.0.err().unwrap(),
                 messages: None,
             });
+        } else if early_dev.0.is_err() {
+            kinfo!(KStatus {
+                status: "not ok",
+                should_panic: false,
+                panic_message: None,
+                main_message: early_dev.0.err().unwrap(),
+                messages: Some(&["This can cause problems later"]),
+            });
         }
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: linker_mem.1,
+            messages: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: early_serial.1,
+            messages: None,
+        });
+
+        kinfo!(KStatus {
+            status: "ok",
+            should_panic: false,
+            panic_message: None,
+            main_message: early_dev.1,
+            messages: Some(&["Early device drivers set"]),
+        });
     }
 }
 
@@ -50,12 +74,12 @@ impl BootSetup for Aarch64Boot {
 
         if early_dev_init == 0 {
             return (Ok(()), "Early device drivers initialized");
-        } else { return (Err("Early device initialization failed"), DEVICE_INIT_ERRORS[early_dev_init as usize]); }
+        } else { return (Err(DEVICE_INIT_ERRORS[early_dev_init as usize]), "Early device initialization failed"); }
     }
 
     fn early_serial_io_init(&self) -> SetupReturn {
         if unsafe { early_serial_init() } == 0 {
-            return (Ok(()), "Early serial initialized");
+            return (Ok(()), "Early serial driver initialized");
         } else { return (Err("Early serial initialization failed"), "Failed to initialize early serial driver"); }
     }
 
@@ -67,7 +91,7 @@ impl BootSetup for Aarch64Boot {
 
         r0::zero_bss(&mut __bss_start, &mut __bss_end);
 
-        if __bss_start == 0 {
+        if __bss_start != 0 {
             return (Err("Linker mem setup failed"), "Failed to clear __bss_start");
         } else { return (Ok(()), "Successfully setup linker memory"); }
     }

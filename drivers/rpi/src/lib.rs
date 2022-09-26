@@ -4,10 +4,16 @@ extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate tock_registers;
 
+use novuskinc::drivers::manager::DeviceDriverManager;
+
 pub mod board;
 pub use board::RaspberryPi;
 pub mod common;
 pub use common::*;
+
+extern "C" {
+    pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
+}
 
 #[macro_use]
 #[path = "../../../kernel/irq.rs"]
