@@ -14,7 +14,7 @@ mailbox = { path = "../platform/mailbox/" }
 mio = { path = "../../mm/mio/" }
 nmallocator = { path = "../../mm/nmallocator/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
-tock-registers = "0.7.0"
+tock-registers = "0.8.1"
 
 [features]
 default = ["rpi3"]
