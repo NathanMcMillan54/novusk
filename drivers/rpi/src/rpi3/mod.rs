@@ -9,9 +9,11 @@ use crate::DEVICE_DRIVERS;
 pub mod gpio;
 pub mod led;
 pub mod serial;
+pub mod uart;
 
 unsafe fn early_rpi3_init() -> u8 {
     DEVICE_DRIVERS.add_driver(&serial::KERNEL_SIMPLEUART as &'static dyn Driver);
+    DEVICE_DRIVERS.add_driver(&uart::Rpi3Uart as &'static dyn Driver);
 
     0
 }

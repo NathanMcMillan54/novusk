@@ -4,7 +4,7 @@
     ("PeripheralAddress", "1056964608"), // Peripheral address as a decimal number
     ("SocName", "Broadcom BCM2837"),
     ("AllocMemory", "true"),
-    ("EnableSerial", "false"),
+    ("EnableSerial", "true"),
     ("EnableFrameBuffer", "true"),
     ("PrintingMethod", "Serial"),
     ("EnableDeviceIrqs", "true"),

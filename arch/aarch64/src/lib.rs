@@ -13,5 +13,9 @@ pub(crate) extern crate rpi;
 mod boot;
 pub mod include;
 pub mod kernel;
+pub mod liba64;
 pub mod mm;
 mod net;
+
+// build.rs generates dif.rs, it should be ignored from git
+pub(crate) mod dif;

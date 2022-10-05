@@ -1,9 +1,10 @@
-use alloc::vec::Vec;
 use core::arch::asm;
 use core::fmt::{Arguments, Write};
 use core::ops;
-use rpi::rpi3::gpio;
-use rpi::MMIO_BASE;
+use novuskinc::drivers::{names::SERIAL, Driver, DriverResult};
+use novuskinc::prelude::*;
+use crate::rpi3::gpio;
+use crate::MMIO_BASE;
 use tock_registers::interfaces::{Readable, ReadWriteable, Writeable};
 use tock_registers::register_bitfields;
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
@@ -72,9 +73,9 @@ pub struct RegisterBlock {
     AUX_MU_BAUD: WriteOnly<u32, AUX_MU_BAUD::Register>, // 0x68
 }
 
-pub struct Uart;
+pub struct Rpi3Uart;
 
-impl ops::Deref for Uart {
+impl ops::Deref for Rpi3Uart {
     type Target = RegisterBlock;
 
     fn deref(&self) -> &Self::Target {
@@ -82,9 +83,9 @@ impl ops::Deref for Uart {
     }
 }
 
-impl Uart {
+impl Rpi3Uart {
     pub fn new() -> Self {
-        return Uart;
+        return Rpi3Uart;
     }
 
     fn ptr() -> *const RegisterBlock {
@@ -124,19 +125,43 @@ impl Uart {
             .write(AUX_MU_CNTL::RX_EN::Enabled + AUX_MU_CNTL::TX_EN::Enabled);
     }
 
-    pub fn send(&self, c: char) {
-        loop {
-            if self.AUX_MU_LSR.is_set(AUX_MU_LSR::TX_EMPTY) {
-                break;
+    /* pub fn hex(&self, d: u32) {
+        let mut n;
+
+        for i in 0..8 {
+            n = d.wrapping_shr(28 - i * 4) & 0xF;
+
+            if n > 9 {
+                n += 0x37;
+            } else {
+                n += 0x30;
             }
 
-            unsafe { asm!("nop") };
+            self.send(n as u8 as char);
+        }
+    }*/
+}
+
+impl Write for Rpi3Uart {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        for b in s.as_bytes() {
+            self.write(*b);
         }
 
-        self.AUX_MU_IO.set(c as u32);
+        Ok(())
     }
+}
 
-    pub fn readc(&self) -> char {
+impl KernelConsoleDriver for Rpi3Uart {}
+
+impl FrameBufferGraphics for Rpi3Uart {}
+
+impl KeyboardInput for Rpi3Uart {}
+
+impl Storage for Rpi3Uart {}
+
+impl Serial for Rpi3Uart {
+    fn read(&self) -> u8 {
         loop {
             if self.AUX_MU_LSR.is_set(AUX_MU_LSR::DATA_READY) {
                 break;
@@ -151,45 +176,35 @@ impl Uart {
             ret = '\n'
         }
 
-        return ret;
+        return ret as u8;
     }
 
-    pub fn write_string(&self, string: &str) {
-        for c in string.chars() {
-            if c == '\n' {
-                self.send('\r')
+    fn write(&self, byte: u8) {
+        loop {
+            if self.AUX_MU_LSR.is_set(AUX_MU_LSR::TX_EMPTY) {
+                break;
             }
 
-            self.send(c);
+            unsafe { asm!("nop") };
         }
-    }
 
-    pub fn hex(&self, d: u32) {
-        let mut n;
-
-        for i in 0..8 {
-            n = d.wrapping_shr(28 - i * 4) & 0xF;
-
-            if n > 9 {
-                n += 0x37;
-            } else {
-                n += 0x30;
-            }
-
-            self.send(n as u8 as char);
-        }
+        self.AUX_MU_IO.set(byte as u32);
     }
 }
 
-impl Write for Uart {
-    fn write_str(&mut self, s: &str) -> core::fmt::Result {
-        self.write_string(s);
+impl Led for Rpi3Uart {}
+
+impl Driver for Rpi3Uart {
+    fn driver_name(&self) -> &'static str {
+        return "RPi3 UART";
+    }
+
+    fn name(&self) -> &'static str {
+        return SERIAL;
+    }
+
+    fn init(&self) -> DriverResult {
+
         Ok(())
     }
-}
-
-pub fn uart_init() {
-    let mut uart = Uart::new();
-
-    uart.init();
 }

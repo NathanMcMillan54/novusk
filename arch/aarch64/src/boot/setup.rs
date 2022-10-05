@@ -1,4 +1,6 @@
+use crate::liba64::libdif::{DIF, set_dif};
 use core::borrow::Borrow;
+use dif::DifFieldNames;
 use novuskinc::platform::{early_device_init, DEVICE_INIT_ERRORS};
 use novuskinc::serial::early_serial_init;
 use kinfo::{InfoDisplay, status::KStatus};
@@ -12,8 +14,12 @@ impl Aarch64Boot {
     }
 
     pub fn setup(&self) {
+        unsafe { set_dif(); }
+
         let linker_mem = unsafe { self.linker_setup() };
-        let early_serial = self.early_serial_io_init();
+        let early_serial = if unsafe { DIF.get(DifFieldNames::EnableSerial).parse::<bool>().unwrap_or(true) } {
+            self.early_serial_io_init()
+        } else { (Ok(()), "Serial doesn't need to be initialized") };
         let early_dev = self.early_device_init();
 
         if linker_mem.0.is_err() {

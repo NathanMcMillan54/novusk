@@ -3,8 +3,6 @@ use core::arch::global_asm;
 use kinfo::{InfoDisplay, status::KStatus};
 use novuskinc::kernel::setup_arch;
 
-mod early;
-use early::early_aarch64_init;
 mod setup;
 use self::setup::Aarch64Boot;
 
