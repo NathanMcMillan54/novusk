@@ -14,7 +14,7 @@ storage = { path = "../drivers/storage/", features = ["empty"] }
 
 [dependencies]
 cfg-if = "1.0.0"
-console = { path = "../kernel/console/" }
+console = { path = "../kernel/printk/console/" }
 kinfo = { path = "../kernel/kinfo/" }
 konfig = { path = "../kernel/konfig/", features = ["default_config"] }
 lazy_static = "1.4.0"

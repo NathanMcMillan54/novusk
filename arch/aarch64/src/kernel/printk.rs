@@ -25,31 +25,24 @@ impl Write for Printer {
 // Gets called from ``kernel/printk/``
 #[no_mangle]
 pub unsafe extern "C" fn _early_printk(fmt: Arguments) {
-    /* if DIF.get(DifFieldNames::PrintingMethod) == "Serial" {
-        if AARCH64_KERNEL.early {*/
-    let mut driver = DEVICE_DRIVERS.get_driver(SIMPLE_UART);
+    let driver_name = DIF.get(DifFieldNames::PrintingMethod);
+    let mut driver = DEVICE_DRIVERS.get_driver(driver_name);
+
+    if driver.is_none() {
+        if DIF.get(DifFieldNames::EnableSerial).parse::<bool>().unwrap_or(false) {
+            let driver = DEVICE_DRIVERS.get_driver(SIMPLE_UART);
+
+            if driver.is_some() {
+                let mut printer = Printer(driver.unwrap());
+                printer.write_fmt(fmt);
+                return;
+            } else { panic!("Can't find {} driver for printing", driver_name) }
+        }
+    }
+
     let mut printer = Printer(driver.unwrap());
 
     printer.write_fmt(fmt);
-
-    /*if driver.is_none() {
-        for b in "Driver not found\n".as_bytes() {
-            write_volatile(0x3F20_1000 as *mut u8, *b);
-        }
-    }
-
-    let string = &*format!("{:?}", fmt);
-
-    for byte in string.as_bytes() {
-        driver.unwrap().write(*byte);
-    }
-*/
-        /* } else {
-            /*let mut driver = DRIVER_MANAGER.get_driver(SERIAL);
-
-            driver.unwrap().write_fmt(fmt);*/
-        }
-    } else {  }*/
 }
 
 #[no_mangle]

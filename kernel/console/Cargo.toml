@@ -1,9 +1,0 @@
-[package]
-name = "console"
-version = "0.1.0"
-edition = "2021"
-description = "A library for creating a kernel console or user terminal, intended for kerels with graphics support"
-license = "MIT"
-publish = false
-
-[dependencies]

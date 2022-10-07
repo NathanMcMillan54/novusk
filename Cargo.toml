@@ -61,7 +61,6 @@ members = [
 
     # Kernel
     "init/",
-    "kernel/console/",
     "kernel/irq/",
     "kernel/kinfo/",
     "kernel/konfig/",
@@ -69,6 +68,7 @@ members = [
     "kernel/notify/",
     "kernel/power/",
     "kernel/printk/",
+    "kernel/printk/console/",
     "kernel/setup/",
     "kernel/sys/",
     "kernel/time/",

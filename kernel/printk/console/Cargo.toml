@@ -1,0 +1,10 @@
+[package]
+name = "console"
+version = "0.1.0"
+edition = "2021"
+description = "This is the main kernel console driver"
+license = "MIT"
+publish = false
+
+[dependencies]
+novuskinc = { git = "https://github.com/new-kernel/novuskinc" }

@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 armfb = { path = "../../gpu/armfb/" }
-console = { path = "../../../kernel/console/" }
+console = { path = "../../../kernel/printk/console/" }
 fb = { path = "../../fb/" }
 kinfo = { path = "../../../kernel/kinfo/" }
 konfig = { path = "../../../kernel/konfig/" }
