@@ -43,6 +43,16 @@ impl KeyboardInput for SiFiveConsole {}
 
 impl Storage for SiFiveConsole {}
 
+impl Serial for SiFiveConsole {}
+
+impl _e310x_hal_stdout_Write for SiFiveConsole {
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        todo!()
+    }
+}
+
+impl Led for SiFiveConsole {}
+
 impl Driver for SiFiveConsole {
     fn driver_name(&self) -> &'static str {
         "SiFive Console Driver"

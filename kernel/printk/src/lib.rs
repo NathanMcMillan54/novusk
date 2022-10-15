@@ -1,5 +1,6 @@
 #![no_std]
 
+pub extern crate console;
 #[macro_use] extern crate novuskinc;
 
 use core::borrow::Borrow;

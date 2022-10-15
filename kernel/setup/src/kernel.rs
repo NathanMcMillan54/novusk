@@ -1,6 +1,7 @@
+// use novuskinc::console::{console_init, printk_init};
 use novuskinc::irq::{irqchip_setup};
 use novuskinc::platform::*;
-use printk::init::{console_init, error::*};
+use printk::init::error::*;
 use crate::SetupReturn;
 
 pub trait ArchKernelSetup {
@@ -36,6 +37,11 @@ pub trait ArchKernelSetup {
     }
 
     unsafe fn early_kernel_setup(&self) -> SetupReturn {
+        extern "C" {
+            pub fn console_init() -> u8;
+            pub fn printk_init() -> u8;
+        }
+
         match console_init() {
             SUCCESS => {},
             DRIVER_FAILED => {
@@ -43,6 +49,17 @@ pub trait ArchKernelSetup {
             },
             DRIVER_NOT_FOUND => {
                 return (Err("Console init error"), "Console driver not found");
+            },
+            _ => {}
+        }
+
+        match printk_init() {
+            SUCCESS => {}
+            DRIVER_FAILED => {
+                return (Err("Printk init error"), "");
+            },
+            DRIVER_NOT_FOUND => {
+                return (Err("Printk init error"), "Console driver not found");
             },
             _ => {}
         }

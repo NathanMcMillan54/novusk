@@ -1,6 +1,7 @@
 use core::sync::atomic::{compiler_fence, Ordering};
 use novuskinc::drivers::Driver;
 use novuskinc::kernel::types::KernelFunctionName;
+use console::{KERNEL_CONSOLE, MainKernelConsole};
 use crate::board::RaspberryPi;
 use crate::common::RpiMb;
 use mailbox::MailBox;
@@ -13,7 +14,10 @@ pub mod uart;
 
 unsafe fn early_rpi3_init() -> u8 {
     DEVICE_DRIVERS.add_driver(&serial::KERNEL_SIMPLEUART as &'static dyn Driver);
-    DEVICE_DRIVERS.add_driver(&uart::Rpi3Uart as &'static dyn Driver);
+    uart::uart_init();
+
+    KERNEL_CONSOLE.printing_method = Some(&uart::Rpi3Uart);
+    DEVICE_DRIVERS.add_driver(&KERNEL_CONSOLE as &'static dyn Driver);
 
     0
 }

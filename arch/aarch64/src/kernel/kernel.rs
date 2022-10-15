@@ -1,4 +1,5 @@
 use kinfo::{InfoDisplay, status::KStatus};
+use printk::init::printk_init;
 use setup::kernel::ArchKernelSetup;
 
 #[no_mangle]

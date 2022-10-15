@@ -4,10 +4,17 @@ use core::ops;
 use novuskinc::drivers::{names::SERIAL, Driver, DriverResult};
 use novuskinc::prelude::*;
 use crate::rpi3::gpio;
-use crate::MMIO_BASE;
+use crate::{DEVICE_DRIVERS, MMIO_BASE};
 use tock_registers::interfaces::{Readable, ReadWriteable, Writeable};
 use tock_registers::register_bitfields;
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
+
+pub unsafe fn uart_init() {
+    static UART: Rpi3Uart = Rpi3Uart;
+    UART.init();
+
+    DEVICE_DRIVERS.add_driver(&UART as &'static dyn Driver);
+}
 
 register_bitfields! {
     u32,
