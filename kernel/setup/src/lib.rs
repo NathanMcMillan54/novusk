@@ -5,6 +5,9 @@
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
 
+#[path = "../../../lib/libdif.rs"]
+mod libdif;
+
 use konfig::KONFIG;
 
 pub mod arch;

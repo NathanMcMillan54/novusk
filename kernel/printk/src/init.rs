@@ -1,3 +1,4 @@
+use core::fmt::Write;
 use novuskinc::drivers::names::{CONSOLE, SERIAL};
 use crate::{DEVICE_DRIVERS, PRINTK};
 
@@ -20,8 +21,7 @@ pub unsafe extern "C" fn printk_init() -> u8 {
     PRINTK.set_init(true, console.unwrap());
     PRINTK.console_driver.unwrap().init();
     //PRINTK.console_driver.unwrap().write_character('a', 0, 0);
-
-    crate::printk!("{}", PRINTK.console_driver.unwrap().driver_name());
+    //PRINTK.write_fmt(format_args!("{}", "test\n"));
 
     return 0;
 }

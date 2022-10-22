@@ -1,8 +1,10 @@
+use dif::DifFieldNames;
 // use novuskinc::console::{console_init, printk_init};
 use novuskinc::irq::{irqchip_setup};
 use novuskinc::platform::*;
 use printk::init::error::*;
 use crate::SetupReturn;
+use crate::libdif::DIF;
 
 pub trait ArchKernelSetup {
     fn irq_setup(&self) -> SetupReturn {
@@ -53,7 +55,7 @@ pub trait ArchKernelSetup {
             _ => {}
         }
 
-        match printk_init() {
+        match printk::printk_init(DIF.get(DifFieldNames::PrintingMethod)) {
             SUCCESS => {}
             DRIVER_FAILED => {
                 return (Err("Printk init error"), "");
