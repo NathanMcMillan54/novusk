@@ -92,6 +92,8 @@ members = [
     "kernel/modules/fscheck/",
     # Tools
     "tools/bootloader_image/",
+
+    "tests/",
 ]
 
 [dependencies]

@@ -12,14 +12,18 @@ use novuskinc::keyboard::KeyboardInput;
 use novuskinc::led::Led;
 use novuskinc::prelude::{Serial, Storage};
 
+#[path = "../../font.rs"]
 pub mod font;
-use font::UNICODE_CHARS;
+use font::SIMPLE_FONT;
+//use font::UNICODE_CHARS;
 
 pub struct ArmFb {
     pub fb_info: FbInfo,
     cx: Cell<u32>,
     cy: Cell<u32>,
-    pub color: Color,
+    // (Foreground, Background)
+    color: (Color, Color),
+    font_size: u32,
 }
 
 impl ArmFb {
@@ -38,8 +42,17 @@ impl ArmFb {
             },
             cx: Cell::new(0),
             cy: Cell::new(0),
-            color: Color::Hex { d: 0x000000 },
+            color: (Color::Hex { d: 0xFFFFFF }, Color::Hex { d: 0x000000 }),
+            font_size: 3,
         };
+    }
+
+    pub fn set_color(&mut self, color: (Color, Color)) {
+        self.color = color;
+    }
+
+    pub fn set_font(&mut self, size: u32) {
+        self.font_size = size;
     }
 
     pub fn draw_square(&self, color: Color, sw: u32, sh: u32, x: u32, y: u32) {
@@ -54,7 +67,7 @@ impl ArmFb {
         for y in 0..self.fb_info.fb_size.1 {
             for x in 0..self.fb_info.fb_size.0 {
                 unsafe {
-                    self.graphics_pixel(self.color, x, y);
+                    self.graphics_pixel(self.color.1, x, y);
                 }
             }
         }
@@ -62,6 +75,20 @@ impl ArmFb {
 }
 
 impl FrameBufferGraphics for ArmFb {
+    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
+        for f in 0..SIMPLE_FONT.len() {
+            if SIMPLE_FONT[f].0 == byte as char {
+                for py in 0..SIMPLE_FONT[f].1.grid.len() {
+                    for px in 0..SIMPLE_FONT[f].1.grid[py].len() {
+                        if SIMPLE_FONT[f].1.grid[py][px] == 1 {
+                            self.draw_square(self.color.0, 3, 3, x as u32 + px as u32 * 3, y as u32 + py as u32 * 3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     fn graphics_pixel(&self, color: Color, x: u32, y: u32) {
         let mut cursor = self.fb_info.fb_addr as *mut u32;
         let color = match color {
@@ -74,17 +101,6 @@ impl FrameBufferGraphics for ArmFb {
         unsafe {
             cursor = cursor.offset(pos);
             *cursor = color;
-        }
-    }
-
-    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
-        for f in 0..UNICODE_CHARS.len() {
-            if UNICODE_CHARS[f].0 == byte as char {
-                for p in 0..UNICODE_CHARS[f].1.len() {
-                    let pos = UNICODE_CHARS[f].1[p];
-                    self.graphics_pixel(self.color, x as u32 + pos.0, y as u32 + pos.1);
-                }
-            }
         }
     }
 }
