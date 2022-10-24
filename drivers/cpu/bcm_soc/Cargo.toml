@@ -8,7 +8,7 @@ publish = false
 [dependencies]
 cpu = { path = "../" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
-tock-registers = "0.7.0"
+tock-registers = "0.8.1"
 
 [features]
 bcm2837 = []
