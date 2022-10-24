@@ -12,12 +12,14 @@ use novuskinc::keyboard::KeyboardInput;
 use novuskinc::led::Led;
 use novuskinc::prelude::{Serial, Storage};
 
+pub mod font;
+use font::UNICODE_CHARS;
 
 pub struct ArmFb {
     pub fb_info: FbInfo,
     cx: Cell<u32>,
     cy: Cell<u32>,
-    color: Color,
+    pub color: Color,
 }
 
 impl ArmFb {
@@ -36,8 +38,16 @@ impl ArmFb {
             },
             cx: Cell::new(0),
             cy: Cell::new(0),
-            color: Color::Hex { d: 0xFFFFFF },
+            color: Color::Hex { d: 0x000000 },
         };
+    }
+
+    pub fn draw_square(&self, color: Color, sw: u32, sh: u32, x: u32, y: u32) {
+        for height in 0..sh {
+            for width in 0..sw {
+                self.graphics_pixel(color, x + height, y + width);
+            }
+        }
     }
 
     pub fn clear_screen(&self) {
@@ -64,6 +74,17 @@ impl FrameBufferGraphics for ArmFb {
         unsafe {
             cursor = cursor.offset(pos);
             *cursor = color;
+        }
+    }
+
+    fn graphics_write(&self, byte: u8, x: usize, y: usize) {
+        for f in 0..UNICODE_CHARS.len() {
+            if UNICODE_CHARS[f].0 == byte as char {
+                for p in 0..UNICODE_CHARS[f].1.len() {
+                    let pos = UNICODE_CHARS[f].1[p];
+                    self.graphics_pixel(self.color, x as u32 + pos.0, y as u32 + pos.1);
+                }
+            }
         }
     }
 }
