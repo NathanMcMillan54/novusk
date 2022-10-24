@@ -1,0 +1,10 @@
+[package]
+name = "armfb"
+version = "0.1.0"
+edition = "2021"
+description = "ARM 32/64 bit frambuffer graphics"
+license = "MIT"
+publish = false
+
+[dependencies]
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }

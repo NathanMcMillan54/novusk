@@ -9,11 +9,11 @@ publish = false
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
-armfb = { path = "armfb/" }
+armfb = { path = "../fb/armfb/" }
 rpi = { path = "../rpi/", features = ["rpi3"] }
 
 [target.'cfg(target_arch = "arm")'.dependencies]
-armfb = { path = "armfb/" }
+armfb = { path = "../fb/armfb/" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 vgag = { path = "vgag/" }

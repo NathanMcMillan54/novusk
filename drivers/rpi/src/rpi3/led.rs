@@ -1,14 +1,13 @@
-use libbmu::Time;
-use crate::{rpi3::gpio::*, RaspberryPi, Rpi3};
+use bcm_soc::gpio::*;
 use tock_registers::interfaces::Writeable;
 
 pub struct Rpi3Led {
-    pub gpio: Rpi3Gpio,
+    pub gpio: Bcm2837Gpio,
 }
 
 impl Rpi3Led {
     pub fn new() -> Self {
-        return Rpi3Led { gpio: Rpi3Gpio::new() };
+        return Rpi3Led { gpio: Bcm2837Gpio::new() };
     }
 
     pub fn init(&self) {
@@ -24,10 +23,10 @@ impl Rpi3Led {
     }
 
     pub fn blink(&mut self, sleep_time: usize) {
-        let mut time = Time::new();
-
         self.led_on();
-        time.sleepc(sleep_time as i64);
+
+        for _ in 0..sleep_time { }
+
         self.led_off();
     }
 }

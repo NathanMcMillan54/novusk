@@ -7,9 +7,8 @@ license = "MIT"
 publish = false
 
 [dependencies]
-armfb = { path = "../../gpu/armfb/" }
+armfb = { path = "../../fb/armfb/" }
 console = { path = "../../../kernel/printk/console/" }
-fb = { path = "../../fb/" }
 kinfo = { path = "../../../kernel/kinfo/" }
 konfig = { path = "../../../kernel/konfig/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }

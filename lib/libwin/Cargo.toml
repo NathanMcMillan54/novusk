@@ -11,4 +11,4 @@ novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"
 vgag = { path = "../../drivers/gpu/vgag/" }
 
 [target.'cfg(target_arch = "aarch64")'.dependencies]
-armfb = { path = "../../drivers/gpu/armfb/" }
+armfb = { path = "../../drivers/fb/armfb/" }

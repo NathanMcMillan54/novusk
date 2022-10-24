@@ -9,7 +9,7 @@ use x86_64::instructions::port::Port;
 pub mod input;
 pub mod types;
 
-pub fn _init_kb_mouse() {
+pub fn _init_kb_mouse(km: &mut KernelModule) {
     // printk!("Kb Mouse init");
 
     let byte: u8 = unsafe { Port::new(0x60).read() };
@@ -22,8 +22,8 @@ pub fn _init_kb_mouse() {
 
 module_init!(ModuleType::InKernel, kb_mouse);
 
-pub fn _end_kb_mouse() {
+pub fn _end_kb_mouse(km: &mut KernelModule) {
     // printk!("Kb Mouse end");
 }
 
-module_end!(kb_mouse);
+module_end!(ModuleType::InKernel, kb_mouse);

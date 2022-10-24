@@ -1,6 +1,5 @@
+use crate::SOC_INFO;
 use core::ops::Deref;
-use crate::{MMIO_BASE, GPIO_BASE};
-use crate::{Rpi3, RaspberryPi};
 use tock_registers::registers::ReadWrite;
 use tock_registers::interfaces::Writeable;
 
@@ -56,9 +55,25 @@ register_bitfields! {
     ],
 }
 
-pub const GPFSEL1: *const ReadWrite<u32, GPFSEL1::Register> = (MMIO_BASE + 0x0020_0004) as *const ReadWrite<u32, GPFSEL1::Register>;
-pub const GPPUD: *const ReadWrite<u32> = (MMIO_BASE + 0x0020_0094) as *const ReadWrite<u32>;
-pub const GPPUDCLK0: *const ReadWrite<u32, GPPUDCLK0::Register> = (MMIO_BASE + 0x0020_0098) as *const ReadWrite<u32, GPPUDCLK0::Register>;
+// Offset 4
+pub fn _GPFSEL1() -> *const ReadWrite<u32, GPFSEL1::Register> {
+    let gpio_addr = SOC_INFO.get("Peripheral") + SOC_INFO.get("GPIO");
+
+    return (gpio_addr + 0x0000_0004) as *const ReadWrite<u32, GPFSEL1::Register>;
+}
+
+// Offset 94
+pub fn _GPPUD() -> *const ReadWrite<u32> {
+    let gpio_addr = SOC_INFO.get("Peripheral") + SOC_INFO.get("GPIO");
+
+    return (gpio_addr + 0x0000_0094) as *const ReadWrite<u32>
+}
+
+// Offset 98
+pub fn _GPPUDCLK0() -> *const ReadWrite<u32, GPPUDCLK0::Register> {
+    let gpio_addr = SOC_INFO.get("Peripheral") + SOC_INFO.get("GPIO");
+    return (gpio_addr + 0x0000_0098) as *const ReadWrite<u32, GPPUDCLK0::Register>
+}
 
 #[allow(non_snake_case)]
 #[repr(C)]
@@ -76,9 +91,9 @@ pub struct RegisterBlock {
     pub GPCLR0: ReadWrite<u32, GPCLR0::Register>,   // 0x28
 }
 
-pub struct Rpi3Gpio;
+pub struct Bcm2837Gpio;
 
-impl Deref for Rpi3Gpio {
+impl Deref for Bcm2837Gpio {
     type Target = RegisterBlock;
 
     fn deref(&self) -> &Self::Target {
@@ -86,12 +101,13 @@ impl Deref for Rpi3Gpio {
     }
 }
 
-impl Rpi3Gpio {
+impl Bcm2837Gpio {
     pub fn new() -> Self {
-        return Rpi3Gpio;
+        return Bcm2837Gpio;
     }
 
     pub fn ptr() -> *const RegisterBlock {
-        return GPIO_BASE as *const _;
+        let gpio_addr = SOC_INFO.get("Peripheral") + SOC_INFO.get("GPIO");
+        return gpio_addr as *const _;
     }
 }

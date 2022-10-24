@@ -3,17 +3,16 @@ use core::fmt::{Arguments, Write};
 use core::ops;
 use novuskinc::drivers::{names::SERIAL, Driver, DriverResult};
 use novuskinc::prelude::*;
-use crate::rpi3::gpio;
-use crate::{DEVICE_DRIVERS, MMIO_BASE};
+use super::gpio;
 use tock_registers::interfaces::{Readable, ReadWriteable, Writeable};
-use tock_registers::register_bitfields;
 use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
+use crate::SOC_INFO;
 
-pub unsafe fn uart_init() {
-    static UART: Rpi3Uart = Rpi3Uart;
+pub unsafe fn bcm2837_uart_init() {
+    static UART: Bcm2837Uart = Bcm2837Uart;
     UART.init();
 
-    DEVICE_DRIVERS.add_driver(&UART as &'static dyn Driver);
+    //DEVICE_DRIVERS.add_driver(&UART as &'static dyn Driver);
 }
 
 register_bitfields! {
@@ -60,8 +59,6 @@ register_bitfields! {
     ]
 }
 
-const MINI_UART_BASE: u32 = MMIO_BASE + 0x21_5000;
-
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct RegisterBlock {
@@ -80,9 +77,9 @@ pub struct RegisterBlock {
     AUX_MU_BAUD: WriteOnly<u32, AUX_MU_BAUD::Register>, // 0x68
 }
 
-pub struct Rpi3Uart;
+pub struct Bcm2837Uart;
 
-impl ops::Deref for Rpi3Uart {
+impl ops::Deref for Bcm2837Uart {
     type Target = RegisterBlock;
 
     fn deref(&self) -> &Self::Target {
@@ -90,13 +87,14 @@ impl ops::Deref for Rpi3Uart {
     }
 }
 
-impl Rpi3Uart {
+impl Bcm2837Uart {
     pub fn new() -> Self {
-        return Rpi3Uart;
+        return Bcm2837Uart;
     }
 
     fn ptr() -> *const RegisterBlock {
-        MINI_UART_BASE as *const _
+        let uart_addr = SOC_INFO.get("Peripheral") + SOC_INFO.get("Mini Uart");
+        uart_addr as *const _
     }
 
     pub fn init(&self) {
@@ -111,45 +109,29 @@ impl Rpi3Uart {
 
         // Map UART1 to GPIO pins
         unsafe {
-            (*gpio::GPFSEL1).modify(gpio::GPFSEL1::FSEL14::TXD1 + gpio::GPFSEL1::FSEL15::RXD1);
+            (*gpio::_GPFSEL1()).modify(gpio::GPFSEL1::FSEL14::TXD1 + gpio::GPFSEL1::FSEL15::RXD1);
 
-            (*gpio::GPPUD).set(0); // enable pins 14 and 15
+            (*gpio::_GPPUD()).set(0); // enable pins 14 and 15
             for _ in 0..150 {
                 asm!("nop");
             }
 
-            (*gpio::GPPUDCLK0).write(
+            (*gpio::_GPPUDCLK0()).write(
                 gpio::GPPUDCLK0::PUDCLK14::AssertClock + gpio::GPPUDCLK0::PUDCLK15::AssertClock,
             );
             for _ in 0..150 {
                 asm!("nop");
             }
 
-            (*gpio::GPPUDCLK0).set(0);
+            (*gpio::_GPPUDCLK0()).set(0);
         }
 
         self.AUX_MU_CNTL
             .write(AUX_MU_CNTL::RX_EN::Enabled + AUX_MU_CNTL::TX_EN::Enabled);
     }
-
-    /* pub fn hex(&self, d: u32) {
-        let mut n;
-
-        for i in 0..8 {
-            n = d.wrapping_shr(28 - i * 4) & 0xF;
-
-            if n > 9 {
-                n += 0x37;
-            } else {
-                n += 0x30;
-            }
-
-            self.send(n as u8 as char);
-        }
-    }*/
 }
 
-impl Write for Rpi3Uart {
+impl Write for Bcm2837Uart {
     fn write_str(&mut self, s: &str) -> core::fmt::Result {
         for b in s.as_bytes() {
             self.write(*b);
@@ -159,15 +141,15 @@ impl Write for Rpi3Uart {
     }
 }
 
-impl KernelConsoleDriver for Rpi3Uart {}
+impl KernelConsoleDriver for Bcm2837Uart {}
 
-impl FrameBufferGraphics for Rpi3Uart {}
+impl FrameBufferGraphics for Bcm2837Uart {}
 
-impl KeyboardInput for Rpi3Uart {}
+impl KeyboardInput for Bcm2837Uart {}
 
-impl Storage for Rpi3Uart {}
+impl Storage for Bcm2837Uart {}
 
-impl Serial for Rpi3Uart {
+impl Serial for Bcm2837Uart {
     fn read(&self) -> u8 {
         loop {
             if self.AUX_MU_LSR.is_set(AUX_MU_LSR::DATA_READY) {
@@ -199,9 +181,9 @@ impl Serial for Rpi3Uart {
     }
 }
 
-impl Led for Rpi3Uart {}
+impl Led for Bcm2837Uart {}
 
-impl Driver for Rpi3Uart {
+impl Driver for Bcm2837Uart {
     fn driver_name(&self) -> &'static str {
         return "RPi3 UART";
     }

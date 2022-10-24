@@ -7,7 +7,8 @@ license = "MIT"
 publish = false
 
 [dependencies]
-# cortex-a = "6.1.0"
+# cortex-a = "6.1.0
+bcm_soc = { path = "../cpu/bcm_soc/" }
 console = { path = "../../kernel/printk/console/" }
 device = { path = "../device" }
 libbmu = { path = "../../lib/libbmu/" }
@@ -19,5 +20,5 @@ tock-registers = "0.7.0"
 
 [features]
 default = ["rpi3"]
-rpi3 = []
+rpi3 = ["bcm_soc/bcm2837"]
 rpi2 = []
