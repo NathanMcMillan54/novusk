@@ -1,4 +1,4 @@
-use crate::liba64::libdif::DIF;
+use crate::liba64::{libdif::DIF, libkernprinter::Printer};
 use core::fmt::{Arguments, Write};
 use core::ptr::write_volatile;
 use dif::DifFieldNames;
@@ -7,20 +7,6 @@ use super::kernel::AARCH64_KERNEL;
 use super::drivers::DEVICE_DRIVERS;
 use novuskinc::drivers::names::*;
 use printk::Printk;
-
-struct Printer(&'static dyn Driver);
-
-impl Write for Printer {
-    fn write_str(&mut self, s: &str) -> core::fmt::Result {
-        if unsafe { DIF.get(DifFieldNames::PrintingMethod) } == "Serial" {
-            for b in s.as_bytes() {
-                self.0.write(*b);
-            }
-        } else {  }
-
-        Ok(())
-    }
-}
 
 // Gets called from ``kernel/printk/``
 #[no_mangle]

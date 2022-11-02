@@ -1,15 +1,16 @@
 use core::fmt::{Arguments, Result, Write};
-use printk::Printk;
-use super::io::IO;
+use dif::DifFieldNames;
+use novuskinc::drivers::get_driver;
+use printk::{early::EarlyPrinter, Printk};
+use crate::liba32::libdif::DIF;
 
 #[no_mangle]
-pub extern "C" fn _early_printk(fmt: Arguments) -> Result {
-    unsafe { IO.write_fmt(fmt) }
-}
+pub unsafe extern "C" fn _early_printk(fmt: Arguments) -> Result {
+    let mut printer = EarlyPrinter(DIF.get(DifFieldNames::PrintingMethod), get_driver(DIF.get(DifFieldNames::PrintingMethod)).unwrap());
 
-#[no_mangle]
-pub extern "C" fn _kernel_main_print(fmt: Arguments) {
+    printer.write_fmt(fmt);
 
+    Ok(())
 }
 
 #[no_mangle]

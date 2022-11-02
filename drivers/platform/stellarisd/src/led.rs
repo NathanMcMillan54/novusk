@@ -1,7 +1,6 @@
 use tm4c123x_hal::Peripherals;
 use tm4c123x_hal::gpio::GpioExt;
 use tm4c123x_hal::sysctl::SysctlExt;
-use libbmu::Time;
 use novuskinc::kernel::types::KernelFunctionName;
 
 #[derive(Copy, Clone, PartialOrd, PartialEq)]
@@ -21,8 +20,6 @@ impl StellarisLed {
     }
 
     pub fn blink(&mut self, sleep_time: usize) {
-        let mut time = Time::new();
-
         let mut peripherals = Peripherals::take().unwrap();
         let mut stsctl = peripherals.SYSCTL.constrain();
         let pins = peripherals.GPIO_PORTF.split(&stsctl.power_control);

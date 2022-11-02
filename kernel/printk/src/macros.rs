@@ -1,10 +1,7 @@
 use core::fmt::{Arguments, Result, Write};
 use crate::{can_printk_work, DEVICE_DRIVERS, PRINTK};
 use novuskinc::drivers::names::CONSOLE;
-
-extern "C" {
-    pub fn _early_printk(fmt: Arguments) -> Result;
-}
+use crate::early::_early_printk;
 
 pub fn _printk(fmt: Arguments) -> Result {
     unsafe {
@@ -22,5 +19,5 @@ macro_rules! printk {
 
 #[macro_export]
 macro_rules! early_printk {
-    ($($args:tt)*) => {unsafe { $crate::macros::_early_printk(format_args!($($args)*)) } };
+    ($($args:tt)*) => {unsafe { $crate::early::_early_printk(format_args!($($args)*)) } };
 }

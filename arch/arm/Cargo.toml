@@ -7,6 +7,7 @@ license = "MIT"
 publish = false
 
 [dependencies]
+alloc-cortex-m = { version = "0.4.2", optional = true }
 cfg-if = "1.0.0"
 cortex-a = "8.0.0"
 cortex-m = "0.7.3"
@@ -15,15 +16,17 @@ cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
 dif = "0.1.1"
+hio = { path = "../../drivers/platform/arm/hio/" }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
-nmallocator = { path = "../../mm/nmallocator/" }
+nmallocator = { path = "../../mm/nmallocator/", optional = true }
 novusk_syscalls = "0.2.1"
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
 printk = { path = "../../kernel/printk/" }
+r0 = "1.0.0"
 rpi2kernel = { path = "../../drivers/rpi/rpi2kernel/", optional = true }
 rpi = { path = "../../drivers/rpi/", optional = true }
-stellarisd = { path = "../../drivers/platform/arm/stellarisd/", optional = true }
+stellarisd = { path = "../../drivers/platform/stellarisd/", optional = true }
 # stmd = { path = "../../drivers/firmware/arm/stmd/" }
 setup = { path = "../../kernel/setup/" }
 sys = { path = "../../kernel/sys/" }
@@ -33,8 +36,8 @@ time = { path = "../../kernel/time/" }
 difi = "0.1.0"
 
 [features]
-cortex_a = []
-cortex_m = []
+cortex_a = ["nmallocator"]
+cortex_m = ["alloc-cortex-m"]
 rpi2 = ["cortex_a", "rpi", "rpi2kernel", "rpi/rpi2"]
 stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]
 # not_stm32 = ["stmd/stm32f407"]

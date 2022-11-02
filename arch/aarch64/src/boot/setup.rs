@@ -83,12 +83,6 @@ impl BootSetup for Aarch64Boot {
         } else { return (Err(DEVICE_INIT_ERRORS[early_dev_init as usize]), "Early device initialization failed"); }
     }
 
-    fn early_serial_io_init(&self) -> SetupReturn {
-        if unsafe { early_serial_init() } == 0 {
-            return (Ok(()), "Early serial driver initialized");
-        } else { return (Err("Early serial initialization failed"), "Failed to initialize early serial driver"); }
-    }
-
     unsafe fn linker_setup(&self) -> SetupReturn {
         extern "C" {
             static mut __bss_start: u64;

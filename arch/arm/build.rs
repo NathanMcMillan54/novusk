@@ -25,6 +25,7 @@ fn main() {
     println!("cargo:rerun-if-changed=src/boot/start/linker.ld");
     println!("cargo:rerun-if-changed=src/boot/start/a7_start.S");
 
+    println!("cargo:rerun-if-changed={}", DIF);
     add_dif(DIF);
 
     #[cfg(feature = "cortex_m")]

@@ -1,4 +1,5 @@
 use novuskinc::platform::early_device_init;
+use novuskinc::serial::early_serial_init;
 use crate::types::SetupReturn;
 
 pub trait BootSetup {
@@ -11,7 +12,9 @@ pub trait BootSetup {
     }
 
     fn early_serial_io_init(&self) -> SetupReturn {
-        return (Ok(()), "Early I/O successfully initialized");
+        if unsafe { early_serial_init() } == 0 {
+            return (Ok(()), "Early serial driver initialized");
+        } else { return (Err("Early serial initialization failed"), "Failed to initialize early serial driver"); }
     }
 
     unsafe fn linker_setup(&self) -> SetupReturn {

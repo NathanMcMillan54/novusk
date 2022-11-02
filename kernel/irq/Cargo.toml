@@ -3,6 +3,7 @@ name = "irq"
 version = "0.1.0"
 edition = "2021"
 description = "Main kernel IRQ handler"
+publish = false
 
 [dependencies]
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }

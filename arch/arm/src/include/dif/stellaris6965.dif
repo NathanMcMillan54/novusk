@@ -4,7 +4,7 @@
     ("PeripheralAddress", "3758157056"),
     ("AllocMemory", "true"),
     ("EnableSerial", "true"),
-    ("PrintingMethod", "Hio"),
+    ("PrintingMethod", "Serial Driver"),
     ("DeviceKernel", "false"),
     ("StartInit", "true"),
     ("IrqChip", "NVIC"),

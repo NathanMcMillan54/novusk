@@ -3,10 +3,10 @@
 #[macro_use] extern crate cfg_if;
 #[macro_use] extern crate novuskinc;
 
+use novuskinc::drivers::manager::DeviceDriverManager;
 use novuskinc::kernel::types::KernelFunctionName;
 use novuskinc::platform::{DRIVERS_FAILD, INVALID_DEVICE, UNKNOWN_ERROR};
 use tm4c123x_hal::Peripherals;
-use device::Device;
 
 cfg_if! {
     if #[cfg(feature = "irqchip")] {
@@ -15,17 +15,14 @@ cfg_if! {
     }
 }
 
+extern "C" {
+    pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
+}
+
 pub mod irqs;
 pub mod io;
 pub mod led;
 
-pub struct Stellaris6965;
-
-impl Stellaris6965 {
-    pub fn new() -> Self {
-        return Stellaris6965;
-    }
-}
 
 unsafe fn early_stellaris_init() -> u8 {
 

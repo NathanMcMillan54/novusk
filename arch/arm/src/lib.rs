@@ -1,10 +1,15 @@
 #![no_std]
-#![feature(asm, global_asm)]
-#![feature(alloc_error_handler, lang_items, panic_info_message)]
+#![feature(
+    alloc_error_handler,
+    lang_items,
+    panic_info_message,
+    trait_upcasting
+)]
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;
 #[macro_use] extern crate kinfo;
+#[cfg(feature = "nmallocator")]
 pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
@@ -35,8 +40,11 @@ pub(crate) extern crate stmd;
 pub mod boot;
 pub mod include;
 pub mod kernel;
+pub mod liba32;
 pub mod mm;
 pub mod net;
+
+mod dif;
 
 cfg_if! {
     if #[cfg(feature = "cortex_a")] {

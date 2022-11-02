@@ -10,14 +10,13 @@ publish = false
 cfg-if = "1.0.0"
 cortex-m = "0.7.3"
 cortex-m-semihosting = "0.3.7"
-device = { path = "../../../device/" }
-libbmu = { path = "../../../../lib/libbmu/" }
+hio = { path = "../arm/hio/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
-invic = { path = "../../../irqchip/invic/", optional = true }
+invic = { path = "../../irqchip/invic/", optional = true }
 tm4c123x-hal = "0.10.2"
 
 [dependencies.irq]
-path = "../../../../kernel/irq/"
+path = "../../../kernel/irq/"
 optional = true
 default-features = false
 features = ["120irqs"]

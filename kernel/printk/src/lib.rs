@@ -9,6 +9,7 @@ use novuskinc::drivers::Driver;
 use novuskinc::drivers::manager::DeviceDriverManager;
 use crate::init::error::SUCCESS;
 
+pub mod early;
 pub mod init;
 pub mod macros;
 
