@@ -1,7 +1,21 @@
+use dif::DifFieldNames;
 use kinfo::*;
+use novuskinc::kernel::kernel_init;
 use novuskinc::platform::*;
 use kinfo::status::KStatus;
 use setup::kernel::ArchKernelSetup;
+use crate::liba32::libdif::DIF;
+
+#[no_mangle]
+pub unsafe extern "C" fn start_kernel() {
+    super::setup::setup_arm32_kernel();
+    super::arm_init::arm_kernel_init();
+
+    if DIF.get(DifFieldNames::StartInit).parse::<bool>().unwrap_or(false) {
+        printk!("Architecture setup is finished, starting kernel_init...\n");
+        kernel_init();
+    }
+}
 
 pub static mut ARM_KERNEL: ArmKernel = ArmKernel::new();
 

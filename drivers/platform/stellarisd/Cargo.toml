@@ -11,6 +11,7 @@ cfg-if = "1.0.0"
 cortex-m = "0.7.3"
 cortex-m-semihosting = "0.3.7"
 hio = { path = "../arm/hio/" }
+init = { path = "../../../init/", optional = true }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
 invic = { path = "../../irqchip/invic/", optional = true }
 tm4c123x-hal = "0.10.2"
@@ -23,6 +24,7 @@ features = ["120irqs"]
 
 [features]
 default = []
-all_features = ["invic"]
-stellaris_6965 = ["irqchip"]
+all_features = ["invic", "kernel_init"]
+stellaris_6965 = ["irqchip", "kernel_init"]
 irqchip = ["invic", "irq"]
+kernel_init = ["init"]

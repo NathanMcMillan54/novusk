@@ -18,6 +18,5 @@ impl ArchKernelSetup for ArmKernel {
 }
 
 pub fn setup_arm32_kernel() {
-    early_printk!("Setting up kernel...\n");
     unsafe { ARM_KERNEL.setup(); }
 }

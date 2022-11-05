@@ -46,19 +46,5 @@ pub mod net;
 
 mod dif;
 
-cfg_if! {
-    if #[cfg(feature = "cortex_a")] {
-        pub(crate) mod cortex_a;
-        pub(crate) use crate::cortex_a as target;
-    }
-}
-
-cfg_if! {
-    if #[cfg(feature = "cortex_m")] {
-        pub(crate) mod cortex_m;
-        pub(crate) use crate::cortex_m as target;
-    }
-}
-
 #[lang = "eh_personality"]
 extern "C" fn eh_personality() { }

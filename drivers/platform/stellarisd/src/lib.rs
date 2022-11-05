@@ -8,12 +8,15 @@ use novuskinc::kernel::types::KernelFunctionName;
 use novuskinc::platform::{DRIVERS_FAILD, INVALID_DEVICE, UNKNOWN_ERROR};
 use tm4c123x_hal::Peripherals;
 
+// Driver features
 cfg_if! {
     if #[cfg(feature = "irqchip")] {
-        extern crate invic;
-        extern crate irq;
+        pub extern crate invic;
+        pub extern crate irq;
     }
 }
+#[cfg(feature = "kernel_init")]
+pub extern crate init;
 
 extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;

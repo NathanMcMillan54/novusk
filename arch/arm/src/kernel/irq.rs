@@ -1,4 +1,3 @@
-use crate::target::ints::enable_interrupts;
 use novuskinc::irq::irqchip_init;
 
 extern "C" {
@@ -8,6 +7,6 @@ extern "C" {
 }
 
 pub unsafe fn irq_init() {
-    enable_interrupts();
+    // enable_interrupts();
     irqchip_init();
 }
