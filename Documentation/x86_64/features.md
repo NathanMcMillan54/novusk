@@ -1,5 +1,9 @@
 # Novusk - x86_64 features
 
+Last edited: 2022/11/5
+
+---
+
 x86_64 Novusk features are used mainly for booting information, like bootloader name, and bootloading method.
 
 - ``bios_boot``, kernel loads from BIOS

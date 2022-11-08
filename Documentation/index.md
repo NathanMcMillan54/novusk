@@ -1,5 +1,8 @@
 # Documentation index
 
+---
+
+## Architecture documentation
 
 #### ARM documentation
 - ``arm/features.md`` - ARM build features
@@ -13,14 +16,19 @@
 
 #### x86_64 documentation
 - ``x86_64/bootloaders.md`` - x86_64 bootloader documentation
-- ``x86_64/cpus.md`` - x86_64 CPUs
+- ``x86_64/cpus.md`` - supported x86_64 CPUs
+- ``x86_64/features.md`` - x86_64 kernel features
 - ``x86_64/main.md`` - x86_64 compiling and capabilities
 
 #### Xtensa documentation
 - ``xtensa/main.md`` - Xtensa documentation
 
+---
 
-### Kernel documentation:
+#### Driver documentation
+
+- ``drivers/developing.md`` - help for developing drivers
+- ``drivers/platform.md`` - platform driver documentation
 
 ---
 

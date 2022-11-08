@@ -1,5 +1,7 @@
 # Novusk - ARM Novusk
 
+Last edited: 2022/11/5
+
 ---
 
 ### Compiling
@@ -16,7 +18,7 @@ going to use any features a list of ARM features and there usages can be found i
 
 ### Capabilities
 
-What the ARM kernel as capable of doing is based on how much support there is for the device it's running on. 
+What the ARM kernel is capable of doing is based on how much support there is for the device it's running on. 
 Generally the ARM kernel can: setup early CPU functions, handle memory allocation, handle IRQs and exceptions, 
 and handle system calls, and most devices have mailbox support (firmware interface).
 

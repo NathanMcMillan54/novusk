@@ -1,5 +1,9 @@
 # Novusk - ARM platforms
 
+Last edited: 2022/11/5
+
+---
+
 This is a list of devices Novusk supports and the values for the ``PLATFORM`` argument when building.
 
 ### ARM 32 devices

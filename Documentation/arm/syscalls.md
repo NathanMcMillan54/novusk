@@ -1,5 +1,9 @@
 # Novusk - ARM Syscalls
 
+Last edited: 2022/11/5
+
+---
+
 System calls allow a user to interact with the kernel, they are useful for using kernel functions and getting system 
 information. This page talks about how system calls work and are used in ARM Novusk.
 

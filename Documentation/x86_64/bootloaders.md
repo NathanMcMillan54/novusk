@@ -1,5 +1,7 @@
 # Novusk - x86_64 bootloader documentation
 
+Last edited: 2022/11/5
+
 ---
 
 Novusk v3 currently supports [Bootloader](https://crates.io/crates/bootloader) and 
@@ -49,7 +51,5 @@ You should put the boot files in an architecture specific directory or just a di
 Compile project:
 ```command line
 cargo build --target x86_64-novusk.json
-ld multiboot target/x86_64-novusk/debug/libyour_project.a -o your_project_os
+ld multiboot.o target/x86_64-novusk/debug/libyour_project.a -o your_project_os
 ```
-
-Make a file named ``grub.cfg``, this will link the Grub bootloader with your OS. Read Grub's documentation on it.
