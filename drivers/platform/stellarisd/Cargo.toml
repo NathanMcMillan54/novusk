@@ -2,7 +2,7 @@
 name = "stellarisd"
 version = "0.1.0"
 edition = "2021"
-description = "Board support for Stellaris boards"
+description = "Board support for Texas Insturment's Stellaris (lm3s) boards"
 license = "MIT"
 publish = false
 
@@ -14,6 +14,7 @@ hio = { path = "../arm/hio/" }
 init = { path = "../../../init/", optional = true }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", features = ["v3"] }
 invic = { path = "../../irqchip/invic/", optional = true }
+tm4c123x = "0.9.0"
 tm4c123x-hal = "0.10.2"
 
 [dependencies.irq]

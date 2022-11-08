@@ -7,8 +7,8 @@ use crate::SetupReturn;
 use crate::libdif::DIF;
 
 pub trait ArchKernelSetup {
-    fn irq_setup(&self) -> SetupReturn {
-        unsafe { irqchip_setup(); }
+    unsafe fn irq_setup(&self) -> SetupReturn {
+        irqchip_setup();
         return (Ok(()), "Successfully setup IRQ chip");
     }
 

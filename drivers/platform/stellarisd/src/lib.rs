@@ -22,12 +22,16 @@ extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;
 }
 
+pub mod common;
 pub mod irqs;
 pub mod io;
 pub mod led;
 
+#[cfg(feature = "stellaris_6965")]
+pub mod s6965;
 
 unsafe fn early_stellaris_init() -> u8 {
+    common::common_early_stellaris_init();
 
     0
 }

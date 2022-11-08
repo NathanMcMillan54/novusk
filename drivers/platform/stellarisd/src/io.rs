@@ -11,10 +11,9 @@ use tm4c123x_hal::tm4c123x::{GPIO_PORTA, UART0};
 use hio::HioDriver;
 
 unsafe fn add_hio_driver() -> u8 {
-    add_driver(&HioDriver as &'static dyn Driver);
-    get_driver(SERIAL).unwrap().init();
-
-    0
+    if get_driver(SERIAL).unwrap().init().is_ok() {
+        0
+    } else { 1 }
 }
 
 define_kernel_function!(KernelFunctionName::early_serial_init, -> u8, add_hio_driver);

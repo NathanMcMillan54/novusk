@@ -16,10 +16,10 @@ impl ArmBootSetup {
 
     pub unsafe fn setup(&self) {
         let early_mem = unsafe { self.linker_setup() };
+        let early_dev = self.early_device_init();
         let early_serial = if unsafe { DIF.get(DifFieldNames::EnableSerial).parse::<bool>().unwrap_or(false) } {
             self.early_serial_io_init()
         } else { (Ok(()), "Serial driver doesn't need to be initialized") };
-        let early_dev = self.early_device_init();
 
 
         if early_mem.0.is_err() {

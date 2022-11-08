@@ -6,14 +6,12 @@ use setup::kernel::ArchKernelSetup;
 use setup::SetupReturn;
 
 impl ArchKernelSetup for ArmKernel {
-    fn irq_setup(&self) -> SetupReturn {
-        unsafe {
-            irqchip_setup();
+    unsafe fn irq_setup(&self) -> SetupReturn {
+        irqchip_setup();
 
-            if test_exception() != 0 {
-                return (Err("IRQ setup error"), "Failed to setup IRQ chip, CPU exceptions aren't working");
-            } else { return (Ok(()), "Successfully setup IRQ chip"); }
-        }
+        if test_exception() != 0 {
+            return (Err("IRQ setup error"), "Failed to setup IRQ chip, CPU exceptions aren't working");
+        } else { return (Ok(()), "Successfully setup IRQ chip"); }
     }
 }
 
