@@ -24,6 +24,7 @@ pub(crate) mod drivers {
         mailbox: None,
         console: None,
         serial: None,
+        simple_uart: None,
         display: None,
         timer: None,
         keyboard: None
@@ -37,6 +38,9 @@ pub(crate) mod drivers {
             },
             SERIAL => {
                 ARM_DEVICE.serial = Some(driver);
+            }
+            SIMPLE_UART => {
+                ARM_DEVICE.simple_uart = Some(driver);
             }
             FRAME_BUFFER => {
                 ARM_DEVICE.display = Some(driver);
@@ -57,6 +61,9 @@ pub(crate) mod drivers {
             SERIAL => {
                 ARM_DEVICE.serial
             },
+            SIMPLE_UART => {
+                ARM_DEVICE.simple_uart
+            }
             FRAME_BUFFER => {
                 ARM_DEVICE.display
             },

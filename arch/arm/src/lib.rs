@@ -13,6 +13,7 @@
 pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
 #[macro_use] extern crate printk;
+extern crate time;
 
 cfg_if! {
     if #[cfg(feature = "cortex_a")] {

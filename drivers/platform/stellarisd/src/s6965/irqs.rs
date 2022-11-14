@@ -2,6 +2,8 @@ use cortex_m::interrupt::{InterruptNumber, Nr};
 use cortex_m::peripheral::NVIC;
 use novuskinc::irq::*;
 use novuskinc::kernel::types::KernelFunctionName;
+use novuskinc::timer::{add_timer, update_timer};
+use super::timer_names::*;
 use tm4c123x::Interrupt;
 
 unsafe fn add_s6965_irqs() {
@@ -9,6 +11,7 @@ unsafe fn add_s6965_irqs() {
         irqn: Interrupt::TIMER0A.nr() as i16,
         irqh: TIMER0A,
     });
+    add_timer(TIMER_0A);
 }
 
 unsafe fn enable_s6965_irqs() {
@@ -30,5 +33,6 @@ define_kernel_function!(KernelFunctionName::device_specific_irqs_init, -> u8, s6
 // TIMER0A
 #[no_mangle]
 pub unsafe extern "C" fn TIMER0A() -> i16 {
+    update_timer(TIMER_0A, 1.0);
     IRQH_SUCCESS
 }

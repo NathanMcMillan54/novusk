@@ -9,6 +9,7 @@ pub struct ArmDevice {
     pub mailbox: Option<&'static dyn Driver>,
     pub console: Option<&'static dyn Driver>,
     pub serial: Option<&'static dyn Driver>,
+    pub simple_uart: Option<&'static dyn Driver>,
     pub display: Option<&'static dyn Driver>,
     pub timer: Option<&'static dyn Driver>,
     pub keyboard: Option<&'static dyn Driver>,

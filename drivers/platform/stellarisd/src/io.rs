@@ -1,3 +1,4 @@
+use novuskinc::dif::get_dif_value;
 use novuskinc::drivers::Driver;
 use novuskinc::drivers::{add_driver, get_driver};
 use novuskinc::drivers::names::SERIAL;
@@ -10,13 +11,17 @@ use tm4c123x_hal::serial::Serial;
 use tm4c123x_hal::tm4c123x::{GPIO_PORTA, UART0};
 use hio::HioDriver;
 
-unsafe fn add_hio_driver() -> u8 {
-    if get_driver(SERIAL).unwrap().init().is_ok() {
+unsafe fn init_printing_driver() -> u8 {
+    if get_driver(get_dif_value("PrintingMethod")).is_none() {
+        return 1;
+    }
+
+    if get_driver(get_dif_value("PrintingMethod")).unwrap().init().is_ok() {
         0
     } else { 1 }
 }
 
-define_kernel_function!(KernelFunctionName::early_serial_init, -> u8, add_hio_driver);
+define_kernel_function!(KernelFunctionName::early_serial_init, -> u8, init_printing_driver);
 
 pub struct StellarisUart;
 
