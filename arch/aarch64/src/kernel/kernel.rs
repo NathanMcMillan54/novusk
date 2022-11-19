@@ -17,7 +17,7 @@ impl Aarch64Kernel {
     }
 
     pub fn setup(&self) {
-        let irq = self.irq_setup();
+        let irq = unsafe { self.irq_setup() };
         let device_init = self.device_init();
         let early_kernel = unsafe { self.early_kernel_setup() };
 

@@ -103,6 +103,18 @@ impl FrameBufferGraphics for ArmFb {
             *cursor = color;
         }
     }
+
+    fn graphics_write_string(&self, string: &str, x: usize, y: usize) {
+        let mut wx = x;
+        let mut wy = y;
+        let mut wc = 0;
+
+        for b in string.as_bytes() {
+            self.graphics_write(*b, wx, wy);
+            wc += 1;
+            wx += (wc + 15);
+        }
+    }
 }
 
 impl KernelConsoleDriver for ArmFb {}
