@@ -55,6 +55,7 @@ members = [
     "drivers/storage/lba/",
     "drivers/storage/sd/rpisd/",
     "drivers/usbd/",
+    "drivers/virt/",
     # Fs
     "fs/tempfs/",
     "fs/vfs/",

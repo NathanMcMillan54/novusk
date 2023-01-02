@@ -1,0 +1,8 @@
+[package]
+name = "virt"
+version = "0.1.0"
+edition = "2021"
+description = "A driver for Qemu's Virt machine"
+
+[dependencies]
+novuskinc = { git = "https://github.com/new-kernel/novuskinc" }

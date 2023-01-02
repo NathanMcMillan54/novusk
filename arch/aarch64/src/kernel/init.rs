@@ -3,8 +3,11 @@ use kinfo::{InfoDisplay, status::KStatus};
 use novuskinc::platform::{early_device_init, device_init, DEVICE_INIT_ERRORS};
 use setup::after_kernel_setup;
 use crate::include::sys::setup::syscalls_init;
+use crate::kernel::utils::el;
 
 pub unsafe fn aarch64_kernel_init() {
+    printk!("el: {}\n", el());
+
     let dev_init = device_init();
 
     if dev_init == 0 {

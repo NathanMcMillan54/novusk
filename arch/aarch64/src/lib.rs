@@ -7,8 +7,13 @@
 #[macro_use] extern crate printk;
 extern crate setup;
 
+pub(crate) extern crate nmallocator;
+
 #[cfg(feature = "rpi3")]
 pub(crate) extern crate rpi;
+
+#[cfg(feature = "qemu_virt")]
+pub(crate) extern crate virt;
 
 mod boot;
 pub mod include;
