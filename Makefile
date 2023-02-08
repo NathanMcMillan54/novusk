@@ -16,11 +16,14 @@ FEATURES =
 # true/false
 LIB_OUTPUT = false
 
+# Command[s] for the architecture being compiled
+ARCH_COMMAND =
 # Novusk build command
 NOVUSK_BUILD =
 
 ifeq ($(ARCH), aarch64)
 	TARGET_ARCH = aarch64-novusk
+	ARCH_COMMAND = RUSTFLAGS="-Larch/aarch64/build/libentry.a"
 else ifeq ($(ARCH), armv8-a)
 	TARET_ARCH = aarch64-novusk
 else ifeq ($(ARCH), arm)
@@ -49,6 +52,7 @@ endif
 
 novusk:
 	@ echo "Compiling $(ARCH) Novusk..."
+	$(ARCH_COMMAND)
 	$(NOVUSK_BUILD)
 
 libc:
