@@ -1,0 +1,17 @@
+[package]
+name = "ibcm"
+version = "0.1.0"
+edition = "2021"
+description = "IRQ chip driver for BCM SOCs"
+publish = false
+
+[dependencies]
+asminc = { path = "../../../include/asm/" }
+bcm_soc = { path = "../../cpu/bcm_soc/" }
+irq = { path = "../../../kernel/irq/" }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc" }
+nmallocator = { path = "../../../mm/nmallocator/" }
+printk = { path = "../../../kernel/printk/" }
+
+[features]
+bcm2837 = ["bcm_soc/bcm2837"]

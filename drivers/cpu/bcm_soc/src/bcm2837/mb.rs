@@ -154,7 +154,7 @@ impl FirmwareInterface for Bcm2837Mb {
         self.driver_name()
     }
 
-    fn mb_call(&self, channel: u32) -> Result<(), u32> {
+    fn mb_call(&mut self, channel: u32) -> Result<(), u32> {
         loop {
             if !self.STATUS.is_set(STATUS::FULL) {
                 break;
@@ -192,12 +192,14 @@ impl FirmwareInterface for Bcm2837Mb {
         } else { return FMI_STATUS_EMPTY; }
     }
 
-    fn add_index(&self, index: usize, val: u32) {
-        // self.mb_buffer[index] = val;
+    fn add_index(&mut self, index: usize, val: u32) {
+        self.mb_buffer[index] = val;
     }
 }
 
 impl Led for Bcm2837Mb {}
+
+impl Timer for Bcm2837Mb {}
 
 impl Driver for Bcm2837Mb {
 

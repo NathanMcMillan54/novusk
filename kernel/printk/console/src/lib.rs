@@ -1,9 +1,12 @@
 #![no_std]
+#![feature(const_mut_refs)]
 
 #[macro_use] extern crate novuskinc;
 
+use core::borrow::BorrowMut;
 use core::cell::Cell;
 use core::fmt::Arguments;
+use core::ops::Deref;
 use dif::{Dif, DifFieldNames};
 use novuskinc::console::KernelConsole;
 use novuskinc::drivers::{Driver, manager::DeviceDriverManager, names::*};
@@ -12,27 +15,12 @@ pub mod driver;
 
 #[no_mangle]
 pub unsafe extern "C" fn console_init() -> u8 {
-    extern "C" {
-        static mut DIF: Dif;
-        static mut DEVICE_DRIVERS: DeviceDriverManager;
-    }
-
-    let printing_method = DIF.get(DifFieldNames::PrintingMethod);
-
-    let driver = match printing_method {
-        "Serial" | SERIAL => DEVICE_DRIVERS.get_driver(SERIAL),
-        "Frame Buffer" | FRAME_BUFFER => DEVICE_DRIVERS.get_driver(FRAME_BUFFER),
-        _ => DEVICE_DRIVERS.get_driver(SIMPLE_UART),
-    };
-
-    KERNEL_CONSOLE.printing_method = driver;
-
     0
 }
 
 pub struct MainKernelConsole {
     pub console: KernelConsole,
-    pub printing_method: Option<&'static dyn Driver>,
+    pub printing_method: Option<&'static mut dyn Driver>,
 }
 
 impl MainKernelConsole {
@@ -55,11 +43,19 @@ impl MainKernelConsole {
     }
 
     fn serial_write_char(&self, c: char) {
-        self.printing_method.unwrap().write(c as u8);
+        self.printing_method.as_ref().unwrap().write(c as u8);
     }
 
     fn graphics_write_char(&self, c: char, x: u16) {
-        self.printing_method.unwrap().write_character(c, x, self.console.line.get());
+        let mut driver = &self.printing_method;
+
+        match driver {
+            Some(d) => {
+                d.write_character(c, x, self.console.line.get());
+            }
+            _ => {},
+        }
+        //driver.write_character(c, x, self.console.line.get());
     }
 }
 

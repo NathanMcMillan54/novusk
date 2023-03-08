@@ -45,6 +45,7 @@ members = [
     "drivers/input/mouse/",
     "drivers/input/mouse/kb_mouse/",
     "drivers/input/mouse/ps2_mouse/",
+    "drivers/irqchip/ibcm/",
     "drivers/irqchip/invic/",
     "drivers/net/ethernet/",
     "drivers/nkuefi/",
@@ -60,6 +61,7 @@ members = [
     "fs/tempfs/",
     "fs/vfs/",
     # Include
+    "include/asm/",
     "include/ctypes/",
 
     # Kernel

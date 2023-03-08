@@ -8,6 +8,7 @@ publish = false
 
 [dependencies]
 dif = "0.1.1"
+ibcm = { path = "../../drivers/irqchip/ibcm/", optional = true }
 init = { path = "../../init/" }
 kinfo = { path = "../../kernel/kinfo/" }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee"] }
@@ -24,5 +25,5 @@ virt = { path = "../../drivers/virt/", optional = true }
 difi = "0.1.0"
 
 [features]
-rpi3 = ["rpi", "rpi/rpi3"]
+rpi3 = ["rpi", "rpi/rpi3", "ibcm", "ibcm/bcm2837"]
 qemu_virt = ["virt"]

@@ -19,3 +19,7 @@ Example:
 ### Essential
 
 ### Non essential
+
+- [ ] Novusk v3 Rewrite - This will be continuously worked on
+    @NathanMcMillan54
+    [#22](https://github.com/NathanMcMillan54/novusk/issues/22)

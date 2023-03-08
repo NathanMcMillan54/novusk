@@ -2,6 +2,7 @@ use cpu::soc_info::SocInfo;
 
 pub mod gpio;
 pub mod mb;
+pub mod timer;
 pub mod uart;
 
 #[no_mangle]

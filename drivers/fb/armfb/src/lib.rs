@@ -10,7 +10,7 @@ use novuskinc::drivers::names::FRAME_BUFFER;
 use novuskinc::fb::{Color, FbInfo, FrameBufferGraphics};
 use novuskinc::keyboard::KeyboardInput;
 use novuskinc::led::Led;
-use novuskinc::prelude::{Serial, Storage};
+use novuskinc::prelude::{Serial, Storage, Timer};
 
 #[path = "../../font.rs"]
 pub mod font;
@@ -133,6 +133,8 @@ impl Write for ArmFb {
 
 impl Led for ArmFb {}
 
+impl Timer for ArmFb {}
+
 impl Driver for ArmFb {
     fn driver_name(&self) -> &'static str {
         self.fb_info.name
@@ -142,7 +144,7 @@ impl Driver for ArmFb {
         FRAME_BUFFER
     }
 
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
         Err("")
     }
 }

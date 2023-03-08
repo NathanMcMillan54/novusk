@@ -6,6 +6,7 @@ license = "MIT"
 publish = false
 
 [dependencies]
+asminc = { path = "../../../include/asm/" }
 cpu = { path = "../" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
 tock-registers = "0.8.1"

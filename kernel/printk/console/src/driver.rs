@@ -1,15 +1,17 @@
 use core::fmt::Write;
+use dif::{Dif, DifFieldNames};
 use novuskinc::console::KernelConsoleDriver;
 use novuskinc::drivers::{Driver, DriverResult};
+use novuskinc::drivers::manager::DeviceDriverManager;
 use novuskinc::drivers::names::{CONSOLE, FRAME_BUFFER, SERIAL, SIMPLE_UART};
 use novuskinc::fb::FrameBufferGraphics;
 use novuskinc::keyboard::KeyboardInput;
 use novuskinc::led::Led;
-use novuskinc::prelude::{Serial, Storage};
+use novuskinc::prelude::{Serial, Storage, Timer};
 use crate::MainKernelConsole;
 
 impl KernelConsoleDriver for MainKernelConsole {
-    fn write_character(&self, c: char, x: u16, y: u16) {
+    fn write_character(&mut self, c: char, x: u16, y: u16) {
         if self.printing_method.is_none() {
             panic!("Printing method for {} not found", self.console.name);
         }
@@ -21,7 +23,7 @@ impl KernelConsoleDriver for MainKernelConsole {
             self.console.chars_written.set(0);
         }
 
-        let driver_name = self.printing_method.unwrap().name();
+        let driver_name = self.printing_method.as_ref().unwrap().name();
 
         if driver_name == SERIAL || driver_name == SIMPLE_UART {
             self.serial_write_char(c);
@@ -30,17 +32,17 @@ impl KernelConsoleDriver for MainKernelConsole {
         }
     }
 
-    fn write_string(&self, string: &str, x: u16, y: u16) {
+    fn write_string(&mut self, string: &str, x: u16, y: u16) {
         for (ix, c) in string.chars().enumerate() {
             self.write_character(c, ix as u16 + x, 0);
         }
     }
 
-    fn new_line(&self) {
+    fn new_line(&mut self) {
         self.console.line.set(self.console.line.get() + 1);
     }
 
-    fn clear_screen(&self, option: u16) {
+    fn clear_screen(&mut self, option: u16) {
         for _ in 0..self.dimensions().1 {
             self.new_line();
         }
@@ -67,6 +69,8 @@ impl Write for MainKernelConsole {
 
 impl Led for MainKernelConsole {}
 
+impl Timer for MainKernelConsole {}
+
 impl Driver for MainKernelConsole {
     fn driver_name(&self) -> &'static str {
         return "Main Kernel Console";
@@ -76,9 +80,26 @@ impl Driver for MainKernelConsole {
         return CONSOLE;
     }
 
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
+        unsafe {
+            extern "C" {
+                static mut DIF: Dif;
+                static mut DEVICE_DRIVERS: DeviceDriverManager;
+            }
+
+            let printing_method = DIF.get(DifFieldNames::PrintingMethod);
+
+            let mut driver = match printing_method {
+                "Serial" | SERIAL => DEVICE_DRIVERS.get_driver(SERIAL),
+                "Frame Buffer" | FRAME_BUFFER => DEVICE_DRIVERS.get_driver(FRAME_BUFFER),
+                _ => DEVICE_DRIVERS.get_driver(SIMPLE_UART),
+            };
+
+            self.printing_method = driver;
+        }
+
         if self.printing_method.is_some() {
             return Ok(());
-        } else { return Err("Printing driver hasn't been set"); }
+        } else { return Err("Printing driver failed to initialize"); }
     }
 }

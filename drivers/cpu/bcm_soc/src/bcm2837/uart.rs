@@ -183,6 +183,8 @@ impl Serial for Bcm2837Uart {
 
 impl Led for Bcm2837Uart {}
 
+impl Timer for Bcm2837Uart {}
+
 impl Driver for Bcm2837Uart {
     fn driver_name(&self) -> &'static str {
         return "RPi3 UART";
@@ -192,7 +194,7 @@ impl Driver for Bcm2837Uart {
         return SERIAL;
     }
 
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
 
         Ok(())
     }

@@ -1,0 +1,43 @@
+#![no_std]
+
+#[cfg(target_arch = "x86_64")]
+pub mod x86_64;
+
+#[cfg(target_arch = "arm")]
+pub mod arm32;
+
+#[cfg(target_arch = "aarch64")]
+pub mod aarch64;
+
+pub mod io;
+pub mod irq;
+
+/// Runs ``nop`` instruction which is supported on most architectures
+pub unsafe fn nop() {
+    core::arch::asm!("nop");
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn arch_asm_loop() {
+    #[cfg(target_arch = "aarch64")]
+        aarch64::wfe();
+
+    #[cfg(target_arch = "arm")]
+        arm32::wfe();
+
+    #[cfg(target_arch = "x86_64")]
+        x86_64::hlt();
+}
+
+pub unsafe fn disable_irqs() {
+    #[cfg(target_arch = "arm")]
+        arm32::ints::cpsid();
+
+    #[cfg(target_arch = "x86_64")]
+        x86_64::ints::cli();
+}
+
+pub unsafe fn enable_irqs() {
+    #[cfg(target_arch = "x86_64")]
+        x86_64::ints::sti();
+}
