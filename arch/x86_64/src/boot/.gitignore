@@ -1,1 +1,4 @@
-grub.o
+*.a
+*.bin
+*.iso
+*.o

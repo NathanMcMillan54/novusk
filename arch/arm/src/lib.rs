@@ -8,11 +8,9 @@
 
 #[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;
-#[macro_use] extern crate kinfo;
 #[cfg(feature = "nmallocator")]
 pub(crate) extern crate nmallocator;
 #[macro_use] extern crate novuskinc;
-#[macro_use] extern crate printk;
 extern crate time;
 
 cfg_if! {
@@ -25,25 +23,12 @@ cfg_if! {
     }
 }
 
-cfg_if! {
-    if #[cfg(feature = "rpi2")] {
-        pub(crate) extern crate rpi;
-        pub(crate) extern crate rpi2kernel;
-    }
-}
-
-#[cfg(feature = "stellaris_6965")]
-pub(crate) extern crate stellarisd;
-
-#[cfg(any(feature = "stm32f407"))]
-pub(crate) extern crate stmd;
-
 pub mod boot;
-pub mod include;
-pub mod kernel;
-pub mod liba32;
+//pub mod include;
+//pub mod kernel;
+//pub mod liba32;
 pub mod mm;
-pub mod net;
+//pub mod net;
 
 mod dif;
 

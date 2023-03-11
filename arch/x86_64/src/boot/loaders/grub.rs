@@ -1,16 +1,13 @@
-use kinfo::status::KStatus;
 use multiboot::multiboot_init;
-use crate::x86_printk;
 use crate::boot::main::main;
 use crate::mm::test_allocator;
-use crate::kinfo::InfoDisplay;
 
 #[no_mangle]
 pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {
-    early_printk!("Booted with GRUB\n\n");
+    // early_printk!("Booted with GRUB\n\n");
 
     multiboot_init(bootinfo_address);
-    kinfo!(KStatus {
+    /*kinfo!(KStatus {
         status: "ok",
         should_panic: false,
         panic_message: None,
@@ -18,7 +15,7 @@ pub unsafe extern "C" fn grub_start_novusk(bootinfo_address: usize) -> ! {
         messages: None,
     });
 
-    early_printk!("Testing allocator...\n");
+    early_printk!("Testing allocator...\n");*/
     test_allocator();
 
     main();

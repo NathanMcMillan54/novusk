@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 pc-keyboard = "0.5.1"
-printk = { path = "../../../kernel/printk/" }
+# printk = { path = "../../../kernel/printk/" }
 
 [dependencies.conquer-once]
 version = "0.3.2"

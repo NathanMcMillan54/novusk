@@ -6,7 +6,7 @@ use novuskinc::drivers::Driver;
 use super::kernel::AARCH64_KERNEL;
 use super::drivers::DEVICE_DRIVERS;
 use novuskinc::drivers::names::*;
-use printk::Printk;
+
 
 // Gets called from ``kernel/printk/``
 #[no_mangle]
@@ -26,18 +26,9 @@ pub unsafe extern "C" fn _early_printk(fmt: Arguments) {
         }
     }
 
-    let mut printer = Printer(driver.unwrap());
-
-    printer.write_fmt(fmt);
 }
 
 #[no_mangle]
 pub extern "C" fn _kernel_main_print(fmt: Arguments) {
 
 }
-
-#[no_mangle]
-pub static mut PRINTK: Printk = Printk {
-    init: false,
-    console_driver: None
-};

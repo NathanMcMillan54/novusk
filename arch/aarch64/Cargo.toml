@@ -8,22 +8,19 @@ publish = false
 
 [dependencies]
 dif = "0.1.1"
-ibcm = { path = "../../drivers/irqchip/ibcm/", optional = true }
-init = { path = "../../init/" }
-kinfo = { path = "../../kernel/kinfo/" }
+#ibcm = { path = "../../drivers/irqchip/ibcm/", optional = true }
 nmallocator = { path = "../../mm/nmallocator/", features = ["wee"] }
-novusk_syscalls = "0.2.1"
-novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
-printk = { path = "../../kernel/printk/" }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", branch = "novusk_build", features = ["v3"] }
+#printk = { path = "../../kernel/printk/" }
 tock-registers = "0.8.1"
 r0 = "1.0.0"
-rpi = { path = "../../drivers/rpi/", optional = true }
-setup = { path = "../../kernel/setup/" }
+#rpi = { path = "../../drivers/rpi/", optional = true }
+# setup = { path = "../../kernel/setup/" }
 virt = { path = "../../drivers/virt/", optional = true }
 
 [build-dependencies]
 difi = "0.1.0"
 
 [features]
-rpi3 = ["rpi", "rpi/rpi3", "ibcm", "ibcm/bcm2837"]
+rpi3 = []
 qemu_virt = ["virt"]

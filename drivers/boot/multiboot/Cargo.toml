@@ -8,4 +8,4 @@ publish = false
 
 [dependencies]
 multiboot2 = "0.14.0"
-printk = { path = "../../../kernel/printk/" }
+# printk = { path = "../../../kernel/printk/" }

@@ -1,0 +1,10 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc", branch = "novusk_build" }
+spin = "0.9.5"

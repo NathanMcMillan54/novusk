@@ -1,5 +1,5 @@
 boot/novusk.iso
-boot/novusk
+boot/novusk.bin
 
 *.asm
 grub_boot

@@ -66,6 +66,7 @@ members = [
 
     # Kernel
     "init/",
+    "kernel/",
     "kernel/irq/",
     "kernel/kinfo/",
     "kernel/konfig/",
@@ -96,6 +97,7 @@ members = [
     "kernel/modules/fscheck/",
     # Tools
     "tools/bootloader_image/",
+    "tools/genfat/",
 
     "tests/",
 ]

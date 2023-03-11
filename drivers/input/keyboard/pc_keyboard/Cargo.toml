@@ -10,7 +10,7 @@ publish = false
 keyboard = { path = "../" }
 notify = { path = "../../../../kernel/notify/" }
 pc-keyboard = "0.5.1"
-printk = { path = "../../../../kernel/printk/" }
+#printk = { path = "../../../../kernel/printk/" }
 x86_64 = "0.14.6"
 
 [dependencies.crossbeam-queue]

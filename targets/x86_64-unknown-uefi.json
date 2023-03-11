@@ -1,0 +1,44 @@
+{
+  "abi-return-struct-as-int": true,
+  "allows-weak-linkage": false,
+  "arch": "x86_64",
+  "cpu": "x86-64",
+  "data-layout": "e-m:w-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128",
+  "debuginfo-kind": "pdb",
+  "disable-redzone": true,
+  "emit-debug-gdb-scripts": false,
+  "exe-suffix": ".efi",
+  "features": "-mmx,-sse,+soft-float",
+  "is-builtin": false,
+  "is-like-msvc": true,
+  "is-like-windows": true,
+  "linker": "rust-lld",
+  "linker-flavor": "lld-link",
+  "linker-is-gnu": false,
+  "lld-flavor": "link",
+  "llvm-target": "x86_64-unknown-windows",
+  "max-atomic-width": 64,
+  "os": "uefi",
+  "panic-strategy": "abort",
+  "pre-link-args": {
+    "lld-link": [
+      "/NOLOGO",
+      "/entry:efi_main",
+      "/subsystem:efi_application"
+    ],
+    "msvc": [
+      "/NOLOGO",
+      "/entry:efi_main",
+      "/subsystem:efi_application"
+    ]
+  },
+  "singlethread": true,
+  "split-debuginfo": "packed",
+  "stack-probes": {
+    "kind": "call"
+  },
+  "supported-split-debuginfo": [
+    "packed"
+  ],
+  "target-pointer-width": "64"
+}

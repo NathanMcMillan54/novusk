@@ -1,8 +1,6 @@
 pub mod id;
 pub use id::BRAND;
 
-use kinfo::status::set_status;
-
 pub unsafe fn cpu_init() {
     gdt::gdt_init();
 
@@ -11,8 +9,8 @@ pub unsafe fn cpu_init() {
     } else if BRAND == "Intel" {
         intel::intel_init();
     } else {
-        set_status("not ok");
-        early_printk!("No CPU brand to setup");
+        // set_status("not ok");
+        // early_printk!("No CPU brand to setup");
     }
 }
 

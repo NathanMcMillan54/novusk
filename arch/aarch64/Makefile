@@ -1,8 +1,12 @@
+BOOT = src/boot/
+KERNEL = src/kernel/
+BOOT_METHOD =
+ROOT = ../../
+
 build:
-	@ aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -static -c src/kernel/entry.S -o build/entry.o
-	@ aarch64-linux-gnu-ar rcs build/libentry.a build/entry.o
+	aarch64-linux-gnu-gcc -mcpu=cortex-a53 -fpic -ffreestanding -static -c $(KERNEL)entry.S -o $(KERNEL)entry.o
 
 link:
-	@ cp -r ../../target/aarch64-novusk/release/libnovusk.a build/libnovusk.a
-	@ aarch64-linux-gnu-ld -Tsrc/boot/linker.ld build/libnovusk.a build/entry.o -o src/boot/aadImage
+	@ aarch64-linux-gnu-ld -T$(BOOT)linker.ld $(ROOT)target/aarch64-novusk/release/libaarch64.a $(KERNEL)entry.o -o $(BOOT)kernel.bin
+	@ aarch64-linux-gnu-objcopy $(BOOT)kernel.bin $(BOOT)kernel.elf
 	@ echo "Finished linking"

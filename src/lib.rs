@@ -2,6 +2,11 @@
 
 // pub use novuskinc as novusk;
 
+#[no_mangle]
+pub extern "C" fn _kernel_version() -> (u8, u8, u8) {
+    (env!("CARGO_PKG_VERSION_MAJOR").parse::<u8>().unwrap(), env!("CARGO_PKG_VERSION_MINOR").parse::<u8>().unwrap(), env!("CARGO_KG_VERSION_PATCH").parse::<u8>().unwrap())
+}
+
 #[cfg(not(feature = "custom_config"))]
 pub mod config;
 

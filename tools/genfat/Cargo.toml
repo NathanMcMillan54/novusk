@@ -1,0 +1,9 @@
+[package]
+name = "genfat"
+version = "0.1.0"
+edition = "2021"
+description = "For creating a FAT file system in an UEFI/EFI bootloader"
+
+[dependencies]
+fatfs = "0.3.5"
+gpt = "3.0.0"

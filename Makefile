@@ -1,5 +1,6 @@
 # Compile for architecture
 ARCH =
+BOOT_METHOD =
 
 # Architecture target
 TARGET_ARCH =
@@ -8,9 +9,13 @@ TARGET_ARCH =
 HOST_TARGET =
 
 # Target device
-PLATFORM = none
+PLATFORM =
 # Build features
 FEATURES =
+
+# Name of tool that's being used
+TOOL =
+TOOL_ARGS =
 
 # Command[s] for the architecture being compiled
 ARCH_ARGUMENTS =
@@ -34,7 +39,10 @@ else ifeq ($(ARCH), armv7-m)
 else ifeq ($(ARCH), armv7e-m)
 	TARGET_ARCH = thumbv7em-none-eabihf
 	ARCH = arm
+else ifeq ($(ARCH), riscv)
+	TARGET_ARCH = riscv32imac-unknown-none-elf
 else ifeq ($(ARCH), riscv32)
+	ARCH = riscv
 	TARGET_ARCH = riscv32imac-unknown-none-elf
 else ifeq ($(ARCH), riscv32imac)
 	TARGET_ARCH = riscv32imac-unknown-none-elf
@@ -49,19 +57,25 @@ novusk: build_arch build_kernel link
 	@ echo "Compiling $(ARCH) Novusk..."
 
 build_arch:
-	@ echo "Compiling $(ARCH) kernel..."
+	@ echo "Compiling $(ARCH) specific code..."
 	make -C arch/$(ARCH)/ build
 
 build_kernel:
 	@ echo "Compiling Novusk..."
-	cargo rustc --release --lib --crate-type=staticlib --features $(PLATFORM),$(FEATURES) --target targets/$(TARGET_ARCH).json
+	cargo rustc -p $(ARCH)@0.1.0 --release --crate-type=staticlib --features $(PLATFORM),$(FEATURES) --target targets/$(TARGET_ARCH).json
 
 link:
 	@ echo "Linking..."
-	make -C arch/$(ARCH)/ link
+	make -C arch/$(ARCH)/ link BOOT_METHOD=$(BOOT_METHOD) TARGET=$(TARGET_ARCH)
 
 libc:
 	@ $(MAKE) -C lib/cinclude TARGET=$(TARGET_ARCH) HOST=$(HOST_TARGET)
+
+build_tool:
+	@ cargo build -p $(TOOL) --target $(HOST_TARGET)
+
+run_tool: build_tool
+	@ ./target/$(HOST_TARGET)/debug/$(TOOL) $(TOOL_ARGS)
 
 clean:
 	@ cargo clean

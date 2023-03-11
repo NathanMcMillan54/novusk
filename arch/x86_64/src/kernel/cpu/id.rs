@@ -1,10 +1,9 @@
-use kinfo::status::set_status;
 use raw_cpuid::CpuId;
 
 pub static mut BRAND: &'static str = "Unknown";
 
 unsafe fn unknown_cpu() {
-    set_status("not ok");
+    // set_status("not ok");
     BRAND = BRAND;
 }
 

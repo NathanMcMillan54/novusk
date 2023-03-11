@@ -32,7 +32,7 @@ impl PcKeyboard {
                     match key {
                         DecodedKey::Unicode(character) => {
                             ret.push(character as u8);
-                            printk!("{}", character);
+                            //printk!("{}", character);
                             if character == '\n' {
                                 break
                             }
