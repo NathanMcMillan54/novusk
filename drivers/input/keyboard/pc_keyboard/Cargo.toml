@@ -9,7 +9,7 @@ publish = false
 [dependencies]
 keyboard = { path = "../" }
 notify = { path = "../../../../kernel/notify/" }
-pc-keyboard = "0.5.1"
+pc-keyboard = "0.7.0"
 #printk = { path = "../../../../kernel/printk/" }
 x86_64 = "0.14.6"
 
