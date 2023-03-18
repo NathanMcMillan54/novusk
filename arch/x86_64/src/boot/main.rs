@@ -1,15 +1,35 @@
-use core::fmt::Write;
-use bootloader::BootInfo;
-use core::ptr::write_volatile;
-use x86_64::instructions::hlt;
+use super::setup::boot_setup;
+use raw_cpuid::CpuId;
+use crate::kernel::kernel::{gop_init, vga_init};
+
+fn validate_cpu() {
+    let cpuid = CpuId::new();
+}
+
+fn setup_bootloader() {
+    #[cfg(feature = "bios_boot")]
+    bios_bootloader_setup();
+
+    #[cfg(feature = "uefi_boot")]
+    uefi_bootloader_setup();
+}
+
+#[cfg(feature = "bios_boot")]
+fn bios_bootloader_setup() {
+    vga_init();
+}
+
+#[cfg(feature = "uefi_boot")]
+fn uefi_bootloader_setup() {
+    gop_init();
+    nkuefi::nkuefi_setup();
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn main() -> ! {
-    let mut addr = 0xb8000 as *mut u8;
-    for b in b"Made it!" {
-        write_volatile(addr, *b);
-        addr = addr.offset(2);
-    }
+    //validate_cpu();
+    setup_bootloader();
+    boot_setup();
 
-    loop {  }
+    loop { core::arch::asm!("nop") }
 }

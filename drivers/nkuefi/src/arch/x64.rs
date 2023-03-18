@@ -36,6 +36,7 @@ unsafe fn load_kernel(bt: &BootServices) -> (ElfFile, u64, u16) {
     let buffer = core::slice::from_raw_parts_mut(memory_start as *mut u8, (pages * 0x1000) as usize);
     let len: usize = kernel_handle.read(buffer).unwrap();
     let kernel_elf = ElfFile::new(&buffer[..len]).expect("Failed to parse kernel ELF");
+    st_write(format_args!("{:?}{}", kernel_elf.header.pt1.version.as_version(), "\n"));
     let kernel_entry_addr = kernel_elf.header.pt2.entry_point();
     let kernel_entry_size = kernel_elf.header.pt2.header_size();
 
@@ -49,13 +50,15 @@ pub fn start_loading_kernel(image: Handle, mut st: SystemTable<Boot>) -> ! {
 
     st_write(format_args!("{}\n", "Starting kernel...\n"));
 
-    exit_bootservices(image, st);
 
     unsafe {
-        let kernel_entry: unsafe extern "C" fn() = core::mem::transmute(kernel_addr + (kernel_size as u64 * 0x1000));
+        let kernel_entry: unsafe extern "C" fn() = core::mem::transmute(kernel_addr);
 
         (kernel_entry)();
     }
 
-    loop {  }
+    exit_bootservices(image, st);
+    st_write(format_args!("{}", "Kernel started\n"));
+
+    loop { unsafe { core::arch::asm!("nop"); } }
 }

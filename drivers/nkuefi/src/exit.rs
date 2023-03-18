@@ -11,5 +11,5 @@ pub fn exit_bootservices(image: Handle, mut st: SystemTable<Boot>) {
     let mem_sizes = st.boot_services().memory_map_size().map_size;
     let max_mem_size = mem_sizes + 2 * mem_sizes;
     let mut mmap_storage = vec![0; max_mem_size].into_boxed_slice();
-    let (st, _iter) = st.exit_boot_services(image, &mut mmap_storage[..]).unwrap();
+    let (st, _iter) = st.exit_boot_services(image, &mut mmap_storage).unwrap();
 }

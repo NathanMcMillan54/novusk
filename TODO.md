@@ -13,7 +13,7 @@ Example:
 
 - [ ] Add new API feature
     People invovlved: @Me, @MyBestFriend, @MyBestFriendsBestFriend
-    Issue: [issue #N](link to issue)
+    Issue: [issue #N](link to issue[s])
 ```
 
 ### Essential

@@ -14,7 +14,7 @@ pub use x86_64::instructions::port::Port;
 
 pub mod boot;
 //pub mod include;
-//pub mod kernel;
+pub mod kernel;
 // pub mod libx;
 pub mod mm;
 //pub mod net;

@@ -18,6 +18,7 @@ stack_top:
 .section .text
 
 .extern die
+.extern check_cpuid
 .extern start_main
 
 .global _start
@@ -27,6 +28,7 @@ _start:
     movl $stack_top, %esp
     movl %ebx, %edi
 
+    call check_cpuid
     call check_multiboot
     call start_main
 
