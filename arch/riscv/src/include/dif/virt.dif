@@ -1,5 +1,5 @@
 [
-    ("DifName", "virt.dif")
+    ("DifName", "virt.dif"),
     ("DeviceName", "Qemu Virt"),
     ("PeripheralAddress", "26843456"),
 ]

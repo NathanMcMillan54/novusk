@@ -1,4 +1,5 @@
 #![no_std]
+#![no_main]
 // Lang
 #![feature(abi_x86_interrupt, const_mut_refs, panic_info_message)]
 

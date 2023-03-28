@@ -10,7 +10,7 @@ ifeq ($(BOOT_METHOD), uefi)
 	LINK_COMMAND = x86_64-linux-gnu-gcc -o $(BOOT)kernel.bin -Bstatic $(ROOT)target/x86_64-novusk/release/libx86_64.a
 else ifeq ($(BOOT_METHOD), bios)
 	BUILD_BOOT = x86_64-linux-gnu-as $(BOOT)boot.S -o $(BOOT)boot.o && x86_64-linux-gnu-as $(BOOT)start.S -o $(BOOT)start.o
-	LINK_COMMAND = x86_64-linux-gnu-ld -T$(BOOT)linker.ld $(BOOT)boot.o $(BOOT)start.o $(ROOT)target/x86_64-novusk/release/libx86_64.a -o $(BOOT)kernel.bin
+	LINK_COMMAND = x86_64-linux-gnu-gcc -T$(BOOT)linker.ld -o $(BOOT)kernel.bin -ffreestanding -nostdlib $(BOOT)boot.o $(ROOT)target/x86_64-novusk/release/x86_64 -lgcc
 endif
 
 build:

@@ -1,5 +1,6 @@
 # Compile for architecture
 ARCH =
+C_ARCH =
 BOOT_METHOD =
 
 # Architecture target
@@ -27,46 +28,50 @@ ifeq ($(ARCH), aarch64)
 	ARCH_ARGUMENTS = PLATFORM=$(PLATFORM)
 else ifeq ($(ARCH), armv8-a)
 	TARET_ARCH = aarch64-novusk
-	ARCH = aarch64
+	C_ARCH = aarch64
 else ifeq ($(ARCH), arm)
 	TARGET_ARCH = thumbv7em-none-eabihf
+	C_ARCH = arm
 else ifeq ($(ARCH), armv7-a)
 	TARGET = arm-a-novusk
-	ARCH = arm
+	C_ARCH = arm
 else ifeq ($(ARCH), armv7-m)
 	TARGET_ARCH = thumbv7m-none-eabi
-	ARCH = arm
+	C_ARCH = arm
 else ifeq ($(ARCH), armv7e-m)
 	TARGET_ARCH = thumbv7em-none-eabihf
-	ARCH = arm
+	C_ARCH = arm
 else ifeq ($(ARCH), riscv)
 	TARGET_ARCH = riscv32imac-unknown-none-elf
+	C_ARCH = riscv
 else ifeq ($(ARCH), riscv32)
-	ARCH = riscv
 	TARGET_ARCH = riscv32imac-unknown-none-elf
+	C_ARCH = riscv
 else ifeq ($(ARCH), riscv32imac)
 	TARGET_ARCH = riscv32imac-unknown-none-elf
-	ARCH = riscv
+	C_ARCH = riscv
 else ifeq ($(ARCH), x86_64)
 	TARGET_ARCH = x86_64-novusk
+	C_ARCH = x86_64
 else ifeq ($(ARCH), xtensa)
 	TARGET_ARCH = xtensa-$(PLATFORM)-novusk
+	C_ARCH = xtensa
 endif
 
 novusk: build_arch build_kernel link
-	@ echo "Compiling $(ARCH) Novusk..."
+	@ echo "Compiling $(C_ARCH) Novusk..."
 
 build_arch:
-	@ echo "Compiling $(ARCH) specific code..."
-	make -C arch/$(ARCH)/ build
+	@ echo "Compiling $(C_ARCH) specific code..."
+	make -C arch/$(C_ARCH)/ build
 
 build_kernel:
 	@ echo "Compiling Novusk..."
-	cargo rustc -p $(ARCH)@0.1.0 --release --crate-type=staticlib --features $(PLATFORM),$(FEATURES) --target targets/$(TARGET_ARCH).json
+	cargo rustc -p $(C_ARCH)@0.1.0 --release --features $(PLATFORM),$(FEATURES) --target targets/$(TARGET_ARCH).json
 
 link:
 	@ echo "Linking..."
-	make -C arch/$(ARCH)/ link BOOT_METHOD=$(BOOT_METHOD) TARGET=$(TARGET_ARCH)
+	make -C arch/$(C_ARCH)/ link BOOT_METHOD=$(BOOT_METHOD) TARGET=$(TARGET_ARCH)
 
 libc:
 	@ $(MAKE) -C lib/cinclude TARGET=$(TARGET_ARCH) HOST=$(HOST_TARGET)
