@@ -51,6 +51,7 @@ features = ["alloc"]
 
 [build-dependencies]
 difi = "0.1.0"
+cc = "1.0.0"
 
 [features]
 bios_boot = []

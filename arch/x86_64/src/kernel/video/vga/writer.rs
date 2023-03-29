@@ -23,11 +23,10 @@ impl VgaWriter {
     }
 
     pub fn write_byte(&mut self, byte: u8) {
-
         if self.x == self.width || byte == b'\n' {
             self.new_line();
         } else {
-            unsafe { write_volatile(self.addr.offset(self.x as isize).offset((self.x * self.y) as isize), byte); }
+            unsafe { write_volatile(self.addr.offset(self.x as isize + (self.x * self.y) as isize), byte); }
 
             self.x += 2;
         }
