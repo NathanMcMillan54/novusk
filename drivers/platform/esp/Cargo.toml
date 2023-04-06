@@ -7,7 +7,7 @@ license = "MIT"
 publish = false
 
 [dependencies]
-esp32-hal = "0.3.0"
+esp32-hal = "0.4.0"
 device = { path = "../../device/" }
 
 [features]
