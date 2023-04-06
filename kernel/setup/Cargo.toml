@@ -8,8 +8,4 @@ publish = false
 
 [dependencies]
 dif = "0.1.1"
-kinfo = { path = "../kinfo/" }
-konfig = { path = "../konfig/" }
-libbmu = { path = "../../lib/libbmu/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
-printk = { path = "../printk/" }

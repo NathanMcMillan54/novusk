@@ -1,4 +1,5 @@
 pub mod irqs;
+pub mod timers;
 pub mod uart;
 
 pub(crate) fn lm3s6965_init() {

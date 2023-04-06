@@ -6,13 +6,13 @@ use crate::Device;
 /// An ARM 32/64 device struct
 pub struct ArmDevice {
     pub dif: Dif,
-    pub mailbox: Option<&'static dyn Driver>,
-    pub console: Option<&'static dyn Driver>,
-    pub serial: Option<&'static dyn Driver>,
-    pub simple_uart: Option<&'static dyn Driver>,
-    pub display: Option<&'static dyn Driver>,
-    pub timer: Option<&'static dyn Driver>,
-    pub keyboard: Option<&'static dyn Driver>,
+    pub mailbox: Option<&'static mut dyn Driver>,
+    pub console: Option<&'static mut dyn Driver>,
+    pub serial: Option<&'static mut dyn Driver>,
+    pub simple_uart: Option<&'static mut dyn Driver>,
+    pub display: Option<&'static mut dyn Driver>,
+    pub timer: Option<&'static mut dyn Driver>,
+    pub keyboard: Option<&'static mut dyn Driver>,
 }
 
 impl Device for ArmDevice {

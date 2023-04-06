@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 dif = "0.1.1"
-novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/", features = ["v3"], branch = "novusk_build" }
 
 [features]
 dif_alloc = ["dif/alloc"]

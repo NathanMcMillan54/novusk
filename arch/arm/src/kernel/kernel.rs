@@ -1,74 +1,21 @@
-use dif::DifFieldNames;
-use kinfo::*;
-use novuskinc::kernel::kernel_init;
-use novuskinc::platform::*;
-use kinfo::status::KStatus;
-use setup::kernel::ArchKernelSetup;
-use crate::liba32::libdif::DIF;
+use novuskinc::dif::get_dif_value;
+use novuskinc::drivers::{names::*, get_driver};
 
-#[no_mangle]
-pub unsafe extern "C" fn start_kernel() {
-    super::setup::setup_arm32_kernel();
-    super::arm_init::arm_kernel_init();
+pub unsafe fn _early_write_str(write: &str) {
+    let mut driver_name = "";
 
-    if DIF.get(DifFieldNames::StartInit).parse::<bool>().unwrap_or(false) {
-        printk!("Architecture setup is finished, starting kernel_init...\n");
-        kernel_init();
+    if get_dif_value("PrintingMethod").contains(SIMPLE_UART) {
+        driver_name = SIMPLE_UART;
+    } else if get_dif_value("PrintingMethod").contains(FRAME_BUFFER) {
+        driver_name = FRAME_BUFFER;
     }
-}
 
-pub static mut ARM_KERNEL: ArmKernel = ArmKernel::new();
+    let mut driver = get_driver(driver_name);
 
-pub struct ArmKernel {
-    pub early: bool,
-}
-
-impl ArmKernel {
-    pub const fn new() -> Self {
-        return ArmKernel {
-            early: true,
+    if driver.is_none() { return; }
+    if driver_name == SIMPLE_UART {
+        for b in write.as_bytes() {
+            driver.unwrap().write(*b);
         }
-    }
-
-    pub fn setup(&self) {
-        let irq = unsafe { self.irq_setup() };
-        let device = self.device_init();
-
-        if device.0.is_err() {
-            kinfo!(KStatus {
-                status: "not ok",
-                should_panic: true,
-                panic_message: Some(device.1),
-                main_message: "Failed to initialize device",
-                messages: Some(&["This would cause errors later"]),
-            });
-        } else if irq.0.is_err() {
-            kinfo!(KStatus {
-                status: "ok",
-                should_panic: true,
-                panic_message: Some(irq.1),
-                main_message: "Failed to setup IRQs",
-                messages: None,
-            });
-        }
-
-        kinfo!(KStatus {
-            status: "ok",
-            should_panic: false,
-            panic_message: None,
-            main_message: device.1,
-            messages: Some(&[
-                "Added device specific drivers",
-                "Initialized some device specific drivers",
-            ]),
-        });
-
-        kinfo!(KStatus {
-            status: "ok",
-            should_panic: false,
-            panic_message: None,
-            main_message: irq.1,
-            messages: None,
-        });
-    }
+    } else { driver.unwrap().graphics_write_string(write, 0, 0); }
 }

@@ -1,8 +1,6 @@
 use dif::DifFieldNames;
-// use novuskinc::console::{console_init, printk_init};
 use novuskinc::irq::{irqchip_setup};
 use novuskinc::platform::*;
-use printk::init::error::*;
 use crate::SetupReturn;
 use crate::libdif::DIF;
 
@@ -38,7 +36,7 @@ pub trait ArchKernelSetup {
         (Ok(()), "Success")
     }
 
-    unsafe fn early_kernel_setup(&self) -> SetupReturn {
+    /*unsafe fn early_kernel_setup(&self) -> SetupReturn {
         extern "C" {
             pub fn console_init() -> u8;
             pub fn printk_init() -> u8;
@@ -67,5 +65,5 @@ pub trait ArchKernelSetup {
         }
 
         (Ok(()), "Successfully setup early main kernel")
-    }
+    }*/
 }

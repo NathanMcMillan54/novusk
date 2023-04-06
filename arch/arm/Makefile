@@ -6,4 +6,4 @@ TARGET =
 build:
 
 link:
-
+	@ mv $(ROOT)target/$(TARGET)/release/arm src/boot/kernel

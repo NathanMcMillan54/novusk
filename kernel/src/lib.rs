@@ -9,6 +9,8 @@ use novuskinc::kernel::types::KernelType;
 use spin::Mutex;
 use alloc::vec;
 
+pub mod kdif;
+
 extern "C" {
     fn _kernel_version() -> (u8, u8, u8);
     fn _kernel_type() -> KernelType;
@@ -21,5 +23,6 @@ lazy_static! {
         kernel_type: unsafe { _kernel_type() },
         short: unsafe { _kernel_short() },
         module_names: vec![],
+
     });
 }
