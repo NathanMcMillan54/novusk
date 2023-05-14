@@ -15,8 +15,8 @@ cfg_if! {
         pub extern crate irq;
     }
 }
-#[cfg(feature = "kernel_init")]
-pub extern crate init;
+/*#[cfg(feature = "kernel_init")]
+pub extern crate init;*/
 
 extern "C" {
     pub(crate) static mut DEVICE_DRIVERS: DeviceDriverManager;

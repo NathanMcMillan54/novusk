@@ -1,4 +1,5 @@
 use crate::kernel::kernel::_early_write_str;
+use crate::mm;
 use core::fmt::Write;
 use dif::DifFieldNames;
 use novuskinc::prelude::early_device_init;
@@ -13,8 +14,16 @@ impl ArmBootSetup {
     }
 
     pub unsafe fn setup(&self) {
+        unsafe { core::ptr::write_volatile(0x4000_C000 as *mut u8, b'h'); }
+        crate::liba32::libdif::set_dif();
+
         let linker_mem = self.linker_setup();
+        unsafe { core::ptr::write_volatile(0x4000_C000 as *mut u8, b'h'); }
+        mm::early_memory_setup();
+        unsafe { core::ptr::write_volatile(0x4000_C000 as *mut u8, b'h'); }
+
         let early_dev = self.early_device_init();
+        unsafe { core::ptr::write_volatile(0x4000_C000 as *mut u8, b'h'); }
         let early_serial = self.early_serial_io_init();
 
         _early_write_str(linker_mem.1);

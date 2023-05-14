@@ -8,4 +8,8 @@ publish = false
 dif = { git = "https://github.com/new-kernel/dif" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc", branch = "novusk_build" }
+printk = { path = "printk/" }
 spin = "0.9.5"
+
+[features]
+alloc = ["dif/alloc"]

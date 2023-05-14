@@ -51,7 +51,7 @@ impl MainKernelConsole {
 
         match driver {
             Some(d) => {
-                d.write_character(c, x, self.console.line.get());
+                //d.write_character(c, x, self.console.line.get());
             }
             _ => {},
         }

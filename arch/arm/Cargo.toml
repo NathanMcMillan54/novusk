@@ -15,13 +15,15 @@ cortex-m-rt = "0.7.1"
 cortex-m-semihosting = "0.3.7"
 cpu = { path = "../../drivers/cpu/" }
 device = { path = "../../drivers/device/" }
-dif = "0.1.1"
+dif = { version = "0.1.1" }
 kernel = { path = "../../kernel/" }
+lazy_static = "1.4.0"
 nmallocator = { path = "../../mm/nmallocator/", optional = true }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/", branch = "novusk_build", features = ["v3"] }
 r0 = "1.0.0"
 setup = { path = "../../kernel/setup/" }
 stellarisd = { path = "../../drivers/platform/stellarisd/", optional = true }
+spin = "0.9.1"
 time = { path = "../../kernel/time/" }
 
 [build-dependencies]
@@ -29,9 +31,9 @@ difi = "0.1.0"
 
 [features]
 allocator = []
-cortex_a = ["nmallocator"]
-cortex_m = ["alloc-cortex-m", "allocator"]
+cortex_a = ["allocator", "nmallocator"]
+cortex_m = []
 rpi2 = ["cortex_a"]
-stellaris_6965 = ["cortex_m", "stellarisd"]
+stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]
 # not_stm32 = ["stmd/stm32f407"]
 # stm32f407 = ["cortex_m", "stmd/stm32f407"]

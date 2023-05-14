@@ -10,6 +10,7 @@ use spin::Mutex;
 use alloc::vec;
 
 pub mod kdif;
+pub mod printk;
 
 extern "C" {
     fn _kernel_version() -> (u8, u8, u8);

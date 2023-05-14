@@ -18,8 +18,8 @@ pub unsafe extern "C" fn printk_init() -> u8 {
         return error::DRIVER_FAILED;
     }
 
-    PRINTK.set_init(true, console.unwrap());
-    PRINTK.console_driver.unwrap().init();
+    //PRINTK.set_init(true, console.unwrap());
+    //PRINTK.console_driver.unwrap().init();
     //PRINTK.console_driver.unwrap().write_character('a', 0, 0);
     //PRINTK.write_fmt(format_args!("{}", "test\n"));
 

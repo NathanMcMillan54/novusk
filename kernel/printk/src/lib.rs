@@ -24,29 +24,29 @@ extern "C" {
 
 pub struct Printk {
     pub init: bool,
-    pub console_driver: Option<&'static dyn Driver>,
+    pub console_driver: Option<&'static mut dyn Driver>,
 }
 
 impl Printk {
-    pub fn set_init(&mut self, init: bool, console_driver: &'static dyn Driver) {
+    pub fn set_init(&mut self, init: bool, console_driver: &'static mut dyn Driver) {
         self.init = init;
         self.console_driver = Some(console_driver);
     }
 
     pub fn reset(&mut self) {
-        let writer = self.console_driver;
+        let writer = &self.console_driver;
 
-        writer.unwrap().clear_screen(0);
+        //writer.unwrap().clear_screen(0);
     }
 }
 
 impl Write for Printk {
     fn write_str(&mut self, s: &str) -> core::fmt::Result {
-        let writer = self.console_driver;
+        let writer = &self.console_driver;
 
-        if writer.is_none() {
+        /*if writer.is_none() {
             return Err(Default::default());
-        } else { writer.unwrap().write_string(s, 0, 0); }
+        } else { writer.unwrap().write_string(s, 0, 0); }*/
 
         return Ok(());
     }

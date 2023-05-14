@@ -11,5 +11,5 @@ pub(crate) unsafe fn lm3s6965_simpleuart_init() {
     KERNEL_SIMPLEUART.output_addr = UART0;
     KERNEL_SIMPLEUART.input_addr = UART0;
 
-    add_driver(&KERNEL_SIMPLEUART as &'static dyn Driver);
+    add_driver(&mut KERNEL_SIMPLEUART as &'static mut dyn Driver);
 }

@@ -23,4 +23,5 @@ pub(crate) mod dif;
 
 pub mod boot;
 pub mod kernel;
+pub mod liba32;
 pub mod mm;
