@@ -1,9 +1,0 @@
-[package]
-name = "ctypes"
-version = "0.1.0"
-edition = "2021"
-description = "C types for Rust"
-license = "MIT"
-publish = false
-
-[dependencies]

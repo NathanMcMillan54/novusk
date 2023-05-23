@@ -12,14 +12,19 @@ Example:
 ### Non essential
 
 - [ ] Add new API feature
-    People invovlved: @Me, @MyBestFriend, @MyBestFriendsBestFriend
-    Issue: [issue #N](link to issue[s])
+    - People invovlved: @Me, @MyBestFriend, @MyBestFriendsBestFriend
+    - Issue: [issue/pr #N](link[s])
 ```
 
 ### Essential
 
+- [ ] ARM (32 bit) kernel rewrite
+  - Part of Novusk v3 Rewrite
+- [ ] ARM (64 bit) kernel rewrite
+  - Part of Novusk v3 Rewrite
+
 ### Non essential
 
 - [ ] Novusk v3 Rewrite - This will be continuously worked on
-    @NathanMcMillan54
-    [#22](https://github.com/NathanMcMillan54/novusk/issues/22)
+    - @NathanMcMillan54
+    - [#22](https://github.com/NathanMcMillan54/novusk/issues/22)

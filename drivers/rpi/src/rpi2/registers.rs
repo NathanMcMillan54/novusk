@@ -1,6 +1,0 @@
-use crate::MMIO_BASE;
-
-pub const MAILBOX_BASE: u32 = MMIO_BASE + 0xB880;
-pub const MAILBOX_READ: u32 = MAILBOX_BASE;
-pub const MAILBOX_STATUS: u32 = MAILBOX_BASE + 0x18;
-pub const MAILBOX_WRITE: u32 = MAILBOX_BASE + 0x20;

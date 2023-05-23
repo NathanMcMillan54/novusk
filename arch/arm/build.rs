@@ -1,33 +1,29 @@
 use std::env;
-use std::fs::File;
+use std::fs::{File, read_to_string};
 use std::io::Write;
 use std::path::PathBuf;
-use difi::add_dif;
 
-#[cfg(feature = "rpi2")]
-const DIF: &'static str = "src/include/dif/rpi2.dif";
+#[cfg(feature = "lm3s6965")]
+const MEM_PATH: &str = "src/include/dev/lm3s6965_memory.x";
 
-#[cfg(feature = "stellaris_6965")]
-const DIF: &'static str = "src/include/dif/stellaris6965.dif";
+#[cfg(feature = "cortex_m_device")]
+fn cortex_m_kernel_setup() {
+    let mem_file_contents = read_to_string(MEM_PATH).unwrap();
+    let file_bytes = mem_file_contents.as_bytes();
 
-fn cortex_m_build_setup() {
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
     File::create(out.join("memory.x"))
         .unwrap()
-        .write_all(include_bytes!("stellaris_mem.x"))
+        .write_all(file_bytes)
         .unwrap();
     println!("cargo:rustc-link-search={}", out.display());
+
+    println!("cargo:rerun-if-changed={}", MEM_PATH);
+    println!("cargo:rustc-link-arg=--nmagic");
+    println!("cargo:rustc-link-arg=-Tlink.x");
 }
 
 fn main() {
-    // Reruns
-    println!("cargo:rerun-if-changed=stellaris_mem.x");
-    println!("cargo:rerun-if-changed=src/boot/start/linker.ld");
-    println!("cargo:rerun-if-changed=src/boot/start/a7_start.S");
-
-    println!("cargo:rerun-if-changed={}", DIF);
-    add_dif(DIF);
-
-    #[cfg(feature = "cortex_m")]
-    cortex_m_build_setup();
+    #[cfg(feature = "cortex_m_device")]
+    cortex_m_kernel_setup();
 }

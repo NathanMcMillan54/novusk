@@ -1,9 +1,0 @@
-[package]
-name = "libcolor"
-version = "0.1.0"
-edition = "2021"
-description = "Colors in enums"
-license = "MIT"
-publish = false
-
-[dependencies]

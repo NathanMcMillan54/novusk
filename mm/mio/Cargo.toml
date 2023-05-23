@@ -1,9 +1,0 @@
-[package]
-name = "mio"
-version = "0.1.0"
-edition = "2021"
-description = "Mermory Input Output"
-license = "MIT"
-publish = false
-
-[dependencies]

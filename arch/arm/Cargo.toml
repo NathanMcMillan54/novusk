@@ -2,38 +2,31 @@
 name = "arm"
 version = "0.1.0"
 edition = "2021"
-description = "ARM32 kernel support"
-license = "MIT"
-publish = false
+
+[[bin]]
+name = "arm_novusk"
+edition = "2021"
+path = "src/main.rs"
+
+[lib]
+name = "libarm_kernel"
+edition = "2021"
+path = "src/lib.rs"
 
 [dependencies]
-alloc-cortex-m = { version = "0.4.2", optional = true }
-cfg-if = "1.0.0"
-cortex-a = "8.0.0"
-cortex-m = "0.7.3"
-cortex-m-rt = "0.7.1"
-cortex-m-semihosting = "0.3.7"
-cpu = { path = "../../drivers/cpu/" }
-device = { path = "../../drivers/device/" }
-dif = { version = "0.1.1" }
-kernel = { path = "../../kernel/" }
-lazy_static = "1.4.0"
-nmallocator = { path = "../../mm/nmallocator/", optional = true }
-novuskinc = { git = "https://github.com/new-kernel/novuskinc/", branch = "novusk_build", features = ["v3"] }
+cfg-if = { version = "1.0.0" }
+cortex-m = { version = "0.7.7", optional = true }
+cortex-m-rt = { version = "0.7.3", optional = true }
+cortex-m-semihosting = { version = "0.5.0", optional = true }
+embedded-alloc = "0.5.0"
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
 r0 = "1.0.0"
-setup = { path = "../../kernel/setup/" }
-stellarisd = { path = "../../drivers/platform/stellarisd/", optional = true }
-spin = "0.9.1"
-time = { path = "../../kernel/time/" }
 
-[build-dependencies]
-difi = "0.1.0"
+# Devices
+ti_lm3s = { path = "../../drivers/platform/ti_lm3s/", optional = true }
 
 [features]
-allocator = []
-cortex_a = ["allocator", "nmallocator"]
-cortex_m = []
-rpi2 = ["cortex_a"]
-stellaris_6965 = ["cortex_m", "stellarisd", "stellarisd/stellaris_6965"]
-# not_stm32 = ["stmd/stm32f407"]
-# stm32f407 = ["cortex_m", "stmd/stm32f407"]
+cortex_m_device = ["cortex-m", "cortex-m-rt"]
+cortex_a_device = []
+debug = ["cortex-m-semihosting"]
+lm3s6965 = ["cortex_m_device", "ti_lm3s", "ti_lm3s/s6965"]

@@ -1,8 +1,0 @@
-[
-    ("DifName", "x86_64-default-dfi.dif"),
-    ("AllocMemory", "true"),
-    ("EnableSerial", "false"),
-    ("PrintingMethod", "Fb"),
-    ("StartInit", "true"),
-    ("ShutdownOnPanic", "false"),
-]

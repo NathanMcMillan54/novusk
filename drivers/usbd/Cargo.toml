@@ -1,9 +1,0 @@
-[package]
-name = "usbd"
-version = "0.1.0"
-edition = "2021"
-description = "USB Driver"
-license = "MIT"
-publish = false
-
-[dependencies]

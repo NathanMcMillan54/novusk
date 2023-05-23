@@ -1,9 +1,0 @@
-[
-    ("DifFileName", "e310x.dif"),
-    ("DeviceName", "SiFive e310x"),
-    ("PeripheralAddress", "26843456"),
-    ("EnableSerial", "true"),
-    ("PrintingMethod", "Serial"),
-    ("DeviceKernel", "true"),
-    ("ShutdownOnPanic", "false"),
-]

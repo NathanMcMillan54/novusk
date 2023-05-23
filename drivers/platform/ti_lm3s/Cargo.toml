@@ -1,0 +1,13 @@
+[package]
+name = "ti_lm3s"
+version = "0.1.0"
+edition = "2021"
+description = "Device drivers for Texas Insturment's LM3S devices"
+
+[dependencies]
+cortex-m = "0.7.7"
+novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
+
+[features]
+s6965 = []
+s811 = []
