@@ -20,6 +20,7 @@ edition = "2021"
 members = [
     # Architecutres
     "arch/arm/",
+    "arch/x86_64/",
 
     # Drivers
     "drivers/platform/ti_lm3s/",

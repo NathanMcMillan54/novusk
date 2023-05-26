@@ -1,0 +1,17 @@
+[package]
+name = "x86_64"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "x86_64_novusk"
+edition = "2021"
+path = "src/main.rs"
+
+[lib]
+name = "libx86_64_novusk"
+edition = "2021"
+path = "src/lib.rs"
+
+[dependencies]
+bootloader = "0.9.23"
