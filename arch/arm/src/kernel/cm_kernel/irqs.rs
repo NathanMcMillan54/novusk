@@ -8,7 +8,7 @@ pub fn sys_time_setup() {
     syst.set_clock_source(SystClkSource::Core);
 
     // Reloads ~100ms
-    syst.set_reload(1000000);
+    syst.set_reload(800000000);
     syst.enable_counter();
     syst.enable_interrupt();
 }
@@ -26,5 +26,6 @@ unsafe fn DefaultHandler(irqn: i16) {
 
 #[exception]
 unsafe fn HardFault(ef: &ExceptionFrame) -> ! {
-    panic!("HardFault exception triggered");
+    super::print::_early_print(format_args!("{}{:?}", "\n----- HardFault: -----\n", ef));
+    loop { }
 }

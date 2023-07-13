@@ -2,6 +2,8 @@
 name = "arm"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+publish = false
 
 [[bin]]
 name = "arm_novusk"
@@ -15,10 +17,11 @@ path = "src/lib.rs"
 
 [dependencies]
 cfg-if = { version = "1.0.0" }
-cortex-m = { version = "0.7.7", optional = true }
+cortex-m = { version = "0.7.7", optional = true, features = ["critical-section-single-core"] }
 cortex-m-rt = { version = "0.7.3", optional = true }
 cortex-m-semihosting = { version = "0.5.0", optional = true }
 embedded-alloc = "0.5.0"
+nkernel = { path = "../../kernel/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
 r0 = "1.0.0"
 

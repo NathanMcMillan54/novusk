@@ -3,10 +3,17 @@ name = "ti_lm3s"
 version = "0.1.0"
 edition = "2021"
 description = "Device drivers for Texas Insturment's LM3S devices"
+license = "MIT"
+publish = false
 
 [dependencies]
 cortex-m = "0.7.7"
+cortex-m-semihosting = "0.5.0"
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc/" }
+tock-registers = "0.8.1"
+tm4c123x-hal = "0.10.2"
+spin = "0.9.8"
 
 [features]
 s6965 = []

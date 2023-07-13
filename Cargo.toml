@@ -24,4 +24,7 @@ members = [
 
     # Drivers
     "drivers/platform/ti_lm3s/",
+
+    # Kernel
+    "kernel/",
 ]

@@ -1,6 +1,8 @@
 #![no_std]
 
+#[macro_use] extern crate alloc;
 #[macro_use] extern crate cfg_if;
+extern crate nkernel;
 #[macro_use] extern crate novuskinc;
 extern crate r0;
 
@@ -17,9 +19,3 @@ extern crate ti_lm3s;
 pub mod boot;
 pub mod kernel;
 pub mod mm;
-
-#[path = "../../../kernel/oom.rs"]
-mod oom;
-
-#[path = "../../../kernel/panic.rs"]
-mod panic;

@@ -9,10 +9,11 @@ extern "C" {
 #[entry]
 fn _cm_start() -> ! {
     unsafe {
-     //   clear_bss(__sbss, __ebss);
+        clear_bss(__sbss, __ebss);
     }
 
     crate::kernel::cm_kernel::start_cortex_m_kernel();
 
-    panic!()
+    //panic!("Kernel ended");
+    loop {  }
 }

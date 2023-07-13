@@ -2,6 +2,8 @@
 name = "x86_64"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+publish = false
 
 [[bin]]
 name = "x86_64_novusk"
@@ -15,3 +17,4 @@ path = "src/lib.rs"
 
 [dependencies]
 bootloader = "0.9.23"
+nkernel = { path = "../../kernel/" }
