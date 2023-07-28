@@ -17,4 +17,14 @@ path = "src/lib.rs"
 
 [dependencies]
 bootloader = "0.9.23"
+raw-cpuid = "11.0.1"
+embedded-alloc = "0.5.0"
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 nkernel = { path = "../../kernel/" }
+spin = "0.9.8"
+x86_64 = "0.14.10"
+
+[features]
+bios_boot = []
+uefi_boot = []
+bootloader_rs_0_9_23 = []

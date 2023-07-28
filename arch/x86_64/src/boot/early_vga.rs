@@ -1,11 +1,15 @@
 use core::fmt::{Arguments, Write};
 use crate::libx::libcolor::Color4Bit;
 
+lazy_static::lazy_static! {
+    pub static ref VGA_WRITER: spin::Mutex<VgaWriter> = spin::Mutex::new(VgaWriter::new());
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
 struct ScreenChar {
-    character: u8,
-    color_code: u8,
+    pub character: u8,
+    pub color_code: u8,
 }
 
 impl ScreenChar {
@@ -64,6 +68,10 @@ impl VgaWriter {
         self.buffer.chars[self.y][self.x] = screen_char;
 
         self.x += 1;
+    }
+
+    pub fn read_byte(&mut self, x: usize, y: usize) -> u8 {
+        self.buffer.chars[y][x].character
     }
 
     pub fn write_string(&mut self, string: &str) {

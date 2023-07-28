@@ -8,7 +8,6 @@ fn _panic(info: &PanicInfo) -> ! {
     }
 
     unsafe { _early_print(format_args!("{:?}", info)); }*/
-    cortex_m_semihosting::hprint!("\nPanic:\n{:?}\n", info);
 
     loop {  }
 }
