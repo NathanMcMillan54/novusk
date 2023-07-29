@@ -1,7 +1,7 @@
 use core::fmt::{Arguments, Write};
 use crate::libx::libcolor::Color4Bit;
 
-lazy_static::lazy_static! {
+lazy_static! {
     pub static ref VGA_WRITER: spin::Mutex<VgaWriter> = spin::Mutex::new(VgaWriter::new());
 }
 
@@ -45,7 +45,7 @@ impl VgaWriter {
     pub fn new() -> Self {
         return VgaWriter {
             x: 0,
-            y: BUFFER_HEIGHT - 1,
+            y: BUFFER_HEIGHT - 2,
             background: Color4Bit::Black,
             foreground: Color4Bit::White,
             buffer: unsafe { &mut *(0xb8000 as *mut VgaBuffer) },

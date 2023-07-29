@@ -6,6 +6,7 @@ use core::ops::Add;
 use core::ptr::{write_volatile};
 use bootloader::bootinfo::{MemoryRegion, MemoryRegionType};
 use raw_cpuid::CpuId;
+use novuskinc::kernel::setup_arch;
 use x86_64::instructions::port::Port;
 use crate::boot::cpu::{APIC, PIC, X2APIC, X86_64CPU};
 use crate::boot::early_vga::{VGA_WRITER, VgaWriter};
@@ -50,7 +51,9 @@ pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     check_cpuid();
 
     VGA_WRITER.lock().write_string("Starting Novusk...\n");
-    VGA_WRITER.lock().write_fmt(format_args!("{:?}", X86_64CPU));
+    VGA_WRITER.lock().write_fmt(format_args!("{:?}{}", X86_64CPU, "\n"));
+
+    setup_arch();
 
     panic!()
 }
