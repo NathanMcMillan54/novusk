@@ -18,7 +18,7 @@ path = "src/lib.rs"
 [dependencies]
 bootloader = "0.9.23"
 raw-cpuid = "11.0.1"
-embedded-alloc = "0.5.0"
+wee_alloc = { git = "https://github.com/NathanMcMillan54/wee_alloc", features = ["static_array_backend"] }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 nkernel = { path = "../../kernel/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc" }

@@ -8,10 +8,10 @@ use bootloader::bootinfo::{MemoryRegion, MemoryRegionType};
 use raw_cpuid::CpuId;
 use novuskinc::kernel::setup_arch;
 use x86_64::instructions::port::Port;
+use crate::early_printk;
 use crate::boot::cpu::{APIC, PIC, X2APIC, X86_64CPU};
 use crate::boot::early_vga::{VGA_WRITER, VgaWriter};
-use crate::boot::video::VGA;
-
+use crate::boot::video::*;
 
 unsafe fn check_cpuid() {
     let mut cpuid = CpuId::new();
@@ -49,9 +49,11 @@ unsafe fn check_cpuid() {
 #[inline]
 pub unsafe extern "C" fn _start(bootinfo: &'static BootInfo) -> ! {
     check_cpuid();
+    set_video_driver(VGA);
 
-    VGA_WRITER.lock().write_string("Starting Novusk...\n");
-    VGA_WRITER.lock().write_fmt(format_args!("{:?}{}", X86_64CPU, "\n"));
+    early_printk!("Starting Novusk...\n");
+    early_printk!("{:?}\n", X86_64CPU);
+    early_printk!("Using VGA Text buffer\n");
 
     setup_arch();
 

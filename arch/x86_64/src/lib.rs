@@ -1,5 +1,5 @@
 #![no_std]
-#![feature(abi_x86_interrupt)]
+#![feature(abi_x86_interrupt, const_mut_refs)]
 
 #[macro_use] extern crate lazy_static;
 #[macro_use] extern crate novuskinc;
