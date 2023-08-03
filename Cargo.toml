@@ -23,6 +23,7 @@ members = [
     "arch/x86_64/",
 
     # Drivers
+    "drivers/irqchip/pic8259/",
     "drivers/platform/ti_lm3s/",
 
     # Kernel

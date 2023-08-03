@@ -10,6 +10,8 @@ pub fn early_console_write(fmt: Arguments) {
 #[macro_export]
 macro_rules! early_printk {
     ($($args:tt)*) => {
-        $crate::kernel::early_console::early_console_write(format_args!($($args)*));
+        x86_64::instructions::interrupts::without_interrupts(|| {
+            $crate::kernel::early_console::early_console_write(format_args!($($args)*));
+        });
     };
 }

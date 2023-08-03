@@ -22,10 +22,11 @@ wee_alloc = { git = "https://github.com/NathanMcMillan54/wee_alloc", features = 
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 nkernel = { path = "../../kernel/" }
 novuskinc = { git = "https://github.com/new-kernel/novuskinc" }
+pic8259 = { path = "../../drivers/irqchip/pic8259/", optional = true }
 spin = "0.9.8"
 x86_64 = "0.14.10"
 
 [features]
 bios_boot = []
 uefi_boot = []
-bootloader_rs_0_9_23 = []
+bootloader_rs_0_9_23 = ["pic8259"]
