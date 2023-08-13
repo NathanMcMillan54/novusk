@@ -6,6 +6,9 @@ use std::path::PathBuf;
 #[cfg(feature = "lm3s6965")]
 const MEM_PATH: &str = "src/include/dev/lm3s6965_memory.x";
 
+#[cfg(feature = "stm32f407")]
+const MEM_PATH: &str = "src/include/dev/stm32f407_memory.x";
+
 #[cfg(feature = "cortex_m_device")]
 fn cortex_m_kernel_setup() {
     let mem_file_contents = read_to_string(MEM_PATH).unwrap();

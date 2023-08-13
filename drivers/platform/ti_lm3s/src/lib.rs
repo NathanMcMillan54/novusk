@@ -5,7 +5,7 @@
 
 use tm4c123x_hal::Peripherals;
 use tm4c123x_hal::prelude::*;
-use tm4c123x_hal::sysctl::{CrystalFrequency, Divider, Oscillator, PllOutputFrequency, SystemClock};
+use tm4c123x_hal::sysctl::{CrystalFrequency, Divider, Oscillator, PllOutputFrequency, Sysctl, SystemClock};
 
 pub mod interrupts;
 

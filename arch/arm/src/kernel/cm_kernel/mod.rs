@@ -8,10 +8,10 @@ use alloc::vec;
 use print::_early_print;
 
 pub fn start_cortex_m_kernel() {
-    //unsafe { allocator_init(heap_start() as usize, 1024); }
+    unsafe { allocator_init(heap_start() as usize, 1024); }
     _early_print(format_args!("{}", "Initialized allocator\n"));
 
-    //irqs::sys_time_setup();
+    irqs::sys_time_setup();
     _early_print(format_args!("{}", "Setup sys time\n"));
 
     unsafe { early_device_init(); }

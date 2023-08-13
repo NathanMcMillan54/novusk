@@ -27,9 +27,11 @@ r0 = "1.0.0"
 
 # Devices
 ti_lm3s = { path = "../../drivers/platform/ti_lm3s/", optional = true }
+stm = { path = "../../drivers/platform/stm/", optional = true }
 
 [features]
 cortex_m_device = ["cortex-m", "cortex-m-rt"]
 cortex_a_device = []
 debug = ["cortex-m-semihosting"]
 lm3s6965 = ["cortex_m_device", "ti_lm3s", "ti_lm3s/s6965"]
+stm32f407 = ["cortex_m_device", "stm", "stm/stm32f407"]

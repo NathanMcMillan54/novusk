@@ -24,6 +24,7 @@ members = [
 
     # Drivers
     "drivers/irqchip/pic8259/",
+    "drivers/platform/stm/",
     "drivers/platform/ti_lm3s/",
 
     # Kernel

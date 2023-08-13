@@ -1,0 +1,13 @@
+[package]
+name = "stm"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
+spin = "0.9.8"
+stm32f4xx-hal = "0.17.1"
+
+[features]
+stm32f407 = ["stm32f4xx-hal/stm32f407"]

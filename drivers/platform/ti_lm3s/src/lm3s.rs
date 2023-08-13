@@ -23,7 +23,7 @@ unsafe fn early_lm3s_init() -> u8 {
 
     super::setup_sys_clock();
     uart::early_serial_init();
-    //gpio::setup_gpio();
+    gpio::setup_gpio();
     //panic!("here");
 
     //enable_interrupts();

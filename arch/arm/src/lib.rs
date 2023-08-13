@@ -16,6 +16,9 @@ cfg_if! {
 #[cfg(feature = "lm3s6965")]
 extern crate ti_lm3s;
 
+#[cfg(feature = "stm32f407")]
+extern crate stm;
+
 pub mod boot;
 pub mod kernel;
 pub mod mm;
