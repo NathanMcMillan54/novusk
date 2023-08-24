@@ -1,3 +1,4 @@
+use stm32f4xx_hal::gpio::GpioExt;
 use stm32f4xx_hal::pac::Peripherals;
 
 lazy_static::lazy_static! {

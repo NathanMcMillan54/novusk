@@ -47,7 +47,5 @@ impl F407Uart {
 pub fn uart_init() {
     F407UART.lock().tx_init();
     //F407UART.lock().rx_init();
-
-    writeln!(F407UART.lock().uart_tx.as_mut().unwrap(), "this is a test");
 }
 
