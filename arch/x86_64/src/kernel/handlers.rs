@@ -1,3 +1,4 @@
+use x86_64::registers::control::Cr2;
 use x86_64::structures::idt::{InterruptStackFrame, PageFaultErrorCode};
 use crate::early_printk;
 

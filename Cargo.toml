@@ -27,6 +27,9 @@ members = [
     "drivers/platform/stm/",
     "drivers/platform/ti_lm3s/",
 
+    # Include
+    "include/asminc/",
+
     # Kernel
     "kernel/",
 ]
