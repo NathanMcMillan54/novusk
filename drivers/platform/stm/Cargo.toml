@@ -6,6 +6,7 @@ edition = "2021"
 
 [dependencies]
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
+novuskinc = { git = "https://github.com/new-kernel/novuskinc" }
 spin = "0.9.8"
 stm32f4xx-hal = "0.17.1"
 

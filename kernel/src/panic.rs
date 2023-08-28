@@ -3,11 +3,5 @@ use core::panic::PanicInfo;
 
 #[panic_handler]
 fn _panic(info: &PanicInfo) -> ! {
-    /*extern "C" {
-        fn _early_print(args: core::fmt::Arguments);
-    }
-
-    unsafe { _early_print(format_args!("{:?}", info)); }*/
-
     loop {  }
 }
