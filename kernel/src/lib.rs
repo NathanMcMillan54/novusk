@@ -2,7 +2,6 @@
 
 #[cfg(not(feature = "no_alloc"))]
 #[macro_use] extern crate alloc;
-#[macro_use] extern crate novuskinc;
 
 #[cfg(not(feature = "no_oom"))]
 pub mod oom;

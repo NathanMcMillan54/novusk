@@ -1,5 +1,5 @@
 [unstable]
-build-std = ["core", "alloc", "std", "compiler_builtins"]
+build-std = ["core", "alloc", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
 
 [target.'cfg(all(target_arch = "arm", target_family = "novusk"))']
@@ -17,4 +17,11 @@ rustflags = [
 rustflags = [
     "-C", "link-arg=-Wl,-Tlink.x",
     "-C", "link-arg=-nostartfiles",
+]
+
+[build]
+rustflags = [
+    "-C", "code-model=kernel",
+    # "-C", "link-arg=-Tlink.ld",
+    "-C", "relocation-model=static",
 ]

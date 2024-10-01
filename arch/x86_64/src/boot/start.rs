@@ -1,18 +1,15 @@
-use core::arch::asm;
+use core::arch::{asm, global_asm};
 use core::borrow::Borrow;
 use core::fmt::Write;
+use core::intrinsics::{volatile_load, volatile_store};
 use core::ops::Add;
 use core::ptr::{write_volatile};
 use raw_cpuid::CpuId;
-use novuskinc::kernel::setup_arch;
 use x86_64::instructions::port::Port;
 use x86_64::{PhysAddr, VirtAddr};
-use crate::early_printk;
 use crate::boot::cpu::{APIC, PIC, X2APIC, X86_64CPU};
 use crate::boot::early_vga::{VGA_WRITER, VgaWriter};
 use crate::boot::video::*;
-use crate::mm::memory;
-use crate::mm::memory::KERNEL_MEMORY;
 
 unsafe fn check_cpuid() {
     let mut cpuid = CpuId::new();
@@ -44,29 +41,8 @@ unsafe fn check_cpuid() {
     }
 }
 
-/// Booting with ``bootloader`` < v0.10.0
-#[cfg(feature = "bootloader_rs_0_9_23")]
+
 #[no_mangle]
-#[inline]
-pub unsafe extern "C" fn _start(bootinfo: &'static bootloader::BootInfo) -> ! {
-    use bootloader::bootinfo::{MemoryRegion, MemoryRegionType};
-
-    check_cpuid();
-    set_video_driver(VGA);
-
-    for i in 0..bootinfo.memory_map.len() {
-        let mem_region: MemoryRegion = bootinfo.memory_map[i];
-        if mem_region.region_type == MemoryRegionType::Usable {
-            memory::add_boot_memory((mem_region.range.start_frame_number, mem_region.range.end_frame_number));
-        }
-    }
-
-    early_printk!("Starting Novusk...\n");
-    early_printk!("{:?}\n", X86_64CPU);
-    early_printk!("Using VGA Text buffer\n");
-    early_printk!("{} bytes of memory available\n\n", memory::check_available());
-
-    setup_arch();
-
+pub unsafe extern "C" fn _bootstart(multiboot_magic: u32, multiboot_hdr: *const u32) -> ! {
     panic!()
 }

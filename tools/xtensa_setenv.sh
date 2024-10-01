@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Using https://github.com/esp-rs/rust
 RUSTC_PATH=$1
 
 cd $RUSTC_PATH && pwd

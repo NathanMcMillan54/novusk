@@ -28,7 +28,7 @@ members = [
     "drivers/platform/ti_lm3s/",
 
     # Include
-    "include/asminc/",
+    "include/archinc/",
 
     # Kernel
     "kernel/",

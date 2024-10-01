@@ -1,4 +1,10 @@
 #![no_std]
 #![no_main]
 
-pub(crate) extern crate libx86_64_novusk;
+use core::panic::PanicInfo;
+#[panic_handler]
+fn _panic(_info: &PanicInfo) -> ! {
+    loop {
+        
+    }
+}

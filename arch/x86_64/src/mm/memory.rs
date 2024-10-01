@@ -1,12 +1,13 @@
 use core::cell::Cell;
 use novuskinc::memory::KernelMemory;
 
-#[cfg(feature = "bootloader_rs_0_9_23")]
-use bootloader::BootInfo;
-
 pub static mut KERNEL_MEMORY: KernelMemory = KernelMemory {
     memory: Cell::new([(0, 0); 16]),
 };
+
+pub unsafe fn get_mem() -> (u64, u64) {
+    KERNEL_MEMORY.memory.get()[0]
+}
 
 pub unsafe fn add_boot_memory(mem: (u64, u64)) {
     let mut kmem = KERNEL_MEMORY.memory.get();

@@ -1,7 +1,5 @@
 use core::fmt::{Arguments, Write};
 use core::ptr::{read_volatile, write_volatile};
-use novuskinc::drivers::{Driver, DriverResult, names};
-use novuskinc::prelude::*;
 use crate::libx::libcolor::Color4Bit;
 
 lazy_static! {
@@ -98,56 +96,6 @@ pub struct Vga;
 impl Vga {
     pub fn writer_write_str(&self, string: &str) {
         VGA_WRITER.lock().write_string(string);
-    }
-}
-
-impl KernelConsoleDriver for Vga {
-    fn write_string(&mut self, string: &str, x: u16, y: u16) {
-        self.writer_write_str(string);
-    }
-
-    fn clear_screen(&mut self, option: u16) {
-        for y in 0..BUFFER_HEIGHT {
-            for x in 0..BUFFER_WIDTH {
-                VGA_WRITER.lock().scroll_screen();
-            }
-        }
-    }
-
-    fn dimensions(&self) -> (u16, u16) {
-        (BUFFER_WIDTH as u16, BUFFER_HEIGHT as u16)
-    }
-}
-
-impl FrameBufferGraphics for Vga {}
-
-impl KeyboardInput for Vga {}
-
-impl Storage for Vga {}
-
-impl Serial for Vga {}
-
-impl Led for Vga {}
-
-impl Timer for Vga {}
-
-impl Driver for Vga {
-    fn driver_name(&self) -> &'static str {
-        "VGA Text Writer"
-    }
-
-    fn name(&self) -> &'static str {
-        names::CONSOLE
-    }
-
-    fn init(&mut self) -> DriverResult {
-        unsafe {
-            write_volatile(VGA_ADDRESS as *mut u8, 0x01 as u8);
-
-            if read_volatile(VGA_ADDRESS as *const u8) == 0x01 {
-                Ok(())
-            } else { Err("VGA may not be available") }
-        }
     }
 }
 

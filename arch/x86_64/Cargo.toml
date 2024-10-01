@@ -14,20 +14,22 @@ path = "src/main.rs"
 name = "libx86_64_novusk"
 edition = "2021"
 path = "src/lib.rs"
+crate-type = ["staticlib"]
 
 [dependencies]
-asminc = { path = "../../include/asminc/" }
+archinc = { path = "../../include/archinc/" }
 bootloader = "0.9.23"
 raw-cpuid = "11.0.1"
 wee_alloc = { git = "https://github.com/NathanMcMillan54/wee_alloc", features = ["static_array_backend"] }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 nkernel = { path = "../../kernel/" }
-novuskinc = { git = "https://github.com/new-kernel/novuskinc" }
 pic8259 = { path = "../../drivers/irqchip/pic8259/", optional = true }
 spin = "0.9.8"
 x86_64 = "0.14.10"
 
 [features]
+default = []
 bios_boot = []
 uefi_boot = []
 bootloader_rs_0_9_23 = ["pic8259"]
+grub = []

@@ -1,7 +1,5 @@
-use novuskinc::irq::notify_irq;
 use x86_64::instructions::port::Port;
 use x86_64::structures::idt::{Entry, HandlerFunc, InterruptDescriptorTable, InterruptStackFrame};
-use crate::early_printk;
 use super::handlers::*;
 
 #[repr(u8)]
@@ -10,31 +8,22 @@ enum Interrupts {
     Keyboard,
 }
 
-/*lazy_static! {
-    static ref IDT: InterruptDescriptorTable = {
-        let mut idt = InterruptDescriptorTable::new();
-
-
-        idt
-    };
-}*/
-
 static mut IDT: InterruptDescriptorTable = InterruptDescriptorTable::new();
 
 extern "x86-interrupt" fn timer_handler(stack_frame: InterruptStackFrame) {
-    unsafe { notify_irq(32); }
+    //unsafe { notify_irq(32); }
 }
 
 extern "x86-interrupt" fn keyboard_handler(stack_frame: InterruptStackFrame) {
     let b: u8 = unsafe { Port::new(0x60).read() };
 
-    unsafe { notify_irq(33); }
+    //unsafe { notify_irq(33); }
 }
 
 extern "x86-interrupt" fn mouse_handler(stack_frame: InterruptStackFrame) {
     let b: u8 = unsafe { Port::new(0x60).read() };
 
-    unsafe { notify_irq(44); }
+    //unsafe { notify_irq(44); }
 }
 
 pub unsafe fn idt_init() {
