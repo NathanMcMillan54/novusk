@@ -18,7 +18,7 @@ crate-type = ["staticlib"]
 
 [dependencies]
 archinc = { path = "../../include/archinc/" }
-bootloader = "0.9.23"
+multiboot2 = "0.23.1"
 raw-cpuid = "11.0.1"
 wee_alloc = { git = "https://github.com/NathanMcMillan54/wee_alloc", features = ["static_array_backend"] }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }

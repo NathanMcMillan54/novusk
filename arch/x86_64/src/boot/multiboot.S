@@ -7,16 +7,19 @@
 _start:
     mov $stack_top, %esp
 
+    pushl %ebx
+    pushl %eax
     call _bootstart
     hlt
-
-check_multiboot:
-    cmp $0x36d76289, %eax
-    jne loop_error
-    ret
 
 loop_error:
     hlt
     jmp loop_error
 
+.section .bss
+
+stack_bottom:
+    .skip 64
 stack_top:
+
+.section .rodata

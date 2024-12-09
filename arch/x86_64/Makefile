@@ -12,12 +12,12 @@ grub_boot:
 	@ rm -rf output/
 	@ echo "Compiling Grub files..."
 	@ mkdir output/
-	@ $(COMPILER)-as -64 -nostdlib src/boot/grub.S -o output/grub.o
-	@ $(COMPILER)-as -64 -nostdlib src/boot/grub_multiboot.S -o output/grub_multiboot.o
+	@ $(COMPILER)-as -64 -nostdlib src/boot/multiboot.S -o output/multiboot.o
+	@ $(COMPILER)-as -64 -nostdlib src/boot/multiboot_header.S -o output/multiboot_header.o
 	@ echo "Done"
 
 grub_finish:
 	@ rm -rf ../../tools/grub/boot/novusk.bin
 	@ rm -rf ../../tools/grub/boot/novusk.iso
-	@ ld -n -T src/boot/grub.ld -o ../../tools/grub/boot/novusk.bin output/grub_multiboot.o output/grub.o ../../target/x86_64-novusk/release/liblibx86_64_novusk.a
+	@ ld -n -T src/boot/multiboot.ld -o ../../tools/grub/boot/novusk.bin output/multiboot_header.o output/multiboot.o ../../target/x86_64-novusk/release/liblibx86_64_novusk.a
 	@ grub-mkrescue -o ../../tools/grub/boot/novusk.iso ../../tools/grub/
